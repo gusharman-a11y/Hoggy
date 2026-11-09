@@ -36,6 +36,9 @@ Started: Mon Nov  9 03:21:18 UTC 2026
 - Mail: src/lib/mailer.ts — Mailer.send({to, subject, text, attachments[{filename, content: Buffer, contentType}], orgId?}); getMailer(env?, db?) = OutboxMailer (outbox + outbox_attachments tables, BLOB content) unless SMTP_URL (SmtpMailer stub, throws). Always pass orgId for hospital emails so production finance/admin see them. listOutbox({orgId, to}) for tests/e2e asserts; outboxScope(user, NODE_ENV) is the /outbox + download access rule (dev: any logged-in user sees all).
 - File downloads = route handler (src/app/outbox/attachments/[id]/route.ts pattern): getCurrentUser() + scope check, Content-Disposition with ascii filename + filename*=UTF-8.
 - E2E download check: page.request.get(href) shares the page's cookies; compare Buffer bytes.
+- Approvals: src/lib/approvals.ts — submitTripForApproval(id, viewer, mailer, db) / decideTrip(id, viewer, decision, comment, mailer, db) (throw ApprovalError with a user-facing message; reject needs a comment; nobody decides their own trip; approver = manager/admin same org) / listPendingApprovals(viewer) / canSubmitTrip / canDecideTrip / approverEmails(orgId) (managers, else admins) / appUrl(path) (APP_URL, default localhost:3000) for links in emails. Pass the mailer in (getMailer() in actions, new OutboxMailer(db) in tests).
+- A server-action form that disappears once it succeeds (e.g. the trip is no longer pending) can't show its own "done" state: redirect() from the action to a page with a ?flag and render the notice there (see decideTripAction -> /approvals?decided=..&trip=..).
+- E2E: approve trips via the real UI now (submit on /trips/[id], manager@demo.test clicks Approve on the trip page); the direct-DB approveTrip helper is gone.
 ---
 
 ## 2026-11-09 03:25 UTC - US-001
@@ -160,4 +163,13 @@ Started: Mon Nov  9 03:21:18 UTC 2026
   - node:sqlite BLOBs come back as Uint8Array; wrap with Buffer.from() and insert as new Uint8Array(buf)
   - Running e2e re-renders older screenshots; git checkout them unless the story changed those pages
   - US-022 finance assert: listOutbox({to: org finance_email}) or open /outbox as finance@demo.test; npm run build passes
+---
+
+## 2026-11-09 04:10 UTC - US-013
+- Submit for approval (owner, draft/rejected, needs a non-zero estimate) -> pending_approval and an outbox email to the org's managers (admins if none); /approvals (manager/admin) lists pending org trips with cost, budget remaining for the trip's year and what's left if approved, plus Approve/Reject with comment (comment required to reject); decision form also on the trip page for approvers; doctor gets an outbox email with the decision and the trip page shows the comment; rejected trips stay editable and show "Resubmit for approval"
+- Files: src/lib/approvals{,.test}.ts, src/app/approval-actions.ts, src/app/approvals/{page,DecisionForm}.tsx, src/app/trips/[id]/{page,SubmitForApproval}.tsx, src/app/{layout.tsx,globals.css}, e2e/{approvals,budget}.spec.ts, shots US-013-{approvals,rejected,approved}.png
+- **Learnings for future iterations:**
+  - manager_comment is kept on resubmit (shown as "Earlier comment" on /approvals) and overwritten by the next decision (null if approve has no comment)
+  - Submit button does not save unsaved plan edits; the hint says "Save your plan first"
+  - Approved trip page is where US-014+ booking buttons go (status approved); npm run build passes with /approvals
 ---
