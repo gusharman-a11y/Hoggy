@@ -9,6 +9,12 @@ Started: Mon Nov  9 03:21:18 UTC 2026
 - Browser check = a Playwright spec that saves a screenshot into scripts/ralph/shots/<ID>-*.png.
 - DB: `getDb(file?)` from `@/db` (file > DATABASE_PATH > data/app.db), cached on globalThis; migrations auto-run on open. New schema = new `src/db/migrations/NNN_name.sql` (each applied in its own transaction, recorded in `_migrations`); never edit an applied one. Tests: `getDb(':memory:')` + `closeDb()` in afterEach.
 - node:sqlite rows come back as plain objects typed `unknown`-ish: cast `.all() as {..}[]`. Foreign keys are ON (PRAGMA set in openDb).
+- Auth: pure helpers in src/lib/users.ts take a `db` (unit-testable); src/lib/auth.ts wraps them with next/headers cookies: getCurrentUser(), requireRole(roles, nextPath) (logged out -> /login?next=..., wrong role -> /?denied=1), logIn(userId)/logOut() for server actions. Cookie `sl_session`. Use safeNext() for any redirect target from user input.
+- Server actions live in src/app/*-actions.ts ("use server") with client forms using useActionState. React 19 RESETS the form after an action: return submitted values in state and set defaultValue, or fields go blank on error.
+- In Playwright, don't use getByRole("alert") — Next's route announcer is also role=alert. Use locator("p.error").
+- Seed: `npm run seed` = tsx scripts/seed.ts -> seed(db) in src/db/seed.ts (idempotent; extend it there). tsx resolves the `@/` alias. Demo: DEMO2026, manager@demo.test & finance@demo.test / password123.
+- Build: fs calls on dynamic paths need `/*turbopackIgnore: true*/` inside path args or Turbopack traces the whole project; migrations are shipped via outputFileTracingIncludes in next.config.ts. node:sqlite builds fine under Next 16.
+- E2E runs against data/app.db (not seeded); make specs self-sufficient (unique emails, create a hospital via signup) until US-024 adds a temp DB.
 ---
 
 ## 2026-11-09 03:25 UTC - US-001
@@ -31,4 +37,14 @@ Started: Mon Nov  9 03:21:18 UTC 2026
   - Vitest handles `node:sqlite` fine (prints an ExperimentalWarning, harmless)
   - Not yet checked: Next build importing node:sqlite — first route using getDb (US-003) should run `npm run build`; if it fails, add serverExternalPackages or `export const runtime = "nodejs"`
   - No UI change in this story, so no browser check
+---
+
+## 2026-11-09 03:40 UTC - US-003
+- Sign up (join with org code -> doctor; or create a hospital -> admin, join code shown on /account?created=1), log in (with ?next= round trip), log out button in a new top nav
+- scrypt password hashing (node:crypto), random 32-byte session ids in httpOnly SameSite=Lax cookie, 30-day sessions; npm run seed (Demo Hospital / DEMO2026 / finance@demo.test, manager + finance users)
+- Files: src/lib/{password,users,auth}.ts, src/lib/auth.test.ts, src/app/auth-actions.ts, src/app/{signup,login,account}/*, src/app/layout.tsx, src/app/globals.css, src/db/seed.ts, scripts/seed.ts, e2e/auth.spec.ts, next.config.ts, src/db/{index,migrate}.ts (turbopackIgnore), package.json (+tsx, seed script)
+- **Learnings for future iterations:**
+  - React 19 form reset after actions wipes fields on error; echo values back
+  - getByRole("alert") clashes with Next's route announcer
+  - Layout reads the session cookie, so every page is dynamic (fine)
 ---
