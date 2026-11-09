@@ -30,6 +30,9 @@ Started: Mon Nov  9 03:21:18 UTC 2026
 - Trips are AUD; foreign conference fees are prefilled via toAudCents() (src/lib/fx.ts, indicative static rates). Typed money -> parseMoneyToCents() (blank=0, undefined=invalid); cents -> input value centsToInput() (src/lib/format.ts).
 - Server actions bound to an id: saveTripAction.bind(null, id) with useActionState<State|undefined, FormData>. Status badges: <span className={`badge badge-${status}`}>{TRIP_STATUS_LABELS[status]}</span>.
 - E2E: after clicking Log out / Log in, await the next page's heading before page.goto, or the goto races the server action's cookie change.
+- Budgets: src/lib/budget.ts — calculateBudget(year, allowance, trips) is the pure rule (committed = approved/booked estimates; spent = claimed/paid receipt totals, estimate if none; pending shown but not deducted); getBudget(user, year, db) / teamBudgets(orgId, year) / setAllowance. Year = conference start year. Allowance = budgets row for (user, year) else orgs.default_allowance_cents (demo org 300000). Spent auto-switches to receipts when a `receipts` table with trip_id/amount_cents exists. Shared <BudgetCard budget> in src/components/.
+- ?year= params: yearFromParam() in src/lib/year-param.ts. Adding a column to orgs/users/sessions means updating the column list assertion in src/db/db.test.ts.
+- E2E needing a status the UI can't reach yet: open data/app.db with node:sqlite DatabaseSync in the spec and UPDATE it (see e2e/budget.spec.ts approveTrip); remove once the real UI exists.
 ---
 
 ## 2026-11-09 03:25 UTC - US-001
@@ -133,4 +136,15 @@ Started: Mon Nov  9 03:21:18 UTC 2026
   - Fixed an e2e race in auth.spec (goto right after Log out click); wait for the Log in heading first
   - US-011 budgets: trip estimates are AUD cents, so tripEstimateTotal() can be summed directly
   - npm run build passes with /trips and /trips/[id]
+---
+
+## 2026-11-09 03:58 UTC - US-011
+- Migration 005_budgets.sql: budgets(id, org_id, user_id, year, allowance_cents, UNIQUE(user_id, year)) + orgs.default_allowance_cents; seed sets the demo org default to AUD 3,000 (only if unset)
+- src/lib/budget.ts (pure calculateBudget + DB loaders), /dashboard (budget card with year tabs, defaults to current year or the next year with a trip; 5 recent trips), /team (manager/admin: each doctor's allowance form + committed/spent/remaining, year prev/next); nav Dashboard + Team (by role)
+- Files: src/db/migrations/005_budgets.sql, src/db/seed.ts, src/db/db.test.ts, src/lib/{budget,budget.test,year-param}.ts, src/components/BudgetCard.tsx, src/app/{dashboard/page.tsx,team/page.tsx,team/AllowanceForm.tsx,team-actions.ts,layout.tsx,globals.css}, e2e/budget.spec.ts, shots US-011-{dashboard,team}.png
+- **Learnings for future iterations:**
+  - Sample conferences are 2027-28 while "now" is 2026, so budget views must not assume the current year; dashboard picks the next year with a trip
+  - US-013 /approvals "budget remaining": getBudget({id: trip.user_id, org_id}, tripYear(trip.conference_start))
+  - US-022: spent already reads receipts.amount_cents per trip; nothing to rewire beyond the receipts table existing
+  - npm run build passes with /dashboard and /team
 ---
