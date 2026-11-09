@@ -4,7 +4,7 @@ import { getReceipt, resolveUploadPath } from "@/lib/receipts";
 import { getTripForViewer } from "@/lib/trips";
 
 /** Opens one receipt file for anyone who can view the trip. */
-export async function GET(_req: Request, { params }: { params: Promise<{ id: string; receiptId: string }> }) {
+export async function GET(req: Request, { params }: { params: Promise<{ id: string; receiptId: string }> }) {
   const user = await getCurrentUser();
   if (!user) return new Response("Log in to view receipts", { status: 401 });
   const p = await params;
@@ -19,12 +19,15 @@ export async function GET(_req: Request, { params }: { params: Promise<{ id: str
   } catch {
     return new Response("Not found", { status: 404 });
   }
-  const filename = receipt.file_path.split("/").pop() ?? "receipt";
+  const filename = receipt.original_name || receipt.file_path.split("/").pop() || "receipt";
+  const download = new URL(req.url).searchParams.get("download") === "1";
+  const ascii = filename.replace(/[^\w.\- ]/g, "_");
   return new Response(new Uint8Array(bytes), {
     headers: {
       "Content-Type": receipt.mime_type ?? "application/octet-stream",
       "Content-Length": String(bytes.length),
-      "Content-Disposition": `inline; filename="${filename.replace(/[^\w.\- ]/g, "_")}"`,
+      "Content-Disposition": `${download ? "attachment" : "inline"}; filename="${ascii}"; filename*=UTF-8''${encodeURIComponent(filename)}`,
+      "X-Content-Type-Options": "nosniff",
       "Cache-Control": "private, no-store",
     },
   });

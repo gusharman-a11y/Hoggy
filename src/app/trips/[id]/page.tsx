@@ -6,9 +6,12 @@ import { canEditTrip, getTripForViewer, TRIP_STATUS_LABELS, tripEstimateTotal } 
 import { canDecideTrip, canSubmitTrip } from "@/lib/approvals";
 import { canBookTravel } from "@/lib/flight-booking";
 import { describeBooking, listBookings, listReceipts } from "@/lib/receipts";
+import { canDeleteReceipt, canUploadReceipt } from "@/lib/receipt-uploads";
+import { deleteReceiptAction } from "../../receipt-actions";
 import DecisionForm from "../../approvals/DecisionForm";
 import SubmitForApproval from "./SubmitForApproval";
 import TripForm from "./TripForm";
+import UploadReceiptForm from "./UploadReceiptForm";
 
 export const metadata = { title: "Trip · StudyLeave" };
 
@@ -20,7 +23,7 @@ export default async function TripPage({
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const { id } = await params;
-  const { booked } = await searchParams;
+  const { booked, receipt: receiptFlag } = await searchParams;
   const user = await requireRole([], `/trips/${id}`);
   const tripId = Number(id);
   // Not found and not allowed look the same, so trip ids from other orgs/doctors don't leak.
@@ -32,6 +35,7 @@ export default async function TripPage({
   const bookings = listBookings(trip.id);
   const receipts = listReceipts(trip.id);
   const canBook = canBookTravel(trip, user);
+  const canUpload = canUploadReceipt(trip, user);
   const foreignFee = trip.conference_fee_cents != null && trip.conference_currency !== trip.currency;
 
   return (
@@ -56,6 +60,18 @@ export default async function TripPage({
           Hotel booked. The receipt has been added to this trip.
         </p>
       )}
+
+      {receiptFlag === "added" && (
+        <p role="status" className="notice">
+          Receipt uploaded.
+        </p>
+      )}
+      {receiptFlag === "deleted" && (
+        <p role="status" className="notice">
+          Receipt deleted.
+        </p>
+      )}
+      {receiptFlag === "denied" && <p className="error">You can only delete receipts you uploaded.</p>}
 
       <dl className="facts" data-testid="trip-conference">
         <dt>Conference</dt>
@@ -154,22 +170,42 @@ export default async function TripPage({
         </>
       )}
 
-      {receipts.length > 0 && (
+      {(receipts.length > 0 || canUpload) && (
         <>
           <h2>Receipts</h2>
+          {receipts.length === 0 && <p className="muted">No receipts yet.</p>}
           <ul className="receipts" data-testid="receipts">
             {receipts.map((r) => (
               <li key={r.id} data-testid="receipt">
-                {r.description || r.kind} · {formatMoney(r.amount_cents, r.currency)}
-                {r.file_path && (
-                  <>
-                    {" "}
-                    · <a href={`/trips/${trip.id}/receipts/${r.id}`}>View</a>
-                  </>
-                )}
+                <span>
+                  {r.description || r.kind} · {formatMoney(r.amount_cents, r.currency)}
+                  {r.source === "upload" && <span className="muted"> · uploaded</span>}
+                </span>
+                <span className="receipt-actions">
+                  {r.file_path && (
+                    <>
+                      <a href={`/trips/${trip.id}/receipts/${r.id}`}>View</a>
+                      <a href={`/trips/${trip.id}/receipts/${r.id}?download=1`}>Download</a>
+                    </>
+                  )}
+                  {canDeleteReceipt(r, trip, user) && (
+                    <form action={deleteReceiptAction.bind(null, trip.id, r.id)}>
+                      <button type="submit" className="link danger" aria-label={`Delete ${r.description}`}>
+                        Delete
+                      </button>
+                    </form>
+                  )}
+                </span>
               </li>
             ))}
           </ul>
+          {canUpload && (
+            <>
+              <h3>Add a receipt</h3>
+              <p className="muted">Taxis, meals, registration — anything you paid for yourself.</p>
+              <UploadReceiptForm tripId={trip.id} />
+            </>
+          )}
         </>
       )}
     </main>

@@ -43,6 +43,10 @@ export interface Receipt {
   mime_type: string | null;
   source: ReceiptSource;
   booking_id: number | null;
+  /** Who uploaded it (source 'upload' only). */
+  uploaded_by: number | null;
+  /** The uploaded file's original name, for downloads. */
+  original_name: string | null;
   created_at: string;
 }
 

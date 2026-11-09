@@ -84,3 +84,10 @@ h2 { font-size: 1.3rem; margin: 24px 0 8px; }
 .offer, .bookings li, .receipts li { border: 1px solid #e3e6eb; border-radius: 8px; padding: 10px 12px; overflow-wrap: anywhere; }
 .offer p { margin: 0 0 4px; }
 .form.book-offer { margin: 8px 0 0; }
+.form select { font: inherit; padding: 8px 10px; border: 1px solid #c4cad3; border-radius: 6px; width: 100%; background: #fff; }
+.receipts li { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: center; }
+.receipts li .receipt-actions { margin-left: auto; display: flex; gap: 10px; align-items: center; }
+.receipts li form { margin: 0; }
+button.link.danger { color: #b42318; }
+.form .field { display: flex; flex-direction: column; gap: 4px; }
+.form .field > label { font-weight: 500; }
