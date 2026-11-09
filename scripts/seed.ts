@@ -7,4 +7,4 @@ import { seed } from "../src/db/seed";
 
 const summary = seed(getDb());
 closeDb();
-console.log(`Seeded ${summary.org.name} (join code ${summary.org.join_code}); users: ${summary.users.join(", ")}`);
+console.log(`Seeded ${summary.org.name} (join code ${summary.org.join_code}); users: ${summary.users.join(", ")}; ${summary.conferences} sample conferences`);
