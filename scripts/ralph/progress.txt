@@ -71,6 +71,7 @@ Started: Mon Nov  9 03:21:18 UTC 2026
 - Receipt details (migration 013): receipts.supplier_name/supplier_abn (11 digits)/gst_cents/receipt_date (YYYY-MM-DD)/is_tax_invoice (1/0/NULL)/status ('needs_review'|'confirmed', column DEFAULT 'confirmed' -> new auto-read receipts must set 'needs_review' explicitly)/extraction_json. Write them only via setReceiptDetails(id, {supplierName, supplierAbn, gstCents, receiptDate, isTaxInvoice, status, extraction}, db) (undefined = untouched, null = clear; throws ReceiptDetailsError) / confirmReceipt / listReceiptsNeedingReview(tripId). ABN helpers normaliseAbn/isValidAbn (ATO checksum; 51 824 753 556 is valid)/formatAbn in receipts.ts.
 - Personal inbox: users.inbox_code (12 hex, unique, AFTER INSERT trigger like trips.inbound_code); getInboxCode(db, userId)/findUserByInboxCode(db, code) in users.ts; address = personalInboxAddress(code) in inbound-email.ts (inbox-<code>@in.studyleave.app). Migration tests: copy files < "NNN" into a temp dir, migrate(db, tmp), insert old-shape rows, then migrate(db) (see receipt-details.test.ts).
 - Paths/demo: src/lib/runtime.ts isDemoMode(env) (DEMO_MODE=1|true or VERCEL) / databasePath(env) / uploadsDir(env) (explicit DATABASE_PATH/UPLOADS_DIR win; demo -> /tmp/hoggy/{app.db,uploads}; else data/). getDb() with no file seeds an empty DB in demo mode via seedIfEmpty(db). Layout shows .demo-banner in demo mode.
+- Receipt reader: src/providers/receipt-reader.ts — ReceiptReader.read({bytes, mimeType, emailText?}) -> ReceiptReading {supplierName, supplierAbn, totalCents, gstCents, date, isTaxInvoice, kind (READ_KINDS: flight|accommodation|registration|taxi|meals|transport|other), confidence 0..1}; getReceiptReader(env) = MockReceiptReader unless ANTHROPIC_API_KEY (ClaudeReceiptReader via @anthropic-ai/sdk, RECEIPT_MODEL default claude-sonnet-5-5). Mock: pdfToText (pdf-lib content streams, Tj/TJ hex+literal) + readText heuristics; images = EMPTY_READING unless sha256 is in RECEIPT_SIDECARS (src/providers/receipt-sidecars.ts; fixture photo src/providers/__fixtures__/receipts/taxi-photo.png = SAMPLE Harbour Taxis $45.75 — use it in e2e for photo auto-fill). Always pass untrusted JSON through validateReading(). Map kind "accommodation" -> receipts kind "hotel" only if you need booking parity. ClaudeReceiptReader takes an injectable client (3rd ctor arg) so tests use a fake — never the network.
 ---
 
 ## 2026-11-09 03:25 UTC - US-001
@@ -333,4 +334,14 @@ Started: Mon Nov  9 03:21:18 UTC 2026
 - **Learnings for future iterations:**
   - status defaults to 'confirmed' so all existing insert paths (generated/upload/email) keep working; US-028/029 must pass status 'needs_review' when the reader fills fields
   - users column list assertion in src/db/db.test.ts now ends with inbox_code
+---
+
+## 2026-11-09 06:20 UTC - US-027
+- Receipt reader provider: ReceiptReader interface, MockReceiptReader (deterministic text heuristics over PDF embedded text / text / email body; sidecar fixtures for photos), ClaudeReceiptReader (official @anthropic-ai/sdk, beta messages with json_schema output_config, effort low, server-side fallbacks "default"; refusal/max_tokens/bad JSON -> ReceiptReadError), getReceiptReader() factory, validateReading().
+- Files: src/providers/receipt-reader.ts, receipt-reader.test.ts, receipt-sidecars.ts, src/providers/__fixtures__/receipts/*, package.json (+@anthropic-ai/sdk 1.6.0), README (mocked-services row).
+- No UI change, so no e2e/screenshot this story. DEMO_MODE=1 npm run build passes.
+- **Learnings for future iterations:**
+  - Totals: "Total (incl. GST) $X" is the total; "Total includes GST of $Y" is the GST — findGstCents/findTotalCents handle both; Subtotal lines are skipped.
+  - Dates DD/MM/YYYY are read Australian-style; invalid dates (31/02) are dropped.
+  - pdf-lib getPages() can throw on junk PDFs: keep it inside the try.
 ---
