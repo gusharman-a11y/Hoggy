@@ -65,6 +65,7 @@ Started: Mon Nov  9 03:21:18 UTC 2026
 - Mailer supports cc?: string[] (outbox.cc_addr, comma-separated, '' when none; shown on /outbox).
 - /settings (admin only) edits orgs.finance_email via setFinanceEmail/isValidEmail in src/lib/users.ts; nav shows Settings for admins. Dates from timestamps: formatDate(iso) in format.ts.
 - E2E needing its own approver: sign up a NEW hospital (creator = admin, approves when the org has no managers), join it with the shown join-code (see e2e/send-claim.spec.ts).
+- Finance: src/claims/finance.ts - canManageClaims (finance/admin with org) / listClaims(viewer) (claimed+paid, unpaid oldest first) / getClaimForFinance / claimPackForFinance (serves the exact emailed attachment via claims.email_id, rebuilds if the outbox lost it) / markClaimPaid(tripId, viewer, mailer, {db, now}) (transaction claimed->paid + claims.paid_at/paid_by, THEN emails the doctor; throws FinanceError). Page /claims, pack GET /claims/[tripId]/pack, action markPaidAction in finance-actions.ts -> /claims?paid=<id>. Demo finance login: finance@demo.test.
 ---
 
 ## 2026-11-09 03:25 UTC - US-001
@@ -284,4 +285,14 @@ Started: Mon Nov  9 03:21:18 UTC 2026
 - **Learnings for future iterations:**
   - Send the email before changing status: OutboxMailer opens its own BEGIN on the same db, so it can't run inside another transaction.
   - US-023 /claims can join trips + claims (sent_at, total_cents, filename) and link the pack via /trips/[id]/claim-pack (or the outbox attachment via claims.email_id).
+---
+
+## 2026-11-09 05:25 UTC - US-023
+- /claims (finance/admin; nav "Claims") lists the hospital's claimed + paid trips: conference, status badge, doctor, total, sent date, paid date, "Download pack" (the exact PDF emailed to finance) and "Mark paid" -> trip paid, claims.paid_at/paid_by set, doctor gets a "Claim paid: <conference> (AUD x)" outbox email, flash notice. Trip page claim line shows "paid on <date>".
+- Files: src/db/migrations/012_claim_paid.sql, src/claims/finance.ts (+ finance.test.ts, 5 tests), src/claims/send.ts (Claim type), src/app/finance-actions.ts, src/app/claims/{page,MarkPaidForm}.tsx, src/app/claims/[tripId]/pack/route.ts, src/app/layout.tsx, src/app/trips/[id]/page.tsx, globals.css, e2e/finance.spec.ts, shots US-023-claims.png / US-023-paid.png
+- Quality: typecheck, lint, 185 unit tests, build, 21/21 e2e pass.
+- **Learnings for future iterations:**
+  - Sample conference names render with an en dash ("SAMPLE – Paediatrics ..."); assert on a substring without the prefix.
+  - A plain <button> outside .form is unstyled: give small action forms their own class (e.g. .mark-paid button).
+  - Changing status before emailing is fine when the transition itself is the double-submit guard (claimed->paid happens once).
 ---
