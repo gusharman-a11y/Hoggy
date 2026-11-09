@@ -1,0 +1,12 @@
+From: "SAMPLE Skyways" <noreply@sample-skyways.example.org>
+To: inbox-0123456789ab@in.studyleave.app
+Date: Mon, 1 Feb 2027 09:30:00 +1100
+Subject: Your e-ticket receipt SYD-MEL
+
+Thanks for flying with us. This is your tax invoice.
+Booking reference: ABC123
+Flight SY 412 Sydney to Melbourne, departing 10 March 2027
+Fare                     $382.00
+Total paid               $420.20
+Includes GST of $38.20
+ABN: 49 004 028 077

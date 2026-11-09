@@ -1,0 +1,7 @@
+SAMPLE Bean There Cafe
+Receipt
+12 Mar 2027 08:14
+Flat white            4.50
+Banana bread          6.00
+TOTAL                AUD 10.50
+Thank you!

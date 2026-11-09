@@ -1,0 +1,9 @@
+SAMPLE Harbour Conference Centre
+ABN 51 824 753 556
+TAX INVOICE
+Invoice date: 14/02/2027
+Delegate registration - SAMPLE Cardiology Meeting 2027   $1,100.00
+Subtotal                                                  $1,000.00
+GST                                                         $100.00
+Total (incl. GST)                                         $1,100.00
+Paid by Visa ending 4242
