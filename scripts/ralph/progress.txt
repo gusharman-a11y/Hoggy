@@ -18,6 +18,9 @@ Started: Mon Nov  9 03:21:18 UTC 2026
 - Ingest: src/ingest/extract.ts extractEvents(html, pageUrl) -> ExtractedConference[] (pure, no I/O); src/ingest/upsert.ts upsertConference(c, source, db)/upsertConferences(list, source, db) dedupe by slugify(name)+start_date, COALESCE so blanks never wipe known values, unique slug gets -2/-3 suffix. Fixtures in src/ingest/__fixtures__ (SAMPLE names, example.org only).
 - E2E runs against data/app.db (not seeded); make specs self-sufficient (unique emails, create a hospital via signup) until US-024 adds a temp DB.
 - Ingest runner: src/ingest/runner.ts runIngest({db, fetch, sleep, now, log}) — all I/O injectable; tests pass a fake fetch + fake clock (see runner.test.ts fakeWeb). addSource/listSources for the `sources` table. CLI: `npm run ingest [-- add URL | list]` (scripts/ingest.ts). robots.txt parsing in src/ingest/robots.ts (pure).
+- Pages read URL filters via `searchParams: Promise<Record<string,string|string[]|undefined>>`; normalise in a pure helper (src/lib/conference-query.ts filtersFromParams) so it's unit-testable. Plain `<form method="get">` keeps filters in the URL with no client JS.
+- Dates on screen: formatDateRange()/todayIso() in src/lib/format.ts.
+- E2E specs needing conferences/demo users: `test.beforeAll(() => execSync("npx tsx scripts/seed.ts"))` (idempotent, seeds data/app.db).
 - README.md exists at repo root (created in US-006); add new operator docs as sections there.
 ---
 
@@ -82,4 +85,12 @@ Started: Mon Nov  9 03:21:18 UTC 2026
   - Time-dependent code: inject `sleep` and `now`; a fake sleep that advances a fake clock makes delay assertions exact and instant
   - Global fetch's type is too wide to fake cleanly; define a narrow FetchLike type instead
   - No UI in this story, so no browser check / build
+---
+
+## 2026-11-09 03:45 UTC - US-007
+- /conferences: upcoming-only list (end_date >= today) sorted by start date; cards show name (links to /conferences/[slug] for US-008), date range, city/country, specialty, CPD points; GET form filters q/specialty/country/month in URL; Clear link; empty state; "Conferences" link in top nav (public, no login)
+- Files: src/app/conferences/page.tsx, src/lib/{format,conference-query,format.test}.ts, src/app/layout.tsx, src/app/globals.css, e2e/conferences.spec.ts, shots US-007-{list,filtered,empty}.png
+- **Learnings for future iterations:**
+  - Month filter is overlap, so e2e assertions must allow cross-month ranges ("29 Mar – 1 Apr 2027")
+  - `npm run build` passes with the new dynamic page
 ---
