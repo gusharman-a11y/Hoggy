@@ -381,6 +381,7 @@
       "title": "Polish and README",
       "description": "As a new user or developer, I want the app tidy and documented.",
       "acceptanceCriteria": [
+        "Plan trip creates the draft via a form POST / server action, not on page load (GET must not write)",
         "Consistent top nav (Conferences, My trips, Approvals/Claims by role, Dashboard, Log out); works at 375px wide with no horizontal scroll",
         "README: what it does, quick start (npm i, npm run seed, npm run dev), demo logins, what is mocked and what real services are needed (Duffel, hotel API, Stripe, SMTP, IATA/travel-agent licence notes)",
         "npm run build and npm run e2e still pass",
