@@ -468,7 +468,7 @@
         "Verify in browser: check the page with Playwright (screenshot into scripts/ralph/shots/)"
       ],
       "priority": 30,
-      "passes": false,
+      "passes": true,
       "notes": ""
     },
     {

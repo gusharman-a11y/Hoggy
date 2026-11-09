@@ -79,6 +79,7 @@ Started: Mon Nov  9 03:21:18 UTC 2026
 - Components: <HoggyInbox address> (testids hoggy-inbox, hoggy-inbox-address; <CopyButton text> aria-label "Copy <text>") and <UnfiledReceipts receipts> (testid unfiled-receipt) in src/components/.
 - vitest.config.ts test.env blanks ANTHROPIC_API_KEY/DUFFEL_TOKEN/STRIPE/EXPEDIA/SMTP so unit tests never reach a real service; still pass `reader: new MockReceiptReader()` explicitly.
 - Body-rendered PDFs must not start with a "From:" line (the mock reader takes it as the supplier) and must not carry a received date (taken as the receipt date).
+- Receipt review: src/lib/receipt-review.ts — listReceiptsToReview(viewer) (own needs_review on non-locked trips) / countReceiptsToReview (that + unfiled; nav badge testid nav-review-count on the "Receipts" nav link) / listMoveTargets / confirm/edit/move/deletePersonal for trip receipts and editUnfiled/moveUnfiled/deleteUnfiled (all throw UploadError; generated booking receipts can't move or be deleted). Moving copies the file into <uploads>/<toTrip>/ then removes the old one. purgeUnfiled({db, dir, now}) (7 days, rows + files) runs after the secret check in handleInboundRequest and via `npm run purge`. reviewReceipt(..., {confirm:false}) saves without confirming. Page /receipts, actions in src/app/review-actions.ts -> /receipts?done=confirmed|saved|moved|deleted.
 ---
 
 ## 2026-11-09 03:25 UTC - US-001
@@ -375,4 +376,16 @@ Started: Mon Nov  9 03:21:18 UTC 2026
   - US-030 purgeUnfiled(): delete unfiled_receipts rows + files older than 7 days; call it at the top of the inbox path in handleInboundRequest (POST only).
   - Conference names are "SAMPLE – X": matching strips SAMPLE, the year and leading/trailing punctuation.
   - Copy button e2e: context.grantPermissions(["clipboard-read","clipboard-write"]).
+---
+
+## 2026-11-09 07:30 UTC - US-030
+- /receipts (any logged-in user, own data only): "Needs review" (own needs_review receipts on open trips) and "Unfiled", each with the extracted supplier/amount/GST/ABN/date/type and View link. POST actions: Confirm, Edit (Save changes; filed receipts stay in review), Move to / File on another of my trips (file moves too), "Personal — delete" (row + file, confirm dialog). Nav "Receipts" link with a red count badge.
+- purgeUnfiled() deletes unfiled receipts older than 7 days (rows + files); runs on each trusted POST /api/inbound and via `npm run purge` (scripts/purge.ts). Never on GET.
+- Files: src/lib/receipt-review{,.test}.ts, src/lib/receipt-snap.ts (confirm option), src/lib/inbound-email.ts (purge hook, `now` option), src/app/review-actions.ts, src/app/receipts/{page,ReviewActions}.tsx, src/app/layout.tsx, globals.css, scripts/purge.ts, package.json, README, e2e/receipt-review.spec.ts
+- Screenshots: scripts/ralph/shots/US-030-receipts.png, US-030-after.png
+- Gate: typecheck, lint, 261 unit tests, DEMO_MODE=1 build, full CI=1 e2e (27) all pass.
+- **Learnings for future iterations:**
+  - useActionState actions that take no FormData can drop the prev-state param entirely (an unused `_prev` trips the lint warning).
+  - Playwright `page.once("dialog", d => d.accept())` before clicking a button guarded by window.confirm.
+  - Playwright screenshots inject caret-color styles -> a harmless hydration-mismatch log in the dev server output.
 ---
