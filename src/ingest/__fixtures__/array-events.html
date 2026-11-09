@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+  <title>SAMPLE events listing</title>
+  <script type='application/ld+json'>
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": ["Event", "BusinessEvent"],
+      "name": "SAMPLE &ndash; Paediatric Sedation Workshop &amp; Skills Day",
+      "startDate": "2027-11-15T09:00:00+13:00",
+      "endDate": "2027-11-15T17:00:00+13:00",
+      "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
+      "location": [
+        { "@type": "VirtualLocation", "url": "https://example.org/stream" },
+        {
+          "@type": "Place",
+          "name": "Harbour Example Rooms",
+          "address": [{
+            "@type": "PostalAddress",
+            "addressLocality": "Wellington",
+            "addressCountry": { "@type": "Country", "name": "New Zealand" }
+          }]
+        }
+      ],
+      "offers": { "@type": "AggregateOffer", "lowPrice": "420", "priceCurrency": "nzd" },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": "SAMPLE – Heart Failure Update",
+      "startDate": "2028-03-02",
+      "url": "https://example.org/events/hf-update",
+      "location": {
+        "@type": "Place",
+        "name": "Example Hall",
+        "address": { "@type": "PostalAddress", "addressLocality": "Leeds", "addressCountry": "GB" }
+      }
+    },
+    { "@type": "Event", "name": "SAMPLE – Event with no date" }
+  ]
+  </script>
+</head>
+<body></body>
+</html>
