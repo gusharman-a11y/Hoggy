@@ -72,6 +72,8 @@ Started: Mon Nov  9 03:21:18 UTC 2026
 - Personal inbox: users.inbox_code (12 hex, unique, AFTER INSERT trigger like trips.inbound_code); getInboxCode(db, userId)/findUserByInboxCode(db, code) in users.ts; address = personalInboxAddress(code) in inbound-email.ts (inbox-<code>@in.studyleave.app). Migration tests: copy files < "NNN" into a temp dir, migrate(db, tmp), insert old-shape rows, then migrate(db) (see receipt-details.test.ts).
 - Paths/demo: src/lib/runtime.ts isDemoMode(env) (DEMO_MODE=1|true or VERCEL) / databasePath(env) / uploadsDir(env) (explicit DATABASE_PATH/UPLOADS_DIR win; demo -> /tmp/hoggy/{app.db,uploads}; else data/). getDb() with no file seeds an empty DB in demo mode via seedIfEmpty(db). Layout shows .demo-banner in demo mode.
 - Receipt reader: src/providers/receipt-reader.ts — ReceiptReader.read({bytes, mimeType, emailText?}) -> ReceiptReading {supplierName, supplierAbn, totalCents, gstCents, date, isTaxInvoice, kind (READ_KINDS: flight|accommodation|registration|taxi|meals|transport|other), confidence 0..1}; getReceiptReader(env) = MockReceiptReader unless ANTHROPIC_API_KEY (ClaudeReceiptReader via @anthropic-ai/sdk, RECEIPT_MODEL default claude-sonnet-5-5). Mock: pdfToText (pdf-lib content streams, Tj/TJ hex+literal) + readText heuristics; images = EMPTY_READING unless sha256 is in RECEIPT_SIDECARS (src/providers/receipt-sidecars.ts; fixture photo src/providers/__fixtures__/receipts/taxi-photo.png = SAMPLE Harbour Taxis $45.75 — use it in e2e for photo auto-fill). Always pass untrusted JSON through validateReading(). Map kind "accommodation" -> receipts kind "hotel" only if you need booking parity. ClaudeReceiptReader takes an injectable client (3rd ctor arg) so tests use a fake — never the network.
+- Snap receipt: src/lib/receipt-snap.ts snapReceipt(tripId, viewer, file, {db, dir, reader}) (async; validates via checkUploadFile, stores via storeUploadFile from receipt-uploads.ts, runs the reader, a reader failure saves an empty needs_review receipt; amount = totalCents ?? 0, description = supplier ?? kind label) / reviewReceipt(tripId, receiptId, viewer, {supplierName, supplierAbn, gstCents, amountCents, receiptDate, kind}) ("Looks right": saves + status confirmed; ReceiptDetailsError -> UploadError). Kinds for snapped receipts = SNAP_KINDS ("flight" + UPLOAD_KINDS) in receipt-upload-kinds.ts. Trip page: <SnapReceiptForm> (label.button wrapping a visually-hidden file input, auto-submits on change) + one <CheckReceiptCard> (data-testid check-receipt, id check-<receiptId>) per needs_review receipt; needs_review rows show a "Needs review" badge and hide the Edit form. E2E: getByTestId("snap-receipt").getByLabel("Snap receipt").setInputFiles(taxi-photo.png).
+- playwright.config.ts webServer.env blanks ANTHROPIC_API_KEY so e2e always uses MockReceiptReader.
 ---
 
 ## 2026-11-09 03:25 UTC - US-001
@@ -344,4 +346,16 @@ Started: Mon Nov  9 03:21:18 UTC 2026
   - Totals: "Total (incl. GST) $X" is the total; "Total includes GST of $Y" is the GST — findGstCents/findTotalCents handle both; Subtotal lines are skipped.
   - Dates DD/MM/YYYY are read Australian-style; invalid dates (31/02) are dropped.
   - pdf-lib getPages() can throw on junk PDFs: keep it inside the try.
+---
+
+## 2026-11-09 06:40 UTC - US-028
+- "Snap receipt" primary action on the trip page (file input accept image/*,application/pdf, capture=environment, auto-submits); the reader runs and the receipt is saved needs_review with supplier/ABN/GST/amount/date/kind/tax-invoice + extraction_json; a failed read still saves the receipt empty.
+- "Check this receipt" card per needs_review receipt, all fields editable, "Looks right" saves and confirms. Manual "Add a receipt by hand" form unchanged (receipts.spec still passes).
+- Files: src/lib/receipt-snap{,.test}.ts, src/lib/receipt-uploads.ts (checkUploadFile/storeUploadFile/cleanName exported), src/lib/receipt-upload-kinds.ts (SNAP_KINDS), src/app/receipt-actions.ts (snapReceiptAction, reviewReceiptAction), src/app/trips/[id]/{page,SnapReceiptForm,CheckReceiptCard}.tsx, globals.css, playwright.config.ts, e2e/snap-receipt.spec.ts
+- Screenshots: scripts/ralph/shots/US-028-check-receipt.png, US-028-confirmed.png
+- Gate: typecheck, lint, 229 unit tests, DEMO_MODE=1 build, full CI=1 e2e (25) all pass.
+- **Learnings for future iterations:**
+  - A <label className="button"> wrapping a visually-hidden <input type=file> keeps getByLabel working and looks like a button; label.button is now styled in globals.css.
+  - Headless Chromium shows <input type=date> as MM/DD/YYYY in screenshots; the value is still YYYY-MM-DD.
+  - US-029 (personal inbox) can reuse snapReceipt's insert pattern (needs_review + setReceiptDetails in one transaction).
 ---
