@@ -74,6 +74,11 @@ Started: Mon Nov  9 03:21:18 UTC 2026
 - Receipt reader: src/providers/receipt-reader.ts — ReceiptReader.read({bytes, mimeType, emailText?}) -> ReceiptReading {supplierName, supplierAbn, totalCents, gstCents, date, isTaxInvoice, kind (READ_KINDS: flight|accommodation|registration|taxi|meals|transport|other), confidence 0..1}; getReceiptReader(env) = MockReceiptReader unless ANTHROPIC_API_KEY (ClaudeReceiptReader via @anthropic-ai/sdk, RECEIPT_MODEL default claude-sonnet-5-5). Mock: pdfToText (pdf-lib content streams, Tj/TJ hex+literal) + readText heuristics; images = EMPTY_READING unless sha256 is in RECEIPT_SIDECARS (src/providers/receipt-sidecars.ts; fixture photo src/providers/__fixtures__/receipts/taxi-photo.png = SAMPLE Harbour Taxis $45.75 — use it in e2e for photo auto-fill). Always pass untrusted JSON through validateReading(). Map kind "accommodation" -> receipts kind "hotel" only if you need booking parity. ClaudeReceiptReader takes an injectable client (3rd ctor arg) so tests use a fake — never the network.
 - Snap receipt: src/lib/receipt-snap.ts snapReceipt(tripId, viewer, file, {db, dir, reader}) (async; validates via checkUploadFile, stores via storeUploadFile from receipt-uploads.ts, runs the reader, a reader failure saves an empty needs_review receipt; amount = totalCents ?? 0, description = supplier ?? kind label) / reviewReceipt(tripId, receiptId, viewer, {supplierName, supplierAbn, gstCents, amountCents, receiptDate, kind}) ("Looks right": saves + status confirmed; ReceiptDetailsError -> UploadError). Kinds for snapped receipts = SNAP_KINDS ("flight" + UPLOAD_KINDS) in receipt-upload-kinds.ts. Trip page: <SnapReceiptForm> (label.button wrapping a visually-hidden file input, auto-submits on change) + one <CheckReceiptCard> (data-testid check-receipt, id check-<receiptId>) per needs_review receipt; needs_review rows show a "Needs review" badge and hide the Edit form. E2E: getByTestId("snap-receipt").getByLabel("Snap receipt").setInputFiles(taxi-photo.png).
 - playwright.config.ts webServer.env blanks ANTHROPIC_API_KEY so e2e always uses MockReceiptReader.
+- Personal inbox: POST /api/inbound dispatches trip-<code> first (receiveInboundEmail, sync), then inbox-<code> (receiveInboxEmail(email, {db, dir, reader}) async: sender must equal the account email; reads every attachment, or the optional payload `text` body rendered by buildEmailReceiptPdf (src/lib/email-receipt-pdf.ts); all reads happen BEFORE one sync transaction, never await inside BEGIN/COMMIT). Matching: src/lib/receipt-matching.ts matchTrip(user, {date, kind, supplierName, text}) / pure pickTrip/scoreTrip -> matched | none | ambiguous.
+- Unfiled receipts are a separate table `unfiled_receipts` (migration 014; user_id, same detail columns, reason no_match|ambiguous, file under <uploads>/unfiled/<userId>/). src/lib/unfiled-receipts.ts listUnfiledReceipts(userId)/getUnfiledReceipt(id, userId) always filter by owner; file route GET /receipts/unfiled/[id] (owner only, 404 otherwise). Moving to a trip = INSERT into receipts + DELETE the unfiled row.
+- Components: <HoggyInbox address> (testids hoggy-inbox, hoggy-inbox-address; <CopyButton text> aria-label "Copy <text>") and <UnfiledReceipts receipts> (testid unfiled-receipt) in src/components/.
+- vitest.config.ts test.env blanks ANTHROPIC_API_KEY/DUFFEL_TOKEN/STRIPE/EXPEDIA/SMTP so unit tests never reach a real service; still pass `reader: new MockReceiptReader()` explicitly.
+- Body-rendered PDFs must not start with a "From:" line (the mock reader takes it as the supplier) and must not carry a received date (taken as the receipt date).
 ---
 
 ## 2026-11-09 03:25 UTC - US-001
@@ -358,4 +363,16 @@ Started: Mon Nov  9 03:21:18 UTC 2026
   - A <label className="button"> wrapping a visually-hidden <input type=file> keeps getByLabel working and looks like a button; label.button is now styled in globals.css.
   - Headless Chromium shows <input type=date> as MM/DD/YYYY in screenshots; the value is still YYYY-MM-DD.
   - US-029 (personal inbox) can reuse snapReceipt's insert pattern (needs_review + setReceiptDetails in one transaction).
+---
+
+## 2026-11-09 07:00 UTC - US-029
+- Personal Hoggy inbox: inbox-<code> addresses routed by POST /api/inbound (same constant-time secret check; sender must be the account email; trip-<code> unchanged). Each attachment is read by the ReceiptReader; an email with no attachment has its body rendered to a one-page PDF and read. matchTrip() files to the best-fitting open trip as needs_review (source email), else the doctor's private Unfiled receipts.
+- UI: "Your receipt inbox" (address, Copy button, "How to forward") on the dashboard and trip page; "Unfiled receipts" list on the dashboard with owner-only View route.
+- Files: src/db/migrations/014_unfiled_receipts.sql, src/lib/{receipt-matching,unfiled-receipts,email-receipt-pdf,inbound-email}.ts, tests receipt-matching.test.ts + inbox-email.test.ts, src/components/{HoggyInbox,CopyButton,UnfiledReceipts}.tsx, src/app/receipts/unfiled/[id]/route.ts, dashboard + trip pages, globals.css, vitest.config.ts, README, e2e/hoggy-inbox.spec.ts
+- Screenshots: scripts/ralph/shots/US-029-dashboard.png, US-029-trip-inbox.png
+- Gate: typecheck, lint, 254 unit tests, DEMO_MODE=1 build, full CI=1 e2e (26) all pass.
+- **Learnings for future iterations:**
+  - US-030 purgeUnfiled(): delete unfiled_receipts rows + files older than 7 days; call it at the top of the inbox path in handleInboundRequest (POST only).
+  - Conference names are "SAMPLE – X": matching strips SAMPLE, the year and leading/trailing punctuation.
+  - Copy button e2e: context.grantPermissions(["clipboard-read","clipboard-write"]).
 ---
