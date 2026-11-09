@@ -141,6 +141,7 @@ export function describeBooking(booking: Pick<Booking, "kind" | "details_json">)
     const hotel = isObj(d.hotel) ? d.hotel : d;
     if (str(hotel.name)) lines.push(`Hotel: ${str(hotel.name)}`);
     if (str(hotel.address)) lines.push(`Address: ${str(hotel.address)}`);
+    if (str(hotel.distanceKm)) lines.push(`Distance to venue: ${str(hotel.distanceKm)} km`);
     const checkIn = str(d.checkIn) || str(hotel.checkIn);
     const checkOut = str(d.checkOut) || str(hotel.checkOut);
     if (checkIn || checkOut) lines.push(`Stay: ${checkIn} to ${checkOut}`);

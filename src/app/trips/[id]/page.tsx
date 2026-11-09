@@ -51,6 +51,11 @@ export default async function TripPage({
           Flight booked. The receipt has been added to this trip.
         </p>
       )}
+      {booked === "hotel" && (
+        <p role="status" className="notice">
+          Hotel booked. The receipt has been added to this trip.
+        </p>
+      )}
 
       <dl className="facts" data-testid="trip-conference">
         <dt>Conference</dt>
@@ -139,6 +144,10 @@ export default async function TripPage({
             <p>
               <Link className="button" href={`/trips/${trip.id}/flights`}>
                 Find flights
+              </Link>
+              {" "}
+              <Link className="button" href={`/trips/${trip.id}/hotels`}>
+                Find hotels
               </Link>
             </p>
           )}

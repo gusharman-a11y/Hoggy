@@ -200,6 +200,7 @@ export interface TripDetail extends Trip {
   conference_end: string;
   conference_city: string;
   conference_country: string;
+  conference_venue: string | null;
   conference_fee_cents: number | null;
   conference_currency: string;
   owner_name: string;
@@ -211,6 +212,7 @@ const DETAIL_SQL = `SELECT ${COLS
   .join(", ")},
   c.slug AS conference_slug, c.name AS conference_name, c.start_date AS conference_start,
   c.end_date AS conference_end, c.city AS conference_city, c.country AS conference_country,
+  c.venue AS conference_venue,
   c.registration_fee_cents AS conference_fee_cents, c.currency AS conference_currency,
   u.name AS owner_name
   FROM trips t JOIN conferences c ON c.id = t.conference_id JOIN users u ON u.id = t.user_id`;

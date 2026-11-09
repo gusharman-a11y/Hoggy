@@ -5,6 +5,8 @@ import { redirect } from "next/navigation";
 import { getCurrentUser } from "@/lib/auth";
 import { BookingError, bookFlightForTrip, toFlightQuery } from "@/lib/flight-booking";
 import { getFlightProvider } from "@/providers/flights";
+import { bookHotelForTrip, toHotelQuery } from "@/lib/hotel-booking";
+import { getHotelProvider } from "@/providers/hotels";
 import { getPaymentProvider } from "@/providers/payment";
 
 export interface BookingFormState {
@@ -32,4 +34,27 @@ export async function bookFlightAction(
   }
   revalidatePath(`/trips/${tripId}`);
   redirect(`/trips/${tripId}?booked=flight`);
+}
+
+export async function bookHotelAction(
+  tripId: number,
+  _prev: BookingFormState | undefined,
+  form: FormData,
+): Promise<BookingFormState> {
+  const user = await getCurrentUser();
+  if (!user) return { error: "Please log in again." };
+  const get = (k: string) => String(form.get(k) ?? "");
+  const query = toHotelQuery({ city: get("city"), checkIn: get("checkIn"), checkOut: get("checkOut") });
+  try {
+    await bookHotelForTrip(tripId, query, get("offerId"), user, {
+      hotels: getHotelProvider(),
+      payment: getPaymentProvider(),
+    });
+  } catch (err) {
+    if (err instanceof BookingError) return { error: err.message };
+    console.error(err);
+    return { error: "Something went wrong. Please try again." };
+  }
+  revalidatePath(`/trips/${tripId}`);
+  redirect(`/trips/${tripId}?booked=hotel`);
 }
