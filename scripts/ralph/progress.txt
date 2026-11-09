@@ -70,6 +70,7 @@ Started: Mon Nov  9 03:21:18 UTC 2026
 - Never put a <form> inside a <p> (invalid HTML -> hydration error); wrap in a <div>.
 - Receipt details (migration 013): receipts.supplier_name/supplier_abn (11 digits)/gst_cents/receipt_date (YYYY-MM-DD)/is_tax_invoice (1/0/NULL)/status ('needs_review'|'confirmed', column DEFAULT 'confirmed' -> new auto-read receipts must set 'needs_review' explicitly)/extraction_json. Write them only via setReceiptDetails(id, {supplierName, supplierAbn, gstCents, receiptDate, isTaxInvoice, status, extraction}, db) (undefined = untouched, null = clear; throws ReceiptDetailsError) / confirmReceipt / listReceiptsNeedingReview(tripId). ABN helpers normaliseAbn/isValidAbn (ATO checksum; 51 824 753 556 is valid)/formatAbn in receipts.ts.
 - Personal inbox: users.inbox_code (12 hex, unique, AFTER INSERT trigger like trips.inbound_code); getInboxCode(db, userId)/findUserByInboxCode(db, code) in users.ts; address = personalInboxAddress(code) in inbound-email.ts (inbox-<code>@in.studyleave.app). Migration tests: copy files < "NNN" into a temp dir, migrate(db, tmp), insert old-shape rows, then migrate(db) (see receipt-details.test.ts).
+- Paths/demo: src/lib/runtime.ts isDemoMode(env) (DEMO_MODE=1|true or VERCEL) / databasePath(env) / uploadsDir(env) (explicit DATABASE_PATH/UPLOADS_DIR win; demo -> /tmp/hoggy/{app.db,uploads}; else data/). getDb() with no file seeds an empty DB in demo mode via seedIfEmpty(db). Layout shows .demo-banner in demo mode.
 ---
 
 ## 2026-11-09 03:25 UTC - US-001

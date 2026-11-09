@@ -108,6 +108,37 @@ Also set `APP_URL` (links in emails; default `http://localhost:3000`).
 - **Real conference data** with permission, and each hospital's real claim
   form and finance address.
 
+## Deploying a demo to Vercel
+
+The app can run as a throwaway **demo** on Vercel (serverless). In demo mode
+the database and uploads live in `/tmp/hoggy/` (`app.db`, `uploads/`), the
+only writable place on a serverless instance, and an empty database is
+migrated and seeded on first use (Demo Hospital, join code `DEMO2026`,
+`manager@demo.test` / `finance@demo.test` with `password123`, SAMPLE
+conferences). Every page shows a "Demo — data resets from time to time"
+banner.
+
+1. Import the repo in Vercel (framework preset: Next.js; default build
+   `next build`, no output-directory override).
+2. Node.js version **22.x** (set in `package.json` `engines`; needed for
+   `node:sqlite`).
+3. Environment variables:
+   - `DEMO_MODE=1` — turns demo mode on. (It is also on automatically
+     whenever `VERCEL` is set, i.e. on every Vercel deployment.)
+   - `INBOUND_SECRET` — optional; only needed to try the inbound-email
+     webhook (`/api/inbound`).
+   - `APP_URL` — optional; the deployment URL, used in email links.
+   - Leave `DATABASE_PATH` / `UPLOADS_DIR` unset (if set, they win).
+
+**Data is not persistent.** Each serverless instance has its own `/tmp`;
+instances are recycled, and two visitors can land on different instances
+with different data. Sign-ups, trips and receipts vanish without warning.
+That is fine for a click-through demo, not for real users.
+
+A production deployment needs a hosted database (e.g. Postgres / Supabase)
+in place of the SQLite file and blob/object storage (e.g. Vercel Blob, S3,
+Supabase Storage) for receipts — see [What is needed to go live](#what-is-needed-to-go-live).
+
 ## Adding conference sources
 
 Conferences can be loaded from any web page that publishes schema.org

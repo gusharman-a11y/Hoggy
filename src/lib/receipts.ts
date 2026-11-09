@@ -3,13 +3,14 @@
  * (flight, hotel); every booking gets a generated one-page PDF receipt.
  * Uploaded and emailed receipts (later stories) share the receipts table.
  *
- * Files live under the uploads folder (UPLOADS_DIR, default data/uploads),
+ * Files live under the uploads folder (UPLOADS_DIR; default data/uploads, or /tmp/hoggy/uploads in demo mode),
  * in a sub-folder per trip; receipts.file_path is relative to that folder.
  */
 import fs from "node:fs";
 import path from "node:path";
 import type { DatabaseSync } from "node:sqlite";
 import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
+import { uploadsDir } from "./runtime";
 import { getDb } from "@/db";
 import { formatMoney } from "./format";
 
@@ -70,12 +71,8 @@ export interface Receipt {
   extraction_json: string | null;
 }
 
-export const DEFAULT_UPLOADS_DIR = path.join(process.cwd(), "data", "uploads");
-
-/** Where receipt files live: UPLOADS_DIR, else data/uploads. */
-export function uploadsDir(env: Record<string, string | undefined> = process.env): string {
-  return env.UPLOADS_DIR || DEFAULT_UPLOADS_DIR;
-}
+/** Where receipt files live: UPLOADS_DIR, else /tmp/hoggy/uploads in demo mode, else data/uploads. */
+export { uploadsDir };
 
 /** Absolute path of a stored receipt file; refuses paths that escape the uploads folder. */
 export function resolveUploadPath(relPath: string, dir: string = uploadsDir()): string {

@@ -10,6 +10,7 @@ main { max-width: 960px; margin: 0 auto; padding: 24px 16px; }
 h1 { font-size: 2rem; margin: 0 0 8px; }
 a { color: #0b5cad; }
 
+.demo-banner { margin: 0; padding: 6px 16px; background: #fff4d6; border-bottom: 1px solid #f0d68a; color: #5c4200; font-size: 0.9rem; text-align: center; overflow-wrap: anywhere; }
 .topnav { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 10px 16px; background: #fff; border-bottom: 1px solid #e3e6eb; }
 .topnav .brand { font-weight: 700; text-decoration: none; color: #1a1f2b; }
 .topnav nav { display: flex; align-items: center; gap: 6px 16px; flex-wrap: wrap; min-width: 0; }

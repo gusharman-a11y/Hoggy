@@ -1,9 +1,9 @@
 import fs from "node:fs";
 import path from "node:path";
 import { DatabaseSync } from "node:sqlite";
+import { databasePath, isDemoMode } from "@/lib/runtime";
 import { migrate } from "./migrate";
-
-export const DEFAULT_DB_PATH = path.join(process.cwd(), "data", "app.db");
+import { seed } from "./seed";
 
 /** Opens a database (file path or ':memory:'), turns on foreign keys and runs migrations. */
 export function openDb(file: string): DatabaseSync {
@@ -21,16 +21,28 @@ export function openDb(file: string): DatabaseSync {
 const g = globalThis as unknown as { __studyleaveDb?: { file: string; db: DatabaseSync } };
 
 /**
- * Shared connection. Uses `file`, else DATABASE_PATH, else data/app.db.
- * Migrations run automatically the first time a database is opened.
+ * Shared connection. Uses `file`, else DATABASE_PATH, else data/app.db
+ * (/tmp/hoggy/app.db in demo mode). Migrations run automatically the first
+ * time a database is opened; in demo mode an empty default database is also
+ * seeded (demo hospital, logins, SAMPLE conferences) so a fresh serverless
+ * instance is usable straight away.
  */
 export function getDb(file?: string): DatabaseSync {
-  const target = file ?? process.env.DATABASE_PATH ?? DEFAULT_DB_PATH;
+  const target = file ?? databasePath();
   if (g.__studyleaveDb && g.__studyleaveDb.file === target) return g.__studyleaveDb.db;
   if (g.__studyleaveDb) g.__studyleaveDb.db.close();
   const db = openDb(target);
+  if (file === undefined && isDemoMode()) seedIfEmpty(db);
   g.__studyleaveDb = { file: target, db };
   return db;
+}
+
+/** Runs the idempotent demo seed when the database has no organisations yet. Returns whether it seeded. */
+export function seedIfEmpty(db: DatabaseSync): boolean {
+  const { n } = db.prepare("SELECT COUNT(*) AS n FROM orgs").get() as { n: number };
+  if (n > 0) return false;
+  seed(db);
+  return true;
 }
 
 /** Closes the shared connection (tests). */

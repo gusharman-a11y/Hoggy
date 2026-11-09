@@ -3,7 +3,7 @@ import os from "node:os";
 import path from "node:path";
 import { DatabaseSync } from "node:sqlite";
 import { afterEach, describe, expect, it } from "vitest";
-import { closeDb, getDb } from "./index";
+import { closeDb, getDb, seedIfEmpty } from "./index";
 import { listMigrations, migrate } from "./migrate";
 
 function tables(db: DatabaseSync): string[] {
@@ -68,5 +68,18 @@ describe("migrations", () => {
       if (old === undefined) delete process.env.DATABASE_PATH;
       else process.env.DATABASE_PATH = old;
     }
+  });
+});
+
+describe("demo seeding", () => {
+  it("seedIfEmpty seeds an empty database once, then leaves it alone", () => {
+    const db = getDb(":memory:");
+    expect(seedIfEmpty(db)).toBe(true);
+    const count = (sql: string) => (db.prepare(sql).get() as { n: number }).n;
+    expect(count("SELECT COUNT(*) AS n FROM orgs WHERE join_code = 'DEMO2026'")).toBe(1);
+    expect(count("SELECT COUNT(*) AS n FROM users WHERE email = 'manager@demo.test'")).toBe(1);
+    expect(count("SELECT COUNT(*) AS n FROM conferences WHERE source = 'sample'")).toBeGreaterThan(0);
+    expect(seedIfEmpty(db)).toBe(false);
+    expect(count("SELECT COUNT(*) AS n FROM orgs")).toBe(1);
   });
 });

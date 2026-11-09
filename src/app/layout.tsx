@@ -3,6 +3,7 @@ import Link from "next/link";
 import "./globals.css";
 import { getCurrentUser } from "@/lib/auth";
 import { outboxScope } from "@/lib/mailer";
+import { isDemoMode } from "@/lib/runtime";
 import { APP_NAME, TAGLINE } from "@/lib/site";
 import { logoutAction } from "./auth-actions";
 
@@ -16,6 +17,12 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="en">
       <body>
+        {isDemoMode() && (
+          <p className="demo-banner" data-testid="demo-banner">
+            Demo — data resets from time to time. Logins: manager@demo.test / password123 · sign up with code
+            DEMO2026
+          </p>
+        )}
         <header className="topnav">
           <Link href="/" className="brand">
             {APP_NAME}
