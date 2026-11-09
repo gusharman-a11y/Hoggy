@@ -17,6 +17,8 @@ Started: Mon Nov  9 03:21:18 UTC 2026
 - Conferences: src/lib/conferences.ts searchConferences(filters, db = getDb()) / getConference(slug, db) / conferenceFacets(db) / slugify(); filters q, specialty, country, month (YYYY-MM, overlap), from (YYYY-MM-DD, end_date >= from — use today for "upcoming"). Sample data in src/db/sample-conferences.ts, inserted by seedConferences(db) (INSERT OR IGNORE by slug = slugify(name-year)); tests call seedConferences on :memory:.
 - Ingest: src/ingest/extract.ts extractEvents(html, pageUrl) -> ExtractedConference[] (pure, no I/O); src/ingest/upsert.ts upsertConference(c, source, db)/upsertConferences(list, source, db) dedupe by slugify(name)+start_date, COALESCE so blanks never wipe known values, unique slug gets -2/-3 suffix. Fixtures in src/ingest/__fixtures__ (SAMPLE names, example.org only).
 - E2E runs against data/app.db (not seeded); make specs self-sufficient (unique emails, create a hospital via signup) until US-024 adds a temp DB.
+- Ingest runner: src/ingest/runner.ts runIngest({db, fetch, sleep, now, log}) — all I/O injectable; tests pass a fake fetch + fake clock (see runner.test.ts fakeWeb). addSource/listSources for the `sources` table. CLI: `npm run ingest [-- add URL | list]` (scripts/ingest.ts). robots.txt parsing in src/ingest/robots.ts (pure).
+- README.md exists at repo root (created in US-006); add new operator docs as sections there.
 ---
 
 ## 2026-11-09 03:25 UTC - US-001
@@ -68,5 +70,16 @@ Started: Mon Nov  9 03:21:18 UTC 2026
   - No migration needed: conferences already has source/source_url/updated_at; US-006 adds the sources table
   - updated_at set with strftime('%Y-%m-%d %H:%M:%f','now') so two upserts in the same second still compare as later
   - Extracted rows have cpd_points null and city/country "" when the page gives only a string address
+  - No UI in this story, so no browser check / build
+---
+
+## 2026-11-09 03:40 UTC - US-006
+- Migration 003_sources.sql (sources: id, url unique, last_fetched_at, last_status, events_found)
+- Runner: per-run robots.txt per origin (404 = allow, 5xx/network error = skip host), >=2s between requests to the same host (robots fetch counts), User-Agent StudyLeaveBot/0.1, extract + upsert in a transaction, status ok / http NNN / blocked by robots.txt / error: ...
+- CLI scripts/ingest.ts: `npm run ingest`, `-- add <url...>`, `-- list`; README "Adding conference sources"
+- Files: src/db/migrations/003_sources.sql, src/ingest/{robots,runner,runner.test}.ts, scripts/ingest.ts, package.json, README.md
+- **Learnings for future iterations:**
+  - Time-dependent code: inject `sleep` and `now`; a fake sleep that advances a fake clock makes delay assertions exact and instant
+  - Global fetch's type is too wide to fake cleanly; define a narrow FetchLike type instead
   - No UI in this story, so no browser check / build
 ---
