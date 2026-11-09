@@ -39,7 +39,7 @@ describe("migrations", () => {
     const cols = (t: string) =>
       (db.prepare(`PRAGMA table_info(${t})`).all() as { name: string }[]).map((c) => c.name);
     expect(cols("orgs")).toEqual(["id", "name", "join_code", "finance_email", "created_at", "default_allowance_cents", "claim_form_json"]);
-    expect(cols("users")).toEqual(["id", "org_id", "email", "name", "password_hash", "role", "created_at"]);
+    expect(cols("users")).toEqual(["id", "org_id", "email", "name", "password_hash", "role", "created_at", "inbox_code"]);
     expect(cols("sessions")).toEqual(["id", "user_id", "expires_at"]);
 
     db.prepare("INSERT INTO orgs (name, join_code) VALUES (?, ?)").run("Test Hospital", "ABC123");

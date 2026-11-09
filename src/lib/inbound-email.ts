@@ -25,6 +25,11 @@ export function inboundAddress(code: string): string {
   return `trip-${code}@${INBOUND_DOMAIN}`;
 }
 
+/** A doctor's personal Hoggy address (users.inbox_code): forward any receipt here. */
+export function personalInboxAddress(code: string): string {
+  return `inbox-${code}@${INBOUND_DOMAIN}`;
+}
+
 /** Bare lower-case email from "Name <a@b>" or "a@b"; undefined if it isn't one. */
 export function parseEmailAddress(raw: string): string | undefined {
   const angle = raw.match(/<([^<>\s]+@[^<>\s]+)>/);

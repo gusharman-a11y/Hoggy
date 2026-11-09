@@ -19,6 +19,14 @@ export type BookingKind = (typeof BOOKING_KINDS)[number];
 export const RECEIPT_SOURCES = ["generated", "upload", "email"] as const;
 export type ReceiptSource = (typeof RECEIPT_SOURCES)[number];
 
+/** needs_review = read automatically, waiting for the doctor; confirmed = checked. */
+export const RECEIPT_STATUSES = ["needs_review", "confirmed"] as const;
+export type ReceiptStatus = (typeof RECEIPT_STATUSES)[number];
+export const RECEIPT_STATUS_LABELS: Record<ReceiptStatus, string> = {
+  needs_review: "Needs review",
+  confirmed: "Confirmed",
+};
+
 export interface Booking {
   id: number;
   trip_id: number;
@@ -48,6 +56,18 @@ export interface Receipt {
   /** The uploaded file's original name, for downloads. */
   original_name: string | null;
   created_at: string;
+  /** What was read off the receipt (migration 013). All nullable = unknown. */
+  supplier_name: string | null;
+  /** 11 digits, no spaces. */
+  supplier_abn: string | null;
+  gst_cents: number | null;
+  /** YYYY-MM-DD. */
+  receipt_date: string | null;
+  /** 1 yes, 0 no, null unknown. */
+  is_tax_invoice: 0 | 1 | null;
+  status: ReceiptStatus;
+  /** Raw ReceiptReader output, JSON. */
+  extraction_json: string | null;
 }
 
 export const DEFAULT_UPLOADS_DIR = path.join(process.cwd(), "data", "uploads");
@@ -110,6 +130,122 @@ export function getReceipt(id: number, db: DatabaseSync = getDb()): Receipt | un
 
 export function listReceipts(tripId: number, db: DatabaseSync = getDb()): Receipt[] {
   return db.prepare("SELECT * FROM receipts WHERE trip_id = ? ORDER BY id").all(tripId) as unknown as Receipt[];
+}
+
+// ---- Receipt details (what was read off the receipt) ----
+
+/** Digits-only ABN if it has exactly 11 digits ("51 824 753 556" -> "51824753556"), else undefined. */
+export function normaliseAbn(raw: string | null | undefined): string | undefined {
+  if (raw == null) return undefined;
+  const digits = String(raw).replace(/[\s-]/g, "");
+  return /^\d{11}$/.test(digits) ? digits : undefined;
+}
+
+const ABN_WEIGHTS = [10, 1, 3, 5, 7, 9, 11, 13, 15, 17, 19];
+/** ATO checksum: subtract 1 from the first digit, weighted sum must divide by 89. */
+export function isValidAbn(raw: string | null | undefined): boolean {
+  const abn = normaliseAbn(raw);
+  if (!abn) return false;
+  const digits = abn.split("").map(Number);
+  digits[0] -= 1;
+  return digits.reduce((sum, d, i) => sum + d * ABN_WEIGHTS[i], 0) % 89 === 0;
+}
+
+/** "51 824 753 556" for display. */
+export function formatAbn(abn: string | null | undefined): string {
+  const a = normaliseAbn(abn);
+  return a ? `${a.slice(0, 2)} ${a.slice(2, 5)} ${a.slice(5, 8)} ${a.slice(8)}` : "";
+}
+
+/** Fields that can be set on a receipt. undefined = leave as is; null = clear. */
+export interface ReceiptDetailsInput {
+  supplierName?: string | null;
+  supplierAbn?: string | null;
+  gstCents?: number | null;
+  receiptDate?: string | null;
+  isTaxInvoice?: boolean | null;
+  status?: ReceiptStatus;
+  /** Raw reader output; stored as JSON. */
+  extraction?: unknown;
+}
+
+export class ReceiptDetailsError extends Error {}
+
+const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
+function isRealDate(s: string): boolean {
+  if (!DATE_RE.test(s)) return false;
+  const d = new Date(`${s}T00:00:00Z`);
+  return !Number.isNaN(d.getTime()) && d.toISOString().slice(0, 10) === s;
+}
+
+/** Validates and converts details into column -> value pairs. Throws ReceiptDetailsError. */
+export function receiptDetailColumns(input: ReceiptDetailsInput): Record<string, string | number | null> {
+  const cols: Record<string, string | number | null> = {};
+  if (input.supplierName !== undefined) {
+    const name = input.supplierName?.trim().slice(0, 200);
+    cols.supplier_name = name ? name : null;
+  }
+  if (input.supplierAbn !== undefined) {
+    if (input.supplierAbn === null || input.supplierAbn.trim() === "") cols.supplier_abn = null;
+    else {
+      const abn = normaliseAbn(input.supplierAbn);
+      if (!abn) throw new ReceiptDetailsError("An ABN has 11 digits.");
+      cols.supplier_abn = abn;
+    }
+  }
+  if (input.gstCents !== undefined) {
+    if (input.gstCents !== null && (!Number.isInteger(input.gstCents) || input.gstCents < 0))
+      throw new ReceiptDetailsError("GST must be zero or more.");
+    cols.gst_cents = input.gstCents;
+  }
+  if (input.receiptDate !== undefined) {
+    if (input.receiptDate === null || input.receiptDate === "") cols.receipt_date = null;
+    else if (!isRealDate(input.receiptDate)) throw new ReceiptDetailsError("Receipt date must be a real date (YYYY-MM-DD).");
+    else cols.receipt_date = input.receiptDate;
+  }
+  if (input.isTaxInvoice !== undefined) cols.is_tax_invoice = input.isTaxInvoice === null ? null : input.isTaxInvoice ? 1 : 0;
+  if (input.status !== undefined) {
+    if (!RECEIPT_STATUSES.includes(input.status)) throw new ReceiptDetailsError(`Unknown receipt status: ${input.status}`);
+    cols.status = input.status;
+  }
+  if (input.extraction !== undefined) cols.extraction_json = input.extraction === null ? null : JSON.stringify(input.extraction);
+  return cols;
+}
+
+/** Saves receipt details (only the fields given). Returns the updated row, or undefined if not found. */
+export function setReceiptDetails(
+  receiptId: number,
+  input: ReceiptDetailsInput,
+  db: DatabaseSync = getDb(),
+): Receipt | undefined {
+  const cols = receiptDetailColumns(input);
+  const keys = Object.keys(cols);
+  if (keys.length === 0) return getReceipt(receiptId, db);
+  return db
+    .prepare(`UPDATE receipts SET ${keys.map((k) => `${k} = ?`).join(", ")} WHERE id = ? RETURNING *`)
+    .get(...keys.map((k) => cols[k]), receiptId) as unknown as Receipt | undefined;
+}
+
+/** Marks a receipt as checked by the doctor. */
+export function confirmReceipt(receiptId: number, db: DatabaseSync = getDb()): Receipt | undefined {
+  return setReceiptDetails(receiptId, { status: "confirmed" }, db);
+}
+
+/** Receipts on a trip still waiting for the doctor to check them. */
+export function listReceiptsNeedingReview(tripId: number, db: DatabaseSync = getDb()): Receipt[] {
+  return db
+    .prepare("SELECT * FROM receipts WHERE trip_id = ? AND status = 'needs_review' ORDER BY id")
+    .all(tripId) as unknown as Receipt[];
+}
+
+/** The stored reader output, parsed; undefined when missing or not valid JSON. */
+export function receiptExtraction(receipt: Pick<Receipt, "extraction_json">): unknown {
+  if (!receipt.extraction_json) return undefined;
+  try {
+    return JSON.parse(receipt.extraction_json);
+  } catch {
+    return undefined;
+  }
 }
 
 // ---- What a booking says, in plain lines (used on the PDF and on screen) ----

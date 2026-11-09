@@ -74,6 +74,19 @@ export function createUser(
   return db.prepare(`SELECT ${USER_COLS} FROM users u WHERE u.id = ?`).get(Number(res.lastInsertRowid)) as unknown as User;
 }
 
+/** The user's personal inbox code (users.inbox_code, migration 013); undefined if no such user. */
+export function getInboxCode(db: DatabaseSync, userId: number): string | undefined {
+  const row = db.prepare("SELECT inbox_code FROM users WHERE id = ?").get(userId) as { inbox_code: string | null } | undefined;
+  return row?.inbox_code ?? undefined;
+}
+
+/** Finds the user behind a personal inbox code. */
+export function findUserByInboxCode(db: DatabaseSync, code: string): User | undefined {
+  return db.prepare(`SELECT ${USER_COLS} FROM users u WHERE u.inbox_code = ?`).get(code.trim().toLowerCase()) as
+    | User
+    | undefined;
+}
+
 /** Returns the user when the email + password match, else undefined. */
 export function checkCredentials(db: DatabaseSync, email: string, password: string): User | undefined {
   const row = db
