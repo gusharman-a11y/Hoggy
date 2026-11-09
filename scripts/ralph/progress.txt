@@ -68,6 +68,8 @@ Started: Mon Nov  9 03:21:18 UTC 2026
 - Receipt edits: updateReceipt(tripId, receiptId, viewer, {description, amountCents}) / canEditReceipt (= canUploadReceipt: owner, not claimed|paid) in receipt-uploads.ts; any source. UI = <details> EditReceiptForm per receipt -> editReceiptAction -> /trips/[id]?receipt=updated.
 - Nav order (layout.tsx, nav aria-label "Main"): Conferences, My trips, Approvals (mgr/admin), Claims (finance/admin), Dashboard, Team, Settings, Outbox, account name, Log out. No-sideways-scroll check: expectNoHorizontalScroll() in e2e/polish.spec.ts.
 - Never put a <form> inside a <p> (invalid HTML -> hydration error); wrap in a <div>.
+- Receipt details (migration 013): receipts.supplier_name/supplier_abn (11 digits)/gst_cents/receipt_date (YYYY-MM-DD)/is_tax_invoice (1/0/NULL)/status ('needs_review'|'confirmed', column DEFAULT 'confirmed' -> new auto-read receipts must set 'needs_review' explicitly)/extraction_json. Write them only via setReceiptDetails(id, {supplierName, supplierAbn, gstCents, receiptDate, isTaxInvoice, status, extraction}, db) (undefined = untouched, null = clear; throws ReceiptDetailsError) / confirmReceipt / listReceiptsNeedingReview(tripId). ABN helpers normaliseAbn/isValidAbn (ATO checksum; 51 824 753 556 is valid)/formatAbn in receipts.ts.
+- Personal inbox: users.inbox_code (12 hex, unique, AFTER INSERT trigger like trips.inbound_code); getInboxCode(db, userId)/findUserByInboxCode(db, code) in users.ts; address = personalInboxAddress(code) in inbound-email.ts (inbox-<code>@in.studyleave.app). Migration tests: copy files < "NNN" into a temp dir, migrate(db, tmp), insert old-shape rows, then migrate(db) (see receipt-details.test.ts).
 ---
 
 ## 2026-11-09 03:25 UTC - US-001
@@ -320,4 +322,14 @@ Started: Mon Nov  9 03:21:18 UTC 2026
 - **Learnings for future iterations:**
   - Quality gate, build and full CI=1 e2e (24 tests incl. north-star) pass.
   - The "caret-color" hydration diff in dev-server logs comes from Playwright screenshots, not app code.
+---
+
+## 2026-11-09 06:07 UTC - US-026
+- Migration 013_receipt_details.sql: receipt detail columns (supplier, ABN, GST, date, tax-invoice flag, status, extraction_json; existing rows -> confirmed) + users.inbox_code (backfilled, unique, trigger for new users)
+- receipts.ts: Receipt type + RECEIPT_STATUSES/labels, setReceiptDetails/confirmReceipt/listReceiptsNeedingReview/receiptExtraction, ABN helpers; users.ts getInboxCode/findUserByInboxCode; inbound-email.ts personalInboxAddress
+- Files: src/db/migrations/013_receipt_details.sql, src/lib/receipts.ts, src/lib/users.ts, src/lib/inbound-email.ts, src/db/db.test.ts (users column list), src/lib/receipt-details.test.ts
+- No UI change, so no browser check / screenshot this story.
+- **Learnings for future iterations:**
+  - status defaults to 'confirmed' so all existing insert paths (generated/upload/email) keep working; US-028/029 must pass status 'needs_review' when the reader fills fields
+  - users column list assertion in src/db/db.test.ts now ends with inbox_code
 ---

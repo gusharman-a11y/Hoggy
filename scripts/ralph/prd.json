@@ -405,7 +405,7 @@
         "npm run typecheck && npm run lint && npm test all pass"
       ],
       "priority": 26,
-      "passes": false,
+      "passes": true,
       "notes": ""
     },
     {
