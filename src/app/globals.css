@@ -43,3 +43,13 @@ main.narrow { max-width: 480px; }
 a.button { display: inline-block; font: inherit; padding: 10px 16px; border-radius: 6px; background: #0b5cad; color: #fff; text-decoration: none; font-weight: 600; }
 a.button:hover { background: #094b8e; }
 .facts dd { overflow-wrap: anywhere; }
+.form textarea { font: inherit; padding: 8px 10px; border: 1px solid #c4cad3; border-radius: 6px; width: 100%; }
+.form legend { font-weight: 600; padding: 0 4px; }
+h2 { font-size: 1.3rem; margin: 24px 0 8px; }
+.conf-card h2 { margin: 0 0 4px; }
+.total { font-size: 1.1rem; }
+.badge { display: inline-block; font-size: 0.8rem; font-weight: 600; padding: 2px 8px; border-radius: 999px; background: #eef0f3; color: #3a4250; vertical-align: middle; }
+.badge-pending_approval { background: #fff4d6; color: #7a5300; }
+.badge-approved, .badge-booked { background: #dff5e6; color: #1b6b3a; }
+.badge-rejected { background: #fde4e1; color: #a1251a; }
+.badge-claimed, .badge-paid { background: #e3ecff; color: #1f4aa8; }

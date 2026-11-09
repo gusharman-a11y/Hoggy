@@ -27,3 +27,20 @@ export function formatMoney(cents: number | null | undefined, currency = "AUD"):
     .format(cents / 100)
     .replace(/ /g, " ");
 }
+
+/**
+ * Parses a money amount typed by a person ("950", "$1,234.50", " 12.5 ") into integer cents.
+ * Blank -> 0. Returns undefined for anything that isn't a non-negative amount with at most 2 decimals.
+ */
+export function parseMoneyToCents(input: string | null | undefined): number | undefined {
+  const s = String(input ?? "").replace(/[\s,$]/g, "").replace(/^AUD/i, "");
+  if (s === "") return 0;
+  if (!/^\d+(\.\d{1,2})?$/.test(s)) return undefined;
+  const [whole, frac = ""] = s.split(".");
+  return Number(whole) * 100 + Number(frac.padEnd(2, "0"));
+}
+
+/** Integer cents -> "950.00" for an <input> value. */
+export function centsToInput(cents: number): string {
+  return (cents / 100).toFixed(2);
+}

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { formatDateRange, formatMoney, todayIso } from "./format";
+import { centsToInput, formatDateRange, formatMoney, parseMoneyToCents, todayIso } from "./format";
 import { filtersFromParams } from "./conference-query";
 
 describe("formatDateRange", () => {
@@ -33,5 +33,25 @@ describe("filtersFromParams", () => {
       from: "2026-11-09",
     });
     expect(filtersFromParams({ month: "2027-03" }, "2026-11-09").month).toBe("2027-03");
+  });
+});
+
+describe("parseMoneyToCents", () => {
+  it.each([
+    ["950", 95000],
+    ["950.5", 95050],
+    ["$1,234.56", 123456],
+    [" AUD 12 ", 1200],
+    ["", 0],
+    ["0", 0],
+  ])("%s -> %s", (input, cents) => expect(parseMoneyToCents(input)).toBe(cents));
+
+  it.each(["abc", "-5", "1.234", "1e3", "12.3.4"])("rejects %s", (input) =>
+    expect(parseMoneyToCents(input)).toBeUndefined(),
+  );
+
+  it("centsToInput round-trips", () => {
+    expect(centsToInput(95050)).toBe("950.50");
+    expect(parseMoneyToCents(centsToInput(123456))).toBe(123456);
   });
 });

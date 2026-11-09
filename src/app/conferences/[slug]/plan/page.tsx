@@ -1,33 +1,22 @@
-import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { requireRole } from "@/lib/auth";
 import { getConference } from "@/lib/conferences";
-import { formatDateRange } from "@/lib/format";
+import { toAudCents } from "@/lib/fx";
+import { findOrCreateDraftTrip } from "@/lib/trips";
 
 export const metadata = { title: "Plan trip · StudyLeave" };
 
-// Entry point for "Plan trip": login-gated so logged-out users go to /login and come back here.
-// US-010 turns this into creating a draft trip and opening /trips/[id].
+// "Plan trip": login-gated (logged-out users go to /login and come back here), then
+// opens the doctor's draft trip for this conference, creating it the first time.
+// Find-or-create keeps reloads and double clicks from making duplicates.
 export default async function PlanTripPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const c = getConference(slug);
   if (!c) notFound();
   const user = await requireRole([], `/conferences/${slug}/plan`);
+  if (user.org_id == null) redirect("/account");
 
-  return (
-    <main className="narrow">
-      <h1>Plan trip</h1>
-      <p>
-        <strong>{c.name}</strong>
-        <br />
-        {formatDateRange(c.start_date, c.end_date)} · {[c.city, c.country].filter(Boolean).join(", ")}
-      </p>
-      <p className="notice" role="status">
-        Thanks {user.name} — trip planning for this conference is coming next.
-      </p>
-      <p>
-        <Link href={`/conferences/${c.slug}`}>Back to the conference</Link>
-      </p>
-    </main>
-  );
+  const fee = c.registration_fee_cents == null ? 0 : (toAudCents(c.registration_fee_cents, c.currency) ?? 0);
+  const { trip } = findOrCreateDraftTrip(user, c.id, fee);
+  redirect(`/trips/${trip.id}`);
 }

@@ -28,9 +28,9 @@ test("conference detail shows the facts; Plan trip sends logged-out users to log
   await page.getByLabel("Email").fill("manager@demo.test");
   await page.getByLabel("Password").fill("password123");
   await page.getByRole("button", { name: "Log in" }).click();
-  await expect(page).toHaveURL(new RegExp(`/conferences/${SLUG}/plan$`));
-  await expect(page.getByRole("heading", { name: "Plan trip" })).toBeVisible();
-  await expect(page.getByText("Heart Rhythm Masterclass")).toBeVisible();
+  // back through /plan, which opens the draft trip
+  await expect(page).toHaveURL(/\/trips\/\d+$/);
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("Heart Rhythm Masterclass");
   await page.screenshot({ path: "scripts/ralph/shots/US-008-plan.png", fullPage: true });
 });
 

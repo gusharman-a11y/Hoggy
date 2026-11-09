@@ -23,6 +23,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             <Link href="/conferences">Conferences</Link>
             {user ? (
               <>
+                <Link href="/trips">Trips</Link>
                 <Link href="/account">{user.name}</Link>
                 <form action={logoutAction}>
                   <button type="submit" className="link">

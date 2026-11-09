@@ -46,7 +46,7 @@ export default async function ConferencePage({ params }: { params: Params }) {
         </dd>
       </dl>
       <p className="actions">
-        <Link className="button" href={`/conferences/${c.slug}/plan`}>
+        <Link className="button" href={`/conferences/${c.slug}/plan`} prefetch={false}>
           Plan trip
         </Link>
       </p>

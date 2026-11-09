@@ -69,6 +69,7 @@ test("logged-out users are sent to login and back", async ({ page }) => {
   await page.getByLabel("Finance email (where claims are sent)").fill(`fin${id}@example.test`);
   await page.getByRole("button", { name: "Create account" }).click();
   await page.getByRole("button", { name: "Log out" }).click();
+  await expect(page.getByRole("heading", { name: "Log in" })).toBeVisible();
 
   await page.goto("/account");
   await expect(page).toHaveURL(/\/login\?next=%2Faccount/);
