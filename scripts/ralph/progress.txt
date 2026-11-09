@@ -25,6 +25,11 @@ Started: Mon Nov  9 03:21:18 UTC 2026
 - Money on screen: formatMoney(cents, currency) in src/lib/format.ts ("AUD 950.00", null -> "TBC"). Primary link-buttons: `<Link className="button">`.
 - "Plan trip" = link to /conferences/[slug]/plan (login-gated page via requireRole([], thatPath), 404 on unknown slug before the auth check). US-010 should make that route create the draft trip and redirect to /trips/[id].
 - Trips: src/lib/trips.ts — TRIP_TRANSITIONS is the single source of allowed moves (draft->pending_approval; pending_approval->approved|rejected|draft; rejected->draft|pending_approval; approved->booked; booked->claimed; claimed->paid). Always change status via transitionTrip(id, to, {orgId, managerComment}, db) (throws TripTransitionError / "not found" when orgId mismatches); createTrip/getTrip(id, db, orgId?)/tripEstimateTotal; TRIP_STATUS_LABELS for badges, EDITABLE_STATUSES (draft, rejected) for the edit form.
+- Trip access: never read trips for a page with getTrip directly; use getTripForViewer(id, user)/listTripsForViewer(user) (org-scoped; doctors only own, manager/finance/admin whole org) and canEditTrip (owner + EDITABLE_STATUSES). Pages notFound() for both missing and forbidden. updateTripPlan saves the plan form.
+- /conferences/[slug]/plan = findOrCreateDraftTrip (reuses the doctor's draft for that conference) then redirect('/trips/[id]'); the Plan trip Link has prefetch={false} because the GET creates a row.
+- Trips are AUD; foreign conference fees are prefilled via toAudCents() (src/lib/fx.ts, indicative static rates). Typed money -> parseMoneyToCents() (blank=0, undefined=invalid); cents -> input value centsToInput() (src/lib/format.ts).
+- Server actions bound to an id: saveTripAction.bind(null, id) with useActionState<State|undefined, FormData>. Status badges: <span className={`badge badge-${status}`}>{TRIP_STATUS_LABELS[status]}</span>.
+- E2E: after clicking Log out / Log in, await the next page's heading before page.goto, or the goto races the server action's cookie change.
 ---
 
 ## 2026-11-09 03:25 UTC - US-001
@@ -117,4 +122,15 @@ Started: Mon Nov  9 03:21:18 UTC 2026
   - Hotel booking on an already-booked trip must NOT call transitionTrip (booked->booked is forbidden); only transition when status is approved
   - updated_at uses ms precision like conferences so ordering checks work within one second
   - No UI in this story, so no browser check / build
+---
+
+## 2026-11-09 03:55 UTC - US-010
+- Plan trip -> /conferences/[slug]/plan finds or creates the doctor's draft (registration prefilled from the conference fee, converted to AUD at an indicative rate) and redirects to /trips/[id]
+- /trips/[id]: conference summary, status badge, editable departure city + 4 cost estimates + notes (owner, draft/rejected only; read-only view otherwise), estimated total, manager comment if any; /trips: my trips (doctor) or all org trips (other roles) with badges and totals; "Trips" in top nav
+- Access: org-scoped, doctors only their own; forbidden = 404
+- Files: src/lib/{trips,fx,format}.ts, src/lib/{trip-access,format}.test.ts, src/app/trip-actions.ts, src/app/trips/page.tsx, src/app/trips/[id]/{page,TripForm}.tsx, src/app/conferences/[slug]/{page,plan/page}.tsx, src/app/{layout.tsx,globals.css}, e2e/{trips,conference-detail,auth}.spec.ts, shots US-010-{trip,list}.png
+- **Learnings for future iterations:**
+  - Fixed an e2e race in auth.spec (goto right after Log out click); wait for the Log in heading first
+  - US-011 budgets: trip estimates are AUD cents, so tripEstimateTotal() can be summed directly
+  - npm run build passes with /trips and /trips/[id]
 ---
