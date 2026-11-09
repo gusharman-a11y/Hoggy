@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { centsToInput, formatDateRange, formatMoney, parseMoneyToCents, todayIso } from "./format";
+import { centsToInput, formatDate, formatDateRange, formatMoney, parseMoneyToCents, todayIso } from "./format";
 import { filtersFromParams } from "./conference-query";
 
 describe("formatDateRange", () => {
@@ -8,6 +8,10 @@ describe("formatDateRange", () => {
     expect(formatDateRange("2027-02-15", "2027-02-17")).toBe("15–17 Feb 2027");
     expect(formatDateRange("2027-03-30", "2027-04-02")).toBe("30 Mar – 2 Apr 2027");
     expect(formatDateRange("2027-12-30", "2028-01-02")).toBe("30 Dec 2027 – 2 Jan 2028");
+  });
+  it("formatDate takes a date or a timestamp", () => {
+    expect(formatDate("2027-03-20")).toBe("20 Mar 2027");
+    expect(formatDate("2027-03-20T01:02:03.000Z")).toBe("20 Mar 2027");
   });
   it("todayIso", () => {
     expect(todayIso(new Date("2026-11-09T05:00:00Z"))).toBe("2026-11-09");

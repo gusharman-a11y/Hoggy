@@ -15,6 +15,11 @@ export function formatDateRange(start: string, end: string): string {
   return `${sd} ${MONTHS[sm - 1]} ${sy} – ${ed} ${MONTHS[em - 1]} ${ey}`;
 }
 
+/** A date or ISO timestamp as "20 Mar 2027" (the timestamp's UTC date). */
+export function formatDate(iso: string): string {
+  return formatDateRange(iso.slice(0, 10), iso.slice(0, 10));
+}
+
 /** Today's date as YYYY-MM-DD (UTC). */
 export function todayIso(now: Date = new Date()): string {
   return now.toISOString().slice(0, 10);

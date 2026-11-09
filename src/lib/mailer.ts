@@ -10,6 +10,8 @@ export interface MailAttachment {
 
 export interface MailMessage {
   to: string;
+  /** Copies (e.g. the doctor on their own claim). */
+  cc?: string[];
   subject: string;
   text: string;
   attachments?: MailAttachment[];
@@ -38,6 +40,8 @@ export interface OutboxEmail {
   id: number;
   org_id: number | null;
   to_addr: string;
+  /** Comma-separated CC addresses ('' when none). */
+  cc_addr: string;
   subject: string;
   body_text: string;
   created_at: string;
@@ -51,15 +55,16 @@ export class OutboxMailer implements Mailer {
   async send(message: MailMessage): Promise<SentMail> {
     const to = message.to.trim();
     if (!to) throw new Error("Email needs a recipient");
+    const cc = (message.cc ?? []).map((a) => a.trim()).filter(Boolean).join(", ");
     const insertEmail = this.db.prepare(
-      "INSERT INTO outbox (org_id, to_addr, subject, body_text) VALUES (?, ?, ?, ?)",
+      "INSERT INTO outbox (org_id, to_addr, cc_addr, subject, body_text) VALUES (?, ?, ?, ?, ?)",
     );
     const insertAttachment = this.db.prepare(
       "INSERT INTO outbox_attachments (email_id, filename, content_type, size_bytes, content) VALUES (?, ?, ?, ?, ?)",
     );
     this.db.exec("BEGIN");
     try {
-      const res = insertEmail.run(message.orgId ?? null, to, message.subject, message.text);
+      const res = insertEmail.run(message.orgId ?? null, to, cc, message.subject, message.text);
       const id = Number(res.lastInsertRowid);
       for (const a of message.attachments ?? []) {
         insertAttachment.run(id, a.filename, a.contentType, a.content.length, new Uint8Array(a.content));
@@ -137,7 +142,7 @@ export function listOutbox(
   args.push(opts.limit ?? 100);
   const rows = db
     .prepare(
-      `SELECT id, org_id, to_addr, subject, body_text, created_at FROM outbox
+      `SELECT id, org_id, to_addr, cc_addr, subject, body_text, created_at FROM outbox
        ${where.length ? `WHERE ${where.join(" AND ")}` : ""} ORDER BY id DESC LIMIT ?`,
     )
     .all(...args) as unknown as Omit<OutboxEmail, "attachments">[];

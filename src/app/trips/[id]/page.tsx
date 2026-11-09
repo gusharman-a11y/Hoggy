@@ -1,17 +1,21 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { requireRole } from "@/lib/auth";
-import { centsToInput, formatDateRange, formatMoney } from "@/lib/format";
+import { centsToInput, formatDateRange, formatDate, formatMoney } from "@/lib/format";
 import { canEditTrip, getTripForViewer, TRIP_STATUS_LABELS, tripEstimateTotal } from "@/lib/trips";
 import { canDecideTrip, canSubmitTrip } from "@/lib/approvals";
 import { canBookTravel } from "@/lib/flight-booking";
 import { describeBooking, listBookings, listReceipts } from "@/lib/receipts";
 import { canDeleteReceipt, canUploadReceipt } from "@/lib/receipt-uploads";
 import { inboundAddress } from "@/lib/inbound-email";
+import { canSendClaim, getClaimForTrip } from "@/claims/send";
+import { getDb } from "@/db";
+import { getOrg } from "@/lib/users";
 import { deleteReceiptAction } from "../../receipt-actions";
 import DecisionForm from "../../approvals/DecisionForm";
 import SubmitForApproval from "./SubmitForApproval";
 import TripForm from "./TripForm";
+import SendClaimForm from "./SendClaimForm";
 import UploadReceiptForm from "./UploadReceiptForm";
 
 export const metadata = { title: "Trip · StudyLeave" };
@@ -24,7 +28,7 @@ export default async function TripPage({
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const { id } = await params;
-  const { booked, receipt: receiptFlag } = await searchParams;
+  const { booked, receipt: receiptFlag, claim: claimFlag } = await searchParams;
   const user = await requireRole([], `/trips/${id}`);
   const tripId = Number(id);
   // Not found and not allowed look the same, so trip ids from other orgs/doctors don't leak.
@@ -37,6 +41,9 @@ export default async function TripPage({
   const receipts = listReceipts(trip.id);
   const canBook = canBookTravel(trip, user);
   const canUpload = canUploadReceipt(trip, user);
+  const canClaim = canSendClaim(trip, user) && receipts.length > 0;
+  const claim = getClaimForTrip(trip.id);
+  const financeEmail = canClaim ? (getOrg(getDb(), trip.org_id)?.finance_email ?? null) : null;
   const foreignFee = trip.conference_fee_cents != null && trip.conference_currency !== trip.currency;
 
   return (
@@ -59,6 +66,12 @@ export default async function TripPage({
       {booked === "hotel" && (
         <p role="status" className="notice">
           Hotel booked. The receipt has been added to this trip.
+        </p>
+      )}
+
+      {claimFlag === "sent" && claim && (
+        <p role="status" className="notice">
+          Claim sent to {claim.to_addr}. A copy went to you.
         </p>
       )}
 
@@ -221,6 +234,21 @@ export default async function TripPage({
               </p>
               <p className="muted">PDF, JPG and PNG attachments are added here, with the email subject as the description and no amount yet.</p>
             </>
+          )}
+        </>
+      )}
+
+      {(canClaim || claim) && (
+        <>
+          <h2>Claim</h2>
+          {claim ? (
+            <p data-testid="claim-sent">
+              Sent to <strong>{claim.to_addr}</strong> on {formatDate(claim.sent_at)} ·{" "}
+              {formatMoney(claim.total_cents, claim.currency)} · {claim.receipt_count}{" "}
+              {claim.receipt_count === 1 ? "receipt" : "receipts"}
+            </p>
+          ) : (
+            <SendClaimForm tripId={trip.id} financeEmail={financeEmail} />
           )}
         </>
       )}

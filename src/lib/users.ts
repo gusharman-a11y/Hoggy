@@ -119,3 +119,19 @@ export function safeNext(next: unknown, fallback = "/account"): string {
   }
   return next;
 }
+
+const EMAIL_RE = /^[^\s@<>,]+@[^\s@<>,]+\.[^\s@<>,]+$/;
+
+/** A plain single address like name@hospital.org (no display names). */
+export function isValidEmail(email: string): boolean {
+  return EMAIL_RE.test(email.trim());
+}
+
+/** Sets the hospital's finance address (where claims are sent). Throws on a bad address. */
+export function setFinanceEmail(db: DatabaseSync, orgId: number, email: string): Org {
+  if (!isValidEmail(email)) throw new Error("Invalid email address");
+  db.prepare("UPDATE orgs SET finance_email = ? WHERE id = ?").run(normaliseEmail(email), orgId);
+  const org = getOrg(db, orgId);
+  if (!org) throw new Error(`Org ${orgId} not found`);
+  return org;
+}

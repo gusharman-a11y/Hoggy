@@ -32,6 +32,7 @@ export default async function OutboxPage() {
               <h2>{e.subject}</h2>
               <p className="conf-meta">
                 <span>To: {e.to_addr}</span>
+                {e.cc_addr && <span>Cc: {e.cc_addr}</span>}
                 <span>{e.created_at.replace("T", " ").slice(0, 16)} UTC</span>
               </p>
               {e.body_text && <pre className="outbox-body">{e.body_text}</pre>}
