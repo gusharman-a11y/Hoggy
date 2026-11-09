@@ -10,7 +10,8 @@
     "lint": "eslint .",
     "test": "vitest run",
     "e2e": "playwright test --trace off",
-    "seed": "tsx scripts/seed.ts"
+    "seed": "tsx scripts/seed.ts",
+    "ingest": "tsx scripts/ingest.ts"
   },
   "dependencies": {
     "next": "^16.4.5",
