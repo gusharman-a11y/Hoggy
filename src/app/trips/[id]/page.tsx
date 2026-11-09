@@ -201,6 +201,14 @@ export default async function TripPage({
               </li>
             ))}
           </ul>
+          {receipts.length > 0 && (
+            <p>
+              <a className="button secondary" href={`/trips/${trip.id}/claim-pack`} data-testid="claim-pack-preview" download>
+                Preview claim pack
+              </a>{" "}
+              <span className="muted">One PDF: cover sheet, claim form and every receipt.</span>
+            </p>
+          )}
           {canUpload && (
             <>
               <h3>Add a receipt</h3>

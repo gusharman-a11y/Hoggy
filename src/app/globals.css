@@ -42,6 +42,8 @@ main.narrow { max-width: 480px; }
 .actions { margin: 20px 0; }
 a.button { display: inline-block; font: inherit; padding: 10px 16px; border-radius: 6px; background: #0b5cad; color: #fff; text-decoration: none; font-weight: 600; }
 a.button:hover { background: #094b8e; }
+a.button.secondary { background: #fff; color: #0b5cad; border: 1px solid #0b5cad; }
+a.button.secondary:hover { background: #e8f3ff; }
 .facts dd { overflow-wrap: anywhere; }
 .form textarea { font: inherit; padding: 8px 10px; border: 1px solid #c4cad3; border-radius: 6px; width: 100%; }
 .form legend { font-weight: 600; padding: 0 4px; }
