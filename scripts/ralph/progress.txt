@@ -23,10 +23,9 @@ Started: Mon Nov  9 03:21:18 UTC 2026
 - E2E: the run DB is already seeded (conferences + demo users); old specs still re-run the idempotent seed in beforeAll, which is harmless.
 - README.md exists at repo root (created in US-006); add new operator docs as sections there.
 - Money on screen: formatMoney(cents, currency) in src/lib/format.ts ("AUD 950.00", null -> "TBC"). Primary link-buttons: `<Link className="button">`.
-- "Plan trip" = link to /conferences/[slug]/plan (login-gated page via requireRole([], thatPath), 404 on unknown slug before the auth check). US-010 should make that route create the draft trip and redirect to /trips/[id].
+- "Plan trip" = <PlanTripButton slug> (src/components/) = form POST to planTripAction (src/app/plan-actions.ts: logged out -> /login?next=/conferences/[slug]/plan, then findOrCreateDraftTrip -> /trips/[id]). GET /conferences/[slug]/plan only renders a confirm page with the same button. GETs must never write. E2E: getByRole("button", {name: "Plan trip"}).
 - Trips: src/lib/trips.ts — TRIP_TRANSITIONS is the single source of allowed moves (draft->pending_approval; pending_approval->approved|rejected|draft; rejected->draft|pending_approval; approved->booked; booked->claimed; claimed->paid). Always change status via transitionTrip(id, to, {orgId, managerComment}, db) (throws TripTransitionError / "not found" when orgId mismatches); createTrip/getTrip(id, db, orgId?)/tripEstimateTotal; TRIP_STATUS_LABELS for badges, EDITABLE_STATUSES (draft, rejected) for the edit form.
 - Trip access: never read trips for a page with getTrip directly; use getTripForViewer(id, user)/listTripsForViewer(user) (org-scoped; doctors only own, manager/finance/admin whole org) and canEditTrip (owner + EDITABLE_STATUSES). Pages notFound() for both missing and forbidden. updateTripPlan saves the plan form.
-- /conferences/[slug]/plan = findOrCreateDraftTrip (reuses the doctor's draft for that conference) then redirect('/trips/[id]'); the Plan trip Link has prefetch={false} because the GET creates a row.
 - Trips are AUD; foreign conference fees are prefilled via toAudCents() (src/lib/fx.ts, indicative static rates). Typed money -> parseMoneyToCents() (blank=0, undefined=invalid); cents -> input value centsToInput() (src/lib/format.ts).
 - Server actions bound to an id: saveTripAction.bind(null, id) with useActionState<State|undefined, FormData>. Status badges: <span className={`badge badge-${status}`}>{TRIP_STATUS_LABELS[status]}</span>.
 - E2E: after clicking Log out / Log in, await the next page's heading before page.goto, or the goto races the server action's cookie change.
@@ -66,6 +65,9 @@ Started: Mon Nov  9 03:21:18 UTC 2026
 - /settings (admin only) edits orgs.finance_email via setFinanceEmail/isValidEmail in src/lib/users.ts; nav shows Settings for admins. Dates from timestamps: formatDate(iso) in format.ts.
 - E2E needing its own approver: sign up a NEW hospital (creator = admin, approves when the org has no managers), join it with the shown join-code (see e2e/send-claim.spec.ts).
 - Finance: src/claims/finance.ts - canManageClaims (finance/admin with org) / listClaims(viewer) (claimed+paid, unpaid oldest first) / getClaimForFinance / claimPackForFinance (serves the exact emailed attachment via claims.email_id, rebuilds if the outbox lost it) / markClaimPaid(tripId, viewer, mailer, {db, now}) (transaction claimed->paid + claims.paid_at/paid_by, THEN emails the doctor; throws FinanceError). Page /claims, pack GET /claims/[tripId]/pack, action markPaidAction in finance-actions.ts -> /claims?paid=<id>. Demo finance login: finance@demo.test.
+- Receipt edits: updateReceipt(tripId, receiptId, viewer, {description, amountCents}) / canEditReceipt (= canUploadReceipt: owner, not claimed|paid) in receipt-uploads.ts; any source. UI = <details> EditReceiptForm per receipt -> editReceiptAction -> /trips/[id]?receipt=updated.
+- Nav order (layout.tsx, nav aria-label "Main"): Conferences, My trips, Approvals (mgr/admin), Claims (finance/admin), Dashboard, Team, Settings, Outbox, account name, Log out. No-sideways-scroll check: expectNoHorizontalScroll() in e2e/polish.spec.ts.
+- Never put a <form> inside a <p> (invalid HTML -> hydration error); wrap in a <div>.
 ---
 
 ## 2026-11-09 03:25 UTC - US-001
@@ -306,4 +308,16 @@ Started: Mon Nov  9 03:21:18 UTC 2026
   - Playwright re-evaluates playwright.config.ts in every worker: guard one-time setup with an env var (E2E_DATA_DIR) so workers reuse the main process's temp DB.
   - formatMoney renders negatives as "-AUD 12.50": keep the sign when parsing money in specs.
   - "[browser] A tree hydrated but some attributes ... caret-color" in the e2e log is Playwright's screenshot caret-hiding, not an app bug.
+---
+
+## 2026-11-09 05:30 UTC - US-025
+- Plan trip now POSTs via server action (planTripAction); GET /conferences/[slug]/plan is a read-only confirm page (logged-out return target). All specs click the "Plan trip" button.
+- Doctors edit description + amount of any receipt (incl. emailed $0 ones) until claimed: updateReceipt/canEditReceipt + EditReceiptForm + editReceiptAction; unit test covers perms, validation, lock after claim, budget.
+- Nav reordered (Conferences, My trips, Approvals/Claims by role, Dashboard, ..., Log out), small-screen CSS; e2e/polish.spec.ts checks no horizontal scroll at 375px for doctor/manager/finance pages and that GET /plan writes nothing.
+- README rewritten: what it does, quick start, demo logins, journey, checks, what is mocked (flights, hotels, payments, email out/in, SAMPLE conferences, fx, claim form) and what going live needs (Duffel/TMC, IATA/travel-agent accreditation, hotel partner, Stripe, SMTP + domain, hosting, privacy/security).
+- Files: src/app/plan-actions.ts, src/components/PlanTripButton.tsx, src/app/conferences/[slug]/{page,plan/page}.tsx, src/app/trips/[id]/{page,EditReceiptForm}.tsx, src/app/receipt-actions.ts, src/lib/receipt-uploads{,.test}.ts, src/app/layout.tsx, globals.css, README.md, e2e/*.spec.ts, e2e/polish.spec.ts
+- Screenshots: scripts/ralph/shots/US-025-*.png
+- **Learnings for future iterations:**
+  - Quality gate, build and full CI=1 e2e (24 tests incl. north-star) pass.
+  - The "caret-color" hydration diff in dev-server logs comes from Playwright screenshots, not app code.
 ---
