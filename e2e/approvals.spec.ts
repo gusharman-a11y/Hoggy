@@ -35,7 +35,7 @@ test("doctor submits, manager rejects with a comment, doctor edits and resubmits
   await expect(page).toHaveURL(/\/\?denied=1$/);
 
   await page.goto(`/conferences/${SLUG}`);
-  await page.getByRole("link", { name: "Plan trip" }).click();
+  await page.getByRole("button", { name: "Plan trip" }).click();
   await expect(page).toHaveURL(/\/trips\/\d+$/);
   const tripUrl = page.url();
   const tripId = Number(tripUrl.split("/").pop());

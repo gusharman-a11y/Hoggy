@@ -6,7 +6,7 @@ import { canEditTrip, getTripForViewer, TRIP_STATUS_LABELS, tripEstimateTotal } 
 import { canDecideTrip, canSubmitTrip } from "@/lib/approvals";
 import { canBookTravel } from "@/lib/flight-booking";
 import { describeBooking, listBookings, listReceipts } from "@/lib/receipts";
-import { canDeleteReceipt, canUploadReceipt } from "@/lib/receipt-uploads";
+import { canDeleteReceipt, canEditReceipt, canUploadReceipt } from "@/lib/receipt-uploads";
 import { inboundAddress } from "@/lib/inbound-email";
 import { canSendClaim, getClaimForTrip } from "@/claims/send";
 import { getDb } from "@/db";
@@ -17,6 +17,7 @@ import SubmitForApproval from "./SubmitForApproval";
 import TripForm from "./TripForm";
 import SendClaimForm from "./SendClaimForm";
 import UploadReceiptForm from "./UploadReceiptForm";
+import EditReceiptForm from "./EditReceiptForm";
 
 export const metadata = { title: "Trip · StudyLeave" };
 
@@ -41,6 +42,7 @@ export default async function TripPage({
   const receipts = listReceipts(trip.id);
   const canBook = canBookTravel(trip, user);
   const canUpload = canUploadReceipt(trip, user);
+  const canEditReceipts = canEditReceipt(trip, user);
   const canClaim = canSendClaim(trip, user) && receipts.length > 0;
   const claim = getClaimForTrip(trip.id);
   const financeEmail = canClaim ? (getOrg(getDb(), trip.org_id)?.finance_email ?? null) : null;
@@ -83,6 +85,11 @@ export default async function TripPage({
       {receiptFlag === "deleted" && (
         <p role="status" className="notice">
           Receipt deleted.
+        </p>
+      )}
+      {receiptFlag === "updated" && (
+        <p role="status" className="notice">
+          Receipt updated.
         </p>
       )}
       {receiptFlag === "denied" && <p className="error">You can only delete receipts you uploaded.</p>}
@@ -211,6 +218,15 @@ export default async function TripPage({
                     </form>
                   )}
                 </span>
+                {canEditReceipts && (
+                  <EditReceiptForm
+                    tripId={trip.id}
+                    receiptId={r.id}
+                    description={r.description || ""}
+                    amount={centsToInput(r.amount_cents)}
+                    currency={r.currency}
+                  />
+                )}
               </li>
             ))}
           </ul>
@@ -232,7 +248,7 @@ export default async function TripPage({
                 Forward receipt emails from <strong>your account email</strong> to{" "}
                 <code>{inboundAddress(trip.inbound_code)}</code>
               </p>
-              <p className="muted">PDF, JPG and PNG attachments are added here, with the email subject as the description and no amount yet.</p>
+              <p className="muted">PDF, JPG and PNG attachments are added here, with the email subject as the description and no amount yet. Use Edit to add the amount.</p>
             </>
           )}
         </>

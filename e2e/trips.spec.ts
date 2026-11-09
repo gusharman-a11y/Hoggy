@@ -23,7 +23,7 @@ async function signUpDoctor(page: Page, name: string): Promise<string> {
 test("Plan trip creates a draft, the plan saves with a total, and /trips lists it", async ({ page, browser }) => {
   await signUpDoctor(page, "Dr Tripp");
   await page.goto(`/conferences/${SLUG}`);
-  await page.getByRole("link", { name: "Plan trip" }).click();
+  await page.getByRole("button", { name: "Plan trip" }).click();
   await expect(page).toHaveURL(/\/trips\/\d+$/);
   const tripUrl = page.url();
 
@@ -49,10 +49,11 @@ test("Plan trip creates a draft, the plan saves with a total, and /trips lists i
   await page.screenshot({ path: "scripts/ralph/shots/US-010-trip.png", fullPage: true });
 
   // Plan trip again reopens the same draft
-  await page.goto(`/conferences/${SLUG}/plan`);
+  await page.goto(`/conferences/${SLUG}`);
+  await page.getByRole("button", { name: "Plan trip" }).click();
   await expect(page).toHaveURL(tripUrl);
 
-  await page.getByRole("link", { name: "Trips", exact: true }).click();
+  await page.getByRole("link", { name: "My trips", exact: true }).click();
   await expect(page.getByRole("heading", { name: "My trips" })).toBeVisible();
   const list = page.getByTestId("trip-list");
   await expect(list.getByRole("listitem")).toHaveCount(1);

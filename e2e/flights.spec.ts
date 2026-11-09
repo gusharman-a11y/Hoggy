@@ -20,7 +20,7 @@ test("doctor books a flight on an approved trip: booking + receipt, trip booked"
   await expect(page).toHaveURL(/\/account$/);
 
   await page.goto(`/conferences/${SLUG}`);
-  await page.getByRole("link", { name: "Plan trip" }).click();
+  await page.getByRole("button", { name: "Plan trip" }).click();
   await expect(page).toHaveURL(/\/trips\/\d+$/);
   const tripUrl = page.url();
   await page.getByLabel("Departure city").fill("Sydney");

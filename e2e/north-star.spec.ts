@@ -58,7 +58,7 @@ test("north star: sign up -> plan -> approve -> book -> receipts -> send claim -
   await expect(cards).toHaveCount(1);
   await cards.first().getByRole("link").first().click();
   await expect(page).toHaveURL(new RegExp(`/conferences/${SLUG}$`));
-  await page.getByRole("link", { name: "Plan trip" }).click();
+  await page.getByRole("button", { name: "Plan trip" }).click();
   await expect(page).toHaveURL(/\/trips\/\d+$/);
   const tripUrl = page.url();
   const tripId = Number(new URL(tripUrl).pathname.split("/").pop());

@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { getCurrentUser } from "@/lib/auth";
 import { parseMoneyToCents } from "@/lib/format";
-import { deleteUploadedReceipt, saveUploadedReceipt, UploadError } from "@/lib/receipt-uploads";
+import { deleteUploadedReceipt, saveUploadedReceipt, updateReceipt, UploadError } from "@/lib/receipt-uploads";
 
 export interface UploadFormState {
   error?: string;
@@ -51,4 +51,33 @@ export async function deleteReceiptAction(tripId: number, receiptId: number): Pr
   }
   revalidatePath(`/trips/${tripId}`);
   redirect(`/trips/${tripId}?receipt=deleted`);
+}
+
+export interface EditReceiptState {
+  error?: string;
+  values?: { description: string; amount: string };
+}
+
+export async function editReceiptAction(
+  tripId: number,
+  receiptId: number,
+  _prev: EditReceiptState | undefined,
+  form: FormData,
+): Promise<EditReceiptState> {
+  const values = {
+    description: String(form.get("description") ?? ""),
+    amount: String(form.get("amount") ?? ""),
+  };
+  const user = await getCurrentUser();
+  if (!user) return { error: "Please log in again.", values };
+  const amountCents = values.amount.trim() === "" ? undefined : parseMoneyToCents(values.amount);
+  try {
+    updateReceipt(tripId, receiptId, user, { description: values.description, amountCents });
+  } catch (err) {
+    if (err instanceof UploadError) return { error: err.message, values };
+    console.error(err);
+    return { error: "Something went wrong. Please try again.", values };
+  }
+  revalidatePath(`/trips/${tripId}`);
+  redirect(`/trips/${tripId}?receipt=updated`);
 }

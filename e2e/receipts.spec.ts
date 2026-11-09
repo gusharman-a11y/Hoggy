@@ -20,7 +20,7 @@ test("doctor uploads, views, downloads and deletes their own receipts", async ({
   await expect(page).toHaveURL(/\/account$/);
 
   await page.goto(`/conferences/${SLUG}`);
-  await page.getByRole("link", { name: "Plan trip" }).click();
+  await page.getByRole("button", { name: "Plan trip" }).click();
   await expect(page).toHaveURL(/\/trips\/\d+$/);
   const tripUrl = page.url();
   const form = page.getByTestId("upload-receipt");

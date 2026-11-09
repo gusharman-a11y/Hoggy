@@ -20,22 +20,20 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <Link href="/" className="brand">
             {APP_NAME}
           </Link>
-          <nav>
+          <nav aria-label="Main">
             <Link href="/conferences">Conferences</Link>
             {user ? (
               <>
-                <Link href="/dashboard">Dashboard</Link>
-                <Link href="/trips">Trips</Link>
-                {(user.role === "manager" || user.role === "admin") && (
-                  <>
-                    <Link href="/approvals">Approvals</Link>
-                    <Link href="/team">Team</Link>
-                  </>
-                )}
+                <Link href="/trips">My trips</Link>
+                {(user.role === "manager" || user.role === "admin") && <Link href="/approvals">Approvals</Link>}
                 {(user.role === "finance" || user.role === "admin") && <Link href="/claims">Claims</Link>}
+                <Link href="/dashboard">Dashboard</Link>
+                {(user.role === "manager" || user.role === "admin") && <Link href="/team">Team</Link>}
                 {user.role === "admin" && <Link href="/settings">Settings</Link>}
                 {outboxScope(user) && <Link href="/outbox">Outbox</Link>}
-                <Link href="/account">{user.name}</Link>
+                <Link href="/account" className="nav-account">
+                  {user.name}
+                </Link>
                 <form action={logoutAction}>
                   <button type="submit" className="link">
                     Log out

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getConference } from "@/lib/conferences";
 import { formatDateRange, formatMoney } from "@/lib/format";
+import PlanTripButton from "@/components/PlanTripButton";
 
 type Params = Promise<{ slug: string }>;
 
@@ -45,11 +46,9 @@ export default async function ConferencePage({ params }: { params: Params }) {
           )}
         </dd>
       </dl>
-      <p className="actions">
-        <Link className="button" href={`/conferences/${c.slug}/plan`} prefetch={false}>
-          Plan trip
-        </Link>
-      </p>
+      <div className="actions">
+        <PlanTripButton slug={c.slug} />
+      </div>
     </main>
   );
 }

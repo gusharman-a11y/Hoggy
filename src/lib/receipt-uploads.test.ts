@@ -12,6 +12,7 @@ import {
   detectFileType,
   MAX_UPLOAD_BYTES,
   saveUploadedReceipt,
+  updateReceipt,
   UploadError,
   type UploadInput,
 } from "./receipt-uploads";
@@ -142,5 +143,26 @@ describe("uploaded receipts", () => {
     saveUploadedReceipt(tripId, doc, input({ amountCents: 1_000, kind: "meals" }), { db, dir });
     for (const s of ["pending_approval", "approved", "booked", "claimed"] as const) transitionTrip(tripId, s, {}, db);
     expect(getBudget(doc, 2027, db).spentCents).toBe(5_250);
+  });
+
+  it("the owner edits the description and amount of any receipt until the claim is sent", () => {
+    const emailed = Number(
+      db
+        .prepare("INSERT INTO receipts (trip_id, kind, description, amount_cents, source) VALUES (?, 'other', 'Fwd: Uber', 0, 'email')")
+        .run(tripId).lastInsertRowid,
+    );
+    const r = updateReceipt(tripId, emailed, doc, { description: "  Uber to venue ", amountCents: 3_890 }, { db });
+    expect(r).toMatchObject({ id: emailed, description: "Uber to venue", amount_cents: 3_890, source: "email" });
+
+    expect(() => updateReceipt(tripId, emailed, doc, { description: " ", amountCents: 1 }, { db })).toThrow(UploadError);
+    expect(() => updateReceipt(tripId, emailed, doc, { description: "x", amountCents: undefined }, { db })).toThrow(/amount/);
+    expect(() => updateReceipt(tripId, emailed, other, { description: "x", amountCents: 1 }, { db })).toThrow(/can't change/);
+    expect(() => updateReceipt(tripId, emailed, manager, { description: "x", amountCents: 1 }, { db })).toThrow(/can't change/);
+    expect(() => updateReceipt(tripId + 1, emailed, doc, { description: "x", amountCents: 1 }, { db })).toThrow(/can't change/);
+
+    for (const s of ["pending_approval", "approved", "booked", "claimed"] as const) transitionTrip(tripId, s, {}, db);
+    expect(getBudget(doc, 2027, db).spentCents).toBe(3_890);
+    expect(() => updateReceipt(tripId, emailed, doc, { description: "x", amountCents: 1 }, { db })).toThrow(/can't change/);
+    expect(listReceipts(tripId, db)[0].amount_cents).toBe(3_890);
   });
 });

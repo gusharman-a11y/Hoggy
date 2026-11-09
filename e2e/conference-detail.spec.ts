@@ -23,12 +23,15 @@ test("conference detail shows the facts; Plan trip sends logged-out users to log
   await expect(facts.getByRole("link")).toHaveAttribute("href", /example\.org/);
   await page.screenshot({ path: "scripts/ralph/shots/US-008-detail.png", fullPage: true });
 
-  await page.getByRole("link", { name: "Plan trip" }).click();
+  await page.getByRole("button", { name: "Plan trip" }).click();
   await expect(page).toHaveURL(/\/login\?next=/);
   await page.getByLabel("Email").fill("manager@demo.test");
   await page.getByLabel("Password").fill("password123");
   await page.getByRole("button", { name: "Log in" }).click();
-  // back through /plan, which opens the draft trip
+  // back to /plan, which only confirms; the button (a POST) opens the draft trip
+  await expect(page).toHaveURL(new RegExp(`/conferences/${SLUG}/plan$`));
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText("Plan a trip");
+  await page.getByRole("button", { name: "Plan trip" }).click();
   await expect(page).toHaveURL(/\/trips\/\d+$/);
   await expect(page.getByRole("heading", { level: 1 })).toContainText("Heart Rhythm Masterclass");
   await page.screenshot({ path: "scripts/ralph/shots/US-008-plan.png", fullPage: true });

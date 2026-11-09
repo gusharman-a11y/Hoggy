@@ -149,3 +149,37 @@ export function deleteUploadedReceipt(
     fs.rmSync(/*turbopackIgnore: true*/ resolveUploadPath(receipt.file_path, opts.dir ?? uploadsDir()), { force: true });
   }
 }
+
+/** The trip's owner can fix the description and amount of any receipt on it (e.g. an
+ * emailed one that arrived at $0) until the claim has been sent. */
+export function canEditReceipt(trip: ReceiptTrip, viewer: TripViewer): boolean {
+  return canUploadReceipt(trip, viewer);
+}
+
+export interface ReceiptEdit {
+  description: string;
+  amountCents: number | undefined;
+}
+
+/** Updates a receipt's description and amount. Throws UploadError with a user-facing message. */
+export function updateReceipt(
+  tripId: number,
+  receiptId: number,
+  viewer: TripViewer,
+  edit: ReceiptEdit,
+  opts: Pick<UploadOptions, "db"> = {},
+): Receipt {
+  const db = opts.db ?? getDb();
+  const trip = getTrip(tripId, db, viewer.org_id ?? -1);
+  const receipt = trip ? getReceipt(receiptId, db) : undefined;
+  if (!trip || !receipt || receipt.trip_id !== trip.id || !canEditReceipt(trip, viewer)) {
+    throw new UploadError("You can't change that receipt.");
+  }
+  const description = edit.description.trim();
+  if (!description) throw new UploadError("Add a short description, e.g. “Taxi to venue”.");
+  if (description.length > 200) throw new UploadError("Keep the description under 200 characters.");
+  if (edit.amountCents === undefined) throw new UploadError("Enter the amount, e.g. 42.50.");
+  return db
+    .prepare("UPDATE receipts SET description = ?, amount_cents = ? WHERE id = ? RETURNING *")
+    .get(description, edit.amountCents, receipt.id) as unknown as Receipt;
+}

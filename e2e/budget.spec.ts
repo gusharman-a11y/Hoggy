@@ -28,7 +28,7 @@ test("dashboard budget card, and a manager sets the doctor's allowance on /team"
 
   // Plan a trip; it opens on the trip's year, a draft costs nothing yet
   await page.goto(`/conferences/${SLUG}`);
-  await page.getByRole("link", { name: "Plan trip" }).click();
+  await page.getByRole("button", { name: "Plan trip" }).click();
   await expect(page).toHaveURL(/\/trips\/\d+$/);
   const tripId = Number(page.url().split("/").pop());
   await page.goto("/dashboard");

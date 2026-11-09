@@ -12,7 +12,9 @@ a { color: #0b5cad; }
 
 .topnav { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 10px 16px; background: #fff; border-bottom: 1px solid #e3e6eb; }
 .topnav .brand { font-weight: 700; text-decoration: none; color: #1a1f2b; }
-.topnav nav { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.topnav nav { display: flex; align-items: center; gap: 6px 16px; flex-wrap: wrap; min-width: 0; }
+.topnav .nav-account { max-width: 14em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+@media (max-width: 480px) { .topnav { padding: 8px 12px; } .topnav nav { gap: 6px 12px; font-size: 0.95rem; } main { padding: 16px 12px; } h1 { font-size: 1.6rem; overflow-wrap: anywhere; } }
 .topnav form { margin: 0; }
 button.link { background: none; border: 0; padding: 0; color: #0b5cad; font: inherit; cursor: pointer; text-decoration: underline; }
 main.narrow { max-width: 480px; }
@@ -40,8 +42,8 @@ main.narrow { max-width: 480px; }
 .conf-meta { display: flex; flex-wrap: wrap; gap: 4px 16px; margin: 0; color: #5b6472; }
 .empty { background: #fff; border: 1px dashed #c4cad3; border-radius: 8px; padding: 16px; }
 .actions { margin: 20px 0; }
-a.button { display: inline-block; font: inherit; padding: 10px 16px; border-radius: 6px; background: #0b5cad; color: #fff; text-decoration: none; font-weight: 600; }
-a.button:hover { background: #094b8e; }
+a.button, button.button { display: inline-block; border: 0; cursor: pointer; font: inherit; padding: 10px 16px; border-radius: 6px; background: #0b5cad; color: #fff; text-decoration: none; font-weight: 600; }
+a.button:hover, button.button:hover { background: #094b8e; }
 a.button.secondary { background: #fff; color: #0b5cad; border: 1px solid #0b5cad; }
 a.button.secondary:hover { background: #e8f3ff; }
 .facts dd { overflow-wrap: anywhere; }
@@ -98,3 +100,7 @@ button.link.danger { color: #b42318; }
 .claim-actions .mark-paid { margin: 0; }
 .mark-paid button { font: inherit; font-weight: 600; padding: 10px 16px; border: 0; border-radius: 6px; background: #0b5cad; color: #fff; cursor: pointer; }
 .mark-paid button[disabled] { opacity: 0.6; }
+.inline-form { display: inline; margin: 0; }
+.receipts li .edit-receipt { flex-basis: 100%; }
+.edit-receipt summary { cursor: pointer; color: #0b5cad; font-size: 0.9rem; width: max-content; }
+.edit-receipt .form { margin: 8px 0 0; }

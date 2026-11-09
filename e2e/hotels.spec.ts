@@ -19,7 +19,7 @@ test("doctor books a hotel on an approved trip: nights + total, receipt, trip bo
   await expect(page).toHaveURL(/\/account$/);
 
   await page.goto(`/conferences/${SLUG}`);
-  await page.getByRole("link", { name: "Plan trip" }).click();
+  await page.getByRole("button", { name: "Plan trip" }).click();
   await expect(page).toHaveURL(/\/trips\/\d+$/);
   const tripUrl = page.url();
 

@@ -21,7 +21,7 @@ test("a receipt forwarded by email from the doctor lands on their trip", async (
   await expect(page).toHaveURL(/\/account$/);
 
   await page.goto(`/conferences/${SLUG}`);
-  await page.getByRole("link", { name: "Plan trip" }).click();
+  await page.getByRole("button", { name: "Plan trip" }).click();
   await expect(page).toHaveURL(/\/trips\/\d+$/);
   const address = (await page.getByTestId("inbound-address").locator("code").textContent())!.trim();
   expect(address).toMatch(/^trip-[a-f0-9]{12}@in\.studyleave\.app$/);

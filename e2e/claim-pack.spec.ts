@@ -27,7 +27,7 @@ test("trip page offers a claim pack: cover + form + every receipt page in one PD
   const surname = `Packer${unique()}`;
   await signUp(page, `Dr Pat ${surname}`);
   await page.goto(`/conferences/${SLUG}`);
-  await page.getByRole("link", { name: "Plan trip" }).click();
+  await page.getByRole("button", { name: "Plan trip" }).click();
   await expect(page).toHaveURL(/\/trips\/\d+$/);
   const tripUrl = page.url();
   await expect(page.getByTestId("claim-pack-preview")).toHaveCount(0);

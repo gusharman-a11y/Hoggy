@@ -39,7 +39,7 @@ test("finance sees the sent claim, downloads the pack and marks it paid; the doc
   await page.goto("/claims");
   await expect(page).toHaveURL(/\/\?denied=1$/); // doctors can't open /claims
   await page.goto(`/conferences/${SLUG}`);
-  await page.getByRole("link", { name: "Plan trip" }).click();
+  await page.getByRole("button", { name: "Plan trip" }).click();
   await expect(page).toHaveURL(/\/trips\/\d+$/);
   const tripUrl = page.url();
   const tripId = Number(tripUrl.split("/").pop());
