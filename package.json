@@ -14,7 +14,8 @@
     "test": "vitest run",
     "e2e": "playwright test --trace off",
     "seed": "tsx scripts/seed.ts",
-    "ingest": "tsx scripts/ingest.ts"
+    "ingest": "tsx scripts/ingest.ts",
+    "purge": "tsx scripts/purge.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^1.6.0",

@@ -125,3 +125,18 @@ button.copy-button { font: inherit; padding: 4px 12px; border-radius: 6px; borde
 .how-to summary { cursor: pointer; color: #1a5fb4; }
 .how-to ol { margin: 8px 0 0; padding-left: 20px; }
 .unfiled-list { list-style: none; padding: 0; display: grid; gap: 8px; }
+.nav-count { display: inline-block; min-width: 1.4em; margin-left: 4px; padding: 0 6px; border-radius: 999px; background: #b42318; color: #fff; font-size: 0.75rem; font-weight: 700; line-height: 1.5; text-align: center; vertical-align: 1px; }
+.review-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+.review-item .review-head { margin: 0 0 4px; }
+.extracted { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 6px 12px; margin: 8px 0; }
+.extracted div { min-width: 0; }
+.extracted dt { font-size: 0.8rem; color: #5b6472; }
+.extracted dd { margin: 0; font-weight: 600; overflow-wrap: anywhere; }
+.review-buttons { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; }
+.review-buttons button:not(.link) { font: inherit; font-weight: 600; padding: 8px 16px; border: 0; border-radius: 6px; background: #0b5cad; color: #fff; cursor: pointer; }
+.review-buttons button.secondary { background: #fff; color: #0b5cad; border: 1px solid #0b5cad; }
+.review-buttons button[disabled] { opacity: 0.6; }
+.move-form { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; margin: 0; min-width: 0; }
+.move-form select { max-width: 100%; min-width: 0; font: inherit; padding: 6px; }
+.review-actions .error { margin: 6px 0 0; }
+.review-actions .edit-receipt { margin-top: 8px; }

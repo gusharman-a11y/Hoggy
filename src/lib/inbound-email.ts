@@ -17,6 +17,7 @@ import { getDb } from "@/db";
 import { EMPTY_READING, getReceiptReader, pdfToText, type ReceiptReader, type ReceiptReading } from "@/providers/receipt-reader";
 import { buildEmailReceiptPdf } from "./email-receipt-pdf";
 import { matchTrip } from "./receipt-matching";
+import { purgeUnfiled } from "./receipt-review";
 import { receiptKindFromReading } from "./receipt-snap";
 import { SNAP_KIND_LABELS } from "./receipt-upload-kinds";
 import {
@@ -405,6 +406,8 @@ export async function receiveInboxEmail(email: InboundEmail, opts: InboxOptions 
 export interface InboundHandlerOptions extends InboxOptions {
   /** The configured INBOUND_SECRET. Unset rejects every request. */
   secret: string | undefined;
+  /** Clock for the unfiled purge (tests). */
+  now?: Date;
 }
 
 const json = (status: number, body: unknown) =>
@@ -415,6 +418,12 @@ export async function handleInboundRequest(req: Request, opts: InboundHandlerOpt
   // Secret first: nothing about the payload is looked at until the caller is trusted.
   if (!inboundSecretMatches(req.headers.get(INBOUND_SECRET_HEADER), opts.secret)) {
     return json(401, { error: "Bad or missing inbound secret" });
+  }
+  // Unfiled receipts are kept 7 days; every trusted inbound POST clears the expired ones.
+  try {
+    purgeUnfiled({ db: opts.db, dir: opts.dir, now: opts.now });
+  } catch (err) {
+    console.error("purgeUnfiled failed:", err instanceof Error ? err.message : err);
   }
   const length = Number(req.headers.get("content-length") ?? 0);
   if (length > MAX_INBOUND_BODY_BYTES) return json(413, { error: "Email too large" });

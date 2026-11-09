@@ -3,6 +3,7 @@ import Link from "next/link";
 import "./globals.css";
 import { getCurrentUser } from "@/lib/auth";
 import { outboxScope } from "@/lib/mailer";
+import { countReceiptsToReview } from "@/lib/receipt-review";
 import { isDemoMode } from "@/lib/runtime";
 import { APP_NAME, TAGLINE } from "@/lib/site";
 import { logoutAction } from "./auth-actions";
@@ -14,6 +15,8 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const user = await getCurrentUser();
+  // Read-only count for the nav badge (needs_review + unfiled receipts of this user).
+  const toReview = user ? countReceiptsToReview(user) : 0;
   return (
     <html lang="en">
       <body>
@@ -32,6 +35,14 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             {user ? (
               <>
                 <Link href="/trips">My trips</Link>
+                <Link href="/receipts" data-testid="nav-receipts">
+                  Receipts
+                  {toReview > 0 && (
+                    <span className="nav-count" data-testid="nav-review-count" aria-label={`${toReview} to check`}>
+                      {toReview}
+                    </span>
+                  )}
+                </Link>
                 {(user.role === "manager" || user.role === "admin") && <Link href="/approvals">Approvals</Link>}
                 {(user.role === "finance" || user.role === "admin") && <Link href="/claims">Claims</Link>}
                 <Link href="/dashboard">Dashboard</Link>

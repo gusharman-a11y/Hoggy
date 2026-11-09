@@ -194,3 +194,10 @@ conference dates ±1 day, or from 30 days before for flights/hotels/registration
 city/venue/conference name as a tie-breaker). Matched → a `needs_review`
 receipt on that trip. No match or a tie → the doctor's private Unfiled
 receipts (dashboard). Reply 201 `{filed:[...], unfiled:[...], skipped:[...]}`.
+
+Doctors check all of it on **/receipts** (nav badge = how many need a look):
+Confirm, Edit, Move to another of their trips (unfiled: "File it"), or
+"Personal — delete" (removes the row and the file). Unfiled receipts are kept
+7 days: `purgeUnfiled()` deletes older ones on every trusted inbound POST, and
+`npm run purge` does the same from cron (uses `DATABASE_PATH`/`UPLOADS_DIR`).
+Page loads never delete anything.

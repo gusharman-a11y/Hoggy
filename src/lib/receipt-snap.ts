@@ -99,7 +99,8 @@ export interface ReceiptReview {
 }
 
 /**
- * Saves the doctor's checked details and marks the receipt confirmed ("Looks right").
+ * Saves the doctor's checked details and marks the receipt confirmed ("Looks right"),
+ * unless opts.confirm is false (then the status is left as it was).
  * Throws UploadError with a user-facing message.
  */
 export function reviewReceipt(
@@ -107,7 +108,7 @@ export function reviewReceipt(
   receiptId: number,
   viewer: TripViewer,
   review: ReceiptReview,
-  opts: Pick<SnapOptions, "db"> = {},
+  opts: Pick<SnapOptions, "db"> & { confirm?: boolean } = {},
 ): Receipt {
   const db = opts.db ?? getDb();
   const trip = getTrip(tripId, db, viewer.org_id ?? -1);
@@ -138,7 +139,8 @@ export function reviewReceipt(
         supplierAbn: review.supplierAbn.trim() || null,
         gstCents: review.gstCents,
         receiptDate: review.receiptDate.trim() || null,
-        status: "confirmed",
+        // confirm: false = "Save" on /receipts (fix details, keep it in the review list).
+        status: opts.confirm === false ? undefined : "confirmed",
       },
       db,
     ) as Receipt;
