@@ -3,6 +3,9 @@ import { notFound } from "next/navigation";
 import { requireRole } from "@/lib/auth";
 import { centsToInput, formatDateRange, formatMoney } from "@/lib/format";
 import { canEditTrip, getTripForViewer, TRIP_STATUS_LABELS, tripEstimateTotal } from "@/lib/trips";
+import { canDecideTrip, canSubmitTrip } from "@/lib/approvals";
+import DecisionForm from "../../approvals/DecisionForm";
+import SubmitForApproval from "./SubmitForApproval";
 import TripForm from "./TripForm";
 
 export const metadata = { title: "Trip · StudyLeave" };
@@ -83,9 +86,19 @@ export default async function TripPage({ params }: { params: Promise<{ id: strin
         Estimated total: <strong>{formatMoney(total, trip.currency)}</strong>
       </p>
       {trip.manager_comment && (
-        <p className="notice">
+        <p className="notice" data-testid="manager-comment">
           <strong>Manager&apos;s comment:</strong> {trip.manager_comment}
         </p>
+      )}
+      {trip.status === "pending_approval" && trip.user_id === user.id && (
+        <p className="muted">Waiting for your manager to approve this trip. They’ve been emailed.</p>
+      )}
+      {canSubmitTrip(trip, user) && <SubmitForApproval tripId={trip.id} resubmit={trip.status === "rejected"} />}
+      {canDecideTrip(trip, user) && (
+        <>
+          <h2>Decision</h2>
+          <DecisionForm tripId={trip.id} label={trip.owner_name} from="trip" />
+        </>
       )}
     </main>
   );

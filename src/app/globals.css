@@ -76,3 +76,7 @@ h2 { font-size: 1.3rem; margin: 24px 0 8px; }
 .outbox-email h2 { font-size: 1.05rem; margin: 0 0 4px; }
 .outbox-body { white-space: pre-wrap; font: inherit; background: #f7f8fa; border-radius: 6px; padding: 8px 10px; margin: 8px 0; overflow-wrap: anywhere; }
 .outbox-attachments { margin: 6px 0 0; padding-left: 18px; }
+.submit-approval { margin-top: 16px; }
+.decision-form { margin-top: 10px; }
+.decision-buttons { display: flex; gap: 8px; }
+.form button.danger, .form button[type="submit"].danger { background: #b42318; }

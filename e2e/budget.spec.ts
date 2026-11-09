@@ -1,5 +1,4 @@
 import { execSync } from "node:child_process";
-import { DatabaseSync } from "node:sqlite";
 import { expect, test } from "@playwright/test";
 
 test.beforeAll(() => {
@@ -8,16 +7,6 @@ test.beforeAll(() => {
 
 const SLUG = "sample-paediatrics-spring-symposium-2027"; // AUD 780, starts 2027
 const unique = () => `${Date.now()}${Math.floor(Math.random() * 1000)}`;
-
-/** No approval UI until US-013: approve the trip straight in the dev database. */
-function approveTrip(tripId: number) {
-  const db = new DatabaseSync("data/app.db");
-  try {
-    db.prepare("UPDATE trips SET status = 'approved' WHERE id = ?").run(tripId);
-  } finally {
-    db.close();
-  }
-}
 
 test("dashboard budget card, and a manager sets the doctor's allowance on /team", async ({ page, browser }) => {
   const name = `Dr Budget ${unique()}`;
@@ -47,8 +36,19 @@ test("dashboard budget card, and a manager sets the doctor's allowance on /team"
   await expect(page.getByTestId("budget-committed")).toHaveText("AUD 0.00");
   await expect(page.getByTestId("recent-trips")).toContainText("Paediatrics Spring Symposium");
 
-  approveTrip(tripId);
-  await page.reload();
+  await page.goto(`/trips/${tripId}`);
+  await page.getByRole("button", { name: "Submit for approval" }).click();
+  await expect(page.getByTestId("trip-status")).toHaveText("Awaiting approval");
+  const mgr = await browser.newPage();
+  await mgr.goto("/login");
+  await mgr.getByLabel("Email").fill("manager@demo.test");
+  await mgr.getByLabel("Password").fill("password123");
+  await mgr.getByRole("button", { name: "Log in" }).click();
+  await expect(mgr.getByRole("heading", { name: /^Hi / })).toBeVisible();
+  await mgr.goto(`/trips/${tripId}`);
+  await mgr.getByRole("button", { name: "Approve" }).click();
+  await expect(mgr.getByTestId("trip-status")).toHaveText("Approved");
+  await page.goto("/dashboard");
   await expect(page.getByTestId("budget-committed")).toHaveText("AUD 780.00");
   await expect(page.getByTestId("budget-remaining")).toHaveText("AUD 2,220.00");
   await page.screenshot({ path: "scripts/ralph/shots/US-011-dashboard.png", fullPage: true });
@@ -58,12 +58,6 @@ test("dashboard budget card, and a manager sets the doctor's allowance on /team"
   await expect(page).toHaveURL(/\/\?denied=1$/);
 
   // Manager raises the allowance for 2027
-  const mgr = await browser.newPage();
-  await mgr.goto("/login");
-  await mgr.getByLabel("Email").fill("manager@demo.test");
-  await mgr.getByLabel("Password").fill("password123");
-  await mgr.getByRole("button", { name: "Log in" }).click();
-  await expect(mgr.getByRole("heading", { name: /^Hi / })).toBeVisible();
   await mgr.getByRole("link", { name: "Team" }).click();
   await expect(mgr.getByRole("heading", { name: "Team budgets" })).toBeVisible();
   await mgr.getByRole("link", { name: "2027 →" }).click();
