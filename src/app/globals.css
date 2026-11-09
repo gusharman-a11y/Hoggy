@@ -53,3 +53,21 @@ h2 { font-size: 1.3rem; margin: 24px 0 8px; }
 .badge-approved, .badge-booked { background: #dff5e6; color: #1b6b3a; }
 .badge-rejected { background: #fde4e1; color: #a1251a; }
 .badge-claimed, .badge-paid { background: #e3ecff; color: #1f4aa8; }
+.small { font-size: 0.85rem; }
+.budget-card { background: #fff; border: 1px solid #e3e6eb; border-radius: 8px; padding: 14px 16px; margin: 16px 0; }
+.budget-card h2 { margin: 0 0 10px; font-size: 1.15rem; }
+.budget-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin: 0 0 8px; }
+.budget-grid div { background: #f7f8fa; border-radius: 6px; padding: 8px 10px; }
+.budget-grid dt { font-size: 0.85rem; color: #5b6472; }
+.budget-grid dd { margin: 0; font-size: 1.15rem; font-weight: 600; }
+.budget-grid .left { background: #dff5e6; }
+.budget-grid .over { background: #fde4e1; }
+.over { color: #a1251a; }
+.year-tabs { display: flex; gap: 14px; align-items: center; margin: 8px 0; }
+.table-wrap { overflow-x: auto; }
+.team-table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid #e3e6eb; border-radius: 8px; }
+.team-table th, .team-table td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #e3e6eb; vertical-align: top; }
+.allowance-form { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 0; }
+.allowance-form input { font: inherit; padding: 6px 8px; border: 1px solid #c4cad3; border-radius: 6px; width: 8em; }
+.allowance-form button { font: inherit; padding: 6px 12px; border: 0; border-radius: 6px; background: #0b5cad; color: #fff; cursor: pointer; }
+.allowance-form .saved { color: #1b6b3a; font-size: 0.85rem; }

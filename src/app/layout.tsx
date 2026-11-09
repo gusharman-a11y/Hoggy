@@ -23,7 +23,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             <Link href="/conferences">Conferences</Link>
             {user ? (
               <>
+                <Link href="/dashboard">Dashboard</Link>
                 <Link href="/trips">Trips</Link>
+                {(user.role === "manager" || user.role === "admin") && <Link href="/team">Team</Link>}
                 <Link href="/account">{user.name}</Link>
                 <form action={logoutAction}>
                   <button type="submit" className="link">

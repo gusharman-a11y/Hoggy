@@ -4,6 +4,8 @@ import { slugify } from "@/lib/conferences";
 import { createOrg, createUser, findOrgByCode, findUserByEmail, type Org, type Role } from "@/lib/users";
 
 export const DEMO_ORG = { name: "Demo Hospital", joinCode: "DEMO2026", financeEmail: "finance@demo.test" };
+/** Every doctor who joins the demo hospital starts with AUD 3,000 a year. */
+export const DEMO_DEFAULT_ALLOWANCE_CENTS = 300_000;
 export const DEMO_PASSWORD = "password123";
 export const DEMO_USERS: { email: string; name: string; role: Role }[] = [
   { email: "manager@demo.test", name: "Morgan Manager", role: "manager" },
@@ -15,6 +17,11 @@ export function seed(db: DatabaseSync): { org: Org; users: string[]; conferences
   const org =
     findOrgByCode(db, DEMO_ORG.joinCode) ??
     createOrg(db, { name: DEMO_ORG.name, financeEmail: DEMO_ORG.financeEmail, joinCode: DEMO_ORG.joinCode });
+  // Only fill a missing default, so re-seeding never overwrites a changed one.
+  db.prepare("UPDATE orgs SET default_allowance_cents = ? WHERE id = ? AND default_allowance_cents = 0").run(
+    DEMO_DEFAULT_ALLOWANCE_CENTS,
+    org.id,
+  );
   for (const u of DEMO_USERS) {
     if (!findUserByEmail(db, u.email)) createUser(db, { orgId: org.id, password: DEMO_PASSWORD, ...u });
   }
