@@ -53,6 +53,10 @@ Started: Mon Nov  9 03:21:18 UTC 2026
 - Server actions accept up to 11 MB (experimental.serverActions.bodySizeLimit in next.config.ts); default is 1 MB.
 - A <select> wrapped in a <label> gets its option text in the accessible name (breaks getByLabel strictness elsewhere): use <div className="field"><label htmlFor>..</label><select id>..</div>.
 - Receipt route: ?download=1 -> Content-Disposition attachment with original_name. Playwright file uploads: locator.setInputFiles({name, mimeType, buffer}).
+- Inbound email: src/lib/inbound-email.ts — handleInboundRequest(req, {secret, db, dir}) is the whole POST /api/inbound handler (route.ts only passes process.env.INBOUND_SECRET), so unit tests call it with plain `new Request(...)`. Secret check = inboundSecretMatches() (sha256 both sides + crypto.timingSafeEqual; unset secret rejects all) and runs before the body is read. Copy this shape for any future webhook.
+- trips.inbound_code (migration 009) is filled by an AFTER INSERT trigger, so every insert path gets one; address = inboundAddress(code). Adding a trips column means updating the PRAGMA column list in src/lib/trips.test.ts and COLS in trips.ts.
+- Dev-server env for e2e goes in playwright.config.ts webServer.env (e.g. INBOUND_SECRET from e2e/inbound-secret.ts). A reused non-CI server won't have it, so run e2e with CI=1.
+- A full e2e run rewrites every story's screenshot: before committing, `git checkout -- scripts/ralph/shots/` for shots that aren't your story's.
 ---
 
 ## 2026-11-09 03:25 UTC - US-001
@@ -231,4 +235,14 @@ Started: Mon Nov  9 03:21:18 UTC 2026
   - The Receipts section now shows whenever the owner can upload (even with no receipts).
   - Delete buttons have aria-label "Delete <description>".
   - Uploaded amounts feed the budget's spent figure automatically once the trip is claimed.
+---
+
+## 2026-11-09 04:40 UTC - US-019
+- Each trip has an inbound address trip-<12 hex>@in.studyleave.app (migration 009: trips.inbound_code, backfilled, unique index, insert trigger), shown on the trip page under Receipts for the owner.
+- POST /api/inbound (JSON {to, from, subject, attachments[{filename, contentType, base64}]}, header x-inbound-secret compared in constant time against INBOUND_SECRET). Attachments (PDF/JPG/PNG sniffed from bytes, max 10, 10 MB each) become source='email' receipts, kind 'other', amount 0, description = subject without Fwd:/Re:, only when `from` matches the trip owner's email (case-insensitive, "Name <a@b>" ok). Status codes: 401 / 400 / 404 (unknown address and wrong sender look the same) / 409 locked / 413 / 422 / 201.
+- Files: src/db/migrations/009_trip_inbound.sql, src/lib/inbound-email.ts (+ .test.ts, 17 tests), src/app/api/inbound/route.ts, src/lib/trips.ts (+test), src/app/trips/[id]/page.tsx, globals.css, playwright.config.ts, e2e/inbound-secret.ts, e2e/inbound.spec.ts, README.md, shot US-019-inbound.png.
+- **Learnings for future iterations:**
+  - Keep webhook handlers as a pure function taking (Request, deps); route.ts is a one-liner.
+  - Emailed receipts have amount 0; the claim form (US-020) may want a way to set amounts or flag them.
+  - The full e2e run (18 tests) passes; `npm run build` lists /api/inbound as a dynamic route.
 ---
