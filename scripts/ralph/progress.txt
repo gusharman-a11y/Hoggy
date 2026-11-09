@@ -22,6 +22,8 @@ Started: Mon Nov  9 03:21:18 UTC 2026
 - Dates on screen: formatDateRange()/todayIso() in src/lib/format.ts.
 - E2E specs needing conferences/demo users: `test.beforeAll(() => execSync("npx tsx scripts/seed.ts"))` (idempotent, seeds data/app.db).
 - README.md exists at repo root (created in US-006); add new operator docs as sections there.
+- Money on screen: formatMoney(cents, currency) in src/lib/format.ts ("AUD 950.00", null -> "TBC"). Primary link-buttons: `<Link className="button">`.
+- "Plan trip" = link to /conferences/[slug]/plan (login-gated page via requireRole([], thatPath), 404 on unknown slug before the auth check). US-010 should make that route create the draft trip and redirect to /trips/[id].
 ---
 
 ## 2026-11-09 03:25 UTC - US-001
@@ -93,4 +95,15 @@ Started: Mon Nov  9 03:21:18 UTC 2026
 - **Learnings for future iterations:**
   - Month filter is overlap, so e2e assertions must allow cross-month ranges ("29 Mar – 1 Apr 2027")
   - `npm run build` passes with the new dynamic page
+---
+
+## 2026-11-09 03:50 UTC - US-008
+- /conferences/[slug]: name, specialty, dates, venue, city, country, CPD points, registration fee (formatMoney), official link (new tab), "Plan trip" button; notFound() for unknown slug; generateMetadata title
+- /conferences/[slug]/plan: login-gated placeholder (logged out -> /login?next=... -> back here); shows conference summary; to be replaced by draft-trip creation in US-010
+- Files: src/app/conferences/[slug]/page.tsx, src/app/conferences/[slug]/plan/page.tsx, src/lib/format{,.test}.ts, src/app/globals.css, e2e/conference-detail.spec.ts, shots US-008-{detail,plan}.png
+- **Learnings for future iterations:**
+  - Intl currency output uses a non-breaking space; formatMoney normalises it to a plain space so tests/text matches are simple
+  - Sample conference slugs are slugify(name-year), e.g. sample-heart-rhythm-masterclass-2027; their url is https://example.org/sample/<slug>
+  - The dev-server hydration warning about caret-color on inputs in e2e logs is harmless (Playwright styling), not our bug
+  - npm run build passes with the new dynamic routes
 ---

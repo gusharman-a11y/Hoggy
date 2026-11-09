@@ -128,7 +128,7 @@
         "Verify in browser: start the dev server and check the page with Playwright (screenshot into scripts/ralph/shots/)"
       ],
       "priority": 8,
-      "passes": false,
+      "passes": true,
       "notes": ""
     },
     {
