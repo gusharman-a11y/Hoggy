@@ -61,7 +61,7 @@
       "description": "As a doctor, I want a list of conferences in the database to browse.",
       "acceptanceCriteria": [
         "Migration adds conferences(id, slug unique, name, specialty, start_date, end_date, city, country, venue, lat, lng, url, cpd_points, registration_fee_cents, currency, source, source_url, updated_at)",
-        "npm run seed inserts ~30 conferences spread across 8+ specialties and 10+ countries, each with source='sample' and name prefixed 'SAMPLE \u2013' (no invented real events)",
+        "npm run seed inserts ~30 conferences spread across 8+ specialties and 10+ countries, each with source='sample' and name prefixed 'SAMPLE –' (no invented real events)",
         "src/lib/conferences.ts exports searchConferences({q, specialty, country, month}) and getConference(slug)",
         "Tests cover each filter",
         "npm run typecheck && npm run lint && npm test all pass"
