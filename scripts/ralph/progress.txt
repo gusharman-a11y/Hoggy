@@ -24,6 +24,7 @@ Started: Mon Nov  9 03:21:18 UTC 2026
 - README.md exists at repo root (created in US-006); add new operator docs as sections there.
 - Money on screen: formatMoney(cents, currency) in src/lib/format.ts ("AUD 950.00", null -> "TBC"). Primary link-buttons: `<Link className="button">`.
 - "Plan trip" = link to /conferences/[slug]/plan (login-gated page via requireRole([], thatPath), 404 on unknown slug before the auth check). US-010 should make that route create the draft trip and redirect to /trips/[id].
+- Trips: src/lib/trips.ts — TRIP_TRANSITIONS is the single source of allowed moves (draft->pending_approval; pending_approval->approved|rejected|draft; rejected->draft|pending_approval; approved->booked; booked->claimed; claimed->paid). Always change status via transitionTrip(id, to, {orgId, managerComment}, db) (throws TripTransitionError / "not found" when orgId mismatches); createTrip/getTrip(id, db, orgId?)/tripEstimateTotal; TRIP_STATUS_LABELS for badges, EDITABLE_STATUSES (draft, rejected) for the edit form.
 ---
 
 ## 2026-11-09 03:25 UTC - US-001
@@ -106,4 +107,14 @@ Started: Mon Nov  9 03:21:18 UTC 2026
   - Sample conference slugs are slugify(name-year), e.g. sample-heart-rhythm-masterclass-2027; their url is https://example.org/sample/<slug>
   - The dev-server hydration warning about caret-color on inputs in e2e logs is harmless (Playwright styling), not our bug
   - npm run build passes with the new dynamic routes
+---
+
+## 2026-11-09 03:46 UTC - US-009
+- Migration 004_trips.sql (all PRD columns, status CHECK, est_* default 0, AUD default, indexes on org_id/user_id/(org_id,status)); src/lib/trips.ts with transition table, assert/canTransition, createTrip/getTrip/transitionTrip (conditional UPDATE on old status), labels, estimate total
+- Tests src/lib/trips.test.ts: full 7x7 allowed/forbidden matrix, forbidden examples throw, DB CHECK, happy path, reject+resubmit, org scoping
+- Files: src/db/migrations/004_trips.sql, src/lib/trips.ts, src/lib/trips.test.ts
+- **Learnings for future iterations:**
+  - Hotel booking on an already-booked trip must NOT call transitionTrip (booked->booked is forbidden); only transition when status is approved
+  - updated_at uses ms precision like conferences so ordering checks work within one second
+  - No UI in this story, so no browser check / build
 ---

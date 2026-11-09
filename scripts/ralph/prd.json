@@ -142,7 +142,7 @@
         "npm run typecheck && npm run lint && npm test all pass"
       ],
       "priority": 9,
-      "passes": false,
+      "passes": true,
       "notes": ""
     },
     {
