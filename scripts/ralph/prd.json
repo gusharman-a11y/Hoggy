@@ -1,0 +1,395 @@
+{
+  "project": "StudyLeave",
+  "branchName": "ralph/mvp",
+  "description": "Medical conference finder + trip approval + booking + one-PDF claim pack. North star in CLAUDE.md.",
+  "userStories": [
+    {
+      "id": "US-001",
+      "title": "Scaffold the app",
+      "description": "As a developer, I need a working Next.js + TypeScript skeleton with the quality gate so later stories have somewhere to land.",
+      "acceptanceCriteria": [
+        "Next.js App Router + TypeScript in src/ layout, package.json name 'studyleave'",
+        "npm scripts exist: dev, build, typecheck (tsc --noEmit), lint, test (vitest run), e2e (playwright test --trace off)",
+        "Vitest configured with one passing sample test; @playwright/test pinned to 1.63.0 with playwright.config.ts using launchOptions.executablePath '/opt/pw-browsers/chromium' and a webServer that runs the app",
+        ".gitignore covers node_modules, .next, data/",
+        "Home page '/' shows 'StudyLeave' and a one-line tagline",
+        "npm run build succeeds",
+        "npm run typecheck && npm run lint && npm test all pass",
+        "Verify in browser: start the dev server and check the page with Playwright (screenshot into scripts/ralph/shots/)"
+      ],
+      "priority": 1,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-002",
+      "title": "Database and migrations",
+      "description": "As a developer, I need a SQLite database with numbered migrations so data persists.",
+      "acceptanceCriteria": [
+        "src/db/index.ts exports getDb() using node:sqlite DatabaseSync at DATABASE_PATH env or data/app.db; tests can pass ':memory:'",
+        "src/db/migrate.ts applies src/db/migrations/NNN_*.sql in order and records them in _migrations (idempotent)",
+        "001_core.sql creates orgs(id, name, join_code unique, finance_email, created_at), users(id, org_id, email unique, name, password_hash, role, created_at), sessions(id, user_id, expires_at)",
+        "Migrations run automatically on first getDb()",
+        "Vitest test proves migrations run twice without error and tables exist",
+        "npm run typecheck && npm run lint && npm test all pass"
+      ],
+      "priority": 2,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-003",
+      "title": "Sign up, log in, log out",
+      "description": "As a doctor, I want to create an account and join my hospital with its org code so my trips belong to it.",
+      "acceptanceCriteria": [
+        "/signup form: name, email, password, org join code; creates user with role 'doctor'; unknown code shows an error",
+        "/signup also allows 'Create a new hospital' (org name + finance email) which makes the user 'admin' and shows the generated join code",
+        "Passwords hashed with node:crypto scrypt; session id in an httpOnly cookie",
+        "/login and a logout button; src/lib/auth.ts exports getCurrentUser() and requireRole()",
+        "Seed script (npm run seed) creates org 'Demo Hospital' join code DEMO2026, finance finance@demo.test, manager manager@demo.test / password123",
+        "Unit tests for hashing and session lookup",
+        "npm run typecheck && npm run lint && npm test all pass",
+        "Verify in browser: start the dev server and check the page with Playwright (screenshot into scripts/ralph/shots/)"
+      ],
+      "priority": 3,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-004",
+      "title": "Conference schema and sample data",
+      "description": "As a doctor, I want a list of conferences in the database to browse.",
+      "acceptanceCriteria": [
+        "Migration adds conferences(id, slug unique, name, specialty, start_date, end_date, city, country, venue, lat, lng, url, cpd_points, registration_fee_cents, currency, source, source_url, updated_at)",
+        "npm run seed inserts ~30 conferences spread across 8+ specialties and 10+ countries, each with source='sample' and name prefixed 'SAMPLE –' (no invented real events)",
+        "src/lib/conferences.ts exports searchConferences({q, specialty, country, month}) and getConference(slug)",
+        "Tests cover each filter",
+        "npm run typecheck && npm run lint && npm test all pass"
+      ],
+      "priority": 4,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-005",
+      "title": "Conference extractor (schema.org JSON-LD)",
+      "description": "As the system, I need to pull conference details out of event web pages so the database can grow beyond samples.",
+      "acceptanceCriteria": [
+        "src/ingest/extract.ts: extractEvents(html, pageUrl) returns normalised conferences from schema.org Event / EducationEvent JSON-LD (handles @graph, arrays, location as Place with PostalAddress)",
+        "Returns [] gracefully for pages without JSON-LD",
+        "Upsert function dedupes by (normalised name + start_date) and updates updated_at",
+        "3+ HTML fixtures in src/ingest/__fixtures__ with tests",
+        "npm run typecheck && npm run lint && npm test all pass"
+      ],
+      "priority": 5,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-006",
+      "title": "Ingest runner",
+      "description": "As an operator, I want `npm run ingest` to fetch a list of source pages and load conferences.",
+      "acceptanceCriteria": [
+        "Migration adds sources(id, url unique, last_fetched_at, last_status, events_found)",
+        "npm run ingest reads sources, checks robots.txt, waits >=2s between requests to the same host, sends a generic User-Agent 'StudyLeaveBot/0.1', runs extractor + upsert, records status",
+        "fetch is injectable; tests use a fake fetch (no network in tests)",
+        "README section 'Adding conference sources'",
+        "npm run typecheck && npm run lint && npm test all pass"
+      ],
+      "priority": 6,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-007",
+      "title": "Conference search page",
+      "description": "As a doctor, I want to search conferences by text, specialty, country and month.",
+      "acceptanceCriteria": [
+        "/conferences lists upcoming conferences sorted by start date with name, dates, city/country, specialty, CPD points",
+        "Filters (text, specialty, country, month) work via URL query params",
+        "Empty state message when nothing matches",
+        "Link in the top nav",
+        "npm run typecheck && npm run lint && npm test all pass",
+        "Verify in browser: start the dev server and check the page with Playwright (screenshot into scripts/ralph/shots/)"
+      ],
+      "priority": 7,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-008",
+      "title": "Conference detail page",
+      "description": "As a doctor, I want a conference page with everything I need to decide.",
+      "acceptanceCriteria": [
+        "/conferences/[slug] shows name, dates, venue, city, country, CPD points, registration fee, official link",
+        "'Plan trip' button (requires login; logged-out users are sent to /login and back)",
+        "404 for unknown slug",
+        "npm run typecheck && npm run lint && npm test all pass",
+        "Verify in browser: start the dev server and check the page with Playwright (screenshot into scripts/ralph/shots/)"
+      ],
+      "priority": 8,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-009",
+      "title": "Trips schema",
+      "description": "As the system, I need trips that move through approval, booking and claiming.",
+      "acceptanceCriteria": [
+        "Migration adds trips(id, org_id, user_id, conference_id, status, depart_city, notes, est_registration_cents, est_flights_cents, est_hotel_cents, est_other_cents, currency, manager_comment, created_at, updated_at)",
+        "status is one of draft, pending_approval, approved, rejected, booked, claimed, paid; src/lib/trips.ts enforces allowed transitions",
+        "Tests for allowed and forbidden transitions",
+        "npm run typecheck && npm run lint && npm test all pass"
+      ],
+      "priority": 9,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-010",
+      "title": "Plan a trip",
+      "description": "As a doctor, I want to start a trip from a conference with estimated costs.",
+      "acceptanceCriteria": [
+        "'Plan trip' creates a draft trip and opens /trips/[id]",
+        "Trip page shows conference summary, editable departure city and cost estimates (registration prefilled from the conference), and total",
+        "/trips lists my trips with status badges",
+        "Users can only see trips in their own org (and doctors only their own)",
+        "npm run typecheck && npm run lint && npm test all pass",
+        "Verify in browser: start the dev server and check the page with Playwright (screenshot into scripts/ralph/shots/)"
+      ],
+      "priority": 10,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-011",
+      "title": "Study budget",
+      "description": "As a doctor, I want to see how much of my yearly study allowance I have left.",
+      "acceptanceCriteria": [
+        "Migration adds budgets(id, org_id, user_id, year, allowance_cents)",
+        "src/lib/budget.ts computes allowance, committed (approved/booked trips, estimates), spent (claimed/paid trips, actual receipts) and remaining for a year",
+        "Dashboard /dashboard shows the budget card and recent trips; managers can set a doctor's allowance on /team",
+        "Seed gives the demo doctor flow a default allowance of AUD 3,000",
+        "Unit tests for the calculation",
+        "npm run typecheck && npm run lint && npm test all pass",
+        "Verify in browser: start the dev server and check the page with Playwright (screenshot into scripts/ralph/shots/)"
+      ],
+      "priority": 11,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-012",
+      "title": "Email outbox",
+      "description": "As the system, I need to send email, and in dev see what would have been sent.",
+      "acceptanceCriteria": [
+        "Mailer interface send({to, subject, text, attachments[{filename, content(Buffer), contentType}]})",
+        "OutboxMailer stores emails + attachments in an outbox table; getMailer() returns it unless SMTP_URL is set",
+        "/outbox (admin/finance only, or any user when NODE_ENV!=production) lists emails and lets you download attachments",
+        "Tests for OutboxMailer",
+        "npm run typecheck && npm run lint && npm test all pass",
+        "Verify in browser: start the dev server and check the page with Playwright (screenshot into scripts/ralph/shots/)"
+      ],
+      "priority": 12,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-013",
+      "title": "Approval workflow",
+      "description": "As a doctor I want to submit a trip for approval, and as a manager I want to approve or reject it.",
+      "acceptanceCriteria": [
+        "Doctor can 'Submit for approval' on a draft trip -> pending_approval; manager gets an outbox email",
+        "/approvals (manager only) lists pending trips in the org with cost and budget remaining; Approve / Reject with comment",
+        "Doctor gets an outbox email with the decision; trip page shows the comment",
+        "Rejected trips can be edited and resubmitted",
+        "npm run typecheck && npm run lint && npm test all pass",
+        "Verify in browser: start the dev server and check the page with Playwright (screenshot into scripts/ralph/shots/)"
+      ],
+      "priority": 13,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-014",
+      "title": "Flight provider",
+      "description": "As the system, I need a flight search interface with a test provider.",
+      "acceptanceCriteria": [
+        "src/providers/flights.ts: FlightProvider { search({from, to, departDate, returnDate}), book(offerId, passenger) }",
+        "MockFlightProvider returns 3 deterministic offers (airline, times, price) and book() returns a booking reference + total",
+        "DuffelFlightProvider skeleton used only when DUFFEL_TOKEN is set (not called in tests)",
+        "Simple city->IATA lookup for the sample cities",
+        "Tests for the mock",
+        "npm run typecheck && npm run lint && npm test all pass"
+      ],
+      "priority": 14,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-015",
+      "title": "Receipts model and generated receipts",
+      "description": "As the system, I need receipts attached to trips, including ones I generate for bookings.",
+      "acceptanceCriteria": [
+        "Migration adds bookings(id, trip_id, kind flight|hotel, provider, reference, details_json, total_cents, currency, created_at) and receipts(id, trip_id, kind, description, amount_cents, currency, file_path, mime_type, source generated|upload|email, created_at)",
+        "src/lib/receipts.ts generateBookingReceipt(booking) writes a one-page PDF (pdf-lib) into data/uploads and inserts a receipt row",
+        "Tests: generated PDF is valid and has 1 page",
+        "npm run typecheck && npm run lint && npm test all pass"
+      ],
+      "priority": 15,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-016",
+      "title": "Book a flight",
+      "description": "As a doctor with an approved trip, I want to pick and book a flight.",
+      "acceptanceCriteria": [
+        "Approved trip page shows 'Find flights' -> list of offers for depart city -> conference city around the dates",
+        "Choosing an offer runs MockPayment then provider.book(); creates a booking + generated receipt; trip status becomes booked",
+        "Booking and receipt shown on the trip page",
+        "Not possible on unapproved trips",
+        "npm run typecheck && npm run lint && npm test all pass",
+        "Verify in browser: start the dev server and check the page with Playwright (screenshot into scripts/ralph/shots/)"
+      ],
+      "priority": 16,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-017",
+      "title": "Book a hotel",
+      "description": "As a doctor, I want to book accommodation near the venue.",
+      "acceptanceCriteria": [
+        "HotelProvider interface + MockHotelProvider: 3 deterministic hotels with distance to venue and nightly price",
+        "'Find hotels' on approved/booked trips; booking creates a booking + generated receipt",
+        "Shown on the trip page with nights and total",
+        "Tests for the mock",
+        "npm run typecheck && npm run lint && npm test all pass",
+        "Verify in browser: start the dev server and check the page with Playwright (screenshot into scripts/ralph/shots/)"
+      ],
+      "priority": 17,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-018",
+      "title": "Upload receipts",
+      "description": "As a doctor, I want to add my own receipts (taxi, meals, registration).",
+      "acceptanceCriteria": [
+        "Trip page has an upload form: file (PDF, JPG, PNG, max 10 MB), description, amount, kind",
+        "Files saved under data/uploads/<trip_id>/; receipt rows source='upload'",
+        "Receipts list with view/download and delete (own uploads only)",
+        "Rejects other file types with a clear message",
+        "npm run typecheck && npm run lint && npm test all pass",
+        "Verify in browser: start the dev server and check the page with Playwright (screenshot into scripts/ralph/shots/)"
+      ],
+      "priority": 18,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-019",
+      "title": "Forward receipts by email",
+      "description": "As a doctor, I want to forward a receipt email to my trip.",
+      "acceptanceCriteria": [
+        "Each trip has an inbound address shown on the page: trip-<shortcode>@in.studyleave.app (shortcode stored on trip via migration)",
+        "POST /api/inbound accepts JSON {to, from, subject, attachments:[{filename, contentType, base64}]} with header x-inbound-secret == INBOUND_SECRET",
+        "Attachments become receipts with source='email' (amount 0, description from subject) when 'from' matches the trip owner's email",
+        "Tests for routing and secret check",
+        "npm run typecheck && npm run lint && npm test all pass"
+      ],
+      "priority": 19,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-020",
+      "title": "Claim form",
+      "description": "As finance, I want the hospital's claim form filled in for me.",
+      "acceptanceCriteria": [
+        "Migration adds orgs.claim_form_json (field list); default template = NSW-style study leave reimbursement fields (employee name, email, conference, dates, location, itemised expenses, total, declaration, date)",
+        "src/claims/form.ts renders the filled form as PDF pages with pdf-lib from trip + receipts",
+        "Tests check the PDF contains the doctor name and the correct total",
+        "npm run typecheck && npm run lint && npm test all pass"
+      ],
+      "priority": 20,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-021",
+      "title": "Claim pack PDF",
+      "description": "As finance, I want ONE PDF with everything.",
+      "acceptanceCriteria": [
+        "src/claims/pack.ts buildClaimPack(tripId) = cover sheet (summary + receipts index) + claim form + every receipt (PDF pages copied, JPG/PNG embedded one per page)",
+        "Trip page has 'Preview claim pack' download",
+        "Test: pack page count == cover + form pages + sum of receipt pages",
+        "npm run typecheck && npm run lint && npm test all pass",
+        "Verify in browser: start the dev server and check the page with Playwright (screenshot into scripts/ralph/shots/)"
+      ],
+      "priority": 21,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-022",
+      "title": "Send the claim",
+      "description": "As a doctor, I want to send my claim to the hospital in one click.",
+      "acceptanceCriteria": [
+        "'Send claim' on booked trips emails the org finance_email with the claim pack attached (filename claim-<conference-slug>-<surname>.pdf) and cc's the doctor",
+        "Trip status -> claimed; budget 'spent' now uses actual receipt totals",
+        "Org admin can edit finance_email on /settings",
+        "Tests for the send action using OutboxMailer",
+        "npm run typecheck && npm run lint && npm test all pass",
+        "Verify in browser: start the dev server and check the page with Playwright (screenshot into scripts/ralph/shots/)"
+      ],
+      "priority": 22,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-023",
+      "title": "Finance view",
+      "description": "As finance, I want to see claims and mark them paid.",
+      "acceptanceCriteria": [
+        "/claims (finance/admin) lists claimed and paid trips with doctor, conference, total, sent date, download pack",
+        "'Mark paid' -> status paid; doctor gets an outbox email",
+        "npm run typecheck && npm run lint && npm test all pass",
+        "Verify in browser: start the dev server and check the page with Playwright (screenshot into scripts/ralph/shots/)"
+      ],
+      "priority": 23,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-024",
+      "title": "North star end-to-end test",
+      "description": "As the owner, I want proof the whole journey works.",
+      "acceptanceCriteria": [
+        "e2e/north-star.spec.ts runs on a fresh temp database with seed: doctor signs up with DEMO2026, searches conferences, plans a trip, submits; manager approves; doctor books flight + hotel, uploads a PNG receipt, sends claim",
+        "Asserts: one outbox email to finance@demo.test with exactly one PDF attachment whose page count equals cover + form + 3 receipts; budget card shows the trip as spent",
+        "npm run e2e passes",
+        "npm run typecheck && npm run lint && npm test all pass"
+      ],
+      "priority": 24,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-025",
+      "title": "Polish and README",
+      "description": "As a new user or developer, I want the app tidy and documented.",
+      "acceptanceCriteria": [
+        "Consistent top nav (Conferences, My trips, Approvals/Claims by role, Dashboard, Log out); works at 375px wide with no horizontal scroll",
+        "README: what it does, quick start (npm i, npm run seed, npm run dev), demo logins, what is mocked and what real services are needed (Duffel, hotel API, Stripe, SMTP, IATA/travel-agent licence notes)",
+        "npm run build and npm run e2e still pass",
+        "npm run typecheck && npm run lint && npm test all pass",
+        "Verify in browser: start the dev server and check the page with Playwright (screenshot into scripts/ralph/shots/)"
+      ],
+      "priority": 25,
+      "passes": false,
+      "notes": ""
+    }
+  ]
+}
