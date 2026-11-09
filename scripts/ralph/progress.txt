@@ -61,6 +61,10 @@ Started: Mon Nov  9 03:21:18 UTC 2026
 - Asserting PDF text in tests: see pdfText() in src/claims/form.test.ts (decodePDFRawStream on page Contents, read `<hex> Tj`; one Tj per drawText, so "Label\nValue\n").
 - Claim pack: src/claims/pack.ts buildClaimPack(tripId, {db, dir, orgId, now}) -> {bytes, pageCount, coverPages, formPages, receiptPages[], data, receipts}; claimPackFilename(slug, name) = claim-<slug>-<surname>.pdf (use it for the US-022 attachment). Missing/unreadable receipt files become one placeholder page each, so page count = cover + form + sum(receiptPages) always. GET /trips/[id]/claim-pack (trip-viewer scoped, builds in memory, writes nothing).
 - pdf-lib's JPEG embedder ignores a Buffer's byteOffset: pass `new Uint8Array(buf)` (unpooled copy) to embedJpg/embedPng/PDFDocument.load, never a small Buffer from Buffer.from()/readFileSync directly.
+- Send claim: src/claims/send.ts sendClaim(tripId, viewer, mailer, {db, dir, now}) (owner + booked + >=1 receipt + org finance_email; throws ClaimError) emails finance ONE pack, cc doctor, THEN (in a transaction) transitions to claimed + inserts a `claims` row (trip_id UNIQUE, to/cc, filename, total_cents, receipt_count, page_count, email_id, sent_at). getClaimForTrip(tripId) gives the sent date / total for US-023. Email failure leaves the trip booked.
+- Mailer supports cc?: string[] (outbox.cc_addr, comma-separated, '' when none; shown on /outbox).
+- /settings (admin only) edits orgs.finance_email via setFinanceEmail/isValidEmail in src/lib/users.ts; nav shows Settings for admins. Dates from timestamps: formatDate(iso) in format.ts.
+- E2E needing its own approver: sign up a NEW hospital (creator = admin, approves when the org has no managers), join it with the shown join-code (see e2e/send-claim.spec.ts).
 ---
 
 ## 2026-11-09 03:25 UTC - US-001
@@ -270,4 +274,14 @@ Started: Mon Nov  9 03:21:18 UTC 2026
   - The form is rendered first (its page count fixes receipt page numbers), then cover pages are inserted at the front with doc.insertPage; coverPageCount(n) predicts cover length so the index can print page numbers.
   - Test that an image really embedded: page.node.Resources().lookup(PDFName.of("XObject"), PDFDict) has a key (placeholders have none).
   - US-022 can call buildClaimPack(tripId, {orgId}) and attach pack.bytes as Buffer.from(pack.bytes).
+---
+
+## 2026-11-09 05:10 UTC - US-022
+- Send claim: trip page "Claim" section (owner, booked, has receipts) with "Send claim" -> finance_email gets one outbox email (cc the doctor) with claim-<slug>-<surname>.pdf; trip -> claimed; notice "Claim sent to X. A copy went to you."; afterwards shows sent-to / date / total / receipt count. Budget spent then = receipt totals (already handled by budget.ts; tested).
+- /settings for org admins: edit finance email (validated, normalised). Outbox shows Cc.
+- Files: src/db/migrations/011_claims.sql, src/claims/send.ts (+ send.test.ts, 6 tests), src/app/claim-actions.ts, src/app/settings-actions.ts, src/app/settings/{page,SettingsForm}.tsx, src/app/trips/[id]/{page,SendClaimForm}.tsx, src/app/layout.tsx, src/app/outbox/page.tsx, src/lib/{mailer,users,format}.ts, format.test.ts, e2e/send-claim.spec.ts, shots US-022-*.png
+- Quality: typecheck, lint, 180 unit tests, build, 20/20 e2e pass.
+- **Learnings for future iterations:**
+  - Send the email before changing status: OutboxMailer opens its own BEGIN on the same db, so it can't run inside another transaction.
+  - US-023 /claims can join trips + claims (sent_at, total_cents, filename) and link the pack via /trips/[id]/claim-pack (or the outbox attachment via claims.email_id).
 ---
