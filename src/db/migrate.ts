@@ -10,7 +10,7 @@ const MIGRATION_FILE = /^(\d{3})_[\w-]+\.sql$/;
 /** Lists migration file names in apply order (by their NNN prefix). */
 export function listMigrations(dir: string = MIGRATIONS_DIR): string[] {
   return fs
-    .readdirSync(dir)
+    .readdirSync(/*turbopackIgnore: true*/ dir)
     .filter((f) => MIGRATION_FILE.test(f))
     .sort();
 }
@@ -31,7 +31,7 @@ export function migrate(db: DatabaseSync, dir: string = MIGRATIONS_DIR): string[
   const applied: string[] = [];
   for (const name of listMigrations(dir)) {
     if (done.has(name)) continue;
-    const sql = fs.readFileSync(path.join(dir, name), "utf8");
+    const sql = fs.readFileSync(path.join(/*turbopackIgnore: true*/ dir, name), "utf8");
     db.exec("BEGIN");
     try {
       db.exec(sql);

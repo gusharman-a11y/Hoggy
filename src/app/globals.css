@@ -9,3 +9,22 @@ body {
 main { max-width: 960px; margin: 0 auto; padding: 24px 16px; }
 h1 { font-size: 2rem; margin: 0 0 8px; }
 a { color: #0b5cad; }
+
+.topnav { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 10px 16px; background: #fff; border-bottom: 1px solid #e3e6eb; }
+.topnav .brand { font-weight: 700; text-decoration: none; color: #1a1f2b; }
+.topnav nav { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.topnav form { margin: 0; }
+button.link { background: none; border: 0; padding: 0; color: #0b5cad; font: inherit; cursor: pointer; text-decoration: underline; }
+main.narrow { max-width: 480px; }
+.form { display: flex; flex-direction: column; gap: 12px; margin: 16px 0; }
+.form label { display: flex; flex-direction: column; gap: 4px; font-weight: 500; }
+.form label.inline { flex-direction: row; align-items: center; gap: 8px; font-weight: 400; }
+.form input:not([type="radio"]) { font: inherit; padding: 8px 10px; border: 1px solid #c4cad3; border-radius: 6px; width: 100%; }
+.form fieldset { border: 1px solid #e3e6eb; border-radius: 8px; display: flex; flex-direction: column; gap: 10px; padding: 12px; }
+.form button[type="submit"] { font: inherit; padding: 10px 14px; border: 0; border-radius: 6px; background: #0b5cad; color: #fff; cursor: pointer; }
+.form button[disabled] { opacity: 0.6; }
+.error { color: #b42318; margin: 0; }
+.notice { background: #e8f3ff; border: 1px solid #b6d8ff; padding: 10px 12px; border-radius: 6px; }
+.facts { display: grid; grid-template-columns: max-content 1fr; gap: 6px 16px; }
+.facts dt { font-weight: 600; }
+.facts dd { margin: 0; }

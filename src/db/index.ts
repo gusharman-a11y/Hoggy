@@ -7,7 +7,7 @@ export const DEFAULT_DB_PATH = path.join(process.cwd(), "data", "app.db");
 
 /** Opens a database (file path or ':memory:'), turns on foreign keys and runs migrations. */
 export function openDb(file: string): DatabaseSync {
-  if (file !== ":memory:") fs.mkdirSync(path.dirname(file), { recursive: true });
+  if (file !== ":memory:") fs.mkdirSync(/*turbopackIgnore: true*/ path.dirname(file), { recursive: true });
   const db = new DatabaseSync(file);
   db.exec("PRAGMA foreign_keys = ON");
   if (file !== ":memory:") db.exec("PRAGMA journal_mode = WAL");
