@@ -159,9 +159,9 @@ export function describeBooking(booking: Pick<Booking, "kind" | "details_json">)
 
 // ---- PDF ----
 
-// Standard PDF fonts only encode WinAnsi; swap anything else so drawText never throws.
+// Standard PDF fonts only encode WinAnsi; pdfSafe swaps anything else so drawText never throws.
 const WIN_ANSI_EXTRA = new Set("€‚ƒ„…†‡ˆ‰Š‹ŒŽ‘’“”•–—˜™š›œžŸ");
-function pdfSafe(s: string): string {
+export function pdfSafe(s: string): string {
   return Array.from(s.normalize("NFC"))
     .map((ch) => {
       const c = ch.codePointAt(0)!;
