@@ -1,5 +1,6 @@
 import { execSync } from "node:child_process";
 import { DatabaseSync } from "node:sqlite";
+import { e2eDbPath } from "./test-env";
 import { expect, test, type Page } from "@playwright/test";
 import { PDFDocument } from "pdf-lib";
 
@@ -102,7 +103,7 @@ test("admin sets the finance email; doctor sends the claim pack; trip claimed an
   await page.screenshot({ path: "scripts/ralph/shots/US-022-claim-sent.png", fullPage: true });
 
   // ONE email to finance, cc the doctor, ONE PDF named claim-<slug>-<surname>.pdf
-  const db = new DatabaseSync("data/app.db");
+  const db = new DatabaseSync(e2eDbPath());
   const emails = db
     .prepare("SELECT id, cc_addr FROM outbox WHERE to_addr = ?")
     .all(financeEmail) as { id: number; cc_addr: string }[];

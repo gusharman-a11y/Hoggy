@@ -1,5 +1,6 @@
 import { execSync } from "node:child_process";
 import { DatabaseSync } from "node:sqlite";
+import { e2eDbPath } from "./test-env";
 import { expect, test, type Page } from "@playwright/test";
 import { PDFDocument } from "pdf-lib";
 
@@ -84,7 +85,7 @@ test("finance sees the sent claim, downloads the pack and marks it paid; the doc
   expect(res.status()).toBe(200);
   expect(res.headers()["content-disposition"]).toContain(`claim-${SLUG}-${id}.pdf`);
   const pdf = await PDFDocument.load(await res.body());
-  const db = new DatabaseSync("data/app.db");
+  const db = new DatabaseSync(e2eDbPath());
   const claim = db.prepare("SELECT page_count FROM claims WHERE trip_id = ?").get(tripId) as { page_count: number };
   db.close();
   expect(pdf.getPageCount()).toBe(claim.page_count);

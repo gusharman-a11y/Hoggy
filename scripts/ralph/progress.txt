@@ -16,11 +16,11 @@ Started: Mon Nov  9 03:21:18 UTC 2026
 - Build: fs calls on dynamic paths need `/*turbopackIgnore: true*/` inside path args or Turbopack traces the whole project; migrations are shipped via outputFileTracingIncludes in next.config.ts. node:sqlite builds fine under Next 16.
 - Conferences: src/lib/conferences.ts searchConferences(filters, db = getDb()) / getConference(slug, db) / conferenceFacets(db) / slugify(); filters q, specialty, country, month (YYYY-MM, overlap), from (YYYY-MM-DD, end_date >= from — use today for "upcoming"). Sample data in src/db/sample-conferences.ts, inserted by seedConferences(db) (INSERT OR IGNORE by slug = slugify(name-year)); tests call seedConferences on :memory:.
 - Ingest: src/ingest/extract.ts extractEvents(html, pageUrl) -> ExtractedConference[] (pure, no I/O); src/ingest/upsert.ts upsertConference(c, source, db)/upsertConferences(list, source, db) dedupe by slugify(name)+start_date, COALESCE so blanks never wipe known values, unique slug gets -2/-3 suffix. Fixtures in src/ingest/__fixtures__ (SAMPLE names, example.org only).
-- E2E runs against data/app.db (not seeded); make specs self-sufficient (unique emails, create a hospital via signup) until US-024 adds a temp DB.
+- E2E runs on a fresh seeded temp DB + uploads dir per run (e2e/test-env.ts prepareE2eEnv, called from playwright.config.ts in the main process; workers + dev server inherit DATABASE_PATH/UPLOADS_DIR; globalTeardown deletes it). Specs that read the DB use `new DatabaseSync(e2eDbPath())`, never "data/app.db". Specs still share one DB per run, so keep using unique emails and filter outbox asserts by a unique name.
 - Ingest runner: src/ingest/runner.ts runIngest({db, fetch, sleep, now, log}) — all I/O injectable; tests pass a fake fetch + fake clock (see runner.test.ts fakeWeb). addSource/listSources for the `sources` table. CLI: `npm run ingest [-- add URL | list]` (scripts/ingest.ts). robots.txt parsing in src/ingest/robots.ts (pure).
 - Pages read URL filters via `searchParams: Promise<Record<string,string|string[]|undefined>>`; normalise in a pure helper (src/lib/conference-query.ts filtersFromParams) so it's unit-testable. Plain `<form method="get">` keeps filters in the URL with no client JS.
 - Dates on screen: formatDateRange()/todayIso() in src/lib/format.ts.
-- E2E specs needing conferences/demo users: `test.beforeAll(() => execSync("npx tsx scripts/seed.ts"))` (idempotent, seeds data/app.db).
+- E2E: the run DB is already seeded (conferences + demo users); old specs still re-run the idempotent seed in beforeAll, which is harmless.
 - README.md exists at repo root (created in US-006); add new operator docs as sections there.
 - Money on screen: formatMoney(cents, currency) in src/lib/format.ts ("AUD 950.00", null -> "TBC"). Primary link-buttons: `<Link className="button">`.
 - "Plan trip" = link to /conferences/[slug]/plan (login-gated page via requireRole([], thatPath), 404 on unknown slug before the auth check). US-010 should make that route create the draft trip and redirect to /trips/[id].
@@ -295,4 +295,15 @@ Started: Mon Nov  9 03:21:18 UTC 2026
   - Sample conference names render with an en dash ("SAMPLE – Paediatrics ..."); assert on a substring without the prefix.
   - A plain <button> outside .form is unstyled: give small action forms their own class (e.g. .mark-paid button).
   - Changing status before emailing is fine when the transition itself is the double-submit guard (claimed->paid happens once).
+---
+
+## 2026-11-09 - US-024
+- e2e/north-star.spec.ts: whole journey through the real UI (sign up with DEMO2026 -> Conferences search -> open -> Plan trip -> save + submit -> manager logs in, Approvals page, Approve -> Find flights/Find hotels book -> PNG taxi upload -> Send claim). Finance logs in and reads /outbox: exactly one email for this doctor, one PDF attachment, downloaded and loaded with pdf-lib = 5 pages (cover + form + 3 receipts); read-only DB cross-check (one outbox row, claims.email_id/page_count/receipt_count/total). Dashboard: committed 0, spent = receipts total, remaining = allowance - spent, trip badge Claimed.
+- Whole e2e suite now runs on a fresh seeded temp DB + uploads dir (e2e/test-env.ts, e2e/global-teardown.ts, playwright.config.ts); finance/outbox/send-claim specs read e2eDbPath().
+- No app bugs found. Full suite 22/22 passed 4 runs in a row (no flake reproduced).
+- Files: e2e/north-star.spec.ts, e2e/test-env.ts, e2e/global-teardown.ts, playwright.config.ts, e2e/{finance,outbox,send-claim,conferences}.spec.ts, scripts/ralph/shots/US-024-*.png
+- **Learnings for future iterations:**
+  - Playwright re-evaluates playwright.config.ts in every worker: guard one-time setup with an env var (E2E_DATA_DIR) so workers reuse the main process's temp DB.
+  - formatMoney renders negatives as "-AUD 12.50": keep the sign when parsing money in specs.
+  - "[browser] A tree hydrated but some attributes ... caret-color" in the e2e log is Playwright's screenshot caret-hiding, not an app bug.
 ---

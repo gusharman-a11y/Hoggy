@@ -1,7 +1,7 @@
 import { execSync } from "node:child_process";
 import { expect, test } from "@playwright/test";
 
-// The e2e DB (data/app.db) isn't seeded by default; the seed is idempotent.
+// The run's temp DB is seeded by playwright.config.ts; re-seeding is idempotent.
 test.beforeAll(() => {
   execSync("npx tsx scripts/seed.ts", { stdio: "ignore" });
 });

@@ -1,16 +1,17 @@
 import { execSync } from "node:child_process";
 import { DatabaseSync } from "node:sqlite";
+import { e2eDbPath } from "./test-env";
 import { expect, test } from "@playwright/test";
 
 test.beforeAll(() => {
-  execSync("npx tsx scripts/seed.ts", { stdio: "ignore" }); // also runs migrations on data/app.db
+  execSync("npx tsx scripts/seed.ts", { stdio: "ignore" }); // idempotent; the run DB is already seeded
 });
 
 const unique = () => `${Date.now()}${Math.floor(Math.random() * 1000)}`;
 
 /** Nothing sends email through the UI yet (US-022 will): put one straight in the outbox. */
 function putInOutbox(subject: string, pdf: Buffer) {
-  const db = new DatabaseSync("data/app.db");
+  const db = new DatabaseSync(e2eDbPath());
   try {
     const id = Number(
       db
