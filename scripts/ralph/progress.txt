@@ -41,6 +41,8 @@ Started: Mon Nov  9 03:21:18 UTC 2026
 - E2E: approve trips via the real UI now (submit on /trips/[id], manager@demo.test clicks Approve on the trip page); the direct-DB approveTrip helper is gone.
 - Flights: src/providers/flights.ts — FlightProvider {search({from,to,departDate,returnDate?}), book(offerId, {name,email})}; getFlightProvider(env) = MockFlightProvider unless DUFFEL_TOKEN (DuffelFlightProvider: search only, book throws). Mock: 3 deterministic AUD offers cheapest first, offer id `mock_FROM_TO_DEPART_RETURN_i` encodes the search so book() is stateless; bad input throws FlightSearchError (user-facing message). City -> IATA: cityToIata() in src/providers/airports.ts (covers all sample cities; 3-letter codes pass through).
 - External-service providers live in src/providers/ (interface + mock + env-gated real class + getXProvider(env) factory); hotels should follow flights.ts.
+- Bookings/receipts: src/lib/receipts.ts — createBooking({tripId, kind flight|hotel, provider, reference, details, totalCents}, db) stores details as details_json; generateBookingReceipt(booking, {db, dir, now}) (async, idempotent per booking via receipts.booking_id) writes <uploads>/<trip_id>/booking-<id>.pdf and inserts a source='generated' receipt. receipts.file_path is RELATIVE to uploadsDir() (UPLOADS_DIR env, default data/uploads); always open files via resolveUploadPath(rel, dir) (blocks ../ escapes). describeBooking() gives plain detail lines (flight: details.offer.{airline,outbound,inbound}, passenger; hotel: details.hotel.name/address, checkIn, checkOut, nights, guest) — store hotel details in that shape. listBookings/listReceipts(tripId, db).
+- pdf-lib standard fonts only encode WinAnsi: run text through a sanitiser (pdfSafe in receipts.ts) before drawText. Tests: PDFDocument.load(bytes).getPageCount(). Unit tests that write files use fs.mkdtempSync(os.tmpdir()) as the uploads dir.
 ---
 
 ## 2026-11-09 03:25 UTC - US-001
@@ -182,4 +184,14 @@ Started: Mon Nov  9 03:21:18 UTC 2026
 - **Learnings for future iterations:**
   - Hash-based determinism: keep hash outputs unsigned (`>>> 0`); XOR-ing a divided value went negative and indexed undefined chars.
   - No UI in this story, so no e2e/build needed; US-016 wires search/book into the trip page.
+---
+
+## 2026-11-09 04:10 UTC - US-015
+- Migration 007_bookings_receipts.sql: bookings + receipts (plus receipts.booking_id link, unique when set; ON DELETE CASCADE from trips). src/lib/receipts.ts: createBooking/getBooking/listBookings, getReceipt/listReceipts, describeBooking, buildBookingReceiptPdf (pure, 1-page A4), generateBookingReceipt, uploadsDir/resolveUploadPath. pdf-lib added.
+- Budget: receipts table now always exists, so budget.ts dropped its hasTable() check; budget.test inserts real receipt rows.
+- Files: src/db/migrations/007_bookings_receipts.sql, src/lib/receipts.ts, src/lib/receipts.test.ts, src/lib/budget.ts, src/lib/budget.test.ts, package.json/lock.
+- **Learnings for future iterations:**
+  - US-016/017: after provider.book(), call createBooking then await generateBookingReceipt(booking) in the server action; then transitionTrip(.., 'booked') for flights on approved trips.
+  - US-018 uploads should use the same <trip_id>/ sub-folder and relative file_path convention; delete should rm the file via resolveUploadPath.
+  - No UI in this story, so no browser check.
 ---
