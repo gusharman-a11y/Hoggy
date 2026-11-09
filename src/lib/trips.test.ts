@@ -96,6 +96,7 @@ describe("trips table", () => {
       "manager_comment",
       "created_at",
       "updated_at",
+      "inbound_code",
     ]);
   });
 

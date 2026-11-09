@@ -42,3 +42,15 @@ What a run does, for each source:
 The runner lives in `src/ingest/runner.ts`; `fetch`, `sleep` and the clock
 are injectable, so tests use a fake web and never touch the network. Uses
 `DATABASE_PATH` or `data/app.db`.
+
+## Receipts by email (inbound webhook)
+
+Each trip shows an address `trip-<code>@in.studyleave.app`. Point your mail
+provider's inbound webhook at `POST /api/inbound` with header
+`x-inbound-secret: $INBOUND_SECRET` and a JSON body
+`{to, from, subject, attachments: [{filename, contentType, base64}]}`.
+PDF/JPG/PNG attachments become receipts (source `email`, amount 0,
+description = subject) only when `from` is the trip owner's email.
+Without `INBOUND_SECRET` set, every request is rejected (401). Replies:
+201 stored, 400 bad JSON, 404 no trip for that sender/address, 409 claim
+already sent, 413 too large, 422 no usable attachments.

@@ -81,12 +81,14 @@ export interface Trip {
   est_other_cents: number;
   currency: string;
   manager_comment: string | null;
+  /** Random code for the trip's inbound email address (trip-<code>@in.studyleave.app). */
+  inbound_code: string;
   created_at: string;
   updated_at: string;
 }
 
 const COLS =
-  "id, org_id, user_id, conference_id, status, depart_city, notes, est_registration_cents, est_flights_cents, est_hotel_cents, est_other_cents, currency, manager_comment, created_at, updated_at";
+  "id, org_id, user_id, conference_id, status, depart_city, notes, est_registration_cents, est_flights_cents, est_hotel_cents, est_other_cents, currency, manager_comment, inbound_code, created_at, updated_at";
 const NOW = "strftime('%Y-%m-%d %H:%M:%f', 'now')";
 
 export function tripEstimateTotal(

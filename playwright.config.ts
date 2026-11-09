@@ -1,4 +1,5 @@
 import { defineConfig } from "@playwright/test";
+import { E2E_INBOUND_SECRET } from "./e2e/inbound-secret";
 
 const PORT = Number(process.env.E2E_PORT ?? 3100);
 
@@ -14,5 +15,6 @@ export default defineConfig({
     url: `http://localhost:${PORT}`,
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,
+    env: { INBOUND_SECRET: E2E_INBOUND_SECRET },
   },
 });

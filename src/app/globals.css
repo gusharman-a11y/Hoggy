@@ -91,3 +91,4 @@ h2 { font-size: 1.3rem; margin: 24px 0 8px; }
 button.link.danger { color: #b42318; }
 .form .field { display: flex; flex-direction: column; gap: 4px; }
 .form .field > label { font-weight: 500; }
+.inbound code { word-break: break-all; background: #f3f5f8; padding: 2px 6px; border-radius: 4px; }

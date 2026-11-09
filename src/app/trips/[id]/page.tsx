@@ -7,6 +7,7 @@ import { canDecideTrip, canSubmitTrip } from "@/lib/approvals";
 import { canBookTravel } from "@/lib/flight-booking";
 import { describeBooking, listBookings, listReceipts } from "@/lib/receipts";
 import { canDeleteReceipt, canUploadReceipt } from "@/lib/receipt-uploads";
+import { inboundAddress } from "@/lib/inbound-email";
 import { deleteReceiptAction } from "../../receipt-actions";
 import DecisionForm from "../../approvals/DecisionForm";
 import SubmitForApproval from "./SubmitForApproval";
@@ -180,6 +181,7 @@ export default async function TripPage({
                 <span>
                   {r.description || r.kind} · {formatMoney(r.amount_cents, r.currency)}
                   {r.source === "upload" && <span className="muted"> · uploaded</span>}
+                  {r.source === "email" && <span className="muted"> · emailed</span>}
                 </span>
                 <span className="receipt-actions">
                   {r.file_path && (
@@ -204,6 +206,12 @@ export default async function TripPage({
               <h3>Add a receipt</h3>
               <p className="muted">Taxis, meals, registration — anything you paid for yourself.</p>
               <UploadReceiptForm tripId={trip.id} />
+              <h3>Or forward it by email</h3>
+              <p className="inbound" data-testid="inbound-address">
+                Forward receipt emails from <strong>your account email</strong> to{" "}
+                <code>{inboundAddress(trip.inbound_code)}</code>
+              </p>
+              <p className="muted">PDF, JPG and PNG attachments are added here, with the email subject as the description and no amount yet.</p>
             </>
           )}
         </>
