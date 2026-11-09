@@ -7,10 +7,11 @@ import { canDecideTrip, canSubmitTrip } from "@/lib/approvals";
 import { canBookTravel } from "@/lib/flight-booking";
 import { describeBooking, formatAbn, listBookings, listReceipts, RECEIPT_STATUS_LABELS } from "@/lib/receipts";
 import { canDeleteReceipt, canEditReceipt, canUploadReceipt } from "@/lib/receipt-uploads";
-import { inboundAddress } from "@/lib/inbound-email";
+import { inboundAddress, personalInboxAddress } from "@/lib/inbound-email";
+import HoggyInbox from "@/components/HoggyInbox";
 import { canSendClaim, getClaimForTrip } from "@/claims/send";
 import { getDb } from "@/db";
-import { getOrg } from "@/lib/users";
+import { getInboxCode, getOrg } from "@/lib/users";
 import { deleteReceiptAction } from "../../receipt-actions";
 import DecisionForm from "../../approvals/DecisionForm";
 import SubmitForApproval from "./SubmitForApproval";
@@ -49,6 +50,7 @@ export default async function TripPage({
   const canClaim = canSendClaim(trip, user) && receipts.length > 0;
   const claim = getClaimForTrip(trip.id);
   const financeEmail = canClaim ? (getOrg(getDb(), trip.org_id)?.finance_email ?? null) : null;
+  const inboxCode = canUpload ? getInboxCode(getDb(), user.id) : undefined;
   const foreignFee = trip.conference_fee_cents != null && trip.conference_currency !== trip.currency;
 
   return (
@@ -284,11 +286,12 @@ export default async function TripPage({
               <p className="muted">Taxis, meals, registration — anything you paid for yourself. Type the details yourself.</p>
               <UploadReceiptForm tripId={trip.id} />
               <h3>Or forward it by email</h3>
+              {inboxCode && <HoggyInbox address={personalInboxAddress(inboxCode)} />}
               <p className="inbound" data-testid="inbound-address">
-                Forward receipt emails from <strong>your account email</strong> to{" "}
+                Want it to land on this trip for sure? Forward from <strong>your account email</strong> to this trip’s own address{" "}
                 <code>{inboundAddress(trip.inbound_code)}</code>
               </p>
-              <p className="muted">PDF, JPG and PNG attachments are added here, with the email subject as the description and no amount yet. Use Edit to add the amount.</p>
+              <p className="muted">Mail to the trip address is added here as it is, with the email subject as the description and no amount yet. Use Edit to add the amount.</p>
             </>
           )}
         </>

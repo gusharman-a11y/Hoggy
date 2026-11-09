@@ -1,9 +1,14 @@
 import Link from "next/link";
 import { getDb } from "@/db";
 import BudgetCard from "@/components/BudgetCard";
+import HoggyInbox from "@/components/HoggyInbox";
+import UnfiledReceipts from "@/components/UnfiledReceipts";
 import { requireRole } from "@/lib/auth";
 import { defaultBudgetYear, getBudget, tripYearsForUser } from "@/lib/budget";
 import { formatDateRange, formatMoney } from "@/lib/format";
+import { personalInboxAddress } from "@/lib/inbound-email";
+import { listUnfiledReceipts } from "@/lib/unfiled-receipts";
+import { getInboxCode } from "@/lib/users";
 import { listTripsForViewer, TRIP_STATUS_LABELS, tripEstimateTotal } from "@/lib/trips";
 import { yearFromParam } from "@/lib/year-param";
 
@@ -25,6 +30,9 @@ export default async function DashboardPage({
   const budget = getBudget(user, year, db);
   const trips = listTripsForViewer(user, db).slice(0, RECENT);
   const isDoctor = user.role === "doctor";
+  const inboxCode = getInboxCode(db, user.id);
+  // Always the viewer's own: unfiled receipts are private to the doctor they were sent by.
+  const unfiled = listUnfiledReceipts(user.id, db);
 
   return (
     <main>
@@ -45,6 +53,8 @@ export default async function DashboardPage({
         </nav>
       )}
       <BudgetCard budget={budget} />
+      {inboxCode && <HoggyInbox address={personalInboxAddress(inboxCode)} />}
+      {(isDoctor || unfiled.length > 0) && <UnfiledReceipts receipts={unfiled} />}
 
       <h2>{isDoctor ? "Recent trips" : "Recent trips in your hospital"}</h2>
       {trips.length === 0 ? (

@@ -117,3 +117,11 @@ label.button.snap-button.is-pending { opacity: 0.7; cursor: progress; }
 .check-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px 12px; }
 .check-grid .error, .check-grid button { grid-column: 1 / -1; }
 .badge-needs_review { background: #fff4d6; color: #7a5300; }
+.hoggy-inbox { background: #fff; border: 1px solid #e3e6eb; border-radius: 8px; padding: 12px 14px; margin: 16px 0; }
+.hoggy-inbox h2 { margin-top: 0; font-size: 1.1rem; }
+.inbox-address { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.inbox-address code { word-break: break-all; background: #f3f5f8; padding: 4px 8px; border-radius: 4px; font-size: 0.95rem; }
+button.copy-button { font: inherit; padding: 4px 12px; border-radius: 6px; border: 1px solid #0b5cad; background: #fff; color: #0b5cad; cursor: pointer; }
+.how-to summary { cursor: pointer; color: #1a5fb4; }
+.how-to ol { margin: 8px 0 0; padding-left: 20px; }
+.unfiled-list { list-style: none; padding: 0; display: grid; gap: 8px; }

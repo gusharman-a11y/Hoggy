@@ -1,18 +1,37 @@
 /**
- * Receipts forwarded by email. Each trip has an address
- * trip-<inbound_code>@in.studyleave.app; the mail provider POSTs each message
- * to /api/inbound as JSON with the shared secret in `x-inbound-secret`.
- * Attachments become receipts (source 'email', amount 0, description = subject)
- * only when the sender is the trip's owner.
+ * Receipts forwarded by email. The mail provider POSTs each message to
+ * /api/inbound as JSON with the shared secret in `x-inbound-secret`. Two kinds of address:
+ * - trip-<inbound_code>@in.studyleave.app: attachments become receipts on that trip
+ *   (source 'email', amount 0, description = subject), only from the trip's owner.
+ * - inbox-<users.inbox_code>@in.studyleave.app (the doctor's personal Hoggy inbox): each
+ *   attachment (or, with none, the body rendered to a one-page PDF) is read by the
+ *   ReceiptReader and matched to one of the doctor's trips (receipt-matching.ts) as a
+ *   needs_review receipt; no clear match -> the doctor's private Unfiled receipts.
+ *   Only accepted from the account's own email address.
  */
 import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import type { DatabaseSync } from "node:sqlite";
 import { getDb } from "@/db";
-import { resolveUploadPath, uploadsDir, type Receipt } from "./receipts";
+import { EMPTY_READING, getReceiptReader, pdfToText, type ReceiptReader, type ReceiptReading } from "@/providers/receipt-reader";
+import { buildEmailReceiptPdf } from "./email-receipt-pdf";
+import { matchTrip } from "./receipt-matching";
+import { receiptKindFromReading } from "./receipt-snap";
+import { SNAP_KIND_LABELS } from "./receipt-upload-kinds";
+import {
+  receiptDetailColumns,
+  ReceiptDetailsError,
+  resolveUploadPath,
+  setReceiptDetails,
+  uploadsDir,
+  type Receipt,
+  type ReceiptDetailsInput,
+} from "./receipts";
 import { detectFileType, MAX_UPLOAD_BYTES, RECEIPT_LOCKED_STATUSES } from "./receipt-uploads";
 import type { TripStatus } from "./trips";
+import type { UnfiledReason } from "./unfiled-receipts";
+import { findUserByInboxCode } from "./users";
 
 export const INBOUND_DOMAIN = "in.studyleave.app";
 export const INBOUND_SECRET_HEADER = "x-inbound-secret";
@@ -37,17 +56,28 @@ export function parseEmailAddress(raw: string): string | undefined {
   return /^[^\s@<>,]+@[^\s@<>,]+$/.test(addr) ? addr : undefined;
 }
 
-const CODE_RE = new RegExp(`^trip-([a-z0-9]{4,32})@${INBOUND_DOMAIN.replace(/\./g, "\\.")}$`);
+const domainRe = INBOUND_DOMAIN.replace(/\./g, "\\.");
+const CODE_RE = new RegExp(`^trip-([a-z0-9]{4,32})@${domainRe}$`);
+const INBOX_RE = new RegExp(`^inbox-([a-z0-9]{4,32})@${domainRe}$`);
 
-/** Trip codes addressed in a To header (may list several recipients). */
-export function inboundCodesFrom(to: string): string[] {
+function codesFrom(to: string, re: RegExp): string[] {
   const codes: string[] = [];
   for (const part of to.split(/[,;]/)) {
     const addr = parseEmailAddress(part);
-    const m = addr?.match(CODE_RE);
+    const m = addr?.match(re);
     if (m && !codes.includes(m[1])) codes.push(m[1]);
   }
   return codes;
+}
+
+/** Trip codes addressed in a To header (may list several recipients). */
+export function inboundCodesFrom(to: string): string[] {
+  return codesFrom(to, CODE_RE);
+}
+
+/** Personal inbox codes addressed in a To header. */
+export function inboxCodesFrom(to: string): string[] {
+  return codesFrom(to, INBOX_RE);
 }
 
 /**
@@ -71,6 +101,8 @@ export interface InboundEmail {
   to: string;
   from: string;
   subject: string;
+  /** Plain-text body (optional). Read for details; rendered to a PDF when there are no attachments. */
+  text?: string;
   attachments: InboundAttachment[];
 }
 
@@ -83,6 +115,8 @@ export function parseInboundPayload(body: unknown): InboundEmail | undefined {
   if (!isStr(b.to) || !isStr(b.from)) return undefined;
   const subject = b.subject === undefined || b.subject === null ? "" : b.subject;
   if (!isStr(subject)) return undefined;
+  const text = b.text === undefined || b.text === null ? undefined : b.text;
+  if (text !== undefined && !isStr(text)) return undefined;
   const list = b.attachments ?? [];
   if (!Array.isArray(list)) return undefined;
   const attachments: InboundAttachment[] = [];
@@ -96,7 +130,7 @@ export function parseInboundPayload(body: unknown): InboundEmail | undefined {
       base64,
     });
   }
-  return { to: b.to, from: b.from, subject, attachments };
+  return { to: b.to, from: b.from, subject, ...(text !== undefined ? { text } : {}), attachments };
 }
 
 export type InboundOutcome =
@@ -128,6 +162,39 @@ function describe(subject: string): string {
   return s.slice(0, 200) || "Emailed receipt";
 }
 
+interface InboundFile {
+  name: string;
+  bytes: Buffer;
+  mime: string;
+  ext: string;
+}
+
+/** Decodes and checks attachments (PDF/JPG/PNG by magic bytes, 10 MB each, at most 10). */
+function collectAttachments(attachments: InboundAttachment[]): { files: InboundFile[]; skipped: string[] } {
+  const skipped: string[] = [];
+  const files: InboundFile[] = [];
+  for (const a of attachments.slice(0, MAX_INBOUND_ATTACHMENTS)) {
+    const name = cleanName(a.filename);
+    const bytes = decodeBase64(a.base64);
+    if (!bytes || bytes.length === 0) {
+      skipped.push(`${name}: empty or not base64`);
+      continue;
+    }
+    if (bytes.length > MAX_UPLOAD_BYTES) {
+      skipped.push(`${name}: over 10 MB`);
+      continue;
+    }
+    const type = detectFileType(bytes);
+    if (!type) {
+      skipped.push(`${name}: not a PDF, JPG or PNG`);
+      continue;
+    }
+    files.push({ name, bytes, mime: type.mime, ext: type.ext });
+  }
+  for (const a of attachments.slice(MAX_INBOUND_ATTACHMENTS)) skipped.push(`${cleanName(a.filename)}: too many attachments`);
+  return { files, skipped };
+}
+
 /** Routes one inbound email to its trip and stores the attachments as receipts. */
 export function receiveInboundEmail(email: InboundEmail, opts: InboundOptions = {}): InboundOutcome {
   const db = opts.db ?? getDb();
@@ -155,27 +222,7 @@ export function receiveInboundEmail(email: InboundEmail, opts: InboundOptions = 
     return { ok: false, status: 409, error: "This trip's claim has been sent; receipts are locked" };
   }
 
-  const skipped: string[] = [];
-  const files: { name: string; bytes: Buffer; mime: string; ext: string }[] = [];
-  for (const a of email.attachments.slice(0, MAX_INBOUND_ATTACHMENTS)) {
-    const name = cleanName(a.filename);
-    const bytes = decodeBase64(a.base64);
-    if (!bytes || bytes.length === 0) {
-      skipped.push(`${name}: empty or not base64`);
-      continue;
-    }
-    if (bytes.length > MAX_UPLOAD_BYTES) {
-      skipped.push(`${name}: over 10 MB`);
-      continue;
-    }
-    const type = detectFileType(bytes);
-    if (!type) {
-      skipped.push(`${name}: not a PDF, JPG or PNG`);
-      continue;
-    }
-    files.push({ name, bytes, mime: type.mime, ext: type.ext });
-  }
-  for (const a of email.attachments.slice(MAX_INBOUND_ATTACHMENTS)) skipped.push(`${cleanName(a.filename)}: too many attachments`);
+  const { files, skipped } = collectAttachments(email.attachments);
   if (files.length === 0) return { ok: false, status: 422, error: "No PDF, JPG or PNG attachments" };
 
   const dir = opts.dir ?? uploadsDir();
@@ -205,7 +252,157 @@ export function receiveInboundEmail(email: InboundEmail, opts: InboundOptions = 
   return { ok: true, tripId: trip.id, receipts, skipped };
 }
 
-export interface InboundHandlerOptions extends InboundOptions {
+export interface InboxOptions extends InboundOptions {
+  reader?: ReceiptReader;
+}
+
+export interface InboxFiled {
+  tripId: number;
+  receipt: Receipt;
+}
+
+export interface InboxUnfiled {
+  id: number;
+  description: string;
+  reason: UnfiledReason;
+}
+
+export type InboxOutcome =
+  | { ok: true; userId: number; filed: InboxFiled[]; unfiled: InboxUnfiled[]; skipped: string[] }
+  | { ok: false; status: 404 | 422; error: string };
+
+/** Details to store from a reading; drops anything the receipt columns would reject. */
+function detailsFromReading(reading: ReceiptReading): ReceiptDetailsInput {
+  const input: ReceiptDetailsInput = {
+    supplierName: reading.supplierName,
+    supplierAbn: reading.supplierAbn,
+    gstCents: reading.gstCents,
+    receiptDate: reading.date,
+    isTaxInvoice: reading.isTaxInvoice,
+    extraction: reading,
+  };
+  for (const k of ["supplierAbn", "gstCents", "receiptDate"] as const) {
+    try {
+      receiptDetailColumns({ [k]: input[k] });
+    } catch (e) {
+      if (!(e instanceof ReceiptDetailsError)) throw e;
+      input[k] = null;
+    }
+  }
+  return input;
+}
+
+/**
+ * Mail to a doctor's personal inbox. Reads every attachment (or the body, when there are
+ * none), matches each to one of the doctor's trips and saves it as a needs_review receipt
+ * there, or as an unfiled receipt only that doctor can see.
+ */
+export async function receiveInboxEmail(email: InboundEmail, opts: InboxOptions = {}): Promise<InboxOutcome> {
+  const db = opts.db ?? getDb();
+  const sender = parseEmailAddress(email.from);
+  let user: { id: number; org_id: number | null } | undefined;
+  for (const code of inboxCodesFrom(email.to)) {
+    const u = findUserByInboxCode(db, code);
+    // Same answer for "no such inbox" and "not your inbox" so addresses can't be probed.
+    if (u && sender && u.email.toLowerCase() === sender) {
+      user = u;
+      break;
+    }
+  }
+  if (!user) return { ok: false, status: 404, error: "No inbox for this sender at that address" };
+
+  const body = (email.text ?? "").slice(0, 100_000);
+  let files: InboundFile[];
+  let skipped: string[];
+  if (email.attachments.length > 0) {
+    ({ files, skipped } = collectAttachments(email.attachments));
+    if (files.length === 0) return { ok: false, status: 422, error: "No PDF, JPG or PNG attachments" };
+  } else {
+    if (!body.trim()) return { ok: false, status: 422, error: "Nothing to read: no attachment and an empty email" };
+    const pdf = await buildEmailReceiptPdf({ from: email.from, subject: email.subject, text: body });
+    files = [{ name: "email.pdf", bytes: Buffer.from(pdf), mime: "application/pdf", ext: "pdf" }];
+    skipped = [];
+  }
+
+  // Read everything first (async), then write in one transaction with no awaits inside.
+  const reader = opts.reader ?? getReceiptReader();
+  const emailText = `Subject: ${email.subject}\n\n${body}`.trim();
+  const subject = describe(email.subject);
+  const plans: { file: InboundFile; reading: ReceiptReading; match: ReturnType<typeof matchTrip> }[] = [];
+  for (const file of files) {
+    let reading: ReceiptReading;
+    try {
+      reading = await reader.read({ bytes: file.bytes, mimeType: file.mime, emailText });
+    } catch (err) {
+      // A failed read must not lose the receipt; the doctor fills it in on review.
+      console.error("Receipt reader failed:", err instanceof Error ? err.message : err);
+      reading = { ...EMPTY_READING };
+    }
+    const fileText = file.mime === "application/pdf" ? await pdfToText(file.bytes) : "";
+    const match = matchTrip(user, {
+      date: reading.date,
+      kind: reading.kind,
+      supplierName: reading.supplierName,
+      text: `${email.subject}\n${body}\n${fileText}\n${file.name}`,
+    }, db);
+    plans.push({ file, reading, match });
+  }
+
+  const dir = opts.dir ?? uploadsDir();
+  const written: string[] = [];
+  const filed: InboxFiled[] = [];
+  const unfiled: InboxUnfiled[] = [];
+  const store = (folder: string, prefix: string, f: InboundFile) => {
+    const rel = path.posix.join(folder, `${prefix}-${crypto.randomBytes(8).toString("hex")}.${f.ext}`);
+    const full = resolveUploadPath(rel, dir);
+    fs.mkdirSync(/*turbopackIgnore: true*/ path.dirname(full), { recursive: true });
+    fs.writeFileSync(/*turbopackIgnore: true*/ full, f.bytes);
+    written.push(full);
+    return rel;
+  };
+  db.exec("BEGIN");
+  try {
+    for (const { file, reading, match } of plans) {
+      const kind = receiptKindFromReading(reading.kind);
+      const description = reading.supplierName ?? (subject !== "Emailed receipt" ? subject : SNAP_KIND_LABELS[kind]);
+      const details = detailsFromReading(reading);
+      if (match.kind === "matched") {
+        const trip = db.prepare("SELECT id, currency FROM trips WHERE id = ?").get(match.tripId) as { id: number; currency: string };
+        const rel = store(String(trip.id), "email", file);
+        const row = db
+          .prepare(
+            `INSERT INTO receipts (trip_id, kind, description, amount_cents, currency, file_path, mime_type, source, uploaded_by, original_name, status)
+             VALUES (?, ?, ?, ?, ?, ?, ?, 'email', ?, ?, 'needs_review') RETURNING id`,
+          )
+          .get(trip.id, kind, description, reading.totalCents ?? 0, trip.currency, rel, file.mime, user.id, file.name) as { id: number };
+        const receipt = setReceiptDetails(row.id, { ...details, status: "needs_review" }, db) as Receipt;
+        filed.push({ tripId: trip.id, receipt });
+      } else {
+        const rel = store(path.posix.join("unfiled", String(user.id)), "inbox", file);
+        const cols = receiptDetailColumns(details);
+        const keys = Object.keys(cols);
+        const reason: UnfiledReason = match.kind === "ambiguous" ? "ambiguous" : "no_match";
+        const row = db
+          .prepare(
+            `INSERT INTO unfiled_receipts (user_id, kind, description, amount_cents, file_path, mime_type, original_name, email_subject, reason${keys.map((k) => `, ${k}`).join("")})
+             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?${keys.map(() => ", ?").join("")}) RETURNING id`,
+          )
+          .get(user.id, kind, description, reading.totalCents ?? 0, rel, file.mime, file.name, email.subject.slice(0, 300), reason, ...keys.map((k) => cols[k])) as {
+          id: number;
+        };
+        unfiled.push({ id: row.id, description, reason });
+      }
+    }
+    db.exec("COMMIT");
+  } catch (e) {
+    if (db.isTransaction) db.exec("ROLLBACK");
+    for (const full of written) fs.rmSync(/*turbopackIgnore: true*/ full, { force: true });
+    throw e;
+  }
+  return { ok: true, userId: user.id, filed, unfiled, skipped };
+}
+
+export interface InboundHandlerOptions extends InboxOptions {
   /** The configured INBOUND_SECRET. Unset rejects every request. */
   secret: string | undefined;
 }
@@ -237,11 +434,26 @@ export async function handleInboundRequest(req: Request, opts: InboundHandlerOpt
   const email = parseInboundPayload(body);
   if (!email) return json(400, { error: "Expected {to, from, subject, attachments:[{filename, contentType, base64}]}" });
 
-  const result = receiveInboundEmail(email, opts);
-  if (!result.ok) return json(result.status, { error: result.error });
+  // trip-<code> addresses first (they name the trip), then the personal inbox-<code>.
+  const hasTrip = inboundCodesFrom(email.to).length > 0;
+  const hasInbox = inboxCodesFrom(email.to).length > 0;
+  if (!hasTrip && !hasInbox) return json(404, { error: "No StudyLeave address in 'to'" });
+  if (hasTrip) {
+    const result = receiveInboundEmail(email, opts);
+    if (result.ok) {
+      return json(201, {
+        tripId: result.tripId,
+        receipts: result.receipts.map((r) => ({ id: r.id, description: r.description, filename: r.original_name })),
+        skipped: result.skipped,
+      });
+    }
+    if (!hasInbox || result.status !== 404) return json(result.status, { error: result.error });
+  }
+  const inbox = await receiveInboxEmail(email, opts);
+  if (!inbox.ok) return json(inbox.status, { error: inbox.error });
   return json(201, {
-    tripId: result.tripId,
-    receipts: result.receipts.map((r) => ({ id: r.id, description: r.description, filename: r.original_name })),
-    skipped: result.skipped,
+    filed: inbox.filed.map((f) => ({ tripId: f.tripId, receiptId: f.receipt.id, description: f.receipt.description })),
+    unfiled: inbox.unfiled,
+    skipped: inbox.skipped,
   });
 }

@@ -180,3 +180,17 @@ description = subject; the doctor edits the amount on the trip page) only when `
 Without `INBOUND_SECRET` set, every request is rejected (401). Replies:
 201 stored, 400 bad JSON, 404 no trip for that sender/address, 409 claim
 already sent, 413 too large, 422 no usable attachments.
+
+### Personal Hoggy inbox
+
+Every user also has one personal address `inbox-<code>@in.studyleave.app`
+(shown with a Copy button on the dashboard and trip pages). Same webhook,
+same secret; the body may add an optional `text` (plain-text email body).
+Only mail whose `from` is the account's own email is accepted (else 404).
+Each PDF/JPG/PNG attachment — or, with no attachment, the body rendered to a
+one-page PDF — is read by the `ReceiptReader` and matched to one of the
+doctor's open trips (`src/lib/receipt-matching.ts`: receipt date within the
+conference dates ±1 day, or from 30 days before for flights/hotels/registration;
+city/venue/conference name as a tie-breaker). Matched → a `needs_review`
+receipt on that trip. No match or a tie → the doctor's private Unfiled
+receipts (dashboard). Reply 201 `{filed:[...], unfiled:[...], skipped:[...]}`.
