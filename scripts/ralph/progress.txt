@@ -47,6 +47,8 @@ Started: Mon Nov  9 03:21:18 UTC 2026
 - Booking travel: src/lib/flight-booking.ts — canBookTravel(trip, viewer) (owner + BOOKABLE_STATUSES approved|booked) / bookFlightForTrip(tripId, query, offerId, viewer, {flights, payment, db, dir}) re-runs the search to find the offer (never trust a posted price), charges, books, createBooking + generateBookingReceipt, approved -> booked; throws BookingError (user-facing). Hotels (US-017) should mirror it and reuse canBookTravel/addDays. Search page = GET /trips/[id]/flights (read-only provider search), each offer has its own small server-action form with the search in hidden fields.
 - Trip page has Bookings (data-testid booking-<kind>) and Receipts (data-testid receipt, "View" -> GET /trips/[id]/receipts/[receiptId], trip-viewer scoped, inline). Post-action flash: redirect to /trips/[id]?booked=flight and render a role=status notice.
 - openDb sets PRAGMA busy_timeout=5000: parallel e2e workers each run the seed against data/app.db while the dev server writes.
+- Hotels: src/providers/hotels.ts — HotelProvider {search({city, venue?, checkIn, checkOut}), book(offerId, {name,email})}; getHotelProvider(env) = MockHotelProvider unless EXPEDIA_RAPID_KEY (stub, throws). Mock: 3 deterministic AUD hotels closest-to-venue first, id `mockhotel_<encodedCity>_IN_OUT_i`, reference `H-XXXXXX`; HotelSearchError for bad input; nightsBetween(). src/lib/hotel-booking.ts bookHotelForTrip/defaultHotelSearch (conference city, day before -> day after) reuses BookingError/canBookTravel/addDays from flight-booking.ts. Page /trips/[id]/hotels, action bookHotelAction in booking-actions.ts -> /trips/[id]?booked=hotel.
+- TripDetail includes conference_venue (nullable).
 ---
 
 ## 2026-11-09 03:25 UTC - US-001
@@ -207,4 +209,13 @@ Started: Mon Nov  9 03:21:18 UTC 2026
   - First full e2e run failed once with the seed's "database is locked" (2 workers seeding at once); busy_timeout fixed it.
   - Unapproved trips: no Find flights link, /flights shows an error and no offers, bookFlightForTrip throws.
   - US-018 can reuse the receipt View route for uploads; npm run build passes.
+---
+
+## 2026-11-09 04:25 UTC - US-017
+- Hotel booking: HotelProvider + MockHotelProvider (3 deterministic hotels, distance to venue, nightly price, total = nightly x nights), ExpediaRapid stub behind EXPEDIA_RAPID_KEY; bookHotelForTrip (re-search, charge, book, booking + generated receipt, approved -> booked); /trips/[id]/hotels search page with per-offer book forms; trip page "Find hotels" link + "Hotel booked" flash; booking shows hotel, address, distance, stay, nights, total.
+- Files: src/providers/hotels.ts(+test), src/lib/hotel-booking.ts(+test), src/app/trips/[id]/hotels/{page,BookHotelButton}.tsx, src/app/booking-actions.ts, src/app/trips/[id]/page.tsx, src/lib/receipts.ts (distance line), src/lib/trips.ts (conference_venue), e2e/hotels.spec.ts, shots US-017-*.png
+- Quality: typecheck, lint, 140 unit tests, build, 16/16 e2e pass.
+- **Learnings for future iterations:**
+  - describeBooking already handled hotel details in the {hotel, checkIn, checkOut, nights, guest} shape — storing that shape gave nights on the trip page and PDF receipt for free.
+  - Both search pages share the .flight-search / .offers CSS; reuse them for any new provider search page.
 ---
