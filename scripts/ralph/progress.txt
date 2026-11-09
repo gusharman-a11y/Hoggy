@@ -57,6 +57,8 @@ Started: Mon Nov  9 03:21:18 UTC 2026
 - trips.inbound_code (migration 009) is filled by an AFTER INSERT trigger, so every insert path gets one; address = inboundAddress(code). Adding a trips column means updating the PRAGMA column list in src/lib/trips.test.ts and COLS in trips.ts.
 - Dev-server env for e2e goes in playwright.config.ts webServer.env (e.g. INBOUND_SECRET from e2e/inbound-secret.ts). A reused non-CI server won't have it, so run e2e with CI=1.
 - A full e2e run rewrites every story's screenshot: before committing, `git checkout -- scripts/ralph/shots/` for shots that aren't your story's.
+- Claim form: src/claims/form.ts — loadClaimForm(tripId, {db, orgId?, now}) -> {data, template, receipts}; renderClaimForm(doc, data, template) draws onto an EXISTING PDFDocument and returns pages added (use it inside the claim pack); buildClaimFormPdf(data, template) standalone. Template = orgs.claim_form_json (migration 010, NOT NULL default = DEFAULT_CLAIM_FORM, a test keeps them equal); parseClaimTemplate() falls back to the default on bad JSON; unknown field keys print as blank lines. Total = claimTotalCents(receipts) (sum of every receipt). pdfSafe is exported from src/lib/receipts.ts.
+- Asserting PDF text in tests: see pdfText() in src/claims/form.test.ts (decodePDFRawStream on page Contents, read `<hex> Tj`; one Tj per drawText, so "Label\nValue\n").
 ---
 
 ## 2026-11-09 03:25 UTC - US-001
@@ -245,4 +247,14 @@ Started: Mon Nov  9 03:21:18 UTC 2026
   - Keep webhook handlers as a pure function taking (Request, deps); route.ts is a one-liner.
   - Emailed receipts have amount 0; the claim form (US-020) may want a way to set amounts or flag them.
   - The full e2e run (18 tests) passes; `npm run build` lists /api/inbound as a dynamic route.
+---
+
+## 2026-11-09 04:40 UTC - US-020
+- Claim form: migration 010 adds orgs.claim_form_json (default NSW-style template: employee name, email, organisation, conference, dates, location, itemised expenses, total, declaration + signature line, date). src/claims/form.ts loads trip + doctor + org + receipts and renders the filled form with pdf-lib (A4, expenses table flows onto "(continued)" pages; custom org templates supported, unknown keys = blank line to fill by hand).
+- Files: src/db/migrations/010_claim_form.sql, src/claims/form.ts, src/claims/form.test.ts (6 tests), src/lib/receipts.ts (export pdfSafe), src/db/db.test.ts (orgs column list).
+- Quality: typecheck, lint, 168 unit tests pass. No UI in this story, so no browser check / e2e.
+- **Learnings for future iterations:**
+  - US-021 pack: create one PDFDocument, draw the cover, then `await renderClaimForm(doc, data, template)` (returns its page count for the page-count test), then copy receipt pages.
+  - Emailed receipts have amount 0, so they show as AUD 0.00 lines on the form until amounts can be edited (US-025).
+  - The pdfText helper only reads hex Tj strings (what pdf-lib writes for standard fonts); it won't read text from uploaded third-party PDFs.
 ---
