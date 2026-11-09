@@ -374,7 +374,7 @@
         "The full e2e suite passes 3 runs in a row (fix any flaky spec found, e.g. the toHaveText flake seen during US-021)"
       ],
       "priority": 24,
-      "passes": false,
+      "passes": true,
       "notes": ""
     },
     {
