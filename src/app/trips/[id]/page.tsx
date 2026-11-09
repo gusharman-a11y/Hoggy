@@ -4,14 +4,23 @@ import { requireRole } from "@/lib/auth";
 import { centsToInput, formatDateRange, formatMoney } from "@/lib/format";
 import { canEditTrip, getTripForViewer, TRIP_STATUS_LABELS, tripEstimateTotal } from "@/lib/trips";
 import { canDecideTrip, canSubmitTrip } from "@/lib/approvals";
+import { canBookTravel } from "@/lib/flight-booking";
+import { describeBooking, listBookings, listReceipts } from "@/lib/receipts";
 import DecisionForm from "../../approvals/DecisionForm";
 import SubmitForApproval from "./SubmitForApproval";
 import TripForm from "./TripForm";
 
 export const metadata = { title: "Trip · StudyLeave" };
 
-export default async function TripPage({ params }: { params: Promise<{ id: string }> }) {
+export default async function TripPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ id: string }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}) {
   const { id } = await params;
+  const { booked } = await searchParams;
   const user = await requireRole([], `/trips/${id}`);
   const tripId = Number(id);
   // Not found and not allowed look the same, so trip ids from other orgs/doctors don't leak.
@@ -20,6 +29,9 @@ export default async function TripPage({ params }: { params: Promise<{ id: strin
 
   const editable = canEditTrip(trip, user);
   const total = tripEstimateTotal(trip);
+  const bookings = listBookings(trip.id);
+  const receipts = listReceipts(trip.id);
+  const canBook = canBookTravel(trip, user);
   const foreignFee = trip.conference_fee_cents != null && trip.conference_currency !== trip.currency;
 
   return (
@@ -34,6 +46,11 @@ export default async function TripPage({ params }: { params: Promise<{ id: strin
         </span>
         {trip.user_id !== user.id && <span className="muted"> · {trip.owner_name}</span>}
       </p>
+      {booked === "flight" && (
+        <p role="status" className="notice">
+          Flight booked. The receipt has been added to this trip.
+        </p>
+      )}
 
       <dl className="facts" data-testid="trip-conference">
         <dt>Conference</dt>
@@ -98,6 +115,52 @@ export default async function TripPage({ params }: { params: Promise<{ id: strin
         <>
           <h2>Decision</h2>
           <DecisionForm tripId={trip.id} label={trip.owner_name} from="trip" />
+        </>
+      )}
+
+      {(canBook || bookings.length > 0) && (
+        <>
+          <h2>Bookings</h2>
+          {bookings.length === 0 && <p className="muted">Nothing booked yet.</p>}
+          <ul className="bookings" data-testid="bookings">
+            {bookings.map((b) => (
+              <li key={b.id} data-testid={`booking-${b.kind}`}>
+                <strong>{b.kind === "flight" ? "Flight" : "Hotel"}</strong> · ref{" "}
+                <span data-testid="booking-reference">{b.reference}</span> · {formatMoney(b.total_cents, b.currency)}
+                {describeBooking(b).map((l) => (
+                  <div key={l} className="muted">
+                    {l}
+                  </div>
+                ))}
+              </li>
+            ))}
+          </ul>
+          {canBook && (
+            <p>
+              <Link className="button" href={`/trips/${trip.id}/flights`}>
+                Find flights
+              </Link>
+            </p>
+          )}
+        </>
+      )}
+
+      {receipts.length > 0 && (
+        <>
+          <h2>Receipts</h2>
+          <ul className="receipts" data-testid="receipts">
+            {receipts.map((r) => (
+              <li key={r.id} data-testid="receipt">
+                {r.description || r.kind} · {formatMoney(r.amount_cents, r.currency)}
+                {r.file_path && (
+                  <>
+                    {" "}
+                    · <a href={`/trips/${trip.id}/receipts/${r.id}`}>View</a>
+                  </>
+                )}
+              </li>
+            ))}
+          </ul>
         </>
       )}
     </main>

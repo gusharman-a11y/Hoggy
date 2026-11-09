@@ -10,6 +10,8 @@ export function openDb(file: string): DatabaseSync {
   if (file !== ":memory:") fs.mkdirSync(/*turbopackIgnore: true*/ path.dirname(file), { recursive: true });
   const db = new DatabaseSync(file);
   db.exec("PRAGMA foreign_keys = ON");
+  // Wait (rather than fail with "database is locked") when the dev server and a seed/e2e run write at once.
+  db.exec("PRAGMA busy_timeout = 5000");
   if (file !== ":memory:") db.exec("PRAGMA journal_mode = WAL");
   migrate(db);
   return db;

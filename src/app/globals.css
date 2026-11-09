@@ -80,3 +80,7 @@ h2 { font-size: 1.3rem; margin: 24px 0 8px; }
 .decision-form { margin-top: 10px; }
 .decision-buttons { display: flex; gap: 8px; }
 .form button.danger, .form button[type="submit"].danger { background: #b42318; }
+.offers, .bookings, .receipts { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.offer, .bookings li, .receipts li { border: 1px solid #e3e6eb; border-radius: 8px; padding: 10px 12px; overflow-wrap: anywhere; }
+.offer p { margin: 0 0 4px; }
+.form.book-offer { margin: 8px 0 0; }
