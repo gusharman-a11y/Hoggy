@@ -33,6 +33,9 @@ Started: Mon Nov  9 03:21:18 UTC 2026
 - Budgets: src/lib/budget.ts — calculateBudget(year, allowance, trips) is the pure rule (committed = approved/booked estimates; spent = claimed/paid receipt totals, estimate if none; pending shown but not deducted); getBudget(user, year, db) / teamBudgets(orgId, year) / setAllowance. Year = conference start year. Allowance = budgets row for (user, year) else orgs.default_allowance_cents (demo org 300000). Spent auto-switches to receipts when a `receipts` table with trip_id/amount_cents exists. Shared <BudgetCard budget> in src/components/.
 - ?year= params: yearFromParam() in src/lib/year-param.ts. Adding a column to orgs/users/sessions means updating the column list assertion in src/db/db.test.ts.
 - E2E needing a status the UI can't reach yet: open data/app.db with node:sqlite DatabaseSync in the spec and UPDATE it (see e2e/budget.spec.ts approveTrip); remove once the real UI exists.
+- Mail: src/lib/mailer.ts — Mailer.send({to, subject, text, attachments[{filename, content: Buffer, contentType}], orgId?}); getMailer(env?, db?) = OutboxMailer (outbox + outbox_attachments tables, BLOB content) unless SMTP_URL (SmtpMailer stub, throws). Always pass orgId for hospital emails so production finance/admin see them. listOutbox({orgId, to}) for tests/e2e asserts; outboxScope(user, NODE_ENV) is the /outbox + download access rule (dev: any logged-in user sees all).
+- File downloads = route handler (src/app/outbox/attachments/[id]/route.ts pattern): getCurrentUser() + scope check, Content-Disposition with ascii filename + filename*=UTF-8.
+- E2E download check: page.request.get(href) shares the page's cookies; compare Buffer bytes.
 ---
 
 ## 2026-11-09 03:25 UTC - US-001
@@ -147,4 +150,14 @@ Started: Mon Nov  9 03:21:18 UTC 2026
   - US-013 /approvals "budget remaining": getBudget({id: trip.user_id, org_id}, tripYear(trip.conference_start))
   - US-022: spent already reads receipts.amount_cents per trip; nothing to rewire beyond the receipts table existing
   - npm run build passes with /dashboard and /team
+---
+
+## 2026-11-09 04:00 UTC - US-012
+- Migration 006_outbox.sql (outbox: org_id, to_addr, subject, body_text, created_at; outbox_attachments: filename, content_type, size_bytes, content BLOB, ON DELETE CASCADE)
+- src/lib/mailer.ts: Mailer interface, OutboxMailer (transactional insert), SmtpMailer stub, getMailer(), outboxScope(), listOutbox(), getOutboxAttachment(); /outbox page + /outbox/attachments/[id] download route; Outbox nav link when allowed
+- Files: src/db/migrations/006_outbox.sql, src/lib/mailer{,.test}.ts, src/app/outbox/page.tsx, src/app/outbox/attachments/[id]/route.ts, src/app/{layout.tsx,globals.css}, e2e/outbox.spec.ts, shots US-012-outbox.png
+- **Learnings for future iterations:**
+  - node:sqlite BLOBs come back as Uint8Array; wrap with Buffer.from() and insert as new Uint8Array(buf)
+  - Running e2e re-renders older screenshots; git checkout them unless the story changed those pages
+  - US-022 finance assert: listOutbox({to: org finance_email}) or open /outbox as finance@demo.test; npm run build passes
 ---
