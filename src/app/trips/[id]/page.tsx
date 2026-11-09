@@ -246,6 +246,7 @@ export default async function TripPage({
               Sent to <strong>{claim.to_addr}</strong> on {formatDate(claim.sent_at)} ·{" "}
               {formatMoney(claim.total_cents, claim.currency)} · {claim.receipt_count}{" "}
               {claim.receipt_count === 1 ? "receipt" : "receipts"}
+              {claim.paid_at && <> · paid on {formatDate(claim.paid_at)}</>}
             </p>
           ) : (
             <SendClaimForm tripId={trip.id} financeEmail={financeEmail} />

@@ -32,6 +32,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                     <Link href="/team">Team</Link>
                   </>
                 )}
+                {(user.role === "finance" || user.role === "admin") && <Link href="/claims">Claims</Link>}
                 {user.role === "admin" && <Link href="/settings">Settings</Link>}
                 {outboxScope(user) && <Link href="/outbox">Outbox</Link>}
                 <Link href="/account">{user.name}</Link>

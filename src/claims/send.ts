@@ -37,6 +37,9 @@ export interface Claim {
   page_count: number;
   email_id: number | null;
   sent_at: string;
+  /** Set when finance marks the claim paid (US-023). */
+  paid_at: string | null;
+  paid_by: number | null;
 }
 
 /** Only the trip's owner sends its claim, and only once it is booked. */
