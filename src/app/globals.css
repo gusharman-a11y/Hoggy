@@ -28,3 +28,14 @@ main.narrow { max-width: 480px; }
 .facts { display: grid; grid-template-columns: max-content 1fr; gap: 6px 16px; }
 .facts dt { font-weight: 600; }
 .facts dd { margin: 0; }
+.muted { color: #5b6472; }
+.filters { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; align-items: end; margin: 16px 0; }
+.filters label { display: flex; flex-direction: column; gap: 4px; font-weight: 500; }
+.filters input, .filters select { font: inherit; padding: 8px 10px; border: 1px solid #c4cad3; border-radius: 6px; width: 100%; background: #fff; }
+.filter-actions { display: flex; align-items: center; gap: 12px; }
+.filter-actions button { font: inherit; padding: 9px 14px; border: 0; border-radius: 6px; background: #0b5cad; color: #fff; cursor: pointer; }
+.conf-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.conf-card { background: #fff; border: 1px solid #e3e6eb; border-radius: 8px; padding: 12px 14px; }
+.conf-card h2 { font-size: 1.1rem; margin: 0 0 4px; }
+.conf-meta { display: flex; flex-wrap: wrap; gap: 4px 16px; margin: 0; color: #5b6472; }
+.empty { background: #fff; border: 1px dashed #c4cad3; border-radius: 8px; padding: 16px; }

@@ -20,6 +20,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             {APP_NAME}
           </Link>
           <nav>
+            <Link href="/conferences">Conferences</Link>
             {user ? (
               <>
                 <Link href="/account">{user.name}</Link>
