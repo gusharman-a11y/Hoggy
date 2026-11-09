@@ -53,3 +53,14 @@ data is labelled SAMPLE — never invent real-looking dates for real events.
 Built by the Ralph loop (`scripts/ralph/`): one user story per iteration,
 stories and status in `scripts/ralph/prd.json`, learnings in
 `scripts/ralph/progress.txt` (read its Codebase Patterns section first).
+
+## North star v2 — receipts (added after v1)
+Doctors pay themselves and get reimbursed; the hospital needs real tax
+invoices. Hoggy never reads bank accounts or whole inboxes. Two ways in:
+1. **Snap/upload** a receipt → the `ReceiptReader` fills in supplier, ABN,
+   GST, amount, date → doctor confirms.
+2. **Forward** an email to their personal address `inbox-<code>@in.studyleave.app`
+   → Hoggy reads it, matches it to the right trip, doctor confirms.
+   Unmatched (e.g. personal holidays) go to a private Unfiled area and are
+   deleted after 7 days. A checklist + tax-invoice check make every claim complete.
+`ReceiptReader`: Mock in dev/tests; Claude (ANTHROPIC_API_KEY) for real.

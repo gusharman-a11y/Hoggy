@@ -393,6 +393,129 @@
       "priority": 25,
       "passes": true,
       "notes": ""
+    },
+    {
+      "id": "US-026",
+      "title": "Receipt detail fields",
+      "description": "As the system, I need to store what was read off each receipt.",
+      "acceptanceCriteria": [
+        "Migration adds to receipts: supplier_name, supplier_abn, gst_cents, receipt_date, is_tax_invoice (0/1/null), status ('needs_review'|'confirmed'), extraction_json; existing receipts become 'confirmed'",
+        "Migration adds users.inbox_code (unique, random, backfilled) for a personal Hoggy address inbox-<code>@in.studyleave.app",
+        "src/lib/receipts.ts types and queries updated; unit tests",
+        "npm run typecheck && npm run lint && npm test all pass"
+      ],
+      "priority": 26,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-027",
+      "title": "Receipt reader",
+      "description": "As the system, I need to read a receipt (photo, PDF or email) and pull out its details.",
+      "acceptanceCriteria": [
+        "src/providers/receipt-reader.ts: ReceiptReader { read({bytes, mimeType, emailText?}) -> {supplierName, supplierAbn, totalCents, gstCents, date, isTaxInvoice, kind, confidence} }",
+        "MockReceiptReader: deterministic heuristics over text (PDF text via pdf-lib-compatible extraction or embedded text, email body text): finds total, GST, 11-digit ABN, dates, 'tax invoice' wording; images return low-confidence empty fields unless a sidecar fixture says otherwise",
+        "ClaudeReceiptReader: used only when ANTHROPIC_API_KEY is set; sends the image/PDF/text to the Claude Messages API (model from RECEIPT_MODEL env, default 'claude-sonnet-5-5') asking for JSON; validates output; never called in tests",
+        "getReceiptReader() factory like the other providers; fixtures + tests for the mock",
+        "npm run typecheck && npm run lint && npm test all pass"
+      ],
+      "priority": 27,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-028",
+      "title": "Photo upload auto-fills",
+      "description": "As a doctor, I want to snap a receipt and have the details filled in for me.",
+      "acceptanceCriteria": [
+        "Trip page has 'Snap receipt' (file input accept image/*,application/pdf with capture=environment) as the primary action",
+        "After upload the reader runs and the receipt is saved as needs_review with the extracted fields",
+        "A 'Check this receipt' card shows the extracted supplier, ABN, GST, amount, date, kind, all editable; 'Looks right' sets status confirmed",
+        "Existing manual upload form still works",
+        "npm run typecheck && npm run lint && npm test all pass",
+        "Verify in browser: check the page with Playwright (screenshot into scripts/ralph/shots/)"
+      ],
+      "priority": 28,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-029",
+      "title": "Personal Hoggy inbox",
+      "description": "As a doctor, I want one email address I can forward any receipt to.",
+      "acceptanceCriteria": [
+        "Dashboard and trip pages show the doctor's personal address inbox-<code>@in.studyleave.app with a copy button and 'how to forward' help",
+        "POST /api/inbound routes inbox-<code> addresses (same secret check; sender must be the account's email); trip-<code> addresses keep working",
+        "Each attachment (PDF/JPG/PNG) is read by the ReceiptReader; an email with no attachment has its body rendered to a one-page PDF receipt and read",
+        "src/lib/receipt-matching.ts matchTrip(user, extracted) picks the doctor's trip whose dates (with 30 days before for bookings) and city/supplier best fit; tests for match, no match and ambiguity",
+        "Matched -> receipt on that trip, status needs_review. Unmatched -> 'Unfiled receipts' area visible only to that doctor",
+        "npm run typecheck && npm run lint && npm test all pass"
+      ],
+      "priority": 29,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-030",
+      "title": "Review, move and unfiled receipts",
+      "description": "As a doctor, I want to check what Hoggy filed and fix mistakes.",
+      "acceptanceCriteria": [
+        "/receipts (doctor) lists needs_review and unfiled receipts with extracted details",
+        "Actions (all POST): Confirm, Edit, Move to another of my trips, 'Personal — delete' (removes file and row)",
+        "Unfiled receipts older than 7 days are deleted by purgeUnfiled() which runs on each inbound request and via npm run purge (never on GET); tests",
+        "Nav shows a count badge when receipts need review",
+        "npm run typecheck && npm run lint && npm test all pass",
+        "Verify in browser: check the page with Playwright (screenshot into scripts/ralph/shots/)"
+      ],
+      "priority": 30,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-031",
+      "title": "Receipt checklist",
+      "description": "As a doctor, I want to see what's missing before I claim.",
+      "acceptanceCriteria": [
+        "Trip page checklist built from the plan: Registration, Flights, Accommodation (each only if its estimate > 0) plus Other; each shows ✓ when a confirmed receipt of that kind exists",
+        "'I don't have this receipt' per item with a required reason, shown on the claim cover sheet",
+        "Send claim is disabled with a clear message while any item is missing (and not excused) or any receipt on the trip is needs_review",
+        "Unit tests for the checklist logic",
+        "npm run typecheck && npm run lint && npm test all pass",
+        "Verify in browser: check the page with Playwright (screenshot into scripts/ralph/shots/)"
+      ],
+      "priority": 31,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-032",
+      "title": "Tax invoice check",
+      "description": "As finance, I want every receipt to be a valid tax invoice.",
+      "acceptanceCriteria": [
+        "A receipt is flagged when it has no ABN, or shows GST but no 'tax invoice' wording, or is_tax_invoice is false",
+        "Flag shows on the receipt card with plain help text (e.g. 'This looks like a booking confirmation. Download the tax invoice from the airline's Manage booking page and add it.')",
+        "Flags do not block sending but are listed on the claim cover sheet",
+        "Unit tests",
+        "npm run typecheck && npm run lint && npm test all pass",
+        "Verify in browser: check the page with Playwright (screenshot into scripts/ralph/shots/)"
+      ],
+      "priority": 32,
+      "passes": false,
+      "notes": ""
+    },
+    {
+      "id": "US-033",
+      "title": "North star v2 end-to-end",
+      "description": "As the owner, I want proof the new receipt flow works end to end.",
+      "acceptanceCriteria": [
+        "e2e/receipts-v2.spec.ts on the fresh temp database: doctor plans trip, manager approves, doctor snaps a PDF receipt (fields auto-fill, confirm), forwards an email with a PDF to their personal inbox address via POST /api/inbound (lands on the right trip as needs_review, confirm), forwards an unrelated holiday booking (lands in Unfiled, delete as Personal), completes the checklist and sends the claim",
+        "Asserts finance's single email has one PDF whose page count = cover + form + receipts, and the cover lists any tax-invoice flags",
+        "Original e2e/north-star.spec.ts still passes; full e2e suite passes 3 runs in a row; npm run build passes",
+        "npm run typecheck && npm run lint && npm test all pass"
+      ],
+      "priority": 33,
+      "passes": false,
+      "notes": ""
     }
   ]
 }
