@@ -49,6 +49,10 @@ Started: Mon Nov  9 03:21:18 UTC 2026
 - openDb sets PRAGMA busy_timeout=5000: parallel e2e workers each run the seed against data/app.db while the dev server writes.
 - Hotels: src/providers/hotels.ts — HotelProvider {search({city, venue?, checkIn, checkOut}), book(offerId, {name,email})}; getHotelProvider(env) = MockHotelProvider unless EXPEDIA_RAPID_KEY (stub, throws). Mock: 3 deterministic AUD hotels closest-to-venue first, id `mockhotel_<encodedCity>_IN_OUT_i`, reference `H-XXXXXX`; HotelSearchError for bad input; nightsBetween(). src/lib/hotel-booking.ts bookHotelForTrip/defaultHotelSearch (conference city, day before -> day after) reuses BookingError/canBookTravel/addDays from flight-booking.ts. Page /trips/[id]/hotels, action bookHotelAction in booking-actions.ts -> /trips/[id]?booked=hotel.
 - TripDetail includes conference_venue (nullable).
+- Receipt uploads: src/lib/receipt-uploads.ts saveUploadedReceipt(tripId, viewer, {file:{name,size,bytes}, description, amountCents, kind}, {db, dir}) / deleteUploadedReceipt / canUploadReceipt (owner, not claimed|paid = RECEIPT_LOCKED_STATUSES) / canDeleteReceipt (source upload + uploaded_by = viewer). Type is sniffed from magic bytes (detectFileType), never the name. Throws UploadError (user-facing). Files <uploads>/<trip>/upload-<hex>.<ext>; receipts.uploaded_by + original_name (migration 008). Client-safe constants (kinds/labels) live in receipt-upload-kinds.ts — client components must not import modules that pull in node:fs/db.
+- Server actions accept up to 11 MB (experimental.serverActions.bodySizeLimit in next.config.ts); default is 1 MB.
+- A <select> wrapped in a <label> gets its option text in the accessible name (breaks getByLabel strictness elsewhere): use <div className="field"><label htmlFor>..</label><select id>..</div>.
+- Receipt route: ?download=1 -> Content-Disposition attachment with original_name. Playwright file uploads: locator.setInputFiles({name, mimeType, buffer}).
 ---
 
 ## 2026-11-09 03:25 UTC - US-001
@@ -218,4 +222,13 @@ Started: Mon Nov  9 03:21:18 UTC 2026
 - **Learnings for future iterations:**
   - describeBooking already handled hotel details in the {hotel, checkIn, checkOut, nights, guest} shape — storing that shape gave nights on the trip page and PDF receipt for free.
   - Both search pages share the .flight-search / .offers CSS; reuse them for any new provider search page.
+---
+
+## 2026-11-09 04:40 UTC - US-018
+- Upload receipts: trip page form (file PDF/JPG/PNG <=10 MB, kind, description, amount), files under data/uploads/<trip_id>/, rows source='upload'; list with View / Download / Delete (own uploads only, until claimed); wrong type -> "That file type isn't supported. Please upload a PDF, JPG or PNG."
+- Files: src/db/migrations/008_receipt_uploads.sql, src/lib/receipt-uploads.ts(+test), src/lib/receipt-upload-kinds.ts, src/app/receipt-actions.ts, src/app/trips/[id]/UploadReceiptForm.tsx, trips/[id]/page.tsx, receipts/[receiptId]/route.ts, receipts.ts (Receipt type), next.config.ts, globals.css, e2e/receipts.spec.ts, shots/US-018-receipts.png
+- **Learnings for future iterations:**
+  - The Receipts section now shows whenever the owner can upload (even with no receipts).
+  - Delete buttons have aria-label "Delete <description>".
+  - Uploaded amounts feed the budget's spent figure automatically once the trip is claimed.
 ---
