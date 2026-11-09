@@ -18,8 +18,8 @@
         "Verify in browser: start the dev server and check the page with Playwright (screenshot into scripts/ralph/shots/)"
       ],
       "priority": 1,
-      "passes": false,
-      "notes": ""
+      "passes": true,
+      "notes": "Next 16.4.5, React 19, ESLint 9 flat config (eslint .), Vitest 5, Playwright 1.63.0. Verified via e2e/home.spec.ts + screenshot."
     },
     {
       "id": "US-002",
