@@ -39,6 +39,8 @@ Started: Mon Nov  9 03:21:18 UTC 2026
 - Approvals: src/lib/approvals.ts — submitTripForApproval(id, viewer, mailer, db) / decideTrip(id, viewer, decision, comment, mailer, db) (throw ApprovalError with a user-facing message; reject needs a comment; nobody decides their own trip; approver = manager/admin same org) / listPendingApprovals(viewer) / canSubmitTrip / canDecideTrip / approverEmails(orgId) (managers, else admins) / appUrl(path) (APP_URL, default localhost:3000) for links in emails. Pass the mailer in (getMailer() in actions, new OutboxMailer(db) in tests).
 - A server-action form that disappears once it succeeds (e.g. the trip is no longer pending) can't show its own "done" state: redirect() from the action to a page with a ?flag and render the notice there (see decideTripAction -> /approvals?decided=..&trip=..).
 - E2E: approve trips via the real UI now (submit on /trips/[id], manager@demo.test clicks Approve on the trip page); the direct-DB approveTrip helper is gone.
+- Flights: src/providers/flights.ts — FlightProvider {search({from,to,departDate,returnDate?}), book(offerId, {name,email})}; getFlightProvider(env) = MockFlightProvider unless DUFFEL_TOKEN (DuffelFlightProvider: search only, book throws). Mock: 3 deterministic AUD offers cheapest first, offer id `mock_FROM_TO_DEPART_RETURN_i` encodes the search so book() is stateless; bad input throws FlightSearchError (user-facing message). City -> IATA: cityToIata() in src/providers/airports.ts (covers all sample cities; 3-letter codes pass through).
+- External-service providers live in src/providers/ (interface + mock + env-gated real class + getXProvider(env) factory); hotels should follow flights.ts.
 ---
 
 ## 2026-11-09 03:25 UTC - US-001
@@ -172,4 +174,12 @@ Started: Mon Nov  9 03:21:18 UTC 2026
   - manager_comment is kept on resubmit (shown as "Earlier comment" on /approvals) and overwritten by the next decision (null if approve has no comment)
   - Submit button does not save unsaved plan edits; the hint says "Save your plan first"
   - Approved trip page is where US-014+ booking buttons go (status approved); npm run build passes with /approvals
+---
+
+## 2026-11-09 04:10 UTC - US-014
+- FlightProvider interface, MockFlightProvider (3 deterministic offers, stateless book with 6-char reference), DuffelFlightProvider skeleton (offer_requests search via injectable fetch; book not implemented), getFlightProvider(env), city->IATA lookup.
+- Files: src/providers/flights.ts, src/providers/airports.ts, src/providers/flights.test.ts
+- **Learnings for future iterations:**
+  - Hash-based determinism: keep hash outputs unsigned (`>>> 0`); XOR-ing a divided value went negative and indexed undefined chars.
+  - No UI in this story, so no e2e/build needed; US-016 wires search/book into the trip page.
 ---
