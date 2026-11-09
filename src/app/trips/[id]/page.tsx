@@ -5,7 +5,7 @@ import { centsToInput, formatDateRange, formatDate, formatMoney } from "@/lib/fo
 import { canEditTrip, getTripForViewer, TRIP_STATUS_LABELS, tripEstimateTotal } from "@/lib/trips";
 import { canDecideTrip, canSubmitTrip } from "@/lib/approvals";
 import { canBookTravel } from "@/lib/flight-booking";
-import { describeBooking, listBookings, listReceipts } from "@/lib/receipts";
+import { describeBooking, formatAbn, listBookings, listReceipts, RECEIPT_STATUS_LABELS } from "@/lib/receipts";
 import { canDeleteReceipt, canEditReceipt, canUploadReceipt } from "@/lib/receipt-uploads";
 import { inboundAddress } from "@/lib/inbound-email";
 import { canSendClaim, getClaimForTrip } from "@/claims/send";
@@ -18,6 +18,8 @@ import TripForm from "./TripForm";
 import SendClaimForm from "./SendClaimForm";
 import UploadReceiptForm from "./UploadReceiptForm";
 import EditReceiptForm from "./EditReceiptForm";
+import SnapReceiptForm from "./SnapReceiptForm";
+import CheckReceiptCard from "./CheckReceiptCard";
 
 export const metadata = { title: "Trip · StudyLeave" };
 
@@ -43,6 +45,7 @@ export default async function TripPage({
   const canBook = canBookTravel(trip, user);
   const canUpload = canUploadReceipt(trip, user);
   const canEditReceipts = canEditReceipt(trip, user);
+  const toCheck = canEditReceipts ? receipts.filter((r) => r.status === "needs_review") : [];
   const canClaim = canSendClaim(trip, user) && receipts.length > 0;
   const claim = getClaimForTrip(trip.id);
   const financeEmail = canClaim ? (getOrg(getDb(), trip.org_id)?.finance_email ?? null) : null;
@@ -80,6 +83,16 @@ export default async function TripPage({
       {receiptFlag === "added" && (
         <p role="status" className="notice">
           Receipt uploaded.
+        </p>
+      )}
+      {receiptFlag === "snapped" && (
+        <p role="status" className="notice">
+          Receipt saved. Check the details below.
+        </p>
+      )}
+      {receiptFlag === "confirmed" && (
+        <p role="status" className="notice">
+          Receipt checked and saved.
         </p>
       )}
       {receiptFlag === "deleted" && (
@@ -194,6 +207,25 @@ export default async function TripPage({
       {(receipts.length > 0 || canUpload) && (
         <>
           <h2>Receipts</h2>
+          {canUpload && <SnapReceiptForm tripId={trip.id} />}
+          {toCheck.map((r) => (
+            <CheckReceiptCard
+              key={r.id}
+              tripId={trip.id}
+              receiptId={r.id}
+              currency={r.currency}
+              fileName={r.original_name || r.description || "Receipt"}
+              viewHref={r.file_path ? `/trips/${trip.id}/receipts/${r.id}` : null}
+              defaults={{
+                supplier: r.supplier_name ?? "",
+                abn: formatAbn(r.supplier_abn) || (r.supplier_abn ?? ""),
+                gst: r.gst_cents == null ? "" : centsToInput(r.gst_cents),
+                amount: r.amount_cents ? centsToInput(r.amount_cents) : "",
+                date: r.receipt_date ?? "",
+                kind: r.kind,
+              }}
+            />
+          ))}
           {receipts.length === 0 && <p className="muted">No receipts yet.</p>}
           <ul className="receipts" data-testid="receipts">
             {receipts.map((r) => (
@@ -202,6 +234,14 @@ export default async function TripPage({
                   {r.description || r.kind} · {formatMoney(r.amount_cents, r.currency)}
                   {r.source === "upload" && <span className="muted"> · uploaded</span>}
                   {r.source === "email" && <span className="muted"> · emailed</span>}
+                  {r.status === "needs_review" && (
+                    <>
+                      {" "}
+                      <span className="badge badge-needs_review" data-testid="receipt-status">
+                        {RECEIPT_STATUS_LABELS[r.status]}
+                      </span>
+                    </>
+                  )}
                 </span>
                 <span className="receipt-actions">
                   {r.file_path && (
@@ -218,7 +258,7 @@ export default async function TripPage({
                     </form>
                   )}
                 </span>
-                {canEditReceipts && (
+                {canEditReceipts && r.status !== "needs_review" && (
                   <EditReceiptForm
                     tripId={trip.id}
                     receiptId={r.id}
@@ -240,8 +280,8 @@ export default async function TripPage({
           )}
           {canUpload && (
             <>
-              <h3>Add a receipt</h3>
-              <p className="muted">Taxis, meals, registration — anything you paid for yourself.</p>
+              <h3>Add a receipt by hand</h3>
+              <p className="muted">Taxis, meals, registration — anything you paid for yourself. Type the details yourself.</p>
               <UploadReceiptForm tripId={trip.id} />
               <h3>Or forward it by email</h3>
               <p className="inbound" data-testid="inbound-address">

@@ -75,9 +75,27 @@ export interface UploadOptions {
   dir?: string;
 }
 
-function cleanName(name: string): string {
+export function cleanName(name: string): string {
   const base = path.basename(name.replace(/\\/g, "/")).replace(/[\u0000-\u001f]/g, "").trim();
   return base.slice(0, 200) || "receipt";
+}
+
+/** Checks an uploaded file is present, not too big and a PDF/JPG/PNG by its bytes. Throws UploadError. */
+export function checkUploadFile(file: UploadInput["file"]): { file: NonNullable<UploadInput["file"]>; type: DetectedType } {
+  if (!file || file.size === 0) throw new UploadError("Choose a file to upload.");
+  if (file.size > MAX_UPLOAD_BYTES) throw new UploadError("That file is too big. The limit is 10 MB.");
+  const type = detectFileType(file.bytes);
+  if (!type) throw new UploadError(`That file type isn't supported. Please upload a ${ALLOWED_TYPES_TEXT}.`);
+  return { file, type };
+}
+
+/** Writes the file to <uploads>/<trip_id>/upload-<hex>.<ext>; returns the relative and full paths. */
+export function storeUploadFile(tripId: number, type: DetectedType, bytes: Uint8Array, dir: string): { rel: string; full: string } {
+  const rel = path.posix.join(String(tripId), `upload-${crypto.randomBytes(8).toString("hex")}.${type.ext}`);
+  const full = resolveUploadPath(rel, dir);
+  fs.mkdirSync(/*turbopackIgnore: true*/ path.dirname(full), { recursive: true });
+  fs.writeFileSync(/*turbopackIgnore: true*/ full, bytes);
+  return { rel, full };
 }
 
 /** Validates and stores an uploaded receipt. Throws UploadError with a user-facing message. */
@@ -91,11 +109,7 @@ export function saveUploadedReceipt(
   const trip = getTrip(tripId, db, viewer.org_id ?? -1);
   if (!trip || !canUploadReceipt(trip, viewer)) throw new UploadError("You can't add receipts to this trip.");
 
-  const { file } = input;
-  if (!file || file.size === 0) throw new UploadError("Choose a file to upload.");
-  if (file.size > MAX_UPLOAD_BYTES) throw new UploadError("That file is too big. The limit is 10 MB.");
-  const type = detectFileType(file.bytes);
-  if (!type) throw new UploadError(`That file type isn't supported. Please upload a ${ALLOWED_TYPES_TEXT}.`);
+  const { file, type } = checkUploadFile(input.file);
 
   const description = input.description.trim();
   if (!description) throw new UploadError("Add a short description, e.g. “Taxi to venue”.");
@@ -103,11 +117,7 @@ export function saveUploadedReceipt(
   if (input.amountCents === undefined) throw new UploadError("Enter the amount, e.g. 42.50.");
   if (!(UPLOAD_KINDS as readonly string[]).includes(input.kind)) throw new UploadError("Choose what the receipt is for.");
 
-  const dir = opts.dir ?? uploadsDir();
-  const rel = path.posix.join(String(trip.id), `upload-${crypto.randomBytes(8).toString("hex")}.${type.ext}`);
-  const full = resolveUploadPath(rel, dir);
-  fs.mkdirSync(/*turbopackIgnore: true*/ path.dirname(full), { recursive: true });
-  fs.writeFileSync(/*turbopackIgnore: true*/ full, file.bytes);
+  const { rel, full } = storeUploadFile(trip.id, type, file.bytes, opts.dir ?? uploadsDir());
   try {
     return db
       .prepare(

@@ -24,6 +24,8 @@ export default defineConfig({
       INBOUND_SECRET: E2E_INBOUND_SECRET,
       DATABASE_PATH: process.env.DATABASE_PATH!,
       UPLOADS_DIR: process.env.UPLOADS_DIR!,
+      // Never call the real Claude receipt reader from e2e: blank key -> MockReceiptReader.
+      ANTHROPIC_API_KEY: "",
     },
   },
 });
