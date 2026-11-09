@@ -59,6 +59,8 @@ Started: Mon Nov  9 03:21:18 UTC 2026
 - A full e2e run rewrites every story's screenshot: before committing, `git checkout -- scripts/ralph/shots/` for shots that aren't your story's.
 - Claim form: src/claims/form.ts — loadClaimForm(tripId, {db, orgId?, now}) -> {data, template, receipts}; renderClaimForm(doc, data, template) draws onto an EXISTING PDFDocument and returns pages added (use it inside the claim pack); buildClaimFormPdf(data, template) standalone. Template = orgs.claim_form_json (migration 010, NOT NULL default = DEFAULT_CLAIM_FORM, a test keeps them equal); parseClaimTemplate() falls back to the default on bad JSON; unknown field keys print as blank lines. Total = claimTotalCents(receipts) (sum of every receipt). pdfSafe is exported from src/lib/receipts.ts.
 - Asserting PDF text in tests: see pdfText() in src/claims/form.test.ts (decodePDFRawStream on page Contents, read `<hex> Tj`; one Tj per drawText, so "Label\nValue\n").
+- Claim pack: src/claims/pack.ts buildClaimPack(tripId, {db, dir, orgId, now}) -> {bytes, pageCount, coverPages, formPages, receiptPages[], data, receipts}; claimPackFilename(slug, name) = claim-<slug>-<surname>.pdf (use it for the US-022 attachment). Missing/unreadable receipt files become one placeholder page each, so page count = cover + form + sum(receiptPages) always. GET /trips/[id]/claim-pack (trip-viewer scoped, builds in memory, writes nothing).
+- pdf-lib's JPEG embedder ignores a Buffer's byteOffset: pass `new Uint8Array(buf)` (unpooled copy) to embedJpg/embedPng/PDFDocument.load, never a small Buffer from Buffer.from()/readFileSync directly.
 ---
 
 ## 2026-11-09 03:25 UTC - US-001
@@ -257,4 +259,15 @@ Started: Mon Nov  9 03:21:18 UTC 2026
   - US-021 pack: create one PDFDocument, draw the cover, then `await renderClaimForm(doc, data, template)` (returns its page count for the page-count test), then copy receipt pages.
   - Emailed receipts have amount 0, so they show as AUD 0.00 lines on the form until amounts can be edited (US-025).
   - The pdfText helper only reads hex Tj strings (what pdf-lib writes for standard fonts); it won't read text from uploaded third-party PDFs.
+---
+
+## 2026-11-09 04:55 UTC - US-021
+- Claim pack PDF: cover sheet (doctor, hospital, conference, dates, location, receipt count, total, contents; receipts index with type, description, amount and the page each receipt starts on; index flows onto extra cover pages) + filled claim form + every receipt (PDF pages copied at their own size, JPG/PNG scaled onto one A4 page each, placeholder page for missing/broken files).
+- Trip page: "Preview claim pack" (secondary button, shown once there is a receipt) downloads /trips/[id]/claim-pack as claim-<slug>-<surname>.pdf.
+- Files: src/claims/pack.ts (+ pack.test.ts, 5 tests), src/app/trips/[id]/claim-pack/route.ts, src/app/trips/[id]/page.tsx, globals.css (a.button.secondary), e2e/claim-pack.spec.ts, shots/US-021-claim-pack.png
+- Quality: typecheck, lint, 173 unit tests, build, 19/19 e2e pass (one earlier full run had a single flaky toHaveText failure in another spec; rerun clean).
+- **Learnings for future iterations:**
+  - The form is rendered first (its page count fixes receipt page numbers), then cover pages are inserted at the front with doc.insertPage; coverPageCount(n) predicts cover length so the index can print page numbers.
+  - Test that an image really embedded: page.node.Resources().lookup(PDFName.of("XObject"), PDFDict) has a key (placeholders have none).
+  - US-022 can call buildClaimPack(tripId, {orgId}) and attach pack.bytes as Buffer.from(pack.bytes).
 ---
