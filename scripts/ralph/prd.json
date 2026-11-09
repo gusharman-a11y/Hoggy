@@ -370,7 +370,8 @@
         "e2e/north-star.spec.ts runs on a fresh temp database with seed: doctor signs up with DEMO2026, searches conferences, plans a trip, submits; manager approves; doctor books flight + hotel, uploads a PNG receipt, sends claim",
         "Asserts: one outbox email to finance@demo.test with exactly one PDF attachment whose page count equals cover + form + 3 receipts; budget card shows the trip as spent",
         "npm run e2e passes",
-        "npm run typecheck && npm run lint && npm test all pass"
+        "npm run typecheck && npm run lint && npm test all pass",
+        "The full e2e suite passes 3 runs in a row (fix any flaky spec found, e.g. the toHaveText flake seen during US-021)"
       ],
       "priority": 24,
       "passes": false,
