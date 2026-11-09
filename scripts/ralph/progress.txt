@@ -7,6 +7,8 @@ Started: Mon Nov  9 03:21:18 UTC 2026
 - Path alias `@/*` -> `src/*` (tsconfig + vitest.config.ts). Unit tests: `src/**/*.test.ts`. E2E specs: `e2e/`.
 - Playwright config starts `next dev -p 3100` (E2E_PORT overrides) and reuses a running server unless CI is set; run with `CI=1 npm run e2e` so it starts and stops its own server.
 - Browser check = a Playwright spec that saves a screenshot into scripts/ralph/shots/<ID>-*.png.
+- DB: `getDb(file?)` from `@/db` (file > DATABASE_PATH > data/app.db), cached on globalThis; migrations auto-run on open. New schema = new `src/db/migrations/NNN_name.sql` (each applied in its own transaction, recorded in `_migrations`); never edit an applied one. Tests: `getDb(':memory:')` + `closeDb()` in afterEach.
+- node:sqlite rows come back as plain objects typed `unknown`-ish: cast `.all() as {..}[]`. Foreign keys are ON (PRAGMA set in openDb).
 ---
 
 ## 2026-11-09 03:25 UTC - US-001
@@ -18,4 +20,15 @@ Started: Mon Nov  9 03:21:18 UTC 2026
   - Create-next-app is interactive; scaffold by hand instead (already done)
   - Use CI=1 for e2e so Playwright kills the dev server afterwards
   - node:sqlite (Node 22.23) is available; no serverExternalPackages config set yet — check build when US-002 lands
+---
+
+## 2026-11-09 03:30 UTC - US-002
+- node:sqlite DB layer: src/db/index.ts (getDb/openDb/closeDb), src/db/migrate.ts (listMigrations/migrate, idempotent, _migrations table), src/db/migrations/001_core.sql (orgs, users, sessions; role CHECK doctor/manager/finance/admin; indexes on org_id/user_id)
+- Vitest src/db/db.test.ts: migrate twice, columns, unique join_code, file DB reopen, DATABASE_PATH
+- Files: src/db/index.ts, src/db/migrate.ts, src/db/migrations/001_core.sql, src/db/db.test.ts
+- **Learnings for future iterations:**
+  - Migrations dir is resolved from process.cwd() (src/db/migrations), not __dirname, so it works in Vitest and Next; run commands from repo root
+  - Vitest handles `node:sqlite` fine (prints an ExperimentalWarning, harmless)
+  - Not yet checked: Next build importing node:sqlite — first route using getDb (US-003) should run `npm run build`; if it fails, add serverExternalPackages or `export const runtime = "nodejs"`
+  - No UI change in this story, so no browser check
 ---
