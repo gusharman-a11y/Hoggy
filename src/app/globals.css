@@ -39,3 +39,7 @@ main.narrow { max-width: 480px; }
 .conf-card h2 { font-size: 1.1rem; margin: 0 0 4px; }
 .conf-meta { display: flex; flex-wrap: wrap; gap: 4px 16px; margin: 0; color: #5b6472; }
 .empty { background: #fff; border: 1px dashed #c4cad3; border-radius: 8px; padding: 16px; }
+.actions { margin: 20px 0; }
+a.button { display: inline-block; font: inherit; padding: 10px 16px; border-radius: 6px; background: #0b5cad; color: #fff; text-decoration: none; font-weight: 600; }
+a.button:hover { background: #094b8e; }
+.facts dd { overflow-wrap: anywhere; }

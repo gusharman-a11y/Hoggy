@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { formatDateRange, todayIso } from "./format";
+import { formatDateRange, formatMoney, todayIso } from "./format";
 import { filtersFromParams } from "./conference-query";
 
 describe("formatDateRange", () => {
@@ -11,6 +11,15 @@ describe("formatDateRange", () => {
   });
   it("todayIso", () => {
     expect(todayIso(new Date("2026-11-09T05:00:00Z"))).toBe("2026-11-09");
+  });
+});
+
+describe("formatMoney", () => {
+  it("formats cents with the currency code, TBC for null", () => {
+    expect(formatMoney(95000, "AUD")).toBe("AUD 950.00");
+    expect(formatMoney(123456, "EUR")).toBe("EUR 1,234.56");
+    expect(formatMoney(0)).toBe("AUD 0.00");
+    expect(formatMoney(null, "GBP")).toBe("TBC");
   });
 });
 

@@ -19,3 +19,11 @@ export function formatDateRange(start: string, end: string): string {
 export function todayIso(now: Date = new Date()): string {
   return now.toISOString().slice(0, 10);
 }
+
+/** Integer cents -> "AUD 950.00" style money ("A$950.00" etc. via Intl, en-AU). Null -> "TBC". */
+export function formatMoney(cents: number | null | undefined, currency = "AUD"): string {
+  if (cents == null) return "TBC";
+  return new Intl.NumberFormat("en-AU", { style: "currency", currency, currencyDisplay: "code" })
+    .format(cents / 100)
+    .replace(/ /g, " ");
+}
