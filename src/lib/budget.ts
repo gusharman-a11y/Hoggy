@@ -94,10 +94,6 @@ export function setOrgDefaultAllowance(db: DatabaseSync, orgId: number, cents: n
   db.prepare("UPDATE orgs SET default_allowance_cents = ? WHERE id = ?").run(cents, orgId);
 }
 
-function hasTable(db: DatabaseSync, name: string): boolean {
-  return !!db.prepare("SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = ?").get(name);
-}
-
 type EstimateCols = Pick<
   Trip,
   "id" | "status" | "est_registration_cents" | "est_flights_cents" | "est_hotel_cents" | "est_other_cents"
@@ -112,9 +108,9 @@ export function budgetTrips(db: DatabaseSync, userId: number, orgId: number, yea
        WHERE t.user_id = ? AND t.org_id = ? AND substr(c.start_date, 1, 4) = ?`,
     )
     .all(userId, orgId, String(year)) as unknown as EstimateCols[];
-  // Receipts arrive in a later migration; until then spent falls back to estimates.
+  // Spent uses the trip's receipt total; a trip with no receipts falls back to its estimate.
   const actual = new Map<number, number>();
-  if (rows.length > 0 && hasTable(db, "receipts")) {
+  if (rows.length > 0) {
     const sums = db
       .prepare(
         `SELECT trip_id, SUM(amount_cents) AS cents, COUNT(*) AS n FROM receipts

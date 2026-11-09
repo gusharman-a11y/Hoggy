@@ -137,11 +137,10 @@ describe("budgets in the database", () => {
     ]);
   });
 
-  it("uses receipt totals for spent once a receipts table exists", () => {
-    db.exec("CREATE TABLE receipts (id INTEGER PRIMARY KEY, trip_id INTEGER, amount_cents INTEGER)");
+  it("uses receipt totals for spent once a trip has receipts", () => {
     const a = trip(conf2027, 100_000);
     moveTo(a.id, ["pending_approval", "approved", "booked", "claimed"]);
-    db.prepare("INSERT INTO receipts (trip_id, amount_cents) VALUES (?, ?), (?, ?)").run(a.id, 40_000, a.id, 2_550);
+    db.prepare("INSERT INTO receipts (trip_id, kind, amount_cents, source) VALUES (?, 'other', ?, 'upload'), (?, 'other', ?, 'upload')").run(a.id, 40_000, a.id, 2_550);
     expect(getBudget(doc, 2027, db).spentCents).toBe(42_550);
   });
 
