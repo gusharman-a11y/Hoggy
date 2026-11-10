@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' blob: data:; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'self' about:">
+<meta name="referrer" content="no-referrer">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hoggy · Medical conference scanner</title>
+<meta name="description" content="Find medical conferences worldwide, plan travel, track CPD and keep every receipt claim-ready.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2325e0a0'/%3E%3Cpath d='M10 8v16M22 8v16M10 16h12' stroke='%23052018' stroke-width='3.4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="app">
+  <aside class="side" aria-label="Primary">
+    <a class="brand" href="#/home" aria-label="Hoggy home"><span class="logo">H</span><span class="brand-name">Hoggy</span></a>
+    <nav class="nav" id="nav"></nav>
+    <div class="side-foot">
+      <div id="acct"></div>
+      <div class="saved-title">Saved conferences</div>
+      <div id="savedList" class="saved-list"></div>
+    </div>
+  </aside>
+  <main id="main" class="main" tabindex="-1"></main>
+</div>
+<div id="overlay" class="overlay" hidden></div>
+<div id="toasts" class="toasts" aria-live="polite"></div>
+<script src="data/conferences.js"></script>
+<script src="data/holidays.js"></script>
+<script src="data/cpd-nz.js"></script>
+<script src="parse.js"></script>
+<script src="pack.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

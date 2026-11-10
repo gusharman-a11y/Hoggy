@@ -1,0 +1,614 @@
+[
+ {
+  "id": "naemsp-annual-meeting",
+  "name": "NAEMSP Annual Meeting",
+  "url": "https://naemsp.org",
+  "start": "2027-01-11",
+  "end": "2027-01-16",
+  "city": "Austin",
+  "country": "United States"
+ },
+ {
+  "id": "dermacon-2027",
+  "name": "DERMACON",
+  "url": "https://www.iadvl.org",
+  "start": "2027-01-21",
+  "end": "2027-01-24",
+  "city": "Lucknow",
+  "country": "India"
+ },
+ {
+  "id": "german-austrian-swiss-sports-traumatology-congress",
+  "name": "German-Austrian-Swiss Congress for Sports Traumatology & Sports Medicine (41st)",
+  "url": "https://www.seefeld.com/en/events/orthopaedic-aspects-in-sport.html",
+  "start": "2027-02-12",
+  "end": "2027-02-20",
+  "city": "Seefeld in Tirol",
+  "country": "Austria"
+ },
+ {
+  "id": "sasa-national-congress-2027",
+  "name": "SASA Annual National Congress 2027",
+  "url": "https://www.sasaweb.com",
+  "start": "2027-02-18",
+  "end": "2027-02-21",
+  "city": "Durban",
+  "country": "South Africa"
+ },
+ {
+  "id": "usanz-asm",
+  "name": "USANZ Annual Scientific Meeting",
+  "url": "https://www.usanz.org.au",
+  "start": "2027-02-27",
+  "end": "2027-03-02",
+  "city": "Melbourne",
+  "country": "Australia"
+ },
+ {
+  "id": "esmo-sarcoma-and-rare-cancers-congress",
+  "name": "ESMO Sarcoma and Rare Cancers Congress",
+  "url": "https://www.esmo.org/meeting-calendar/esmo-sarcoma-and-rare-cancers-congress-2027",
+  "start": "2027-03-04",
+  "end": "2027-03-06",
+  "city": "Lugano",
+  "country": "Switzerland"
+ },
+ {
+  "id": "ranzcog-regional-symposium",
+  "name": "RANZCOG Regional Symposium",
+  "url": "https://www.ranzcog.edu.au",
+  "start": "2027-03-12",
+  "end": "2027-03-14",
+  "city": "Sydney",
+  "country": "Australia"
+ },
+ {
+  "id": "european-lung-cancer-congress",
+  "name": "European Lung Cancer Congress (ELCC)",
+  "url": "https://www.esmo.org/meeting-calendar/european-lung-cancer-congress-2027",
+  "start": "2027-03-17",
+  "end": "2027-03-20",
+  "city": "Munich",
+  "country": "Germany"
+ },
+ {
+  "id": "asohns-asm",
+  "name": "ASOHNS Annual Scientific Meeting",
+  "url": "https://www.asohns.org.au",
+  "start": "2027-03-20",
+  "end": "2027-03-23",
+  "city": "Adelaide",
+  "country": "Australia"
+ },
+ {
+  "id": "asid-asm",
+  "name": "ASID Annual Scientific Meeting",
+  "url": "https://www.asid.net.au",
+  "start": "2027-03-24",
+  "end": "2027-03-26",
+  "city": "Sydney",
+  "country": "Australia"
+ },
+ {
+  "id": "tsoc-annual-meeting",
+  "name": "Taiwan Society of Cardiology Annual Meeting",
+  "url": "https://www.tsoc.org.tw",
+  "start": "2027-03-27",
+  "end": "2027-03-28",
+  "city": "Taipei",
+  "country": "Taiwan"
+ },
+ {
+  "id": "egypt-stroke-cairo",
+  "name": "10th International Egyptian Stroke Conference & 2nd National Egyptian Stroke Network Conference",
+  "url": "https://esnpnegypt.com/",
+  "start": "2027-04-07",
+  "end": "2027-04-09",
+  "city": "New Cairo",
+  "country": "Egypt"
+ },
+ {
+  "id": "aae-annual-meeting",
+  "name": "AAE Annual Meeting (AAE27)",
+  "url": "https://www.aae.org",
+  "start": "2027-04-14",
+  "end": "2027-04-17",
+  "city": "San Antonio",
+  "country": "United States"
+ },
+ {
+  "id": "jrs-annual-meeting",
+  "name": "Japanese Respiratory Society Annual Meeting",
+  "url": "https://www.jrs.or.jp",
+  "start": "2027-04-16",
+  "end": "2027-04-18",
+  "city": "Tokyo",
+  "country": "Japan"
+ },
+ {
+  "id": "sbmfc-cbmfc-2027",
+  "name": "19º Congresso Brasileiro de Medicina de Família e Comunidade (CBMFC)",
+  "url": "https://www.sbmfc.org.br",
+  "start": "2027-04-22",
+  "end": "2027-04-25",
+  "city": "São Paulo",
+  "country": "Brazil"
+ },
+ {
+  "id": "jua-annual-meeting",
+  "name": "Japanese Urological Association Annual Meeting",
+  "url": "https://www.urol.or.jp",
+  "start": "2027-04-22",
+  "end": "2027-04-25",
+  "city": "Kobe",
+  "country": "Japan"
+ },
+ {
+  "id": "cbr-jornada-paulista-radiologia-2027",
+  "name": "Jornada Paulista de Radiologia (JPR) 2027",
+  "url": "https://cbr.org.br",
+  "start": "2027-04-29",
+  "end": "2027-05-02",
+  "city": "São Paulo",
+  "country": "Brazil"
+ },
+ {
+  "id": "scai-scientific-sessions",
+  "name": "SCAI Scientific Sessions",
+  "url": "https://scai.org",
+  "start": "2027-05-02",
+  "end": "2027-05-04",
+  "city": "Fort Lauderdale",
+  "country": "United States"
+ },
+ {
+  "id": "nzda-conference",
+  "name": "NZ Dental Association Conference",
+  "url": "https://www.nzda.org.nz",
+  "start": "2027-05-07",
+  "end": "2027-05-09",
+  "city": "Christchurch",
+  "country": "New Zealand"
+ },
+ {
+  "id": "anzsgm-asm",
+  "name": "ANZSGM Annual Scientific Meeting",
+  "url": "https://www.anzsgm.org",
+  "start": "2027-05-11",
+  "end": "2027-05-14",
+  "city": "Sydney",
+  "country": "Australia"
+ },
+ {
+  "id": "esmo-breast-cancer",
+  "name": "ESMO Breast Cancer Congress",
+  "url": "https://www.esmo.org/meeting-calendar/esmo-breast-cancer-2027",
+  "start": "2027-05-12",
+  "end": "2027-05-14",
+  "city": "Milan",
+  "country": "Italy"
+ },
+ {
+  "id": "joa-annual-meeting",
+  "name": "Japanese Orthopaedic Association Annual Meeting",
+  "url": "https://www.joa.or.jp",
+  "start": "2027-05-13",
+  "end": "2027-05-15",
+  "city": "Fukuoka",
+  "country": "Japan"
+ },
+ {
+  "id": "national-rural-health-conference",
+  "name": "National Rural Health Conference",
+  "url": "https://www.ruralhealth.org.au",
+  "start": "2027-05-18",
+  "end": "2027-05-20",
+  "city": "Hobart",
+  "country": "Australia"
+ },
+ {
+  "id": "asps-plastic-surgery-meeting",
+  "name": "ASPS Annual Scientific Meeting",
+  "url": "https://www.plasticsurgery.org.au",
+  "start": "2027-05-20",
+  "end": "2027-05-23",
+  "city": "Sydney",
+  "country": "Australia"
+ },
+ {
+  "id": "aua-annual-meeting",
+  "name": "AUA Annual Meeting",
+  "url": "https://www.auanet.org",
+  "start": "2027-05-21",
+  "end": "2027-05-24",
+  "city": "San Diego",
+  "country": "United States"
+ },
+ {
+  "id": "ama-national-conference",
+  "name": "AMA National Conference",
+  "url": "https://www.ama.com.au",
+  "start": "2027-05-28",
+  "end": "2027-05-30",
+  "city": "Canberra",
+  "country": "Australia"
+ },
+ {
+  "id": "ase-scientific-sessions",
+  "name": "ASE Scientific Sessions",
+  "url": "https://www.asecho.org",
+  "start": "2027-06-04",
+  "end": "2027-06-06",
+  "city": "Tampa",
+  "country": "United States"
+ },
+ {
+  "id": "ahs-annual-scientific-meeting",
+  "name": "AHS Annual Scientific Meeting",
+  "url": "https://americanheadachesociety.org",
+  "start": "2027-06-10",
+  "end": "2027-06-13",
+  "city": "San Diego",
+  "country": "United States"
+ },
+ {
+  "id": "aanp-national-conference",
+  "name": "AANP National Conference",
+  "url": "https://www.aanp.org",
+  "start": "2027-06-15",
+  "end": "2027-06-19",
+  "city": "New Orleans",
+  "country": "United States"
+ },
+ {
+  "id": "jsn-nephrology-annual-meeting",
+  "name": "Japanese Society of Nephrology Annual Meeting",
+  "url": "https://jsn.or.jp",
+  "start": "2027-06-18",
+  "end": "2027-06-20",
+  "city": "Yokohama",
+  "country": "Japan"
+ },
+ {
+  "id": "otaus-national-conference",
+  "name": "OT Australia National Conference",
+  "url": "https://www.otaus.com.au",
+  "start": "2027-06-23",
+  "end": "2027-06-25",
+  "city": "Melbourne",
+  "country": "Australia"
+ },
+ {
+  "id": "esmo-gastrointestinal-cancers-congress",
+  "name": "ESMO Gastrointestinal Cancers Congress",
+  "url": "https://www.esmo.org/meeting-calendar/esmo-gastrointestinal-cancers-congress-2027",
+  "start": "2027-06-30",
+  "end": "2027-07-03",
+  "city": "Barcelona",
+  "country": "Spain"
+ },
+ {
+  "id": "cbc-congresso-brasileiro-cirurgia-2027",
+  "name": "Congresso Brasileiro de Cirurgia 2027",
+  "url": "https://www.cbc.org.br",
+  "start": "2027-07-18",
+  "end": "2027-07-21",
+  "city": "Rio de Janeiro",
+  "country": "Brazil"
+ },
+ {
+  "id": "adlm-annual-meeting",
+  "name": "ADLM Annual Meeting & Clinical Lab Expo",
+  "url": "https://myadlm.org",
+  "start": "2027-07-25",
+  "end": "2027-07-29",
+  "city": "Chicago",
+  "country": "United States"
+ },
+ {
+  "id": "csanz-annual-scientific-meeting",
+  "name": "CSANZ Annual Scientific Meeting",
+  "url": "https://www.csanz.edu.au",
+  "start": "2027-08-05",
+  "end": "2027-08-08",
+  "city": "Adelaide",
+  "country": "Australia"
+ },
+ {
+  "id": "papdi-annual-meeting",
+  "name": "PAPDI Scientific Meeting",
+  "url": "https://papdi.or.id",
+  "start": "2027-08-12",
+  "end": "2027-08-14",
+  "city": "Jakarta",
+  "country": "Indonesia"
+ },
+ {
+  "id": "esa-annual-scientific-meeting",
+  "name": "ESA Annual Scientific Meeting",
+  "url": "https://www.endocrinesociety.org.au",
+  "start": "2027-08-22",
+  "end": "2027-08-25",
+  "city": "Melbourne",
+  "country": "Australia"
+ },
+ {
+  "id": "nzsg-asm",
+  "name": "NZ Society of Gastroenterology Annual Meeting",
+  "url": "https://www.nzsg.org.nz",
+  "start": "2027-08-27",
+  "end": "2027-08-29",
+  "city": "Queenstown",
+  "country": "New Zealand"
+ },
+ {
+  "id": "amib-cbmi-2027",
+  "name": "Congresso Brasileiro de Medicina Intensiva (CBMI) 2027",
+  "url": "https://www.amib.org.br",
+  "start": "2027-09-01",
+  "end": "2027-09-04",
+  "city": "São Paulo",
+  "country": "Brazil"
+ },
+ {
+  "id": "hospice-nz-conference",
+  "name": "Hospice New Zealand Conference",
+  "url": "https://www.hospice.org.nz",
+  "start": "2027-09-08",
+  "end": "2027-09-10",
+  "city": "Auckland",
+  "country": "New Zealand"
+ },
+ {
+  "id": "anzsvs-asm",
+  "name": "ANZSVS Annual Scientific Meeting",
+  "url": "https://www.anzsvs.org.au",
+  "start": "2027-09-12",
+  "end": "2027-09-14",
+  "city": "Melbourne",
+  "country": "Australia"
+ },
+ {
+  "id": "sbcbm-congresso-bariatrica-2027",
+  "name": "Congresso Brasileiro de Cirurgia Bariátrica e Metabólica 2027",
+  "url": "https://www.sbcbm.org.br",
+  "start": "2027-09-15",
+  "end": "2027-09-18",
+  "city": "Belo Horizonte",
+  "country": "Brazil"
+ },
+ {
+  "id": "sahcs-long-acting-hiv-conference-2027",
+  "name": "Long-Acting HIV Treatment and Prevention Conference 2027 (SAHCS)",
+  "url": "https://sahivsoc.org",
+  "start": "2027-09-15",
+  "end": "2027-09-17",
+  "city": "Cape Town",
+  "country": "South Africa"
+ },
+ {
+  "id": "aao-hnsf-annual-meeting",
+  "name": "AAO-HNSF Annual Meeting & OTO Experience",
+  "url": "https://www.entnet.org",
+  "start": "2027-09-18",
+  "end": "2027-09-21",
+  "city": "New Orleans",
+  "country": "United States"
+ },
+ {
+  "id": "sbc-congresso-cardiologia",
+  "name": "Congresso Brasileiro de Cardiologia",
+  "url": "https://portal.cardiol.br",
+  "start": "2027-09-24",
+  "end": "2027-09-26",
+  "city": "Sao Paulo",
+  "country": "Brazil"
+ },
+ {
+  "id": "sbcm-congresso-clinica-medica-2027",
+  "name": "Congresso Brasileiro de Clínica Médica 2027",
+  "url": "https://www.sbcm.org.br",
+  "start": "2027-09-29",
+  "end": "2027-10-02",
+  "city": "São Paulo",
+  "country": "Brazil"
+ },
+ {
+  "id": "espn-annual-meeting",
+  "name": "ESPN Annual Meeting (European Society for Paediatric Nephrology)",
+  "url": "https://www.espn-online.org/next-events",
+  "start": "2027-10-06",
+  "end": "2027-10-09",
+  "city": "Florence",
+  "country": "Italy"
+ },
+ {
+  "id": "asa-anesthesiology",
+  "name": "ANESTHESIOLOGY Annual Meeting",
+  "url": "https://www.asahq.org",
+  "start": "2027-10-08",
+  "end": "2027-10-12",
+  "city": "San Francisco",
+  "country": "United States"
+ },
+ {
+  "id": "world-health-summit",
+  "name": "World Health Summit",
+  "url": "https://www.worldhealthsummit.org",
+  "start": "2027-10-10",
+  "end": "2027-10-12",
+  "city": "Berlin",
+  "country": "Germany"
+ },
+ {
+  "id": "sleep-downunder",
+  "name": "Sleep DownUnder",
+  "url": "https://www.sleep.org.au",
+  "start": "2027-10-13",
+  "end": "2027-10-16",
+  "city": "Brisbane",
+  "country": "Australia"
+ },
+ {
+  "id": "esmo-congress",
+  "name": "ESMO Congress",
+  "url": "https://www.esmo.org",
+  "start": "2027-10-15",
+  "end": "2027-10-19",
+  "city": "Madrid",
+  "country": "Spain"
+ },
+ {
+  "id": "aoa-asm",
+  "name": "AOA Annual Scientific Meeting",
+  "url": "https://aoa.org.au",
+  "start": "2027-10-17",
+  "end": "2027-10-20",
+  "city": "Perth",
+  "country": "Australia"
+ },
+ {
+  "id": "abn-congresso-brasileiro-neurologia-2027",
+  "name": "Congresso Brasileiro de Neurologia 2027",
+  "url": "https://www.abneuro.org.br",
+  "start": "2027-10-20",
+  "end": "2027-10-23",
+  "city": "São Paulo",
+  "country": "Brazil"
+ },
+ {
+  "id": "jsco-annual-meeting",
+  "name": "JSCO Annual Meeting",
+  "url": "https://www.jsco.or.jp",
+  "start": "2027-10-21",
+  "end": "2027-10-23",
+  "city": "Kyoto",
+  "country": "Japan"
+ },
+ {
+  "id": "asrm-scientific-congress",
+  "name": "ASRM Scientific Congress & Expo",
+  "url": "https://www.asrm.org",
+  "start": "2027-10-23",
+  "end": "2027-10-27",
+  "city": "Philadelphia",
+  "country": "United States"
+ },
+ {
+  "id": "haa-hsanz-asm",
+  "name": "HAA Annual Scientific Meeting",
+  "url": "https://www.hsanz.org.au",
+  "start": "2027-10-24",
+  "end": "2027-10-27",
+  "city": "Melbourne",
+  "country": "Australia"
+ },
+ {
+  "id": "jaam-annual-meeting",
+  "name": "JAAM Scientific Meeting",
+  "url": "https://www.jaam.jp",
+  "start": "2027-10-27",
+  "end": "2027-10-29",
+  "city": "Nagoya",
+  "country": "Japan"
+ },
+ {
+  "id": "acrm-annual-conference",
+  "name": "ACRM Annual Conference",
+  "url": "https://acrm.org/annual-conference/",
+  "start": "2027-10-30",
+  "end": "2027-11-02",
+  "city": "Dallas",
+  "country": "United States"
+ },
+ {
+  "id": "jddw",
+  "name": "Japan Digestive Disease Week (JDDW)",
+  "url": "https://www.jsge.or.jp",
+  "start": "2027-11-04",
+  "end": "2027-11-07",
+  "city": "Kobe",
+  "country": "Japan"
+ },
+ {
+  "id": "aben-cben-2027",
+  "name": "Congresso Brasileiro de Enfermagem (CBEn) 2027",
+  "url": "https://www.abennacional.org.br",
+  "start": "2027-11-08",
+  "end": "2027-11-12",
+  "city": "Brasília",
+  "country": "Brazil"
+ },
+ {
+  "id": "aapmr-annual-assembly",
+  "name": "AAPM&R Annual Assembly",
+  "url": "https://www.aapmr.org",
+  "start": "2027-11-10",
+  "end": "2027-11-13",
+  "city": "Phoenix",
+  "country": "United States"
+ },
+ {
+  "id": "aamc-learn-serve-lead",
+  "name": "AAMC Learn Serve Lead",
+  "url": "https://www.aamc.org",
+  "start": "2027-11-12",
+  "end": "2027-11-16",
+  "city": "Washington DC",
+  "country": "United States"
+ },
+ {
+  "id": "hkoa-congress",
+  "name": "HKOA Annual Congress",
+  "url": "https://www.hkoa.com",
+  "start": "2027-11-13",
+  "end": "2027-11-14",
+  "city": "Hong Kong",
+  "country": "Hong Kong"
+ },
+ {
+  "id": "asra-pain-medicine-meeting",
+  "name": "ASRA Pain Medicine Meeting",
+  "url": "https://www.asra.com",
+  "start": "2027-11-18",
+  "end": "2027-11-20",
+  "city": "Atlanta",
+  "country": "United States"
+ },
+ {
+  "id": "sochicar-congreso-chileno-cardiologia-2027",
+  "name": "Congreso Chileno de Cardiología y Cirugía Cardiovascular 2027",
+  "url": "https://www.sochicar.cl",
+  "start": "2027-12-01",
+  "end": "2027-12-04",
+  "city": "Santiago",
+  "country": "Chile"
+ },
+ {
+  "id": "isncon-2027",
+  "name": "ISN National Conference",
+  "url": "https://isn-india.org",
+  "start": "2027-12-02",
+  "end": "2027-12-05",
+  "city": "Pune",
+  "country": "India"
+ },
+ {
+  "id": "sabcs",
+  "name": "San Antonio Breast Cancer Symposium",
+  "url": "https://www.sabcs.org",
+  "start": "2027-12-07",
+  "end": "2027-12-10",
+  "city": "San Antonio",
+  "country": "United States"
+ },
+ {
+  "id": "ash-annual-meeting",
+  "name": "ASH Annual Meeting",
+  "url": "https://www.hematology.org",
+  "start": "2027-12-11",
+  "end": "2027-12-14",
+  "city": "San Diego",
+  "country": "United States"
+ }
+]

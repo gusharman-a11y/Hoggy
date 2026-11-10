@@ -1,0 +1,632 @@
+[
+ {
+  "id": "memac-dubai",
+  "name": "4th Middle East Master Class in Hematology (MEMAC 2027)",
+  "url": "https://www.memachematology.com/",
+  "start": "2027-01-08",
+  "end": "2027-01-09",
+  "city": "Dubai",
+  "country": "United Arab Emirates"
+ },
+ {
+  "id": "cairo-retina-meeting",
+  "name": "Cairo Retina Meeting 2027 (CRM 2027)",
+  "url": "https://cairoretinameeting.com/",
+  "start": "2027-01-14",
+  "end": "2027-01-15",
+  "city": "Cairo",
+  "country": "Egypt"
+ },
+ {
+  "id": "aeedc-dubai",
+  "name": "AEEDC Dubai 2027 - UAE International Dental Conference & Arab Dental Exhibition",
+  "url": "https://www.aeedc.com",
+  "start": "2027-01-19",
+  "end": "2027-01-21",
+  "city": "Dubai",
+  "country": "United Arab Emirates"
+ },
+ {
+  "id": "imcas-world-congress",
+  "name": "IMCAS World Congress",
+  "url": "https://www.imcas.com",
+  "start": "2027-01-28",
+  "end": "2027-01-30",
+  "city": "Paris",
+  "country": "France"
+ },
+ {
+  "id": "pha-midyear-convention",
+  "name": "PHA Midyear Convention 2027",
+  "url": "https://www.philheart.org",
+  "start": "2027-01-29",
+  "end": "2027-01-30",
+  "city": "Baguio",
+  "country": "Philippines"
+ },
+ {
+  "id": "scandinavian-sports-medicine-congress",
+  "name": "Scandinavian Sports Medicine Congress",
+  "url": "https://www.sportskongres.dk",
+  "start": "2027-02-04",
+  "end": "2027-02-06",
+  "city": "Copenhagen",
+  "country": "Denmark"
+ },
+ {
+  "id": "tnrd-istanbul",
+  "name": "36th National Congress of the Turkish Society of Diagnostic and Interventional Neuroradiology (TNRD 2027)",
+  "url": "https://www.tnrd2027.org/",
+  "start": "2027-02-11",
+  "end": "2027-02-14",
+  "city": "Istanbul",
+  "country": "Turkey"
+ },
+ {
+  "id": "esgo-congress",
+  "name": "ESGO Congress (European Congress on Gynaecological Oncology)",
+  "url": "https://congress.esgo.org/",
+  "start": "2027-02-25",
+  "end": "2027-02-27",
+  "city": "London",
+  "country": "United Kingdom"
+ },
+ {
+  "id": "ecco-congress",
+  "name": "ECCO Congress",
+  "url": "https://www.ecco-ibd.eu",
+  "start": "2027-03-03",
+  "end": "2027-03-06",
+  "city": "Copenhagen",
+  "country": "Denmark"
+ },
+ {
+  "id": "uscap-annual-meeting",
+  "name": "USCAP Annual Meeting",
+  "url": "https://2027am.uscap.org",
+  "start": "2027-03-13",
+  "end": "2027-03-18",
+  "city": "Vancouver",
+  "country": "Canada"
+ },
+ {
+  "id": "paltmed-annual-meeting",
+  "name": "PALTmed Annual Meeting",
+  "url": "https://paltmed.org/",
+  "start": "2027-03-18",
+  "end": "2027-03-20",
+  "city": "Albuquerque",
+  "country": "United States"
+ },
+ {
+  "id": "edec-dubai",
+  "name": "EDEC 2027 - 17th Emirates Diabetes & Endocrine Congress",
+  "url": "https://www.edec-uae.com/",
+  "start": "2027-03-19",
+  "end": "2027-03-21",
+  "city": "Dubai",
+  "country": "United Arab Emirates"
+ },
+ {
+  "id": "sir-annual-scientific-meeting",
+  "name": "SIR Annual Scientific Meeting",
+  "url": "https://www.sirweb.org",
+  "start": "2027-03-20",
+  "end": "2027-03-24",
+  "city": "Los Angeles",
+  "country": "United States"
+ },
+ {
+  "id": "eortc-summit-clinical-cancer-research",
+  "name": "EORTC Summit on Clinical Cancer Research",
+  "url": "https://www.eortc.org/event/eortc-summit-on-clinical-cancer-research/",
+  "start": "2027-03-23",
+  "end": "2027-03-24",
+  "city": "Brussels",
+  "country": "Belgium"
+ },
+ {
+  "id": "apsc-congress",
+  "name": "APSC Asian Pacific Congress of Cardiology",
+  "url": "https://www.apscardio.org",
+  "start": "2027-03-26",
+  "end": "2027-03-28",
+  "city": "Yokohama",
+  "country": "Japan"
+ },
+ {
+  "id": "epilepsy-alkhobar",
+  "name": "8th East Mediterranean Epilepsy Congress & 14th Saudi Epilepsy Society Congress",
+  "url": "https://epilepsy-congress.com/",
+  "start": "2027-04-01",
+  "end": "2027-04-03",
+  "city": "Al Khobar",
+  "country": "Saudi Arabia"
+ },
+ {
+  "id": "poss-madinah",
+  "name": "POSS 2027 - 4th Precision Oncology Saudi Summit",
+  "url": "https://possoncology.com/",
+  "start": "2027-04-01",
+  "end": "2027-04-03",
+  "city": "Madinah",
+  "country": "Saudi Arabia"
+ },
+ {
+  "id": "epa-congress",
+  "name": "European Congress of Psychiatry (EPA)",
+  "url": "https://www.epa-congress.org",
+  "start": "2027-04-03",
+  "end": "2027-04-06",
+  "city": "Florence",
+  "country": "Italy"
+ },
+ {
+  "id": "epns-congress",
+  "name": "EPNS Congress",
+  "url": "https://www.epns.info",
+  "start": "2027-04-06",
+  "end": "2027-04-10",
+  "city": "Barcelona",
+  "country": "Spain"
+ },
+ {
+  "id": "escmid-global",
+  "name": "ESCMID Global",
+  "url": "https://www.escmid.org",
+  "start": "2027-04-09",
+  "end": "2027-04-13",
+  "city": "Stockholm",
+  "country": "Sweden"
+ },
+ {
+  "id": "ehra-congress",
+  "name": "EHRA Congress",
+  "url": "https://www.escardio.org/Congresses-Events",
+  "start": "2027-04-11",
+  "end": "2027-04-13",
+  "city": "Helsinki",
+  "country": "Finland"
+ },
+ {
+  "id": "kpa-annual-scientific-conference-2027",
+  "name": "Kenya Paediatric Association Annual Scientific Conference 2027",
+  "url": "https://www.kenyapaediatric.org",
+  "start": "2027-04-13",
+  "end": "2027-04-16",
+  "city": "Mombasa",
+  "country": "Kenya"
+ },
+ {
+  "id": "ons-congress",
+  "name": "ONS Congress",
+  "url": "https://www.ons.org",
+  "start": "2027-04-14",
+  "end": "2027-04-18",
+  "city": "Washington DC",
+  "country": "United States"
+ },
+ {
+  "id": "esc-preventive-cardiology",
+  "name": "ESC Preventive Cardiology",
+  "url": "https://www.escardio.org/Congresses-Events",
+  "start": "2027-04-15",
+  "end": "2027-04-17",
+  "city": "Lisbon",
+  "country": "Portugal"
+ },
+ {
+  "id": "diabetes-uk-professional-conference",
+  "name": "Diabetes UK Professional Conference",
+  "url": "https://dukpc.diabetes.org.uk",
+  "start": "2027-04-20",
+  "end": "2027-04-22",
+  "city": "Liverpool",
+  "country": "United Kingdom"
+ },
+ {
+  "id": "ectes-european-congress-trauma-emergency-surgery",
+  "name": "European Congress of Trauma and Emergency Surgery (ECTES)",
+  "url": "https://www.estes-congress.org",
+  "start": "2027-04-25",
+  "end": "2027-04-27",
+  "city": "Zurich",
+  "country": "Switzerland"
+ },
+ {
+  "id": "esge-days",
+  "name": "ESGE Days",
+  "url": "https://www.esgedays.org",
+  "start": "2027-04-29",
+  "end": "2027-05-01",
+  "city": "Lisbon",
+  "country": "Portugal"
+ },
+ {
+  "id": "iars-annual-meeting",
+  "name": "IARS Annual Meeting",
+  "url": "https://www.iars.org",
+  "start": "2027-04-30",
+  "end": "2027-05-02",
+  "city": "Chicago",
+  "country": "United States"
+ },
+ {
+  "id": "ecio-european-conference-interventional-oncology",
+  "name": "European Conference on Interventional Oncology (ECIO)",
+  "url": "https://www.cirse.org/onsite/event-calendar/",
+  "start": "2027-05-01",
+  "end": "2027-05-05",
+  "city": "Palma de Mallorca",
+  "country": "Spain"
+ },
+ {
+  "id": "asgct-annual-meeting",
+  "name": "ASGCT Annual Meeting",
+  "url": "https://annualmeeting.asgct.org",
+  "start": "2027-05-03",
+  "end": "2027-05-07",
+  "city": "Philadelphia",
+  "country": "United States"
+ },
+ {
+  "id": "eccc-dubai",
+  "name": "23rd Emirates Critical Care Conference (ECCC 2027)",
+  "url": "https://eccc-dubai.com/",
+  "start": "2027-05-07",
+  "end": "2027-05-09",
+  "city": "Dubai",
+  "country": "United Arab Emirates"
+ },
+ {
+  "id": "ebcog-congress",
+  "name": "EBCOG Congress (30th)",
+  "url": "https://ebcog.eu/event/30th-ebcog-congress/",
+  "start": "2027-05-12",
+  "end": "2027-05-15",
+  "city": "Rome",
+  "country": "Italy"
+ },
+ {
+  "id": "acd-asm",
+  "name": "Australasian College of Dermatologists ASM",
+  "url": "https://www.dermcoll.edu.au",
+  "start": "2027-05-14",
+  "end": "2027-05-16",
+  "city": "Adelaide",
+  "country": "Australia"
+ },
+ {
+  "id": "ranzcp-congress",
+  "name": "RANZCP Congress",
+  "url": "https://www.ranzcp.org",
+  "start": "2027-05-16",
+  "end": "2027-05-20",
+  "city": "Christchurch",
+  "country": "New Zealand"
+ },
+ {
+  "id": "hospitalar-2027",
+  "name": "Hospitalar 2027",
+  "url": "https://www.hospitalar.com",
+  "start": "2027-05-18",
+  "end": "2027-05-21",
+  "city": "São Paulo",
+  "country": "Brazil"
+ },
+ {
+  "id": "emas-congress",
+  "name": "EMAS Congress (European Menopause and Andropause Society)",
+  "url": "https://emas-online.org",
+  "start": "2027-05-19",
+  "end": "2027-05-21",
+  "city": "Gothenburg",
+  "country": "Sweden"
+ },
+ {
+  "id": "ags-annual-scientific-meeting",
+  "name": "AGS Annual Scientific Meeting",
+  "url": "https://www.americangeriatrics.org",
+  "start": "2027-05-20",
+  "end": "2027-05-22",
+  "city": "Atlanta",
+  "country": "United States"
+ },
+ {
+  "id": "ects-congress",
+  "name": "ECTS Congress (European Calcified Tissue Society)",
+  "url": "https://ectsoc.org/ects-congress/future-congress/",
+  "start": "2027-05-21",
+  "end": "2027-05-24",
+  "city": "Bruges",
+  "country": "Belgium"
+ },
+ {
+  "id": "amman-retina-meeting",
+  "name": "Amman Retina Meeting 2027",
+  "url": "https://www.ammanretinameeting.com/",
+  "start": "2027-05-26",
+  "end": "2027-05-28",
+  "city": "Amman",
+  "country": "Jordan"
+ },
+ {
+  "id": "eas-congress",
+  "name": "European Atherosclerosis Society (EAS) Congress",
+  "url": "https://eas-congress.com/2027",
+  "start": "2027-05-30",
+  "end": "2027-06-02",
+  "city": "Gothenburg",
+  "country": "Sweden"
+ },
+ {
+  "id": "espghan-annual-meeting",
+  "name": "ESPGHAN Annual Meeting",
+  "url": "https://www.espghan.org/our-organisation/Annual-Meeting",
+  "start": "2027-06-02",
+  "end": "2027-06-05",
+  "city": "Lisbon",
+  "country": "Portugal"
+ },
+ {
+  "id": "asco-annual-meeting",
+  "name": "ASCO Annual Meeting",
+  "url": "https://www.asco.org",
+  "start": "2027-06-04",
+  "end": "2027-06-08",
+  "city": "Chicago",
+  "country": "United States"
+ },
+ {
+  "id": "espr-congress",
+  "name": "ESPR Congress (European Society of Paediatric Radiology)",
+  "url": "https://harrogate2027.espr.org",
+  "start": "2027-06-07",
+  "end": "2027-06-11",
+  "city": "Harrogate",
+  "country": "United Kingdom"
+ },
+ {
+  "id": "european-health-management-conference",
+  "name": "European Health Management Conference (EHMC)",
+  "url": "https://ehma.org",
+  "start": "2027-06-09",
+  "end": "2027-06-11",
+  "city": "Bilbao",
+  "country": "Spain"
+ },
+ {
+  "id": "cas-annual-meeting",
+  "name": "CAS Annual Meeting",
+  "url": "https://www.cas.ca",
+  "start": "2027-06-11",
+  "end": "2027-06-13",
+  "city": "Winnipeg",
+  "country": "Canada"
+ },
+ {
+  "id": "european-human-genetics-conference",
+  "name": "European Human Genetics Conference (ESHG)",
+  "url": "https://2027.eshg.org/",
+  "start": "2027-06-12",
+  "end": "2027-06-15",
+  "city": "Rotterdam",
+  "country": "Netherlands"
+ },
+ {
+  "id": "esgar-annual-meeting",
+  "name": "ESGAR Annual Meeting and Postgraduate Course",
+  "url": "https://esgar.org/annual-meeting",
+  "start": "2027-06-15",
+  "end": "2027-06-18",
+  "city": "Edinburgh",
+  "country": "United Kingdom"
+ },
+ {
+  "id": "ada-scientific-sessions",
+  "name": "ADA Scientific Sessions",
+  "url": "https://diabetes.org",
+  "start": "2027-06-18",
+  "end": "2027-06-21",
+  "city": "Washington DC",
+  "country": "United States"
+ },
+ {
+  "id": "eano-sno-pediatric-neuro-oncology",
+  "name": "EANO-SNO Joint Meeting on Pediatric Neuro-Oncology",
+  "url": "https://www.soc-neuro-onc.org",
+  "start": "2027-06-24",
+  "end": "2027-06-26",
+  "city": "Miami",
+  "country": "United States"
+ },
+ {
+  "id": "bad-annual-meeting",
+  "name": "British Association of Dermatologists Annual Meeting (107th)",
+  "url": "https://www.badannualmeeting.co.uk",
+  "start": "2027-06-29",
+  "end": "2027-07-01",
+  "city": "Liverpool",
+  "country": "United Kingdom"
+ },
+ {
+  "id": "alat-congress",
+  "name": "ALAT Congress",
+  "url": "https://alatorax.org",
+  "start": "2027-07-07",
+  "end": "2027-07-10",
+  "city": "San Jose",
+  "country": "Costa Rica"
+ },
+ {
+  "id": "aapm-annual-meeting",
+  "name": "AAPM Annual Meeting & Exhibition",
+  "url": "https://www.aapm.org/meetings/",
+  "start": "2027-07-25",
+  "end": "2027-07-28",
+  "city": "Columbus",
+  "country": "United States"
+ },
+ {
+  "id": "australasian-diabetes-congress",
+  "name": "Australasian Diabetes Congress",
+  "url": "https://www.diabetessociety.com.au",
+  "start": "2027-08-18",
+  "end": "2027-08-20",
+  "city": "Adelaide",
+  "country": "Australia"
+ },
+ {
+  "id": "esc-congress",
+  "name": "ESC Congress",
+  "url": "https://www.escardio.org",
+  "start": "2027-08-27",
+  "end": "2027-08-30",
+  "city": "Milan",
+  "country": "Italy"
+ },
+ {
+  "id": "sbem-cbaem-2027",
+  "name": "Congresso Brasileiro de Atualização em Endocrinologia e Metabologia (CBAEM) 2027",
+  "url": "https://www.endocrino.org.br",
+  "start": "2027-09-03",
+  "end": "2027-09-06",
+  "city": "Brasília",
+  "country": "Brazil"
+ },
+ {
+  "id": "european-congress-of-immunology",
+  "name": "European Congress of Immunology (ECI)",
+  "url": "https://eci2027.org/",
+  "start": "2027-09-05",
+  "end": "2027-09-08",
+  "city": "Florence",
+  "country": "Italy"
+ },
+ {
+  "id": "ers-congress",
+  "name": "ERS International Congress",
+  "url": "https://www.ersnet.org",
+  "start": "2027-09-11",
+  "end": "2027-09-15",
+  "city": "Milan",
+  "country": "Italy"
+ },
+ {
+  "id": "easd-annual-meeting",
+  "name": "EASD Annual Meeting",
+  "url": "https://www.easd.org",
+  "start": "2027-09-20",
+  "end": "2027-09-24",
+  "city": "Budapest",
+  "country": "Hungary"
+ },
+ {
+  "id": "eao-congress",
+  "name": "EAO Congress",
+  "url": "https://eao.org/congress/",
+  "start": "2027-09-23",
+  "end": "2027-09-25",
+  "city": "Madrid",
+  "country": "Spain"
+ },
+ {
+  "id": "esicm-lives",
+  "name": "ESICM LIVES",
+  "url": "https://www.esicm.org",
+  "start": "2027-09-25",
+  "end": "2027-09-29",
+  "city": "Copenhagen",
+  "country": "Denmark"
+ },
+ {
+  "id": "africa-health-excel",
+  "name": "Africa Health ExCeL",
+  "url": "https://www.worldhealthexpo.com/events/healthcare/johannesburg/",
+  "start": "2027-10-06",
+  "end": "2027-10-08",
+  "city": "Johannesburg",
+  "country": "South Africa"
+ },
+ {
+  "id": "eurospine-annual-meeting",
+  "name": "EUROSPINE Annual Meeting",
+  "url": "https://www.eurospine.org/events/annual-meeting/2027/",
+  "start": "2027-10-06",
+  "end": "2027-10-08",
+  "city": "Barcelona",
+  "country": "Spain"
+ },
+ {
+  "id": "ksc-2027",
+  "name": "KSC 2027 (71st Annual Scientific Meeting)",
+  "url": "https://www.circulation.or.kr/eng/",
+  "start": "2027-10-14",
+  "end": "2027-10-16",
+  "city": "Seoul",
+  "country": "South Korea"
+ },
+ {
+  "id": "escrs-congress",
+  "name": "ESCRS Congress",
+  "url": "https://www.escrs.org",
+  "start": "2027-10-15",
+  "end": "2027-10-19",
+  "city": "Madrid",
+  "country": "Spain"
+ },
+ {
+  "id": "ueg-week",
+  "name": "UEG Week",
+  "url": "https://ueg.eu",
+  "start": "2027-10-16",
+  "end": "2027-10-19",
+  "city": "Copenhagen",
+  "country": "Denmark"
+ },
+ {
+  "id": "acep-scientific-assembly",
+  "name": "ACEP Scientific Assembly",
+  "url": "https://www.acep.org",
+  "start": "2027-10-25",
+  "end": "2027-10-28",
+  "city": "Boston",
+  "country": "United States"
+ },
+ {
+  "id": "asn-kidney-week",
+  "name": "ASN Kidney Week",
+  "url": "https://www.asn-online.org/education/kidneyweek/",
+  "start": "2027-10-27",
+  "end": "2027-10-31",
+  "city": "San Diego",
+  "country": "United States"
+ },
+ {
+  "id": "wonca-world-conference",
+  "name": "WONCA World Conference",
+  "url": "https://www.globalfamilydoctor.com",
+  "start": "2027-11-03",
+  "end": "2027-11-07",
+  "city": "Cape Town",
+  "country": "South Africa"
+ },
+ {
+  "id": "cosa-asm",
+  "name": "COSA Annual Scientific Meeting",
+  "url": "https://www.cosa.org.au",
+  "start": "2027-11-10",
+  "end": "2027-11-12",
+  "city": "Cairns",
+  "country": "Australia"
+ },
+ {
+  "id": "rsna-annual-meeting",
+  "name": "RSNA Annual Meeting",
+  "url": "https://www.rsna.org",
+  "start": "2027-11-14",
+  "end": "2027-11-18",
+  "city": "Chicago",
+  "country": "United States"
+ }
+]

@@ -1,0 +1,24 @@
+cmim-xlix-congreso-medicina-interna-2026-merida | XLIX Congreso Nacional de Medicina Interna | 2026-11-25 | Mérida | https://suite.cmim.org/ | confirmed
+xli-congreso-panamericano-orl-2027-monterrey | XLI Congreso Panamericano de Otorrinolaringología y Cirugía de Cabeza y Cuello | 2027-03-10 | Monterrey | https://acorl.org.co/eventos/otro-xli-congreso-panamericano-de-otorrinolaringologa-y-ciruga-de-cabeza-y-cuello | confirmed
+congreso-mexicano-de-reumatologia-2027 | Congreso Mexicano de Reumatología 2027 | 2027-04-07 | Mexico City | https://reumatologia.org.mx/ | estimated
+congreso-anual-de-la-sociedad-mexicana-de-oftalmologia-2027 | Congreso Anual de la Sociedad Mexicana de Oftalmología 2027 | 2027-05-26 | Guadalajara | https://smo.org.mx/ | estimated
+congreso-nacional-de-hematologia-2027 | Congreso Nacional de Hematología 2027 | 2027-05-26 | Mexico City | https://amehac.org/ | estimated
+congreso-nacional-de-radiologia-e-imagen-2027 | Congreso Nacional de Radiología e Imagen 2027 | 2027-06-16 | Mexico City | https://smri.org.mx/ | estimated
+congreso-latinoamericano-de-anestesiologia-clasa-2027 | Congreso Latinoamericano de Anestesiología (CLASA) 2027 | 2027-09-08 | Cancún | https://clasa-anestesia.org/ | estimated
+congreso-nacional-de-la-federacion-mexicana-de-colegios-de-obstetricia-2027 | Congreso Nacional de la Federación Mexicana de Colegios de Obstetricia y Ginecología 2027 | 2027-10-06 | Mexico City | https://femecog.org.mx/ | estimated
+congreso-nacional-de-neurologia-2027 | Congreso Nacional de Neurología 2027 | 2027-10-06 | Mexico City | https://neurologia.org.mx/ | estimated
+congreso-anual-de-la-sociedad-mexicana-de-cardiologia-2027 | Congreso Anual de la Sociedad Mexicana de Cardiología 2027 | 2027-10-20 | Mexico City | https://smcardiologia.org.mx/ | estimated
+congreso-nacional-de-urologia-2027 | Congreso Nacional de Urología 2027 | 2027-11-03 | Mexico City | https://smu.org.mx/ | estimated
+semana-nacional-de-gastroenterologia-2027 | Semana Nacional de Gastroenterología 2027 | 2027-11-03 | Monterrey | https://amg.org.mx/ | estimated
+congreso-nacional-de-cirugia-general-2027 | Congreso Nacional de Cirugía General 2027 | 2027-11-17 | Mexico City | https://amcg.org.mx/ | estimated
+congreso-mexicano-de-reumatologia-2028 | Congreso Mexicano de Reumatología 2028 | 2028-04-05 | Mexico City | https://reumatologia.org.mx/ | estimated
+congreso-anual-de-la-sociedad-mexicana-de-oftalmologia-2028 | Congreso Anual de la Sociedad Mexicana de Oftalmología 2028 | 2028-05-24 | Guadalajara | https://smo.org.mx/ | estimated
+congreso-nacional-de-hematologia-2028 | Congreso Nacional de Hematología 2028 | 2028-05-24 | Mexico City | https://amehac.org/ | estimated
+congreso-nacional-de-radiologia-e-imagen-2028 | Congreso Nacional de Radiología e Imagen 2028 | 2028-06-14 | Mexico City | https://smri.org.mx/ | estimated
+congreso-latinoamericano-de-anestesiologia-clasa-2028 | Congreso Latinoamericano de Anestesiología (CLASA) 2028 | 2028-09-06 | Cancún | https://clasa-anestesia.org/ | estimated
+congreso-nacional-de-la-federacion-mexicana-de-colegios-de-obstetricia-2028 | Congreso Nacional de la Federación Mexicana de Colegios de Obstetricia y Ginecología 2028 | 2028-10-04 | Mexico City | https://femecog.org.mx/ | estimated
+congreso-nacional-de-neurologia-2028 | Congreso Nacional de Neurología 2028 | 2028-10-04 | Mexico City | https://neurologia.org.mx/ | estimated
+congreso-anual-de-la-sociedad-mexicana-de-cardiologia-2028 | Congreso Anual de la Sociedad Mexicana de Cardiología 2028 | 2028-10-18 | Mexico City | https://smcardiologia.org.mx/ | estimated
+congreso-nacional-de-urologia-2028 | Congreso Nacional de Urología 2028 | 2028-11-01 | Mexico City | https://smu.org.mx/ | estimated
+semana-nacional-de-gastroenterologia-2028 | Semana Nacional de Gastroenterología 2028 | 2028-11-01 | Monterrey | https://amg.org.mx/ | estimated
+congreso-nacional-de-cirugia-general-2028 | Congreso Nacional de Cirugía General 2028 | 2028-11-15 | Mexico City | https://amcg.org.mx/ | estimated

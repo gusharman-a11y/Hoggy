@@ -1,0 +1,17 @@
+{
+  "name": "hoggy",
+  "version": "0.3.0",
+  "private": true,
+  "description": "Medical conference scanner",
+  "engines": {
+    "node": ">=22.5"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test tests/hoggy.test.js tests/pdf.test.js tests/pack.test.js",
+    "merge": "node tools/merge-shards.js"
+  },
+  "dependencies": {
+    "pdfjs-dist": "4.10.38"
+  }
+}

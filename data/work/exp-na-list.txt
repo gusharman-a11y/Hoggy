@@ -1,0 +1,121 @@
+sts-annual-meeting|STS Annual Meeting|Society of Thoracic Surgeons|Cardiothoracic Surgery|Chicago|0123|4|https://www.sts.org/|thoracic surgeons|0|1
+apta-csm|APTA Combined Sections Meeting|American Physical Therapy Association|Physical Therapy|Houston|0210|4|https://www.apta.org/|physical therapy assoc|0|1
+aanp-health-policy-conference|AANP Health Policy Conference|American Association of Nurse Practitioners|Nursing|Washington|0207|3|https://www.aanp.org/|nurse practitioners.*policy|0|0
+aspen-nutrition-science-practice|ASPEN Nutrition Science and Practice Conference|American Society for Parenteral and Enteral Nutrition|Nutrition|Orlando|0213|4|https://www.nutritioncare.org/|parenteral and enteral|0|1
+aaaai-annual-meeting|AAAAI Annual Meeting|American Academy of Allergy, Asthma and Immunology|Allergy and Immunology|San Diego|0219|4|https://www.aaaai.org/|allergy, asthma|0|1
+cddw|Canadian Digestive Diseases Week|Canadian Association of Gastroenterology|Gastroenterology|Banff|0226|4|https://cag-acg.org/|canadian association of gastro|0|1
+uscap-annual-meeting|USCAP Annual Meeting|United States and Canadian Academy of Pathology|Pathology|Baltimore|0313|5|https://www.uscap.org/|canadian academy of pa|0|1
+cpha-public-health-conference|CPHA Public Health Conference|Canadian Public Health Association|Public Health|Ottawa|0316|3|https://www.cpha.ca/|canadian public health|0|1
+paltmed-annual-meeting|AMDA Annual Conference|Post-Acute and Long-Term Care Medical Association|Geriatrics|Nashville|0318|4|https://paltc.org/|long-term care medical|0|1
+aad-annual-meeting|AAD Annual Meeting|American Academy of Dermatology|Dermatology|Orlando|0319|4|https://www.aad.org/|academy of dermatology|0|1
+apha-pharmacists-annual-meeting|APhA Annual Meeting and Exposition|American Pharmacists Association|Pharmacy|Seattle|0319|4|https://www.pharmacist.com/|pharmacists association|0|1
+sir-annual-scientific-meeting|SIR Annual Scientific Meeting|Society of Interventional Radiology|Interventional Radiology|Salt Lake City|0320|5|https://www.sirweb.org/|interventional radiology|0|1
+croi-conference|CROI Conference on Retroviruses and Opportunistic Infections|International Antiviral Society-USA|Infectious Diseases|Denver|0221|4|https://www.croiconference.org/|croi|0|1
+smfm-pregnancy-meeting|SMFM Pregnancy Meeting|Society for Maternal-Fetal Medicine|Obstetrics and Gynaecology|Las Vegas|0201|6|https://www.smfm.org/|maternal-fetal|0|1
+shea-spring-conference|SHEA Spring Conference|Society for Healthcare Epidemiology of America|Infectious Diseases|Atlanta|0330|3|https://shea-online.org/|healthcare epidemiology|0|1
+shm-converge|SHM Converge|Society of Hospital Medicine|Hospital Medicine|Las Vegas|0330|4|https://www.hospitalmedicine.org/|hospital medicine|0|1
+car-annual-scientific-meeting|CAR Annual Scientific Meeting|Canadian Association of Radiologists|Radiology|Ottawa|0401|3|https://car.ca/|canadian association of radiologists|0|1
+aacr-annual-meeting|AACR Annual Meeting|American Association for Cancer Research|Oncology|San Diego|0402|5|https://www.aacr.org/|cancer research|0|1
+ascrs-annual-meeting|ASCRS Annual Scientific Meeting|American Society of Colon and Rectal Surgeons|Colorectal Surgery|Seattle|0515|4|https://fascrs.org/|colon and rectal|0|1
+cra-annual-scientific-meeting|CRA Annual Scientific Meeting|Canadian Rheumatology Association|Rheumatology|Quebec City|0208|4|https://rheum.ca/|canadian rheumatology|0|1
+acmg-annual-clinical-genetics-meeting|ACMG Annual Clinical Genetics Meeting|American College of Medical Genetics and Genomics|Genetics|Phoenix|0413|5|https://www.acmg.net/|medical genetics and genomics|0|1
+amcp-annual-meeting|AMCP Annual Meeting|Academy of Managed Care Pharmacy|Pharmacy|Atlanta|0413|4|https://www.amcp.org/|managed care pharmacy|0|1
+aba-annual-meeting|ABA Annual Meeting|American Burn Association|Burn Care|Chicago|0413|4|https://ameriburn.org/|burn association|0|1
+aae-annual-meeting|AAE Annual Meeting|American Association of Endodontists|Dentistry|Denver|0414|4|https://www.aae.org/|endodontists|0|1
+ons-congress|ONS Congress|Oncology Nursing Society|Oncology Nursing|Denver|0414|4|https://www.ons.org/|oncology nursing|0|1
+naccho-preparedness-summit|NACCHO Preparedness Summit|National Association of County and City Health Officials|Public Health|Atlanta|0419|4|https://www.naccho.org/|naccho|0|1
+aaem-scientific-assembly|AAEM Scientific Assembly|American Academy of Emergency Medicine|Emergency Medicine|Las Vegas|0425|5|https://www.aaem.org/|academy of emergency medicine|0|1
+iars-annual-meeting|IARS Annual Meeting|International Anesthesia Research Society|Anaesthesiology|Boston|0430|3|https://www.iars.org/|anesthesia research society|0|1
+pas-meeting|Pediatric Academic Societies Meeting|Pediatric Academic Societies|Paediatrics|Toronto|0430|4|https://www.pas-meeting.org/|pediatric academic|0|1
+aats-annual-meeting|AATS Annual Meeting|American Association for Thoracic Surgery|Cardiothoracic Surgery|Boston|0501|4|https://www.aats.org/|thoracic surgery|0|1
+aacn-nti|AACN National Teaching Institute|American Association of Critical-Care Nurses|Critical Care Nursing|Houston|0502|4|https://www.aacn.org/|critical-care nurses|0|1
+arrs-annual-meeting|ARRS Annual Meeting|American Roentgen Ray Society|Radiology|Honolulu|0502|5|https://www.arrs.org/|roentgen|0|1
+asgct-annual-meeting|ASGCT Annual Meeting|American Society of Gene and Cell Therapy|Gene Therapy|Boston|0503|4|https://www.asgct.org/|gene.*cell therapy|0|1
+sgim-annual-meeting|SGIM Annual Meeting|Society of General Internal Medicine|Internal Medicine|Orlando|0505|4|https://www.sgim.org/|general internal medicine|0|1
+cshp-ppc|CSHP Professional Practice Conference|Canadian Society of Hospital Pharmacists|Pharmacy|Toronto|0207|4|https://cshp.ca/|hospital pharmacists|0|1
+ismrm-annual-meeting|ISMRM Annual Meeting|International Society for Magnetic Resonance in Medicine|Radiology|Honolulu|0508|5|https://www.ismrm.org/|magnetic resonance in medicine|0|1
+asra-regional-anesthesiology-meeting|ASRA Regional Anesthesiology and Acute Pain Medicine Meeting|American Society of Regional Anesthesia and Pain Medicine|Anaesthesiology|San Francisco|0513|4|https://www.asra.com/|regional anesthesiology|0|1
+ats-international-conference|ATS International Conference|American Thoracic Society|Respiratory Medicine|San Francisco|0514|5|https://www.thoracic.org/|thoracic society|0|1
+ddw|Digestive Disease Week|AGA, AASLD, ASGE and SSAT|Gastroenterology|Chicago|0515|4|https://ddw.org/|digestive disease week|0|1
+caep-conference|CAEP Annual Conference|Canadian Association of Emergency Physicians|Emergency Medicine|Halifax|0516|4|https://caep.ca/|canadian association of emergency|0|1
+saem-annual-meeting|SAEM Annual Meeting|Society for Academic Emergency Medicine|Emergency Medicine|Phoenix|0518|4|https://www.saem.org/|academic emergency medicine|0|1
+ags-annual-scientific-meeting|AGS Annual Scientific Meeting|American Geriatrics Society|Geriatrics|Chicago|0520|3|https://www.americangeriatrics.org/|geriatrics society|0|1
+cps-annual-conference|CPS Annual Conference|Canadian Paediatric Society|Paediatrics|Ottawa|0520|3|https://cps.ca/|canadian paediatric|0|1
+soap-annual-meeting|SOAP Annual Meeting|Society for Obstetric Anesthesia and Perinatology|Anaesthesiology|Montreal|0520|4|https://soap.org/|obstetric anesthesia|0|1
+acog-annual-clinical-scientific-meeting|ACOG Annual Clinical and Scientific Meeting|American College of Obstetricians and Gynecologists|Obstetrics and Gynaecology|Chicago|0521|3|https://www.acog.org/|obstetricians and gyn|0|1
+aua-annual-meeting|AUA Annual Meeting|American Urological Association|Urology|Atlanta|0521|4|https://www.auanet.org/|urological association|0|1
+coa-annual-meeting|COA Annual Meeting|Canadian Orthopaedic Association|Orthopaedics|Calgary|0602|4|https://coa-aco.org/|canadian orthopaedic|0|1
+aao-orthodontists-annual-session|AAO Annual Session|American Association of Orthodontists|Dentistry|Denver|0604|4|https://www.aaoinfo.org/|orthodontists|0|1
+asco-annual-meeting|ASCO Annual Meeting|American Society of Clinical Oncology|Oncology|Chicago|0604|5|https://www.asco.org/|clinical oncology|0|0
+ase-scientific-sessions|ASE Scientific Sessions|American Society of Echocardiography|Cardiology|Nashville|0604|4|https://www.asecho.org/|echocardiography|0|1
+endo-annual-meeting|ENDO Annual Meeting|Endocrine Society|Endocrinology|Chicago|0605|4|https://www.endocrine.org/|endocrine society|0|1
+snmmi-annual-meeting|SNMMI Annual Meeting|Society of Nuclear Medicine and Molecular Imaging|Nuclear Medicine|Toronto|0605|4|https://www.snmmi.org/|nuclear medicine and molecular|0|1
+sleep-annual-meeting|SLEEP Annual Meeting|Associated Professional Sleep Societies|Sleep Medicine|Houston|0606|5|https://www.sleepmeeting.org/|sleep societies|0|1
+ahs-annual-scientific-meeting|AHS Annual Scientific Meeting|American Headache Society|Neurology|Minneapolis|0610|4|https://americanheadachesociety.org/|headache society|0|1
+cas-annual-meeting|CAS Annual Meeting|Canadian Anesthesiologists' Society|Anaesthesiology|Vancouver|0611|4|https://www.cas.ca/|canadian anesthesiologists|0|1
+aanp-national-conference|AANP National Conference|American Association of Nurse Practitioners|Nursing|Denver|0615|5|https://www.aanp.org/|nurse practitioners.*national|0|1
+ada-scientific-sessions|ADA Scientific Sessions|American Diabetes Association|Diabetes|New Orleans|0618|4|https://professional.diabetes.org/|diabetes association|0|1
+awhonn-convention|AWHONN Convention|Association of Women's Health, Obstetric and Neonatal Nurses|Obstetric Nursing|Orlando|0619|4|https://www.awhonn.org/|awhonn|0|1
+nata-clinical-symposia|NATA Clinical Symposia and AT Expo|National Athletic Trainers Association|Sports Medicine|Anaheim|0621|4|https://www.nata.org/|athletic trainers|0|1
+asm-microbe|ASM Microbe|American Society for Microbiology|Microbiology|Washington|0622|4|https://asm.org/|asm microbe|0|1
+cua-annual-meeting|CUA Annual Meeting|Canadian Urological Association|Urology|Quebec City|0625|3|https://www.cua.org/|canadian urological|0|1
+adlm-annual-meeting|ADLM Annual Meeting and Clinical Lab Expo|Association for Diagnostics and Laboratory Medicine|Laboratory Medicine|Anaheim|0725|4|https://www.myadlm.org/|diagnostics.*laboratory|0|1
+asn-nutrition|NUTRITION Annual Meeting|American Society for Nutrition|Nutrition|Orlando|0726|4|https://nutrition.org/|american society for nutrition|0|1
+asrs-annual-meeting|ASRS Annual Meeting|American Society of Retina Specialists|Ophthalmology|Seattle|0728|4|https://www.asrs.org/|retina specialists|0|1
+cap-annual-meeting|CAP Annual Meeting|College of American Pathologists|Pathology|Orlando|0909|4|https://www.cap.org/|college of american pathologists|0|1
+aast-annual-meeting|AAST Annual Meeting|American Association for the Surgery of Trauma|Trauma Surgery|Chicago|0915|4|https://www.aast.org/|surgery of trauma|0|1
+ena-emergency-nursing|Emergency Nursing Annual Conference|Emergency Nurses Association|Emergency Nursing|Orlando|0915|4|https://www.ena.org/|emergency nurses|0|1
+aao-hnsf-annual-meeting|AAO-HNSF Annual Meeting and OTO Experience|American Academy of Otolaryngology-Head and Neck Surgery Foundation|Otolaryngology|Philadelphia|0918|4|https://www.entnet.org/|otolaryngology|0|1
+aafp-fmx|AAFP Family Medicine Experience|American Academy of Family Physicians|Family Medicine|Seattle|0920|5|https://www.aafp.org/|family physicians|0|1
+idweek|IDWeek|Infectious Diseases Society of America|Infectious Diseases|Washington|1006|5|https://idweek.org/|idweek|0|1
+aap-national-conference|AAP National Conference and Exhibition|American Academy of Pediatrics|Paediatrics|Orlando|1015|4|https://www.aap.org/|academy of pediatrics|0|1
+asa-anesthesiology|ANESTHESIOLOGY Annual Meeting|American Society of Anesthesiologists|Anaesthesiology|San Diego|1015|4|https://www.asahq.org/|society of anesthesiologists|0|1
+aabb-annual-meeting|AABB Annual Meeting|Association for the Advancement of Blood and Biotherapies|Transfusion Medicine|San Diego|1016|4|https://www.aabb.org/|advancement of blood|0|1
+acs-clinical-congress|ACS Clinical Congress|American College of Surgeons|Surgery|Washington|1016|5|https://www.facs.org/|college of surgeons|0|1
+tct-conference|TCT Conference|Cardiovascular Research Foundation|Cardiology|Washington|1018|4|https://www.crf.org/|tct|0|1
+canadian-cardiovascular-congress|Canadian Cardiovascular Congress|Canadian Cardiovascular Society|Cardiology|Montreal|1021|4|https://ccs.ca/|canadian cardiovascular|0|1
+asrm-scientific-congress|ASRM Scientific Congress and Expo|American Society for Reproductive Medicine|Reproductive Medicine|Baltimore|1023|4|https://www.asrm.org/|reproductive medicine|0|1
+sfn-neuroscience|Neuroscience Annual Meeting|Society for Neuroscience|Neuroscience|San Diego|1023|5|https://www.sfn.org/|society for neuroscience|0|1
+chest-annual-meeting|CHEST Annual Meeting|American College of Chest Physicians|Respiratory Medicine|Chicago|1024|4|https://www.chestnet.org/|chest physicians|0|1
+aacap-annual-meeting|AACAP Annual Meeting|American Academy of Child and Adolescent Psychiatry|Psychiatry|Seattle|1025|5|https://www.aacap.org/|child and adolescent psychiatry|0|1
+acep-scientific-assembly|ACEP Scientific Assembly|American College of Emergency Physicians|Emergency Medicine|Boston|1025|4|https://www.acep.org/|college of emergency physicians|0|1
+ashg-annual-meeting|ASHG Annual Meeting|American Society of Human Genetics|Genetics|Montreal|1026|5|https://www.ashg.org/|human genetics|0|1
+asn-kidney-week|ASN Kidney Week|American Society of Nephrology|Nephrology|Denver|1027|5|https://www.asn-online.org/|society of nephrology|0|1
+acrm-annual-conference|ACRM Annual Conference|American Congress of Rehabilitation Medicine|Rehabilitation Medicine|Chicago|1030|4|https://acrm.org/|rehabilitation medicine|0|1
+apha-annual-meeting|APHA Annual Meeting and Expo|American Public Health Association|Public Health|Boston|1107|4|https://www.apha.org/|public health association.*annual|0|1
+astmh-annual-meeting|ASTMH Annual Meeting|American Society of Tropical Medicine and Hygiene|Tropical Medicine|Toronto|1107|5|https://www.astmh.org/|tropical medicine|0|1
+amp-annual-meeting|AMP Annual Meeting and Expo|Association for Molecular Pathology|Molecular Pathology|Philadelphia|1109|4|https://www.amp.org/|molecular pathology|0|1
+aapmr-annual-assembly|AAPM&R Annual Assembly|American Academy of Physical Medicine and Rehabilitation|Rehabilitation Medicine|Chicago|1110|4|https://www.aapmr.org/|physical medicine and rehab|0|1
+ata-annual-meeting|ATA Annual Meeting|American Thyroid Association|Endocrinology|Washington|1110|4|https://www.thyroid.org/|thyroid association|0|1
+aamc-learn-serve-lead|AAMC Learn Serve Lead|Association of American Medical Colleges|Medical Education|Washington|1112|4|https://www.aamc.org/|aamc|0|1
+aao-annual-meeting|AAO Annual Meeting|American Academy of Ophthalmology|Ophthalmology|Chicago|1112|4|https://www.aao.org/|academy of ophthalmology|0|1
+aha-scientific-sessions|AHA Scientific Sessions|American Heart Association|Cardiology|Chicago|1113|4|https://professional.heart.org/|heart association|0|1
+rsna-annual-meeting|RSNA Annual Meeting|Radiological Society of North America|Radiology|Chicago|1114|5|https://www.rsna.org/|radiological society|0|0
+asha-convention|ASHA Convention|American Speech-Language-Hearing Association|Speech and Hearing|Seattle|1118|3|https://www.asha.org/|speech-language-hearing|0|1
+asra-pain-medicine-meeting|ASRA Pain Medicine Meeting|American Society of Regional Anesthesia and Pain Medicine|Pain Medicine|Austin|1118|4|https://www.asra.com/|asra.*pain|0|1
+aes-annual-meeting|AES Annual Meeting|American Epilepsy Society|Neurology|Orlando|1203|5|https://www.aesnet.org/|epilepsy society|0|1
+sabcs|San Antonio Breast Cancer Symposium|San Antonio Breast Cancer Symposium|Oncology|San Antonio|1207|4|https://www.sabcs.org/|breast cancer symposium|0|0
+ash-annual-meeting|ASH Annual Meeting and Exposition|American Society of Hematology|Haematology|Orlando|1211|4|https://www.hematology.org/|society of hematology|0|1
+acnp-annual-meeting|ACNP Annual Meeting|American College of Neuropsychopharmacology|Psychiatry|Hollywood|1205|4|https://acnp.org/|neuropsychopharm|0|1
+naemsp-annual-meeting|NAEMSP Scientific Assembly|National Association of EMS Physicians|Emergency Medicine|Tampa|0111|4|https://naemsp.org/|ems physicians|0|1
+aan-annual-meeting|AAN Annual Meeting|American Academy of Neurology|Neurology|Boston|0417|5|https://www.aan.com/|academy of neurology.*annual|0|1
+acp-internal-medicine-meeting|ACP Internal Medicine Meeting|American College of Physicians|Internal Medicine|Boston|0415|3|https://www.acponline.org/|college of physicians|0|1
+heart-rhythm|Heart Rhythm|Heart Rhythm Society|Cardiology|San Diego|0513|4|https://www.hrsonline.org/|heart rhythm|0|1
+scai-scientific-sessions|SCAI Scientific Sessions|Society for Cardiovascular Angiography and Interventions|Cardiology|Montreal|0502|4|https://scai.org/|angiography|0|1
+sccm-critical-care-congress|SCCM Critical Care Congress|Society of Critical Care Medicine|Critical Care|Orlando|0314|4|https://www.sccm.org/|critical care medicine|0|1
+aaos-annual-meeting|AAOS Annual Meeting|American Academy of Orthopaedic Surgeons|Orthopaedics|New Orleans|0303|5|https://www.aaos.org/|orthopaedic surgeons|0|1
+sages-annual-meeting|SAGES Annual Meeting|Society of American Gastrointestinal and Endoscopic Surgeons|Surgery|Seattle|0406|4|https://www.sages.org/|gastrointestinal and endoscopic|0|1
+acc-scientific-session|ACC Scientific Session|American College of Cardiology|Cardiology|Washington|0410|3|https://www.acc.org/|college of cardiology|0|1
+apa-annual-meeting|APA Annual Meeting|American Psychiatric Association|Psychiatry|San Francisco|0501|5|https://www.psychiatry.org/|psychiatric association|0|1
+cns-annual-meeting|CNS Annual Meeting|Congress of Neurological Surgeons|Neurosurgery|Houston|1023|5|https://www.cns.org/|neurological surgeons.*congress|0|1
+aans-annual-scientific-meeting|AANS Annual Scientific Meeting|American Association of Neurological Surgeons|Neurosurgery|Chicago|0409|4|https://www.aans.org/|association of neurological surgeons|0|1
+aaic|Alzheimer's Association International Conference|Alzheimer's Association|Neurology|Toronto|0718|5|https://www.alz.org/|alzheimer|0|1
+aapm-annual-meeting|AAPM Annual Meeting|American Association of Physicists in Medicine|Medical Physics|Houston|0725|5|https://www.aapm.org/|physicists in medicine|0|1
+aanem-annual-meeting|AANEM Annual Meeting|American Association of Neuromuscular and Electrodiagnostic Medicine|Neurology|Nashville|1027|4|https://www.aanem.org/|annual meeting.*neuromuscular|0|1
+sno-annual-meeting|SNO Annual Meeting|Society for Neuro-Oncology|Neuro-oncology|Vancouver|1119|4|https://www.soc-neuro-onc.org/|neuro-oncology.*annual|0|1
+asbmr-annual-meeting|ASBMR Annual Meeting|American Society for Bone and Mineral Research|Endocrinology|Montreal|0916|4|https://www.asbmr.org/|bone and mineral|0|1
+ispor-annual-international-meeting|ISPOR Annual International Meeting|ISPOR - The Professional Society for Health Economics and Outcomes Research|Health Economics|Atlanta|0507|4|https://www.ispor.org/|ispor|0|1
+aorn-global-surgical-expo|AORN Global Surgical Conference and Expo|Association of periOperative Registered Nurses|Perioperative Nursing|Nashville|0410|4|https://www.aorn.org/|periOperative|0|1
+napnap-national-conference|NAPNAP National Conference on Pediatric Health Care|National Association of Pediatric Nurse Practitioners|Paediatric Nursing|Orlando|0323|4|https://www.napnap.org/|pediatric nurse pract|0|1
+sso-international-conference|SSO International Conference on Surgical Cancer Care|Society of Surgical Oncology|Surgical Oncology|Seattle|0317|4|https://www.surgonc.org/|surgical oncology|0|1
+aaos-skip-dup-guard|AAOS Annual Meeting guard|x|Orthopaedics|Chicago|0303|5|https://www.aaos.org/|zzzzzz|0|1

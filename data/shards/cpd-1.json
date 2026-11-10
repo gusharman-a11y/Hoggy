@@ -1,0 +1,734 @@
+[
+ {
+  "id": "hospitalar-2027",
+  "stated": false,
+  "sourceUrl": "https://www.hospitalar.com/es/faq/",
+  "evidence": "FAQ says certificates are issued to visitors and congress attendees; no CME/credit scheme named.",
+  "note": "Certificate of attendance only; no credits stated."
+ },
+ {
+  "id": "asco-annual-meeting",
+  "stated": false,
+  "note": "Organiser pages not readable by automated fetch (JS shell or 403); credits could not be verified."
+ },
+ {
+  "id": "rsna-annual-meeting-2028",
+  "stated": false,
+  "cpdBody": "AMA PRA Category 1 Credit",
+  "sourceUrl": "https://www.rsna.org/annual-meeting/faqs",
+  "evidence": "FAQ describes CME records and certificates for the current annual meeting and 0.50 AMA PRA Category 1 Credit per Case of the Day; no total for the 2028 meeting.",
+  "note": "CME is offered at RSNA meetings but no credit figure is published for the 2028 meeting."
+ },
+ {
+  "id": "esmo-congress",
+  "stated": false,
+  "note": "Organiser pages not readable by automated fetch (JS shell or 403); credits could not be verified."
+ },
+ {
+  "id": "aacr-annual-meeting",
+  "stated": false,
+  "cpdBody": "CME (jointly provided by Partners for Advancing Clinical Education and AACR)",
+  "sourceUrl": "https://www.aacr.org/meeting/aacr-annual-meeting-2027/continuing-medical-education-cme/",
+  "evidence": "AACR 2027 CME page says only selected sessions of the two-day Educational Program (April 2-3) are CME-accredited; no credit total given yet.",
+  "note": "Accreditation stated, no figure (page says more information will follow)."
+ },
+ {
+  "id": "aaos-annual-meeting-2028",
+  "stated": false,
+  "cpdBody": "AMA PRA Category 1 Credits",
+  "sourceUrl": "https://www.aaos.org/annual/explore-the-program/learning-objectives-cme-faqs/",
+  "evidence": "Page states up to 14 AMA PRA Category 1 Credits for the AAOS 2027 Annual Meeting.",
+  "note": "Figure is for AAOS 2027, not the 2028 meeting; not applied."
+ },
+ {
+  "id": "ers-congress",
+  "stated": false,
+  "cpdBody": "EBAP (European Board for Accreditation in Pneumology) CME credits",
+  "sourceUrl": "https://www.ersnet.org/congress-and-events/congress/continuing-medical-education-cme-credits/",
+  "evidence": "Page states ERS Congress 2026 was accredited with 40 CME credits (incl. 8 Mark of Excellence).",
+  "note": "Figure is for the 2026 congress (already held); no 2027 figure published, so not applied."
+ },
+ {
+  "id": "adlm-annual-meeting",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 8 organiser pages fetched."
+ },
+ {
+  "id": "dubai-derma-dubai",
+  "stated": true,
+  "cpdHours": 18,
+  "cpdBody": "CME hours accredited by the CME & Professional Development Committee, College of Medicine and Health Sciences, UAE University",
+  "sourceUrl": "https://dubaiderma.com/cme-accreditations-conference/",
+  "evidence": "Conference programme is stated as accredited for 18 CME hours; the 2027 FAQ (event 6-8 April 2027) repeats 18 CME hours.",
+  "note": "Pre-conference courses are separately stated at 24 CME hours (not used)."
+ },
+ {
+  "id": "ddw",
+  "stated": false,
+  "cpdBody": "AMA PRA Category 1 Credits",
+  "sourceUrl": "https://ddw.org/education/cme-credit-certificate-of-attendance/",
+  "evidence": "Page covers DDW 2026: 605.75 AMA PRA Category 1 Credits for on-demand enduring content.",
+  "note": "No single whole-meeting figure and nothing for DDW 2027; not applied."
+ },
+ {
+  "id": "africa-health-excel",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 1 organiser pages fetched."
+ },
+ {
+  "id": "acc-scientific-session-2028",
+  "stated": false,
+  "cpdBody": "AMA PRA Category 1 Credits (ACCME), ABIM/ABP MOC",
+  "sourceUrl": "https://accscientificsession.acc.org/Plan-Your-Program/Accreditation",
+  "evidence": "Accreditation page gives up to 22.00 AMA PRA Category 1 Credits for an enduring-material activity.",
+  "note": "Figure is for an enduring activity, not the 2028 live meeting; not applied."
+ },
+ {
+  "id": "ats-international-conference",
+  "stated": false,
+  "cpdBody": "AMA PRA Category 1 Credits (ACCME)",
+  "sourceUrl": "https://site.thoracic.org/conference/program/continuing-medical-education-cme",
+  "evidence": "CME page is for the 2026 International Conference (max 33.75 AMA PRA Category 1 Credits on one statement; 36.25 on another).",
+  "note": "Figures are for 2026; nothing published for the 2027 conference, so not applied."
+ },
+ {
+  "id": "ueg-week",
+  "stated": false,
+  "cpdBody": "EACCME (ECMEC)",
+  "sourceUrl": "https://ueg.eu/week/more/cme-accreditation",
+  "evidence": "Page states UEG Week 2026 (17-20 Oct 2026) was accredited for 26.5 ECMEC.",
+  "note": "Figure is for the 2026 congress; none for 2027, so not applied. The ueg.eu home page also carries unrelated third-party-style CME/CPD promo text, ignored."
+ },
+ {
+  "id": "aua-annual-meeting",
+  "stated": false,
+  "note": "AUA site has general CME and accreditation pages but no AUA 2027 credit figure was found on the pages read."
+ },
+ {
+  "id": "eau-annual-congress",
+  "stated": false,
+  "cpdBody": "EACCME (application pending)",
+  "sourceUrl": "https://eaucongress.uroweb.org/registration/cme-accreditation-certificate-of-attendance",
+  "evidence": "EAU27 page says an application will be made to the EACCME for CME accreditation; certificate of attendance available from 24 March 2027.",
+  "note": "No accreditation or credit figure yet."
+ },
+ {
+  "id": "aao-orthodontists-annual-session",
+  "stated": true,
+  "cpdHours": 21.75,
+  "cpdBody": "AAO continuing education (CE) credit hours",
+  "sourceUrl": "https://annualsession.aaoinfo.org/",
+  "evidence": "AAO Annual Session 2027 (4-6 June 2027, Vancouver) registration inclusions list up to 21.75 hours of CE credit (guests and exhibitors ineligible).",
+  "note": "Dental CE credit; accrediting scheme not named on the page."
+ },
+ {
+  "id": "apha-annual-meeting",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 3 organiser pages fetched."
+ },
+ {
+  "id": "pedicon-2027",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 2 organiser pages fetched."
+ },
+ {
+  "id": "joa-annual-meeting",
+  "stated": false,
+  "note": "JOA 2027 menu lists education/training credit registration but no credit figure is published on the pages read."
+ },
+ {
+  "id": "aaic",
+  "stated": false,
+  "cpdBody": "AMA PRA Category 1 Credits (Postgraduate Institute for Medicine, joint accreditation)",
+  "sourceUrl": "https://aaic.alz.org/program/program-continuing-education.asp",
+  "evidence": "Page states a maximum of 25 AMA PRA Category 1 Credits, with credit claiming Jul 16-Oct 1 2026.",
+  "note": "Figure is for AAIC 2026; not applied to 2027."
+ },
+ {
+  "id": "aan-annual-meeting-2028",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 10 organiser pages fetched."
+ },
+ {
+  "id": "jss-annual-congress",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 2 organiser pages fetched."
+ },
+ {
+  "id": "ean-congress",
+  "stated": false,
+  "cpdBody": "EACCME (ECMEC)",
+  "sourceUrl": "https://www.ean.org/congress2023/about/evaluation-certificates",
+  "evidence": "Only the 2023 congress is stated (24 ECMEC); the 2027 certificates page defers certificates and evaluation as coming soon.",
+  "note": "Nothing published for EAN 2027."
+ },
+ {
+  "id": "sabcs-2026",
+  "stated": false,
+  "cpdBody": "AMA PRA Category 1 Credits (ACCME; UT San Antonio provider)",
+  "sourceUrl": "https://sabcs.org/continuing-medical-education/",
+  "evidence": "CME page says SABCS 2025 credit info is closed and SABCS 2026 CME details will be posted when available.",
+  "note": "Provider is ACCME-accredited but no 2026 credit figure yet."
+ },
+ {
+  "id": "era-congress",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 10 organiser pages fetched."
+ },
+ {
+  "id": "ashg-annual-meeting",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 3 organiser pages fetched."
+ },
+ {
+  "id": "ashg-annual-meeting-2028",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 3 organiser pages fetched."
+ },
+ {
+  "id": "pas-meeting",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 2 organiser pages fetched."
+ },
+ {
+  "id": "european-human-genetics-conference",
+  "stated": false,
+  "cpdBody": "CME certificate (body not named)",
+  "sourceUrl": "https://2027.eshg.org/general-information/",
+  "evidence": "General information says a CME certificate will be downloadable after the conference and more detail on obtaining CME credits will follow.",
+  "note": "CME offered, no body or figure yet."
+ },
+ {
+  "id": "cirse-annual-congress",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 7 organiser pages fetched."
+ },
+ {
+  "id": "era-congress-2028",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 10 organiser pages fetched."
+ },
+ {
+  "id": "acep-scientific-assembly-2028",
+  "stated": false,
+  "cpdBody": "ACEP CME credit hours",
+  "sourceUrl": "https://www.acep.org/sa/education/cme-credit-statement",
+  "evidence": "Credit statement is for ACEP26 (5-8 Oct 2026): 29.5 credit hours.",
+  "note": "Figure is for 2026; nothing for ACEP28, so not applied."
+ },
+ {
+  "id": "jsmo-annual-meeting",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 2 organiser pages fetched."
+ },
+ {
+  "id": "aacn-nti",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 5 organiser pages fetched."
+ },
+ {
+  "id": "acog-annual-meeting",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 2 organiser pages fetched."
+ },
+ {
+  "id": "jspn-annual-meeting",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 2 organiser pages fetched."
+ },
+ {
+  "id": "esicm-lives",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 2 organiser pages fetched."
+ },
+ {
+  "id": "chest-annual-meeting",
+  "stated": false,
+  "cpdBody": "AMA PRA Category 1 Credits",
+  "sourceUrl": "https://www.chestnet.org/learning-and-events/events/chest-annual-meeting/cme-information",
+  "evidence": "CME page is for CHEST 2026: maximum 27 AMA PRA Category 1 Credits.",
+  "note": "Figure is for 2026; nothing for 2027, so not applied."
+ },
+ {
+  "id": "sccm-critical-care-congress",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 3 organiser pages fetched."
+ },
+ {
+  "id": "sir-annual-scientific-meeting",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 4 organiser pages fetched."
+ },
+ {
+  "id": "abo-cioce-2027",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 2 organiser pages fetched."
+ },
+ {
+  "id": "esc-heart-failure",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 2 organiser pages fetched."
+ },
+ {
+  "id": "aapm-annual-meeting",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 5 organiser pages fetched."
+ },
+ {
+  "id": "eacts-annual-meeting",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 2 organiser pages fetched."
+ },
+ {
+  "id": "apsr-congress",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 2 organiser pages fetched."
+ },
+ {
+  "id": "aaaai-annual-meeting-2028",
+  "stated": false,
+  "cpdBody": "AMA PRA Category 1 Credits (ACCME)",
+  "sourceUrl": "https://annualmeeting.aaaai.org/attendee/cme-credit",
+  "evidence": "Page is for the 2027 Annual Meeting: up to 38.25 AMA PRA Category 1 Credits in person.",
+  "note": "Figure is for 2027, not the 2028 meeting; not applied."
+ },
+ {
+  "id": "aapm-annual-meeting-2028",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 6 organiser pages fetched."
+ },
+ {
+  "id": "ispor-europe-2028",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 1 organiser pages fetched."
+ },
+ {
+  "id": "ispor-annual-international-meeting-2028",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 1 organiser pages fetched."
+ },
+ {
+  "id": "shm-converge",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 10 organiser pages fetched."
+ },
+ {
+  "id": "sbmfc-cbmfc-2027",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 2 organiser pages fetched."
+ },
+ {
+  "id": "amee-conference",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 2 organiser pages fetched."
+ },
+ {
+  "id": "wonca-world-conference",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 3 organiser pages fetched."
+ },
+ {
+  "id": "sts-annual-meeting",
+  "stated": false,
+  "cpdBody": "AMA PRA Category 1 Credits (ACCME)",
+  "sourceUrl": "https://www.sts.org/education/education/credit-claiming",
+  "evidence": "STS is ACCME-accredited and designates activities for varying amounts of credit; no figure for the 2027 annual meeting.",
+  "note": "Accreditation scheme stated, no meeting total."
+ },
+ {
+  "id": "espid-meeting",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 7 organiser pages fetched."
+ },
+ {
+  "id": "sbem-cbaem-2027",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 2 organiser pages fetched."
+ },
+ {
+  "id": "esot-congress",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 1 organiser pages fetched."
+ },
+ {
+  "id": "eahp-congress",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 8 organiser pages fetched."
+ },
+ {
+  "id": "apsc-congress",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 2 organiser pages fetched."
+ },
+ {
+  "id": "aae-annual-meeting",
+  "stated": false,
+  "note": "Organiser pages not readable by automated fetch (JS shell or 403); credits could not be verified."
+ },
+ {
+  "id": "efic-pain-in-europe-congress",
+  "stated": false,
+  "cpdBody": "EACCME (ECMEC)",
+  "sourceUrl": "https://europeanpainfederation.eu/efic2023/cme-cpd-accreditation/",
+  "evidence": "Only the 2023 congress is stated (21 ECMEC).",
+  "note": "Nothing published for the 2027 congress."
+ },
+ {
+  "id": "saem-annual-meeting",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 10 organiser pages fetched."
+ },
+ {
+  "id": "ase-scientific-sessions",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 5 organiser pages fetched."
+ },
+ {
+  "id": "alat-congress",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 2 organiser pages fetched."
+ },
+ {
+  "id": "esra-annual-congress",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 4 organiser pages fetched."
+ },
+ {
+  "id": "ena-emergency-nursing",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 2 organiser pages fetched."
+ },
+ {
+  "id": "aabb-annual-meeting",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 10 organiser pages fetched."
+ },
+ {
+  "id": "acmg-annual-meeting",
+  "stated": false,
+  "cpdBody": "CME, P.A.C.E. and NSGC credits (bodies as listed)",
+  "sourceUrl": "https://www.acmgmeeting.net/",
+  "evidence": "ACMG 2027 home page lists Earn credits: CME, P.A.C.E. and NSGC.",
+  "note": "Credit types named, no hours given."
+ },
+ {
+  "id": "arrs-annual-meeting",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 3 organiser pages fetched."
+ },
+ {
+  "id": "esmo-breast-cancer",
+  "stated": false,
+  "note": "Organiser pages not readable by automated fetch (JS shell or 403); credits could not be verified."
+ },
+ {
+  "id": "esh-european-meeting-on-hypertension",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 2 organiser pages fetched."
+ },
+ {
+  "id": "psa-conference",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 5 organiser pages fetched."
+ },
+ {
+  "id": "edec-dubai",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 1 organiser pages fetched."
+ },
+ {
+  "id": "esge-days",
+  "stated": false,
+  "cpdBody": "EACCME (application in progress)",
+  "sourceUrl": "https://esgedays.org/general-information/cme-accreditation",
+  "evidence": "ESGE Days 2027 page says the EACCME application is in progress and will be updated once confirmed.",
+  "note": "No accreditation confirmed or figure yet."
+ },
+ {
+  "id": "rcpch-conference",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 10 organiser pages fetched."
+ },
+ {
+  "id": "csanz-annual-scientific-meeting",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 5 organiser pages fetched."
+ },
+ {
+  "id": "ranzcr-asm",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 5 organiser pages fetched."
+ },
+ {
+  "id": "aan-fall-conference-2028",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 10 organiser pages fetched."
+ },
+ {
+  "id": "pha-midyear-convention",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 2 organiser pages fetched."
+ },
+ {
+  "id": "enets-conference",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 3 organiser pages fetched."
+ },
+ {
+  "id": "shea-spring-conference",
+  "stated": true,
+  "cpdHours": 58,
+  "cpdBody": "AMA PRA Category 1 Credits (ACCME joint accreditation; also IPCE, CNE, CPE, MOC)",
+  "sourceUrl": "https://sheaspring.org/about/accreditation/",
+  "evidence": "2027 conference page: maximum 58.0 AMA PRA Category 1 Credits; sessions 55 credit hours plus 3.0 for the pre-meeting workshop; claim deadline Oct 1 2027.",
+  "note": "58 includes the optional pre-conference workshop; conference sessions alone are 55."
+ },
+ {
+  "id": "rcem-annual-conference",
+  "stated": true,
+  "cpdHours": 17,
+  "cpdBody": "RCEM CPD points",
+  "sourceUrl": "https://rcem.ac.uk/annual-conference-2027/",
+  "evidence": "Annual Conference 2027 header (13-15 April, Manchester Central) advertises 17 CPD points.",
+  "note": "Scheme named on page only as CPD points (RCEM)."
+ },
+ {
+  "id": "asra-regional-anesthesiology-meeting",
+  "stated": false,
+  "note": "RA/Acute Pain 2027 page shows a CME-CPD menu item but that page was not reachable; the 24.25 AMA PRA figure on asra.com belongs to the separate Pain Medicine meeting and was not applied."
+ },
+ {
+  "id": "esvs-annual-meeting",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 2 organiser pages fetched."
+ },
+ {
+  "id": "ranzcog-asm",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 8 organiser pages fetched."
+ },
+ {
+  "id": "naemsp-annual-meeting",
+  "stated": false,
+  "cpdBody": "AMA PRA Category 1 Credits (ACCME provider)",
+  "sourceUrl": "https://naemsp.org/continuing-education/",
+  "evidence": "Continuing-education page names NAEMSP as ACCME-accredited and refers to the 2026 meeting evaluation deadline; no 2027 figure.",
+  "note": "Accreditation stated, no figure for 2027."
+ },
+ {
+  "id": "iars-annual-meeting",
+  "stated": false,
+  "note": "IARS CME page covers its webinar series (1 credit per session), not the annual meeting; no meeting credits found."
+ },
+ {
+  "id": "soap-annual-meeting",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 2 organiser pages fetched."
+ },
+ {
+  "id": "espn-annual-meeting",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 2 organiser pages fetched."
+ },
+ {
+  "id": "cddw",
+  "stated": false,
+  "note": "CAG pages state Section Three credits for SEE endoscopy courses, not for CDDW itself; no meeting figure found."
+ },
+ {
+  "id": "icpem-jeddah",
+  "stated": true,
+  "cpdHours": 19.5,
+  "cpdBody": "AMA PRA Category 1 Credit(s) (ACEP, ACCME-accredited) and ACEP Category I",
+  "sourceUrl": "https://icpem.co/en",
+  "evidence": "ICPEM 2027 (23-25 March 2027) page states the live activity is designated for a maximum of 19.5 AMA PRA Category 1 Credits and 19.5 hours of ACEP Category I credit."
+ },
+ {
+  "id": "acd-asm",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 1 organiser pages fetched."
+ },
+ {
+  "id": "cps-annual-conference",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 2 organiser pages fetched."
+ },
+ {
+  "id": "rcn-congress",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 1 organiser pages fetched."
+ },
+ {
+  "id": "wsrm-istanbul",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 1 organiser pages fetched."
+ },
+ {
+  "id": "essr-annual-scientific-meeting",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 2 organiser pages fetched."
+ },
+ {
+  "id": "saudiperio5-riyadh",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 1 organiser pages fetched."
+ },
+ {
+  "id": "eado-congress",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 1 organiser pages fetched."
+ },
+ {
+  "id": "ara-asm",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 10 organiser pages fetched."
+ },
+ {
+  "id": "haa-hsanz-asm",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 2 organiser pages fetched."
+ },
+ {
+  "id": "mehfc-dubai",
+  "stated": false,
+  "cpdBody": "CME (body not named)",
+  "sourceUrl": "https://www.me-heartfailure.com/",
+  "evidence": "Home page tags the 15-17 Jan 2027 conference as a CME Accredited program and shows a timeline entry CME Announced 5 January 2027.",
+  "note": "Accreditation stated, no hours or body named."
+ },
+ {
+  "id": "poss-madinah",
+  "stated": false,
+  "cpdBody": "CME/CPD recorded on SCFHS profile",
+  "sourceUrl": "https://possoncology.com/faqs/",
+  "evidence": "FAQ says CME/CPD is added to attendee accounts about 5 days after the event via the registration QR scan; registration must use the SCFHS profile number.",
+  "note": "CME/CPD offered, no figure published."
+ },
+ {
+  "id": "ecio-european-conference-interventional-oncology",
+  "stated": false,
+  "note": "A CIRSE page states 17 ECMEC for a different CIRSE event (ICCIR), not ECIO; not applied. No ECIO credit statement found."
+ },
+ {
+  "id": "nzda-conference",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 5 organiser pages fetched."
+ },
+ {
+  "id": "ssrc-madinah",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 1 organiser pages fetched."
+ },
+ {
+  "id": "pedkar-fethiye",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 1 organiser pages fetched."
+ },
+ {
+  "id": "anzahpe-conference",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 4 organiser pages fetched."
+ },
+ {
+  "id": "nzoa-asm",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 9 organiser pages fetched."
+ },
+ {
+  "id": "tnrd-istanbul",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 1 organiser pages fetched."
+ },
+ {
+  "id": "amman-retina-meeting",
+  "stated": true,
+  "cpdHours": 25.25,
+  "cpdBody": "Category 1 credit hours (AACME, as named on the page)",
+  "sourceUrl": "https://www.ammanretinameeting.com/",
+  "evidence": "Home page for the 26-28 May 2027 meeting quotes accreditation for 25.25 Category 1 credit hours.",
+  "note": "Accrediting body appears on the page as AACME (American Association of Continuing Medical Education); wording as published. The site also links a 2026 brochure, so the figure could be carried over from the prior year."
+ },
+ {
+  "id": "ckm-riyadh",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 1 organiser pages fetched."
+ },
+ {
+  "id": "era-education-cairo",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 10 organiser pages fetched."
+ },
+ {
+  "id": "ranzcog-regional-symposium",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 9 organiser pages fetched."
+ },
+ {
+  "id": "eano-sno-pediatric-neuro-oncology",
+  "stated": false,
+  "cpdBody": "AMA PRA Category 1 Credit(s) (ACCME)",
+  "sourceUrl": "https://www.soc-neuro-onc.org/meetings-education/cme-accreditation",
+  "evidence": "SNO CME page says SNO activities are designated for AMA PRA Category 1 Credit(s); no amount for this meeting.",
+  "note": "General SNO accreditation only; no figure for this meeting."
+ },
+ {
+  "id": "memac-dubai",
+  "stated": false,
+  "note": "Site menu has an Accreditation tab but its content was not readable (JS-rendered); no figure found."
+ },
+ {
+  "id": "acem-rural-remote-em-conference",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 8 organiser pages fetched."
+ },
+ {
+  "id": "sapc-south-east-conference",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 1 organiser pages fetched."
+ },
+ {
+  "id": "ahaic-2027-kigali",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 3 organiser pages fetched."
+ },
+ {
+  "id": "esshm-2027-cairo",
+  "stated": false,
+  "sourceUrl": "https://esshm.org/education-cme/cme-accreditation/",
+  "evidence": "Page says no activity counts as credit unless formally accredited for that activity.",
+  "note": "No credit stated for the 2027 conference."
+ },
+ {
+  "id": "sases-2027-stellenbosch",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 1 organiser pages fetched."
+ },
+ {
+  "id": "semdsa-congress-2027-johannesburg",
+  "stated": false,
+  "cpdBody": "CPD accreditation (body not named)",
+  "sourceUrl": "https://semdsa2027.co.za/general-information/",
+  "evidence": "General information says SEMDSA 2027 will be CPD accredited and details will follow closer to the congress.",
+  "note": "Accreditation intended; no points yet."
+ },
+ {
+  "id": "afran-2027-dar-es-salaam",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 1 organiser pages fetched."
+ },
+ {
+  "id": "saco-2027-cape-town",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 1 organiser pages fetched."
+ },
+ {
+  "id": "ibro-world-congress-2027-cape-town",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 1 organiser pages fetched."
+ },
+ {
+  "id": "was-world-congress-2027-cape-town",
+  "stated": false,
+  "note": "No CME/CPD/credit information found on the 2 organiser pages fetched."
+ }
+]

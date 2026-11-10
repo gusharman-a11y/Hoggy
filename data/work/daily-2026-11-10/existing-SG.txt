@@ -1,0 +1,20 @@
+apacrs-singapore-2027-expected | APACRS Annual Meeting of the Asia-Pacific Association of Cataract and Refractive Surgeons 2027 | 2027-02-18 | Singapore | https://www.apacrs.org/ | estimated
+ascvts-singapore-2027-expected | ASCVTS Annual Meeting of the Asian Society for Cardiovascular and Thoracic Surgery 2027 | 2027-03-05 | Singapore | https://www.ascvts.org/ | estimated
+apsicc-singapore-2027-expected | APSIC Congress of the Asia Pacific Society of Infection Control 2027 | 2027-03-15 | Singapore | https://www.apsic-apac.org/ | estimated
+apao-congress | APAO Congress | 2027-03-18 | Singapore | https://apaophth.org | confirmed
+smac-singapore-2027-expected | Singapore Medical Association Annual Convention 2027 | 2027-05-14 | Singapore | https://www.sma.org.sg/ | estimated
+asms-singapore-2027-expected | Academy of Medicine Singapore Annual Congress 2027 | 2027-07-09 | Singapore | https://www.ams.edu.sg/ | estimated
+acar-sgcr-wires-singapore-2027 | ACAR SGCR-WIRES 2027 | 2027-08-19 | Singapore | https://www.sgcr-wires.com/ | confirmed
+sfpc-singapore-family-physicians | Singapore Family Physicians Conference | 2027-09-25 | Singapore | https://www.cfps.org.sg | estimated
+shbc-singapore-2027-expected | Singapore Health and Biomedical Congress 2027 | 2027-10-07 | Singapore | https://www.singhealth.com.sg/ | estimated
+sso-singapore-2027-expected | Singapore Society of Ophthalmology Annual Scientific Meeting 2027 | 2027-10-14 | Singapore | https://www.sso.org.sg/ | estimated
+aocn-singapore-2027-expected | Asian and Oceanian Congress of Neurology 2027 | 2027-10-20 | Singapore | https://www.aoan.org/ | estimated
+ssa-singapore-2027-expected | Singapore Society of Anaesthesiologists Annual Scientific Meeting 2027 | 2027-10-28 | Singapore | https://www.ssa.org.sg/ | estimated
+apacrs-singapore-2028-expected | APACRS Annual Meeting of the Asia-Pacific Association of Cataract and Refractive Surgeons 2028 | 2028-02-18 | Singapore | https://www.apacrs.org/ | estimated
+ascvts-singapore-2028-expected | ASCVTS Annual Meeting of the Asian Society for Cardiovascular and Thoracic Surgery 2028 | 2028-03-06 | Singapore | https://www.ascvts.org/ | estimated
+apscvir-sgcr-wires-singapore-2028 | APSCVIR SGCR-WIRES Annual Scientific Meeting 2028 | 2028-05-12 | Singapore | https://www.sgcr-wires.com/apscvir2028 | confirmed
+smac-singapore-2028-expected | Singapore Medical Association Annual Convention 2028 | 2028-05-15 | Singapore | https://www.sma.org.sg/ | estimated
+asms-singapore-2028-expected | Academy of Medicine Singapore Annual Congress 2028 | 2028-07-10 | Singapore | https://www.ams.edu.sg/ | estimated
+shbc-singapore-2028-expected | Singapore Health and Biomedical Congress 2028 | 2028-10-09 | Singapore | https://www.singhealth.com.sg/ | estimated
+sso-singapore-2028-expected | Singapore Society of Ophthalmology Annual Scientific Meeting 2028 | 2028-10-16 | Singapore | https://www.sso.org.sg/ | estimated
+ssa-singapore-2028-expected | Singapore Society of Anaesthesiologists Annual Scientific Meeting 2028 | 2028-10-30 | Singapore | https://www.ssa.org.sg/ | estimated

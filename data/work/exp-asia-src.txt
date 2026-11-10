@@ -1,0 +1,142 @@
+JSUM|Japan Society of Ultrasonics in Medicine Annual Scientific Meeting|Japan Society of Ultrasonics in Medicine|Radiology|Yokohama|JP|06-04|3|https://www.jsum.or.jp/|A
+JSANES|Japanese Society of Anesthesiologists Annual Meeting|Japanese Society of Anesthesiologists|Anaesthesiology|Kobe|JP|06-10|3|https://anesth.or.jp/|A
+JCA|Japanese Cancer Association Annual Meeting|Japanese Cancer Association|Oncology|Osaka|JP|09-25|3|https://www.jca.gr.jp/|A
+JDS|Japan Diabetes Society Annual Scientific Meeting|Japan Diabetes Society|Endocrinology|Tokyo|JP|05-20|3|https://www.jds.or.jp/|A
+JSGS|Japanese Society of Gastroenterological Surgery General Assembly|Japanese Society of Gastroenterological Surgery|Surgery|Yokohama|JP|07-15|3|https://www.jsgs.or.jp/|A
+JATS|Japanese Association for Thoracic Surgery Annual Meeting|Japanese Association for Thoracic Surgery|Cardiothoracic Surgery|Tokyo|JP|10-20|3|https://www.jats.or.jp/|A
+JNS|Japan Neurosurgical Society Annual Meeting|Japan Neurosurgical Society|Neurosurgery|Yokohama|JP|10-25|3|https://jns-official.jp/|A
+JSPS|Japanese Society of Pediatric Surgeons Annual Congress|Japanese Society of Pediatric Surgeons|Paediatrics|Tokyo|JP|05-12|3|https://www.jsps.gr.jp/|A
+JASTRO|Japanese Society for Radiation Oncology Annual Meeting|Japanese Society for Radiation Oncology|Oncology|Yokohama|JP|11-18|3|https://www.jastro.or.jp/|A
+JSNM|Japanese Society of Nuclear Medicine Annual Meeting|Japanese Society of Nuclear Medicine|Radiology|Tokyo|JP|11-04|3|https://www.jsnm.org/|A
+JAID|Japanese Association for Infectious Diseases Annual Meeting|Japanese Association for Infectious Diseases|Infectious Disease|Tokyo|JP|04-22|3|https://www.kansensho.or.jp/|A
+JBCS|Japanese Breast Cancer Society Annual Meeting|Japanese Breast Cancer Society|Oncology|Yokohama|JP|07-01|3|https://www.jbcs.gr.jp/|A
+JORL|Oto-Rhino-Laryngological Society of Japan Annual Meeting|Oto-Rhino-Laryngological Society of Japan|ENT|Tokyo|JP|05-20|3|https://www.jibika.or.jp/|A
+JSSR|Japanese Society of Sleep Research Annual Meeting|Japanese Society of Sleep Research|Neurology|Tokyo|JP|07-06|3|https://jssr.jp/|A
+JPCA|Japan Primary Care Association Annual Conference|Japan Primary Care Association|Primary Care|Osaka|JP|06-12|3|https://www.primary-care.or.jp/|A
+JASSO|Japan Society for the Study of Obesity Annual Meeting|Japan Society for the Study of Obesity|Endocrinology|Tokyo|JP|10-08|2|https://www.jasso.or.jp/|A
+JAS|Japan Atherosclerosis Society Annual Scientific Meeting|Japan Atherosclerosis Society|Cardiology|Tokyo|JP|07-08|2|https://www.j-athero.org/|A
+JSTS|Japan Stroke Society Annual Meeting|Japan Stroke Society|Neurology|Yokohama|JP|03-18|3|https://www.jsts.gr.jp/|A
+CSCO|CSCO Annual Meeting|Chinese Society of Clinical Oncology|Oncology|Xiamen|CN|09-17|4|https://www.csco.org.cn/|A
+CMAAM|Chinese Medical Association Annual Academic Conference|Chinese Medical Association|Internal Medicine|Beijing|CN|10-15|3|https://www.cma.org.cn/|A
+CMDA|Chinese Medical Doctor Association Annual Congress|Chinese Medical Doctor Association|Internal Medicine|Beijing|CN|10-20|3|https://www.cmda.net/|A
+CSCAR|Chinese Society of Cardiology Annual Congress|Chinese Society of Cardiology|Cardiology|Beijing|CN|09-22|4|https://www.csccardio.org/|A
+CSAN|Chinese Society of Anesthesiology Annual Meeting|Chinese Society of Anesthesiology|Anaesthesiology|Beijing|CN|10-12|3|https://www.csaol.cn/|A
+CSN|Chinese Society of Neurology Annual Meeting|Chinese Society of Neurology|Neurology|Beijing|CN|10-14|3|https://www.csn.org.cn/|A
+CDS|Chinese Diabetes Society Annual Meeting|Chinese Diabetes Society|Endocrinology|Beijing|CN|11-12|3|https://www.diab.org.cn/|A
+CSRAD|Chinese Society of Radiology Annual Meeting|Chinese Society of Radiology|Radiology|Beijing|CN|05-10|3|https://www.csradiology.cn/|A
+CCS|China Cancer Congress|Chinese Anti-Cancer Association|Oncology|Tianjin|CN|08-18|3|https://www.caca.org.cn/|A
+KSH|Korean Society of Hematology International Conference|Korean Society of Hematology|Haematology|Seoul|KR|04-14|3|https://www.hematology.or.kr/|A
+KSS|Korean Surgical Society Annual Congress|Korean Surgical Society|Surgery|Seoul|KR|11-10|3|https://www.surgery.or.kr/|A
+KOA|Korean Orthopaedic Association Annual Congress|Korean Orthopaedic Association|Orthopaedics|Seoul|KR|10-07|3|https://www.koa.or.kr/|A
+KCR|Korean Congress of Radiology|Korean Society of Radiology|Radiology|Seoul|KR|09-22|4|https://www.radiology.or.kr/|A
+KSN|Korean Society of Nephrology Annual Meeting|Korean Society of Nephrology|Nephrology|Seoul|KR|05-20|3|https://www.ksn.or.kr/|A
+KSA|Korean Society of Anesthesiologists Annual Congress|Korean Society of Anesthesiologists|Anaesthesiology|Seoul|KR|10-15|3|https://www.anesthesia.or.kr/|A
+KCA|Korean Cancer Association Annual Meeting|Korean Cancer Association|Oncology|Seoul|KR|06-17|3|https://www.kca.or.kr/|A
+KSOG|Korean Society of Obstetrics and Gynecology Annual Congress|Korean Society of Obstetrics and Gynecology|Obstetrics and Gynaecology|Seoul|KR|09-02|3|https://www.ksog.org/|A
+KPS|Korean Pediatric Society Annual Meeting|Korean Pediatric Society|Paediatrics|Seoul|KR|10-21|3|https://www.pediatrics.or.kr/|A
+KSMO|Korean Society of Medical Oncology Annual Meeting|Korean Society of Medical Oncology|Oncology|Seoul|KR|09-08|3|https://www.ksmo.or.kr/|A
+KOS|Korean Ophthalmological Society Annual Meeting|Korean Ophthalmological Society|Ophthalmology|Seoul|KR|04-29|3|https://www.ophthalmology.org/|A
+KSP|Korean Society of Pathologists Annual Meeting|Korean Society of Pathologists|Pathology|Seoul|KR|10-14|3|https://www.pathology.or.kr/|A
+KDAD|Korean Dermatological Association Annual Meeting|Korean Dermatological Association|Dermatology|Seoul|KR|05-26|3|https://www.derma.or.kr/|A
+KNS|Korean Neurosurgical Society Annual Meeting|Korean Neurosurgical Society|Neurosurgery|Seoul|KR|10-13|3|https://www.neurosurgery.or.kr/|A
+KSG|Korean Society of Gastroenterology Annual Meeting|Korean Society of Gastroenterology|Gastroenterology|Seoul|KR|06-10|3|https://www.gastro.or.kr/|A
+KSID|Korean Society of Infectious Diseases Annual Meeting|Korean Society of Infectious Diseases|Infectious Disease|Seoul|KR|11-04|2|https://www.ksid.or.kr/|A
+TSIM|Taiwan Society of Internal Medicine Annual Meeting|Taiwan Society of Internal Medicine|Internal Medicine|Taipei|TW|05-22|3|https://www.tsim.org.tw/|A
+TSA|Taiwan Surgical Association Annual Meeting|Taiwan Surgical Association|Surgery|Taipei|TW|11-20|3|https://www.surgery.org.tw/|A
+TSAN|Taiwan Society of Anesthesiologists Annual Meeting|Taiwan Society of Anesthesiologists|Anaesthesiology|Taipei|TW|03-12|3|https://www.anesth.org.tw/|A
+TOA|Taiwan Orthopaedic Association Annual Meeting|Taiwan Orthopaedic Association|Orthopaedics|Taipei|TW|03-19|3|https://www.ortho.org.tw/|A
+TSR|Taiwan Society of Radiology Annual Meeting|Taiwan Society of Radiology|Radiology|Taipei|TW|06-17|3|https://www.rsroc.org.tw/|A
+TSO|Taiwan Ophthalmological Society Annual Meeting|Taiwan Ophthalmological Society|Ophthalmology|Taipei|TW|05-06|3|https://www.ophthalmology.org.tw/|A
+TNS|Taiwan Neurological Society Annual Meeting|Taiwan Neurological Society|Neurology|Taipei|TW|06-24|3|https://www.neuro.org.tw/|A
+TSN|Taiwan Society of Nephrology Annual Meeting|Taiwan Society of Nephrology|Nephrology|Taipei|TW|05-27|3|https://www.nephro.org.tw/|A
+TPA|Taiwan Pediatric Association Annual Meeting|Taiwan Pediatric Association|Paediatrics|Taipei|TW|03-26|3|https://www.pediatr.org.tw/|A
+TSGH|Gastroenterological Society of Taiwan Annual Meeting|Gastroenterological Society of Taiwan|Gastroenterology|Taipei|TW|03-05|3|https://www.gastro.org.tw/|A
+TSPCCM|Taiwan Society of Pulmonary and Critical Care Medicine Annual Meeting|Taiwan Society of Pulmonary and Critical Care Medicine|Respiratory Medicine|Taipei|TW|03-26|3|https://www.tspccm.org.tw/|A
+TSOG|Taiwan Association of Obstetrics and Gynecology Annual Meeting|Taiwan Association of Obstetrics and Gynecology|Obstetrics and Gynaecology|Taipei|TW|11-13|3|https://www.taog.org.tw/|A
+HKCS|College of Surgeons of Hong Kong Annual Scientific Congress|College of Surgeons of Hong Kong|Surgery|Hong Kong|HK|05-14|3|https://www.cshk.org/|A
+HKCRAD|Hong Kong College of Radiologists Annual Scientific Meeting|Hong Kong College of Radiologists|Radiology|Hong Kong|HK|11-05|3|https://www.hkcr.org/|A
+HKCPaed|Hong Kong College of Paediatricians Annual Scientific Meeting|Hong Kong College of Paediatricians|Paediatrics|Hong Kong|HK|10-22|2|https://www.hkcpaed.org/|A
+HKCA|Hong Kong College of Anaesthesiologists Annual Scientific Meeting|Hong Kong College of Anaesthesiologists|Anaesthesiology|Hong Kong|HK|09-17|2|https://www.hkca.edu.hk/|A
+HKSN|Hong Kong Society of Nephrology Annual Scientific Meeting|Hong Kong Society of Nephrology|Nephrology|Hong Kong|HK|10-08|2|https://www.hksn.org/|A
+HKCC|Hong Kong College of Cardiology Annual Scientific Congress|Hong Kong College of Cardiology|Cardiology|Hong Kong|HK|06-04|2|https://www.hkcc.org.hk/|A
+HKCOG|Hong Kong College of Obstetricians and Gynaecologists Annual Scientific Meeting|Hong Kong College of Obstetricians and Gynaecologists|Obstetrics and Gynaecology|Hong Kong|HK|11-19|2|https://www.hkcog.org.hk/|A
+APICON|APICON Annual Conference of the Association of Physicians of India|Association of Physicians of India|Internal Medicine|Jaipur|IN|02-04|4|https://www.apiindia.org/|A
+IRIA|IRIACON Annual Congress|Indian Radiological and Imaging Association|Radiology|Hyderabad|IN|01-28|4|https://www.iria.org.in/|A
+NAPCON|NAPCON National Conference on Pulmonary Diseases|Indian Chest Society and National College of Chest Physicians|Respiratory Medicine|Hyderabad|IN|11-18|4|https://www.napcon.org/|A
+ISGCON|ISGCON Annual Conference of the Indian Society of Gastroenterology|Indian Society of Gastroenterology|Gastroenterology|Kochi|IN|12-09|4|https://www.isgcon.org/|A
+IOACON|IOACON Annual Conference of the Indian Orthopaedic Association|Indian Orthopaedic Association|Orthopaedics|Hyderabad|IN|12-14|4|https://www.ioaindia.org/|A
+IANCON|IANCON Annual Conference of the Indian Academy of Neurology|Indian Academy of Neurology|Neurology|Bengaluru|IN|10-05|4|https://www.ianneurology.com/|A
+ISMPO|ISMPO Annual Conference|Indian Society of Medical and Paediatric Oncology|Oncology|New Delhi|IN|12-03|3|https://www.ismpo.in/|A
+ISHBT|ISHBTCON Annual Conference|Indian Society of Hematology and Blood Transfusion|Haematology|Mumbai|IN|11-10|4|https://www.ishbt.com/|A
+IRACON|IRACON Annual Congress of the Indian Rheumatology Association|Indian Rheumatology Association|Rheumatology|Hyderabad|IN|12-08|4|https://www.indianrheumatology.org/|A
+ESICON|ESICON Annual Meeting of the Endocrine Society of India|Endocrine Society of India|Endocrinology|Mumbai|IN|11-04|4|https://www.endocrinesocietyindia.org/|A
+IAPCON|IAPCON Annual Conference of the Indian Association of Palliative Care|Indian Association of Palliative Care|Palliative Care|Chennai|IN|02-11|3|https://www.palliativecare.in/|A
+USICON|USICON Annual Conference of the Urological Society of India|Urological Society of India|Urology|Chennai|IN|01-20|4|https://www.usi.org.in/|A
+AOICON|AOICON Annual Conference of the Association of Otolaryngologists of India|Association of Otolaryngologists of India|ENT|Hyderabad|IN|01-13|4|https://www.aoiindia.com/|A
+IAGES|IAGES Annual Conference|Indian Association of Gastrointestinal Endo Surgeons|Surgery|Ahmedabad|IN|12-14|4|https://www.iagesindia.com/|A
+IMSCON|Indian Menopause Society Annual Conference|Indian Menopause Society|Obstetrics and Gynaecology|Hyderabad|IN|02-18|3|https://www.indianmenopausesociety.org/|A
+ISSPCON|Indian Society for the Study of Pain Annual Conference|Indian Society for the Study of Pain|Anaesthesiology|Kochi|IN|02-11|3|https://www.isspindia.org/|A
+IAECON|Indian Academy of Echocardiography Annual Conference|Indian Academy of Echocardiography|Cardiology|Hyderabad|IN|09-14|3|https://www.iaeindia.org/|A
+IEA|Indian Epilepsy Association Annual Conference|Indian Epilepsy Association|Neurology|Mumbai|IN|08-27|3|https://www.indianepilepsyassociation.org/|A
+SMAC|Singapore Medical Association Annual Convention|Singapore Medical Association|General Practice|Singapore|SG|05-14|2|https://www.sma.org.sg/|A
+SHBC|Singapore Health and Biomedical Congress|SingHealth|Internal Medicine|Singapore|SG|10-07|2|https://www.singhealth.com.sg/|A
+SCS|Singapore Cardiac Society Annual Scientific Meeting|Singapore Cardiac Society|Cardiology|Singapore|SG|09-17|2|https://www.scs.org.sg/|A
+SSO|Singapore Society of Ophthalmology Annual Scientific Meeting|Singapore Society of Ophthalmology|Ophthalmology|Singapore|SG|10-14|2|https://www.sso.org.sg/|A
+ASMS|Academy of Medicine Singapore Annual Congress|Academy of Medicine Singapore|Internal Medicine|Singapore|SG|07-09|2|https://www.ams.edu.sg/|A
+SSA|Singapore Society of Anaesthesiologists Annual Scientific Meeting|Singapore Society of Anaesthesiologists|Anaesthesiology|Singapore|SG|10-28|2|https://www.ssa.org.sg/|A
+MMAC|Malaysian Medical Association Annual General Meeting and Scientific Conference|Malaysian Medical Association|General Practice|Kuala Lumpur|MY|08-12|3|https://www.mma.org.my/|A
+MSO|Malaysian Society of Ophthalmology Annual Scientific Meeting|Malaysian Society of Ophthalmology|Ophthalmology|Kuala Lumpur|MY|05-21|3|https://www.mso.org.my/|A
+MOA|Malaysian Orthopaedic Association Annual Scientific Meeting|Malaysian Orthopaedic Association|Orthopaedics|Kuala Lumpur|MY|06-18|3|https://www.moa.org.my/|A
+NHAM|National Heart Association of Malaysia Annual Scientific Meeting|National Heart Association of Malaysia|Cardiology|Kuala Lumpur|MY|04-23|3|https://www.malaysianheart.org/|A
+MSA|Malaysian Society of Anaesthesiologists Annual Scientific Congress|Malaysian Society of Anaesthesiologists|Anaesthesiology|Kuala Lumpur|MY|08-19|3|https://www.msa.org.my/|A
+OGSM|Obstetrical and Gynaecological Society of Malaysia Annual Congress|Obstetrical and Gynaecological Society of Malaysia|Obstetrics and Gynaecology|Kuala Lumpur|MY|07-15|3|https://www.ogsm.org.my/|A
+RCPT|Royal College of Physicians of Thailand Annual Meeting|Royal College of Physicians of Thailand|Internal Medicine|Bangkok|TH|04-20|3|https://www.rcpt.org/|A
+RTCOG|Royal Thai College of Obstetricians and Gynaecologists Annual Meeting|Royal Thai College of Obstetricians and Gynaecologists|Obstetrics and Gynaecology|Bangkok|TH|12-04|3|https://www.rtcog.or.th/|A
+THA|Heart Association of Thailand Annual Scientific Meeting|The Heart Association of Thailand|Cardiology|Bangkok|TH|04-22|3|https://www.thaiheart.org/|A
+MAT|Medical Association of Thailand Annual Scientific Meeting|Medical Association of Thailand|General Practice|Bangkok|TH|11-18|3|https://www.mat.or.th/|A
+TSNEPH|Nephrology Society of Thailand Annual Meeting|Nephrology Society of Thailand|Nephrology|Bangkok|TH|06-16|3|https://www.nephrothai.org/|A
+RCST|Royal College of Surgeons of Thailand Annual Meeting|Royal College of Surgeons of Thailand|Surgery|Bangkok|TH|07-20|3|https://www.rcst.or.th/|A
+VNHA|Vietnam National Heart Association Annual Congress|Vietnam National Heart Association|Cardiology|Hanoi|VN|04-14|3|https://www.vnha.org.vn/|A
+VMA|Vietnam Medical Association Annual Scientific Conference|Vietnam Medical Association|General Practice|Hanoi|VN|10-14|3|https://www.tonghoiyhoc.vn/|A
+VSOG|Vietnam Society of Obstetrics and Gynecology Annual Congress|Vietnam Society of Obstetrics and Gynecology|Obstetrics and Gynaecology|Ho Chi Minh City|VN|12-02|2|https://www.vsog.org.vn/|A
+PCP|Philippine College of Physicians Annual Convention|Philippine College of Physicians|Internal Medicine|Manila|PH|05-04|4|https://www.pcp.org.ph/|A
+PHAA|Philippine Heart Association Annual Convention|Philippine Heart Association|Cardiology|Manila|PH|02-23|4|https://www.philheart.org/|A
+PMA|Philippine Medical Association Annual Convention|Philippine Medical Association|General Practice|Manila|PH|05-18|4|https://www.philippinemedicalassociation.org/|A
+PSA|Philippine Society of Anesthesiologists Annual Convention|Philippine Society of Anesthesiologists|Anaesthesiology|Manila|PH|11-18|3|https://www.psaonline.org/|A
+POGS|Philippine Obstetrical and Gynecological Society Annual Convention|Philippine Obstetrical and Gynecological Society|Obstetrics and Gynaecology|Manila|PH|11-10|4|https://www.pogsinc.org/|A
+PCS|Philippine College of Surgeons Annual Clinical Congress|Philippine College of Surgeons|Surgery|Manila|PH|05-26|4|https://www.pcs.org.ph/|A
+PPS|Philippine Pediatric Society Annual Convention|Philippine Pediatric Society|Paediatrics|Manila|PH|02-15|4|https://www.pps.org.ph/|A
+PAO|Philippine Academy of Ophthalmology Annual Congress|Philippine Academy of Ophthalmology|Ophthalmology|Manila|PH|11-04|4|https://www.paophil.org/|A
+PERKI|PERKI Annual Scientific Meeting of the Indonesian Heart Association|Indonesian Heart Association|Cardiology|Jakarta|ID|04-22|3|https://www.inaheart.org/|A
+IDI|Indonesian Medical Association National Congress|Indonesian Medical Association|General Practice|Jakarta|ID|10-14|3|https://www.idionline.org/|A
+POGI|POGI Congress of the Indonesian Society of Obstetrics and Gynecology|Indonesian Society of Obstetrics and Gynecology|Obstetrics and Gynaecology|Jakarta|ID|08-22|4|https://www.pogi.or.id/|A
+IDAI|IDAI National Congress of the Indonesian Pediatric Society|Indonesian Pediatric Society|Paediatrics|Jakarta|ID|07-10|4|https://www.idai.or.id/|A
+PSIM|Pakistan Society of Internal Medicine Annual Conference|Pakistan Society of Internal Medicine|Internal Medicine|Karachi|PK|10-14|3|https://www.psim.org.pk/|A
+PCSOC|Pakistan Cardiac Society Annual Conference|Pakistan Cardiac Society|Cardiology|Karachi|PK|03-04|3|https://www.pakistancardiacsociety.org/|A
+PMAP|Pakistan Medical Association Annual Conference|Pakistan Medical Association|General Practice|Karachi|PK|04-12|3|https://www.pma.org.pk/|A
+CPSPC|CPSP Annual Scientific Conference|College of Physicians and Surgeons Pakistan|Internal Medicine|Karachi|PK|11-18|3|https://www.cpsp.edu.pk/|A
+SOGP|Society of Obstetricians and Gynaecologists of Pakistan Annual Conference|Society of Obstetricians and Gynaecologists of Pakistan|Obstetrics and Gynaecology|Lahore|PK|11-11|3|https://www.sogp.com.pk/|A
+BSM|Bangladesh Society of Medicine Annual Conference|Bangladesh Society of Medicine|Internal Medicine|Dhaka|BD|02-17|3|https://www.bsmbd.org/|A
+BCS|Bangladesh Cardiac Society Annual Conference|Bangladesh Cardiac Society|Cardiology|Dhaka|BD|02-24|3|https://www.bcs.org.bd/|A
+BMA|Bangladesh Medical Association Annual Conference|Bangladesh Medical Association|General Practice|Dhaka|BD|03-10|3|https://www.bma.org.bd/|A
+BOGS|Obstetrical and Gynaecological Society of Bangladesh Annual Conference|Obstetrical and Gynaecological Society of Bangladesh|Obstetrics and Gynaecology|Dhaka|BD|03-24|3|https://www.ogsb.org.bd/|A
+SLMA|SLMA Annual Scientific Congress|Sri Lanka Medical Association|General Practice|Colombo|LK|07-22|3|https://www.slma.lk/|A
+SLCP|Sri Lanka College of Physicians Annual Academic Congress|Sri Lanka College of Physicians|Internal Medicine|Colombo|LK|06-23|3|https://www.slcp.lk/|A
+SLCOG|Sri Lanka College of Obstetricians and Gynaecologists Annual Academic Sessions|Sri Lanka College of Obstetricians and Gynaecologists|Obstetrics and Gynaecology|Colombo|LK|10-14|3|https://www.slcog.lk/|A
+CSSL|College of Surgeons of Sri Lanka Annual Scientific Congress|College of Surgeons of Sri Lanka|Surgery|Colombo|LK|08-19|3|https://www.surgeons.lk/|A
+SLCPaed|Sri Lanka College of Paediatricians Annual Academic Sessions|Sri Lanka College of Paediatricians|Paediatrics|Colombo|LK|10-28|3|https://www.slcpaed.lk/|A
+APSR|APSR Congress of the Asian Pacific Society of Respirology|Asian Pacific Society of Respirology|Respiratory Medicine|Seoul|KR|11-24|4|https://www.apsresp.org/|28
+APLAR|APLAR Congress of the Asia Pacific League of Associations for Rheumatology|Asia Pacific League of Associations for Rheumatology|Rheumatology|Seoul|KR|09-14|4|https://www.aplar.org/|28
+APASL|APASL Annual Conference of the Asian Pacific Association for the Study of the Liver|Asian Pacific Association for the Study of the Liver|Gastroenterology|Taipei|TW|03-15|4|https://www.apasl.info/|A
+APAOC|APAO Congress of the Asia-Pacific Academy of Ophthalmology|Asia-Pacific Academy of Ophthalmology|Ophthalmology|Hong Kong|HK|03-16|4|https://www.apao.org/|28
+AOFOG|AOFOG Congress of the Asia and Oceania Federation of Obstetrics and Gynaecology|Asia and Oceania Federation of Obstetrics and Gynaecology|Obstetrics and Gynaecology|Bangkok|TH|10-17|4|https://www.aofog.org/|27
+APDW|Asian Pacific Digestive Week|Asian Pacific Association of Gastroenterology|Gastroenterology|Bangkok|TH|11-25|4|https://www.apdw.org/|A
+ASCVTS|ASCVTS Annual Meeting of the Asian Society for Cardiovascular and Thoracic Surgery|Asian Society for Cardiovascular and Thoracic Surgery|Cardiothoracic Surgery|Singapore|SG|03-05|3|https://www.ascvts.org/|A
+APACRS|APACRS Annual Meeting of the Asia-Pacific Association of Cataract and Refractive Surgeons|Asia-Pacific Association of Cataract and Refractive Surgeons|Ophthalmology|Singapore|SG|02-18|3|https://www.apacrs.org/|A
+APSICC|APSIC Congress of the Asia Pacific Society of Infection Control|Asia Pacific Society of Infection Control|Infection Control|Singapore|SG|03-14|3|https://www.apsic-apac.org/|27
+APPA|APPA Congress of the Asian Pacific Pediatric Association|Asian Pacific Pediatric Association|Paediatrics|Kuala Lumpur|MY|11-12|4|https://www.appa-asia.org/|27
+APSN|APSN Congress of the Asian Pacific Society of Nephrology|Asian Pacific Society of Nephrology|Nephrology|Kuala Lumpur|MY|11-05|4|https://www.apsn.org/|28
+AOCN|Asian and Oceanian Congress of Neurology|Asian and Oceanian Association of Neurology|Neurology|Singapore|SG|10-20|4|https://www.aoan.org/|27
+AEA|Asian Epilepsy Congress|Asian Epilepsy Academy|Neurology|Kuala Lumpur|MY|08-18|4|https://www.asianepilepsyacademy.org/|27
+UAA|Urological Association of Asia Congress|Urological Association of Asia|Urology|Bangkok|TH|09-10|4|https://www.uaasia.org/|27
+AOTA|Asia Oceania Thyroid Association Congress|Asia Oceania Thyroid Association|Endocrinology|Seoul|KR|10-14|4|https://www.aotathyroid.org/|27

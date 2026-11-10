@@ -1,0 +1,238 @@
+esc-congress|ESC Congress|European Society of Cardiology|Cardiology|Paris/Munich|8|4|5|4|B|https://www.escardio.org/
+esmo-congress|ESMO Congress|European Society for Medical Oncology|Oncology|Berlin/Barcelona|10|2|5|4|B|https://www.esmo.org/
+easd-annual-meeting|EASD Annual Meeting|European Association for the Study of Diabetes|Endocrinology|Vienna/Milan|9|3|1|5|B|https://www.easd.org/
+eular-congress|EULAR Congress|European Alliance of Associations for Rheumatology|Rheumatology|Barcelona/Copenhagen|6|2|3|4|B|https://www.eular.org/
+ers-congress|ERS Congress|European Respiratory Society|Respiratory Medicine|Amsterdam/Barcelona|9|2|6|4|B|https://www.ersnet.org/
+eau-annual-congress|EAU Annual Congress|European Association of Urology|Urology|Milan/Madrid|3|2|5|4|B|https://uroweb.org/
+esot-congress|ESOT Congress|European Society for Organ Transplantation|Transplantation|Copenhagen|6|4|0|4|O|https://esot.org/
+eha-congress|EHA Congress|European Hematology Association|Haematology|Stockholm/Milan|6|2|4|4|B|https://ehaweb.org/
+ean-congress|EAN Congress|European Academy of Neurology|Neurology|Geneva/Helsinki|6|4|5|4|B|https://www.ean.org/
+ecr-congress|ECR|European Society of Radiology|Radiology|Vienna|3|1|3|5|B|https://www.myesr.org/
+esicm-lives|ESICM LIVES|European Society of Intensive Care Medicine|Critical Care|Barcelona/Paris|10|3|0|4|B|https://www.esicm.org/
+euroanaesthesia|Euroanaesthesia|European Society of Anaesthesiology and Intensive Care|Anaesthesiology|Lisbon/Vienna|6|1|6|3|B|https://www.esaic.org/
+eadv-congress|EADV Congress|European Academy of Dermatology and Venereology|Dermatology|Paris/Vienna|9|4|3|4|B|https://eadv.org/
+ueg-week|UEG Week|United European Gastroenterology|Gastroenterology|Berlin/Vienna|10|3|0|4|B|https://ueg.eu/
+eshre-annual-meeting|ESHRE Annual Meeting|European Society of Human Reproduction and Embryology|Reproductive Medicine|Copenhagen/Paris|7|1|0|4|B|https://www.eshre.eu/
+espghan-annual-meeting|ESPGHAN Annual Meeting|European Society for Paediatric Gastroenterology Hepatology and Nutrition|Paediatrics|Vienna/Hamburg|6|2|3|4|B|https://www.espghan.org/
+escmid-global|ESCMID Global|European Society of Clinical Microbiology and Infectious Diseases|Infectious Diseases|Barcelona/Vienna|4|3|5|4|B|https://www.escmid.org/
+esoc|ESOC|European Stroke Organisation|Neurology|Maastricht/Basel|5|2|3|3|B|https://eso-stroke.org/
+europcr|EuroPCR|European Association of Percutaneous Cardiovascular Interventions|Cardiology|Paris|5|3|2|4|B|https://www.pcronline.com/
+eacts-annual-meeting|EACTS Annual Meeting|European Association for Cardio-Thoracic Surgery|Cardiothoracic Surgery|Barcelona/Vienna|10|2|3|4|B|https://www.eacts.org/
+efort-congress|EFORT Congress|European Federation of National Associations of Orthopaedics and Traumatology|Orthopaedics|Vienna/Hamburg|6|1|3|3|B|https://www.efort.org/
+eaaci-congress|EAACI Congress|European Academy of Allergy and Clinical Immunology|Allergy and Immunology|Vienna/Lisbon|6|2|5|4|B|https://eaaci.org/
+esgo-congress|ESGO Congress|European Society of Gynaecological Oncology|Gynaecologic Oncology|Prague/Vienna|10|3|4|4|B|https://www.esgo.org/
+espe-annual-meeting|ESPE Annual Meeting|European Society for Paediatric Endocrinology|Paediatric Endocrinology|Lyon/Vienna|9|3|4|3|B|https://www.eurospe.org/
+escrs-congress|ESCRS Congress|European Society of Cataract and Refractive Surgeons|Ophthalmology|Barcelona/Amsterdam|9|2|5|4|B|https://www.escrs.org/
+eao-congress|EAO Congress|European Association for Osseointegration|Dentistry|Lisbon/Milan|9|4|4|3|B|https://eao.org/
+easl-congress|EASL Congress|European Association for the Study of the Liver|Hepatology|Barcelona/Milan|5|2|3|4|B|https://easl.eu/
+era-congress|ERA Congress|European Renal Association|Nephrology|Vienna/Glasgow|6|1|3|4|B|https://www.era-online.org/
+ectrims-congress|ECTRIMS Congress|European Committee for Treatment and Research in Multiple Sclerosis|Neurology|Milan/Copenhagen|9|3|3|4|B|https://www.ectrims.eu/
+epa-congress|EPA Congress|European Psychiatric Association|Psychiatry|Budapest/Madrid|4|2|6|4|B|https://www.europsy.net/
+cirse-annual-congress|CIRSE Annual Congress|Cardiovascular and Interventional Radiological Society of Europe|Interventional Radiology|Barcelona/Vienna|9|2|5|4|B|https://www.cirse.org/
+eacr-congress|EACR Congress|European Association for Cancer Research|Oncology|Rotterdam/Lisbon|6|3|1|4|B|https://www.eacr.org/
+ecco-congress|ECCO Congress|European Crohn's and Colitis Organisation|Gastroenterology|Vienna/Stockholm|2|3|3|4|B|https://www.ecco-ibd.eu/
+ecnp-congress|ECNP Congress|European College of Neuropsychopharmacology|Psychiatry|Amsterdam/Vienna|10|2|6|4|B|https://www.ecnp.eu/
+eanm-congress|EANM Congress|European Association of Nuclear Medicine|Nuclear Medicine|Barcelona/Hamburg|10|2|5|5|B|https://www.eanm.org/
+estro-congress|ESTRO Congress|European Society for Radiotherapy and Oncology|Radiation Oncology|Vienna/Glasgow|5|2|5|4|B|https://www.estro.org/
+esgar-annual-meeting|ESGAR Annual Meeting|European Society of Gastrointestinal and Abdominal Radiology|Radiology|Lisbon/Rome|6|2|2|3|B|https://www.esgar.org/
+eshg-conference|European Human Genetics Conference|European Society of Human Genetics|Genetics|Gothenburg/Milan|6|2|6|4|B|https://www.eshg.org/
+ese-european-congress-of-endocrinology|European Congress of Endocrinology|European Society of Endocrinology|Endocrinology|Prague/Lisbon|5|3|6|4|B|https://www.ese-hormones.org/
+eco-european-congress-on-obesity|European Congress on Obesity|European Association for the Study of Obesity|Obesity Medicine|Istanbul/Malaga|5|2|3|4|B|https://easo.org/
+eas-congress|EAS Congress|European Atherosclerosis Society|Cardiology|Athens/Seville|5|2|0|3|B|https://www.eas-society.org/
+esh-european-meeting-on-hypertension|European Meeting on Hypertension and Cardiovascular Protection|European Society of Hypertension|Cardiology|Milan/Berlin|6|2|5|3|B|https://www.eshonline.org/
+ehra-congress|EHRA Congress|European Heart Rhythm Association|Cardiology|Vienna/Barcelona|3|4|0|3|B|https://www.escardio.org/
+euroecho|EuroEcho|European Association of Cardiovascular Imaging|Cardiology|Lisbon/Milan|12|1|3|4|B|https://www.escardio.org/
+esvs-annual-meeting|ESVS Annual Meeting|European Society for Vascular Surgery|Vascular Surgery|Prague/Athens|9|4|2|4|B|https://www.esvs.org/
+ests-annual-meeting|ESTS Annual Meeting|European Society of Thoracic Surgeons|Thoracic Surgery|Lisbon/Rome|6|1|0|3|B|https://www.ests.org/
+eurospine-annual-meeting|EUROSPINE Annual Meeting|EUROSPINE, the Spine Society of Europe|Spine Surgery|Vienna/Lisbon|10|2|3|3|B|https://www.eurospine.org/
+esska-congress|ESSKA Congress|European Society for Sports Traumatology Knee Surgery and Arthroscopy|Orthopaedics|Milan/Lyon|5|2|3|3|B|https://www.esska.org/
+essr-annual-scientific-meeting|ESSR Annual Scientific Meeting|European Society of Musculoskeletal Radiology|Radiology|Lisbon/Hamburg|6|4|4|3|B|https://essr.org/
+esnr-annual-meeting|ESNR Annual Meeting|European Society of Neuroradiology|Neuroradiology|Vienna/Geneva|9|3|3|3|B|https://www.esnr.org/
+esra-annual-congress|ESRA Congress|European Society of Regional Anaesthesia and Pain Therapy|Anaesthesiology|Lisbon/Barcelona|9|2|3|3|B|https://www.esraeurope.org/
+eusem-congress|EUSEM Congress|European Society for Emergency Medicine|Emergency Medicine|Vienna/Barcelona|9|4|5|4|B|https://eusem.org/
+ebmt-annual-meeting|EBMT Annual Meeting|European Society for Blood and Marrow Transplantation|Haematology|Vienna/Madrid|3|4|0|4|B|https://www.ebmt.org/
+eahad-congress|EAHAD Congress|European Association for Haemophilia and Allied Disorders|Haematology|Prague/Vienna|2|1|3|3|B|https://eahad.org/
+esgct-congress|ESGCT Congress|European Society of Gene and Cell Therapy|Gene and Cell Therapy|Rotterdam/Seville|10|3|1|4|B|https://www.esgct.eu/
+esid-meeting|ESID Biennial Meeting|European Society for Immunodeficiencies|Immunology|Vienna|9|4|3|4|E|https://esid.org/
+emas-congress|EMAS Congress|European Menopause and Andropause Society|Women's Health|Rome/Vienna|9|2|0|3|B|https://www.emas-online.org/
+esceo-congress|WCO-IOF-ESCEO Congress|European Society for Clinical and Economic Aspects of Osteoporosis|Rheumatology|Barcelona|4|2|3|4|B|https://www.esceo.org/
+eupha-conference|European Public Health Conference|European Public Health Association|Public Health|Rotterdam/Lisbon|11|2|3|4|B|https://eupha.org/
+ehma-conference|EHMA Annual Conference|European Health Management Association|Health Management|Brussels/Dublin|6|2|3|3|B|https://ehma.org/
+euretina-congress|EURETINA Congress|European Society of Retina Specialists|Ophthalmology|Barcelona/Hamburg|9|3|4|4|B|https://www.euretina.org/
+ever-congress|EVER Congress|European Association for Vision and Eye Research|Ophthalmology|Valencia/Lisbon|10|1|3|3|B|https://www.ever.be/
+eucornea-congress|EuCornea Congress|European Association for Cornea and Ocular Surface Disease|Ophthalmology|Vienna/Athens|9|3|5|2|B|https://www.eucornea.org/
+siope-congress|SIOP Europe Annual Meeting|SIOP Europe|Paediatric Oncology|Lisbon/Vienna|6|4|3|3|B|https://siope.eu/
+eortc-summit|EORTC Summit on Clinical Cancer Research|European Organisation for Research and Treatment of Cancer|Oncology|Brussels|3|1|3|3|B|https://www.eortc.org/
+esso-congress|ESSO Congress|European Society of Surgical Oncology|Surgical Oncology|Rome/Vienna|10|1|4|3|B|https://www.essoweb.org/
+eado-congress|EADO Congress|European Association of Dermato-Oncology|Dermatology|Vienna/Prague|4|3|3|3|B|https://www.eado.eu/
+ewma-conference|EWMA Conference|European Wound Management Association|Wound Care|Rotterdam/Lisbon|5|2|3|3|B|https://ewma.org/
+espr-congress|ESPR Congress|European Society for Paediatric Research|Paediatrics|Vienna/Lisbon|10|2|4|3|B|https://www.espr.org/
+espu-congress|ESPU Congress|European Society for Paediatric Urology|Paediatric Urology|Dublin/Prague|4|3|4|3|B|https://www.espu.org/
+espid-meeting|ESPID Meeting|European Society for Paediatric Infectious Diseases|Paediatric Infectious Diseases|Vienna/Lisbon|5|2|2|4|B|https://www.espid.org/
+espnic-congress|ESPNIC Congress|European Society of Paediatric and Neonatal Intensive Care|Paediatric Critical Care|Rome/Lisbon|6|2|3|3|B|https://www.espnic.org/
+escap-congress|ESCAP Congress|European Society for Child and Adolescent Psychiatry|Psychiatry|Strasbourg|6|3|3|4|O|https://www.escap.eu/
+epns-congress|EPNS Congress|European Paediatric Neurology Society|Paediatric Neurology|Lisbon|7|2|3|4|O|https://www.epns.info/
+eapc-world-congress|EAPC World Congress|European Association for Palliative Care|Palliative Care|Rotterdam|5|2|3|3|O|https://eapcnet.eu/
+espen-congress|ESPEN Congress|European Society for Clinical Nutrition and Metabolism|Clinical Nutrition|Prague/Vienna|9|2|6|4|B|https://www.espen.org/
+ebcog-congress|EBCOG Congress|European Board and College of Obstetrics and Gynaecology|Obstetrics and Gynaecology|Athens/Vienna|5|2|3|3|B|https://www.ebcog.org/
+eacs-european-aids-conference|European AIDS Conference|European AIDS Clinical Society|Infectious Diseases|Lisbon|10|3|3|4|O|https://www.eacs-society.org/
+ecp-european-congress-of-pathology|European Congress of Pathology|European Society of Pathology|Pathology|Vienna/Paris|9|1|0|4|B|https://www.esp-pathology.org/
+esmrmb-annual-scientific-meeting|ESMRMB Annual Scientific Meeting|European Society for Magnetic Resonance in Medicine and Biology|Radiology|Barcelona/Vienna|10|1|3|3|B|https://www.esmrmb.org/
+esge-days|ESGE Days|European Society of Gastrointestinal Endoscopy|Gastroenterology|Barcelona/Lisbon|4|2|3|3|B|https://www.esge.com/
+eahp-congress|EAHP Congress|European Association of Hospital Pharmacists|Pharmacy|Vienna/Lisbon|3|2|3|3|B|https://www.eahp.eu/
+pcne-working-conference|PCNE Working Conference|Pharmaceutical Care Network Europe|Pharmacy|Lisbon|2|2|3|3|B|https://www.pcne.org/
+ecss-congress|ECSS Congress|European College of Sport Science|Sports Medicine|Rotterdam/Seville|7|2|3|4|B|https://www.ecss.eu/
+eta-annual-meeting|ETA Annual Meeting|European Thyroid Association|Endocrinology|Rome/Vienna|9|2|5|4|B|https://www.eurothyroid.com/
+eano-meeting|EANO Meeting|European Association of Neuro-Oncology|Neuro-Oncology|Lisbon/Vienna|10|2|3|4|B|https://www.eano.eu/
+efic-pain-in-europe-congress|EFIC Pain in Europe Congress|European Pain Federation EFIC|Pain Medicine|Vienna/Lisbon|5|3|3|4|B|https://europeanpainfederation.eu/
+ecio-conference|European Conference on Interventional Oncology|CIRSE|Interventional Radiology|Berlin/Vienna|4|3|0|3|B|https://www.cirse.org/
+ects-congress|ECTS Congress|European Calcified Tissue Society|Endocrinology|Vienna/Lisbon|5|2|6|3|B|https://www.ectsoc.org/
+eaes-congress|EAES Congress|European Association for Endoscopic Surgery|Surgery|Rome/Lisbon|6|1|3|3|B|https://eaes.eu/
+escp-annual-meeting|ESCP Annual Meeting|European Society of Coloproctology|Colorectal Surgery|Vienna/Lisbon|9|3|3|3|B|https://www.escp.eu.com/
+esmo-gi|ESMO Gastrointestinal Cancers Congress|ESMO|Oncology|Barcelona/Munich|7|1|3|4|B|https://www.esmo.org/
+esmo-breast|ESMO Breast Cancer Congress|ESMO|Oncology|Berlin/Munich|5|2|3|3|B|https://www.esmo.org/
+esmo-gynaecological|ESMO Gynaecological Cancers Congress|ESMO|Oncology|Vienna/Barcelona|6|3|4|2|B|https://www.esmo.org/
+esmo-tat|ESMO Targeted Anticancer Therapies Congress|ESMO|Oncology|Paris/Barcelona|3|2|3|3|B|https://www.esmo.org/
+esmo-sarcoma|ESMO Sarcoma and Rare Cancers Congress|ESMO|Oncology|Lugano|3|2|3|3|B|https://www.esmo.org/
+esmo-lung|European Lung Cancer Congress|ESMO with IASLC, ESTRO and ESTS|Oncology|Lugano/Copenhagen|3|2|3|3|B|https://www.esmo.org/
+esc-heart-failure|ESC Heart Failure Congress|ESC Heart Failure Association|Cardiology|Lisbon/Barcelona|5|3|5|3|B|https://www.escardio.org/
+esc-acvc|Acute CardioVascular Care Congress|ESC Association for Acute CardioVascular Care|Cardiology|Athens/Barcelona|3|2|5|3|B|https://www.escardio.org/
+esc-europrevent|EuroPrevent|ESC European Association of Preventive Cardiology|Cardiology|Athens/Milan|4|3|3|3|B|https://www.escardio.org/
+eadv-spring|EADV Spring Symposium|European Academy of Dermatology and Venereology|Dermatology|Dresden/Dublin|5|2|3|3|B|https://eadv.org/
+eos-congress|EOS Congress|European Orthodontic Society|Dentistry|Lisbon/Vienna|6|3|0|5|B|https://www.eoseurope.org/
+efp-europerio|EuroPerio|European Federation of Periodontology|Dentistry|Copenhagen|5|2|3|4|O|https://www.efp.org/
+bts-winter-meeting|BTS Winter Meeting|British Thoracic Society|Respiratory Medicine|London|11|4|3|3|B|https://www.brit-thoracic.org.uk/
+baus-annual-meeting|BAUS Annual Meeting|British Association of Urological Surgeons|Urology|Manchester/Glasgow|6|2|1|3|B|https://www.baus.org.uk/
+boa-congress|BOA Congress|British Orthopaedic Association|Orthopaedics|Manchester/Birmingham|9|3|2|3|B|https://www.boa.ac.uk/
+rcr-annual-scientific-meeting|RCR Annual Scientific Meeting|Royal College of Radiologists|Radiology|London/Manchester|9|4|3|2|B|https://www.rcr.ac.uk/
+rcoa-annual-congress|RCoA Anaesthesia Congress|Royal College of Anaesthetists|Anaesthesiology|Liverpool/Birmingham|5|2|2|3|B|https://www.rcoa.ac.uk/
+uk-kidney-week|UK Kidney Week|UK Kidney Association|Nephrology|Harrogate/Liverpool|6|2|2|3|B|https://www.ukkidney.org/
+bapen-annual-conference|BAPEN Annual Conference|British Association for Parenteral and Enteral Nutrition|Clinical Nutrition|Harrogate/Telford|11|2|2|2|B|https://www.bapen.org.uk/
+bsped-annual-meeting|BSPED Annual Meeting|British Society for Paediatric Endocrinology and Diabetes|Paediatric Endocrinology|Manchester/Glasgow|11|2|3|3|B|https://www.bsped.org.uk/
+society-for-endocrinology-bes|Society for Endocrinology BES|Society for Endocrinology|Endocrinology|Harrogate/Brighton|11|2|1|3|B|https://www.endocrinology.org/
+bsh-annual-scientific-meeting|BSH Annual Scientific Meeting|British Society for Haematology|Haematology|Glasgow/Manchester|4|1|1|3|B|https://b-s-h.org.uk/
+abn-annual-meeting|ABN Annual Meeting|Association of British Neurologists|Neurology|Edinburgh/Liverpool|5|2|2|3|B|https://www.theabn.org/
+bsi-congress|British Society for Immunology Congress|British Society for Immunology|Immunology|Liverpool/Brighton|12|1|1|3|B|https://www.immunology.org/
+acpgb-annual-meeting|ACPGBI Annual Meeting|Association of Coloproctology of Great Britain and Ireland|Colorectal Surgery|Glasgow/Birmingham|6|3|1|3|B|https://www.acpgbi.org.uk/
+augis-annual-meeting|AUGIS Annual Meeting|Association of Upper Gastrointestinal Surgeons|Surgery|Liverpool/Manchester|9|3|3|3|B|https://www.augis.org/
+bapras-winter-scientific-meeting|BAPRAS Winter Scientific Meeting|British Association of Plastic Reconstructive and Aesthetic Surgeons|Plastic Surgery|London|12|1|3|2|B|https://www.bapras.org.uk/
+bssh-autumn-scientific-meeting|BSSH Autumn Scientific Meeting|British Society for Surgery of the Hand|Hand Surgery|Manchester/Glasgow|11|2|3|2|B|https://www.bssh.ac.uk/
+sbns-spring-meeting|SBNS Spring Meeting|Society of British Neurological Surgeons|Neurosurgery|Edinburgh/Birmingham|4|2|3|3|B|https://www.sbns.org.uk/
+baoms-annual-scientific-meeting|BAOMS Annual Scientific Meeting|British Association of Oral and Maxillofacial Surgeons|Maxillofacial Surgery|Manchester/Glasgow|6|2|3|3|B|https://www.baoms.org.uk/
+bgs-autumn-meeting|BGS Autumn Meeting|British Geriatrics Society|Geriatrics|Manchester/Liverpool|11|2|3|2|B|https://www.bgs.org.uk/
+bhiva-annual-conference|BHIVA Annual Conference|British HIV Association|Infectious Diseases|Manchester/Birmingham|4|4|3|3|B|https://www.bhiva.org/
+bapm-annual-conference|BAPM Annual Conference|British Association of Perinatal Medicine|Neonatology|Manchester/Birmingham|9|3|3|2|B|https://www.bapm.org/
+bmfms-annual-conference|BMFMS Annual Conference|British Maternal and Fetal Medicine Society|Obstetrics|Manchester/Cardiff|3|2|3|3|B|https://www.bmfms.org.uk/
+bfs-annual-conference|BFS Annual Conference|British Fertility Society|Reproductive Medicine|Manchester/Birmingham|4|2|3|3|B|https://www.britishfertilitysociety.org.uk/
+bgcs-annual-scientific-meeting|BGCS Annual Scientific Meeting|British Gynaecological Cancer Society|Gynaecologic Oncology|Manchester/Glasgow|6|2|3|3|B|https://www.bgcs.org.uk/
+bsccp-annual-scientific-meeting|BSCCP Annual Scientific Meeting|British Society for Colposcopy and Cervical Pathology|Gynaecology|Manchester/Newcastle|4|3|3|3|B|https://www.bsccp.org.uk/
+rcgp-annual-conference|RCGP Annual Conference|Royal College of General Practitioners|General Practice|Liverpool/Birmingham|10|3|3|3|B|https://www.rcgp.org.uk/
+bashh-spring-conference|BASHH Spring Conference|British Association for Sexual Health and HIV|Sexual Health|Manchester/Glasgow|6|1|3|3|B|https://www.bashh.org/
+bsecho-annual-meeting|BSE Annual Meeting|British Society of Echocardiography|Cardiology|Manchester/Birmingham|11|2|3|3|B|https://www.bsecho.org/
+bhrs-annual-meeting|BHRS Annual Meeting|British Heart Rhythm Society|Cardiology|Manchester/Birmingham|10|2|3|2|B|https://bhrs.com/
+bcis-annual-meeting|BCIS Annual Meeting|British Cardiovascular Intervention Society|Cardiology|Manchester/Birmingham|1|4|3|3|B|https://www.bcis.org.uk/
+uk-stroke-forum|UK Stroke Forum|Stroke Association|Neurology|Liverpool/Manchester|12|1|2|3|B|https://www.stroke.org.uk/
+oaa-annual-meeting|OAA Annual Scientific Meeting|Obstetric Anaesthetists Association|Anaesthesiology|Manchester/Birmingham|5|2|3|3|B|https://www.oaa-anaes.ac.uk/
+apa-annual-meeting|APA Annual Meeting|Association of Paediatric Anaesthetists of Great Britain and Ireland|Anaesthesiology|Manchester/Edinburgh|11|2|3|3|B|https://www.apagbi.org.uk/
+british-pain-society-asm|British Pain Society ASM|British Pain Society|Pain Medicine|Manchester/Birmingham|5|2|3|3|B|https://www.britishpainsociety.org/
+dgk-jahrestagung|DGK Jahrestagung|Deutsche Gesellschaft fuer Kardiologie|Cardiology|Mannheim|4|2|3|3|B|https://dgk.org/
+dgu-kongress|DGU Kongress|Deutsche Gesellschaft fuer Urologie|Urology|Hamburg/Leipzig|9|3|3|4|B|https://www.dgu-kongress.de/
+dgch-kongress|Chirurgie Kongress|Deutsche Gesellschaft fuer Chirurgie|Surgery|Munich/Berlin|4|2|2|4|B|https://www.dgch.de/
+dgou-kongress|Deutscher Kongress fuer Orthopaedie und Unfallchirurgie|Deutsche Gesellschaft fuer Orthopaedie und Unfallchirurgie|Orthopaedics|Berlin|10|4|2|4|B|https://www.dgou.de/
+dgn-kongress|DGN Kongress|Deutsche Gesellschaft fuer Neurologie|Neurology|Berlin/Hamburg|11|2|3|4|B|https://www.dgn.org/
+dgppn-kongress|DGPPN Kongress|Deutsche Gesellschaft fuer Psychiatrie und Psychotherapie|Psychiatry|Berlin|11|4|3|4|B|https://www.dgppn.de/
+dgp-kongress|DGP Kongress|Deutsche Gesellschaft fuer Pneumologie und Beatmungsmedizin|Respiratory Medicine|Leipzig/Dusseldorf|3|2|3|4|B|https://pneumologie.de/
+dggg-kongress|DGGG Kongress|Deutsche Gesellschaft fuer Gynaekologie und Geburtshilfe|Obstetrics and Gynaecology|Berlin/Munich|10|1|3|4|B|https://www.dggg.de/
+dac-anaesthesiologie|Deutscher Anaesthesiecongress|Deutsche Gesellschaft fuer Anaesthesiologie und Intensivmedizin|Anaesthesiology|Leipzig/Nuremberg|5|2|3|4|B|https://www.dgai.de/
+dgrh-kongress|DGRh Kongress|Deutsche Gesellschaft fuer Rheumatologie und Klinische Immunologie|Rheumatology|Berlin/Leipzig|9|1|3|4|B|https://dgrh.de/
+ddg-diabetes-kongress|Diabetes Kongress|Deutsche Diabetes Gesellschaft|Endocrinology|Berlin|5|2|3|3|B|https://www.deutsche-diabetes-gesellschaft.de/
+dge-jahrestagung|DGE Jahrestagung|Deutsche Gesellschaft fuer Endokrinologie|Endocrinology|Erlangen/Berlin|3|2|3|3|B|https://www.endokrinologie.net/
+dgvs-kongress|Viszeralmedizin Kongress|Deutsche Gesellschaft fuer Gastroenterologie Verdauungs- und Stoffwechselkrankheiten|Gastroenterology|Leipzig/Hamburg|9|3|3|4|B|https://www.dgvs.de/
+dgkj-kongress|DGKJ Kongress|Deutsche Gesellschaft fuer Kinder- und Jugendmedizin|Paediatrics|Berlin/Leipzig|9|3|3|4|B|https://www.dgkj.de/
+dgpraec-jahrestagung|DGPRAeC Jahrestagung|Deutsche Gesellschaft der Plastischen Rekonstruktiven und Aesthetischen Chirurgen|Plastic Surgery|Berlin/Munich|9|3|3|3|B|https://www.dgpraec.de/
+dgnc-jahrestagung|DGNC Jahrestagung|Deutsche Gesellschaft fuer Neurochirurgie|Neurosurgery|Berlin/Leipzig|6|2|3|4|B|https://www.dgnc.de/
+degam-kongress|DEGAM Kongress|Deutsche Gesellschaft fuer Allgemeinmedizin und Familienmedizin|General Practice|Hamburg/Munich|9|3|3|3|B|https://www.degam.de/
+degro-kongress|DEGRO Jahreskongress|Deutsche Gesellschaft fuer Radioonkologie|Radiation Oncology|Berlin/Hamburg|6|2|3|3|B|https://www.degro.org/
+drg-roentgenkongress|Deutscher Roentgenkongress|Deutsche Roentgengesellschaft|Radiology|Hamburg/Leipzig|5|2|3|4|B|https://www.drg.de/
+divi-kongress|DIVI Kongress|Deutsche Interdisziplinaere Vereinigung fuer Intensiv- und Notfallmedizin|Critical Care|Hamburg/Leipzig|12|1|3|3|B|https://www.divi.de/
+dgthg-tagung|DGTHG Jahrestagung|Deutsche Gesellschaft fuer Thorax- Herz- und Gefaesschirurgie|Cardiothoracic Surgery|Leipzig/Stuttgart|2|3|0|3|B|https://www.dgthg.de/
+dgg-gefaesschirurgie-kongress|DGG Jahrestagung|Deutsche Gesellschaft fuer Gefaesschirurgie und Gefaessmedizin|Vascular Surgery|Berlin/Hamburg|9|2|3|3|B|https://www.gefaesschirurgie.de/
+dgsm-kongress|DGSM Jahrestagung|Deutsche Gesellschaft fuer Schlafforschung und Schlafmedizin|Sleep Medicine|Berlin/Hamburg|9|4|3|3|B|https://www.dgsm.de/
+dog-kongress|DOG Kongress|Deutsche Ophthalmologische Gesellschaft|Ophthalmology|Berlin/Leipzig|9|4|3|3|B|https://www.dog.org/
+ddg-tagung-dermatologie|DDG Tagung|Deutsche Dermatologische Gesellschaft|Dermatology|Berlin|4|4|3|4|B|https://derma.de/
+dgp-palliativkongress|Deutscher Palliativkongress|Deutsche Gesellschaft fuer Palliativmedizin|Palliative Care|Berlin/Hamburg|9|3|3|3|B|https://www.dgpalliativmedizin.de/
+dgfn-kongress|DGfN Jahrestagung|Deutsche Gesellschaft fuer Nephrologie|Nephrology|Berlin/Leipzig|9|3|3|3|B|https://www.dgfn.eu/
+deutscher-krebskongress|Deutscher Krebskongress|Deutsche Krebsgesellschaft|Oncology|Berlin|2|3|3|4|E|https://www.krebsgesellschaft.de/
+dgho-jahrestagung|DGHO Jahrestagung|Deutsche Gesellschaft fuer Haematologie und Medizinische Onkologie|Haematology|Berlin/Leipzig|10|1|4|4|B|https://www.dgho.de/
+dgsmp-annual-meeting|DGSMP Jahrestagung|Deutsche Gesellschaft fuer Sozialmedizin und Praevention|Public Health|Berlin/Hamburg|9|2|3|3|B|https://www.dgsmp.de/
+sfc-congres|Congres de la Societe Francaise de Cardiologie|Societe Francaise de Cardiologie|Cardiology|Paris|1|2|3|3|B|https://www.sfcardio.fr/
+cplf-congres|Congres de Pneumologie de Langue Francaise|Societe de Pneumologie de Langue Francaise|Respiratory Medicine|Lille/Lyon|1|4|5|3|B|https://splf.fr/
+jdp-journees-dermatologiques|Journees Dermatologiques de Paris|Societe Francaise de Dermatologie|Dermatology|Paris|12|1|3|4|B|https://www.sfdermato.org/
+sfar-congres|Congres de la SFAR|Societe Francaise d'Anesthesie et de Reanimation|Anaesthesiology|Paris|9|3|3|4|B|https://sfar.org/
+jfr-journees-francophones-radiologie|Journees Francophones de Radiologie|Societe Francaise de Radiologie|Radiology|Paris|10|2|5|4|B|https://www.sfrnet.org/
+jfhod|Journees Francophones d'Hepato-Gastroenterologie et d'Oncologie Digestive|Societe Nationale Francaise de Gastro-Enterologie|Gastroenterology|Paris|3|4|4|4|B|https://www.snfge.org/
+sfo-congres|Congres de la Societe Francaise d'Ophtalmologie|Societe Francaise d'Ophtalmologie|Ophthalmology|Paris|5|1|5|4|B|https://www.sfo.asso.fr/
+sofcot-reunion-annuelle|Reunion Annuelle de la SOFCOT|Societe Francaise de Chirurgie Orthopedique et Traumatologique|Orthopaedics|Paris|11|2|1|4|B|https://www.sofcot.fr/
+afu-congres|Congres de l'Association Francaise d'Urologie|Association Francaise d'Urologie|Urology|Paris|11|4|3|3|B|https://www.urofrance.org/
+sfmu-congres|Urgences Congres|Societe Francaise de Medecine d'Urgence|Emergency Medicine|Paris|6|1|3|3|B|https://www.sfmu.org/
+sfe-congres|Congres de la Societe Francaise d'Endocrinologie|Societe Francaise d'Endocrinologie|Endocrinology|Nantes/Lyon|10|3|3|3|B|https://www.sfendocrino.org/
+sfr-congres-rhumatologie|Congres Francais de Rhumatologie|Societe Francaise de Rhumatologie|Rheumatology|Paris|12|1|1|4|B|https://www.sfrhumatologie.com/
+snfmi-congres|Congres de la SNFMI|Societe Nationale Francaise de Medecine Interne|Internal Medicine|Lyon/Paris|12|1|3|3|B|https://www.snfmi.org/
+cngof-congres|Congres du CNGOF|College National des Gynecologues et Obstetriciens Francais|Obstetrics and Gynaecology|Paris|12|1|3|3|B|https://cngof.fr/
+sfnv-journees-neurovasculaires|Journees de la Societe Francaise Neuro-Vasculaire|Societe Francaise Neuro-Vasculaire|Neurology|Paris/Lyon|3|4|3|3|B|https://www.societe-francaise-neurovasculaire.fr/
+sfgm-tc-congres|Congres de la SFGM-TC|Societe Francaise de Greffe de Moelle et de Therapie Cellulaire|Haematology|Nantes|3|4|3|3|B|https://www.sfgm-tc.com/
+sfgg-congres|Congres de la SFGG|Societe Francaise de Geriatrie et Gerontologie|Geriatrics|Paris|6|1|3|3|B|https://sfgg.org/
+sfap-congres|Congres de la SFAP|Societe Francaise d'Accompagnement et de Soins Palliatifs|Palliative Care|Lyon/Paris|6|2|3|3|B|https://www.sfap.org/
+sic-congresso|Congresso della Societa Italiana di Cardiologia|Societa Italiana di Cardiologia|Cardiology|Rome|12|1|5|3|B|https://www.sicardiologia.it/
+anmco-congresso|Congresso Nazionale ANMCO|Associazione Nazionale Medici Cardiologi Ospedalieri|Cardiology|Rimini|5|2|4|3|B|https://www.anmco.it/
+simg-congresso|Congresso Nazionale SIMG|Societa Italiana di Medicina Generale|General Practice|Florence|11|2|4|3|B|https://www.simg.it/
+sid-congresso|Congresso Nazionale SID|Societa Italiana di Diabetologia|Endocrinology|Rimini|5|2|3|3|B|https://www.siditalia.it/
+sir-congresso-reumatologia|Congresso Nazionale SIR|Societa Italiana di Reumatologia|Rheumatology|Rimini|11|4|3|3|B|https://www.reumatologia.it/
+siu-congresso|Congresso Nazionale SIU|Societa Italiana di Urologia|Urology|Rome/Milan|10|1|4|4|B|https://www.siu.it/
+siaarti-congresso|Congresso Nazionale SIAARTI|Societa Italiana di Anestesia Analgesia Rianimazione e Terapia Intensiva|Anaesthesiology|Rome/Naples|10|1|3|4|B|https://www.siaarti.it/
+sin-congresso-neurologia|Congresso Nazionale SIN|Societa Italiana di Neurologia|Neurology|Rome/Rimini|10|4|6|3|B|https://www.neuro.it/
+aiom-congresso|Congresso Nazionale AIOM|Associazione Italiana di Oncologia Medica|Oncology|Rome|10|4|5|3|B|https://www.aiom.it/
+sirm-congresso|Congresso Nazionale SIRM|Societa Italiana di Radiologia Medica e Interventistica|Radiology|Rome/Rimini|10|4|3|3|B|https://www.sirm.org/
+sigo-congresso|Congresso Nazionale SIGO|Societa Italiana di Ginecologia e Ostetricia|Obstetrics and Gynaecology|Rome|10|4|3|3|B|https://www.sigo.it/
+siot-congresso|Congresso Nazionale SIOT|Societa Italiana di Ortopedia e Traumatologia|Orthopaedics|Rome/Bologna|10|4|3|3|B|https://www.siot.it/
+sin-congresso-nefrologia|Congresso Nazionale SIN Nefrologia|Societa Italiana di Nefrologia|Nephrology|Rimini/Rome|10|2|3|3|B|https://sinitaly.org/
+sidemast-congresso|Congresso Nazionale SIDeMaST|Societa Italiana di Dermatologia Medica Chirurgica Estetica e delle Malattie Sessualmente Trasmissibili|Dermatology|Rome/Rimini|5|2|3|3|B|https://www.sidemast.org/
+sec-congreso|Congreso de las Enfermedades Cardiovasculares SEC|Sociedad Espanola de Cardiologia|Cardiology|Seville/Bilbao|10|3|3|3|B|https://secardiologia.es/
+semi-congreso|Congreso Nacional de la SEMI|Sociedad Espanola de Medicina Interna|Internal Medicine|Valencia/Seville|11|3|3|3|B|https://www.fesemi.org/
+seom-congreso|Congreso SEOM|Sociedad Espanola de Oncologia Medica|Oncology|Madrid|10|3|3|3|B|https://seom.org/
+sen-congreso-nefrologia|Congreso de la Sociedad Espanola de Nefrologia|Sociedad Espanola de Nefrologia|Nephrology|Bilbao/Seville|10|3|3|3|B|https://www.senefro.org/
+semergen-congreso|Congreso Nacional SEMERGEN|Sociedad Espanola de Medicos de Atencion Primaria|General Practice|Madrid/Valencia|10|3|3|3|B|https://www.semergen.es/
+semfyc-congreso|Congreso semFYC|Sociedad Espanola de Medicina Familiar y Comunitaria|General Practice|Bilbao/Seville|6|2|3|3|B|https://www.semfyc.es/
+semes-congreso|Congreso Nacional SEMES|Sociedad Espanola de Medicina de Urgencias y Emergencias|Emergency Medicine|Madrid/Valencia|6|2|3|3|B|https://www.semes.org/
+sedar-congreso|Congreso Nacional SEDAR|Sociedad Espanola de Anestesiologia y Reanimacion|Anaesthesiology|Madrid/Valencia|5|2|3|3|B|https://sedar.es/
+sego-congreso|Congreso Nacional SEGO|Sociedad Espanola de Ginecologia y Obstetricia|Obstetrics and Gynaecology|Madrid/Valencia|10|3|3|3|B|https://sego.es/
+seen-congreso|Congreso de la SEEN|Sociedad Espanola de Endocrinologia y Nutricion|Endocrinology|Madrid/Valencia|10|2|3|3|B|https://www.seen.es/
+sen-congreso-neurologia|Reunion Anual de la SEN|Sociedad Espanola de Neurologia|Neurology|Seville/Valencia|11|3|2|4|B|https://www.sen.es/
+sepd-congreso|Semana de las Enfermedades Digestivas|Sociedad Espanola de Patologia Digestiva|Gastroenterology|Madrid/Valencia|6|1|3|3|B|https://www.sepd.es/
+aedv-congreso|Congreso Nacional de Dermatologia y Venereologia|Academia Espanola de Dermatologia y Venereologia|Dermatology|Madrid/Valencia|6|1|3|3|B|https://aedv.es/
+secot-congreso|Congreso Nacional SECOT|Sociedad Espanola de Cirugia Ortopedica y Traumatologia|Orthopaedics|Madrid/Valencia|9|4|3|3|B|https://www.secot.es/
+sehh-congreso|Congreso Nacional SEHH-SETH|Sociedad Espanola de Hematologia y Hemoterapia|Haematology|Madrid/Valencia|10|3|3|3|B|https://www.sehh.es/
+semicyuc-congreso|Congreso Nacional SEMICYUC|Sociedad Espanola de Medicina Intensiva Critica y Unidades Coronarias|Critical Care|Valencia/Madrid|6|2|3|3|B|https://semicyuc.org/
+aeu-congreso|Congreso Nacional de Urologia|Asociacion Espanola de Urologia|Urology|Madrid/Valencia|6|2|3|3|B|https://www.aeu.es/
+segg-congreso|Congreso Nacional SEGG|Sociedad Espanola de Geriatria y Gerontologia|Geriatrics|Madrid/Seville|6|2|3|3|B|https://www.segg.es/
+nvvc-voorjaarscongres|NVVC Voorjaarscongres|Nederlandse Vereniging voor Cardiologie|Cardiology|Papendal|4|3|4|2|B|https://www.nvvc.nl/
+internistendagen|Internistendagen|Nederlandse Internisten Vereniging|Internal Medicine|Maastricht/Utrecht|4|2|3|3|B|https://www.internisten.nl/
+nvvp-voorjaarscongres|NVvP Voorjaarscongres|Nederlandse Vereniging voor Psychiatrie|Psychiatry|Maastricht|4|2|3|3|B|https://www.nvvp.net/
+radiologendagen|Radiologendagen|Nederlandse Vereniging voor Radiologie|Radiology|Utrecht|5|2|3|2|B|https://www.radiologen.nl/
+nvvh-chirurgendag|Chirurgendag|Nederlandse Vereniging voor Heelkunde|Surgery|Veldhoven|11|2|5|2|B|https://heelkunde.nl/
+sgk-jahrestagung|Annual Congress of the Swiss Society of Cardiology|Swiss Society of Cardiology|Cardiology|Basel/Bern|6|2|3|3|B|https://www.swisscardio.ch/
+sgi-ssmi-congress|Swiss Society of Intensive Care Medicine Annual Congress|Swiss Society of Intensive Care Medicine|Critical Care|Lausanne/Bern|11|2|3|2|B|https://www.sgi-ssmi.ch/
+sggg-jahreskongress|SGGG Jahreskongress|Swiss Society of Gynaecology and Obstetrics|Obstetrics and Gynaecology|Lugano/Bern|6|3|3|3|B|https://www.sggg.ch/
+oegim-internistenkongress|Internistenkongress|Oesterreichische Gesellschaft fuer Innere Medizin|Internal Medicine|Salzburg/Graz|10|2|4|3|B|https://www.oegim.at/
+oegk-jahrestagung|OEKG Jahrestagung|Oesterreichische Kardiologische Gesellschaft|Cardiology|Salzburg|5|2|3|3|B|https://www.atcardio.at/
+oegho-jahrestagung|OEGHO Jahrestagung|Oesterreichische Gesellschaft fuer Haematologie und Medizinische Onkologie|Haematology|Vienna/Graz|10|1|4|3|B|https://www.oegho.at/
+svenska-lakaresallskapet-lakarstamman|Lakarstamman|Svenska Lakaresallskapet|General Medicine|Stockholm|11|4|3|3|B|https://www.sls.se/
+dcs-aarsmoede|Danish Society of Cardiology Annual Meeting|Dansk Cardiologisk Selskab|Cardiology|Copenhagen/Aarhus|10|4|3|3|B|https://www.cardio.dk/
+bsc-annual-meeting|Belgian Society of Cardiology Annual Meeting|Belgian Society of Cardiology|Cardiology|Brussels/Ghent|3|2|3|3|B|https://www.bscardio.be/
+ptk-kongres|Kongres Polskiego Towarzystwa Kardiologicznego|Polskie Towarzystwo Kardiologiczne|Cardiology|Krakow/Warsaw|9|4|3|3|B|https://ptkardio.pl/
+ptok-kongres|Kongres PTOK|Polskie Towarzystwo Onkologii Klinicznej|Oncology|Warsaw/Krakow|10|4|3|3|B|https://ptok.org/
+cks-vyrocni-sjezd|Annual Congress of the Czech Society of Cardiology|Ceska kardiologicka spolecnost|Cardiology|Brno|5|2|0|3|B|https://www.kardio-cz.cz/
+hcs-congress|Hellenic Cardiological Society Congress|Hellenic Society of Cardiology|Cardiology|Athens|10|4|4|3|B|https://www.hcs.gr/
+spmi-congresso|Congresso Nacional de Medicina Interna|Sociedade Portuguesa de Medicina Interna|Internal Medicine|Vilamoura/Porto|10|3|3|3|B|https://www.spmi.pt/
+ics-irish-cardiac-society|Irish Cardiac Society Annual Scientific Meeting|Irish Cardiac Society|Cardiology|Dublin/Galway|10|4|4|2|B|https://www.irishcardiacsociety.com/
+icgp-annual-conference|ICGP Annual Conference|Irish College of General Practitioners|General Practice|Dublin/Cork|5|2|3|2|B|https://www.icgp.ie/

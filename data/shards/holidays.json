@@ -1,0 +1,526 @@
+{
+ "checked": "2026-11-07",
+ "convention": "start = first day children do not attend (day after last term day, usually Saturday); end = last holiday day (day before school resumes). A null end means next-year term dates are not yet published by the official body. Only breaks overlapping 2026-11-01..2028-12-31 are included.",
+ "regions": [
+  {
+   "code": "NSW",
+   "name": "New South Wales",
+   "country": "AU",
+   "sourceUrl": "https://education.nsw.gov.au/schooling/calendars/future-and-past-nsw-term-and-vacation-dates.html",
+   "notes": "Public-school EASTERN division. Also opened https://education.nsw.gov.au/schooling/calendars/2026.html (2026 dates). Western division differs only in Term 1 start and therefore the end of summer: summer 2026-27 ends 2027-02-03 (T1 starts 2027-02-04), summer 2027-28 ends 2028-02-06 (T1 starts 2028-02-07), summer 2028-29 ends 2029-02-02 per NSW page. Convention: start = day after last term day; end = day before next term first day (NSW term dates include staff development days; NSW lists holidays Mon-Fri only so these ranges also include the weekends). Summer 2027-28: NSW page lists T4 ending Fri 17 Dec 2027 but summer holidays starting Tue 21 Dec with Mon 20 Dec a staff development day; I used start 2027-12-18 (day after listed term end). Summer 2028-29 end 2029-01-25 is NSW-listed (Thu), not derived. A separate page https://education.nsw.gov.au/schooling/calendars/2027.html returned different 2027 dates (T1 3 Feb, T3 Tue 20 Jul) that conflict with the main future-dates page and fail weekday sanity; the future-dates page was used. A few schools near VIC/QLD borders use different dates. Catholic and independent schools may differ.",
+   "holidays": [
+    {
+     "label": "Summer holidays",
+     "start": "2026-12-18",
+     "end": "2027-01-27",
+     "year": 2026
+    },
+    {
+     "label": "Term 1 break (autumn)",
+     "start": "2027-04-10",
+     "end": "2027-04-26",
+     "year": 2027
+    },
+    {
+     "label": "Term 2 break (winter)",
+     "start": "2027-07-03",
+     "end": "2027-07-18",
+     "year": 2027
+    },
+    {
+     "label": "Term 3 break (spring)",
+     "start": "2027-09-25",
+     "end": "2027-10-10",
+     "year": 2027
+    },
+    {
+     "label": "Summer holidays",
+     "start": "2027-12-18",
+     "end": "2028-01-30",
+     "year": 2027
+    },
+    {
+     "label": "Term 1 break (autumn)",
+     "start": "2028-04-08",
+     "end": "2028-04-23",
+     "year": 2028
+    },
+    {
+     "label": "Term 2 break (winter)",
+     "start": "2028-07-08",
+     "end": "2028-07-23",
+     "year": 2028
+    },
+    {
+     "label": "Term 3 break (spring)",
+     "start": "2028-09-30",
+     "end": "2028-10-15",
+     "year": 2028
+    },
+    {
+     "label": "Summer holidays",
+     "start": "2028-12-22",
+     "end": "2029-01-25",
+     "year": 2028
+    }
+   ]
+  },
+  {
+   "code": "VIC",
+   "name": "Victoria",
+   "country": "AU",
+   "sourceUrl": "https://www.vic.gov.au/school-term-dates-and-holidays-victoria",
+   "notes": "Government schools. Convention: start = day after last term day (Fri); end = day before next term first student day. Term 1 students start the day after teachers (2027-01-28, 2028-01-28). Summer 2028-29 end not published on the page (2029 not listed) so end is null. Catholic/independent schools generally follow the same dates but can vary.",
+   "holidays": [
+    {
+     "label": "Summer holidays",
+     "start": "2026-12-19",
+     "end": "2027-01-27",
+     "year": 2026
+    },
+    {
+     "label": "Term 1 break (autumn)",
+     "start": "2027-03-26",
+     "end": "2027-04-11",
+     "year": 2027
+    },
+    {
+     "label": "Term 2 break (winter)",
+     "start": "2027-06-26",
+     "end": "2027-07-11",
+     "year": 2027
+    },
+    {
+     "label": "Term 3 break (spring)",
+     "start": "2027-09-18",
+     "end": "2027-10-03",
+     "year": 2027
+    },
+    {
+     "label": "Summer holidays",
+     "start": "2027-12-18",
+     "end": "2028-01-27",
+     "year": 2027
+    },
+    {
+     "label": "Term 1 break (autumn)",
+     "start": "2028-04-01",
+     "end": "2028-04-17",
+     "year": 2028
+    },
+    {
+     "label": "Term 2 break (winter)",
+     "start": "2028-07-01",
+     "end": "2028-07-16",
+     "year": 2028
+    },
+    {
+     "label": "Term 3 break (spring)",
+     "start": "2028-09-23",
+     "end": "2028-10-08",
+     "year": 2028
+    },
+    {
+     "label": "Summer holidays",
+     "start": "2028-12-22",
+     "end": null,
+     "year": 2028
+    }
+   ]
+  },
+  {
+   "code": "QLD",
+   "name": "Queensland",
+   "country": "AU",
+   "sourceUrl": "https://education.qld.gov.au/about-us/calendar/future-dates",
+   "notes": "State schools. Also opened https://education.qld.gov.au/about-us/calendar/term-dates (2026 term dates). 2027 and 2028 breaks are the official Holidays rows from the future-dates page. Summer 2026-27 derived from 2026 T4 end (Fri 2026-12-11) and 2027 T1 start (Wed 2027-01-27); staff PD days (2027-01-21 to 01-25) fall inside it. Non-state schools may differ.",
+   "holidays": [
+    {
+     "label": "Summer holidays",
+     "start": "2026-12-12",
+     "end": "2027-01-26",
+     "year": 2026
+    },
+    {
+     "label": "Term 1 break (autumn)",
+     "start": "2027-03-26",
+     "end": "2027-04-11",
+     "year": 2027
+    },
+    {
+     "label": "Term 2 break (winter)",
+     "start": "2027-06-26",
+     "end": "2027-07-11",
+     "year": 2027
+    },
+    {
+     "label": "Term 3 break (spring)",
+     "start": "2027-09-18",
+     "end": "2027-10-04",
+     "year": 2027
+    },
+    {
+     "label": "Summer holidays",
+     "start": "2027-12-11",
+     "end": "2028-01-23",
+     "year": 2027
+    },
+    {
+     "label": "Term 1 break (autumn)",
+     "start": "2028-04-01",
+     "end": "2028-04-17",
+     "year": 2028
+    },
+    {
+     "label": "Term 2 break (winter)",
+     "start": "2028-06-24",
+     "end": "2028-07-09",
+     "year": 2028
+    },
+    {
+     "label": "Term 3 break (spring)",
+     "start": "2028-09-16",
+     "end": "2028-10-02",
+     "year": 2028
+    },
+    {
+     "label": "Summer holidays",
+     "start": "2028-12-09",
+     "end": "2029-01-21",
+     "year": 2028
+    }
+   ]
+  },
+  {
+   "code": "SA",
+   "name": "South Australia",
+   "country": "AU",
+   "sourceUrl": "https://www.education.sa.gov.au/parents-and-families/term-dates-south-australian-state-schools",
+   "notes": "Public schools; term dates are inclusive. Convention: start = day after last term day; end = day before next term first day. Summer 2028-29 end null (2029 not on page). Catholic/independent may differ.",
+   "holidays": [
+    {
+     "label": "Summer holidays",
+     "start": "2026-12-12",
+     "end": "2027-01-26",
+     "year": 2026
+    },
+    {
+     "label": "Term 1 break (autumn)",
+     "start": "2027-04-10",
+     "end": "2027-04-25",
+     "year": 2027
+    },
+    {
+     "label": "Term 2 break (winter)",
+     "start": "2027-07-03",
+     "end": "2027-07-18",
+     "year": 2027
+    },
+    {
+     "label": "Term 3 break (spring)",
+     "start": "2027-09-25",
+     "end": "2027-10-10",
+     "year": 2027
+    },
+    {
+     "label": "Summer holidays",
+     "start": "2027-12-11",
+     "end": "2028-01-30",
+     "year": 2027
+    },
+    {
+     "label": "Term 1 break (autumn)",
+     "start": "2028-04-14",
+     "end": "2028-04-30",
+     "year": 2028
+    },
+    {
+     "label": "Term 2 break (winter)",
+     "start": "2028-07-08",
+     "end": "2028-07-23",
+     "year": 2028
+    },
+    {
+     "label": "Term 3 break (spring)",
+     "start": "2028-09-30",
+     "end": "2028-10-15",
+     "year": 2028
+    },
+    {
+     "label": "Summer holidays",
+     "start": "2028-12-16",
+     "end": null,
+     "year": 2028
+    }
+   ]
+  },
+  {
+   "code": "WA",
+   "name": "Western Australia",
+   "country": "AU",
+   "sourceUrl": "https://www.education.wa.edu.au/future-term-dates",
+   "notes": "Public schools; term dates are inclusive; schools have planned development days. Convention: start = day after last term day; end = day before next term first day. Summer 2028-29 end null (2029 not on page). Independent/Catholic may differ.",
+   "holidays": [
+    {
+     "label": "Summer holidays",
+     "start": "2026-12-18",
+     "end": "2027-01-31",
+     "year": 2026
+    },
+    {
+     "label": "Term 1 break (autumn)",
+     "start": "2027-04-10",
+     "end": "2027-04-26",
+     "year": 2027
+    },
+    {
+     "label": "Term 2 break (winter)",
+     "start": "2027-07-03",
+     "end": "2027-07-18",
+     "year": 2027
+    },
+    {
+     "label": "Term 3 break (spring)",
+     "start": "2027-09-25",
+     "end": "2027-10-10",
+     "year": 2027
+    },
+    {
+     "label": "Summer holidays",
+     "start": "2027-12-17",
+     "end": "2028-02-01",
+     "year": 2027
+    },
+    {
+     "label": "Term 1 break (autumn)",
+     "start": "2028-04-08",
+     "end": "2028-04-23",
+     "year": 2028
+    },
+    {
+     "label": "Term 2 break (winter)",
+     "start": "2028-07-01",
+     "end": "2028-07-16",
+     "year": 2028
+    },
+    {
+     "label": "Term 3 break (spring)",
+     "start": "2028-09-23",
+     "end": "2028-10-08",
+     "year": 2028
+    },
+    {
+     "label": "Summer holidays",
+     "start": "2028-12-15",
+     "end": null,
+     "year": 2028
+    }
+   ]
+  },
+  {
+   "code": "TAS",
+   "name": "Tasmania",
+   "country": "AU",
+   "sourceUrl": "https://www.decyp.tas.gov.au/about-us/term-dates/",
+   "notes": "Government schools (page redirected from education.tas.gov.au). Only 2026 and 2027 are published; 2028 NOT published, so 2028 breaks are omitted and the 2027-28 summer end is null. Colleges (Yrs 11-12) set own finish dates. Convention: start = day after last term day; end = day before next term first day.",
+   "holidays": [
+    {
+     "label": "Summer holidays",
+     "start": "2026-12-19",
+     "end": "2027-02-03",
+     "year": 2026
+    },
+    {
+     "label": "Term 1 break (autumn)",
+     "start": "2027-04-10",
+     "end": "2027-04-25",
+     "year": 2027
+    },
+    {
+     "label": "Term 2 break (winter)",
+     "start": "2027-07-03",
+     "end": "2027-07-18",
+     "year": 2027
+    },
+    {
+     "label": "Term 3 break (spring)",
+     "start": "2027-09-25",
+     "end": "2027-10-10",
+     "year": 2027
+    },
+    {
+     "label": "Summer holidays",
+     "start": "2027-12-17",
+     "end": null,
+     "year": 2027
+    }
+   ]
+  },
+  {
+   "code": "ACT",
+   "name": "Australian Capital Territory",
+   "country": "AU",
+   "sourceUrl": "https://www.act.gov.au/__data/assets/pdf_file/0005/2827589/ACT-school-term-dates-2026-30-web-print-friendly.pdf",
+   "notes": "Public schools; ACT Government 2026-30 term dates PDF (opened and text-extracted); 2026-27 cross-checked on https://www.act.gov.au/living-in-the-act/public-holidays-school-terms-and-daylight-savings. Convention: start = day after last term day; end = day before first STUDENT day (teacher student-free days fall inside the break; for Term 1 the new-student start date is used, continuing students return a day later). Catholic/independent may differ.",
+   "holidays": [
+    {
+     "label": "Summer holidays",
+     "start": "2026-12-19",
+     "end": "2027-01-31",
+     "year": 2026
+    },
+    {
+     "label": "Term 1 break (autumn)",
+     "start": "2027-04-10",
+     "end": "2027-04-27",
+     "year": 2027
+    },
+    {
+     "label": "Term 2 break (winter)",
+     "start": "2027-07-03",
+     "end": "2027-07-19",
+     "year": 2027
+    },
+    {
+     "label": "Term 3 break (spring)",
+     "start": "2027-09-25",
+     "end": "2027-10-11",
+     "year": 2027
+    },
+    {
+     "label": "Summer holidays",
+     "start": "2027-12-18",
+     "end": "2028-02-07",
+     "year": 2027
+    },
+    {
+     "label": "Term 1 break (autumn)",
+     "start": "2028-04-08",
+     "end": "2028-04-25",
+     "year": 2028
+    },
+    {
+     "label": "Term 2 break (winter)",
+     "start": "2028-07-08",
+     "end": "2028-07-24",
+     "year": 2028
+    },
+    {
+     "label": "Term 3 break (spring)",
+     "start": "2028-09-30",
+     "end": "2028-10-16",
+     "year": 2028
+    },
+    {
+     "label": "Summer holidays",
+     "start": "2028-12-23",
+     "end": "2029-02-05",
+     "year": 2028
+    }
+   ]
+  },
+  {
+   "code": "NT",
+   "name": "Northern Territory",
+   "country": "AU",
+   "sourceUrl": "https://nt.gov.au/learning/primary-and-secondary-students/school-term-dates-in-nt",
+   "notes": "NOT DIRECTLY OPENED: nt.gov.au and its calendar PDFs returned HTTP 403 to WebFetch. Dates come from search-engine excerpts of the official nt.gov.au page/PDFs (2026 T4 student finish Thu 2026-12-10; 2027 students: T1 Wed 27 Jan-Fri 2 Apr, T2 Tue 13 Apr-Fri 18 Jun, T3 Tue 13 Jul-Fri 17 Sep, T4 Tue 5 Oct-Thu 9 Dec) and are consistent with the NT 1/3/2/6-week holiday structure, but should be re-verified. 2028 NOT published (2028-2032 consultation was open); summer 2027-28 end is null. Convention: start = day after last student day; end = day before next student day. Gunbalanya runs a flexible calendar; non-government schools check direct.",
+   "holidays": [
+    {
+     "label": "Summer holidays",
+     "start": "2026-12-11",
+     "end": "2027-01-26",
+     "year": 2026
+    },
+    {
+     "label": "Term 1 break (autumn)",
+     "start": "2027-04-03",
+     "end": "2027-04-12",
+     "year": 2027
+    },
+    {
+     "label": "Term 2 break (winter)",
+     "start": "2027-06-19",
+     "end": "2027-07-12",
+     "year": 2027
+    },
+    {
+     "label": "Term 3 break (spring)",
+     "start": "2027-09-18",
+     "end": "2027-10-04",
+     "year": 2027
+    },
+    {
+     "label": "Summer holidays",
+     "start": "2027-12-10",
+     "end": null,
+     "year": 2027
+    }
+   ],
+   "unverified": true
+  },
+  {
+   "code": "NZ",
+   "name": "New Zealand",
+   "country": "NZ",
+   "sourceUrl": "https://www.education.govt.nz/school-terms-and-holidays-dates",
+   "notes": "Ministry of Education page, cross-checked with NZ Gazette notice https://gazette.govt.nz/notice/id/2025-sl5849 (2027-2028). Terms 2 and 3 are fixed nationally; schools choose Term 1 start and Term 4 end within a window, so the Summer rows are the GUARANTEED window: start = day after the latest allowed Term 4 end; end = day before the EARLIEST allowed Term 1 start (individual schools may break up earlier / return later). Summer 2028-29 end null (2029 not published). Term 1 break 2028 is Fri 14 Apr-Sun 30 Apr as published. State and most integrated schools follow these; check the school.",
+   "holidays": [
+    {
+     "label": "Summer holidays (guaranteed window)",
+     "start": "2026-12-19",
+     "end": "2027-01-27",
+     "year": 2026
+    },
+    {
+     "label": "Term 1 break (autumn)",
+     "start": "2027-04-10",
+     "end": "2027-04-26",
+     "year": 2027
+    },
+    {
+     "label": "Term 2 break (winter)",
+     "start": "2027-07-03",
+     "end": "2027-07-18",
+     "year": 2027
+    },
+    {
+     "label": "Term 3 break (spring)",
+     "start": "2027-09-25",
+     "end": "2027-10-10",
+     "year": 2027
+    },
+    {
+     "label": "Summer holidays (guaranteed window)",
+     "start": "2027-12-18",
+     "end": "2028-01-30",
+     "year": 2027
+    },
+    {
+     "label": "Term 1 break (autumn)",
+     "start": "2028-04-14",
+     "end": "2028-04-30",
+     "year": 2028
+    },
+    {
+     "label": "Term 2 break (winter)",
+     "start": "2028-07-08",
+     "end": "2028-07-23",
+     "year": 2028
+    },
+    {
+     "label": "Term 3 break (spring)",
+     "start": "2028-09-30",
+     "end": "2028-10-15",
+     "year": 2028
+    },
+    {
+     "label": "Summer holidays (guaranteed window)",
+     "start": "2028-12-16",
+     "end": null,
+     "year": 2028
+    }
+   ]
+  }
+ ]
+}

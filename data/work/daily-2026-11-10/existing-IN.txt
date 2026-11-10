@@ -1,0 +1,35 @@
+csicon-bangalore-2026 | 78th Annual Conference of the Cardiological Society of India (CSICON 2026) | 2026-12-03 | Bangalore | https://csicon78.com/ | confirmed
+aicog-surat-2027 | 69th All India Congress of Obstetrics and Gynaecology (AICOG 2027) | 2027-01-06 | Surat | https://www.aicog2027surat.com/ | confirmed
+ancips-2027 | ANCIPS 2027 | 2027-01-07 | Madurai | https://indianpsychiatricsociety.org | confirmed
+usicon-chennai-2027-expected | USICON Annual Conference of the Urological Society of India 2027 | 2027-01-20 | Chennai | https://www.usi.org.in/ | estimated
+dermacon-2027 | DERMACON | 2027-01-21 | Lucknow | https://www.iadvl.org | estimated
+pedicon-2027 | PEDICON | 2027-01-27 | Coimbatore | https://www.iapindia.org | confirmed
+iria-hyderabad-2027-expected | IRIACON Annual Congress 2027 | 2027-01-28 | Hyderabad | https://www.iria.org.in/ | estimated
+apicon-jaipur-2027-expected | APICON Annual Conference of the Association of Physicians of India 2027 | 2027-02-04 | Jaipur | https://www.apiindia.org/ | estimated
+iapcon-chennai-2027-expected | IAPCON Annual Conference of the Indian Association of Palliative Care 2027 | 2027-02-11 | Chennai | https://www.palliativecare.in/ | estimated
+aioc-2027-gandhinagar | AIOC 2027 (85th Annual Conference of the All India Ophthalmological Society) | 2027-02-18 | Gandhinagar | https://www.aios.org/aioc2027.php | confirmed
+criticare-2027 | CRITICARE 2027 | 2027-02-18 | Mumbai | https://www.isccm.org | estimated
+iactscon-2027-kolkata | IACTSCON 2027 (Indian Association of Cardiovascular Thoracic Surgeons) | 2027-02-18 | Kolkata | https://www.iacts.org/iactscon | confirmed
+imscon-hyderabad-2027-expected | Indian Menopause Society Annual Conference 2027 | 2027-02-18 | Hyderabad | https://www.indianmenopausesociety.org/ | estimated
+insc-2027-jaipur | INSC 2027 (20th Annual Conference of the Indian Stroke Association) | 2027-03-12 | Jaipur | https://www.insc2027.com | confirmed
+iea-mumbai-2027-expected | Indian Epilepsy Association Annual Conference 2027 | 2027-08-27 | Mumbai | https://www.indianepilepsyassociation.org/ | estimated
+esicon-mumbai-2027-expected | ESICON Annual Meeting of the Endocrine Society of India 2027 | 2027-11-04 | Mumbai | https://www.endocrinesocietyindia.org/ | estimated
+ishbt-mumbai-2027-expected | ISHBTCON Annual Conference 2027 | 2027-11-10 | Mumbai | https://www.ishbt.com/ | estimated
+csicon-2027 | CSICON (Cardiological Society of India) | 2027-12-02 | Chennai | https://www.csi.org.in | estimated
+isncon-2027 | ISN National Conference | 2027-12-02 | Pune | https://isn-india.org | estimated
+iracon-hyderabad-2027-expected | IRACON Annual Congress of the Indian Rheumatology Association 2027 | 2027-12-08 | Hyderabad | https://www.indianrheumatology.org/ | estimated
+nsi-annual-conference | Neurological Society of India Annual Conference | 2027-12-09 | Jaipur | https://neurosocietyindia.com | estimated
+rssdi-annual-conference | RSSDI Annual Conference | 2027-12-10 | Kolkata | https://www.rssdi.in | estimated
+ioacon-hyderabad-2027-expected | IOACON Annual Conference of the Indian Orthopaedic Association 2027 | 2027-12-14 | Hyderabad | https://www.ioaindia.org/ | estimated
+isacon-2027 | ISACON National Conference | 2027-12-17 | Bengaluru | https://www.isaweb.in | estimated
+asicon-2027 | ASICON National Conference | 2027-12-22 | Hyderabad | https://www.asi.org.in | estimated
+usicon-chennai-2028-expected | USICON Annual Conference of the Urological Society of India 2028 | 2028-01-20 | Chennai | https://www.usi.org.in/ | estimated
+iria-hyderabad-2028-expected | IRIACON Annual Congress 2028 | 2028-01-28 | Hyderabad | https://www.iria.org.in/ | estimated
+apicon-jaipur-2028-expected | APICON Annual Conference of the Association of Physicians of India 2028 | 2028-02-04 | Jaipur | https://www.apiindia.org/ | estimated
+iapcon-chennai-2028-expected | IAPCON Annual Conference of the Indian Association of Palliative Care 2028 | 2028-02-11 | Chennai | https://www.palliativecare.in/ | estimated
+imscon-hyderabad-2028-expected | Indian Menopause Society Annual Conference 2028 | 2028-02-18 | Hyderabad | https://www.indianmenopausesociety.org/ | estimated
+iea-mumbai-2028-expected | Indian Epilepsy Association Annual Conference 2028 | 2028-08-28 | Mumbai | https://www.indianepilepsyassociation.org/ | estimated
+esicon-mumbai-2028-expected | ESICON Annual Meeting of the Endocrine Society of India 2028 | 2028-11-06 | Mumbai | https://www.endocrinesocietyindia.org/ | estimated
+ishbt-mumbai-2028-expected | ISHBTCON Annual Conference 2028 | 2028-11-10 | Mumbai | https://www.ishbt.com/ | estimated
+iracon-hyderabad-2028-expected | IRACON Annual Congress of the Indian Rheumatology Association 2028 | 2028-12-08 | Hyderabad | https://www.indianrheumatology.org/ | estimated
+ioacon-hyderabad-2028-expected | IOACON Annual Conference of the Indian Orthopaedic Association 2028 | 2028-12-14 | Hyderabad | https://www.ioaindia.org/ | estimated

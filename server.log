@@ -1,0 +1,4 @@
+seed: 239 new, 378 updated conferences
+Hoggy running at http://127.0.0.1:8123
+Inbound email webhook: POST /api/inbound/email with header X-Hoggy-Secret (see C:\Users\angus.harman\AppData\Roaming\Claude\scratch-workspaces\80ecbfc7-52a2-4a08-862e-a7113ebb0e9a\febfcf8f-af5d-4c4f-aa08-69e362572fce\scratch-2026-11-06-635e59\data-store\inbound-secret.txt); mail domain receipts.hoggy.app
+backup written hoggy-2026-11-08.db

@@ -1,0 +1,1010 @@
+[
+ {
+  "id": "hospitalar-2027",
+  "name": "Hospitalar 2027",
+  "url": "https://www.hospitalar.com",
+  "sourceUrl": "https://www.hospitalar.com/en/",
+  "specialty": "Public Health",
+  "country": "Brazil"
+ },
+ {
+  "id": "asco-annual-meeting",
+  "name": "ASCO Annual Meeting",
+  "url": "https://www.asco.org",
+  "sourceUrl": "https://www.asco.org/annual-meeting/program/asco-voices",
+  "specialty": "Oncology",
+  "country": "United States"
+ },
+ {
+  "id": "rsna-annual-meeting-2028",
+  "name": "RSNA 2028 Annual Meeting",
+  "url": "https://www.rsna.org/annual-meeting",
+  "sourceUrl": "https://www.rsna.org/annual-meeting/future-and-past-meetings",
+  "specialty": "Radiology",
+  "country": "United States"
+ },
+ {
+  "id": "esmo-congress",
+  "name": "ESMO Congress",
+  "url": "https://www.esmo.org",
+  "sourceUrl": "https://www.esmo.org/meeting-calendar/esmo-congress-2027",
+  "specialty": "Oncology",
+  "country": "Spain"
+ },
+ {
+  "id": "aacr-annual-meeting",
+  "name": "AACR Annual Meeting",
+  "url": "https://www.aacr.org/meeting/aacr-annual-meeting-2027/",
+  "sourceUrl": "https://www.aacr.org/meeting/aacr-annual-meeting-2027/",
+  "specialty": "Oncology",
+  "country": "United States"
+ },
+ {
+  "id": "aaos-annual-meeting-2028",
+  "name": "AAOS 2028 Annual Meeting",
+  "url": "https://www.aaos.org/annual-meeting/",
+  "sourceUrl": "https://www.aaos.org/annual/attend/future-meetings/",
+  "specialty": "Orthopaedics",
+  "country": "United States"
+ },
+ {
+  "id": "ers-congress",
+  "name": "ERS International Congress",
+  "url": "https://www.ersnet.org",
+  "sourceUrl": "https://www.ersnet.org/congress-and-events/congress/",
+  "specialty": "Respiratory",
+  "country": "Italy"
+ },
+ {
+  "id": "adlm-annual-meeting",
+  "name": "ADLM Annual Meeting & Clinical Lab Expo",
+  "url": "https://myadlm.org",
+  "sourceUrl": "https://myadlm.org/meetings-and-events/annual-meeting",
+  "specialty": "Pathology",
+  "country": "United States"
+ },
+ {
+  "id": "dubai-derma-dubai",
+  "name": "Dubai World Dermatology & Laser Conference (Dubai Derma 2027)",
+  "url": "https://www.dubaiderma.com",
+  "sourceUrl": "https://dubaiderma.com/",
+  "specialty": "Dermatology",
+  "country": "United Arab Emirates"
+ },
+ {
+  "id": "ddw",
+  "name": "Digestive Disease Week (DDW)",
+  "url": "https://ddw.org",
+  "sourceUrl": "https://ddw.org/",
+  "specialty": "Gastroenterology",
+  "country": "United States"
+ },
+ {
+  "id": "africa-health-excel",
+  "name": "Africa Health ExCeL",
+  "url": "https://www.worldhealthexpo.com/events/healthcare/johannesburg/",
+  "sourceUrl": "https://www.worldhealthexpo.com/events/healthcare/johannesburg/",
+  "specialty": "Medical Education",
+  "country": "South Africa"
+ },
+ {
+  "id": "acc-scientific-session-2028",
+  "name": "ACC.28 Scientific Session",
+  "url": "https://www.acc.org",
+  "sourceUrl": "https://accscientificsession.acc.org/Information-Pages/Future-Meetings",
+  "specialty": "Cardiology",
+  "country": "United States"
+ },
+ {
+  "id": "ats-international-conference",
+  "name": "ATS International Conference",
+  "url": "https://www.thoracic.org",
+  "sourceUrl": "https://site.thoracic.org/conference",
+  "specialty": "Respiratory",
+  "country": "United States"
+ },
+ {
+  "id": "ueg-week",
+  "name": "UEG Week",
+  "url": "https://ueg.eu",
+  "sourceUrl": "https://ueg.eu/week/more/congress-resources",
+  "specialty": "Gastroenterology",
+  "country": "Denmark"
+ },
+ {
+  "id": "aua-annual-meeting",
+  "name": "AUA Annual Meeting",
+  "url": "https://www.auanet.org",
+  "sourceUrl": "https://www.auanet.org/AUA2027/key-dates",
+  "specialty": "Urology",
+  "country": "United States"
+ },
+ {
+  "id": "eau-annual-congress",
+  "name": "EAU Annual Congress",
+  "url": "https://eaucongress.uroweb.org/the-congress",
+  "sourceUrl": "https://eaucongress.uroweb.org/",
+  "specialty": "Urology",
+  "country": "Netherlands"
+ },
+ {
+  "id": "aao-orthodontists-annual-session",
+  "name": "AAO Annual Session",
+  "url": "https://www.aaoinfo.org",
+  "sourceUrl": "https://annualsession.aaoinfo.org/",
+  "specialty": "Dentistry",
+  "country": "Canada"
+ },
+ {
+  "id": "apha-annual-meeting",
+  "name": "APHA Annual Meeting & Expo",
+  "url": "https://www.apha.org/events-and-meetings/annual",
+  "sourceUrl": "https://www.apha.org/events-and-meetings/annual/past-and-future-annual-meetings",
+  "specialty": "Public Health",
+  "country": "United States"
+ },
+ {
+  "id": "pedicon-2027",
+  "name": "PEDICON",
+  "url": "https://www.iapindia.org",
+  "sourceUrl": "https://www.iapindia.org/",
+  "specialty": "Paediatrics",
+  "country": "India"
+ },
+ {
+  "id": "joa-annual-meeting",
+  "name": "Japanese Orthopaedic Association Annual Meeting",
+  "url": "https://www.joa.or.jp",
+  "sourceUrl": "https://www.congre.co.jp/joa2027/outline/index.html",
+  "specialty": "Orthopaedics",
+  "country": "Japan"
+ },
+ {
+  "id": "aaic",
+  "name": "Alzheimer's Association International Conference (AAIC)",
+  "url": "https://aaic.alz.org/",
+  "sourceUrl": "https://aaic.alz.org/",
+  "specialty": "Neurology",
+  "country": "United States"
+ },
+ {
+  "id": "aan-annual-meeting-2028",
+  "name": "AAN 2028 Annual Meeting",
+  "url": "https://www.aan.com/events/annual-meeting",
+  "sourceUrl": "https://www.aan.com/events/upcoming-events",
+  "specialty": "Neurology",
+  "country": "United States"
+ },
+ {
+  "id": "jss-annual-congress",
+  "name": "Japan Surgical Society Annual Congress",
+  "url": "https://www.jssoc.or.jp",
+  "sourceUrl": "https://www.jssoc.or.jp/jss127/outline.html",
+  "specialty": "Surgery",
+  "country": "Japan"
+ },
+ {
+  "id": "ean-congress",
+  "name": "EAN Congress",
+  "url": "https://www.ean.org",
+  "sourceUrl": "https://www.ean.org/congress2027/about/about",
+  "specialty": "Neurology",
+  "country": "Sweden"
+ },
+ {
+  "id": "sabcs-2026",
+  "name": "San Antonio Breast Cancer Symposium 2026",
+  "url": "https://www.sabcs.org",
+  "sourceUrl": "https://sabcs.org/",
+  "specialty": "Oncology",
+  "country": "United States"
+ },
+ {
+  "id": "era-congress",
+  "name": "ERA Congress",
+  "url": "https://www.era-online.org/events/rotterdam-2027/",
+  "sourceUrl": "https://www.era-online.org/events/rotterdam-2027/",
+  "specialty": "Nephrology",
+  "country": "Netherlands"
+ },
+ {
+  "id": "ashg-annual-meeting",
+  "name": "ASHG Annual Meeting",
+  "url": "https://www.ashg.org/meetings/",
+  "sourceUrl": "https://www.ashg.org/meetings/future-past/",
+  "specialty": "Genetics",
+  "country": "United States"
+ },
+ {
+  "id": "ashg-annual-meeting-2028",
+  "name": "ASHG 2028 Annual Meeting",
+  "url": "https://www.ashg.org/meetings/",
+  "sourceUrl": "https://www.ashg.org/meetings/future-past/",
+  "specialty": "Genetics",
+  "country": "United States"
+ },
+ {
+  "id": "pas-meeting",
+  "name": "PAS Meeting (Pediatric Academic Societies)",
+  "url": "https://www.pas-meeting.org",
+  "sourceUrl": "https://www.pas-meeting.org/sponsor-exhibit-2/",
+  "specialty": "Paediatrics",
+  "country": "United States"
+ },
+ {
+  "id": "european-human-genetics-conference",
+  "name": "European Human Genetics Conference (ESHG)",
+  "url": "https://2027.eshg.org/",
+  "sourceUrl": "https://2027.eshg.org/",
+  "specialty": "Genetics",
+  "country": "Netherlands"
+ },
+ {
+  "id": "cirse-annual-congress",
+  "name": "CIRSE Annual Congress",
+  "url": "https://www.cirse.org/onsite/event-calendar/",
+  "sourceUrl": "https://www.cirse.org/onsite/event-calendar/",
+  "specialty": "Radiology",
+  "country": "Italy"
+ },
+ {
+  "id": "era-congress-2028",
+  "name": "65th ERA Congress 2028",
+  "url": "https://www.era-online.org",
+  "sourceUrl": "https://www.era-online.org/events/berlin-2028/",
+  "specialty": "Nephrology",
+  "country": "Germany"
+ },
+ {
+  "id": "acep-scientific-assembly-2028",
+  "name": "ACEP28 Scientific Assembly",
+  "url": "https://www.acep.org/sa",
+  "sourceUrl": "https://www.acep.org/sa/general-information/future-dates",
+  "specialty": "Emergency Medicine",
+  "country": "United States"
+ },
+ {
+  "id": "jsmo-annual-meeting",
+  "name": "JSMO Annual Meeting",
+  "url": "https://www.jsmo.or.jp/en/",
+  "sourceUrl": "https://www.jsmo.or.jp/eng/meetings/annual-meeting/",
+  "specialty": "Oncology",
+  "country": "Japan"
+ },
+ {
+  "id": "aacn-nti",
+  "name": "AACN National Teaching Institute (NTI)",
+  "url": "https://www.aacn.org/nti",
+  "sourceUrl": "https://www.aacn.org/conferences-and-events/nti",
+  "specialty": "Nursing",
+  "country": "United States"
+ },
+ {
+  "id": "acog-annual-meeting",
+  "name": "ACOG Annual Clinical & Scientific Meeting",
+  "url": "https://www.acog.org",
+  "sourceUrl": "https://www.acog.org/events/meetings/annual-clinical-and-scientific-meeting/",
+  "specialty": "Obstetrics & Gynaecology",
+  "country": "United States"
+ },
+ {
+  "id": "jspn-annual-meeting",
+  "name": "JSPN Annual Meeting",
+  "url": "https://www.jspn.or.jp",
+  "sourceUrl": "https://www.jspn.or.jp/modules/meeting/index.php?content_id=328",
+  "specialty": "Psychiatry",
+  "country": "Japan"
+ },
+ {
+  "id": "esicm-lives",
+  "name": "ESICM LIVES",
+  "url": "https://www.esicm.org",
+  "sourceUrl": "https://www.esicm.org/congresses-events/",
+  "specialty": "Critical Care",
+  "country": "Denmark"
+ },
+ {
+  "id": "chest-annual-meeting",
+  "name": "CHEST Annual Meeting",
+  "url": "https://www.chestnet.org",
+  "sourceUrl": "https://www.chestnet.org/learning-and-events/events/chest-annual-meeting",
+  "specialty": "Respiratory",
+  "country": "Canada"
+ },
+ {
+  "id": "sccm-critical-care-congress",
+  "name": "SCCM Critical Care Congress",
+  "url": "https://www.sccm.org",
+  "sourceUrl": "https://www.sccm.org/",
+  "specialty": "Critical Care",
+  "country": "United States"
+ },
+ {
+  "id": "sir-annual-scientific-meeting",
+  "name": "SIR Annual Scientific Meeting",
+  "url": "https://www.sirweb.org",
+  "sourceUrl": "https://www.sirweb.org/",
+  "specialty": "Radiology",
+  "country": "United States"
+ },
+ {
+  "id": "abo-cioce-2027",
+  "name": "IX Congresso Internacional de Odontologia do Ceará (CIOCE) 2027",
+  "url": "https://www.abo.org.br",
+  "sourceUrl": "https://www.abo.org.br/",
+  "specialty": "Dentistry",
+  "country": "Brazil"
+ },
+ {
+  "id": "esc-heart-failure",
+  "name": "ESC Heart Failure",
+  "url": "https://www.escardio.org/Congresses-Events",
+  "sourceUrl": "https://www.escardio.org/events/",
+  "specialty": "Cardiology",
+  "country": "United Kingdom"
+ },
+ {
+  "id": "aapm-annual-meeting",
+  "name": "AAPM Annual Meeting & Exhibition",
+  "url": "https://www.aapm.org/meetings/",
+  "sourceUrl": "https://www.aapm.org/meetings/",
+  "specialty": "Radiology",
+  "country": "United States"
+ },
+ {
+  "id": "eacts-annual-meeting",
+  "name": "EACTS Annual Meeting",
+  "url": "https://www.eacts.org",
+  "sourceUrl": "https://www.eacts.org/",
+  "specialty": "Surgery",
+  "country": "Germany"
+ },
+ {
+  "id": "apsr-congress",
+  "name": "APSR Congress",
+  "url": "https://apsr.org",
+  "sourceUrl": "https://apsr.org/events/upcoming_events/",
+  "specialty": "Respiratory",
+  "country": "Indonesia"
+ },
+ {
+  "id": "aaaai-annual-meeting-2028",
+  "name": "AAAAI 2028 Annual Meeting",
+  "url": "https://annualmeeting.aaaai.org",
+  "sourceUrl": "https://annualmeeting.aaaai.org/attendee/future-dates-locations",
+  "specialty": "Allergy & Immunology",
+  "country": "United States"
+ },
+ {
+  "id": "aapm-annual-meeting-2028",
+  "name": "AAPM 2028 Annual Meeting & Exhibition",
+  "url": "https://www.aapm.org/meetings",
+  "sourceUrl": "https://www.aapm.org/meetings/",
+  "specialty": "Medical Physics",
+  "country": "United States"
+ },
+ {
+  "id": "ispor-europe-2028",
+  "name": "ISPOR Europe 2028",
+  "url": "https://www.ispor.org/conferences-education/conferences",
+  "sourceUrl": "https://www.ispor.org/conferences-education/conferences",
+  "specialty": "Health Economics",
+  "country": "Denmark"
+ },
+ {
+  "id": "ispor-annual-international-meeting-2028",
+  "name": "ISPOR 2028",
+  "url": "https://www.ispor.org/conferences-education/conferences",
+  "sourceUrl": "https://www.ispor.org/conferences-education/conferences",
+  "specialty": "Health Economics",
+  "country": "United States"
+ },
+ {
+  "id": "shm-converge",
+  "name": "SHM Converge",
+  "url": "https://www.hospitalmedicine.org",
+  "sourceUrl": "https://www.hospitalmedicine.org/",
+  "specialty": "General Practice",
+  "country": "United States"
+ },
+ {
+  "id": "sbmfc-cbmfc-2027",
+  "name": "19º Congresso Brasileiro de Medicina de Família e Comunidade (CBMFC)",
+  "url": "https://www.sbmfc.org.br",
+  "sourceUrl": "https://sbmfc.org.br/19cbmfc/",
+  "specialty": "GP",
+  "country": "Brazil"
+ },
+ {
+  "id": "amee-conference",
+  "name": "AMEE Conference",
+  "url": "https://amee.org",
+  "sourceUrl": "https://amee.org/events/amee-2027/",
+  "specialty": "Medical Education",
+  "country": "Finland"
+ },
+ {
+  "id": "wonca-world-conference",
+  "name": "WONCA World Conference",
+  "url": "https://www.globalfamilydoctor.com",
+  "sourceUrl": "https://admin.globalfamilydoctor.com/Conferences/WONCAWorld2027.aspx",
+  "specialty": "General Practice",
+  "country": "South Africa"
+ },
+ {
+  "id": "sts-annual-meeting",
+  "name": "STS Annual Meeting",
+  "url": "https://www.sts.org",
+  "sourceUrl": "https://www.sts.org/calendar-of-events/63rd-sts-annual-meeting",
+  "specialty": "Surgery",
+  "country": "United States"
+ },
+ {
+  "id": "espid-meeting",
+  "name": "ESPID Meeting",
+  "url": "https://www.espid.org",
+  "sourceUrl": "https://www.espid.org/",
+  "specialty": "Infectious Disease",
+  "country": "Germany"
+ },
+ {
+  "id": "sbem-cbaem-2027",
+  "name": "Congresso Brasileiro de Atualização em Endocrinologia e Metabologia (CBAEM) 2027",
+  "url": "https://www.endocrino.org.br",
+  "sourceUrl": "https://www.endocrino.org.br/",
+  "specialty": "Endocrinology",
+  "country": "Brazil"
+ },
+ {
+  "id": "esot-congress",
+  "name": "ESOT Congress",
+  "url": "https://esot.org/esot-events/esot-congress-2027/",
+  "sourceUrl": "https://esot.org/esot-events/esot-congress-2027/",
+  "specialty": "Nephrology",
+  "country": "Czechia"
+ },
+ {
+  "id": "eahp-congress",
+  "name": "EAHP Congress",
+  "url": "https://www.eahp.eu",
+  "sourceUrl": "https://eahp.eu/",
+  "specialty": "Pharmacy",
+  "country": "Austria"
+ },
+ {
+  "id": "apsc-congress",
+  "name": "APSC Asian Pacific Congress of Cardiology",
+  "url": "https://www.apscardio.org",
+  "sourceUrl": "https://www.apscardio.org/",
+  "specialty": "Cardiology",
+  "country": "Japan"
+ },
+ {
+  "id": "aae-annual-meeting",
+  "name": "AAE Annual Meeting (AAE27)",
+  "url": "https://www.aae.org",
+  "sourceUrl": "https://www.aae.org/specialty/wp-json/wp/v2/pages/26",
+  "specialty": "Dentistry",
+  "country": "United States"
+ },
+ {
+  "id": "efic-pain-in-europe-congress",
+  "name": "EFIC Congress (Pain in Europe)",
+  "url": "https://europeanpainfederation.eu/",
+  "sourceUrl": "https://europeanpainfederation.eu/",
+  "specialty": "Anaesthesia",
+  "country": "United Kingdom"
+ },
+ {
+  "id": "saem-annual-meeting",
+  "name": "SAEM Annual Meeting",
+  "url": "https://www.saem.org",
+  "sourceUrl": "https://www.saem.org/meetings-and-events/future-meetings",
+  "specialty": "Emergency Medicine",
+  "country": "United States"
+ },
+ {
+  "id": "ase-scientific-sessions",
+  "name": "ASE Scientific Sessions",
+  "url": "https://www.asecho.org",
+  "sourceUrl": "https://www.asecho.org/education-events/scientific-sessions/",
+  "specialty": "Cardiology",
+  "country": "United States"
+ },
+ {
+  "id": "alat-congress",
+  "name": "ALAT Congress",
+  "url": "https://alatorax.org",
+  "sourceUrl": "https://alatorax.org/es",
+  "specialty": "Respiratory",
+  "country": "Costa Rica"
+ },
+ {
+  "id": "esra-annual-congress",
+  "name": "ESRA Annual Congress",
+  "url": "https://www.esraeurope.org/meetings",
+  "sourceUrl": "https://esraeurope.org/meetings/",
+  "specialty": "Anaesthesia",
+  "country": "Italy"
+ },
+ {
+  "id": "ena-emergency-nursing",
+  "name": "ENA Emergency Nursing",
+  "url": "https://www.ena.org",
+  "sourceUrl": "https://www.ena.org/events/emergency-nursing-2027",
+  "specialty": "Nursing",
+  "country": "United States"
+ },
+ {
+  "id": "aabb-annual-meeting",
+  "name": "AABB Annual Meeting",
+  "url": "https://www.aabb.org",
+  "sourceUrl": "https://www.aabb.org/annual-meeting/exhibit-sponsor",
+  "specialty": "Haematology",
+  "country": "United States"
+ },
+ {
+  "id": "acmg-annual-meeting",
+  "name": "ACMG Annual Clinical Genetics Meeting",
+  "url": "https://www.acmgmeeting.net",
+  "sourceUrl": "https://www.acmgmeeting.net/",
+  "specialty": "Genetics",
+  "country": "United States"
+ },
+ {
+  "id": "arrs-annual-meeting",
+  "name": "ARRS Annual Meeting",
+  "url": "https://www.arrs.org",
+  "sourceUrl": "https://www.arrs.org/",
+  "specialty": "Radiology",
+  "country": "United States"
+ },
+ {
+  "id": "esmo-breast-cancer",
+  "name": "ESMO Breast Cancer Congress",
+  "url": "https://www.esmo.org/meeting-calendar/esmo-breast-cancer-2027",
+  "sourceUrl": "https://www.esmo.org/meeting-calendar/esmo-breast-cancer-2027",
+  "specialty": "Oncology",
+  "country": "Italy"
+ },
+ {
+  "id": "esh-european-meeting-on-hypertension",
+  "name": "European Meeting on Hypertension and Cardiovascular Protection (ESH)",
+  "url": "https://eshonline.org/meetingsevents/annual-meetin",
+  "sourceUrl": "https://www.eshonline.org/meetingsevents/annual-meeting/",
+  "specialty": "Cardiology",
+  "country": "Switzerland"
+ },
+ {
+  "id": "psa-conference",
+  "name": "PSA Conference (PSA27)",
+  "url": "https://www.psa.org.au",
+  "sourceUrl": "https://www.psa.org.au/networking-events/information-on-major-events-and-conferences/",
+  "specialty": "Pharmacy",
+  "country": "Australia"
+ },
+ {
+  "id": "edec-dubai",
+  "name": "EDEC 2027 - 17th Emirates Diabetes & Endocrine Congress",
+  "url": "https://www.edec-uae.com/",
+  "sourceUrl": "https://www.edec-uae.com/",
+  "specialty": "Endocrinology",
+  "country": "United Arab Emirates"
+ },
+ {
+  "id": "esge-days",
+  "name": "ESGE Days",
+  "url": "https://www.esgedays.org",
+  "sourceUrl": "https://www.esgedays.org/",
+  "specialty": "Obstetrics & Gynaecology",
+  "country": "Portugal"
+ },
+ {
+  "id": "rcpch-conference",
+  "name": "RCPCH Conference",
+  "url": "https://www.rcpch.ac.uk/events/annual-conference",
+  "sourceUrl": "https://www.rcpch.ac.uk/news-events/rcpch-conference",
+  "specialty": "Paediatrics",
+  "country": "United Kingdom"
+ },
+ {
+  "id": "csanz-annual-scientific-meeting",
+  "name": "CSANZ Annual Scientific Meeting",
+  "url": "https://www.csanz.edu.au",
+  "sourceUrl": "https://www.csanzasm.com/",
+  "specialty": "Cardiology",
+  "country": "New Zealand"
+ },
+ {
+  "id": "ranzcr-asm",
+  "name": "RANZCR Annual Scientific Meeting",
+  "url": "https://www.ranzcr.com",
+  "sourceUrl": "https://www.ranzcr.com/whats-on/annual-scientific-meetings",
+  "specialty": "Radiology",
+  "country": "Australia"
+ },
+ {
+  "id": "aan-fall-conference-2028",
+  "name": "AAN Fall Conference 2028",
+  "url": "https://www.aan.com/events",
+  "sourceUrl": "https://www.aan.com/events/upcoming-events",
+  "specialty": "Neurology",
+  "country": "United States"
+ },
+ {
+  "id": "pha-midyear-convention",
+  "name": "PHA Midyear Convention 2027",
+  "url": "https://www.philheart.org",
+  "sourceUrl": "https://www.philheart.org/",
+  "specialty": "Cardiology",
+  "country": "Philippines"
+ },
+ {
+  "id": "enets-conference",
+  "name": "ENETS Annual Conference",
+  "url": "https://www.enets.org/",
+  "sourceUrl": "https://www.enets.org/",
+  "specialty": "Oncology",
+  "country": "Italy"
+ },
+ {
+  "id": "shea-spring-conference",
+  "name": "SHEA Spring Conference",
+  "url": "https://www.shea-online.org",
+  "sourceUrl": "https://sheaspring.org/",
+  "specialty": "Infectious Disease",
+  "country": "United States"
+ },
+ {
+  "id": "rcem-annual-conference",
+  "name": "RCEM Annual Conference",
+  "url": "https://rcem.ac.uk/?p=39862",
+  "sourceUrl": "https://rcem.ac.uk/annual-conference-2027/",
+  "specialty": "Emergency Medicine",
+  "country": "United Kingdom"
+ },
+ {
+  "id": "asra-regional-anesthesiology-meeting",
+  "name": "ASRA Regional Anesthesiology & Acute Pain Medicine Meeting",
+  "url": "https://www.asra.com",
+  "sourceUrl": "https://asra.com/events-education/ra-acute-meeting",
+  "specialty": "Anaesthesia",
+  "country": "United States"
+ },
+ {
+  "id": "esvs-annual-meeting",
+  "name": "ESVS Annual Meeting",
+  "url": "https://esvs.org/events/category/the-esvs-annual-meeting/",
+  "sourceUrl": "https://esvs.org/events/category/the-esvs-annual-meeting/",
+  "specialty": "Surgery",
+  "country": "Portugal"
+ },
+ {
+  "id": "ranzcog-asm",
+  "name": "RANZCOG Annual Scientific Meeting",
+  "url": "https://ranzcog.edu.au",
+  "sourceUrl": "https://ranzcogasm.com.au/",
+  "specialty": "Obstetrics & Gynaecology",
+  "country": "Australia"
+ },
+ {
+  "id": "naemsp-annual-meeting",
+  "name": "NAEMSP Annual Meeting",
+  "url": "https://naemsp.org",
+  "sourceUrl": "https://naemsp.org/2027-annual-meeting/",
+  "specialty": "Emergency Medicine",
+  "country": "United States"
+ },
+ {
+  "id": "iars-annual-meeting",
+  "name": "IARS Annual Meeting",
+  "url": "https://www.iars.org",
+  "sourceUrl": "https://iars.org/",
+  "specialty": "Anaesthesia",
+  "country": "United States"
+ },
+ {
+  "id": "soap-annual-meeting",
+  "name": "SOAP Annual Meeting",
+  "url": "https://www.soap.org",
+  "sourceUrl": "https://www.soap.org/",
+  "specialty": "Anaesthesia",
+  "country": "United States"
+ },
+ {
+  "id": "espn-annual-meeting",
+  "name": "ESPN Annual Meeting (European Society for Paediatric Nephrology)",
+  "url": "https://www.espn-online.org/next-events",
+  "sourceUrl": "https://www.espn-online.org/next-events/",
+  "specialty": "Nephrology",
+  "country": "Italy"
+ },
+ {
+  "id": "cddw",
+  "name": "Canadian Digestive Diseases Week (CDDW)",
+  "url": "https://www.cag-acg.org",
+  "sourceUrl": "https://www.cag-acg.org/",
+  "specialty": "Gastroenterology",
+  "country": "Canada"
+ },
+ {
+  "id": "icpem-jeddah",
+  "name": "11th International Conference on Pediatric Emergency Medicine (ICPEM 2027)",
+  "url": "https://icpem.co/",
+  "sourceUrl": "https://icpem.co/en",
+  "specialty": "Emergency",
+  "country": "Saudi Arabia"
+ },
+ {
+  "id": "acd-asm",
+  "name": "Australasian College of Dermatologists ASM",
+  "url": "https://www.dermcoll.edu.au",
+  "sourceUrl": "https://acdasm.com.au/",
+  "specialty": "Dermatology",
+  "country": "Australia"
+ },
+ {
+  "id": "cps-annual-conference",
+  "name": "CPS Annual Conference",
+  "url": "https://www.cps.ca",
+  "sourceUrl": "https://cps.ca/en/annual-conference",
+  "specialty": "Paediatrics",
+  "country": "Canada"
+ },
+ {
+  "id": "rcn-congress",
+  "name": "RCN Congress",
+  "url": "https://www.rcn.org.uk/congress",
+  "sourceUrl": "https://www.rcn.org.uk/congress",
+  "specialty": "Nursing",
+  "country": "United Kingdom"
+ },
+ {
+  "id": "wsrm-istanbul",
+  "name": "WSRM 2027 - 14th Congress of the World Society for Reconstructive Microsurgery",
+  "url": "https://www.wsrm2027.com/",
+  "sourceUrl": "https://www.wsrm2027.com/",
+  "specialty": "Surgery",
+  "country": "Turkey"
+ },
+ {
+  "id": "essr-annual-scientific-meeting",
+  "name": "ESSR Annual Scientific Meeting",
+  "url": "https://www.essr.org",
+  "sourceUrl": "https://www.essr.org/",
+  "specialty": "Radiology",
+  "country": "Norway"
+ },
+ {
+  "id": "saudiperio5-riyadh",
+  "name": "SaudiPerio5 - 5th Saudi International Conference in Periodontics & Implant Dentistry",
+  "url": "https://saudiperio.org/",
+  "sourceUrl": "https://saudiperio.org/",
+  "specialty": "Dentistry",
+  "country": "Saudi Arabia"
+ },
+ {
+  "id": "eado-congress",
+  "name": "EADO Congress (23rd)",
+  "url": "https://eado.org/events-training/eado-congress/",
+  "sourceUrl": "https://eado.org/events-training/eado-congress/",
+  "specialty": "Dermatology",
+  "country": "Austria"
+ },
+ {
+  "id": "ara-asm",
+  "name": "Australian Rheumatology Association ASM",
+  "url": "https://rheumatology.org.au",
+  "sourceUrl": "https://rheumatology.org.au/For-Healthcare-Professionals/CPD-and-Upcoming-Events/ASM-2027",
+  "specialty": "Rheumatology",
+  "country": "Australia"
+ },
+ {
+  "id": "haa-hsanz-asm",
+  "name": "HAA Annual Scientific Meeting",
+  "url": "https://www.hsanz.org.au",
+  "sourceUrl": "https://apsth.bloodconference.com/",
+  "specialty": "Haematology",
+  "country": "Australia"
+ },
+ {
+  "id": "mehfc-dubai",
+  "name": "Middle East Heart Failure Conference (MEHFC 2027)",
+  "url": "https://www.me-heartfailure.com/",
+  "sourceUrl": "https://www.me-heartfailure.com/",
+  "specialty": "Cardiology",
+  "country": "United Arab Emirates"
+ },
+ {
+  "id": "poss-madinah",
+  "name": "POSS 2027 - 4th Precision Oncology Saudi Summit",
+  "url": "https://possoncology.com/",
+  "sourceUrl": "https://possoncology.com/",
+  "specialty": "Oncology",
+  "country": "Saudi Arabia"
+ },
+ {
+  "id": "ecio-european-conference-interventional-oncology",
+  "name": "European Conference on Interventional Oncology (ECIO)",
+  "url": "https://www.cirse.org/onsite/event-calendar/",
+  "sourceUrl": "https://www.cirse.org/onsite/event-calendar/",
+  "specialty": "Radiology",
+  "country": "Spain"
+ },
+ {
+  "id": "nzda-conference",
+  "name": "NZ Dental Association Conference",
+  "url": "https://www.nzda.org.nz",
+  "sourceUrl": "https://www.nzdaconference.org.nz/",
+  "specialty": "Dentistry",
+  "country": "New Zealand"
+ },
+ {
+  "id": "ssrc-madinah",
+  "name": "13th Saudi Society for Rheumatology Conference (SSRC 2027)",
+  "url": "https://ssrc-sa.com/",
+  "sourceUrl": "https://ssrc-sa.com/",
+  "specialty": "Rheumatology",
+  "country": "Saudi Arabia"
+ },
+ {
+  "id": "pedkar-fethiye",
+  "name": "25th National Pediatric Cardiology and Pediatric Cardiac Surgery Congress (PEDKAR 2027)",
+  "url": "https://www.pedkarkongre.com/",
+  "sourceUrl": "https://www.pedkarkongre.com/",
+  "specialty": "Paediatrics",
+  "country": "Turkey"
+ },
+ {
+  "id": "anzahpe-conference",
+  "name": "ANZAHPE Conference",
+  "url": "https://www.anzahpe.org",
+  "sourceUrl": "https://www.anzahpe.org/page-1075631",
+  "specialty": "Medical Education",
+  "country": "Australia"
+ },
+ {
+  "id": "nzoa-asm",
+  "name": "NZOA Annual Scientific Meeting",
+  "url": "https://www.nzoa.org.nz",
+  "sourceUrl": "https://www.nzoa.org.nz/nzoa-meetings-2026",
+  "specialty": "Orthopaedics",
+  "country": "New Zealand"
+ },
+ {
+  "id": "tnrd-istanbul",
+  "name": "36th National Congress of the Turkish Society of Diagnostic and Interventional Neuroradiology (TNRD 2027)",
+  "url": "https://www.tnrd2027.org/",
+  "sourceUrl": "https://www.tnrd2027.org/",
+  "specialty": "Radiology",
+  "country": "Turkey"
+ },
+ {
+  "id": "amman-retina-meeting",
+  "name": "Amman Retina Meeting 2027",
+  "url": "https://www.ammanretinameeting.com/",
+  "sourceUrl": "https://www.ammanretinameeting.com/",
+  "specialty": "Ophthalmology",
+  "country": "Jordan"
+ },
+ {
+  "id": "ckm-riyadh",
+  "name": "1st Cardio-Kidney-Metabolic Conference",
+  "url": "https://ckmconference.com/",
+  "sourceUrl": "https://ckmconference.com/",
+  "specialty": "Cardiology",
+  "country": "Saudi Arabia"
+ },
+ {
+  "id": "era-education-cairo",
+  "name": "ERA Education Meeting - Cairo 2027",
+  "url": "https://www.era-online.org/",
+  "sourceUrl": "https://www.era-online.org/events/era-education-meetings/era-education-cairo-2027/",
+  "specialty": "Nephrology",
+  "country": "Egypt"
+ },
+ {
+  "id": "ranzcog-regional-symposium",
+  "name": "RANZCOG Regional Symposium",
+  "url": "https://www.ranzcog.edu.au",
+  "sourceUrl": "https://ranzcog.eventsair.com/ranzcog-2027-regional-symposium/key-dates",
+  "specialty": "Obstetrics & Gynaecology",
+  "country": "Australia"
+ },
+ {
+  "id": "eano-sno-pediatric-neuro-oncology",
+  "name": "EANO-SNO Joint Meeting on Pediatric Neuro-Oncology",
+  "url": "https://www.soc-neuro-onc.org",
+  "sourceUrl": "https://www.soc-neuro-onc.org/",
+  "specialty": "Neurology",
+  "country": "United States"
+ },
+ {
+  "id": "memac-dubai",
+  "name": "4th Middle East Master Class in Hematology (MEMAC 2027)",
+  "url": "https://www.memachematology.com/",
+  "sourceUrl": "https://www.memachematology.com/event/6f54a709-5d54-48c8-86e2-63c62b23b694/Home",
+  "specialty": "Haematology",
+  "country": "United Arab Emirates"
+ },
+ {
+  "id": "acem-rural-remote-em-conference",
+  "name": "ACEM Regional, Rural and Remote Emergency Medicine Conference",
+  "url": "https://acem.org.au",
+  "sourceUrl": "https://acem.org.au/Events/Regional-Rural-and-Remote-Emergency-Medicine-Confe",
+  "specialty": "Emergency Medicine",
+  "country": "Australia"
+ },
+ {
+  "id": "sapc-south-east-conference",
+  "name": "SAPC South East Conference",
+  "url": "https://www.qmul.ac.uk/wiph/centres/centre-for-primary-care/sapc-south-east-2027-conference/",
+  "sourceUrl": "https://www.qmul.ac.uk/wiph/centres/centre-for-primary-care/sapc-south-east-2027-conference/",
+  "specialty": "General Practice",
+  "country": "United Kingdom"
+ },
+ {
+  "id": "ahaic-2027-kigali",
+  "name": "Africa Health Agenda International Conference (AHAIC 2027)",
+  "url": "https://ahaic.org/",
+  "sourceUrl": "https://ahaic.org/",
+  "specialty": "Public Health",
+  "country": "Rwanda"
+ },
+ {
+  "id": "esshm-2027-cairo",
+  "name": "20th International Conference of the Egyptian Society for Surgery of the Hand and Microsurgery (ESSHM 2027)",
+  "url": "https://esshm.org/",
+  "sourceUrl": "https://esshm.org/",
+  "specialty": "Orthopaedics",
+  "country": "Egypt"
+ },
+ {
+  "id": "sases-2027-stellenbosch",
+  "name": "SASES 2027",
+  "url": "https://saoa.org.za/local-events/",
+  "sourceUrl": "https://saoa.org.za/local-events/",
+  "specialty": "Orthopaedics",
+  "country": "South Africa"
+ },
+ {
+  "id": "semdsa-congress-2027-johannesburg",
+  "name": "59th Annual SEMDSA Congress 2027",
+  "url": "https://semdsa2027.co.za",
+  "sourceUrl": "https://semdsa2027.co.za/",
+  "specialty": "Endocrinology",
+  "country": "South Africa"
+ },
+ {
+  "id": "afran-2027-dar-es-salaam",
+  "name": "19th Congress of the African Association of Nephrology (AFRAN 2027)",
+  "url": "https://afran2027.com/",
+  "sourceUrl": "https://afran2027.com/",
+  "specialty": "Nephrology",
+  "country": "Tanzania"
+ },
+ {
+  "id": "saco-2027-cape-town",
+  "name": "SACO 2027 - 4th South African Congress of Oncology",
+  "url": "https://sacocongress.co.za/",
+  "sourceUrl": "https://sacocongress.co.za/",
+  "specialty": "Oncology",
+  "country": "South Africa"
+ },
+ {
+  "id": "ibro-world-congress-2027-cape-town",
+  "name": "IBRO 2027 World Congress",
+  "url": "https://ibroworldcongress.org/",
+  "sourceUrl": "https://ibroworldcongress.org/",
+  "specialty": "Neurology",
+  "country": "South Africa"
+ },
+ {
+  "id": "was-world-congress-2027-cape-town",
+  "name": "28th World Association for Sexual Health (WAS) World Congress",
+  "url": "https://wascongress.org",
+  "sourceUrl": "https://wascongress.org/",
+  "specialty": "Sexual Medicine",
+  "country": "South Africa"
+ }
+]

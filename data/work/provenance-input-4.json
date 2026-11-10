@@ -1,0 +1,569 @@
+[
+ {
+  "id": "rsna-annual-meeting-2026",
+  "name": "RSNA 2026 Annual Meeting",
+  "url": "https://www.rsna.org/annual-meeting",
+  "start": "2026-11-29",
+  "end": "2026-12-03",
+  "city": "Chicago",
+  "country": "United States"
+ },
+ {
+  "id": "sabcs-2026",
+  "name": "San Antonio Breast Cancer Symposium 2026",
+  "url": "https://www.sabcs.org",
+  "start": "2026-12-08",
+  "end": "2026-12-11",
+  "city": "San Antonio",
+  "country": "United States"
+ },
+ {
+  "id": "ash-annual-meeting-2026",
+  "name": "68th ASH Annual Meeting and Exposition",
+  "url": "https://www.hematology.org/meetings/annual-meeting",
+  "start": "2026-12-12",
+  "end": "2026-12-15",
+  "city": "New Orleans",
+  "country": "United States"
+ },
+ {
+  "id": "kasr-al-ainy-ophthalmology-2027-cairo",
+  "name": "Kasr Al Ainy Ophthalmology Annual Meeting 2027",
+  "url": "https://rm-events.org/kasr-al-ainy/",
+  "start": "2027-01-21",
+  "end": "2027-01-22",
+  "city": "Cairo",
+  "country": "Egypt"
+ },
+ {
+  "id": "sommad-journees-scientifiques-2027-bamako",
+  "name": "5th Journées Scientifiques de la SOMMAD",
+  "url": "https://www.santetropicale.com/agenda-congres-medicaux-afrique.asp?id=2697",
+  "start": "2027-02-03",
+  "end": "2027-02-05",
+  "city": "Bamako",
+  "country": "Mali"
+ },
+ {
+  "id": "saemn-africa-diabetes-congress-2027-abidjan",
+  "name": "7th SAEMN Congress and Africa Diabetes Congress (ADC)",
+  "url": "https://www.santetropicale.com/agenda-congres-medicaux-afrique.asp?id=2672",
+  "start": "2027-02-09",
+  "end": "2027-02-12",
+  "city": "Abidjan",
+  "country": "Côte d'Ivoire"
+ },
+ {
+  "id": "ahaic-2027-kigali",
+  "name": "Africa Health Agenda International Conference (AHAIC 2027)",
+  "url": "https://ahaic.org/",
+  "start": "2027-02-28",
+  "end": "2027-03-03",
+  "city": "Kigali",
+  "country": "Rwanda"
+ },
+ {
+  "id": "cape-town-spine-symposium-2027",
+  "name": "CTSS 2027 Cape Town Spine Symposium",
+  "url": "https://saoa.org.za/local-events/",
+  "start": "2027-03-05",
+  "end": "2027-03-06",
+  "city": "Cape Town",
+  "country": "South Africa"
+ },
+ {
+  "id": "ossa-congress-2027-cape-town",
+  "name": "55th National Congress of the Ophthalmological Society of South Africa (OSSA 2027)",
+  "url": "https://ossacongress.co.za/",
+  "start": "2027-03-10",
+  "end": "2027-03-13",
+  "city": "Cape Town",
+  "country": "South Africa"
+ },
+ {
+  "id": "esshm-2027-cairo",
+  "name": "20th International Conference of the Egyptian Society for Surgery of the Hand and Microsurgery (ESSHM 2027)",
+  "url": "https://esshm.org/",
+  "start": "2027-03-17",
+  "end": "2027-03-18",
+  "city": "Cairo",
+  "country": "Egypt"
+ },
+ {
+  "id": "pharmacy-show-2027-sandton",
+  "name": "The Pharmacy Show 2027",
+  "url": "https://thepharmacyshow.co.za/",
+  "start": "2027-03-17",
+  "end": "2027-03-18",
+  "city": "Johannesburg",
+  "country": "South Africa"
+ },
+ {
+  "id": "asou-surgery-congress-2027-kampala",
+  "name": "5th International Congress on Innovations for Global Surgery with 21st ASOU Annual Scientific Conference",
+  "url": "https://asou.or.ug/?p=6033",
+  "start": "2027-03-23",
+  "end": "2027-03-25",
+  "city": "Kampala",
+  "country": "Uganda"
+ },
+ {
+  "id": "morocco-medical-expo-2027-casablanca",
+  "name": "Morocco Medical Expo 2027 and Forum Afrique Global Santé",
+  "url": "https://www.santetropicale.com/agenda-congres-medicaux-afrique.asp?id=2684",
+  "start": "2027-04-08",
+  "end": "2027-04-11",
+  "city": "Casablanca",
+  "country": "Morocco"
+ },
+ {
+  "id": "sases-2027-stellenbosch",
+  "name": "SASES 2027",
+  "url": "https://saoa.org.za/local-events/",
+  "start": "2027-04-16",
+  "end": "2027-04-18",
+  "city": "Stellenbosch",
+  "country": "South Africa"
+ },
+ {
+  "id": "kma-54th-annual-scientific-conference-2027",
+  "name": "54th Kenya Medical Association Annual Scientific Conference",
+  "url": "https://kma.co.ke/kma-conference",
+  "start": "2027-04-20",
+  "end": "2027-04-23",
+  "city": "Mombasa",
+  "country": "Kenya"
+ },
+ {
+  "id": "sass-2027-johannesburg",
+  "name": "SASS 2027",
+  "url": "https://saoa.org.za/local-events/",
+  "start": "2027-05-06",
+  "end": "2027-05-08",
+  "city": "Johannesburg",
+  "country": "South Africa"
+ },
+ {
+  "id": "semdsa-congress-2027-johannesburg",
+  "name": "59th Annual SEMDSA Congress 2027",
+  "url": "https://semdsa2027.co.za",
+  "start": "2027-05-13",
+  "end": "2027-05-16",
+  "city": "Johannesburg",
+  "country": "South Africa"
+ },
+ {
+  "id": "safsa-2027-windhoek",
+  "name": "SAFSA 11th Biennial Congress 2027",
+  "url": "https://safsa.co.za/safsa-2027/",
+  "start": "2027-05-21",
+  "end": "2027-05-22",
+  "city": "Windhoek",
+  "country": "Namibia"
+ },
+ {
+  "id": "sags-2027-zimbali",
+  "name": "SAGS 2027 Congress",
+  "url": "https://www.sags.co.za/",
+  "start": "2027-05-28",
+  "end": "2027-05-30",
+  "city": "Ballito",
+  "country": "South Africa"
+ },
+ {
+  "id": "siforl-scorl-2027-yaounde",
+  "name": "Congrès Conjoint SIFORL et SCORL 2027",
+  "url": "https://www.siforl2027.org/",
+  "start": "2027-06-17",
+  "end": "2027-06-19",
+  "city": "Yaoundé",
+  "country": "Cameroon"
+ },
+ {
+  "id": "afran-2027-dar-es-salaam",
+  "name": "19th Congress of the African Association of Nephrology (AFRAN 2027)",
+  "url": "https://afran2027.com/",
+  "start": "2027-06-22",
+  "end": "2027-06-25",
+  "city": "Dar es Salaam",
+  "country": "Tanzania"
+ },
+ {
+  "id": "africa-health-excon-2027-cairo",
+  "name": "Africa Health ExCon 2027",
+  "url": "https://www.africahealthexcon.com/",
+  "start": "2027-06-22",
+  "end": "2027-06-24",
+  "city": "Cairo",
+  "country": "Egypt"
+ },
+ {
+  "id": "torg-robotic-minimally-invasive-surgery-2027-lagos",
+  "name": "Global Congress on Robotic & Minimally Invasive Surgery 2027",
+  "url": "https://torgevents.org/",
+  "start": "2027-07-28",
+  "end": "2027-07-30",
+  "city": "Lagos",
+  "country": "Nigeria"
+ },
+ {
+  "id": "saco-2027-cape-town",
+  "name": "SACO 2027 - 4th South African Congress of Oncology",
+  "url": "https://sacocongress.co.za/",
+  "start": "2027-08-25",
+  "end": "2027-08-29",
+  "city": "Cape Town",
+  "country": "South Africa"
+ },
+ {
+  "id": "saoa-congress-2027-cape-town",
+  "name": "SAOA 2027 Congress",
+  "url": "https://saoa.org.za/",
+  "start": "2027-09-06",
+  "end": "2027-09-09",
+  "city": "Cape Town",
+  "country": "South Africa"
+ },
+ {
+  "id": "aaac-2027-dar-es-salaam",
+  "name": "10th All Africa Anaesthesia Congress (AAAC 2027)",
+  "url": "https://aaac2027.com/",
+  "start": "2027-09-13",
+  "end": "2027-09-16",
+  "city": "Dar es Salaam",
+  "country": "Tanzania"
+ },
+ {
+  "id": "ibro-world-congress-2027-cape-town",
+  "name": "IBRO 2027 World Congress",
+  "url": "https://ibroworldcongress.org/",
+  "start": "2027-09-13",
+  "end": "2027-09-16",
+  "city": "Cape Town",
+  "country": "South Africa"
+ },
+ {
+  "id": "africa-healthtech-summit-2027-kigali",
+  "name": "Africa HealthTech Summit 2027",
+  "url": "https://healthtechsummit.africa/",
+  "start": "2027-10-06",
+  "end": "2027-10-08",
+  "city": "Kigali",
+  "country": "Rwanda"
+ },
+ {
+  "id": "wcn-2027-cape-town",
+  "name": "XXVIII World Congress of Neurology (WCN 2027)",
+  "url": "https://www.wcn-neurology.com/",
+  "start": "2027-10-23",
+  "end": "2027-10-25",
+  "city": "Cape Town",
+  "country": "South Africa"
+ },
+ {
+  "id": "was-world-congress-2027-cape-town",
+  "name": "28th World Association for Sexual Health (WAS) World Congress",
+  "url": "https://wascongress.org",
+  "start": "2027-12-10",
+  "end": "2027-12-12",
+  "city": "Cape Town",
+  "country": "South Africa"
+ },
+ {
+  "id": "sobup-congress-2027-ouagadougou",
+  "name": "9th Congress of the Société Burkinabè de Pneumologie (SOBUP)",
+  "url": "https://www.sobup.online/evenements/9eme-congres",
+  "start": "2027-12-16",
+  "end": "2027-12-19",
+  "city": "Ouagadougou",
+  "country": "Burkina Faso"
+ },
+ {
+  "id": "aaaai-annual-meeting-2028",
+  "name": "AAAAI 2028 Annual Meeting",
+  "url": "https://annualmeeting.aaaai.org",
+  "start": "2028-03-03",
+  "end": "2028-03-06",
+  "city": "Denver",
+  "country": "United States"
+ },
+ {
+  "id": "aahpm-annual-assembly-2028",
+  "name": "AAHPM Annual Assembly 2028",
+  "url": "https://aahpm.org/education-events/annual-assembly",
+  "start": "2028-03-15",
+  "end": "2028-03-19",
+  "city": "Louisville",
+  "country": "United States"
+ },
+ {
+  "id": "aaos-annual-meeting-2028",
+  "name": "AAOS 2028 Annual Meeting",
+  "url": "https://www.aaos.org/annual-meeting/",
+  "start": "2028-03-15",
+  "end": "2028-03-18",
+  "city": "San Diego",
+  "country": "United States"
+ },
+ {
+  "id": "sir-annual-scientific-meeting-2028",
+  "name": "SIR 2028 Annual Scientific Meeting",
+  "url": "https://www.sirweb.org",
+  "start": "2028-03-18",
+  "end": "2028-03-22",
+  "city": "Philadelphia",
+  "country": "United States"
+ },
+ {
+  "id": "acc-scientific-session-2028",
+  "name": "ACC.28 Scientific Session",
+  "url": "https://www.acc.org",
+  "start": "2028-04-01",
+  "end": "2028-04-03",
+  "city": "Chicago",
+  "country": "United States"
+ },
+ {
+  "id": "sccm-critical-care-congress-2028",
+  "name": "SCCM Critical Care Congress 2028",
+  "url": "https://www.sccm.org/annual-congress",
+  "start": "2028-04-09",
+  "end": "2028-04-11",
+  "city": "Baltimore",
+  "country": "United States"
+ },
+ {
+  "id": "aan-annual-meeting-2028",
+  "name": "AAN 2028 Annual Meeting",
+  "url": "https://www.aan.com/events/annual-meeting",
+  "start": "2028-04-22",
+  "end": "2028-04-26",
+  "city": "Los Angeles",
+  "country": "United States"
+ },
+ {
+  "id": "heart-rhythm-2028",
+  "name": "Heart Rhythm 2028",
+  "url": "https://www.hrsonline.org",
+  "start": "2028-05-04",
+  "end": "2028-05-07",
+  "city": "Atlanta",
+  "country": "United States"
+ },
+ {
+  "id": "apa-annual-meeting-2028",
+  "name": "APA Annual Meeting 2028",
+  "url": "https://www.psychiatry.org/psychiatrists/meetings/annual-meeting",
+  "start": "2028-05-06",
+  "end": "2028-05-10",
+  "city": "Chicago",
+  "country": "United States"
+ },
+ {
+  "id": "ispor-annual-international-meeting-2028",
+  "name": "ISPOR 2028",
+  "url": "https://www.ispor.org/conferences-education/conferences",
+  "start": "2028-05-07",
+  "end": "2028-05-10",
+  "city": "National Harbor",
+  "country": "United States"
+ },
+ {
+  "id": "ada-scientific-sessions-2028",
+  "name": "ADA 88th Scientific Sessions",
+  "url": "https://professional.diabetes.org/scientific-sessions",
+  "start": "2028-06-09",
+  "end": "2028-06-12",
+  "city": "Houston",
+  "country": "United States"
+ },
+ {
+  "id": "era-congress-2028",
+  "name": "65th ERA Congress 2028",
+  "url": "https://www.era-online.org",
+  "start": "2028-06-14",
+  "end": "2028-06-17",
+  "city": "Berlin",
+  "country": "Germany"
+ },
+ {
+  "id": "ean-congress-2028",
+  "name": "14th EAN Congress 2028",
+  "url": "https://www.ean.org",
+  "start": "2028-06-17",
+  "end": "2028-06-20",
+  "city": "Rotterdam",
+  "country": "Netherlands"
+ },
+ {
+  "id": "aapm-annual-meeting-2028",
+  "name": "AAPM 2028 Annual Meeting & Exhibition",
+  "url": "https://www.aapm.org/meetings",
+  "start": "2028-07-30",
+  "end": "2028-08-02",
+  "city": "Washington DC",
+  "country": "United States"
+ },
+ {
+  "id": "aaic-2028",
+  "name": "Alzheimer's Association International Conference 2028",
+  "url": "https://www.alz.org/aaic",
+  "start": "2028-07-30",
+  "end": "2028-08-03",
+  "city": "San Francisco",
+  "country": "United States"
+ },
+ {
+  "id": "aan-autoimmune-neurology-conference-2028",
+  "name": "AAN Autoimmune Neurology Conference 2028",
+  "url": "https://www.aan.com/events",
+  "start": "2028-08-04",
+  "end": "2028-08-05",
+  "city": "Orlando",
+  "country": "United States"
+ },
+ {
+  "id": "wclc-2028",
+  "name": "IASLC World Conference on Lung Cancer 2028",
+  "url": "https://wclc.iaslc.org",
+  "start": "2028-09-09",
+  "end": "2028-09-12",
+  "city": "Copenhagen",
+  "country": "Denmark"
+ },
+ {
+  "id": "acep-scientific-assembly-2028",
+  "name": "ACEP28 Scientific Assembly",
+  "url": "https://www.acep.org/sa",
+  "start": "2028-09-17",
+  "end": "2028-09-20",
+  "city": "Las Vegas",
+  "country": "United States"
+ },
+ {
+  "id": "easd-annual-meeting-2028",
+  "name": "EASD 64th Annual Meeting",
+  "url": "https://www.easd.org/annual-meeting.html",
+  "start": "2028-09-18",
+  "end": "2028-09-22",
+  "city": "Copenhagen",
+  "country": "Denmark"
+ },
+ {
+  "id": "aan-fall-conference-2028",
+  "name": "AAN Fall Conference 2028",
+  "url": "https://www.aan.com/events",
+  "start": "2028-10-06",
+  "end": "2028-10-08",
+  "city": "Las Vegas",
+  "country": "United States"
+ },
+ {
+  "id": "chest-annual-meeting-2028",
+  "name": "CHEST 2028",
+  "url": "https://www.chestnet.org/learning-and-events/events/chest-annual-meeting",
+  "start": "2028-10-08",
+  "end": "2028-10-11",
+  "city": "Denver",
+  "country": "United States"
+ },
+ {
+  "id": "plastic-surgery-the-meeting-2028",
+  "name": "Plastic Surgery The Meeting 2028",
+  "url": "https://www.plasticsurgery.org",
+  "start": "2028-10-12",
+  "end": "2028-10-15",
+  "city": "Los Angeles",
+  "country": "United States"
+ },
+ {
+  "id": "tct-2028",
+  "name": "TCT 2028",
+  "url": "https://www.crf.org/tct",
+  "start": "2028-10-12",
+  "end": "2028-10-16",
+  "city": "Boston",
+  "country": "United States"
+ },
+ {
+  "id": "aao-annual-meeting-2028",
+  "name": "AAO 2028 Annual Meeting",
+  "url": "https://www.aao.org/annual-meeting",
+  "start": "2028-10-13",
+  "end": "2028-10-16",
+  "city": "Chicago",
+  "country": "United States"
+ },
+ {
+  "id": "astmh-annual-meeting-2028",
+  "name": "ASTMH 2028 Annual Meeting",
+  "url": "https://www.astmh.org/annual-meeting",
+  "start": "2028-10-18",
+  "end": "2028-10-22",
+  "city": "Seattle",
+  "country": "United States"
+ },
+ {
+  "id": "asa-anesthesiology-2028",
+  "name": "ANESTHESIOLOGY 2028",
+  "url": "https://www.asahq.org/annualmeeting",
+  "start": "2028-10-20",
+  "end": "2028-10-24",
+  "city": "Chicago",
+  "country": "United States"
+ },
+ {
+  "id": "acs-clinical-congress-2028",
+  "name": "ACS Clinical Congress 2028",
+  "url": "https://www.facs.org/for-medical-professionals/conferences-and-meetings/",
+  "start": "2028-10-21",
+  "end": "2028-10-24",
+  "city": "Boston",
+  "country": "United States"
+ },
+ {
+  "id": "ashg-annual-meeting-2028",
+  "name": "ASHG 2028 Annual Meeting",
+  "url": "https://www.ashg.org/meetings/",
+  "start": "2028-10-25",
+  "end": "2028-10-29",
+  "city": "San Diego",
+  "country": "United States"
+ },
+ {
+  "id": "ispor-europe-2028",
+  "name": "ISPOR Europe 2028",
+  "url": "https://www.ispor.org/conferences-education/conferences",
+  "start": "2028-10-29",
+  "end": "2028-11-01",
+  "city": "Copenhagen",
+  "country": "Denmark"
+ },
+ {
+  "id": "aap-national-conference-2028",
+  "name": "AAP National Conference & Exhibition 2028",
+  "url": "https://aapexperience.org",
+  "start": "2028-11-03",
+  "end": "2028-11-07",
+  "city": "Boston",
+  "country": "United States"
+ },
+ {
+  "id": "sfn-neuroscience-2028",
+  "name": "Neuroscience 2028",
+  "url": "https://www.sfn.org/meetings",
+  "start": "2028-11-11",
+  "end": "2028-11-15",
+  "city": "San Diego",
+  "country": "United States"
+ },
+ {
+  "id": "rsna-annual-meeting-2028",
+  "name": "RSNA 2028 Annual Meeting",
+  "url": "https://www.rsna.org/annual-meeting",
+  "start": "2028-11-26",
+  "end": "2028-11-30",
+  "city": "Chicago",
+  "country": "United States"
+ }
+]

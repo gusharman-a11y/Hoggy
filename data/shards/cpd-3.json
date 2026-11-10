@@ -1,0 +1,673 @@
+[
+ {
+  "id": "rsna-annual-meeting-2026",
+  "stated": false,
+  "sourceUrl": "https://www.rsna.org/education/continuing-medical-education",
+  "evidence": "RSNA says it is ACCME accredited and that attendees can earn CME credit at the annual meeting; no credit total published for the meeting.",
+  "note": "Accreditation stated, no figure."
+ },
+ {
+  "id": "rsna-annual-meeting",
+  "stated": false,
+  "sourceUrl": "https://www.rsna.org/education/continuing-medical-education",
+  "evidence": "RSNA ACCME accreditation statement and \"earn CME credit\" at the annual meeting; no meeting credit total.",
+  "note": "Accreditation stated, no figure."
+ },
+ {
+  "id": "esc-congress",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "aaos-annual-meeting",
+  "stated": false,
+  "note": "Only ACCME accreditation for AAOS products (OKU) read; no annual meeting credit statement found."
+ },
+ {
+  "id": "aao-annual-meeting",
+  "stated": false,
+  "cpdBody": "AMA PRA Category 1 Credits (ACCME)",
+  "sourceUrl": "https://www.aao.org/annual-meeting/cme-information",
+  "evidence": "AAO 2026 page designates a maximum of 50 AMA PRA Category 1 Credits for the 2026 meeting only.",
+  "note": "Figure belongs to AAO 2026, not the 2027 row; not carried over."
+ },
+ {
+  "id": "sfn-neuroscience-2028",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "aad-annual-meeting",
+  "stated": false,
+  "cpdBody": "AMA PRA Category 1 Credits (ACCME)",
+  "sourceUrl": "https://www.aad.org/member/meetings-education/am27",
+  "evidence": "AM27 page says AAD is ACCME accredited and the activity is approved for AMA PRA Category 1 Credits, without a number.",
+  "note": "Accreditation stated, no figure."
+ },
+ {
+  "id": "jcs-annual-scientific-meeting",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "acc-scientific-session",
+  "stated": true,
+  "cpdHours": 22,
+  "cpdBody": "AMA PRA Category 1 Credits (ACCME; ACCF jointly accredited)",
+  "sourceUrl": "https://accscientificsession.acc.org/Plan-Your-Program/Accreditation",
+  "evidence": "ACC.27-WCC accreditation page gives the in-person credit designation as a maximum of 22.00 AMA PRA Category 1 Credits (virtual option listed separately at 14.5).",
+  "note": "Page wording calls it internet enduring material but sits under the ACC.27-WCC In-Person designation; 22.00 is the whole-meeting in-person maximum."
+ },
+ {
+  "id": "eadv-congress",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "jddw",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "asa-anesthesiology-2028",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "ada-scientific-sessions",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "apta-csm",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "asn-kidney-week",
+  "stated": false,
+  "cpdBody": "ACCME/ACPE/ANCC joint accreditation",
+  "sourceUrl": "https://www.asn-online.org/education/cme/opportunities.aspx",
+  "evidence": "ASN lists Kidney Week 2026 at 65.00 CME/CNE/CPE credits; nothing yet for 2027.",
+  "note": "Figure is for 2026, not carried over to the 2027 row."
+ },
+ {
+  "id": "europcr",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "tct-conference",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "acs-clinical-congress-2028",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "aan-annual-meeting",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "eshre-annual-meeting",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "jos-annual-meeting",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "aap-national-conference-2028",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "eaaci-congress",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "escrs-congress",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "asgct-annual-meeting",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "jsco-annual-meeting",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "heart-rhythm-2028",
+  "stated": false,
+  "cpdBody": "AMA PRA Category 1 Credits (ACCME)",
+  "sourceUrl": "https://heartrhythm.com/learn/accreditation-information",
+  "evidence": "HRS accreditation page gives 125 AMA PRA credits for the 2026 internet-enduring activity only.",
+  "note": "Figure is for 2026, not the 2028 row."
+ },
+ {
+  "id": "jua-annual-meeting",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "efort-congress",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "aao-hnsf-annual-meeting",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "acep-scientific-assembly",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "wclc-2028",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "ecco-congress",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "jrs-annual-meeting",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "jsn-neurology-annual-meeting",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "snmmi-annual-meeting",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "ecnp-congress",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "eanm-congress",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "uscap-annual-meeting",
+  "stated": false,
+  "note": "UNREACHABLE: 2027am.uscap.org returned HTTP 520 and uscap.org dropped the connection."
+ },
+ {
+  "id": "apha-pharmacists-annual-meeting",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "ons-congress",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "european-congress-on-obesity",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "jspm-annual-meeting",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "espen-istanbul",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "aacap-annual-meeting",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "ispor-europe",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "sccm-critical-care-congress-2028",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "astmh-annual-meeting-2028",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "jsn-nephrology-annual-meeting",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "croi-conference",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "jsp-annual-meeting",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "esmo-gastrointestinal-cancers-congress",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "eusem-congress",
+  "stated": false,
+  "cpdBody": "EACCME",
+  "sourceUrl": "https://eusemcongress.org/",
+  "evidence": "Site says EUSEM 2026 was EACCME accredited for 20.5 CME credits; nothing stated for 2027 (Helsinki).",
+  "note": "Figure is for 2026, not carried over."
+ },
+ {
+  "id": "aamc-learn-serve-lead",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "european-congress-of-endocrinology",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "bsg-live",
+  "stated": false,
+  "cpdBody": "CPD (BSG)",
+  "sourceUrl": "https://live.bsg.org.uk/",
+  "evidence": "Page refers to CPD accredited sessions; the only hours figure (70+) is for BSG LIVE 25 on-demand content.",
+  "note": "Accreditation mentioned, no credit figure for the event."
+ },
+ {
+  "id": "eao-congress",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "esgo-congress",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "sha-riyadh",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "sages-annual-meeting",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "diabetes-uk-professional-conference",
+  "stated": true,
+  "cpdHours": 18,
+  "cpdBody": "CPD credits (UK; scheme not named)",
+  "sourceUrl": "https://dukpc.diabetes.org.uk/",
+  "evidence": "Conference homepage (20-22 April 2027, Liverpool) lists \"18 CPD Credits\" under what the conference offers.",
+  "note": "Figure is in a generic \"what the conference offers\" panel and is not dated; scheme not named. Confirm it is not a carry-over from 2026."
+ },
+ {
+  "id": "scai-scientific-sessions",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "ags-annual-scientific-meeting",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "eaes-congress",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "asrs-annual-meeting",
+  "stated": false,
+  "cpdBody": "ACCME",
+  "sourceUrl": "https://www.asrs.org/annual-meeting/cme-credits",
+  "evidence": "ASRS CME credits page states ACCME accreditation and an evaluation requirement; no credit total read.",
+  "note": "Accreditation stated (page tied to the current meeting), no figure."
+ },
+ {
+  "id": "sbr-congresso-reumatologia-2027",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "world-health-summit",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "european-lung-cancer-congress",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "anzca-asm",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "nkf-spring-clinical-meetings",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "wonca-europe-conference",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "solaci-congress-2027",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "scandinavian-sports-medicine-congress",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "bsr-annual-conference",
+  "stated": true,
+  "cpdHours": 22,
+  "cpdBody": "CPD credits (UK; specific scheme not named on page)",
+  "sourceUrl": "https://www.rheumatology.org.uk/events-learning/conferences/annualconference",
+  "evidence": "BSR conference page for 28-30 April 2027 states 22 CPD credits are available for the conference.",
+  "note": "Page says only \"CPD\"; no named UK scheme or college."
+ },
+ {
+  "id": "ebcog-congress",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "esgar-annual-meeting",
+  "stated": false,
+  "cpdBody": "EACCME (UEMS)",
+  "sourceUrl": "https://esgar.org/annual-meeting",
+  "evidence": "Page says an application will be made to EACCME and that the number of credit hours will be announced later on the site and programme PDF.",
+  "note": "Accreditation pending, no figure yet."
+ },
+ {
+  "id": "association-of-anaesthetists-gasfest",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "european-public-health-conference",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "ssdds-riyadh",
+  "stated": false,
+  "cpdBody": "DHA-accredited programme (CME)",
+  "sourceUrl": "https://conference.ssdds.org/",
+  "evidence": "Homepage says attendees earn \"20+\" CME credits from a DHA-accredited programme and labels it CME Accredited.",
+  "note": "\"20+\" is not a single clear figure; cme-details page had no readable text."
+ },
+ {
+  "id": "eapci",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "esc-acute-cardiovascular-care",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "aba-annual-meeting",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "eccc-dubai",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "australasian-diabetes-congress",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "esmrmb-annual-scientific-meeting",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "cosa-asm",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "tsanz-asm",
+  "stated": false,
+  "note": "Primary site loaded with no CPD text; second page failed (socket error)."
+ },
+ {
+  "id": "eucornea-congress",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "cas-annual-meeting",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "acnp-annual-meeting",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "eaun-international-meeting",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "ectes-european-congress-trauma-emergency-surgery",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "emas-congress",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "ects-congress",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "ehs-annual-international-congress",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "espr-congress",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "global-emergency-nursing-conference",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "psanz-congress",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "espu-congress",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "cua-annual-meeting",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "sirs-riyadh",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "esmo-sarcoma-and-rare-cancers-congress",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "kpa-annual-scientific-conference-2027",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "et-european-conference-embolotherapy",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "aan-autoimmune-neurology-conference-2028",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "icjr-me-dubai",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "asps-plastic-surgery-meeting",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "sno-asco-cns-metastases",
+  "stated": false,
+  "cpdBody": "AMA PRA Category 1 (ACCME)",
+  "sourceUrl": "https://www.soc-neuro-onc.org/meetings-education/cme-accreditation",
+  "evidence": "SNO general CME page states ACCME accreditation and AMA PRA designation per activity; nothing on this meeting.",
+  "note": "Org-level only; no event figure."
+ },
+ {
+  "id": "uhs-pediatric-dubai",
+  "stated": false,
+  "note": "Dubai CME pages call the 2026 Ob/Gyn event CME accredited with no figure; no page for the matching event found."
+ },
+ {
+  "id": "asid-asm",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "adee-annual-meeting",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "ecip-image-guided-pain-management",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "anzsnm-asm",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "european-health-management-conference",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "icme-manama",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "aaah-youth-health-conference",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "pcne-working-conference",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "kash-conference-2027",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "ossa-congress-2027-cape-town",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "asou-surgery-congress-2027-kampala",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "sass-2027-johannesburg",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "sags-2027-zimbali",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "torg-robotic-minimally-invasive-surgery-2027-lagos",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "aaac-2027-dar-es-salaam",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ },
+ {
+  "id": "wcn-2027-cape-town",
+  "stated": false,
+  "note": "No CME/CPD/credit text found on the organiser pages fetched; site may be script-rendered or publish later."
+ }
+]
