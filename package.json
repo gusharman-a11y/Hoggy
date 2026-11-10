@@ -4,7 +4,7 @@
   "private": true,
   "description": "Medical conference scanner",
   "engines": {
-    "node": ">=22.5"
+    "node": "22.x"
   },
   "scripts": {
     "start": "node server.js",

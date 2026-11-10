@@ -12,13 +12,15 @@ const ADMIN_KEY = process.env.HOGGY_ADMIN_KEY || '';
 const REPORT_MIN_AGE = (process.env.HOGGY_REPORT_MIN_AGE_H === undefined ? 24 : +process.env.HOGGY_REPORT_MIN_AGE_H) * 3600e3;
 const ADMINS = new Set(String(process.env.HOGGY_ADMINS || '').toLowerCase().split(',').map(s => s.trim()).filter(Boolean));
 
+const ON_VERCEL = !!process.env.VERCEL; /* serverless: read-only filesystem except /tmp, instances recycled, always behind Vercel's HTTPS proxy */
+const DEMO = ON_VERCEL || process.env.HOGGY_DEMO === '1';
 const PORT = +process.env.PORT || 8123;
 const HOST = process.env.HOST || '127.0.0.1';
-const DATA = process.env.HOGGY_DATA || path.join(__dirname, 'data-store');
+const DATA = process.env.HOGGY_DATA || (ON_VERCEL ? '/tmp/hoggy-data' : path.join(__dirname, 'data-store'));
 const MAIL_DOMAIN = process.env.HOGGY_MAIL_DOMAIN || 'receipts.hoggy.app';
-const LOOPBACK = ['127.0.0.1', 'localhost', '::1'].includes(HOST);
+const LOOPBACK = !ON_VERCEL && ['127.0.0.1', 'localhost', '::1'].includes(HOST);
 const SECURE = process.env.HOGGY_INSECURE_COOKIES !== '1' && !LOOPBACK;
-const TRUST_PROXY = process.env.HOGGY_TRUST_PROXY === '1';
+const TRUST_PROXY = ON_VERCEL || process.env.HOGGY_TRUST_PROXY === '1';
 const vm = require('node:vm');
 const CONF_IDS = (() => { try { const ctx = { window: {} }; vm.runInNewContext(fs.readFileSync(path.join(__dirname, 'data', 'conferences.js'), 'utf8'), ctx, { timeout: 2000 }); return new Set(ctx.window.HOGGY_CONFERENCES.map(c => c.id)); } catch (e) { console.error('could not load conference ids', e.message); return null; } })();
 fs.mkdirSync(DATA, { recursive: true });
@@ -67,7 +69,7 @@ const ingest = makeIngest({ db, now: () => Date.now() });
 let ingesting = false;
 async function runIngest(limit) { if (ingesting) return { busy: true }; ingesting = true; try { return await ingest.run({ limit }); } catch (e) { console.error('ingest failed', e); return { error: String(e.message) }; } finally { ingesting = false; confCache = null; } }
 let confCache = null;
-if (process.env.HOGGY_INGEST === '1') { setTimeout(() => runIngest(60), 30e3).unref(); setInterval(() => runIngest(60), 6 * 3600e3).unref(); console.log('Continuous ingest ON (every 6h)'); }
+if (process.env.HOGGY_INGEST === '1' && !ON_VERCEL) { /* never on Vercel: no long-lived process to run it */ setTimeout(() => runIngest(60), 30e3).unref(); setInterval(() => runIngest(60), 6 * 3600e3).unref(); console.log('Continuous ingest ON (every 6h)'); }
 
 /* ---------- helpers ---------- */
 const rid = (n = 12) => crypto.randomBytes(n).toString('hex');
@@ -326,18 +328,19 @@ function backup() {
     fs.readdirSync(dir).filter(x => /^hoggy-\d{4}-\d{2}-\d{2}\.db$/.test(x)).sort().slice(0, -7).forEach(x => fs.unlinkSync(path.join(dir, x)));
   } catch (e) { console.error('backup failed', e.message); }
 }
-backup(); setInterval(backup, 6 * 3600e3).unref();
+if (!ON_VERCEL) { backup(); setInterval(backup, 6 * 3600e3).unref(); } /* /tmp backups on Vercel would vanish with the instance */
 /* ---------- static ---------- */
 const MIME = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.ico': 'image/x-icon' };
 const PUBLIC = new Set(['index.html', 'app.js', 'parse.js', 'pack.js', 'styles.css', 'data/conferences.js', 'data/holidays.js', 'data/cpd-nz.js', 'admin.html', 'admin.js']);
+const DEMO_NOTE = '<div class="demo-note" role="note">Preview — accounts and receipts reset from time to time.</div>';
 function serveStatic(req, res, url) {
   let rel; try { rel = decodeURIComponent(url.pathname).replace(/^\/+/, '') || 'index.html'; } catch (e) { res.writeHead(400); return res.end('Bad request'); }
   if (!PUBLIC.has(rel)) { res.writeHead(404); return res.end('Not found'); }
   const f = path.join(__dirname, rel);
-  fs.readFile(f, (e, d) => { if (e) { res.writeHead(404); return res.end('Not found'); } res.writeHead(200, { 'Content-Type': MIME[path.extname(f)] || 'application/octet-stream', 'Cache-Control': 'no-cache' }); res.end(req.method === 'HEAD' ? undefined : d); });
+  fs.readFile(f, (e, d) => { if (e) { res.writeHead(404); return res.end('Not found'); } if (DEMO && rel === 'index.html') d = Buffer.from(String(d).replace('<body>', '<body>\n' + DEMO_NOTE)); res.writeHead(200, { 'Content-Type': MIME[path.extname(f)] || 'application/octet-stream', 'Cache-Control': 'no-cache' }); res.end(req.method === 'HEAD' ? undefined : d); });
 }
 
-const server = http.createServer(async (req, res) => {
+async function handler(req, res) {
   secHeaders(res);
   try {
     const url = new URL(req.url, 'http://x');
@@ -350,9 +353,12 @@ const server = http.createServer(async (req, res) => {
     if (e && e.code === 400) return err(res, 400, e.message);
     console.error(e); if (!res.headersSent) err(res, 500, 'server error'); else res.end();
   }
-});
-server.listen(PORT, HOST, () => {
+}
+/* Startup (DB, migrations, seed, inbound secret) runs once at module load, i.e. once per process or serverless cold start.
+   `node server.js` listens; require('./server.js') only exports the handler (api/index.js uses it on Vercel). */
+const server = http.createServer(handler);
+if (require.main === module) server.listen(PORT, HOST, () => {
   console.log(`Hoggy running at http://${HOST}:${PORT}`);
   console.log(`Inbound email webhook: POST /api/inbound/email with header X-Hoggy-Secret (see ${secretFile}); mail domain ${MAIL_DOMAIN}`);
 });
-module.exports = { server };
+module.exports = { handler, server };

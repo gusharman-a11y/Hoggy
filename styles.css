@@ -192,6 +192,9 @@ td{padding:11px 8px;border-bottom:1px solid var(--line)}
   .sheet{height:94vh;border-radius:20px 20px 0 0;border-left:0}
   .toasts{bottom:90px}
 }
+/* preview notice: only injected by the server on Vercel / HOGGY_DEMO=1 */
+.demo-note{position:fixed;right:16px;bottom:16px;z-index:30;max-width:calc(100% - 32px);padding:6px 12px;border-radius:99px;background:var(--card);border:1px solid var(--line);color:var(--faint);font-size:12px;font-weight:500;line-height:1.4;pointer-events:none}
+@media (max-width:900px){.demo-note{right:8px;bottom:calc(76px + env(safe-area-inset-bottom));max-width:calc(100% - 16px)}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-@media print{.side,.toasts,.overlay,.btn,.filters{display:none!important}.app{display:block}body{background:#fff;color:#000}}
+@media print{.side,.toasts,.overlay,.btn,.filters,.demo-note{display:none!important}.app{display:block}body{background:#fff;color:#000}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}

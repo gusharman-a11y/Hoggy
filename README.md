@@ -36,6 +36,15 @@ Start with `HOGGY_INGEST=1 HOGGY_ADMINS=you@example.com HOGGY_ADMIN_KEY=<long ra
 Known gaps: no email verification or password reset (needs outbound mail), so registration reveals whether an email exists and reviewers are not email-verified.
 3. Receipt files are stored per device (IndexedDB); synced state covers trips, receipts metadata, CPD and settings.
 
+## Deploying to Vercel
+
+`vercel.json` sends every path to one Node 22 function (`api/index.js`, which reuses the handler from `server.js`). Locally nothing changes: `node server.js` still listens as before.
+
+- Import the repo in Vercel; Framework Preset **Other**. Leave build, output and install settings at their defaults (`vercel.json` sets them; the empty `public/` output stops Vercel publishing the source tree as static files). Node.js version 22.x (from `package.json`).
+- When `VERCEL` is set, the server keeps data in `/tmp/hoggy-data`, marks cookies `Secure`, trusts `X-Forwarded-For`, never runs the updater (`HOGGY_INGEST` is ignored), skips local backups and shows a small "Preview" notice (also shown locally with `HOGGY_DEMO=1`).
+- Optional env vars: `HOGGY_INBOUND_SECRET` (otherwise a new one is generated in `/tmp` on every cold start and the inbound-email webhook cannot be configured), `HOGGY_MAIL_DOMAIN`, `HOGGY_ADMIN_KEY` + `HOGGY_ADMINS` (admin endpoints stay off without the key).
+- **Data is not persistent on Vercel.** `/tmp` is per instance and wiped when it is recycled, so accounts, sessions, reviews and receipts disappear and can differ between concurrent instances. Conferences are re-seeded from `data/conferences.js` on each cold start. This is a preview only; production needs a hosted database (or a long-running host with a persistent disk for `HOGGY_DATA`).
+
 ## Trust rules
 
 - **Verified attendee** = the reviewer marked the trip attended AND a receipt was emailed to their private Hoggy address dated within the event window (±7 days). Self-claims never verify.

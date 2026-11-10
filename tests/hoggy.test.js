@@ -119,3 +119,13 @@ test('healthz, review report/delete, seed versioning', async (t) => {
   const [, after] = await b('/api/reviews?conf=' + id); assert.equal(after.length, 0, 'hidden after 3 reports');
   assert.equal((await a('/api/admin/candidates'))[0], 403, 'admin only');
 });
+
+test('require(server.js) exports the handler and does not listen (Vercel entry)', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'hoggy3-'));
+  const code = `const m = require(${JSON.stringify(path.join(__dirname, '..', 'api', 'index.js'))}); const s = require(${JSON.stringify(path.join(__dirname, '..', 'server.js'))});
+    console.log(JSON.stringify({ fn: typeof m, same: m === s.handler, listening: s.server.listening }));`;
+  const r = require('node:child_process').spawnSync(process.execPath, ['-e', code], { env: { ...process.env, HOGGY_DATA: dir, PORT: '1' }, encoding: 'utf8', timeout: 20000 });
+  assert.equal(r.status, 0, 'process exits on its own: nothing left listening ' + r.stderr);
+  const out = JSON.parse(r.stdout.trim().split('\n').pop());
+  assert.deepEqual(out, { fn: 'function', same: true, listening: false });
+});
