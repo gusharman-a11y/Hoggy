@@ -198,3 +198,6 @@ td{padding:11px 8px;border-bottom:1px solid var(--line)}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 @media print{.side,.toasts,.overlay,.btn,.filters,.demo-note{display:none!important}.app{display:block}body{background:#fff;color:#000}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.overlay.still,.overlay.still .sheet{animation:none}
+.from-field{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);font-weight:600}
+.from-field input{width:130px;padding:6px 10px}
