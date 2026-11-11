@@ -44,16 +44,18 @@ test('server API', async (t) => {
   assert.equal((await call('/api/register', { method: 'POST', body: JSON.stringify({ email, password: 'correct-horse-battery' }) }))[0], 409);
   assert.equal((await call('/api/state', { method: 'PUT', body: JSON.stringify({ state: { trips: [{ id: 't1', confId: 'esc-congress', status: 'attended' }] }, baseRev: 0 }) }))[0], 200);
   assert.equal((await call('/api/state', { method: 'PUT', body: JSON.stringify({ state: {}, baseRev: 0 }) }))[0], 409, 'stale write rejected');
-  assert.equal((await call('/api/reviews', { method: 'POST', body: JSON.stringify({ confId: 'not-a-conference', rating: 5, text: 'twelve characters' }) }))[0], 400);
-  assert.equal((await call('/api/reviews', { method: 'POST', body: JSON.stringify({ confId: 'esc-congress', rating: 4, text: 'Strong programme, well run', dims: { content: 5, value: 3 } }) }))[0], 200);
-  const [, rv] = await call('/api/reviews?conf=esc-congress'); assert.equal(rv.length, 1); assert.equal(rv[0].verified, false, 'self-claimed attendance is NOT verification'); assert.equal(rv[0].dims.content, 5);
+  const Y = new Date().getUTCFullYear(), R5 = { content: 5, networking: 4, venue: 4, value: 3, cpd: 4 };
+  assert.equal((await call('/api/reviews', { method: 'POST', body: JSON.stringify({ series: 'not-a-conference', editions: [{ year: Y - 6 }], ratings: R5, text: 'twelve characters' }) }))[0], 400);
+  const [, rlist] = await call('/api/reviews?conf=esc-congress'); assert.deepEqual(rlist, []);
+  const escKey = require('../lib/series.js').seriesKey((await (await fetch(B + '/api/conferences')).json()).conferences.find(c => c.id === 'esc-congress'));
+  assert.equal((await call('/api/reviews', { method: 'POST', body: JSON.stringify({ series: escKey, editions: [{ year: Y - 6 }], ratings: R5, text: 'Strong programme, well run', verified: true }) }))[0], 201);
+  const [, rv] = await call('/api/reviews?conf=esc-congress'); assert.equal(rv.length, 1); assert.equal(rv[0].verified, false, 'self-claimed attendance is NOT verification'); assert.equal(rv[0].ratings.content, 5);
   const secret = fs.readFileSync(path.join(dir, 'inbound-secret.txt'), 'utf8').trim();
   assert.equal((await fetch(B + '/api/inbound/email', { method: 'POST', headers: { ...H, 'X-Hoggy-Secret': 'wrong' }, body: '{}' })).status, 401);
   const confs = (await (await fetch(B + '/api/conferences')).json()).conferences, esc1 = confs.find(c => c.id === 'esc-congress');
   const ok = await fetch(B + '/api/inbound/email', { method: 'POST', headers: { ...H, 'X-Hoggy-Secret': secret }, body: JSON.stringify({ To: reg.user.inbox, From: 'Hilton <n@h.com>', Subject: 'Receipt', TextBody: `Total $612.50\n${esc1.start}` }) });
   assert.equal(ok.status, 200);
-  assert.equal((await call('/api/reviews', { method: 'POST', body: JSON.stringify({ confId: 'esc-congress', rating: 4, text: 'Strong programme, well run', dims: { content: 5, value: 3 } }) }))[0], 200);
-  const [, rv2] = await call('/api/reviews?conf=esc-congress'); assert.equal(rv2[0].verified, true, 'receipt emailed in the event window verifies');
+  const [, rv2] = await call('/api/reviews?conf=esc-congress'); assert.equal(rv2[0].verified, false, 'B36: an "attended" trip in synced state plus a hotel receipt does not verify');
   const [, inbox] = await call('/api/inbox'); assert.equal(inbox.length, 1); assert.equal(inbox[0].amount, 612.5);
   const [fs1] = [(await fetch(B + `/api/files/${inbox[0].fileId}`, { headers: H })).status]; assert.equal(fs1, 401, 'files need a session');
   { /* C01: receipt files are kept server-side so they survive a cleared browser */
@@ -112,7 +114,8 @@ test('healthz, review report/delete, seed versioning', async (t) => {
   const mk = async (n) => { let cookie = ''; const r = await fetch(B + '/api/register', { method: 'POST', headers: H, body: JSON.stringify({ email: `u${n}${Date.now()}@example.com`, password: 'correct-horse-battery', name: 'U' + n }) }); cookie = r.headers.get('set-cookie').split(';')[0]; return (p, o = {}) => fetch(B + p, { ...o, headers: { ...H, cookie } }).then(async x => [x.status, await x.json().catch(() => null)]); };
   const a = await mk('a'), b = await mk('b'), c = await mk('c'), d = await mk('d');
   const id = list.conferences[0].id;
-  await a('/api/reviews', { method: 'POST', body: JSON.stringify({ confId: id, rating: 4, text: 'A decent programme overall' }) });
+  const key = require('../lib/series.js').seriesKey(list.conferences[0]);
+  assert.equal((await a('/api/reviews', { method: 'POST', body: JSON.stringify({ series: key, editions: [{ year: new Date().getUTCFullYear() - 2 }], ratings: { content: 4, networking: 4, venue: 4, value: 4, cpd: 4 }, text: 'A decent programme overall' }) }))[0], 201);
   const [, rv] = await a('/api/reviews?conf=' + id); assert.equal(rv[0].mine, true);
   assert.equal((await a(`/api/reviews/${rv[0].id}/report`, { method: 'POST' }))[0], 400, 'cannot report own');
   for (const x of [b, c, d]) assert.equal((await x(`/api/reviews/${rv[0].id}/report`, { method: 'POST' }))[0], 200);
