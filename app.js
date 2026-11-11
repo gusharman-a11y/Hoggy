@@ -133,7 +133,7 @@ async function syncFiles() { /* learn what is on this device, then reconcile wit
       else if (!FILES.has(r.fileKey) && have.has(r.fileKey)) await getFile(r.fileKey);
     }
   }
-  FILES_LOADED = true; render();
+  FILES_LOADED = true; bgRender();
 }
 async function openFile(r) {
   const b = r.fileKey && await getFile(r.fileKey); if (!b) return toast('This receipt file is not on this device. Sign in to restore it, or attach it again.');
@@ -170,6 +170,12 @@ function renderNav() {
   $('#savedList').innerHTML = S.saved.map(byId).filter(Boolean).slice(0, 12).map(c => `<button data-act="open" data-id="${esc(c.id)}"><span class="mini" style="background:${grad(c)}"></span><span class="t">${esc(c.name)}</span></button>`).join('') || '<div class="saved-title" style="text-transform:none;letter-spacing:0;font-weight:400">Tap the heart on a conference to save it.</div>';
 }
 function applyTheme() { const t = S.profile.theme; if (t === 'auto') document.documentElement.removeAttribute('data-theme'); else document.documentElement.setAttribute('data-theme', t); }
+/* background refresh (data arrived from the server): keep the scroll position and never wipe a field the user is typing in */
+function bgRender() {
+  if (route() === 'discover' && $('#results')) { renderNav(); results(); return; }
+  const a = document.activeElement; if (a && $('#main').contains(a) && a.matches('input,textarea,select')) { a.addEventListener('blur', () => setTimeout(bgRender, 0), { once: true }); return; }
+  const y = window.scrollY; render(); if (window.scrollY !== y) window.scrollTo(0, y);
+}
 function render() { applyTheme(); renderNav(); const r = route(); $('#main').innerHTML = VIEWS[r](); (AFTER[r] || (() => { }))(); document.title = `${ROUTES[r][0]} · Hoggy`; }
 
 /* ---------- cards ---------- */
