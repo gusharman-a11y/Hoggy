@@ -196,17 +196,43 @@ const VIEWS = {
   home() {
     const p = S.profile, trips = S.trips.filter(t => t.status === 'planned').sort((a, b) => ofTrip(a).start.localeCompare(ofTrip(b).start)), next = trips[0];
     const unclaimed = S.receipts.filter(r => r.status === 'captured').reduce((a, r) => a + homeAmt(r), 0), pending = S.receipts.filter(r => r.status === 'claimed').reduce((a, r) => a + homeAmt(r), 0);
-    const picks = upcoming().sort((a, b) => matchScore(b) - matchScore(a)).slice(0, 8), tot = cpdTotal(), pct = Math.min(100, Math.round(tot / (p.cpdTarget || 1) * 100));
-    return `<section class="hero"><h1>${p.name ? 'Hello, ' + esc(p.name.split(' ')[0]) + '.' : 'Great conferences, none of the admin.'}</h1>
-      <p>Hoggy scans the world's medical conferences, helps you plan the trip, files every receipt, and keeps your CPD hours and expense claims organised and claim-ready.</p>
-      <div class="row"><a class="btn primary" href="#/discover">Find conferences</a><a class="btn ghost" href="#/receipts">Forward a receipt</a></div></section>
+    const tot = cpdTotal(), pct = Math.min(100, Math.round(tot / (p.cpdTarget || 1) * 100));
+    const active = S.trips.length || S.receipts.length || S.cpd.length;
+    const HS = window.HoggyStats, st = HS ? HS.homeStats(CONFS, today()) : null, examples = HS ? HS.exampleConfs(CONFS, today(), 4) : upcoming().slice(0, 4), n = v => Number(v).toLocaleString('en-AU');
+    const dash = `<section class="hero hero-dash"><h1>${p.name ? 'Welcome back, ' + esc(p.name.split(' ')[0]) + '.' : 'Welcome back.'}</h1>
+      <p>Your conferences, trips, receipts and CPD in one place.</p>
+      <div class="row"><a class="btn primary" href="#/discover">Find conferences</a><a class="btn ghost" href="#/receipts">Add a receipt</a></div></section>
     <div class="tiles">
-      <div class="tile"><div class="k">Next trip</div><div class="v" style="font-size:22px;line-height:1.15">${next ? esc(ofTrip(next).name) : 'None planned'}</div><div class="s">${next ? esc(ofTrip(next).city) + ' · ' + esc(range(ofTrip(next))) : 'Plan one from Discover'}</div></div>
-      <div class="tile"><div class="k">CPD ${esc(p.cpdYear)}</div><div class="v">${tot}<span style="font-size:18px;color:var(--muted)"> / ${esc(p.cpdTarget)} h</span></div><div class="bar" style="margin-top:10px"><i style="width:${pct}%"></i></div></div>
-      <div class="tile"><div class="k">Not yet claimed</div><div class="v">${money(unclaimed)}</div><div class="s">${S.receipts.filter(r => r.status === 'captured').length} receipts waiting</div></div>
-      <div class="tile"><div class="k">Awaiting reimbursement</div><div class="v">${money(pending)}</div><div class="s">Submitted, not yet paid</div></div></div>
+      <a class="tile" href="#/trips"><div class="k">Next trip</div><div class="v" style="font-size:22px;line-height:1.15">${next ? esc(ofTrip(next).name) : 'None planned'}</div><div class="s">${next ? esc(ofTrip(next).city) + ' · ' + esc(range(ofTrip(next))) : 'Plan one from Discover'}</div></a>
+      <a class="tile" href="#/cpd"><div class="k">CPD ${esc(p.cpdYear)}</div><div class="v">${tot}<span style="font-size:18px;color:var(--muted)"> / ${esc(p.cpdTarget)} h</span></div><div class="bar" style="margin-top:10px"><i style="width:${pct}%"></i></div></a>
+      <a class="tile" href="#/claims"><div class="k">Not yet claimed</div><div class="v">${money(unclaimed)}</div><div class="s">${S.receipts.filter(r => r.status === 'captured').length} receipts waiting</div></a>
+      <a class="tile" href="#/claims"><div class="k">Awaiting reimbursement</div><div class="v">${money(pending)}</div><div class="s">Submitted, not yet paid</div></a></div>
     <div class="section"><h2>Picked for ${esc(p.specialty)}</h2><a href="#/discover">See all</a></div>
-    <div class="grid">${picks.map(card).join('') || '<div class="empty">Conference data is loading or missing.</div>'}</div>`;
+    <div class="grid">${upcoming().sort((a, b) => matchScore(b) - matchScore(a)).slice(0, 4).map(card).join('') || '<div class="empty">Conference data is loading or missing.</div>'}</div>`;
+    const hero = `<section class="hero hero-intro"><span class="eyebrow">Medical conference planner</span>
+      <h1>Find the conference. Hoggy handles the admin.</h1>
+      <p>For doctors and clinicians who travel for CPD: find a meeting, plan the trip, keep every receipt and hand your hospital or employer a claim-ready pack.</p>
+      <div class="row"><a class="btn primary lg" href="#/discover">Find conferences</a><button type="button" class="btn ghost lg" data-act="howto">See how it works</button></div></section>`;
+    const steps = [
+      ['search', 'Find a conference', 'Search by specialty, country, month and CPD. Each listing says whether its dates are confirmed by the organiser or still an estimate.'],
+      ['plane', 'Plan the trip', 'Save it as a trip. Hoggy opens flight and hotel searches prefilled with your dates, and you book with the provider.'],
+      ['receipt', 'Forward or snap receipts', 'Forward booking emails to your private Hoggy address, or add a PDF or photo. Hoggy reads the amount and date where it can and suggests the trip.'],
+      ['claim', 'Claim-ready pack, CPD logged', 'Missing details are flagged before you export. Print or email the pack, then mark the trip attended to log your CPD hours.']];
+    const how = `<section class="how" id="how" tabindex="-1" aria-labelledby="howH"><div class="section"><h2 id="howH">How it works</h2></div>
+      <ol class="steps">${steps.map(([ic, t, d], i) => `<li class="step"><div class="step-top"><span class="step-n">${i + 1}</span>${icon(ic)}</div><h3>${t}</h3><p>${d}</p></li>`).join('')}</ol></section>`;
+    const benefits = [
+      ['One place for the whole trip', 'The conference, your bookings, receipts and CPD sit together, so nothing lives in a stray inbox folder.'],
+      ['A claim pack your employer can check', 'Every receipt needs a file, amount, date and trip before export. Print it, email it or download a CSV.'],
+      ['CPD hours tracked as you go', 'Log hours from conferences and courses and see progress against your yearly target. Export the log for your college.'],
+      ['Dates you can check', 'Confirmed dates come from the organiser\'s own page, with the link and the date Hoggy checked it. Estimates are labelled.']];
+    const ben = `<section aria-labelledby="benH"><div class="section"><h2 id="benH">What you get</h2></div>
+      <div class="benefits">${benefits.map(([t, d]) => `<div class="benefit"><span class="tick" aria-hidden="true">✓</span><div><h3>${t}</h3><p>${d}</p></div></div>`).join('')}</div></section>`;
+    const live = st && st.conferences ? `<section class="live" aria-labelledby="liveH"><div class="live-head"><h2 id="liveH">Live data</h2><span>Counted from Hoggy's conference list just now</span></div>
+      <dl class="live-grid"><div><dt>Upcoming conferences</dt><dd>${n(st.conferences)}</dd></div><div><dt>Countries</dt><dd>${n(st.countries)}</dd></div><div><dt>Specialties</dt><dd>${n(st.specialties)}</dd></div><div><dt>Dates confirmed by organiser</dt><dd>${st.confirmedPct}%</dd><span class="live-sub">${n(st.confirmed)} of ${n(st.conferences)}. The rest are estimates and say so.</span></div></dl></section>` : '';
+    const ex = examples.length ? `<div class="section"><h2>Coming up, dates confirmed</h2><a href="#/discover">Browse all</a></div><div class="grid ex">${examples.map(card).join('')}</div>` : '';
+    const close = `<section class="hero hero-close"><h2>Ready for your next conference?</h2><p>Start with a search. No account needed to browse; sign in when you want your trips and receipts synced.</p>
+      <div class="row"><a class="btn primary lg" href="#/discover">Find conferences</a>${NET.online && !NET.user ? '<button type="button" class="btn ghost lg" data-act="signin">Sign in</button>' : ''}</div></section>`;
+    return active ? dash + how + ben + live : hero + how + ben + live + ex + close;
   },
   discover() {
     const specs = [...new Set(CONFS.map(c => c.specialty))].sort(), regs = [...new Set(CONFS.map(c => c.region))].sort(), ctry = [...new Set(CONFS.map(c => c.country))].sort();
@@ -525,7 +551,7 @@ async function pullInbox(manual) {
     S.receipts.push(rcp); save(); n++;
     const c = rcp.fileKey ? await api('/api/inbox/' + it.id + '/claim', { method: 'POST', body: { key: rcp.fileKey } }) : await api('/api/inbox/' + it.id, { method: 'DELETE' }); if (c.error && rcp.fileKey) UNSAVED.add(rcp.fileKey);
   }
-  if (n) { save(); toast(`${n} receipt${n > 1 ? 's' : ''} arrived by email`); render(); } else if (manual) toast('Inbox is empty');
+  if (n) { save(); toast(`${n} receipt${n > 1 ? 's' : ''} arrived by email`); bgRender(); } else if (manual) toast('Inbox is empty');
 }
 async function loadConferences() {
   const r = await api('/api/conferences'); if (r.error || !Array.isArray(r.conferences) || r.conferences.length < 10) return;
@@ -539,7 +565,7 @@ async function boot() {
   if (NET.user) { await pullState(); await pullInbox(); setInterval(() => pullInbox(), 60000); }
   syncFiles();
   if (window.__capsCleared) { window.__capsCleared = false; toast('Old default spending caps were removed. Enter your own policy limits in Settings if your employer sets them.'); }
-  renderNav(); if (route() === 'discover' && $('#results')) results(); else render();
+  bgRender();
 }
 function authDialog(title) {
   let mode = 'login';
