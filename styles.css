@@ -238,3 +238,5 @@ a.u{text-decoration:underline}
 .overlay.still,.overlay.still .sheet{animation:none}
 .from-field{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);font-weight:600}
 .from-field input{width:130px;padding:6px 10px}
+@media (hover:none){.art .save{opacity:1;transform:none;background:rgba(0,0,0,.45);color:#fff}.art .save.on{background:var(--accent);color:var(--accent-ink)}}
+@media (max-width:900px){.filters{position:static;background:none;padding-bottom:6px}.selects{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0 -16px;padding:0 16px 2px}.selects::-webkit-scrollbar{display:none}.selects select{flex:none}.count{flex:none;padding-right:16px}}
