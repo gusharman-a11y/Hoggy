@@ -15,7 +15,10 @@ Open http://127.0.0.1:8123. Without the server (any static host) the app still w
 
 - Accounts (scrypt, HttpOnly session cookie, rate-limited login/register), CSRF header check on every mutating call.
 - `GET/PUT /api/state` — per-user sync with revision conflict detection.
-- `GET/POST /api/reviews`, `GET /api/ratings` — real shared reviews, one per user per conference.
+- Reviews belong to a conference **series** (every edition), keyed by `lib/series.js` (organiser tag + name with years, ordinals and edition numbers removed). One review per user per series per year attended (up to 10 years back), five ratings (content and speakers, networking, venue and organisation, value for money, CPD worth) and a comment of up to 600 characters.
+  - `GET /api/reviews?series=<key>` (or `?conf=<id>`), `GET /api/ratings` (per series), `GET /api/my-reviews`; `POST /api/reviews` `{series, editions:[{year, city}], ratings, text}` adds one or more years at once; `PUT`/`DELETE /api/reviews/<id>` (author only); `POST /api/reviews/<id>/report`.
+  - `POST /api/reviews/<id>/proof?kind=certificate|cpd|receipt` (PDF/JPG/PNG, 5 MB, magic bytes checked). Proof files are never served publicly: only `GET /api/admin/proofs/<id>/file` returns them, and they are deleted once an admin approves or rejects.
+  - Share link `/#/review/<seriesKey>` opens the review form (sign-in first if needed).
 - `POST /api/inbound/email` with header `X-Hoggy-Secret` (or HTTP Basic, password = secret) — inbound-email webhook (Postmark-style JSON, or `{to,from,subject,text,attachments}`). Matches `dr-<token>@receipts.hoggy.app` to a user, parses the receipt, stores the attachment, and the app pulls it into Receipts within a minute.
 - Data in `data-store/` (SQLite + inbound secret). Back this folder up; do not publish it.
 
@@ -43,12 +46,13 @@ Known gaps: no email verification or password reset (needs outbound mail), so re
 - Import the repo in Vercel; Framework Preset **Other**. Leave build, output and install settings at their defaults (`vercel.json` sets them; the empty `public/` output stops Vercel publishing the source tree as static files). Node.js version 22.x (from `package.json`).
 - When `VERCEL` is set, the server keeps data in `/tmp/hoggy-data`, marks cookies `Secure`, trusts `X-Forwarded-For`, never runs the updater (`HOGGY_INGEST` is ignored), skips local backups and shows a small "Preview" notice (also shown locally with `HOGGY_DEMO=1`).
 - Optional env vars: `HOGGY_INBOUND_SECRET` (otherwise a new one is generated in `/tmp` on every cold start and the inbound-email webhook cannot be configured), `HOGGY_MAIL_DOMAIN`, `HOGGY_ADMIN_KEY` + `HOGGY_ADMINS` (admin endpoints stay off without the key).
-- **Data is not persistent on Vercel.** `/tmp` is per instance and wiped when it is recycled, so accounts, sessions, reviews and receipts disappear and can differ between concurrent instances. Conferences are re-seeded from `data/conferences.js` on each cold start. This is a preview only; production needs a hosted database (or a long-running host with a persistent disk for `HOGGY_DATA`).
+- **Data is not persistent on Vercel.** `/tmp` is per instance and wiped when it is recycled, so accounts, sessions, reviews, proof-of-attendance uploads and receipts disappear and can differ between concurrent instances. Conferences are re-seeded from `data/conferences.js` on each cold start. This is a preview only; production needs a hosted database (or a long-running host with a persistent disk for `HOGGY_DATA`).
 
 ## Trust rules
 
-- **Verified attendee** = the reviewer marked the trip attended AND a receipt was emailed to their private Hoggy address dated within the event window (±7 days). Self-claims never verify.
-- Review scores show only after 5 verified reviews. Reports from accounts younger than 24h (`HOGGY_REPORT_MIN_AGE_H`) are ignored; 3 reports hide a review pending admin review.
+- **Verified attendee** is decided on the server only, never from the request or from synced trip state. Either (a) the server received, at the reviewer's private Hoggy address, a registration receipt that names the conference and is dated from 400 days before that edition to 7 days after it, or (b) an admin approved an uploaded certificate of attendance, CPD certificate or registration receipt at `/admin.html`. Otherwise a review shows "Attended (not verified)"; while a proof waits it is `pending_proof` (still unverified).
+- Scores are per series: a verified review counts in full, an unverified one counts half, and nothing is shown until a series has 3 reviews. Reports from accounts younger than 24h (`HOGGY_REPORT_MIN_AGE_H`) are ignored; 3 reports hide a review pending admin review. Organisers have no way to edit or delete reviews.
+- Older per-conference reviews were moved into the series model on first start (old table kept as `reviews_v1`); every old "verified" flag was reset because it came from client state.
 - Dates are shown as confirmed only when an organiser page was read (stored `sourceUrl` + `lastVerified`). CPD hours/accreditation are shown only when published; otherwise "check organiser".
 
 ## Not built
