@@ -67,16 +67,19 @@ const download = (name, text, type = 'text/csv') => { const a = document.createE
 function toast(msg) { const t = document.createElement('div'); t.className = 'toast'; t.textContent = msg; $('#toasts').appendChild(t); setTimeout(() => t.remove(), 2800); }
 const safeUrl = u => { try { const x = new URL(u); return x.protocol === 'https:' ? x.href : '#'; } catch (e) { return '#'; } };
 
-/* ---------- reviews (demo seed + yours) ---------- */
-const DIM_LABELS = [['content', 'Content'], ['networking', 'Networking'], ['value', 'Value'], ['venue', 'Venue'], ['cpd', 'CPD admin']];
-const NET = { online: false, user: null, rev: 0, ratings: {}, reviews: {}, busy: false };
-function reviewsFor(c) {
-  if (NET.online) return (NET.reviews[c.id] || []).map(r => ({ author: r.author, role: r.role || 'Member', rating: r.rating, text: r.text, dims: r.dims || {}, verified: !!r.verified, id: r.id, mine: !!r.mine }));
-  return S.reviews.filter(r => r.confId === c.id);
-}
-const scoreShown = c => { if (!NET.online) return rating(c); const r = NET.ratings[c.id]; return r && r.verified >= 5 ? r.avg : null; };
-const reviewCount = c => NET.online ? ((NET.ratings[c.id] || {}).n || 0) : reviewsFor(c).length;
-const rating = c => { if (NET.online) { const r = NET.ratings[c.id]; return r && r.n ? r.avg : null; } const r = reviewsFor(c); return r.length ? r.reduce((a, x) => a + x.rating, 0) / r.length : null; };
+/* ---------- reviews: per conference series (every edition), from the Hoggy server ---------- */
+const DIM_LABELS = [['content', 'Content & speakers'], ['networking', 'Networking'], ['venue', 'Venue & organisation'], ['value', 'Value for money'], ['cpd', 'CPD worth']];
+const NET = { online: false, user: null, rev: 0, ratings: {}, reviews: {}, mine: [], busy: false };
+const SKEYS = new WeakMap(); /* computed once per conference object */
+const skey = c => { let k = SKEYS.get(c); if (!k) { k = window.HoggySeries ? window.HoggySeries.seriesKey(c) : c.id; SKEYS.set(c, k); } return k; };
+const editionsOf = key => CONFS.filter(c => skey(c) === key).sort((a, b) => a.start.localeCompare(b.start));
+const reviewsFor = c => NET.online ? (NET.reviews[skey(c)] || []) : S.reviews.filter(r => r.confId === c.id);
+const scoreOf = c => NET.online ? NET.ratings[skey(c)] || null : null;
+const scoreShown = c => { const s = scoreOf(c); return s && s.avg != null ? s.avg : null; };
+const reviewCount = c => { const s = scoreOf(c); return s ? s.n : 0; };
+const rating = c => scoreShown(c);
+const reviewedYear = (key, year) => NET.mine.some(r => r.seriesKey === key && r.editionYear === year);
+const plural = (n, w) => `${n} ${w}${n === 1 ? '' : 's'}`;
 
 /* ---------- travel links (deep-link search, real booking happens with the partner) ---------- */
 const links = (c, from = S.profile.homeAirport || S.profile.city) => window.HoggyStats.travelLinks(c, from);
@@ -162,7 +165,10 @@ const ready = r => !receiptIssues(r).some(i => i.lvl === 'bad');
 
 /* ---------- router / shell ---------- */
 const ROUTES = { home: ['Home', 'home'], discover: ['Discover', 'search'], trips: ['Trips', 'plane'], receipts: ['Receipts', 'receipt'], claims: ['Claims', 'claim'], cpd: ['CPD', 'cpd'], settings: ['Settings', 'gear'] };
-const route = () => { const r = (location.hash.replace(/^#\/?/, '') || 'home').split('?')[0]; return Object.prototype.hasOwnProperty.call(ROUTES, r) ? r : 'home'; };
+const reviewHash = () => { const m = location.hash.match(/^#\/review\/([a-z0-9-]{1,80})$/); return m ? m[1] : null; };
+const route = () => { if (reviewHash()) return 'discover'; const r = (location.hash.replace(/^#\/?/, '') || 'home').split('?')[0]; return Object.prototype.hasOwnProperty.call(ROUTES, r) ? r : 'home'; };
+/* share links (#/review/<seriesKey>) open the review form straight away, after sign-in if needed */
+function openReviewLink() { const k = reviewHash(); if (!k || !NET.booted) return; if (!startReview(k)) history.replaceState(null, '', '#/discover'); }
 function renderNav() {
   renderAcct();
   const cur = route(), open = S.receipts.filter(r => r.status === 'captured').length;
@@ -255,6 +261,7 @@ const VIEWS = {
       (ts.length ? ts.map(t => { const c = ofTrip(t), L = links(c, t.from || undefined), spent = S.receipts.filter(r => r.tripId === t.id).reduce((a, r) => a + homeAmt(r), 0), booked = (t.bookings || []).reduce((a, b) => a + Number(b.amount || 0), 0);
         return `<div class="panel"><div class="row" style="justify-content:space-between;align-items:flex-start"><div class="row" style="gap:14px;align-items:flex-start"><div class="thumb" style="width:64px;height:64px;background:${grad(c)};color:#fff;font-weight:800">${esc(initials(c))}</div><div><h3 style="margin:0">${esc(c.name)}</h3><div class="s" style="color:var(--muted)">${FLAG(c.countryCode)} ${esc(c.city)}, ${esc(c.country)} · ${esc(range(c))}</div><div class="pills" style="margin-top:8px"><span class="pill ${t.status === 'attended' ? 'g' : 'w'}">${t.status === 'attended' ? 'Attended' : 'Planned'}</span><span class="pill ${c.cpdVerified && c.cpdHours ? 'g' : ''}">${esc(cpdLabel(c))}</span><span class="pill">Booked ${money(booked)}</span><span class="pill">Receipts ${money(spent)}</span></div></div></div>
           <div class="row"><button class="btn sm" data-act="open" data-id="${esc(c.id)}">Details</button>${t.status === 'planned' ? `<button class="btn sm primary" data-act="attend" data-id="${esc(t.id)}">Mark attended</button>` : ''}<button class="btn sm danger" data-act="rmtrip" data-id="${esc(t.id)}">Remove</button></div></div>
+          ${NET.online && c.end < today() && !reviewedYear(skey(c), +c.start.slice(0, 4)) ? `<div class="rv-prompt"><span><b>How was it?</b> Review it in a minute. It helps colleagues choose.</span><button class="btn sm primary" data-act="review" data-id="${esc(c.id)}" data-year="${esc(c.start.slice(0, 4))}">Review ${esc(c.start.slice(0, 4))}</button></div>` : ''}
           <div class="row" style="margin-top:16px"><label class="from-field">Flying from <input type="text" data-from="${esc(t.id)}" value="${esc(t.from || S.profile.homeAirport || S.profile.city || '')}" maxlength="40" placeholder="City or airport" aria-label="Flying from (city or airport code) for ${esc(c.name)}"></label><a class="btn sm" target="_blank" rel="noopener noreferrer" data-flights="${esc(t.id)}" href="${esc(L.flights)}">✈ Search flights ${icon('ext')}</a><a class="btn sm" target="_blank" rel="noopener noreferrer" href="${esc(L.hotels)}">🛏 Search hotels ${icon('ext')}</a><button class="btn sm ghost" data-act="addbook" data-id="${esc(t.id)}">${icon('plus')} Log a booking</button><button class="btn sm ghost" data-act="addreceipt" data-id="${esc(t.id)}">${icon('receipt')} Add receipt</button></div>
           ${(t.bookings || []).length ? `<div class="list" style="margin-top:12px">${t.bookings.map(b => `<div class="li"><div class="grow"><div class="t">${esc(b.type)} · ${esc(b.vendor)}</div><div class="s">Ref ${esc(b.ref || '—')} · ${esc(b.date ? fmtD(b.date) : '')}</div></div><div class="amt">${money(b.amount)}</div><button class="icon-btn" data-act="rmbook" data-id="${esc(t.id)}" data-b="${esc(b.id)}" aria-label="Remove booking">${icon('x')}</button></div>`).join('')}</div>` : ''}</div>`; }).join('')
         : `<div class="empty"><h3>No trips yet</h3><p>Save a conference and hit “Plan trip” to start. Hoggy prefills flight and hotel searches for the exact dates.</p><p style="margin-top:16px"><a class="btn primary" href="#/discover">Browse conferences</a></p></div>`) +
@@ -363,7 +370,7 @@ function openOverlay(html, center) {
   const ns = o.querySelector('.sheet'); if (ns) ns.scrollTop = top;
   const back = actKey && (o.querySelector(`[data-act="${CSS.escape(actKey)}"]`) || document.getElementById(actKey)); if (back) back.focus({ preventScroll: true });
 }
-function closeOverlay() { const o = $('#overlay'); const pv = o._prev && o._prev.isConnected ? o._prev : null; o._prev = null; o.hidden = true; o.className = 'overlay'; o.innerHTML = ''; document.body.style.overflow = ''; if (pv) pv.focus({ preventScroll: true }); }
+function closeOverlay(keepHash) { if (!keepHash && reviewHash()) history.replaceState(null, '', '#/discover'); const o = $('#overlay'); const pv = o._prev && o._prev.isConnected ? o._prev : null; o._prev = null; o.hidden = true; o.className = 'overlay'; o.innerHTML = ''; document.body.style.overflow = ''; if (pv) pv.focus({ preventScroll: true }); }
 function detail(id, fetchReviews = true) {
   const c = byId(id); if (!c) return;
   const on = S.saved.includes(id), trip = S.trips.find(t => t.confId === id), L = links(c), R = reviewsFor(c), r = rating(c);
@@ -374,18 +381,99 @@ function detail(id, fetchReviews = true) {
   ${c.flagged ? '<p class="check warn" style="margin:0 0 10px">! Hoggy\'s updater noticed a change or problem on the organiser site (dead link or cancellation wording). Check the official site before booking.</p>' : ''}<div class="pills" style="margin:0 0 14px" aria-label="Quality signals">${c.cpdBody && c.cpdVerified ? `<span class="pill g">Accreditation: ${esc(c.cpdBody)}</span>` : '<span class="pill w">Accreditation: confirm with organiser</span>'}<span class="pill ${c.datesConfirmed === false ? 'w' : 'g'}">${c.datesConfirmed === false ? 'Dates estimated' : 'Dates confirmed'}</span><span class="pill">Run by ${esc(c.organiser)}</span><span class="pill">${esc(c.format)}</span>${c.attendees >= 3000 ? '<span class="pill">Large (3,000+)</span>' : c.attendees ? '<span class="pill">~' + esc(Number(c.attendees).toLocaleString()) + ' attendees</span>' : ''}</div>
   <p class="note" style="margin:-6px 0 12px">Elsewhere on the web: <a style="text-decoration:underline" target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=${encodeURIComponent(c.name + ' ' + c.start.slice(0, 4) + ' review')}">search reviews</a> (external, not part of Hoggy's score)</p>
   <div class="row"><a class="btn sm" target="_blank" rel="noopener noreferrer" href="${esc(L.flights)}">✈ Flights ${icon('ext')}</a><a class="btn sm" target="_blank" rel="noopener noreferrer" href="${esc(L.hotels)}">🛏 Hotels ${icon('ext')}</a><button class="btn sm ghost" data-act="ics" data-id="${esc(id)}">+ Calendar</button></div>
-  ${NET.online && NET.ratings[id] && Object.keys(NET.ratings[id].dims || {}).length ? `<div class="dimgrid" style="margin-top:22px">${DIM_LABELS.filter(([k]) => NET.ratings[id].dims[k]).map(([k, l]) => `<div class="dim"><span>${l}</span><b>${NET.ratings[id].dims[k].toFixed(1)}</b></div>`).join('')}</div><p class="note">${NET.ratings[id].verified} of ${NET.ratings[id].n} reviews from verified attendees (trip marked attended, plus a receipt emailed to Hoggy dated in the event window).</p>` : ''}<div class="section" style="margin-top:28px"><h2 style="font-size:20px">Reviews</h2><span>${scoreShown(c) != null ? `<span class="stars">${stars(scoreShown(c))}</span> ${scoreShown(c).toFixed(1)} · ${R.length}` : R.length ? `${R.length} early review${R.length > 1 ? 's' : ''} · score shows after 5 verified` : 'No reviews yet'}</span></div>
-  <p class="note" style="margin:-4px 0 6px">${NET.online ? 'Reviews from signed-in Hoggy members. One review per person; posting again updates yours.' : 'Offline mode: only reviews you wrote on this device show here. Run the Hoggy server and sign in to read and post shared reviews.'}</p>
-  ${R.length ? '' : '<p class="note">No reviews yet. Be the first.</p>'}${R.map(v => `<div class="review"><div class="who">${esc(v.author)} <span class="pill ${v.demo ? '' : 'g'}" style="margin-left:6px">${v.verified ? '✓ ' : ''}${esc(v.role)}</span> <span class="stars" style="float:right">${stars(v.rating)}</span></div><p>${esc(v.text)}</p>${NET.user && v.id ? (v.mine ? `<button class="btn sm ghost" data-act="rvdel" data-id="${esc(id)}">Delete my review</button>` : `<button class="btn sm ghost" data-act="rvreport" data-id="${esc(v.id)}" data-conf="${esc(id)}">Report</button>`) : ''}</div>`).join('')}
-  <form id="rv" class="review" data-id="${esc(id)}"><div class="who" style="margin-bottom:8px">Attended? Add your review</div><div class="stars-in" id="rvStars" role="radiogroup" aria-label="Overall rating">${[1, 2, 3, 4, 5].map(n => `<button type="button" role="radio" aria-checked="false" data-star="${n}" aria-label="${n} star${n > 1 ? 's' : ''}">★</button>`).join('')}</div>${NET.online ? `<div class="dimgrid">${DIM_LABELS.map(([k, l]) => `<div class="dim"><span>${l}</span><select name="d_${k}" aria-label="${l} rating"><option value="">–</option>${[1, 2, 3, 4, 5].map(n => `<option>${n}</option>`).join('')}</select></div>`).join('')}</div>` : ''}<textarea id="rvText" maxlength="600" placeholder="What was worth it, what wasn't, tips for next year…" aria-label="Review text" style="margin-top:10px"></textarea><p style="margin-top:10px"><button class="btn sm primary" type="submit">Post review</button></p></form></div></div>`);
-  if (NET.online && fetchReviews) loadReviews(id).then(ok => { if (ok && !$('#overlay').hidden && $('#rv') && $('#rv').dataset.id === id && !$('#rvText').value) detail(id, false); }); /* fetch once per open; re-rendering with fetch again looped forever */
-  let sc = 0; const st = $('#rvStars'); st.addEventListener('click', e => { const b = e.target.closest('[data-star]'); if (!b) return; sc = +b.dataset.star; st.querySelectorAll('button').forEach((x, i) => { x.classList.toggle('on', i < sc); x.setAttribute('aria-checked', i + 1 === sc); }); });
-  $('#rv').addEventListener('submit', async e => { e.preventDefault(); const t = $('#rvText').value.trim(); if (!sc || t.length < 10) return toast('Pick a rating and write at least 10 characters');
-    if (!NET.online) { S.reviews.push({ confId: id, author: S.profile.name || 'You', role: 'Attendee', rating: sc, text: t.slice(0, 600), mine: true }); save(); toast('Review saved on this device'); return detail(id); }
-    if (!NET.user) return authDialog('Sign in to post a review');
-    const r = await api('/api/reviews', { method: 'POST', body: { confId: id, rating: sc, text: t, dims: Object.fromEntries(DIM_LABELS.map(([k]) => [k, +$('#rv').elements['d_' + k].value || 0]).filter(x => x[1])) } }); if (r.error) return toast(r.error);
-    toast('Review posted'); await Promise.all([loadReviews(id), loadRatings()]); detail(id); });
+  ${reviewsSection(c, R)}</div></div>`);
+  if (NET.online && fetchReviews) loadReviews(id).then(ok => { if (ok && !$('#overlay').hidden && $('#rvsec') && $('#rvsec').dataset.id === id) detail(id, false); }); /* fetch once per open; re-rendering with fetch again looped forever */
 }
+/* ---------- reviews section, review form, proof upload ---------- */
+const HOW_SCORES = 'Scores cover every year of this conference. A verified review counts in full and an unverified one counts half. A score shows once there are at least 3 reviews. "Verified attendee" means Hoggy holds a registration receipt you emailed to your Hoggy address, or an admin has checked your certificate or receipt.';
+const edLabel = r => 'Attended ' + r.editionYear + (r.city ? ' · ' + r.city : '');
+const shareLink = key => location.origin + location.pathname + '#/review/' + key;
+function scoreLine(sc) {
+  if (!sc || !sc.n) return 'No reviews yet';
+  if (sc.avg == null) return `Not enough reviews yet · ${plural(sc.n, 'review')} so far`;
+  return `<span class="stars" aria-hidden="true">${stars(sc.avg)}</span> <b>${sc.avg.toFixed(1)}</b> from ${plural(sc.n, 'review')} (${sc.verified} verified)`;
+}
+function reviewItem(v, c) {
+  const dims = DIM_LABELS.filter(([k]) => v.ratings && v.ratings[k]).map(([k, l]) => `${l} ${v.ratings[k]}`).join(' · ');
+  const state = v.verified ? '<span class="pill g">✓ Verified attendee</span>' : '<span class="pill">Attended (not verified)</span>';
+  const own = v.mine ? (v.verify === 'pending_proof' ? '<span class="pill w">Proof sent · being checked</span>' : v.proof === 'rejected' && !v.verified ? '<span class="pill b">Proof not accepted</span>' : '') : '';
+  const acts = !NET.user ? '' : v.mine ? `<div class="row rv-acts"><button class="btn sm ghost" data-act="rvedit" data-id="${esc(v.id)}" data-conf="${esc(c.id)}">Edit</button>${v.verified || v.verify === 'pending_proof' ? '' : `<button class="btn sm ghost" data-act="rvproof" data-id="${esc(v.id)}" data-conf="${esc(c.id)}">Add proof</button>`}<button class="btn sm ghost danger" data-act="rvdel" data-id="${esc(v.id)}" data-conf="${esc(c.id)}">Delete</button></div>` : `<div class="row rv-acts"><button class="btn sm ghost" data-act="rvreport" data-id="${esc(v.id)}" data-conf="${esc(c.id)}">Report</button></div>`;
+  return `<div class="review"><div class="who rv-who"><span>${esc(v.author)}</span> ${state}${own}<span class="stars rv-stars" aria-label="${esc(Number(v.rating).toFixed(1))} out of 5">${stars(v.rating)}</span></div><div class="note rv-ed">${esc(edLabel(v))}</div>${dims ? `<div class="note rv-dims">${esc(dims)}</div>` : ''}<p>${esc(v.text)}</p>${acts}</div>`;
+}
+function reviewsSection(c, R) {
+  const key = skey(c), sc = scoreOf(c);
+  if (!NET.online) return `<div class="section" style="margin-top:28px"><h2 style="font-size:20px">Reviews</h2></div><p class="note">Reviews need the Hoggy server and an account. Offline mode cannot post or show shared reviews.</p>${R.map(v => `<div class="review"><div class="who">${esc(v.author)} <span class="pill">On this device only</span></div><p>${esc(v.text)}</p></div>`).join('')}`;
+  const dimsHtml = sc && sc.avg != null ? `<div class="dimgrid wide">${DIM_LABELS.filter(([k]) => sc.dims && sc.dims[k]).map(([k, l]) => `<div class="dim"><span>${l}</span><b>${sc.dims[k].avg.toFixed(1)} <small>(${sc.dims[k].n})</small></b></div>`).join('')}</div>` : '';
+  return `<section id="rvsec" data-id="${esc(c.id)}" aria-labelledby="rvh"><div class="section" style="margin-top:28px"><h2 id="rvh" style="font-size:20px">Reviews</h2><span class="rv-score">${scoreLine(sc)}</span></div>
+  ${dimsHtml}<details class="how"><summary>How scores work</summary><p class="note">${esc(HOW_SCORES)}</p></details>
+  <div class="row" style="margin:12px 0 4px"><button class="btn sm primary" data-act="review" data-id="${esc(c.id)}">Review this conference</button><button class="btn sm ghost" data-act="copy" data-v="${esc(shareLink(key))}">${icon('copy')} Copy review link</button></div>
+  <p class="note" style="margin:6px 0 4px">Went in an earlier year? That counts. Share the link with colleagues who attended.</p>
+  ${R.length ? R.map(v => reviewItem(v, c)).join('') : '<p class="note">No reviews yet. If you have been to this conference in any year, yours can be the first.</p>'}</section>`;
+}
+const GUIDE = 'Keep it honest and about the event: the programme, speakers, venue, value and CPD. Do not name or criticise individuals, and never include patient information. Reviews that break these rules are removed.';
+/* open the review form for a series; signed-out visitors sign in first and come straight back */
+function startReview(key, opts = {}) {
+  if (!editionsOf(key).length) { toast('We could not find that conference'); return false; }
+  if (!NET.online) { toast('Reviews need the Hoggy server. Try again when you are online'); return false; }
+  if (!NET.user) { authDialog('Sign in to review this conference', () => startReview(key, opts)); return true; }
+  reviewForm(key, opts); return true;
+}
+function reviewForm(key, opts = {}) {
+  const eds = editionsOf(key), latest = eds[eds.length - 1], title = window.HoggySeries ? window.HoggySeries.seriesTitle(latest) : latest.name, Y = new Date().getFullYear(), td = today();
+  const ed = opts.edit || null;
+  const years = []; for (let y = Y; y >= Y - 10; y--) { const known = eds.find(c => +c.start.slice(0, 4) === y); years.push({ y, city: known ? known.city : '', future: !!known && known.start > td, done: reviewedYear(key, y) }); }
+  const rate = (k, l) => `<div class="rate" role="radiogroup" aria-labelledby="rl-${k}"><span class="rate-l" id="rl-${k}">${l}</span><div class="rate-opts">${[1, 2, 3, 4, 5].map(n => `<label><input type="radio" name="${k}" value="${n}" ${ed && ed.ratings && ed.ratings[k] === n ? 'checked' : ''} aria-label="${l}: ${n} out of 5"><span aria-hidden="true">${n}</span></label>`).join('')}</div></div>`;
+  openOverlay(`<div class="sheet center rv-sheet" role="dialog" aria-modal="true" aria-label="Review ${esc(title)}"><form id="rvf" novalidate style="padding:22px"><div class="row" style="justify-content:space-between;align-items:flex-start;flex-wrap:nowrap;margin-bottom:6px"><h2 style="font-size:24px;margin:0">${ed ? 'Edit your review' : 'Review this conference'}</h2><button type="button" class="icon-btn" style="flex:none" data-act="close" aria-label="Close">${icon('x')}</button></div>
+  <p class="note" style="margin:0 0 14px">${esc(title)} · ${esc(latest.organiser)}</p>
+  ${ed ? `<p class="rv-edline"><b>${esc(edLabel(ed))}</b></p>` : `<fieldset class="years"><legend>Which years did you attend?</legend><div class="ychips">${years.map(o => `<label class="ychip"><input type="checkbox" name="year" value="${o.y}" ${o.future || o.done ? 'disabled' : ''} ${opts.year === o.y && !o.done && !o.future ? 'checked' : ''}><span>${o.y}${o.city ? ' · ' + esc(o.city) : ''}${o.done ? ' · reviewed' : o.future ? ' · upcoming' : ''}</span></label>`).join('')}</div><p class="note">Tick more than one to add past years in one go. Each year gets its own review with these scores; you can edit any of them later.</p></fieldset>
+  ${field('rvCity', 'City (optional, for years without a city shown)', '<input id="rvCity" type="text" name="city" maxlength="60" autocomplete="off">')}`}
+  <div class="rates">${DIM_LABELS.map(([k, l]) => rate(k, l)).join('')}</div>
+  <div class="field"><label for="rvText">Comment</label><textarea id="rvText" name="text" minlength="10" maxlength="600" required placeholder="What was worth it, what wasn't, tips for next year">${esc(ed ? ed.text : '')}</textarea><div class="note rv-count" id="rvCount" aria-live="polite">${ed ? ed.text.length : 0} / 600</div></div>
+  <p class="note rv-guide">${esc(GUIDE)}</p>
+  <p class="note" id="rverr" role="alert" style="color:var(--bad);min-height:18px"></p>
+  <div class="row" style="justify-content:flex-end;margin:4px 0 20px"><button class="btn primary" type="submit">${ed ? 'Save changes' : 'Post review'}</button></div></form></div>`, true);
+  const f = $('#rvf'), txt = $('#rvText');
+  txt.addEventListener('input', () => { $('#rvCount').textContent = txt.value.length + ' / 600'; });
+  f.addEventListener('submit', async e => {
+    e.preventDefault(); const fd = new FormData(f), errEl = $('#rverr');
+    const ratings = Object.fromEntries(DIM_LABELS.map(([k]) => [k, +fd.get(k) || 0])), text = String(fd.get('text') || '').trim();
+    const yrs = ed ? [] : fd.getAll('year').map(Number);
+    if (!ed && !yrs.length) return errEl.textContent = 'Tick the year (or years) you attended.';
+    const miss = DIM_LABELS.filter(([k]) => !ratings[k]).map(([, l]) => l); if (miss.length) return errEl.textContent = 'Rate every area: ' + miss.join(', ') + '.';
+    if (text.length < 10) return errEl.textContent = 'Write at least 10 characters.';
+    errEl.textContent = ''; const btn = f.querySelector('[type=submit]'); btn.disabled = true;
+    const r = ed ? await api('/api/reviews/' + encodeURIComponent(ed.id), { method: 'PUT', body: { ratings, text } })
+      : await api('/api/reviews', { method: 'POST', body: { series: key, editions: yrs.map(y => ({ year: y, city: String(fd.get('city') || '').trim() })), ratings, text } });
+    btn.disabled = false;
+    if (r.error) return errEl.textContent = r.error === 'offline' ? 'Server not reachable. Try again.' : r.error.charAt(0).toUpperCase() + r.error.slice(1) + '.';
+    await refreshReviews(latest.id);
+    if (ed) { toast('Review updated'); return backToConf(opts.conf || latest.id); }
+    const made = (r.reviews || []).map(x => ({ ...x, seriesKey: key }));
+    if (made.every(x => x.verify === 'verified')) { toast('Review posted · verified from your emailed registration receipt'); return backToConf(latest.id); }
+    proofDialog(made.filter(x => x.verify !== 'verified'), { conf: latest.id, title, posted: true });
+  });
+}
+function proofDialog(list, opts = {}) {
+  openOverlay(`<div class="sheet center rv-sheet" role="dialog" aria-modal="true" aria-label="Add proof of attendance"><div style="padding:22px"><div class="row" style="justify-content:space-between;align-items:flex-start;flex-wrap:nowrap;margin-bottom:10px"><h2 style="font-size:24px;margin:0">${opts.posted ? 'Thanks, your review is up' : 'Add proof of attendance'}</h2><button type="button" class="icon-btn" style="flex:none" data-act="close" aria-label="Close">${icon('x')}</button></div>
+  <p style="color:var(--muted);font-size:14px">${opts.posted ? 'It shows as “Attended (not verified)” for now. ' : ''}Upload a certificate of attendance, CPD certificate or registration receipt and a Hoggy admin will check it. Once approved, your review shows “✓ Verified attendee”.</p>
+  <p class="note">PDF, JPG or PNG, up to 5 MB. Only Hoggy admins can open it, and it is deleted once checked. Cover anything you do not want seen, such as your registration number. Emailing your registration receipt to your Hoggy address also verifies it.</p>
+  <div class="list" style="margin-top:12px">${list.map(r => `<form class="li pf-row" data-rv="${esc(r.id)}"><div class="grow"><div class="t">${esc(edLabel(r))}</div><div class="two pf-in"><select name="kind" aria-label="Type of proof for ${esc(r.editionYear)}"><option value="certificate">Certificate of attendance</option><option value="cpd">CPD certificate</option><option value="receipt">Registration receipt</option></select><input type="file" name="file" accept="application/pdf,image/jpeg,image/png" aria-label="Proof file for ${esc(r.editionYear)}"></div><div class="note pf-msg" aria-live="polite"></div></div><button class="btn sm primary" type="submit">Upload</button></form>`).join('')}</div>
+  <div class="row" style="justify-content:flex-end;margin:16px 0 0"><button class="btn" data-act="rvdone" data-id="${esc(opts.conf || '')}">${opts.posted ? 'Skip for now' : 'Done'}</button></div></div></div>`, true);
+  document.querySelectorAll('.pf-row').forEach(f => f.addEventListener('submit', async e => {
+    e.preventDefault(); const file = f.elements.file.files[0], msg = f.querySelector('.pf-msg');
+    if (!file) return msg.textContent = 'Choose a file first.';
+    if (!['application/pdf', 'image/jpeg', 'image/png'].includes(file.type)) return msg.textContent = 'PDF, JPG or PNG only.';
+    if (file.size > 5e6) return msg.textContent = 'That file is over 5 MB.';
+    msg.textContent = 'Uploading…'; f.querySelector('[type=submit]').disabled = true;
+    let r; try { const x = await fetch(`/api/reviews/${encodeURIComponent(f.dataset.rv)}/proof?kind=${encodeURIComponent(f.elements.kind.value)}&name=${encodeURIComponent(file.name.slice(0, 100))}`, { method: 'POST', headers: { 'X-Requested-With': 'hoggy', 'Content-Type': file.type }, body: file, credentials: 'same-origin' }); r = await x.json().catch(() => ({ error: 'upload failed' })); } catch (er) { r = { error: 'Server not reachable' }; }
+    if (r.error) { f.querySelector('[type=submit]').disabled = false; return msg.textContent = r.error.charAt(0).toUpperCase() + r.error.slice(1) + '.'; }
+    msg.textContent = 'Sent. An admin will check it.'; f.querySelector('[type=submit]').textContent = 'Sent';
+    const b = document.querySelector('[data-act=rvdone]'); if (b) b.textContent = 'Done';
+    refreshReviews(opts.conf);
+  }));
+}
+async function refreshReviews(confId) { await Promise.all([confId ? loadReviews(confId) : null, loadRatings(), loadMine()]); }
+function backToConf(confId) { if (confId && byId(confId)) detail(confId, false); else closeOverlay(); if (route() === 'trips') render(); }
 function field(id, label, html) { return `<div class="field"><label for="${id}">${label}</label>${html}</div>`; }
 function receiptDialog(opts = {}) {
   const ed = opts.edit ? S.receipts.find(r => r.id === opts.edit) : null, v = ed || {}, files = opts.files || [];
@@ -507,7 +595,9 @@ async function api(path, o = {}) {
   } catch (e) { return { error: 'offline', status: 0 }; }
 }
 async function loadRatings() { const r = await api('/api/ratings'); if (!r.error) { NET.ratings = r; if (route() === 'discover' && $('#results')) results(); } }
-async function loadReviews(id) { const r = await api('/api/reviews?conf=' + encodeURIComponent(id)); if (r.error) return false; NET.reviews[id] = r; return true; }
+/* reviews of the whole series, plus fresh scores so the score line matches the badges (an admin may have verified one since) */
+async function loadReviews(id) { const c = byId(id); if (!c) return false; const key = skey(c), [r, rt] = await Promise.all([api('/api/reviews?series=' + encodeURIComponent(key)), api('/api/ratings')]); if (!rt.error) NET.ratings = rt; if (r.error || !Array.isArray(r)) return false; NET.reviews[key] = r; return true; }
+async function loadMine() { if (!NET.user) { NET.mine = []; return; } const r = await api('/api/my-reviews'); if (Array.isArray(r)) NET.mine = r; }
 let syncT = null;
 function scheduleSync() { if (!NET.user) return; clearTimeout(syncT); syncT = setTimeout(pushState, 1200); }
 function syncPayload() { const o = JSON.parse(JSON.stringify(S)); delete o.reviews; if (o.profile && o.profile.employer) for (const k of ['employeeId', 'costCentre', 'approverName', 'approverEmail', 'adminEmail']) delete o.profile.employer[k]; return o; }
@@ -562,12 +652,13 @@ async function boot() {
   const me = await api('/api/me');
   if (me.error) { NET.online = false; renderAcct(); syncFiles(); return; }
   NET.online = true; NET.user = me.user; await loadRatings();
-  if (NET.user) { await pullState(); await pullInbox(); setInterval(() => pullInbox(), 60000); }
+  if (NET.user) { await pullState(); await pullInbox(); await loadMine(); setInterval(() => pullInbox(), 60000); }
   syncFiles();
+  NET.booted = true; openReviewLink();
   if (window.__capsCleared) { window.__capsCleared = false; toast('Old default spending caps were removed. Enter your own policy limits in Settings if your employer sets them.'); }
   bgRender();
 }
-function authDialog(title) {
+function authDialog(title, then) {
   let mode = 'login';
   const draw = () => { openOverlay(`<div class="sheet center" role="dialog" aria-modal="true" aria-label="Account"><form id="af" style="padding:22px"><div class="row" style="justify-content:space-between;margin-bottom:14px"><h2 style="font-size:24px;margin:0">${esc(title || (mode === 'login' ? 'Welcome back' : 'Create your account'))}</h2><button type="button" class="icon-btn" data-act="close" aria-label="Close">${icon('x')}</button></div>
     ${mode === 'register' ? field('au1', 'Name', '<input id="au1" type="text" name="name" maxlength="80" autocomplete="name">') : ''}${field('au2', 'Email', '<input id="au2" type="text" name="email" required autocomplete="email" autofocus>')}${field('au3', 'Password' + (mode === 'register' ? ' (10+ characters)' : ''), `<input id="au3" type="password" name="password" required autocomplete="${mode === 'login' ? 'current-password' : 'new-password'}">`)}
@@ -575,7 +666,7 @@ function authDialog(title) {
     $('#amode').addEventListener('click', () => { mode = mode === 'login' ? 'register' : 'login'; title = ''; draw(); });
     $('#af').addEventListener('submit', async e => { e.preventDefault(); const f = new FormData(e.target), r = await api('/api/' + mode, { method: 'POST', body: { email: f.get('email'), password: f.get('password'), name: f.get('name') || '' } });
       if (r.error) return $('#aerr').textContent = r.error === 'offline' ? 'Server not reachable. Start it with: node server.js' : r.error;
-      NET.user = r.user; if (!S.profile.name && r.user.name) S.profile.name = r.user.name; closeOverlay(); toast('Signed in'); await pullState(); await pullInbox(); syncFiles(); render(); }); };
+      NET.user = r.user; if (!S.profile.name && r.user.name) S.profile.name = r.user.name; closeOverlay(true); toast('Signed in'); await pullState(); await pullInbox(); await loadMine(); syncFiles(); render(); if (then) then(); }); };
   draw();
 }
 function renderAcct() { const a = $('#acct'); if (!a) return; a.innerHTML = !NET.online ? '<div class="saved-title" style="text-transform:none;letter-spacing:0;font-weight:400">Offline mode — data stays on this device.</div>' : NET.user ? `<div class="li" style="padding:6px 12px"><div class="grow"><div class="t" style="font-size:13px;overflow:hidden;text-overflow:ellipsis">${esc(NET.user.name || NET.user.email)}</div><div class="s">Synced</div></div><button class="btn sm" data-act="signout">Sign out</button></div>` : '<div style="padding:0 12px"><button class="btn sm primary" data-act="signin" style="width:100%">Sign in to sync</button></div>'; }
@@ -593,8 +684,16 @@ document.addEventListener('click', async e => {
   if (a === 'skip') { e.preventDefault(); $('#main').focus(); return; } /* don't put #main in the hash: the router would read it as a route */
   if (a === 'howto') { const h = $('#how'); if (h) { h.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' }); h.focus({ preventScroll: true }); } return; }
   if (a === 'close') return closeOverlay();
-  if (a === 'rvdel') { if (confirm('Delete your review?')) { const r = await api('/api/reviews?conf=' + encodeURIComponent(id), { method: 'DELETE' }); if (!r.error) { await Promise.all([loadReviews(id), loadRatings()]); toast('Review deleted'); detail(id); } } return; }
-  if (a === 'rvreport') { const r = await api('/api/reviews/' + encodeURIComponent(id) + '/report', { method: 'POST' }); toast(r.error ? r.error : 'Thanks — reported for moderation'); return; }
+  if (a === 'review') { const c = byId(id); if (c) startReview(skey(c), { year: el.dataset.year ? +el.dataset.year : undefined }); return; }
+  if (a === 'rvdone') return backToConf(id);
+  if (a === 'rvedit' || a === 'rvproof' || a === 'rvdel') {
+    const c = byId(el.dataset.conf), v = c && reviewsFor(c).find(x => String(x.id) === String(id)); if (!v) return;
+    if (a === 'rvedit') return reviewForm(skey(c), { edit: v, conf: c.id });
+    if (a === 'rvproof') return proofDialog([v], { conf: c.id });
+    if (confirm(`Delete your review for ${v.editionYear}?`)) { const r = await api('/api/reviews/' + encodeURIComponent(id), { method: 'DELETE' }); if (r.error) return toast(r.error); await refreshReviews(c.id); toast('Review deleted'); detail(c.id, false); }
+    return;
+  }
+  if (a === 'rvreport') { if (!confirm('Report this review to the Hoggy moderators? Use this for abuse, named individuals, patient information or reviews that are not about the event.')) return; const r = await api('/api/reviews/' + encodeURIComponent(id) + '/report', { method: 'POST' }); toast(r.error ? r.error : 'Thanks, reported for moderation'); return; }
   if (a === 'more') { UI.limit += 48; return results(); }
   if (a === 'ics') { const c = byId(id); if (c) download(c.id + '.ics', ics(c), 'text/calendar'); return; }
   if (a === 'signin') return authDialog();
@@ -630,7 +729,7 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape' && !$('#overlay').hidden) closeOverlay();
   if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('.card')) { e.preventDefault(); detail(e.target.dataset.id); }
 });
-window.addEventListener('hashchange', () => { if (!Object.prototype.hasOwnProperty.call(ROUTES, (location.hash.replace(/^#\/?/, '') || 'home').split('?')[0])) return; closeOverlay(); render(); $('#main').focus({ preventScroll: true }); window.scrollTo(0, 0); });
+window.addEventListener('hashchange', () => { if (reviewHash()) { closeOverlay(true); render(); return openReviewLink(); } if (!Object.prototype.hasOwnProperty.call(ROUTES, (location.hash.replace(/^#\/?/, '') || 'home').split('?')[0])) return; closeOverlay(); render(); $('#main').focus({ preventScroll: true }); window.scrollTo(0, 0); });
 if (!CONFS.length) console.warn('Hoggy: no conference data loaded (data/conferences.js)');
 S.trips = S.trips.filter(t => byId(t.confId)); S.saved = S.saved.filter(byId);
 render();
