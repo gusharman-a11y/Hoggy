@@ -36,15 +36,15 @@ Open http://127.0.0.1:8123. Without the server (any static host) the app still w
 - **Receipt checklist per trip** (Trips and Claims): one line per category with an estimate above 0 (from the trip's approval request, its saved estimate, or the study-leave draft); without an estimate, Registration, Flights and Accommodation for a conference and Registration for a course. ✓ once a receipt of that category exists (Ground transport and Meals count as Other). "I don't have this receipt" needs a reason, kept in the synced state (`claims[tripId].waived`). Export, Email and Mark submitted stay available and show what is missing; the reasons go on the claim pack schedule (CSV "Schedule notes", printed pack, email body).
 - **Tax-invoice check** (Australian-dollar receipts only, `pack.js taxFlags`): no supplier ABN, an ABN that fails the ATO check digits, GST shown without the words "tax invoice", and $82.50 or more including GST without an ABN. Each flag says the receipt "may not count as a tax invoice" and how to get one (for flights: the airline's Manage booking page). Flags never block; they are listed on the schedule.
 - **Currencies:** `parse.js` reads ISO codes and symbols at the total (JPY, ¥, USD, US$, EUR, €, GBP, £, NZD, NZ$, SGD, S$ and more); a bare `$` is the home currency unless the document names a dollar currency or shows an ABN or GST (AUD). Claims show subtotals per currency; a foreign receipt without an exchange rate is marked "not in the total" and blocks export as before.
-- `POST /api/inbound/email` with header `X-Hoggy-Secret` (or HTTP Basic, password = secret) — inbound-email webhook (Postmark-style JSON, or `{to,from,subject,text,attachments}`). Matches `dr-<token>@receipts.hoggy.app` to a user, parses the receipt, stores the attachment, and the app pulls it into Receipts within a minute.
+- `POST /api/inbound/email` with header `X-Hoggy-Secret` (or HTTP Basic, password = secret) — inbound-email webhook (Postmark-style JSON, or `{to,from,subject,text,attachments}`). Matches `dr-<token>@receipts.hoggy.app` to a user, parses the receipt, stores the attachment, and the app, while open, pulls it into Receipts within a minute.
 - Storage goes through `lib/db.js`: **Postgres** when `DATABASE_URL` is set (production, see below), otherwise **SQLite** in `data-store/` (SQLite file, daily backups, inbound secret). Back that folder up; do not publish it.
 
-### Live global database (constantly updated)
+### Conference database and updater
 
 The server keeps conferences in SQLite (seeded from `data/conferences.js`, new ids only) and serves them at `GET /api/conferences`; the app loads that list, falling back to the bundled file offline.
 
 Start with `HOGGY_INGEST=1 HOGGY_ADMINS=you@example.com HOGGY_ADMIN_KEY=<long random string> node server.js` (the admin key is mandatory: without it all admin endpoints are disabled) to enable the updater (runs 30s after start, then every 6h):
-- **Refresh:** re-checks each conference's organiser page (robots.txt respected, https only, private addresses blocked, polite delays). When the page publishes schema.org Event JSON-LD or iCal that matches, dates update automatically. Dead links (3 strikes) and cancelled/postponed wording flag the conference with a warning in the app.
+- **Refresh:** re-checks each conference's organiser page (robots.txt respected, https only, private addresses blocked, polite delays). When the page publishes schema.org Event JSON-LD or iCal that matches a confirmed row's start date (the end-date check is still a no-op, B26), the row's `lastVerified` is re-stamped; any different date is queued in `date_changes` for an admin to approve (never applied on its own). The updater has not yet been run on the full dataset (D1). Dead links (3 strikes) and cancelled/postponed wording flag the conference with a warning in the app.
 - **Discover:** polls `data/sources.json` (journal, society and publisher feeds: iCal, RSS, JSON-LD, Crossref) and queues unknown events as candidates. Nothing external goes live until an admin approves it at `/admin.html` (the Data desk).
 - `node tools/merge-shards.js` merges curated JSON shards; `node tools/check-sources.js` writes an offline freshness report.
 
@@ -54,7 +54,7 @@ Start with `HOGGY_INGEST=1 HOGGY_ADMINS=you@example.com HOGGY_ADMIN_KEY=<long ra
 2. Point an MX record for your mail domain at an inbound-email provider (e.g. Postmark inbound) and have its webhook send `X-Hoggy-Secret: <HOGGY_INBOUND_SECRET>` (or Basic auth with that as the password) to `https://<host>/api/inbound/email`. Set `HOGGY_MAIL_DOMAIN` to that domain. Without `HOGGY_INBOUND_SECRET` the server makes one: SQLite keeps it in `data-store/inbound-secret.txt`, Postgres in `hoggy.meta` (key `inbound_secret`).
 
 Known gaps: no email verification or password reset (needs outbound mail), so registration reveals whether an email exists and reviewers are not email-verified.
-3. Receipt files are stored per device (IndexedDB); synced state covers trips, receipts metadata, CPD and settings.
+3. Receipt files are kept on the device (IndexedDB) and, when signed in, copied to the server's file store (`/api/rfile`); synced state covers trips, receipt metadata, CPD, certificates and settings.
 
 ## Deploying to Vercel
 

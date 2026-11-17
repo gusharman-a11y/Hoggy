@@ -14,6 +14,14 @@ function homeStats(list, todayIso) {
     confirmedPct: up.length ? Math.floor(confirmed / up.length * 100) : 0
   };
 }
+/* Discover subtitle facts: the same exact counts as the home page plus the span of start dates actually listed,
+   so the copy never claims a year or region the data does not hold. */
+function discoverSummary(list, todayIso) {
+  const all = Array.isArray(list) ? list : [];
+  const up = todayIso ? all.filter(c => c && c.end >= todayIso) : all;
+  const starts = up.map(c => c.start).filter(Boolean).sort();
+  return Object.assign(homeStats(all, todayIso), { from: starts[0] || '', to: starts[starts.length - 1] || '' });
+}
 /* A few upcoming conferences with organiser-confirmed dates, soonest first, one per specialty. */
 function exampleConfs(list, todayIso, n) {
   const seen = new Set(), out = [];
@@ -31,6 +39,6 @@ function travelLinks(c, from) {
     stays: `https://www.google.com/travel/hotels/${q(c.city)}?q=${q('hotels in ' + where)}&dates=${out},${back}`
   };
 }
-const api = { homeStats, exampleConfs, travelLinks, addDays };
+const api = { homeStats, discoverSummary, exampleConfs, travelLinks, addDays };
 if (typeof module !== 'undefined' && module.exports) module.exports = api; else root.HoggyStats = api;
 })(typeof window !== 'undefined' ? window : globalThis);
