@@ -13,6 +13,7 @@
     "test:pg": "node tests/run-pg.js"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "1.7.0",
     "pdfjs-dist": "4.10.38",
     "pg": "8.23.1"
   }

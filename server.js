@@ -15,6 +15,7 @@ const { seriesKey, seriesTitle, validKey } = require('./lib/series.js');
 const COV = require('./lib/coverage.js');
 const RV = require('./lib/reviews.js');
 const { makeHospitalApi } = require('./lib/hospital-api.js');
+const READER = require('./lib/receipt-reader.js');
 const ADMIN_KEY = process.env.HOGGY_ADMIN_KEY || '';
 const REPORT_MIN_AGE = (process.env.HOGGY_REPORT_MIN_AGE_H === undefined ? 24 : +process.env.HOGGY_REPORT_MIN_AGE_H) * 3600e3;
 const ADMINS = new Set(String(process.env.HOGGY_ADMINS || '').toLowerCase().split(',').map(s => s.trim()).filter(Boolean));
@@ -235,6 +236,10 @@ const magicOk = (t, d) => t === 'application/pdf' ? d.subarray(0, 5).toString('l
 const ALLOWED_FILES = new Set(['application/pdf', 'image/png', 'image/jpeg', 'image/webp']);
 const PROOF_TYPES = new Set(['application/pdf', 'image/png', 'image/jpeg']), PROOF_MAX = 5e6, REVIEW_MAX = 600;
 const PW_MIN = 10;
+/* "Snap receipt" reader: Claude only when ANTHROPIC_API_KEY is set (RECEIPT_MODEL picks the model); see lib/receipt-reader.js */
+const READ_CLIENT = READER.clientFromEnv(process.env), READ_MODEL = process.env.RECEIPT_MODEL || READER.DEFAULT_MODEL;
+const READ_PER_HOUR = Math.max(1, +process.env.HOGGY_READ_PER_HOUR || 30);
+if (READ_CLIENT && READ_CLIENT.fake) console.warn('HOGGY_FAKE_READER=1: receipt photos are "read" by a test fixture, not by Claude');
 
 /* Rate limits live in the database (rate_hits), so every serverless instance counts the same attempts. Keys are hashed:
    the table never holds an email or IP. Rows older than an hour (the longest window) are cleared by housekeeping. */
@@ -570,6 +575,20 @@ async function api(req, res, url) {
     if (await limited('rp:' + u.id, 30, 3600e3)) return err(res, 429, 'slow down');
     const age = now() - (await db.get('SELECT created FROM users WHERE id=?', u.id)).created;
     await db.run('INSERT INTO review_reports(review_id,user_id,created,weight) VALUES(?,?,?,?) ON CONFLICT DO NOTHING', +mm0[1], u.id, now(), age >= REPORT_MIN_AGE ? 1 : 0); ratingsCache = null; return json(res, 200, { ok: true });
+  }
+  /* Snap receipt: read one uploaded receipt (raw body, Content-Type header). Nothing is stored here; the browser saves the
+     receipt and its file the usual way once the doctor taps "Looks right". */
+  if (p === '/api/receipts/read' && m === 'POST') {
+    if (await limited('rd:' + u.id, READ_PER_HOUR, 3600e3)) return err(res, 429, 'You have read a lot of receipts this hour. Fill this one in by hand, or try again later.');
+    const claimed = String(req.headers['content-type'] || '').split(';')[0].trim().toLowerCase();
+    if (!READER.IMAGE_TYPES.has(claimed) && claimed !== 'application/pdf' && !/^image\/hei[cf]$/.test(claimed)) return err(res, 415, 'Use a JPG, PNG or WebP photo, or a PDF.');
+    if (+req.headers['content-length'] > READER.MAX.pdf) { res.setHeader('Connection', 'close'); return err(res, 413, 'Files can be up to 10 MB (photos up to 5 MB).'); }
+    const data = await readBody(req, READER.MAX.pdf), type = READER.sniff(data);
+    if (!data.length || !type || (type !== claimed && !(type === 'image/heic' && /^image\/hei[cf]$/.test(claimed)))) return err(res, 415, 'That file is not the JPG, PNG, WebP or PDF it says it is.');
+    if (type === 'image/heic') return err(res, 415, 'HEIC photos cannot be read here. Share the photo as JPG, or take a screenshot of it.');
+    if (type !== 'application/pdf' && data.length > READER.MAX.image) return err(res, 413, 'Photos can be up to 5 MB.');
+    const home = /^[A-Z]{3}$/.test(url.searchParams.get('cur') || '') ? url.searchParams.get('cur') : 'AUD';
+    return json(res, 200, await READER.readReceipt(data, type, { client: READ_CLIENT, model: READ_MODEL, pdfText, home, log: m2 => console.error(m2) }));
   }
   if (p === '/api/inbox' && m === 'GET') return json(res, 200, await db.all('SELECT id,vendor,amount,currency,date,category,subject,sender,file_id "fileId",file_name "fileName",file_type "fileType",created FROM inbox WHERE user_id=? ORDER BY created', u.id));
   let mm;
