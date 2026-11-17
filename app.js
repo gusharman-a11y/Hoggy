@@ -212,9 +212,7 @@ const VIEWS = {
       <a class="tile" href="#/trips"><div class="k">Next trip</div><div class="v" style="font-size:22px;line-height:1.15">${next ? esc(ofTrip(next).name) : 'None planned'}</div><div class="s">${next ? esc(ofTrip(next).city) + ' · ' + esc(range(ofTrip(next))) : 'Plan one from Discover'}</div></a>
       <a class="tile" href="#/cpd"><div class="k">CPD ${esc(p.cpdYear)}</div><div class="v">${tot}<span style="font-size:18px;color:var(--muted)"> / ${esc(p.cpdTarget)} h</span></div><div class="bar" style="margin-top:10px"><i style="width:${pct}%"></i></div></a>
       <a class="tile" href="#/claims"><div class="k">Not yet claimed</div><div class="v">${money(unclaimed)}</div><div class="s">${S.receipts.filter(r => r.status === 'captured').length} receipts waiting</div></a>
-      <a class="tile" href="#/claims"><div class="k">Awaiting reimbursement</div><div class="v">${money(pending)}</div><div class="s">Submitted, not yet paid</div></a></div>
-    <div class="section"><h2>Picked for ${esc(p.specialty)}</h2><a href="#/discover">See all</a></div>
-    <div class="grid">${upcoming().sort((a, b) => matchScore(b) - matchScore(a)).slice(0, 4).map(card).join('') || '<div class="empty">Conference data is loading or missing.</div>'}</div>`;
+      <a class="tile" href="#/claims"><div class="k">Awaiting reimbursement</div><div class="v">${money(pending)}</div><div class="s">Submitted, not yet paid</div></a></div>`;
     const hero = `<section class="hero hero-intro"><span class="eyebrow">Medical conference planner</span>
       <h1>Find the conference. Hoggy handles the admin.</h1>
       <p>For doctors and clinicians who travel for CPD: find a meeting, plan the trip, keep every receipt and hand your hospital or employer a claim-ready pack.</p>
