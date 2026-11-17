@@ -25,7 +25,9 @@ const I = {
   file: '<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/>',
   ext: '<path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/>',
   course: '<path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/><path d="M22 9v6"/>',
-  cert: '<circle cx="12" cy="9" r="6"/><path d="M8.5 14L7 22l5-3 5 3-1.5-8"/>'
+  cert: '<circle cx="12" cy="9" r="6"/><path d="M8.5 14L7 22l5-3 5 3-1.5-8"/>',
+  check: '<path d="M4 12.5l5 5L20 6.5"/>',
+  users: '<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.6 3.4-5.5 6.5-5.5s5.7 1.9 6.5 5.5"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8M18 14.8c1.8.7 3 2.4 3.5 5.2"/>'
 };
 const icon = (n, c = 'ico') => `<svg class="${c}" viewBox="0 0 24 24" aria-hidden="true">${I[n]}</svg>`;
 
@@ -194,7 +196,11 @@ function openReviewLink() { const k = reviewHash(); if (!k || !NET.booted) retur
 function renderNav() {
   renderAcct();
   const cur = route(), open = S.receipts.filter(r => r.status === 'captured').length, due = certRows().filter(x => HC.needsAttention(x.st)).length, inCourses = cur === 'courses' || cur === 'certs';
-  $('#nav').innerHTML = Object.entries(ROUTES).filter(([, v]) => !v[2]).map(([k, [l, ic]]) => `<a href="#/${k}" ${k === cur || (k === 'courses' && inCourses) ? 'aria-current="page"' : ''}${k === 'courses' ? ' class="desk"' : k === 'discover' && inCourses ? ' class="alt-cur"' : ''}>${icon(ic)}<span>${l}</span>${k === 'receipts' && open ? `<span class="badge">${open}</span>` : k === 'courses' && due ? `<span class="badge" title="Certificates due or expired">${due}</span>` : ''}</a>`).join('');
+  /* hospital pages: in the desktop sidebar for the roles that use them; on phones they open from Settings, Your hospital,
+     so the tab bar keeps its 7 tabs (Settings carries the badge and is highlighted while one of them is open) */
+  const inHospPage = HOSP_ROUTES.some(([k]) => k === cur), hb = hospBadge(), hn = HOSP.counts || {};
+  const roleLinks = HOSP_ROUTES.filter(([, w]) => hcan(w)).map(([k]) => { const n = k === 'approvals' ? hn.approvals : k === 'finance' ? hn.claims : 0; return `<a href="#/${k}" class="desk" ${k === cur ? 'aria-current="page"' : ''}>${icon(ROUTES[k][1])}<span>${ROUTES[k][0]}</span>${n ? `<span class="badge">${n}</span>` : ''}</a>`; }).join('');
+  $('#nav').innerHTML = Object.entries(ROUTES).filter(([, v]) => !v[2]).map(([k, [l, ic]]) => `<a href="#/${k}" ${k === cur || (k === 'courses' && inCourses) ? 'aria-current="page"' : ''}${k === 'courses' ? ' class="desk"' : k === 'discover' && inCourses ? ' class="alt-cur"' : k === 'settings' && inHospPage ? ' class="alt-cur"' : ''}>${icon(ic)}<span>${l}</span>${k === 'receipts' && open ? `<span class="badge">${open}</span>` : k === 'courses' && due ? `<span class="badge" title="Certificates due or expired">${due}</span>` : k === 'settings' && hb ? `<span class="badge mob-only" title="Hospital: ${hb} to look at">${hb}</span>${hn.unread ? `<span class="badge desk-only" title="${hn.unread} unread from your hospital">${hn.unread}</span>` : ''}` : ''}</a>`).join('') + roleLinks;
   $('#savedList').innerHTML = S.saved.map(byId).filter(Boolean).slice(0, 12).map(c => `<button data-act="open" data-id="${esc(c.id)}"><span class="mini" style="background:${grad(c)}"></span><span class="t">${esc(c.name)}</span></button>`).join('') || '<div class="saved-title" style="text-transform:none;letter-spacing:0;font-weight:400">Tap the heart on a conference to save it.</div>';
 }
 function applyTheme() { const t = S.profile.theme; if (t === 'auto') document.documentElement.removeAttribute('data-theme'); else document.documentElement.setAttribute('data-theme', t); }
@@ -225,13 +231,13 @@ const VIEWS = {
     const p = S.profile, trips = S.trips.filter(t => t.status === 'planned').sort((a, b) => ofTrip(a).start.localeCompare(ofTrip(b).start)), next = trips[0];
     const unclaimed = S.receipts.filter(r => r.status === 'captured').reduce((a, r) => a + homeAmt(r), 0), pending = S.receipts.filter(r => r.status === 'claimed').reduce((a, r) => a + homeAmt(r), 0);
     const tot = cpdTotal(), pct = Math.min(100, Math.round(tot / (p.cpdTarget || 1) * 100));
-    const active = S.trips.length || S.receipts.length || S.cpd.length || S.certs.length;
+    const active = S.trips.length || S.receipts.length || S.cpd.length || S.certs.length || inHosp();
     const crs = certRows(), nextCert = crs.find(x => x.expires && x.st !== 'expired') || crs[0];
     const HS = window.HoggyStats, st = HS ? HS.homeStats(CONFS, today()) : null, examples = HS ? HS.exampleConfs(CONFS, today(), 4) : upcoming().slice(0, 4), n = v => Number(v).toLocaleString('en-AU');
     const dash = `<section class="hero hero-dash"><h1>${p.name ? 'Welcome back, ' + esc(p.name.split(' ')[0]) + '.' : 'Welcome back.'}</h1>
       <p>Your conferences, trips, receipts and CPD in one place.</p>
       <div class="row"><a class="btn primary" href="#/discover">Find conferences</a><a class="btn ghost" href="#/receipts">Add a receipt</a></div></section>
-    ${remindCard()}<div class="tiles">
+    ${remindCard()}${hospHome()}<div class="tiles">
       <a class="tile" href="#/trips"><div class="k">Next trip</div><div class="v" style="font-size:22px;line-height:1.15">${next ? esc(ofTrip(next).name) : 'None planned'}</div><div class="s">${next ? esc(ofTrip(next).city) + ' · ' + esc(range(ofTrip(next))) : 'Plan one from Discover'}</div></a>
       <a class="tile" href="#/cpd"><div class="k">CPD ${esc(p.cpdYear)}</div><div class="v">${tot}<span style="font-size:18px;color:var(--muted)"> / ${esc(p.cpdTarget)} h</span></div><div class="bar" style="margin-top:10px"><i style="width:${pct}%"></i></div></a>
       <a class="tile" href="#/claims"><div class="k">Not yet claimed</div><div class="v">${money(unclaimed)}</div><div class="s">${S.receipts.filter(r => r.status === 'captured').length} receipts waiting</div></a>
@@ -285,6 +291,7 @@ const VIEWS = {
       (ts.length ? ts.map(t => { const c = ofTrip(t), L = links(c, t.from || undefined), spent = S.receipts.filter(r => r.tripId === t.id).reduce((a, r) => a + homeAmt(r), 0), booked = (t.bookings || []).reduce((a, b) => a + Number(b.amount || 0), 0);
         return `<div class="panel"><div class="row" style="justify-content:space-between;align-items:flex-start"><div class="row" style="gap:14px;align-items:flex-start"><div class="thumb" style="width:64px;height:64px;background:${grad(c)};color:#fff;font-weight:800">${esc(initials(c))}</div><div><h3 style="margin:0">${esc(c.name)}</h3><div class="s" style="color:var(--muted)">${FLAG(c.countryCode)} ${esc(c.city)}, ${esc(c.country)} · ${esc(range(c))}</div><div class="pills" style="margin-top:8px"><span class="pill ${t.status === 'attended' ? 'g' : 'w'}">${t.status === 'attended' ? 'Attended' : 'Planned'}</span><span class="pill ${c.cpdVerified && c.cpdHours ? 'g' : ''}">${esc(cpdLabel(c))}</span><span class="pill">Booked ${money(booked)}</span><span class="pill">Receipts ${money(spent)}</span></div></div></div>
           <div class="row"><button class="btn sm" data-act="open" data-id="${esc(c.id)}">Details</button>${t.status === 'planned' ? `<button class="btn sm primary" data-act="attend" data-id="${esc(t.id)}">Mark attended</button>` : ''}<button class="btn sm danger" data-act="rmtrip" data-id="${esc(t.id)}">Remove</button></div></div>
+          ${tripHospBox(t)}
           ${NET.online && c.kind !== 'course' && c.end < today() && !reviewedYear(skey(c), +c.start.slice(0, 4)) ? `<div class="rv-prompt"><span><b>How was it?</b> Review it in a minute. It helps colleagues choose.</span><button class="btn sm primary" data-act="review" data-id="${esc(c.id)}" data-year="${esc(c.start.slice(0, 4))}">Review ${esc(c.start.slice(0, 4))}</button></div>` : ''}
           <div class="row" style="margin-top:16px"><label class="from-field">Flying from <input type="text" data-from="${esc(t.id)}" value="${esc(t.from || S.profile.homeAirport || S.profile.city || '')}" maxlength="40" placeholder="City or airport" aria-label="Flying from (city or airport code) for ${esc(c.name)}"></label><a class="btn sm" target="_blank" rel="noopener noreferrer" data-flights="${esc(t.id)}" href="${esc(L.flights)}">✈ Search flights ${icon('ext')}</a><a class="btn sm" target="_blank" rel="noopener noreferrer" href="${esc(L.hotels)}">🛏 Search hotels ${icon('ext')}</a><button class="btn sm ghost" data-act="addbook" data-id="${esc(t.id)}">${icon('plus')} Log a booking</button><button class="btn sm ghost" data-act="addreceipt" data-id="${esc(t.id)}">${icon('receipt')} Add receipt</button></div>
           ${(t.bookings || []).length ? `<div class="list" style="margin-top:12px">${t.bookings.map(b => `<div class="li"><div class="grow"><div class="t">${esc(b.type)} · ${esc(b.vendor)}</div><div class="s">Ref ${esc(b.ref || '—')} · ${esc(b.date ? fmtD(b.date) : '')}</div></div><div class="amt">${money(b.amount)}</div><button class="icon-btn" data-act="rmbook" data-id="${esc(t.id)}" data-b="${esc(b.id)}" aria-label="Remove booking">${icon('x')}</button></div>`).join('')}</div>` : ''}</div>`; }).join('')
@@ -306,16 +313,16 @@ const VIEWS = {
     const orphan = S.receipts.filter(r => !r.tripId);
     return `<div class="page-head"><div><h1>Claims</h1><p>One claim per trip. Fix what's flagged, export the pack, then track it to reimbursement.</p></div></div>` +
       (orphan.length ? `<div class="panel"><div class="check warn">! ${orphan.length} receipt${orphan.length > 1 ? 's are' : ' is'} not linked to a trip and can't be claimed. <a href="#/receipts" style="text-decoration:underline">Fix in Receipts</a></div></div>` : '') +
-      (ts.length ? ts.map(t => { const c = ofTrip(t), rs = S.receipts.filter(r => r.tripId === t.id), tot = rs.reduce((a, r) => a + claimAmt(r), 0), rd = rs.filter(ready).length, pct = Math.round(rd / rs.length * 100), allReady0 = rd === rs.length, pol = policyFor(t, rs), allReady = allReady0 && !pol.some(i => i.lvl === 'bad'), claim = S.claims[t.id] || {}, st = rs.every(r => r.status === 'paid') ? 'paid' : rs.some(r => r.status === 'claimed' || r.status === 'paid') ? 'claimed' : 'draft';
+      (ts.length ? ts.map(t => { const c = ofTrip(t), rs = S.receipts.filter(r => r.tripId === t.id), tot = rs.reduce((a, r) => a + claimAmt(r), 0), rd = rs.filter(ready).length, pct = Math.round(rd / rs.length * 100), allReady0 = rd === rs.length, pol = policyFor(t, rs), allReady = allReady0 && !pol.some(i => i.lvl === 'bad'), claim = S.claims[t.id] || {}, hc = inHosp() ? hClaimOf(t) : null, st = hc ? (hc.status === 'paid' ? 'paid' : 'claimed') : rs.every(r => r.status === 'paid') ? 'paid' : rs.some(r => r.status === 'claimed' || r.status === 'paid') ? 'claimed' : 'draft';
         const cats = CATS.map(k => [k, rs.filter(r => r.category === k).reduce((a, r) => a + claimAmt(r), 0)]).filter(x => x[1]);
         return `<div class="panel"><div class="row" style="justify-content:space-between"><div><h3 style="margin:0">${esc(c.name)}</h3><div class="s" style="color:var(--muted)">${esc(c.city)} · ${esc(range(c))}</div></div><div style="text-align:right"><div style="font-size:28px;font-weight:800;letter-spacing:-.04em">${money(tot)}</div><span class="status ${st === 'draft' ? 'captured' : st}">${st === 'draft' ? 'Draft' : st === 'claimed' ? 'Submitted' : 'Reimbursed'}</span></div></div>
           <div class="row" style="margin:14px 0 6px;justify-content:space-between"><span style="font-weight:600">Claim readiness</span><span style="color:${allReady ? 'var(--ok)' : 'var(--warn)'};font-weight:700">${rd}/${rs.length} receipts ready</span></div><div class="bar"><i class="${allReady ? '' : 'warn'}" style="width:${pct}%"></i></div>
           ${rs.filter(r => !ready(r)).map(r => `<div class="check bad">✕ ${esc(r.vendor || 'Receipt')}: ${esc(receiptIssues(r).filter(i => i.lvl === 'bad').map(i => i.t).join(', '))} <a href="#/receipts" data-act="editreceipt" data-id="${esc(r.id)}" style="text-decoration:underline;margin-left:6px">Fix</a></div>`).join('')}
           ${pol.map(i => `<div class="check ${i.lvl}">${i.lvl === 'bad' ? '✕' : '!'} ${esc(i.t)}</div>`).join('')}
           <div class="pills" style="margin-top:14px">${cats.map(([k, v]) => `<span class="pill">${esc(k)} ${money(v)}</span>`).join('')}</div>
-          <div class="row" style="margin-top:16px"><button class="btn sm" data-act="exportcsv" data-id="${esc(t.id)}" ${allReady ? '' : 'disabled'}>Export CSV</button><button class="btn sm" data-act="printpack" data-id="${esc(t.id)}" ${allReady ? '' : 'disabled'}>Print claim pack</button><button class="btn sm primary" data-act="emailpack" data-id="${esc(t.id)}" ${allReady ? '' : 'disabled'}>Email to claims admin</button><button class="btn sm" data-act="mailtopack" data-id="${esc(t.id)}" ${allReady ? '' : 'disabled'} title="For webmail: downloads the schedule and opens a prefilled email; you attach the files">Webmail instead</button>
-            ${st === 'draft' || rs.some(r => r.status === 'captured') ? `<button class="btn sm primary" data-act="submitclaim" data-id="${esc(t.id)}" ${allReady ? '' : 'disabled'}>Mark submitted</button>` : ''}${st === 'claimed' ? `<button class="btn sm primary" data-act="paidclaim" data-id="${esc(t.id)}">Mark reimbursed</button>` : ''}</div>
-          ${claim.submitted ? `<p class="note">Submitted ${esc(fmtD(claim.submitted))}${claim.paid ? ' · reimbursed ' + esc(fmtD(claim.paid)) : ''}</p>` : ''}</div>`; }).join('')
+          <div class="row" style="margin-top:16px"><button class="btn sm" data-act="exportcsv" data-id="${esc(t.id)}" ${allReady ? '' : 'disabled'}>Export CSV</button><button class="btn sm" data-act="printpack" data-id="${esc(t.id)}" ${allReady ? '' : 'disabled'}>Print claim pack</button><button class="btn sm primary" data-act="emailpack" data-id="${esc(t.id)}" ${allReady ? '' : 'disabled'}${claimsTo() ? ` title="Draft to ${esc(claimsTo())}"` : ''}>${inHosp() && !EMP().adminEmail && HOSP.org.claimsEmail ? 'Email to ' + esc(HOSP.org.name) + ' claims' : 'Email to claims admin'}</button><button class="btn sm" data-act="mailtopack" data-id="${esc(t.id)}" ${allReady ? '' : 'disabled'} title="For webmail: downloads the schedule and opens a prefilled email; you attach the files">Webmail instead</button>
+            ${hc && hc.status === 'paid' ? '' : st === 'draft' || rs.some(r => r.status === 'captured') ? `<button class="btn sm primary" data-act="submitclaim" data-id="${esc(t.id)}" ${allReady ? '' : 'disabled'}>${hc ? 'Update submitted claim' : 'Mark submitted'}</button>` : ''}${st === 'claimed' && !hc ? `<button class="btn sm primary" data-act="paidclaim" data-id="${esc(t.id)}">Mark reimbursed</button>` : ''}</div>
+          ${hc ? `<p class="note" data-testid="claim-hosp">${hc.status === 'paid' ? `<b>Paid</b> by ${esc(HOSP.org.name)} on ${esc(fmtD(dayOf(hc.paid)))} (${hmoney(hc.totalCents)}).` : `With ${esc(HOSP.org.name)} finance since ${esc(fmtD(dayOf(hc.submitted)))} (${hmoney(hc.totalCents)}). Finance marks it paid; you see it here.`}</p>` : claim.submitted ? `<p class="note">Submitted ${esc(fmtD(claim.submitted))}${claim.paid ? ' · reimbursed ' + esc(fmtD(claim.paid)) : ''}</p>` : ''}</div>`; }).join('')
         : `<div class="empty"><h3>No claims yet</h3><p>Add receipts to a trip and they'll appear here with a readiness check.</p></div>`);
   },
   cpd() {
@@ -354,9 +361,9 @@ const VIEWS = {
       <div class="two"><div class="field"><label for="pct">Annual CPD target (hours)</label><input id="pct" type="number" min="1" max="500" name="cpdTarget" value="${esc(p.cpdTarget)}"></div><div class="field"><label for="pcb">CPD body</label><input id="pcb" type="text" name="cpdBody" value="${esc(p.cpdBody)}"></div></div>
       <div class="two"><div class="field"><label for="prg">State or region (for courses near you)</label><select id="prg" name="region"><option value="">Work it out from my home city${HC.regionOf({ ...p, region: '' }) ? ' (' + esc(HC.regionOf({ ...p, region: '' })) + ')' : ''}</option>${[...HC.STATES_AU, 'Auckland', 'Wellington', 'Nelson', 'Canterbury', 'Otago', 'Waikato'].map(r => `<option ${r === p.region ? 'selected' : ''}>${esc(r)}</option>`).join('')}</select></div>
       <div class="field"><label for="pcy">CPD year</label><input id="pcy" type="number" name="cpdYear" value="${esc(p.cpdYear)}"></div></div>
-      <h3 style="margin:18px 0 4px">Your employer</h3><p class="note" style="margin:0 0 10px">Used to address claim emails and check receipts. Type figures from your own policy; Hoggy assumes none. Stored on this device only; not sent to Hoggy's server.</p><div class="two">${[['name','Employer / health service','text'],['adminEmail',"Claims admin's email",'email'],['approverName',"Approver's name (head of department)",'text'],['approverEmail',"Approver's email",'email'],['employeeId','Employee ID','text'],['costCentre','Cost centre','text'],['claimDays','Claim within (days after the trip)','number'],['hotelPerNight','Hotel limit per night (' + S.profile.currency + ')','number'],['mealsPerDay','Meals limit per day (' + S.profile.currency + ')','number'],['clause','Policy name and clause (printed beside any limit)','text']].map(([k, l, ty]) => `<div class="field"><label for="emp-${k}">${l}</label><input id="emp-${k}" type="${ty}" data-emp="${k}" ${ty === 'number' ? 'min="0" step="any"' : 'maxlength="120"'} value="${esc((p.employer || {})[k] || '')}"></div>`).join('')}</div><h3 style="margin:18px 0 4px">Expense caps per receipt (optional)</h3><p class="note" style="margin:0 0 10px">Leave blank unless your employer sets a limit. Enter your own policy figures; Hoggy does not assume any.</p><div class="two">${CATS.map(k => `<div class="field"><label for="cap-${esc(k)}">${esc(k)}</label><input id="cap-${esc(k)}" type="number" min="0" data-cap="${esc(k)}" value="${esc(p.caps[k] || '')}"></div>`).join('')}</div>
+      <h3 style="margin:18px 0 4px">Your employer</h3><p class="note" style="margin:0 0 10px">${inHosp() && HOSP.org.claimsEmail ? `Leave the claims admin's email blank to use ${esc(HOSP.org.name)}'s (${esc(HOSP.org.claimsEmail)}). ` : ''}Used to address claim emails and check receipts. Type figures from your own policy; Hoggy assumes none. Stored on this device only; not sent to Hoggy's server.</p><div class="two">${[['name','Employer / health service','text'],['adminEmail',"Claims admin's email",'email'],['approverName',"Approver's name (head of department)",'text'],['approverEmail',"Approver's email",'email'],['employeeId','Employee ID','text'],['costCentre','Cost centre','text'],['claimDays','Claim within (days after the trip)','number'],['hotelPerNight','Hotel limit per night (' + S.profile.currency + ')','number'],['mealsPerDay','Meals limit per day (' + S.profile.currency + ')','number'],['clause','Policy name and clause (printed beside any limit)','text']].map(([k, l, ty]) => `<div class="field"><label for="emp-${k}">${l}</label><input id="emp-${k}" type="${ty}" data-emp="${k}" ${ty === 'number' ? 'min="0" step="any"' : 'maxlength="120"'} value="${esc((p.employer || {})[k] || '')}"${k === 'adminEmail' && inHosp() && HOSP.org.claimsEmail ? ` placeholder="${esc(HOSP.org.claimsEmail)} (your hospital)"` : ''}></div>`).join('')}</div><h3 style="margin:18px 0 4px">Expense caps per receipt (optional)</h3><p class="note" style="margin:0 0 10px">Leave blank unless your employer sets a limit. Enter your own policy figures; Hoggy does not assume any.</p><div class="two">${CATS.map(k => `<div class="field"><label for="cap-${esc(k)}">${esc(k)}</label><input id="cap-${esc(k)}" type="number" min="0" data-cap="${esc(k)}" value="${esc(p.caps[k] || '')}"></div>`).join('')}</div>
       <button class="btn primary" type="submit">Save</button></form></div>
-    <div>${NET.online ? `<div class="panel acct-panel"><h3>Account</h3>${NET.user ? `<p style="color:var(--muted);margin-bottom:12px">Signed in as ${esc(NET.user.email || NET.user.name)}. Trips, receipts and CPD sync to your account.</p><button class="btn" data-act="signout">Sign out</button>` : '<p style="color:var(--muted);margin-bottom:12px">Sign in to sync your trips, receipts and CPD across devices and get your receipt forwarding address.</p><button class="btn primary" data-act="signin">Sign in or create an account</button>'}</div>` : ''}<div class="panel"><h3>Your data</h3><p style="color:var(--muted);margin-bottom:12px">Stored on this device, and synced with your account if you sign in. Export a backup of your trips, receipts metadata and CPD log.</p><div class="row"><button class="btn" data-act="backup">Download backup</button><button class="btn danger" data-act="wipe">Erase everything</button>${NET.user ? '<button class="btn danger" data-act="delaccount">Delete account</button>' : ''}</div></div></div></div>`;
+    <div>${hospPanel()}${NET.online ? `<div class="panel acct-panel"><h3>Account</h3>${NET.user ? `<p style="color:var(--muted);margin-bottom:12px">Signed in as ${esc(NET.user.email || NET.user.name)}. Trips, receipts and CPD sync to your account.</p><button class="btn" data-act="signout">Sign out</button>` : '<p style="color:var(--muted);margin-bottom:12px">Sign in to sync your trips, receipts and CPD across devices and get your receipt forwarding address.</p><button class="btn primary" data-act="signin">Sign in or create an account</button>'}</div>` : ''}<div class="panel"><h3>Your data</h3><p style="color:var(--muted);margin-bottom:12px">Stored on this device, and synced with your account if you sign in. Export a backup of your trips, receipts metadata and CPD log.</p><div class="row"><button class="btn" data-act="backup">Download backup</button><button class="btn danger" data-act="wipe">Erase everything</button>${NET.user ? '<button class="btn danger" data-act="delaccount">Delete account</button>' : ''}</div></div></div></div>`;
   }
 };
 
@@ -596,8 +603,215 @@ const AFTER = {
       ['name', 'specialty', 'country', 'homeAirport', 'currency', 'theme', 'cpdBody', 'region'].forEach(k => p[k] = String(f.get(k) || '').slice(0, 80)); p.cpdTarget = Math.max(1, +f.get('cpdTarget') || 50); p.cpdYear = +f.get('cpdYear') || p.cpdYear;
       document.querySelectorAll('[data-cap]').forEach(i => p.caps[i.dataset.cap] = Math.max(0, +i.value || 0));
       p.employer = p.employer || {}; document.querySelectorAll('[data-emp]').forEach(i => { const v = i.type === 'number' ? Math.max(0, +i.value || 0) : String(i.value || '').trim().slice(0, 120); p.employer[i.dataset.emp] = v; }); save(); applyTheme(); toast('Settings saved'); renderNav(); });
+    wireHospSettings();
   }
 };
+
+/* ---------- hospital: organisation, trip approval, study budget, claims to finance ----------
+   Optional. Everything here is a server record (lib/hospital-api.js); the synced state blob only keeps the doctor's own
+   cost estimate on the trip. Roles are checked again on the server; these checks only decide what to show. */
+const HOSP = { org: null, counts: {}, mine: [], claims: [], budget: {}, notes: { unread: 0, items: [] }, pend: null, decided: [], team: null, teamYear: new Date().getFullYear(), finance: null, loaded: false, busy: new Set() };
+const HCAN = { approve: ['manager', 'admin'], team: ['manager', 'admin'], finance: ['finance', 'admin'], admin: ['admin'] };
+const hcan = what => !!(HOSP.org && HCAN[what].includes(HOSP.org.role));
+const inHosp = () => !!(NET.user && HOSP.org);
+const hmoney = c => money((c || 0) / 100, HOSP.org ? HOSP.org.currency : S.profile.currency);
+const toCents = v => Math.round((+v || 0) * 100);
+const COSTS = [['registration', 'Registration'], ['flights', 'Flights'], ['accommodation', 'Accommodation'], ['other', 'Other']];
+const ROLE_NAMES = { doctor: 'Doctor', manager: 'Manager', finance: 'Finance', admin: 'Admin' };
+const HOSP_ROUTES = [['approvals', 'approve'], ['team', 'team'], ['finance', 'finance']];
+const approvalOf = t => HOSP.mine.find(a => a.tripRef === t.id) || null;
+const hClaimOf = t => HOSP.claims.find(c => c.tripRef === t.id) || null;
+const tripYear = t => { const c = ofTrip(t); return c ? +c.start.slice(0, 4) : new Date().getFullYear(); };
+const eventOf = c => ({ name: c.name, city: c.city || '', country: c.country || '', start: c.start, end: c.end || c.start, kind: c.kind === 'course' ? 'course' : 'conference' });
+const dayOf = ms => { const d = new Date(ms); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
+const claimsTo = () => EMP().adminEmail || (inHosp() && HOSP.org.claimsEmail) || '';
+/* what needs a look: unread notices, plus requests to decide and claims to pay for those roles (Settings badge on phones) */
+const hospBadge = () => HOSP.org ? (HOSP.counts.unread || 0) + (hcan('approve') ? HOSP.counts.approvals || 0 : 0) + (hcan('finance') ? HOSP.counts.claims || 0 : 0) : 0;
+function resetHosp() { Object.assign(HOSP, { org: null, counts: {}, mine: [], claims: [], budget: {}, notes: { unread: 0, items: [] }, pend: null, decided: [], team: null, finance: null, loaded: false }); HOSP.busy.clear(); }
+async function loadHosp() {
+  if (!NET.user) return resetHosp();
+  const r = await api('/api/org'); if (r.error) return;
+  HOSP.org = r.org; HOSP.counts = r.counts || {}; HOSP.loaded = true; HOSP.budget = {};
+  if (!r.org) { HOSP.mine = []; HOSP.claims = []; HOSP.notes = { unread: 0, items: [] }; return; }
+  const [mine, cl, nt] = await Promise.all([api('/api/approvals/mine'), api('/api/claims/mine'), api('/api/notifications')]);
+  if (Array.isArray(mine)) HOSP.mine = mine;
+  if (Array.isArray(cl)) { HOSP.claims = cl; syncPaid(); }
+  if (!nt.error) HOSP.notes = nt;
+}
+/* background refresh (every minute with the inbox poll): re-render only when something changed */
+async function refreshHosp() { if (!NET.user) return; const sig = () => JSON.stringify([HOSP.org, HOSP.counts, HOSP.mine, HOSP.claims, HOSP.notes.unread]); const a = sig(); await loadHosp(); if (sig() !== a) { if (HOSP_ROUTES.some(([k]) => k === route())) { HOSP.pend = HOSP.team = HOSP.finance = null; } bgRender(); } }
+/* finance marked a claim paid: show it on the doctor's receipts too (the server record is the source) */
+function syncPaid() {
+  let ch = false;
+  for (const c of HOSP.claims) {
+    if (c.status !== 'paid') continue; const t = S.trips.find(x => x.id === c.tripRef); if (!t) continue;
+    S.receipts.forEach(r => { if (r.tripId === t.id && r.status === 'claimed') { r.status = 'paid'; ch = true; } });
+    const d = dayOf(c.paid); if (!S.claims[t.id] || S.claims[t.id].paid !== d) { S.claims[t.id] = { ...(S.claims[t.id] || {}), paid: d }; ch = true; }
+  }
+  if (ch) save();
+}
+async function loadOnce(key, fn) { if (HOSP.busy.has(key)) return; HOSP.busy.add(key); try { await fn(); } finally { HOSP.busy.delete(key); } }
+const loadBudget = year => loadOnce('b' + year, async () => { const r = await api('/api/budget?year=' + year); HOSP.budget[year] = r.error ? false : r; bgRender(); });
+const loadApprovals = () => loadOnce('ap', async () => { const [p, d] = await Promise.all([api('/api/approvals'), api('/api/approvals?status=decided')]); HOSP.pend = Array.isArray(p) ? p : []; HOSP.decided = Array.isArray(d) ? d : []; if (route() === 'approvals') bgRender(); });
+const loadTeam = y => loadOnce('t' + y, async () => { const r = await api('/api/org/team?year=' + y); HOSP.team = r.error ? { year: y, members: [], error: r.error } : r; if (route() === 'team') bgRender(); });
+const loadFinance = () => loadOnce('fin', async () => { const r = await api('/api/claims'); HOSP.finance = Array.isArray(r) ? r : []; if (route() === 'finance') bgRender(); });
+const hErr = r => r.error === 'offline' ? 'Can’t reach Hoggy. Check your connection and try again.' : r.error;
+
+function budgetCard(year, opts = {}) {
+  if (!inHosp()) return '';
+  const b = HOSP.budget[year]; if (b === undefined) loadBudget(year);
+  const cls = opts.compact ? 'budget compact' : 'panel budget';
+  if (!b) return `<section class="${cls}" aria-label="Study budget ${year}"><h3>Study budget ${year}</h3><p class="note">${b === false ? 'Could not load the budget.' : 'Loading…'}</p></section>`;
+  const used = b.committed + b.spent, pct = b.allowance ? Math.min(100, Math.round(used / b.allowance * 100)) : used ? 100 : 0, over = b.remaining < 0;
+  return `<section class="${cls}" aria-label="Study budget ${year}" data-testid="budget-${year}"><div class="budget-head"><h3>Study budget ${year}</h3><span class="note">${esc(HOSP.org.name)}${b.ownAllowance ? ' · your own allowance' : ''}</span></div>
+    <dl class="budget-grid">${[['Allowance', b.allowance], ['Committed', b.committed], ['Spent', b.spent], ['Remaining', b.remaining]].map(([k, v]) => `<div class="${k === 'Remaining' ? 'rem' + (over ? ' over' : '') : ''}"><dt>${k}</dt><dd data-k="${k.toLowerCase()}">${hmoney(v)}</dd></div>`).join('')}</dl>
+    <div class="bar" aria-hidden="true"><i class="${over ? 'warn' : ''}" style="width:${pct}%"></i></div>
+    <p class="note">${b.pending ? `<b>${hmoney(b.pending)}</b> waiting for approval (not taken off yet). ` : ''}${opts.compact ? '' : 'Committed: approved trips not yet claimed, at their estimates. Spent: claims submitted or paid, at the claim-pack totals. Counted by the year each event starts.'}</p></section>`;
+}
+function tripHospBox(t) {
+  if (!inHosp()) return '';
+  const a = approvalOf(t), cl = hClaimOf(t);
+  const st = !a ? '<span class="pill">Approval not requested</span>' : a.status === 'pending' ? '<span class="pill w">Awaiting approval</span>' : a.status === 'approved' ? '<span class="pill g">Approved</span>' : '<span class="pill b">Not approved</span>';
+  const cst = cl ? `<span class="pill ${cl.status === 'paid' ? 'g' : 'w'}">${cl.status === 'paid' ? 'Claim paid ' + esc(fmtD(dayOf(cl.paid))) : 'Claim with finance'}</span>` : '';
+  const who = a && a.decidedBy ? ' by ' + esc(a.decidedBy) : '';
+  const msg = !a ? `Ask ${esc(HOSP.org.name)} to approve this trip before you book.` : a.status === 'pending' ? `Sent ${esc(fmtD(dayOf(a.updated)))}. A manager or admin decides; the answer shows here.` : a.status === 'approved' ? `Approved${who}${a.comment ? ': “' + esc(a.comment) + '”' : '.'}` : `Not approved${who}: “${esc(a.comment)}” Change the plan and send it again.`;
+  const btn = !a ? `<button class="btn sm primary" data-act="reqapproval" data-id="${esc(t.id)}">Request approval</button>` : a.status === 'rejected' ? `<button class="btn sm primary" data-act="reqapproval" data-id="${esc(t.id)}">Edit and resubmit</button>` : '';
+  return `<div class="hosp-box" data-testid="trip-approval"><div class="row" style="justify-content:space-between"><div class="pills">${st}${a ? `<span class="pill">Estimate ${hmoney(a.estimateCents)}</span>` : ''}${cst}</div>${btn}</div><p class="note" style="margin:8px 0 0" data-testid="approval-msg">${msg}</p>${budgetCard(tripYear(t), { compact: true })}</div>`;
+}
+function approvalDialog(tripId) {
+  const t = S.trips.find(x => x.id === tripId), c = t && ofTrip(t); if (!c || !inHosp()) return;
+  const a = approvalOf(t), cur = HOSP.org.currency, lv = (S.leave || {})[c.id] || {}, sum = ty => (t.bookings || []).filter(b => b.type === ty).reduce((x, b) => x + (+b.amount || 0), 0);
+  /* reuse what Hoggy already has: the last request, the trip's own estimate, the study-leave draft, then logged bookings */
+  const pre = a ? Object.fromEntries(COSTS.map(([k]) => [k, (a.costs[k] || 0) / 100])) : t.estimate || lv.est || { registration: sum('Registration'), flights: sum('Flight'), accommodation: sum('Hotel'), other: sum('Transport') };
+  const b = HOSP.budget[tripYear(t)];
+  simpleDialog(a ? 'Edit and resubmit' : 'Request approval', `<p class="note" style="margin:0 0 12px">${esc(c.name)}, ${esc(c.city)}, ${esc(range(c))}. Goes to the managers and admins at ${esc(HOSP.org.name)}.${cur !== S.profile.currency ? ` Amounts in ${esc(cur)}, your hospital's currency.` : ''}</p>
+    ${a && a.status === 'rejected' ? `<p class="check bad" style="margin:0 0 12px">✕ ${esc(a.comment)}</p>` : ''}
+    <div class="two">${COSTS.map(([k, l]) => field('ap-' + k, `${l} (${esc(cur)})`, `<input id="ap-${k}" type="number" min="0" step="0.01" inputmode="decimal" name="${k}" value="${+pre[k] ? esc(pre[k]) : ''}">`)).join('')}</div>
+    ${field('ap-note', 'Note for your manager (optional)', `<textarea id="ap-note" name="note" rows="3" maxlength="500">${esc(a ? a.note : '')}</textarea>`)}
+    <p class="note">${b ? `Your ${esc(tripYear(t))} budget has ${hmoney(b.remaining)} left before this request.` : ''} Estimates only: the claim uses your receipts.</p>`, async f => {
+    const costs = Object.fromEntries(COSTS.map(([k]) => [k, toCents(f.get(k))])), btn = $('#sf button[type=submit]');
+    if (!Object.values(costs).some(v => v > 0)) return toast('Add at least one estimated cost');
+    if (btn) btn.disabled = true;
+    const r = await api('/api/approvals', { method: 'POST', body: { tripRef: t.id, confId: c.id, event: eventOf(c), costs, note: String(f.get('note') || '') } });
+    if (r.error) { if (btn) btn.disabled = false; return toast(hErr(r)); }
+    t.estimate = Object.fromEntries(COSTS.map(([k]) => [k, costs[k] / 100])); save();
+    await loadHosp(); closeOverlay(); render();
+    toast(r.approvers ? (a ? 'Resubmitted for approval' : 'Sent for approval') : 'Saved. Nobody at your hospital can approve yet: ask your admin to make someone a manager');
+  }, a ? 'Resubmit' : 'Send request');
+}
+function notesList(max = 5) {
+  const items = (HOSP.notes.items || []).slice(0, max); if (!items.length) return '';
+  return `<div class="list notes">${items.map(n => `<div class="li${n.seen ? '' : ' unread'}"><div class="grow"><div class="t" style="font-weight:${n.seen ? 500 : 650}">${esc(n.text)}</div><div class="s">${esc(fmtD(dayOf(n.created)))}</div></div>${n.link && /^#\/[a-z]+$/.test(n.link) ? `<a class="btn sm ghost" href="${esc(n.link)}">Open</a>` : ''}</div>`).join('')}</div>${HOSP.notes.unread ? '<p style="margin-top:8px"><button class="btn sm ghost" data-act="hnotesread">Mark all read</button></p>' : ''}`;
+}
+function hospLinks() {
+  const n = HOSP.counts || {};
+  return [hcan('approve') ? `<a class="btn sm" href="#/approvals">${icon('check')} Approvals${n.approvals ? ` <span class="pill w">${n.approvals}</span>` : ''}</a>` : '', hcan('team') ? `<a class="btn sm" href="#/team">${icon('users')} Team</a>` : '', hcan('finance') ? `<a class="btn sm" href="#/finance">${icon('claim')} Finance claims${n.claims ? ` <span class="pill w">${n.claims}</span>` : ''}</a>` : ''].filter(Boolean).join('');
+}
+/* Home: the study budget for the next trip's year (or this year) and what the hospital needs from you */
+function hospHome() {
+  if (!inHosp()) return '';
+  const nextT = S.trips.filter(t => ofTrip(t) && ofTrip(t).end >= today()).sort((a, b) => ofTrip(a).start.localeCompare(ofTrip(b).start))[0], y = nextT ? tripYear(nextT) : new Date().getFullYear(), links = hospLinks();
+  return `<div class="hosp-home">${budgetCard(y)}<section class="panel" aria-labelledby="hhH"><h3 id="hhH">${esc(HOSP.org.name)} <span class="pill">${esc(ROLE_NAMES[HOSP.org.role])}</span></h3>${links ? `<div class="row" style="margin-bottom:10px">${links}</div>` : ''}${notesList(3) || '<p class="note" style="margin:0">Nothing new. Request approval from a trip; decisions and payments show here.</p>'}</section></div>`;
+}
+/* Settings, "Your hospital": join with a code, create one, or (members) see it, open the role pages, and (admins) manage it */
+function hospPanel() {
+  if (!NET.online) return '';
+  const head = '<h3>Your hospital</h3>';
+  if (!NET.user) return `<div class="panel" id="hosp">${head}<p style="color:var(--muted);margin-bottom:12px">Optional. Sign in to join your hospital with its code, or set one up, for trip approval, a study budget and claims to finance.</p><button class="btn" data-act="signin">Sign in</button></div>`;
+  if (!HOSP.loaded) return `<div class="panel" id="hosp">${head}<p class="note">Loading…</p></div>`;
+  if (!HOSP.org) return `<div class="panel" id="hosp">${head}<p style="color:var(--muted);margin-bottom:12px">Optional. In a hospital you can ask for trip approval, see your study budget and send claims to finance. Without one, Hoggy works as it does now.</p>
+    <form id="hjoin" class="hform"><div class="field"><label for="hj">Join with a code</label><input id="hj" name="code" type="text" maxlength="12" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="ABCD-EFGH" required></div><button class="btn primary" type="submit">Join hospital</button></form>
+    <details class="hnew"><summary>Set up a hospital instead</summary><form id="hnew" style="margin-top:10px"><p class="note" style="margin:0 0 10px">You become its admin and get a code to share with colleagues.</p>
+      ${field('hn1', 'Hospital or health service', '<input id="hn1" name="name" type="text" maxlength="120" required>')}
+      ${field('hn2', 'Claims email (finance)', '<input id="hn2" name="claimsEmail" type="email" maxlength="254" placeholder="claims@hospital.example">')}
+      <div class="two">${field('hn3', 'Yearly study allowance per doctor', '<input id="hn3" name="allowance" type="number" min="0" step="1" inputmode="numeric" placeholder="0">')}${field('hn4', 'Currency', `<select id="hn4" name="currency">${['AUD', 'NZD', 'USD', 'GBP', 'EUR', 'CAD', 'SGD'].map(s => `<option ${s === S.profile.currency ? 'selected' : ''}>${s}</option>`).join('')}</select>`)}</div>
+      <button class="btn primary" type="submit">Create hospital</button></form></details></div>`;
+  const o = HOSP.org, links = hospLinks();
+  return `<div class="panel" id="hosp">${head}<div class="li" style="padding:0 0 12px"><div class="grow"><div class="t" data-testid="hosp-name">${esc(o.name)}</div><div class="s">You are: ${esc(ROLE_NAMES[o.role])} · claims to ${o.claimsEmail ? esc(o.claimsEmail) : 'no email set'} · ${hmoney(o.defaultAllowanceCents)} a year each</div></div></div>
+    ${links ? `<div class="row" style="margin-bottom:12px">${links}</div><p class="note" style="margin:-4px 0 12px">On a phone these pages open from here.</p>` : ''}
+    ${notesList(5)}
+    ${hcan('admin') ? `<h3 style="margin:16px 0 6px;font-size:15px">Join code</h3><div class="copybox"><span style="flex:1" data-testid="join-code">${esc(o.joinCode)}</span><button class="icon-btn" data-act="copy" data-v="${esc(o.joinCode)}" aria-label="Copy join code">${icon('copy')}</button></div><p class="note">Colleagues enter it under Settings, Your hospital. They join as doctors; change roles on the Team page. <button class="btn sm ghost" data-act="hcode">New code</button></p>
+      <details class="hnew"><summary>Hospital settings</summary><form id="hset" style="margin-top:10px">${field('hs1', 'Name', `<input id="hs1" name="name" type="text" maxlength="120" required value="${esc(o.name)}">`)}${field('hs2', 'Claims email (finance)', `<input id="hs2" name="claimsEmail" type="email" maxlength="254" value="${esc(o.claimsEmail)}">`)}${field('hs3', `Yearly study allowance per doctor (${esc(o.currency)})`, `<input id="hs3" name="allowance" type="number" min="0" step="1" value="${esc(o.defaultAllowanceCents / 100)}">`)}<button class="btn primary" type="submit">Save hospital</button></form></details>` : ''}
+    <p style="margin-top:14px"><button class="btn sm danger" data-act="hleave">Leave hospital</button></p></div>`;
+}
+const gate = (title, who) => `<div class="page-head"><div><h1>${esc(title)}</h1></div></div><div class="empty"><h3>${!NET.user ? 'Sign in first' : !HOSP.loaded ? 'Loading…' : HOSP.org ? `Only ${who} can open this page` : 'Join a hospital first'}</h3><p>${HOSP.org ? `You are ${esc(ROLE_NAMES[HOSP.org.role])} at ${esc(HOSP.org.name)}.` : 'Hospitals are optional. Join or set one up under Settings, Your hospital.'}</p><p style="margin-top:16px"><a class="btn" href="#/settings">Settings</a></p></div>`;
+function miniBudget(b, extra) { return b ? `<dl class="budget-grid sm">${[['Allowance', b.allowance], ['Committed', b.committed], ['Spent', b.spent], ['Remaining', b.remaining]].map(([k, v]) => `<div class="${k === 'Remaining' && v < 0 ? 'over' : ''}"><dt>${k} ${esc(b.year)}</dt><dd>${hmoney(v)}</dd></div>`).join('')}${extra || ''}</dl>` : ''; }
+function approvalCard(a) {
+  const ev = a.event || {}, after = a.budget ? a.budget.remaining - a.estimateCents : null;
+  return `<article class="panel ap-card" data-testid="approval-req" data-doctor="${esc(a.doctor)}"><div class="row" style="justify-content:space-between;align-items:flex-start;flex-wrap:nowrap"><div style="min-width:0"><h3 style="margin:0">${esc(a.doctor)}</h3><div class="s" style="color:var(--muted)">${esc(ev.name)}${ev.city ? ' · ' + esc(ev.city) : ''} · ${esc(range(ev))}</div></div><div class="ap-total">${hmoney(a.estimateCents)}</div></div>
+    <div class="pills" style="margin-top:10px">${COSTS.filter(([k]) => (a.costs || {})[k]).map(([k, l]) => `<span class="pill">${l} ${hmoney(a.costs[k])}</span>`).join('')}<span class="pill">Asked ${esc(fmtD(dayOf(a.updated)))}</span></div>
+    ${a.note ? `<p class="note">“${esc(a.note)}”</p>` : ''}
+    ${miniBudget(a.budget, after === null ? '' : `<div class="${after < 0 ? 'over' : ''}"><dt>Left if approved</dt><dd>${hmoney(after)}</dd></div>`)}
+    ${a.mine ? '<p class="note">Your own request. Another manager or admin decides it.</p>' : `<div class="field" style="margin-top:12px"><label for="apc-${a.id}">Comment (needed to reject)</label><textarea id="apc-${a.id}" rows="2" maxlength="1000"></textarea></div><div class="row"><button class="btn primary" data-act="apdecide" data-id="${a.id}" data-v="approve">Approve</button><button class="btn danger" data-act="apdecide" data-id="${a.id}" data-v="reject">Reject</button></div>`}</article>`;
+}
+Object.assign(VIEWS, {
+  approvals() {
+    if (!hcan('approve')) return gate('Approvals', 'managers and admins');
+    if (HOSP.pend === null) loadApprovals();
+    const head = `<div class="page-head"><div><h1>Approvals</h1><p>Trip requests from ${esc(HOSP.org.name)}, with each doctor's study budget for the year of the event. Pending requests are not taken off a budget until approved.</p></div></div>`;
+    if (HOSP.pend === null) return head + '<div class="loading" aria-busy="true">Loading…</div>';
+    return head + (HOSP.pend.length ? HOSP.pend.map(approvalCard).join('') : '<div class="empty"><h3>Nothing waiting</h3><p>New requests show here, and on your Home page.</p></div>')
+      + (HOSP.decided.length ? `<div class="section"><h2>Decided recently</h2></div><div class="panel"><div class="list">${HOSP.decided.map(a => `<div class="li"><div class="grow"><div class="t">${esc(a.doctor)} · ${esc((a.event || {}).name)}</div><div class="s">${a.status === 'approved' ? 'Approved' : 'Not approved'}${a.decidedBy ? ' by ' + esc(a.decidedBy) : ''} · ${esc(fmtD(dayOf(a.decided)))}${a.comment ? ' · “' + esc(a.comment) + '”' : ''}</div></div><div class="amt">${hmoney(a.estimateCents)}</div></div>`).join('')}</div></div>` : '');
+  },
+  team() {
+    if (!hcan('team')) return gate('Team', 'managers and admins');
+    const y = HOSP.teamYear, T = HOSP.team && HOSP.team.year === y ? HOSP.team : null; if (!T) loadTeam(y);
+    const head = `<div class="page-head"><div><h1>Team</h1><p>Study budgets at ${esc(HOSP.org.name)} for events starting in ${esc(y)}. The hospital default is ${hmoney(HOSP.org.defaultAllowanceCents)} a year; set a different figure for one person below.</p></div><nav class="seg" aria-label="Budget year"><button class="linkbtn" data-act="teamyear" data-v="-1" aria-label="Previous year">← ${y - 1}</button><a aria-current="page">${esc(y)}</a><button class="linkbtn" data-act="teamyear" data-v="1" aria-label="Next year">${y + 1} →</button></nav></div>`;
+    if (!T) return head + '<div class="loading" aria-busy="true">Loading…</div>';
+    if (T.error) return head + `<div class="empty"><p>${esc(T.error)}</p></div>`;
+    return head + T.members.map(m => { const b = m.budget;
+      return `<article class="panel team-row" data-testid="team-member" data-email="${esc(m.email)}"><div class="row" style="justify-content:space-between;align-items:flex-start"><div style="min-width:0"><h3 style="margin:0;overflow-wrap:anywhere">${esc(m.name || m.email)}${m.me ? ' <span class="pill">You</span>' : ''}</h3><div class="s" style="color:var(--muted);overflow-wrap:anywhere">${esc(m.email)}</div></div>
+        ${T.canAdmin ? `<label class="role-pick">Role <select data-role-user="${m.userId}" aria-label="Role for ${esc(m.name || m.email)}">${Object.entries(ROLE_NAMES).map(([k, l]) => `<option value="${k}" ${k === m.role ? 'selected' : ''}>${l}</option>`).join('')}</select></label>` : `<span class="pill">${esc(ROLE_NAMES[m.role])}</span>`}</div>
+        ${miniBudget(b, b.pending ? `<div><dt>Waiting</dt><dd>${hmoney(b.pending)}</dd></div>` : '')}
+        <div class="row allow-row"><label class="from-field" for="al-${m.userId}">Allowance ${esc(y)} (${esc(T.currency)}) <input id="al-${m.userId}" type="number" min="0" step="1" inputmode="numeric" value="${b.ownAllowance ? esc(b.allowance / 100) : ''}" placeholder="${esc(T.defaultAllowanceCents / 100)} (default)"></label><button class="btn sm" data-act="setallow" data-id="${m.userId}">Save</button>${b.ownAllowance ? `<button class="btn sm ghost" data-act="resetallow" data-id="${m.userId}">Use default</button>` : ''}${T.canAdmin && !m.me ? `<button class="btn sm danger" data-act="rmmember" data-id="${m.userId}" data-v="${esc(m.name || m.email)}">Remove</button>` : ''}</div></article>`; }).join('');
+  },
+  finance() {
+    if (!hcan('finance')) return gate('Finance claims', 'finance and admins');
+    if (HOSP.finance === null) loadFinance();
+    const head = `<div class="page-head"><div><h1>Finance claims</h1><p>Claims doctors at ${esc(HOSP.org.name)} marked as submitted. Check the pack they emailed to ${HOSP.org.claimsEmail ? esc(HOSP.org.claimsEmail) : 'your claims address'}, pay it, then mark it paid here. Hoggy does not move money.</p></div></div>`;
+    if (HOSP.finance === null) return head + '<div class="loading" aria-busy="true">Loading…</div>';
+    const row = c => `<div class="li fin-row" data-testid="fin-claim" data-doctor="${esc(c.doctor)}"><div class="grow"><div class="t">${esc(c.doctor)} · ${esc((c.event || {}).name)}</div><div class="s">${esc(range(c.event || {}))} · submitted ${esc(fmtD(dayOf(c.submitted)))} · ${plural(c.receipts, 'receipt')}${c.approval === 'approved' ? ' · approved trip' : ' · no approval on file'}</div></div><div style="text-align:right"><div class="amt">${hmoney(c.totalCents)}</div>${c.status === 'paid' ? `<span class="status paid">Paid ${esc(fmtD(dayOf(c.paid)))}</span>` : c.mine ? '<span class="note">Your own claim: someone else marks it paid</span>' : `<button class="btn sm primary" data-act="markpaid" data-id="${c.id}" data-v="${esc(c.doctor)}">Mark paid</button>`}</div></div>`;
+    const todo = HOSP.finance.filter(c => c.status === 'submitted'), done = HOSP.finance.filter(c => c.status === 'paid');
+    return head + `<div class="panel"><h3>To pay (${todo.length})</h3>${todo.length ? `<div class="list">${todo.map(row).join('')}</div>` : '<p class="note" style="margin:0">Nothing waiting.</p>'}</div>` + (done.length ? `<div class="panel"><h3>Paid</h3><div class="list">${done.map(row).join('')}</div></div>` : '');
+  }
+});
+Object.assign(ROUTES, { approvals: ['Approvals', 'check', true], team: ['Team', 'users', true], finance: ['Finance claims', 'claim', true] });
+async function hospAct(a, el, id) {
+  if (a === 'reqapproval') return approvalDialog(id);
+  if (a === 'hnotesread') { await api('/api/notifications/read', { method: 'POST' }); await loadHosp(); render(); return; }
+  if (a === 'hcode') { if (!confirm('Make a new join code? The current one stops working straight away.')) return; const r = await api('/api/org/code', { method: 'POST' }); if (r.error) return toast(hErr(r)); HOSP.org = r.org; render(); toast('New join code ready'); return; }
+  if (a === 'hleave') { if (!confirm(`Leave ${HOSP.org.name}? Your requests and claims stay with the hospital; you can join again with a code.`)) return; const r = await api('/api/org/leave', { method: 'POST' }); if (r.error) return toast(hErr(r)); resetHosp(); await loadHosp(); render(); toast(r.deleted ? 'You were the last member, so the hospital was removed' : 'You left the hospital'); return; }
+  if (a === 'apdecide') {
+    const v = el.dataset.v, ta = $('#apc-' + id), comment = ta ? ta.value.trim() : '';
+    if (v === 'reject' && !comment) { toast('Add a comment so the doctor knows what to change'); if (ta) ta.focus(); return; }
+    el.disabled = true; const r = await api('/api/approvals/' + id, { method: 'POST', body: { action: v, comment } });
+    if (r.error) { el.disabled = false; return toast(hErr(r)); }
+    const x = (HOSP.pend || []).find(p => String(p.id) === String(id)); HOSP.pend = null; await loadHosp(); render();
+    toast((v === 'approve' ? 'Approved: ' : 'Not approved: ') + (x ? x.doctor : '')); return;
+  }
+  if (a === 'teamyear') { HOSP.teamYear += +el.dataset.v; HOSP.team = null; render(); return; }
+  if (a === 'setallow' || a === 'resetallow') {
+    const inp = $('#al-' + id), v = a === 'resetallow' || !inp || inp.value === '' ? null : Math.round(+inp.value * 100);
+    if (v !== null && !(v >= 0)) return toast('Enter an amount of 0 or more');
+    const r = await api('/api/org/allowance', { method: 'POST', body: { userId: +id, year: HOSP.teamYear, allowanceCents: v } }); if (r.error) return toast(hErr(r));
+    HOSP.team = null; HOSP.budget = {}; render(); toast(v === null ? 'Back to the hospital default' : 'Allowance saved'); return;
+  }
+  if (a === 'rmmember') { if (!confirm(`Remove ${el.dataset.v} from ${HOSP.org.name}?`)) return; const r = await api('/api/org/members/' + id, { method: 'POST', body: { action: 'remove' } }); if (r.error) return toast(hErr(r)); HOSP.team = null; render(); toast('Removed'); return; }
+  if (a === 'markpaid') { if (!confirm(`Mark ${el.dataset.v}'s claim as paid? They see "Paid" in Hoggy.`)) return; el.disabled = true; const r = await api('/api/claims/' + id + '/paid', { method: 'POST' }); if (r.error) { el.disabled = false; return toast(hErr(r)); } HOSP.finance = null; await loadHosp(); render(); toast('Marked paid'); return; }
+}
+function wireHospSettings() {
+  const on = (sel, fn) => { const f = $(sel); if (f) f.addEventListener('submit', async e => { e.preventDefault(); const b = f.querySelector('button[type=submit]'); b.disabled = true; try { await fn(new FormData(f)); } finally { if (b.isConnected) b.disabled = false; } }); };
+  const done = async (r, msg) => { if (r.error) return toast(hErr(r)); await loadHosp(); render(); toast(msg); const p = $('#hosp'); if (p) p.scrollIntoView({ block: 'start' }); };
+  on('#hjoin', async f => { const r = await api('/api/org/join', { method: 'POST', body: { code: String(f.get('code') || '') } }); await done(r, r.org ? 'You joined ' + r.org.name : ''); });
+  on('#hnew', async f => { const r = await api('/api/org', { method: 'POST', body: { name: String(f.get('name') || ''), claimsEmail: String(f.get('claimsEmail') || ''), defaultAllowanceCents: toCents(f.get('allowance')), currency: String(f.get('currency') || S.profile.currency) } }); await done(r, 'Hospital created. Share the join code with colleagues'); });
+  on('#hset', async f => { const r = await api('/api/org/settings', { method: 'POST', body: { name: String(f.get('name') || ''), claimsEmail: String(f.get('claimsEmail') || ''), defaultAllowanceCents: toCents(f.get('allowance')) } }); await done(r, 'Hospital saved'); });
+}
+document.addEventListener('change', async e => {
+  const s = e.target.closest && e.target.closest('[data-role-user]'); if (!s) return;
+  const r = await api('/api/org/members/' + s.dataset.roleUser, { method: 'POST', body: { role: s.value } });
+  if (r.error) toast(hErr(r)); else toast('Role changed');
+  HOSP.team = null; await loadHosp(); render();
+});
 
 /* ---------- overlays ---------- */
 function openOverlay(html, center) {
@@ -791,7 +1005,7 @@ function claimBody(t, rs) {
 }
 const claimSubject = (t) => { const c = ofTrip(t), e = EMP(); return `Expense claim - ${S.profile.name || 'Clinician'}${e.employeeId ? ' - ' + e.employeeId : ''} - ${c.name} - ${range(c)}`; };
 async function emailPack(t) {
-  const e = EMP(); if (!e.adminEmail) { toast('Add your claims admin email under Settings > Your employer first'); location.hash = '#/settings'; return; }
+  const e = EMP(), to = claimsTo(); if (!to) { toast('Add your claims admin email under Settings > Your employer first'); location.hash = '#/settings'; return; }
   const c = ofTrip(t), rs = S.receipts.filter(r => r.tripId === t.id).sort((a, b) => (a.date || '').localeCompare(b.date || '')), atts = [], missing = []; let size = 0;
   for (let i = 0; i < rs.length; i++) {
     const r = rs[i], b = r.fileKey && await getFile(r.fileKey); if (!b) { missing.push(r.vendor || 'receipt'); continue; }
@@ -801,14 +1015,14 @@ async function emailPack(t) {
   }
   if (missing.length) return toast('Cannot build the pack: file missing for ' + missing.join(', '));
   atts.unshift({ name: 'claim-schedule.csv', type: 'text/csv', data: new TextEncoder().encode(csv([['Ref', ...CLAIM_HEAD()], ...claimRows(t).map((row, i) => ['R' + (i + 1), ...row])])) });
-  const eml = window.HoggyPack.buildEml({ to: e.adminEmail, subject: claimSubject(t), body: claimBody(t, rs), attachments: atts });
+  const eml = window.HoggyPack.buildEml({ to, subject: claimSubject(t), body: claimBody(t, rs), attachments: atts });
   download(`claim-${c.id}.eml`, eml, 'message/rfc822');
-  toast(size > 20e6 ? `Pack is ${(size / 1e6).toFixed(0)} MB. Many mail systems reject over 20 MB, so check before sending.` : 'Open the downloaded .eml in Outlook or Apple Mail. It opens as a draft to ' + e.adminEmail + '. Send it, then press Mark submitted.');
+  toast(size > 20e6 ? `Pack is ${(size / 1e6).toFixed(0)} MB. Many mail systems reject over 20 MB, so check before sending.` : 'Open the downloaded .eml in Outlook or Apple Mail. It opens as a draft to ' + to + '. Send it, then press Mark submitted.');
 }
 function mailtoPack(t) {
   const e = EMP(), rs = S.receipts.filter(r => r.tripId === t.id).sort((a, b) => (a.date || '').localeCompare(b.date || ''));
   download(`claim-${ofTrip(t).id}.csv`, csv([['Ref', ...CLAIM_HEAD()], ...claimRows(t).map((row, i) => ['R' + (i + 1), ...row])]));
-  location.href = 'mailto:' + encodeURIComponent(e.adminEmail || '') + '?subject=' + encodeURIComponent(claimSubject(t)) + '&body=' + encodeURIComponent(claimBody(t, rs).slice(0, 1500) + '\n\n[Attach the downloaded schedule and your receipt files before sending.]');
+  location.href = 'mailto:' + encodeURIComponent(claimsTo()) + '?subject=' + encodeURIComponent(claimSubject(t)) + '&body=' + encodeURIComponent(claimBody(t, rs).slice(0, 1500) + '\n\n[Attach the downloaded schedule and your receipt files before sending.]');
   toast('Attach the downloaded schedule and your receipt files, then send.');
 }
 /* study-leave / pre-approval request: a draft email with dates, leave days and a cost estimate. Hoggy never invents CPD hours. */
@@ -830,7 +1044,7 @@ function leaveDialog(confId) {
         n('fl') ? `- Flights: ${n('fl')}` : '', n('ac') ? `- Accommodation: ${n('ac')}` : '', n('rg') ? `- Registration: ${n('rg')}` : '', n('ot') ? `- Other: ${n('ot')}` : '', `Total estimate: ${total}`, '',
         'Reason:', String(f.get('why') || ''), '', `CPD: ${cpd}`, '', 'Please let me know if you need anything further, and the approval reference to quote on my claim.', '', 'Regards,', S.profile.name || ''].filter((l, i, a) => l !== '' || a[i - 1] !== '').join('\n');
       download(`study-leave-${c.id}.eml`, window.HoggyPack.buildEml({ to: e.approverEmail || '', subject: `Study leave request - ${S.profile.name || 'Clinician'} - ${c.name} - ${range(c)}`, body, attachments: [] }), 'message/rfc822');
-      S.leave = S.leave || {}; S.leave[c.id] = { drafted: today(), total }; save(); closeOverlay(); toast('Draft downloaded. Open it in your mail app, check it and send.');
+      S.leave = S.leave || {}; S.leave[c.id] = { drafted: today(), total, est: { flights: n('fl'), accommodation: n('ac'), registration: n('rg'), other: n('ot') } }; save(); closeOverlay(); toast('Draft downloaded. Open it in your mail app, check it and send.');
     }, 'Create email draft');
 }
 
@@ -928,7 +1142,8 @@ async function boot() {
   const me = await api('/api/me');
   if (me.error) { NET.online = false; renderAcct(); syncFiles(); return; }
   NET.online = true; NET.user = me.user; await Promise.all([loadRatings(), loadTop('')]);
-  if (NET.user) { await pullState(); await pullInbox(); await loadMine(); setInterval(() => pullInbox(), 60000); }
+  if (NET.user) { await pullState(); await pullInbox(); await loadMine(); await loadHosp(); }
+  setInterval(() => { if (NET.user) { pullInbox(); refreshHosp(); } }, 60000);
   syncFiles();
   NET.booted = true; openReviewLink();
   if (window.__capsCleared) { window.__capsCleared = false; toast('Old default spending caps were removed. Enter your own policy limits in Settings if your employer sets them.'); }
@@ -963,7 +1178,7 @@ function authDialog(title, then) {
         if (r.status === 401) { pwIn.value = ''; pwIn.focus(); }
         return say(r.error);
       }
-      NET.user = r.user; if (!S.profile.name && r.user.name) S.profile.name = r.user.name; closeOverlay(true); toast(reg ? 'Account created. You are signed in' : 'Signed in'); await pullState(); await pullInbox(); await loadMine(); syncFiles(); render(); if (then) then(); }); };
+      NET.user = r.user; if (!S.profile.name && r.user.name) S.profile.name = r.user.name; closeOverlay(true); toast(reg ? 'Account created. You are signed in' : 'Signed in'); await pullState(); await pullInbox(); await loadMine(); await loadHosp(); syncFiles(); render(); if (then) then(); }); };
   draw();
 }
 function renderAcct() { const a = $('#acct'); if (!a) return; a.innerHTML = !NET.online ? '<div class="saved-title" style="text-transform:none;letter-spacing:0;font-weight:400">Offline mode — data stays on this device.</div>' : NET.user ? `<div class="li" style="padding:6px 12px"><div class="grow"><div class="t" style="font-size:13px;overflow:hidden;text-overflow:ellipsis">${esc(NET.user.name || NET.user.email)}</div><div class="s">Synced</div></div><button class="btn sm" data-act="signout">Sign out</button></div>` : '<div style="padding:0 12px"><button class="btn sm primary" data-act="signin" style="width:100%">Sign in to sync</button></div>'; }
@@ -1006,9 +1221,9 @@ document.addEventListener('click', async e => {
   if (a === 'rmcert') { const c = S.certs.find(x => x.id === id); if (c && confirm(`Delete your ${c.short || ''} certificate?`)) { if (c.fileKey) delFile(c.fileKey); S.certs = S.certs.filter(x => x.id !== id); save(); render(); toast('Certificate deleted'); } return; }
   if (a === 'ics') { const c = byId(id); if (c) download(c.id + '.ics', ics(c), 'text/calendar'); return; }
   if (a === 'signin') return authDialog();
-  if (a === 'signout') { await pushState(); await api('/api/logout', { method: 'POST' }); NET.user = null; NET.rev = 0; if (confirm('Signed out. Remove your trips, receipts and files from this device too?\n\nOK = remove them (recommended on a shared computer). Your account copy is kept.\nCancel = keep them on this device.')) { await DB.wipe(); FILES.clear(); UNSAVED.clear(); const th = S.profile.theme; S = defaults(); if (th) S.profile.theme = th; try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { } setOwner(''); } toast('Signed out'); render(); return; }
+  if (a === 'signout') { await pushState(); await api('/api/logout', { method: 'POST' }); NET.user = null; NET.rev = 0; resetHosp(); if (confirm('Signed out. Remove your trips, receipts and files from this device too?\n\nOK = remove them (recommended on a shared computer). Your account copy is kept.\nCancel = keep them on this device.')) { await DB.wipe(); FILES.clear(); UNSAVED.clear(); const th = S.profile.theme; S = defaults(); if (th) S.profile.theme = th; try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { } setOwner(''); } toast('Signed out'); render(); return; }
   if (a === 'checkinbox') return pullInbox(true);
-  if (a === 'delaccount') { if (confirm('Delete your account, synced data and reviews from the server? Data on this device stays until you erase it.')) { const pw = prompt('Enter your password to confirm'); if (!pw) return; const r = await api('/api/account', { method: 'DELETE', body: { password: pw } }); if (r.error) return toast(r.error === 'offline' ? 'Can\u2019t reach Hoggy. Try again in a minute.' : r.error); NET.user = null; toast('Account deleted'); render(); } return; }
+  if (a === 'delaccount') { if (confirm('Delete your account, synced data and reviews from the server? Data on this device stays until you erase it.')) { const pw = prompt('Enter your password to confirm'); if (!pw) return; const r = await api('/api/account', { method: 'DELETE', body: { password: pw } }); if (r.error) return toast(r.error === 'offline' ? 'Can\u2019t reach Hoggy. Try again in a minute.' : r.error); NET.user = null; resetHosp(); toast('Account deleted'); render(); } return; }
   if (a === 'open') { if (e.target.closest('[data-act=save]')) return; return detail(id); }
   if (a === 'save') { e.stopPropagation(); const i = S.saved.indexOf(id); i < 0 ? S.saved.push(id) : S.saved.splice(i, 1); save(); toast(i < 0 ? 'Saved' : 'Removed from saved'); renderNav(); if (!$('#overlay').hidden) detail(id); else { if (route() === 'discover') results(); else render(); } return; }
   if (a === 'plan') { if (!S.trips.some(t => t.confId === id)) { S.trips.push({ id: uid(), confId: id, status: 'planned', bookings: [] }); if (!S.saved.includes(id)) S.saved.push(id); save(); } closeOverlay(); toast('Trip planned'); location.hash = '#/trips'; render(); return; }
@@ -1026,7 +1241,15 @@ document.addEventListener('click', async e => {
   if (a === 'emailpack') return emailPack(S.trips.find(x => x.id === id));
   if (a === 'mailtopack') return mailtoPack(S.trips.find(x => x.id === id));
   if (a === 'leave') return leaveDialog(id);
-  if (a === 'submitclaim') { const t = S.trips.find(x => x.id === id); S.receipts.forEach(r => { if (r.tripId === id && r.status === 'captured') r.status = 'claimed'; }); S.claims[id] = { ...(S.claims[id] || {}), submitted: today() }; save(); toast('Marked submitted'); render(); return; }
+  if (['reqapproval', 'hnotesread', 'hcode', 'hleave', 'apdecide', 'teamyear', 'setallow', 'resetallow', 'rmmember', 'markpaid'].includes(a)) return hospAct(a, el, id);
+  if (a === 'submitclaim') { const t = S.trips.find(x => x.id === id);
+    if (inHosp()) { /* a server record finance can see; the local status follows only once the server has it */
+      const c = ofTrip(t), rs = S.receipts.filter(r => r.tripId === id), tot = rs.reduce((x, r) => x + claimAmt(r), 0); el.disabled = true;
+      const r = await api('/api/claims', { method: 'POST', body: { tripRef: id, confId: c.id, event: eventOf(c), totalCents: Math.round(tot * 100), currency: S.profile.currency, receipts: rs.length } });
+      if (r.error) { el.disabled = false; return toast(hErr(r)); }
+      await loadHosp();
+    }
+    S.receipts.forEach(r => { if (r.tripId === id && r.status === 'captured') r.status = 'claimed'; }); S.claims[id] = { ...(S.claims[id] || {}), submitted: today() }; save(); toast(inHosp() ? 'Marked submitted. ' + HOSP.org.name + ' finance can see it now' : 'Marked submitted'); render(); return; }
   if (a === 'paidclaim') { S.receipts.forEach(r => { if (r.tripId === id && r.status === 'claimed') r.status = 'paid'; }); S.claims[id] = { ...(S.claims[id] || {}), paid: today() }; save(); toast('Reimbursement recorded'); render(); return; }
   if (a === 'addcpd') { simpleDialog('Add CPD entry', `${field('c1', 'Activity', '<input id="c1" type="text" name="title" required maxlength="100" autofocus>')}<div class="two">${field('c2', 'Date', `<input id="c2" type="date" name="date" required value="${today()}">`)}${field('c3', 'Hours', '<input id="c3" type="number" name="hours" min="0.25" step="0.25" required>')}</div>${themeBoxes()}`, f => { S.cpd.push({ id: uid(), title: String(f.get('title')).slice(0, 100), date: f.get('date'), hours: +f.get('hours') || 0, source: 'manual', themes: themeKeys(f) }); save(); closeOverlay(); render(); }); return; }
   if (a === 'rmcpd') { S.cpd = S.cpd.filter(x => x.id !== id); save(); render(); return; }
@@ -1038,7 +1261,7 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape' && !$('#overlay').hidden) closeOverlay();
   if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('.card, .sess')) { e.preventDefault(); const d = e.target.dataset; if (d.act === 'opencourse') location.hash = '#/courses/' + d.id; else if (d.act === 'session') sessionSheet(d.id); else detail(d.id); }
 });
-window.addEventListener('hashchange', () => { if (reviewHash()) { closeOverlay(true); render(); return openReviewLink(); } if (!knownRoute()) return; closeOverlay(); render(); $('#main').focus({ preventScroll: true }); window.scrollTo(0, 0); });
+window.addEventListener('hashchange', () => { if (reviewHash()) { closeOverlay(true); render(); return openReviewLink(); } if (!knownRoute()) return; if (HOSP_ROUTES.some(([k]) => k === route())) { HOSP.pend = HOSP.team = HOSP.finance = null; } closeOverlay(); render(); $('#main').focus({ preventScroll: true }); window.scrollTo(0, 0); });
 if (!CONFS.length) console.warn('Hoggy: no conference data loaded (data/conferences.js)');
 S.certs = Array.isArray(S.certs) ? S.certs : []; S.trips = S.trips.filter(keepTrip); S.saved = S.saved.filter(id => CONFS.some(c => c.id === id));
 render();

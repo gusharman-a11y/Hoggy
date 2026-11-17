@@ -341,3 +341,40 @@ details.how .note{margin-top:6px;max-width:62ch}
 .cov-item a{font-weight:600}
 .cov-meta{margin-top:2px}
 @media (max-width:640px){.top-grid,.toprank{grid-template-columns:1fr;gap:12px}.topcard .art.sm{aspect-ratio:4/1}.toprank .rank{left:-4px}}
+/* hospital: approval box on trips, study budget, approvals, team, finance claims */
+.hosp-box{margin-top:14px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--card-2)}
+.hosp-box .budget{margin-top:12px}
+.budget h3{font-size:16px;margin:0}
+.budget-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.budget-head .note{margin:0}
+.budget-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:0 0 10px}
+.budget-grid dt{font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--faint);font-weight:600}
+.budget-grid dd{margin:2px 0 0;font-size:20px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.budget-grid .rem dd{color:var(--accent)}
+.budget-grid .over dd{color:var(--bad)}
+.budget-grid.sm{grid-template-columns:repeat(auto-fit,minmax(110px,1fr));margin-top:12px}
+.budget-grid.sm dd{font-size:15px}
+.budget.compact{padding-top:12px;border-top:1px solid var(--line)}
+.budget.compact h3{font-size:14px}
+.budget.compact dd{font-size:16px}
+.budget .note{margin:8px 0 0}
+.hosp-home{display:grid;grid-template-columns:1.2fr 1fr;gap:14px;margin-bottom:22px}
+.hosp-home .panel + .panel{margin-top:0}
+.hosp-home h3 .pill{vertical-align:middle;margin-left:4px}
+.ap-total{font-size:24px;font-weight:800;letter-spacing:-.03em;white-space:nowrap;font-variant-numeric:tabular-nums}
+.ap-card textarea{width:100%}
+.role-pick{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--muted);font-weight:600}
+.allow-row{margin-top:12px;align-items:flex-end}
+.allow-row input{width:150px}
+.notes .li.unread .t::before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:middle}
+details.hnew{margin-top:14px;border-top:1px solid var(--line);padding-top:12px}
+details.hnew summary{cursor:pointer;font-weight:600}
+.hform{display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap}
+.hform .field{flex:1 1 180px;margin:0}
+.hform input{text-transform:uppercase;letter-spacing:.08em}
+@media (max-width:900px){.hosp-home{grid-template-columns:1fr}}
+@media (max-width:640px){.budget-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.allow-row .from-field{flex:1 1 100%}.allow-row input{width:100%}.fin-row{flex-wrap:wrap}.fin-row > div:last-child{text-align:left!important;width:100%}.ap-total{font-size:20px}}
+.cols>*{min-width:0}
+.acct-panel p,#hosp .s,#hosp .t,.hosp-home .t{overflow-wrap:anywhere}
+.nav .badge.desk-only{display:none}
+@media (min-width:901px){.nav .badge.mob-only{display:none}.nav .badge.desk-only{display:inline-block}}

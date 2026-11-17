@@ -208,3 +208,14 @@ test('join codes: brute force is rate-limited per account and per network', asyn
   for (let k = 0; k < 3; k++) { const c = client(B, '203.0.113.50'); await c.register('Dr Guess ' + k); for (let i = 0; i < 10; i++) if ((await c.post('/api/org/join', { code: H.newCode() }))[0] === 429) blocked++; }
   assert.ok(blocked >= 10, 'the network limit stops new accounts too: ' + blocked);
 });
+
+test('app: hospital pages stay off the phone tab bar, copy has no superlatives, claims default to the hospital email', () => {
+  const src = fs.readFileSync(path.join(ROOT, 'app.js'), 'utf8'), i = src.indexOf('/* ---------- hospital:'), body = src.slice(i, src.indexOf('/* ---------- overlays ---------- */', i));
+  assert.ok(body.length > 5000, 'hospital section found');
+  assert.match(body, /approvals: \['Approvals', 'check', true\], team: \['Team', 'users', true\], finance: \['Finance claims', 'claim', true\]/, 'hidden from the 7-tab bar');
+  assert.match(src, /href="#\/\$\{k\}" class="desk"/, 'role links are desktop-only in the nav');
+  assert.match(src, /hcan\(w\)\)\.map/, 'role links only for roles that use them');
+  assert.doesNotMatch(body, /\b(largest|leading|best|guarantee\w*|seamless|world's)\b/i);
+  assert.match(src, /const claimsTo = \(\) => EMP\(\)\.adminEmail \|\| \(inHosp\(\) && HOSP\.org\.claimsEmail\)/);
+  assert.match(src, /buildEml\(\{ to, subject/);
+});
