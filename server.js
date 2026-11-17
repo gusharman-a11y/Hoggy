@@ -30,6 +30,7 @@ const LOOPBACK = !ON_VERCEL && ['127.0.0.1', 'localhost', '::1'].includes(HOST);
 const SECURE = process.env.HOGGY_INSECURE_COOKIES !== '1' && !LOOPBACK;
 const TRUST_PROXY = ON_VERCEL || process.env.HOGGY_TRUST_PROXY === '1';
 const CONF_FILE = path.join(__dirname, 'data', 'conferences.js');
+const COURSE_DIR = path.join(__dirname, 'data', 'courses');
 if (!PG) fs.mkdirSync(DATA, { recursive: true });
 
 const db = PG
@@ -178,6 +179,16 @@ async function getConfs() {
   cc.etag = '"' + cc.updated + '-' + cc.list.length + '"';
   return (confCache = cc);
 }
+/* Courses: read once per process from data/courses/*.json; sessions that have finished are dropped (re-filtered each day). */
+let courseCache = null;
+function getCourses() {
+  const day = new Date().toISOString().slice(0, 10);
+  if (courseCache && courseCache.day === day) return courseCache;
+  const raw = courseCache ? courseCache.raw : (() => { const r = f => JSON.parse(fs.readFileSync(path.join(COURSE_DIR, f), 'utf8')); return { cat: r('catalogue.json'), ses: r('sessions.json') }; })();
+  const sessions = (raw.ses.sessions || []).filter(s => s.end >= day).sort((a, b) => a.start < b.start ? -1 : a.start > b.start ? 1 : 0);
+  const body = JSON.stringify({ generated: raw.cat.generated, courses: raw.cat.courses, sessions });
+  return (courseCache = { day, raw, body, etag: '"' + sha(body).slice(0, 20) + '"' });
+}
 /* series index, rebuilt with the conference cache: key -> editions [{id, year, city, start, end, name}], conference id -> key */
 async function seriesIdx() {
   const cc = await getConfs(); if (cc.series) return cc.series;
@@ -299,6 +310,12 @@ async function api(req, res, url) {
     const cc = await getConfs();
     if (req.headers['if-none-match'] === cc.etag) { res.writeHead(304, { ETag: cc.etag }); return res.end(); }
     return json(res, 200, { updated: cc.updated, conferences: cc.list }, { ETag: cc.etag });
+  }
+  /* public: course catalogue and upcoming sessions (static files bundled with the function, like data/conferences.js) */
+  if (p === '/api/courses' && m === 'GET') {
+    const cc = getCourses();
+    if (req.headers['if-none-match'] === cc.etag) { res.writeHead(304, { ETag: cc.etag }); return res.end(); }
+    res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-cache', ETag: cc.etag }); return res.end(cc.body);
   }
   /* public: community scores per conference SERIES (all editions), weighted verified x1, unverified x0.5, hidden under 3 reviews */
   if (p === '/api/ratings' && m === 'GET') {
@@ -574,7 +591,7 @@ async function backup() {
 }
 /* ---------- static ---------- */
 const MIME = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.ico': 'image/x-icon' };
-const PUBLIC = new Set(['index.html', 'app.js', 'parse.js', 'pack.js', 'stats.js', 'styles.css', 'lib/series.js', 'data/conferences.js', 'data/holidays.js', 'data/cpd-nz.js', 'admin.html', 'admin.js']);
+const PUBLIC = new Set(['index.html', 'app.js', 'parse.js', 'pack.js', 'stats.js', 'courses.js', 'data/courses/catalogue.json', 'data/courses/sessions.json', 'styles.css', 'lib/series.js', 'data/conferences.js', 'data/holidays.js', 'data/cpd-nz.js', 'admin.html', 'admin.js']);
 const DEMO_NOTE = '<div class="demo-note" role="note">Preview — accounts and receipts reset from time to time.</div>';
 function serveStatic(req, res, url) {
   let rel; try { rel = decodeURIComponent(url.pathname).replace(/^\/+/, '') || 'index.html'; } catch (e) { res.writeHead(400); return res.end('Bad request'); }
