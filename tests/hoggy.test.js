@@ -3,6 +3,7 @@
 const test = require('node:test'), assert = require('node:assert/strict');
 const { spawn } = require('node:child_process'), path = require('node:path'), fs = require('node:fs'), os = require('node:os'), vm = require('node:vm');
 const { parseReceipt } = require('../parse.js');
+const TDB = require('./_db.js');
 
 test('parser: totals, thousands, subtotal, forwarded sender, category', () => {
   const a = parseReceipt('Subject: Receipt\nFrom: Dr Me <me@x.com>\n---------- Forwarded message ---------\nFrom: Uber Receipts <u@uber.com>\nSubtotal $100.00\nTotal $110.00\nPaid on 12/03/2027');
@@ -32,8 +33,9 @@ test('conference dataset: schema, unique ids, valid dates, https urls', () => {
 
 test('server API', async (t) => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'hoggy-')), port = 20000 + Math.floor(Math.random() * 20000);
-  const srv = spawn(process.execPath, [path.join(__dirname, '..', 'server.js')], { env: { ...process.env, PORT: String(port), HOGGY_DATA: dir, HOST: '127.0.0.1', HOGGY_ADMIN_KEY: 'k', HOGGY_ADMINS: 'x@example.com', HOGGY_REPORT_MIN_AGE_H: '0' }, stdio: 'ignore' });
-  t.after(() => { srv.kill(); });
+  let srv; t.after(() => { srv.kill(); });
+  const env = { ...process.env, PORT: String(port), HOGGY_DATA: dir, HOST: '127.0.0.1', HOGGY_ADMIN_KEY: 'k', HOGGY_ADMINS: 'x@example.com', HOGGY_REPORT_MIN_AGE_H: '0', ...TDB.isolate(t) };
+  srv = spawn(process.execPath, [path.join(__dirname, '..', 'server.js')], { env, stdio: 'ignore' });
   const B = `http://127.0.0.1:${port}`, H = { 'X-Requested-With': 'hoggy', 'Content-Type': 'application/json' };
   for (let i = 0; i < 50; i++) { try { await fetch(B + '/api/ratings'); break; } catch (e) { await new Promise(r => setTimeout(r, 100)); } }
   let cookie = ''; const call = async (p, o = {}, h = H) => { const r = await fetch(B + p, { ...o, headers: { ...h, cookie } }); const sc = r.headers.get('set-cookie'); if (sc) cookie = sc.split(';')[0]; let j = null; try { j = await r.json(); } catch (e) { } return [r.status, j]; };
@@ -50,7 +52,7 @@ test('server API', async (t) => {
   const escKey = require('../lib/series.js').seriesKey((await (await fetch(B + '/api/conferences')).json()).conferences.find(c => c.id === 'esc-congress'));
   assert.equal((await call('/api/reviews', { method: 'POST', body: JSON.stringify({ series: escKey, editions: [{ year: Y - 6 }], ratings: R5, text: 'Strong programme, well run', verified: true }) }))[0], 201);
   const [, rv] = await call('/api/reviews?conf=esc-congress'); assert.equal(rv.length, 1); assert.equal(rv[0].verified, false, 'self-claimed attendance is NOT verification'); assert.equal(rv[0].ratings.content, 5);
-  const secret = fs.readFileSync(path.join(dir, 'inbound-secret.txt'), 'utf8').trim();
+  const secret = await TDB.inboundSecret(dir, env);
   assert.equal((await fetch(B + '/api/inbound/email', { method: 'POST', headers: { ...H, 'X-Hoggy-Secret': 'wrong' }, body: '{}' })).status, 401);
   const confs = (await (await fetch(B + '/api/conferences')).json()).conferences, esc1 = confs.find(c => c.id === 'esc-congress');
   const ok = await fetch(B + '/api/inbound/email', { method: 'POST', headers: { ...H, 'X-Hoggy-Secret': secret }, body: JSON.stringify({ To: reg.user.inbox, From: 'Hilton <n@h.com>', Subject: 'Receipt', TextBody: `Total $612.50\n${esc1.start}` }) });
@@ -104,13 +106,14 @@ test('ingest: parsers, similarity, SSRF guard, validation', async () => {
 
 test('healthz, review report/delete, seed versioning', async (t) => {
   const dir = require('node:fs').mkdtempSync(require('node:path').join(require('node:os').tmpdir(), 'hoggy2-')), port = 20000 + Math.floor(Math.random() * 20000);
-  const srv = require('node:child_process').spawn(process.execPath, [require('node:path').join(__dirname, '..', 'server.js')], { env: { ...process.env, PORT: String(port), HOGGY_DATA: dir, HOST: '127.0.0.1', HOGGY_ADMIN_KEY: 'k', HOGGY_ADMINS: 'x@example.com', HOGGY_REPORT_MIN_AGE_H: '0' }, stdio: 'ignore' });
-  t.after(() => srv.kill());
+  let srv; t.after(() => srv.kill());
+  srv = require('node:child_process').spawn(process.execPath, [require('node:path').join(__dirname, '..', 'server.js')], { env: { ...process.env, PORT: String(port), HOGGY_DATA: dir, HOST: '127.0.0.1', HOGGY_ADMIN_KEY: 'k', HOGGY_ADMINS: 'x@example.com', HOGGY_REPORT_MIN_AGE_H: '0', ...TDB.isolate(t) }, stdio: 'ignore' });
   const B = `http://127.0.0.1:${port}`, H = { 'X-Requested-With': 'hoggy', 'Content-Type': 'application/json' };
   let hz; for (let i = 0; i < 50; i++) { try { hz = await (await fetch(B + '/healthz')).json(); break; } catch (e) { await new Promise(r => setTimeout(r, 100)); } }
   assert.equal(hz.ok, true); assert.ok(hz.conferences >= 60);
   const list = await (await fetch(B + '/api/conferences')).json(); assert.ok(list.conferences.length >= 60);
-  assert.ok(require('node:fs').readdirSync(require('node:path').join(dir, 'backups')).length >= 1, 'backup written');
+  if (!TDB.PG) assert.ok(require('node:fs').readdirSync(require('node:path').join(dir, 'backups')).length >= 1, 'backup written (SQLite only; Supabase backs up Postgres)');
+  assert.equal(hz.db, TDB.PG ? 'pg' : 'sqlite');
   const mk = async (n) => { let cookie = ''; const r = await fetch(B + '/api/register', { method: 'POST', headers: H, body: JSON.stringify({ email: `u${n}${Date.now()}@example.com`, password: 'correct-horse-battery', name: 'U' + n }) }); cookie = r.headers.get('set-cookie').split(';')[0]; return (p, o = {}) => fetch(B + p, { ...o, headers: { ...H, cookie } }).then(async x => [x.status, await x.json().catch(() => null)]); };
   const a = await mk('a'), b = await mk('b'), c = await mk('c'), d = await mk('d');
   const id = list.conferences[0].id;
@@ -123,12 +126,12 @@ test('healthz, review report/delete, seed versioning', async (t) => {
   assert.equal((await a('/api/admin/candidates'))[0], 403, 'admin only');
 });
 
-test('require(server.js) exports the handler and does not listen (Vercel entry)', () => {
+test('require(server.js) exports the handler and does not listen (Vercel entry)', (t) => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'hoggy3-'));
   const code = `const m = require(${JSON.stringify(path.join(__dirname, '..', 'api', 'index.js'))}); const s = require(${JSON.stringify(path.join(__dirname, '..', 'server.js'))});
     console.log(JSON.stringify({ fn: typeof m, same: m === s.handler, listening: s.server.listening }));`;
-  const r = require('node:child_process').spawnSync(process.execPath, ['-e', code], { env: { ...process.env, HOGGY_DATA: dir, PORT: '1' }, encoding: 'utf8', timeout: 20000 });
+  const r = require('node:child_process').spawnSync(process.execPath, ['-e', code], { env: { ...process.env, HOGGY_DATA: dir, PORT: '1', ...TDB.isolate(t) }, encoding: 'utf8', timeout: 20000 });
   assert.equal(r.status, 0, 'process exits on its own: nothing left listening ' + r.stderr);
-  const out = JSON.parse(r.stdout.trim().split('\n').pop());
+  const out = JSON.parse(r.stdout.trim().split('\n').find(l => l.startsWith('{"fn"')));
   assert.deepEqual(out, { fn: 'function', same: true, listening: false });
 });

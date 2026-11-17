@@ -5,6 +5,7 @@ const { spawn } = require('node:child_process'), path = require('node:path'), fs
 const { DatabaseSync } = require('node:sqlite');
 const { seriesKey, seriesTitle, validKey } = require('../lib/series.js');
 const RV = require('../lib/reviews.js');
+const TDB = require('./_db.js');
 const ROOT = path.join(__dirname, '..');
 const CONFS = (() => { const ctx = { window: {} }; vm.runInNewContext(fs.readFileSync(path.join(ROOT, 'data', 'conferences.js'), 'utf8'), ctx); return ctx.window.HOGGY_CONFERENCES; })();
 const byId = id => { const c = CONFS.find(x => x.id === id); assert.ok(c, 'fixture missing ' + id); return c; };
@@ -58,12 +59,13 @@ test('receipt match: names the conference and sits in the date window', () => {
 /* ---------- server ---------- */
 async function startServer(t, dir, extra = {}) {
   const port = 20000 + Math.floor(Math.random() * 30000);
-  const srv = spawn(process.execPath, [path.join(ROOT, 'server.js')], { env: { ...process.env, PORT: String(port), HOGGY_DATA: dir, HOST: '127.0.0.1', HOGGY_ADMIN_KEY: 'test-admin-key', HOGGY_ADMINS: 'admin@example.com', HOGGY_REPORT_MIN_AGE_H: '0', ...extra }, stdio: ['ignore', 'pipe', 'pipe'] });
+  let srv; t.after(() => srv.kill());
+  const env = { ...process.env, PORT: String(port), HOGGY_DATA: dir, HOST: '127.0.0.1', HOGGY_ADMIN_KEY: 'test-admin-key', HOGGY_ADMINS: 'admin@example.com', HOGGY_REPORT_MIN_AGE_H: '0', ...TDB.isolate(t), ...extra };
+  srv = spawn(process.execPath, [path.join(ROOT, 'server.js')], { env, stdio: ['ignore', 'pipe', 'pipe'] });
   let out = ''; srv.stdout.on('data', d => out += d); srv.stderr.on('data', d => out += d);
-  t.after(() => srv.kill());
   const B = `http://127.0.0.1:${port}`;
   for (let i = 0; i < 80; i++) { try { await fetch(B + '/healthz'); break; } catch (e) { await new Promise(r => setTimeout(r, 100)); } }
-  return { B, log: () => out };
+  return { B, env, log: () => out };
 }
 function client(B) {
   let cookie = '';
@@ -75,7 +77,7 @@ const ALL5 = v => ({ content: v, networking: v, venue: v, value: v, cpd: v });
 const PDF = Buffer.from('%PDF-1.4\n1 0 obj<<>>endobj\n%%EOF');
 
 test('reviews API: series, one per edition, client cannot forge verified, proof privacy, admin approve, receipt auto-verify', async (t) => {
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'hoggy-rv-')), { B } = await startServer(t, dir);
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'hoggy-rv-')), { B, env } = await startServer(t, dir);
   const key = seriesKey(byId('jsca-46th-2026')), Y = new Date().getUTCFullYear();
   const a = client(B), b = client(B), c = client(B), admin = client(B);
   const [s1, ra] = await a.register(`a${Date.now()}@example.com`, 'Dr A'); assert.equal(s1, 201);
@@ -159,7 +161,7 @@ test('reviews API: series, one per edition, client cannot forge verified, proof 
 
   /* automatic verification: a registration receipt the server received by email for an edition that has happened */
   assert.equal((await admin.call('/api/admin/conferences/jsca-46th-2026', { method: 'POST', body: JSON.stringify({ patch: { start: `${Y - 5}-11-12`, end: `${Y - 5}-11-14` } }) }, { 'X-Admin-Key': 'test-admin-key' }))[0], 200, 'test fixture: an edition that has happened');
-  const [, cm] = await c.call('/api/me'); const secret = fs.readFileSync(path.join(dir, 'inbound-secret.txt'), 'utf8').trim();
+  const [, cm] = await c.call('/api/me'); const secret = await TDB.inboundSecret(dir, env);
   const mail = body => fetch(B + '/api/inbound/email', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Hoggy-Secret': secret }, body: JSON.stringify({ To: cm.user.inbox, From: 'Congress Secretariat <reg@congre.co.jp>', ...body }) });
   assert.equal((await mail({ Subject: 'Hotel receipt', TextBody: `Hilton Wakayama\nTotal JPY 40,000.00\n${Y - 5}-11-12\n46th Annual Meeting of the Japan Society for Clinical Anesthesia` })).status, 200);
   const [s5, mc] = await c.call('/api/reviews', { method: 'POST', body: JSON.stringify({ series: key, editions: [{ year: Y - 5 }], ratings: ALL5(4), text: 'Useful refresher sessions' }) });
@@ -169,7 +171,7 @@ test('reviews API: series, one per edition, client cannot forge verified, proof 
   const [, myc] = await c.call('/api/my-reviews'); assert.equal(myc[0].verify, 'verified');
 });
 
-test('migration: old per-conference reviews move into the series model; client-derived verified flags are reset', async (t) => {
+test('migration: old per-conference reviews move into the series model; client-derived verified flags are reset', { skip: TDB.PG && 'SQLite-only: legacy databases are SQLite; Postgres starts on the series model' }, async (t) => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'hoggy-mig-')), d = new DatabaseSync(path.join(dir, 'hoggy.db'));
   d.exec(`CREATE TABLE users(id INTEGER PRIMARY KEY, email TEXT UNIQUE NOT NULL, name TEXT, pass TEXT NOT NULL, inbox TEXT UNIQUE NOT NULL, created INTEGER NOT NULL);
     CREATE TABLE reviews(id INTEGER PRIMARY KEY, user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE, conf_id TEXT NOT NULL, rating INTEGER NOT NULL, text TEXT NOT NULL, author TEXT NOT NULL, role TEXT, created INTEGER NOT NULL, dims TEXT, verified INTEGER DEFAULT 0, UNIQUE(user_id, conf_id));
