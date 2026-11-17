@@ -1,8 +1,15 @@
 'use strict';
 /* Merge data/shards/*.json into data/conferences.js with validation and de-duplication.
-   Usage: node tools/merge-shards.js [--dry] */
+   Usage: node tools/merge-shards.js [--dry] [--root DIR] [--today YYYY-MM-DD] [--migrate-legacy]
+   Evidence rule (B30, tools/evidence.js): a row stays datesConfirmed only with datesSourceUrl + datesQuote + verifiedOn on the
+   organiser's domain, or with legacyConfirmed (confirmed before the rule, quote not stored yet). Any other confirmed row is
+   downgraded to an estimate with estimateReason; its data (dates, evidence fields) is kept.
+   --migrate-legacy: one-off (run 17 Nov 2026): marks every confirmed row without evidence fields legacyConfirmed. Refuses to
+   run again once any row carries the flag, so it can never re-legacy a row that lost its confirmation. */
 const fs = require('node:fs'), path = require('node:path'), vm = require('node:vm');
-const root = path.join(__dirname, '..'), dry = process.argv.includes('--dry');
+const argv = process.argv.slice(2), opt = k => { const i = argv.indexOf(k); return i >= 0 ? argv[i + 1] : null; };
+const root = path.resolve(opt('--root') || path.join(__dirname, '..')), dry = argv.includes('--dry'), MIGRATE = argv.includes('--migrate-legacy');
+const { evidenceProblem, hasAnyEvidence } = require('./evidence');
 const mainFile = path.join(root, 'data', 'conferences.js'), shardDir = path.join(root, 'data', 'shards');
 const { CANON, canon } = require('./specialties'); // tools/specialties.json: one name per specialty
 const ctx = { window: {} }; vm.runInNewContext(fs.readFileSync(mainFile, 'utf8'), ctx);
@@ -24,10 +31,15 @@ const valid = c => {
   if (typeof c.cpdHours !== 'number' || c.cpdHours < 0 || c.cpdHours > 100) return 'bad cpdHours';
   return null;
 };
+const EVIDENCE_KEYS = ['datesSourceUrl', 'datesQuote', 'verifiedOn', 'organiserUrl', 'societyUrl'];
+const pick = (o, ks) => Object.fromEntries(ks.filter(k => o[k] != null && o[k] !== '').map(k => [k, o[k]]));
 const CONFIRMED_ONLY = new Set(['late2026-2028.json', 'r8-aunz.json', 'r8-na.json', 'r8-eu.json', 'r8-asia.json', 'r8-latam-africa.json']); // shards whose unconfirmed rows had unopened URLs
 const DROP = new Set(['jsog-annual-meeting']); // dates matched a different congress; re-add only once JSOG's own page is read
-const TODAY = new Date().toISOString().slice(0, 10);
-const out = base.map(c => { const r = { dateStatus: c.datesConfirmed === false ? 'estimated' : 'confirmed', sourceUrl: c.url, ...c }; if (r.lastVerified === '2026-11-06' && !r.provenance) delete r.lastVerified; return r; }), seenId = new Set(out.map(c => c.id)), seenKey = new Set(out.map(c => norm(c.name) + c.start.slice(0, 4))), seenUrlDate = new Set(out.map(c => host(c.url) + c.start));
+const TODAY = opt('--today') || new Date().toISOString().slice(0, 10);
+if (MIGRATE && base.some(c => c.legacyConfirmed)) { console.error('--migrate-legacy already ran (rows carry legacyConfirmed); refusing'); process.exit(1); }
+if (MIGRATE) for (const c of base) if (c.datesConfirmed !== false && !hasAnyEvidence(c)) c.legacyConfirmed = true;
+const wasLegacy = new Set(base.filter(c => c.legacyConfirmed).map(c => c.id));
+const out = base.map(c => { const r = { ...c, dateStatus: c.dateStatus || (c.datesConfirmed === false ? 'estimated' : 'confirmed'), sourceUrl: c.sourceUrl || c.url }; if (r.lastVerified === '2026-11-06' && !r.provenance) delete r.lastVerified; return r; }), seenId = new Set(out.map(c => c.id)), seenKey = new Set(out.map(c => norm(c.name) + c.start.slice(0, 4))), seenUrlDate = new Set(out.map(c => host(c.url) + c.start));
 const stats = { added: 0, dupId: 0, dupName: 0, invalid: 0 }, rejects = [];
 const shardFiles = fs.existsSync(shardDir) ? fs.readdirSync(shardDir).filter(x => x.endsWith('.json') && x !== 'holidays.json') : [];
 for (const f of shardFiles.filter(x => !x.startsWith('provenance-') && !x.startsWith('cpd-'))) {
@@ -42,7 +54,7 @@ for (const f of shardFiles.filter(x => !x.startsWith('provenance-') && !x.starts
     if (seenId.has(c.id)) { stats.dupId++; continue; }
     if (seenKey.has(key) || seenUrlDate.has(host(c.url) + c.start)) { stats.dupName++; continue; }
     seenId.add(c.id); seenKey.add(key); seenUrlDate.add(host(c.url) + c.start);
-    out.push({ id: c.id, name: c.name, organiser: c.organiser, specialty: c.specialty, city: c.city, country: c.country, countryCode: c.countryCode, region: c.region, lat: +c.lat || 0, lng: +c.lng || 0, start: c.start, end: c.end, format: c.format, cpdHours: c.cpdHours, cpdBody: c.cpdBody || '', priceFrom: +c.priceFrom || 0, attendees: +c.attendees || 0, url: c.url, blurb: String(c.blurb).slice(0, 240), datesConfirmed: c.datesConfirmed === true, dateStatus: c.datesConfirmed === true ? 'confirmed' : 'estimated', sourceUrl: c.sourceUrl || c.url, ...(c.lastVerified || (c.datesConfirmed === true && c.sourceUrl && c.sourceUrl !== c.url) ? { lastVerified: c.lastVerified || TODAY } : {}) });
+    out.push({ id: c.id, name: c.name, organiser: c.organiser, specialty: c.specialty, city: c.city, country: c.country, countryCode: c.countryCode, region: c.region, lat: +c.lat || 0, lng: +c.lng || 0, start: c.start, end: c.end, format: c.format, cpdHours: c.cpdHours, cpdBody: c.cpdBody || '', priceFrom: +c.priceFrom || 0, attendees: +c.attendees || 0, url: c.url, blurb: String(c.blurb).slice(0, 240), datesConfirmed: c.datesConfirmed === true, dateStatus: c.datesConfirmed === true ? 'confirmed' : 'estimated', sourceUrl: c.sourceUrl || c.url, ...pick(c, EVIDENCE_KEYS), ...(c.lastVerified || (c.datesConfirmed === true && c.sourceUrl && c.sourceUrl !== c.url) ? { lastVerified: c.lastVerified || TODAY } : {}) });
     stats.added++;
   }
 }
@@ -53,17 +65,34 @@ for (const c of out) {
   if (!c.cpdVerified && c.cpdHours) c.cpdHours = 0; // 20 was a placeholder guess
   c.blurb = String(c.blurb).replace(/(?:the )?(?:[A-Za-z]+ )?[A-Za-z]+['’]s (?:largest|biggest|leading|premier|foremost) /gi, 'a major ').replace(/(?:the )?(?:largest|biggest) /gi, 'a major ').replace(/a a major/gi, 'a major').replace(/The (?:Middle|Far|Near) a major/g, 'A major').replace(/^a major/, 'A major');
 }
-const prov = { verified: 0, downgraded: 0, corrected: 0 };
+/* a provenance entry that moves a row to another country must also move its code and map pin (B30 found Auckland filed under AU
+   with Adelaide's pin, Helsinki under CZ with Prague's) */
+const codeOf = name => { const m = out.find(c => c.country === name && c.countryCode); return m ? m.countryCode : null; };
+const pinOf = (city, country) => { const m = out.find(c => c.city === city && c.country === country && (c.lat || c.lng)); return m ? { lat: m.lat, lng: m.lng } : null; };
+function place(row, e) {
+  const city = e.city || row.city, country = e.country || row.country, moved = city !== row.city || country !== row.country;
+  const r = { city, country, countryCode: e.countryCode || (country !== row.country ? codeOf(country) || row.countryCode : row.countryCode) };
+  const pin = e.lat != null && e.lng != null ? { lat: +e.lat, lng: +e.lng } : moved ? pinOf(city, country) : null;
+  return pin ? { ...r, ...pin } : r;
+}
+const prov = { verified: 0, withEvidence: 0, downgraded: 0, corrected: 0, noEvidence: 0 }, noEvidence = [];
 for (const f of shardFiles.filter(x => x.startsWith('provenance-'))) {
   let arr; try { arr = JSON.parse(fs.readFileSync(path.join(shardDir, f), 'utf8')); } catch (e) { console.error(f, 'unparseable'); continue; }
   for (const e of arr) {
     const row = out.find(c => c.id === e.id); if (!row) continue;
     const weak = /third[- ]party|aggregator|docthub|(?:^|[^a-z])ilds(?:[^a-z]|$)|tourism|santetropicale|listing site|js bundle|script bundle/i.test((e.note || '') + ' ' + (e.sourceUrl || '')) || /phaa|population-health/i.test(e.id) || !e.end;
-    if (e.verified === true && weak) { if (row.datesConfirmed === true && !row.provenance) { row.datesConfirmed = false; row.dateStatus = 'estimated'; delete row.lastVerified; prov.weak = (prov.weak || 0) + 1; } continue; }
-    if (e.verified === true && /^https:\/\//.test(e.sourceUrl || '') && /^\d{4}-\d{2}-\d{2}$/.test(e.start) && e.end >= e.start) {
-      if (row.start !== e.start || row.end !== e.end || (e.city && row.city !== e.city)) prov.corrected++;
-      Object.assign(row, { start: e.start, end: e.end, city: e.city || row.city, country: e.country || row.country, sourceUrl: e.sourceUrl, lastVerified: TODAY, provenance: 'organiser-page', datesConfirmed: true, dateStatus: 'confirmed' }); prov.verified++;
-    } else if (e.verified === false) { row.datesConfirmed = false; row.dateStatus = 'estimated'; delete row.lastVerified; delete row.provenance; prov.downgraded++; }
+    if (e.verified === true && weak) { if (row.datesConfirmed === true && !row.provenance) { row.datesConfirmed = false; row.dateStatus = 'estimated'; delete row.lastVerified; delete row.legacyConfirmed; prov.weak = (prov.weak || 0) + 1; } continue; }
+    if (e.verified === true && /^https:\/\//.test(e.sourceUrl || e.datesSourceUrl || '') && /^\d{4}-\d{2}-\d{2}$/.test(e.start) && e.end >= e.start) {
+      const changed = row.start !== e.start || row.end !== e.end || (e.city && row.city !== e.city);
+      if (e.datesQuote) { /* B30: an entry with evidence (tools/verify-dates.js or a desk) confirms the row on its own merits */
+        if (changed) prov.corrected++;
+        Object.assign(row, { start: e.start, end: e.end, ...place(row, e), sourceUrl: e.datesSourceUrl || e.sourceUrl, datesSourceUrl: e.datesSourceUrl || e.sourceUrl, datesQuote: e.datesQuote, verifiedOn: e.verifiedOn, lastVerified: e.verifiedOn || TODAY, provenance: 'organiser-page', datesConfirmed: true, dateStatus: 'confirmed' });
+        delete row.legacyConfirmed; delete row.estimateReason; prov.withEvidence++;
+      } else if (wasLegacy.has(row.id)) { /* pre-rule entry replayed: same result as before the rule, still legacy, and no fresh lastVerified (nobody re-read the page today) */
+        if (changed) prov.corrected++;
+        Object.assign(row, { start: e.start, end: e.end, ...place(row, e), sourceUrl: e.sourceUrl, lastVerified: row.lastVerified || e.verifiedOn || (f.match(/\d{4}-\d{2}-\d{2}/) || [])[0] || TODAY, provenance: 'organiser-page', datesConfirmed: true, dateStatus: 'confirmed', legacyConfirmed: true }); prov.verified++;
+      } else { prov.noEvidence++; noEvidence.push(`${f}: ${e.id}`); } /* no quote: cannot confirm a row any more */
+    } else if (e.verified === false) { row.datesConfirmed = false; row.dateStatus = 'estimated'; delete row.lastVerified; delete row.provenance; delete row.legacyConfirmed; prov.downgraded++; }
   }
 }
 const CPD_ALLOW = new Set(['bsr-annual-conference']); // page states '22 credits' beside 'April 2027'
@@ -76,6 +105,19 @@ for (const f of shardFiles.filter(x => x.startsWith('cpd-'))) {
     if (e.stated === true && typeof e.cpdHours === 'number' && e.cpdHours > 0 && e.cpdHours <= 100 && /^https:\/\//.test(e.sourceUrl || '')) { Object.assign(row, { cpdHours: e.cpdHours, cpdBody: String(e.cpdBody || '').slice(0, 80), cpdVerified: true, cpdSourceUrl: e.sourceUrl }); cpdStats.applied++; }
   }
 }
+/* B30 evidence rule, last so it sees every change above */
+const ev = { confirmedWithEvidence: 0, legacy: 0, downgraded: 0 }, downgrades = [];
+for (const c of out) {
+  if (c.datesConfirmed === false) { c.dateStatus = 'estimated'; delete c.legacyConfirmed; continue; }
+  const why = evidenceProblem(c, { today: TODAY });
+  if (!why) { ev.confirmedWithEvidence++; delete c.legacyConfirmed; delete c.estimateReason; c.datesConfirmed = true; c.dateStatus = 'confirmed'; continue; }
+  if (c.legacyConfirmed && !hasAnyEvidence(c)) { ev.legacy++; c.datesConfirmed = true; c.dateStatus = 'confirmed'; continue; }
+  Object.assign(c, { datesConfirmed: false, dateStatus: 'estimated', estimateReason: 'Dates not confirmed: ' + why });
+  delete c.legacyConfirmed; delete c.lastVerified; delete c.provenance; ev.downgraded++; downgrades.push(`${c.id}: ${why}`);
+}
+console.log('evidence', JSON.stringify(ev));
+if (downgrades.length) console.log('downgraded to estimate (evidence rule):\n  ' + downgrades.slice(0, 40).join('\n  '));
+if (noEvidence.length) console.log('provenance entries ignored (verified without datesQuote, row not legacy):\n  ' + noEvidence.slice(0, 40).join('\n  '));
 console.log('cpd', JSON.stringify(cpdStats));
 console.log('provenance', JSON.stringify(prov));
 out.sort((a, b) => a.start.localeCompare(b.start) || a.name.localeCompare(b.name));

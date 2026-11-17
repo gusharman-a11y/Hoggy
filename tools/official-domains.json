@@ -1,0 +1,33 @@
+{
+ "note": "Evidence rule (B30, tools/evidence.js). A confirmed row's datesSourceUrl must be on the organiser's or society's own domain: the same registrable domain as the row's url (subdomains count, e.g. events.aats.org for aats.org), or one of the 'official' entries below. Add an entry only after opening the page and seeing that the organiser or society runs it (a congress's own domain, or the organiser's page on a congress-company platform). 'path' limits a shared platform host to one event. 'aggregators' are listing sites: never a date source, even when the row's url points there.",
+ "official": [
+  { "host": "usicon2027.com", "for": ["usicon-chennai-2027-expected"], "note": "USICON 2027 site of the Urological Society of India" },
+  { "host": "web.cvent.com", "path": "/event/e57907a5-de4c-4c8f-a219-967fe9e30eff", "for": ["lorne-genome-2027"], "note": "Lorne Genome registration page on Cvent" },
+  { "host": "phaa.net.au", "for": ["phaa-screening-conference-2027", "phaa-preventive-health-conference-2027"], "note": "Public Health Association of Australia, organiser of both conferences" },
+  { "host": "ph2027.eventsairsite.com", "for": ["cpha-public-health-conference"], "note": "CPHA Public Health 2027 on EventsAir" },
+  { "host": "sheaspring.org", "for": ["shea-spring-conference"], "note": "SHEA Spring conference site" },
+  { "host": "tsanzsrsasm.com", "for": ["tsanz-asm"], "note": "TSANZSRS ASM site" },
+  { "host": "site2.convention.co.jp", "path": "/jua2027", "for": ["jua-annual-meeting"], "note": "JUA 2027 page on the congress company's host" },
+  { "host": "espo2027.com", "for": ["espo-congress"], "note": "ESPO 2027 congress site" },
+  { "host": "ranzcog.eventsair.com", "for": ["ranzcog-regional-symposium"], "note": "RANZCOG events on EventsAir" },
+  { "host": "ranzcogasm.com.au", "for": ["ranzcog-asm"], "note": "RANZCOG ASM site" },
+  { "host": "anzsgmconference.org", "for": ["anzsgm-asm"], "note": "ANZSGM ASM site" },
+  { "host": "ids-wcd2027.com", "for": ["world-congress-of-dermoscopy"], "note": "World Congress of Dermoscopy 2027 site" },
+  { "host": "acdasm.com.au", "for": ["acd-asm"], "note": "Australasian College of Dermatologists ASM site" },
+  { "host": "caepconference.ca", "for": ["caep-conference"], "note": "CAEP conference site" },
+  { "host": "eco2027.org", "for": ["european-congress-on-obesity"], "note": "ECO 2027 (EASO) congress site" },
+  { "host": "escap.eu", "for": ["escap-congress-athens-2027"], "note": "European Society for Child and Adolescent Psychiatry" },
+  { "host": "solacicongress.org", "for": ["solaci-congress-2027"], "note": "SOLACI congress site" },
+  { "host": "csanzasm.com", "for": ["csanz-annual-scientific-meeting"], "note": "CSANZ ASM site" },
+  { "host": "nzdaconference.org.nz", "for": ["nzda-conference"], "note": "NZDA conference site" },
+  { "host": "idweek.org", "for": ["idweek"], "note": "IDWeek site (IDSA and partner societies)" },
+  { "host": "aapexperience.org", "for": ["aap-national-conference"], "note": "AAP National Conference site" },
+  { "host": "eusemcongress.org", "for": ["eusem-congress"], "note": "EUSEM congress site" },
+  { "host": "tctconference.com", "for": ["tct-conference"], "note": "TCT (CRF) conference site" },
+  { "host": "apsth.bloodconference.com", "for": ["haa-hsanz-asm"], "note": "HAA/HSANZ blood conference site" },
+  { "host": "jddw.jp", "for": ["jddw"], "note": "Japan Digestive Disease Week site" },
+  { "host": "ephconference.eu", "for": ["european-public-health-conference"], "note": "European Public Health Conference site (EUPHA)" },
+  { "host": "heartrhythm.com", "for": ["heart-rhythm-2028"], "note": "Heart Rhythm Society meeting site" }
+ ],
+ "aggregators": ["10times.com", "allconferencealert.com", "conferenceindex.org", "conferencealerts.co.in", "conferenceseries.com", "docthub.com", "eventbrite.com", "eventbrite.com.au", "eventbrite.co.uk", "facebook.com", "instagram.com", "linkedin.com", "mdlinx.com", "medical.theconferencewebsite.com", "omicsonline.org", "twitter.com", "waset.org", "wikipedia.org", "x.com"]
+}

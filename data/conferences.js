@@ -22,7 +22,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.congre.co.jp/jsca2026/en/index.html",
   "blurb": "Annual meeting of the Japan Society for Clinical Anesthesia, held at Wakayama Castle Hall and nearby venues.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09"
+  "lastVerified": "2026-11-09",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -47,7 +48,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://renew.ksog.org/2026/about/overview",
   "blurb": "KSOG annual congress with the Seoul International Symposium at COEX MAGOK, Seoul.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09"
+  "lastVerified": "2026-11-09",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -72,7 +74,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.espen.org/",
   "blurb": "ESPEN live course on nutrition in obesity held in Ljubljana.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -97,7 +100,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.subarachnoid.org/",
   "blurb": "International conference on subarachnoid haemorrhage research and clinical care, held in Sydney.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "id": "sbot-58-congresso-anual-2026",
@@ -122,7 +126,8 @@ window.HOGGY_CONFERENCES = [
   "datesConfirmed": true,
   "dateStatus": "confirmed",
   "sourceUrl": "https://sbot.org.br/eventos-sbot/58o-congresso-anual-sbot-2027/",
-  "lastVerified": "2026-11-10"
+  "lastVerified": "2026-11-10",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -147,7 +152,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.sfcardio.fr/congres-detail/",
   "blurb": "Cardiology congress listed in the Societe Francaise de Cardiologie calendar, held in Paris.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -172,7 +178,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.hinz.org.nz",
   "blurb": "Annual HiNZ digital health conference held in Auckland.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -197,7 +204,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.escaide.eu",
   "blurb": "Scientific conference on applied infectious disease epidemiology and public health microbiology, held in Stockholm and online.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -222,7 +230,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.espen.org/",
   "blurb": "ESPEN live course on oral, enteral and parenteral nutrition in adults held in Warsaw.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -247,7 +256,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.eacts.org/",
   "blurb": "10th EACTS summit on mechanical circulatory support held in Amsterdam.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -272,7 +282,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://aborlccfcongresso.org.br",
   "blurb": "The national congress of the Brazilian Association of Otorhinolaryngology and Cervicofacial Surgery, held at Expotrade Convention Center in Pinhais, Curitiba area.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -297,7 +308,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://convention.asha.org/about-the-convention/locations/",
   "blurb": "Annual convention of the American Speech-Language-Hearing Association in Indianapolis.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -322,7 +334,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.eaaci.org/events",
   "blurb": "EAACI focused meeting on allergy topics held in Utrecht.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "id": "siac-mulher-congresso-2026-maceio",
@@ -347,7 +360,8 @@ window.HOGGY_CONFERENCES = [
   "datesConfirmed": true,
   "dateStatus": "confirmed",
   "sourceUrl": "https://medevento.com.br/congressosiacmulher2026mcz/",
-  "lastVerified": "2026-11-10"
+  "lastVerified": "2026-11-10",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -372,7 +386,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.ebmt.org/events",
   "blurb": "One-day EBMT JACIE inspector training course in Brussels.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -397,7 +412,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.masc.org.au/sm-2026/",
   "blurb": "One-day scientific meeting on melanoma and skin cancer trials held at the Sofitel Melbourne.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -422,7 +438,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.streams.co.jp/apfcp/",
   "blurb": "Meeting organised by Japan Society of Coloproctology in Nagasaki, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -447,7 +464,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.bsg.org.uk/events/national-introduction-day-2026",
   "blurb": "One-day in-person introduction for trainees new to the gastroenterology HST programme, at Woburn House, London.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -472,7 +490,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://gpconference.com.au/",
   "blurb": "RACGP's national general practice conference, held at the Adelaide Convention Centre.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -482,7 +501,7 @@ window.HOGGY_CONFERENCES = [
   "organiser": "Hong Kong College of Radiologists",
   "specialty": "Radiology",
   "city": "Hong Kong",
-  "country": "Hong Kong SAR",
+  "country": "Hong Kong",
   "countryCode": "HK",
   "region": "Asia-Pacific",
   "lat": 22.32,
@@ -497,7 +516,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://hkcr.org/news.php/events_list/cid,0/nid,246",
   "blurb": "Meeting organised by Hong Kong College of Radiologists in Hong Kong, Hong Kong SAR.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -522,7 +542,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.tkd.org.tr/",
   "blurb": "Meeting organised by Turkish Society of Cardiology in Istanbul, Turkey.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -547,7 +568,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://jscc.or.jp/academic-meeting/",
   "blurb": "Meeting organised by Japanese Society of Clinical Cytology in Chiba, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -572,7 +594,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.acpsem.org.au/Courses-and-Events/EPSM",
   "blurb": "EPSM 2026 at the Brisbane Convention and Exhibition Centre, hosted by ACPSEM.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -597,7 +620,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.boa.ac.uk",
   "blurb": "Annual congress of the British Orthopaedic Trainees Association at the Royal College of Surgeons of Edinburgh.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -622,7 +646,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.socich.cl/xcviii-congreso-chileno-e-internacional-de-cirugia/",
   "blurb": "Annual congress of the Chilean surgeons society, held in La Serena.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -647,7 +672,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.fesemi.org/",
   "blurb": "47th national congress of the Spanish Society of Internal Medicine, held in Murcia with the 6th SOMIMUR congress.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -672,7 +698,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.brit-thoracic.org.uk/education-and-events/winter-meeting-2026/",
   "blurb": "The British Thoracic Society Winter Meeting is held at the QEII Centre in London.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -697,7 +724,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://acpcc.org.au/c4/ecc2026/",
   "blurb": "Conference on cervical cancer elimination held at Sofitel Melbourne with an online option.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -722,7 +750,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.sfcardio.fr/congres-detail/",
   "blurb": "Sleep medicine congress listed in the Societe Francaise de Cardiologie calendar, held in Lyon.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -747,7 +776,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://suite.cmim.org/",
   "blurb": "National internal medicine congress of the Colegio de Medicina Interna de México, held in Mérida, Yucatán.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -772,7 +802,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.rcpe.ac.uk/events",
   "blurb": "Two-day acute medicine symposium from the Royal College of Physicians of Edinburgh, in Edinburgh and online.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "id": "sba-cba-anestesiologia-2026",
@@ -797,7 +828,8 @@ window.HOGGY_CONFERENCES = [
   "datesConfirmed": true,
   "dateStatus": "confirmed",
   "sourceUrl": "https://www.sbahq.org",
-  "lastVerified": "2026-11-10"
+  "lastVerified": "2026-11-10",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -822,7 +854,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.sfcardio.fr/congres-detail/",
   "blurb": "Cardiology digital innovation meeting listed in the Societe Francaise de Cardiologie calendar, held in Paris in hybrid format.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -847,7 +880,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.tkd.org.tr/",
   "blurb": "Meeting organised by Turkish Society of Cardiology in Izmir, Turkey.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -872,7 +906,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.sfcardio.fr/congres-detail/",
   "blurb": "One-day practical cardiac rhythm meeting listed in the Societe Francaise de Cardiologie calendar, held in Lyon.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -898,7 +933,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "A major radiology meeting at McCormick Place.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -923,7 +959,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://eventstudio.eventsair.com/hsr-2026",
   "blurb": "Biennial health services research conference held at Tākina Wellington Convention and Exhibition Centre.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -948,7 +985,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://members.asnevents.com.au/register/event/2044/manager",
   "blurb": "The 50th annual scientific meeting of the Nutrition Society of Australia, held at the University of Melbourne.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -973,7 +1011,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.sls.se/sls/aktuellt/kalendarium",
   "blurb": "Ethics day run jointly by the Swedish Society of Medicine and the Swedish Medical Association, at SLS hus and online.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -998,7 +1037,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://csicon78.com/",
   "blurb": "Meeting organised by Cardiological Society of India in Bangalore, India.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -1023,7 +1063,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.bsge.org.uk/events/",
   "blurb": "Inaugural BSGE multidisciplinary team meeting on endometriosis, held in Birmingham.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -1048,7 +1089,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.sfcardio.fr/congres-detail/",
   "blurb": "Advanced course for cardiac intensive care units listed in the Societe Francaise de Cardiologie calendar, held in Issy-les-Moulineaux.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -1073,7 +1115,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.escardio.org/Congresses-Events",
   "blurb": "EACVI 2026 cardiovascular imaging congress listed on the ESC congress calendar.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -1098,7 +1141,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://icsconferences.org/event/2026-national-closing-the-gap-indigenous-health-conference",
   "blurb": "National conference on Indigenous health and closing the gap, held on the Gold Coast.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -1124,7 +1168,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Major breast cancer research symposium at the Henry B. Gonzalez Convention Center.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "id": "nsicon-ahmedabad-2026",
@@ -1149,7 +1194,8 @@ window.HOGGY_CONFERENCES = [
   "datesConfirmed": true,
   "dateStatus": "confirmed",
   "sourceUrl": "https://www.nsicon2026.com/",
-  "lastVerified": "2026-11-10"
+  "lastVerified": "2026-11-10",
+  "legacyConfirmed": true
  },
  {
   "id": "ampicon-goa-2026",
@@ -1174,7 +1220,8 @@ window.HOGGY_CONFERENCES = [
   "datesConfirmed": true,
   "dateStatus": "confirmed",
   "sourceUrl": "https://ampicon2026.com/",
-  "lastVerified": "2026-11-10"
+  "lastVerified": "2026-11-10",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -1200,7 +1247,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "A major haematology meeting worldwide, at the Morial Convention Center.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -1225,7 +1273,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.sfcardio.fr/congres-detail/",
   "blurb": "One-day francophone cardiology meeting listed in the Societe Francaise de Cardiologie calendar, held in Paris.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -1250,7 +1299,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.tkd.org.tr/",
   "blurb": "Meeting organised by Turkish Society of Cardiology in Istanbul, Turkey.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "id": "spns-11th-conference-jeddah-2026",
@@ -1275,7 +1325,8 @@ window.HOGGY_CONFERENCES = [
   "datesConfirmed": true,
   "dateStatus": "confirmed",
   "sourceUrl": "https://spnsociety.org.sa/11th-saudi-pediatric-neurologysociety-conference-and-workshops/",
-  "lastVerified": "2026-11-10"
+  "lastVerified": "2026-11-10",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -1300,7 +1351,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.snfmi.org/congres/93eme-congres-de-medecine-interne",
   "blurb": "93rd national congress of the French Society of Internal Medicine, held in Paris.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "id": "asicon-ahmedabad-2026",
@@ -1325,7 +1377,8 @@ window.HOGGY_CONFERENCES = [
   "datesConfirmed": true,
   "dateStatus": "confirmed",
   "sourceUrl": "https://www.asicon26.com/",
-  "lastVerified": "2026-11-10"
+  "lastVerified": "2026-11-10",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -1350,7 +1403,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.sfcardio.fr/congres-detail/",
   "blurb": "Hypertension days listed in the Societe Francaise de Cardiologie calendar, held in Puteaux (La Defense).",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -1375,7 +1429,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.aicog2027surat.com/",
   "blurb": "Meeting organised by Federation of Obstetric and Gynaecological Societies of India in Surat, India.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -1401,7 +1456,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual National Conference of the Indian Psychiatric Society, listed on the society site as ANCIPS 2027.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -1427,7 +1483,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "National dermatology and dermatologic surgery congress at Crowne Plaza RDC, Riyadh.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -1453,7 +1510,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Haematology master class held at Raffles Dubai.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -1479,7 +1537,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The 65th annual meeting of the ACNP on brain and behaviour research.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -1505,7 +1564,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual meeting of EMS physicians.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -1530,7 +1590,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.eaaci.org/events",
   "blurb": "EAACI allergy and winter school in immunology held in Chamonix.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -1579,7 +1640,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.espghan.org/",
   "blurb": "ESPGHAN GI Winter School in Zagreb, Croatia.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -1604,7 +1666,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.sfcardio.fr/congres-detail/jesfc-2027/",
   "blurb": "Annual cardiology days of the Societe Francaise de Cardiologie at the Palais des Congres de Paris.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "id": "eroc-global-forum-2027",
@@ -1629,7 +1692,8 @@ window.HOGGY_CONFERENCES = [
   "datesConfirmed": true,
   "dateStatus": "confirmed",
   "sourceUrl": "https://www.emiratesrhinologyandotology.ae/",
-  "lastVerified": "2026-11-10"
+  "lastVerified": "2026-11-10",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -1679,7 +1743,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual winter scientific meeting of the Association of Anaesthetists at ICC Olympia, London, with an online option.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -1705,7 +1770,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Retina meeting held at Hilton Cairo Grand Nile.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -1731,7 +1797,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Interventional radiology congress at Hilton Riyadh Hotel.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -1757,7 +1824,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Heart failure conference with 80+ faculty held at Raffles Dubai.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -1783,7 +1851,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual dental conference and exhibition at Dubai World Trade Centre.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -1808,7 +1877,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.bsge.org.uk/events/",
   "blurb": "BSGE Ambulatory Care Network meeting listed on the society events calendar, held in Birmingham.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -1857,7 +1927,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.ebmt.org/events",
   "blurb": "EBMT meeting on transplantation and cellular therapy in myeloid malignancies, Paris.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -1883,7 +1954,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual ophthalmology meeting of Kasr El-Ainy Hospital at the Grand Nile Tower Hotel.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -1908,7 +1980,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.escp.eu.com/",
   "blurb": "Joint meeting of the ESCP, EAES, EHS and ESSO listed on the ESCP website.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -1934,7 +2007,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "USICON Annual Conference of the Urological Society of India organised by Urological Society of India, expected in Chennai (host city is the usual venue and may rotate). Dates expected; not yet announced.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -1983,7 +2057,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.sls.se/sls/aktuellt/kalendarium",
   "blurb": "Swedish Society of Medicine symposium on the overlap of cancer treatment and heart disease, at SLS hus and online.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -2009,7 +2084,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "A major healthcare exhibition and congress.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -2058,7 +2134,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.laakaripaivat.fi",
   "blurb": "Annual Finnish national medical training event held at Messukeskus in Helsinki.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -2084,7 +2161,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "National pediatrics conference of the Indian Academy of Pediatrics.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -2109,7 +2187,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://pvrinstitute.org/learning-hub/events/pvri-2027-bangkok",
   "blurb": "The PVRI 2027 congress is held at the Amari Hotel & Conference Centre in Bangkok.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -2159,7 +2238,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Paediatric and neonatal conference listed on the organiser's upcoming events page.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -2184,7 +2264,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.espghan.org/",
   "blurb": "ESPGHAN monothematic conference on Wilson's disease in children, listed for Cluj, Romania.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -2210,7 +2291,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "IMCAS World Congress on aesthetic dermatology, plastic surgery and anti-aging, in Paris with an online option.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -2260,7 +2342,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "A regional academic primary care research conference on the theme 'Transforming Primary Care', held at Madingley Hall, Cambridge.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -2286,7 +2369,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The 63rd annual meeting of thoracic surgeons.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -2312,7 +2396,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Multidisciplinary conference on cardio-kidney-metabolic care at Voco Riyadh.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -2337,7 +2422,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.essr.org/",
   "blurb": "ESSR Ultrasound Hub 2027 held in Ghent, Belgium.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -2363,7 +2449,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Midyear convention of the Philippine Heart Association at the John Hay Convention Center, Baguio.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -2413,7 +2500,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual congress on haemophilia and other inherited bleeding disorders.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -2487,7 +2575,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual physical therapy meeting with specialty sections.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -2512,7 +2601,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.ebmt.org/events",
   "blurb": "Ninth joint EHA-EBMT European CAR T-cell meeting in Lisbon.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -2538,7 +2628,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual Scandinavian sports medicine and sports physiotherapy congress held at the Radisson Blu Scandinavia Hotel in Copenhagen.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -2563,7 +2654,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.c-linkage.co.jp/jscm38/outline.html",
   "blurb": "Meeting organised by Japanese Society for Clinical Microbiology in Fukuoka, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -2612,7 +2704,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.lorneproteins.org/",
   "blurb": "Annual protein science conference held at the Mantra Hotel in Lorne, Victoria.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -2638,7 +2731,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The AANP's annual health policy conference for nurse practitioners.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -2664,7 +2758,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "KEMRI research conference; dates from KEMRI site, host city not stated on the page (previous edition Nairobi).",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -2738,7 +2833,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The 15th working conference of Pharmaceutical Care Network Europe on pharmaceutical care research and practice.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -2787,7 +2883,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.jscts.org/",
   "blurb": "Meeting organised by Japanese Society of CT Screening in Nagoya, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -2813,7 +2910,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "National neuroradiology congress at Radisson Blu Hotel Sisli, Istanbul.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -2862,7 +2960,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.surgeons.org/conferences-events/college-calendar-of-events/RACS-Founders-Centenary",
   "blurb": "Centenary event in Dunedin, where the College was founded in 1927, including the Aotearoa NZ Annual Scientific Meeting.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -2887,7 +2986,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.jspen.or.jp/meeting/headquarters",
   "blurb": "Meeting organised by Japanese Society for Clinical Nutrition and Metabolism in Yokohama, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -2913,7 +3013,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The 41st DACH congress for sports traumatology and sports medicine at the Olympia congress centre in Seefeld; dates taken from the venue destination's event page.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -2938,7 +3039,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.nutritioncare.org/Events/",
   "blurb": "ASPEN's clinical nutrition and metabolic support conference for physicians, dietitians, nurses and pharmacists, with a virtual option.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -2987,7 +3089,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://lornegenome.org/",
   "blurb": "The 48th Lorne Genome Conference, held at Lorne Theatre on the Great Ocean Road in Victoria.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -3036,7 +3139,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://alcc.lungfoundation.com.au/",
   "blurb": "The 11th Australian Lung Cancer Conference, held at the Brisbane Convention & Exhibition Centre.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -3061,7 +3165,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.aios.org/aioc2027.php",
   "blurb": "The 85th annual conference of the All India Ophthalmological Society, held at the Mahatma Mandir Convention and Exhibition Centre in Gandhinagar.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -3159,7 +3264,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "An ESC specialty congress on percutaneous cardiovascular interventions.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -3184,7 +3290,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.iacts.org/iactscon",
   "blurb": "Annual national meeting of the Indian Association of Cardiovascular Thoracic Surgeons at the Biswa Bangla Convention Centre in Kolkata.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -3258,7 +3365,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The AAAAI's annual meeting on allergy, asthma and clinical immunology.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -3283,7 +3391,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://anzgsconference.com",
   "blurb": "Glaucoma society congress at the Park Hyatt Melbourne.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -3308,7 +3417,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.aphrs.org/",
   "blurb": "Meeting organised by Asia Pacific Heart Rhythm Society in Shenzhen, China.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -3501,7 +3611,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.antimicrobials.com.au/",
   "blurb": "Annual scientific meeting of the Australian Society for Antimicrobials, held at the Brisbane Convention and Exhibition Centre.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09"
+  "lastVerified": "2026-11-09",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -3526,7 +3637,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://psychology.org.au/training-and-careers/aps-conferences",
   "blurb": "Two-day conference for counselling psychologists at the Hyatt Centric Melbourne.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -3576,7 +3688,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "28th ESGO congress on gynaecological oncology, held at Excel London.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -3601,7 +3714,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://aoa.org.au/events",
   "blurb": "Victorian Branch annual scientific meeting held in Lorne.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -3627,7 +3741,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Canada's main annual gastroenterology and hepatology meeting.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -3653,7 +3768,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual scientific meeting of Australian and New Zealand urologists.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -3679,7 +3795,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Continental health agenda conference at the Kigali Convention Centre.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -3704,7 +3821,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.wabip.com/events/apcb2027",
   "blurb": "Meeting organised by World Association for Bronchology and Interventional Pulmonology with the Philippine College of Chest Physicians in Manila, Philippines.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -3729,7 +3847,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.screening2027.com/",
   "blurb": "Public health screening conference held at the Hotel Grand Chancellor, Adelaide.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -3779,7 +3898,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "A major orthopaedic meeting.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -3853,7 +3973,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The 22nd congress of ECCO on inflammatory bowel disease.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -3879,7 +4000,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "A major radiology meeting, held annually in Vienna.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -3904,7 +4026,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.jstct.or.jp/modules/meeting/index.php?content_id=1",
   "blurb": "Meeting organised by Japanese Society for Transplantation and Cellular Therapy in Yokohama, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -3929,7 +4052,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://jscvs.or.jp/meeting/",
   "blurb": "Meeting organised by Japanese Society for Cardiovascular Surgery in Toyama, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -3954,7 +4078,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://ranzco.edu/events/2027-anzcs",
   "blurb": "Ophthalmology meeting hosted by RANZCO at the Crowne Plaza Adelaide.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -3980,7 +4105,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "ESMO congress on sarcomas and rare cancers.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -4005,7 +4131,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.ptkardio.pl/",
   "blurb": "90th spring conference of the Polish Cardiac Society held in Opole.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -4055,7 +4182,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Spine symposium listed on the SAOA local events calendar.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -4128,7 +4256,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://trog.com.au/Events",
   "blurb": "Annual scientific meeting of TROG Cancer Research on radiation oncology clinical trials, held at Wrest Point in Hobart.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -4154,7 +4283,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "National ophthalmology congress with masterclasses and allied-health programmes, Cape Town.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -4179,7 +4309,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.aanem.org/meetings/future-annual-meetings",
   "blurb": "Hands-on neuromuscular ultrasound and EMG course held in Fort Lauderdale.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -4325,7 +4456,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "24th annual conference on diagnosis and treatment of neuroendocrine tumour disease.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -4374,7 +4506,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://acorl.org.co/eventos/otro-xli-congreso-panamericano-de-otorrinolaringologa-y-ciruga-de-cabeza-y-cuello",
   "blurb": "Pan American otolaryngology and head and neck surgery congress in Monterrey, listed on the ACORL events page.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -4423,7 +4556,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.eaaci.org/events",
   "blurb": "EAACI focused meeting on skin allergy held in Paris.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -4520,7 +4654,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.dgho.de",
   "blurb": "One-day spring meeting of the German Society for Haematology and Medical Oncology held in Berlin.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -4545,7 +4680,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.esge.com/event-calendar",
   "blurb": "ESGE Research Camp 2027, an ESGE event listed on the society's event calendar.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -4570,7 +4706,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.insc2027.com",
   "blurb": "The 20th annual conference of the Indian Stroke Association at The LaLiT Jaipur, hosted with the Jaipur Neuro Intervention Society and the Rajasthan Academy of Neurology.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -4595,7 +4732,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://cbr.org.br/calendario-de-eventos/jornada-goiana-de-radiologia-clube-do-interior/",
   "blurb": "Special 60th-anniversary edition of the Goiás radiology society meeting at Quinta Santa Bárbara Eco Resort.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -4620,7 +4758,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.nzps27.nz/",
   "blurb": "Annual scientific meeting of the NZ Pain Society at Novotel Tainui Hamilton, with pre-conference workshops on 11 March.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -4645,7 +4784,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.sls.se/sls/aktuellt/kalendarium",
   "blurb": "Swedish Society of Medicine prevention day held at Klara Östra Kyrkogata in Stockholm.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -4694,7 +4834,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://sbpt.org.br/portal/eventos-sbpt/",
   "blurb": "SBPT national course and regional meeting on interstitial lung diseases in São Paulo.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -4744,7 +4885,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "CIRSE-organised conference on image-guided interventions for pain management.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -4770,7 +4912,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual meeting of the US and Canadian Academy of Pathology with short courses and platform sessions.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -4796,7 +4939,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "A major annual critical care congress in North America.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -4870,7 +5014,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The national public health conference of Canada.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -4895,7 +5040,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.esaic.org/",
   "blurb": "ESAIC masterclass on statistics and research methodology held in Rome.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -4921,7 +5067,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Hand surgery and microsurgery conference at the Hilton Cairo Grand Nile.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -4946,7 +5093,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://paao.org/",
   "blurb": "The PAAO 2027 Congress takes place in Lima, with abstract submission open on the association site.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -4972,7 +5120,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual assembly for hospice and palliative medicine and nursing.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -5022,7 +5171,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual congress of the Sociedade de Pediatria de São Paulo, usually held in São Paulo around March. Dates expected; not yet announced.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -5048,7 +5198,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The 31st congress of the European Association of Hospital Pharmacists, at the Austria Center Vienna.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -5074,7 +5225,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Multidisciplinary congress on thoracic oncology organised by ESMO and partner societies.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -5172,7 +5324,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Pharmacy trade show with expert-led conference sessions at Sandton Convention Centre.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -5197,7 +5350,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://anzsnrasm.com",
   "blurb": "Neuroradiology annual scientific meeting at Pullman on the Park, Melbourne.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -5223,7 +5377,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Regional congress of the Asia-Pacific Academy of Ophthalmology.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -5248,7 +5403,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://congressocpc.pt",
   "blurb": "Portuguese Congress of Cardiology at the Centro de Congressos do Algarve in Vilamoura.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -5273,7 +5429,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.ersnet.org/",
   "blurb": "25th ERS Lung Science Conference held in Estoril, Portugal, and online.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -5323,7 +5480,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual meeting of Japanese medical oncologists.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -5349,7 +5507,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "PALTmed27, the annual meeting for post-acute and long-term care clinicians.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -5399,7 +5558,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "A major annual dermatology meeting in the US.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -5424,7 +5584,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://aoa.org.au/events",
   "blurb": "Queensland combined event covering registrar papers, PHO development and collaborative musculoskeletal research.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -5450,7 +5611,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual meeting of US pharmacists.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -5475,7 +5637,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://aso.org.au/events",
   "blurb": "Australian Society of Orthodontists foundation meeting held at Hotel Realm, Canberra.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -5501,7 +5664,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual scientific meeting for ENT and head and neck surgeons.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -5527,7 +5691,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The 42nd annual congress of the European Association of Urology, held at RAI Amsterdam.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -5553,7 +5718,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Diabetes and endocrinology congress at InterContinental Dubai Festival City.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -5579,7 +5745,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "An ESC congress on acute cardiovascular care.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -5653,7 +5820,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The 27th annual international meeting of urology nurses, held at RAI Amsterdam alongside the EAU Congress.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -5679,7 +5847,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual meeting of interventional radiologists.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -5704,7 +5873,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://ruralhealthwest.com.au/events/warhc27/",
   "blurb": "Rural Health West conference for rural health professionals held at the Pan Pacific Perth.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -5730,7 +5900,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The Conference on Retroviruses and Opportunistic Infections.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -5756,7 +5927,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual meeting on maternal-fetal medicine.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -5806,7 +5978,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Surgical congress and exhibition in Kampala.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -5880,7 +6053,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "EORTC summit on clinical cancer research held in Brussels.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -5906,7 +6080,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "ERA regional nephrology education meeting in Cairo.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -6004,7 +6179,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "National rheumatology conference at Le Meridien Madinah.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -6030,7 +6206,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual national cardiology conference at Crowne Plaza RDC, Riyadh.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -6055,7 +6232,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.jgca.jp/meeting/kaisaiyotei/",
   "blurb": "Meeting organised by Japanese Gastric Cancer Association in Yonago, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -6129,7 +6307,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "A regional cardiology congress for Asia-Pacific.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -6155,7 +6334,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual meeting of the Japanese Circulation Society; the society site promotes the JCS2027 congress.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -6253,7 +6433,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Pharmacy conference and exhibition at Dubai World Trade Centre.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -6279,7 +6460,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "SHEA Spring 2027 on infection prevention and healthcare epidemiology.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -6305,7 +6487,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual meeting of hospital medicine clinicians.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -6331,7 +6514,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Regional epilepsy congress at Sofitel Al Khobar Corniche.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -6357,7 +6541,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Asian Pacific liver disease conference at the Sydney ICC.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -6407,7 +6592,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual scientific meeting of Canadian radiologists.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -6432,7 +6618,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.ersnet.org/",
   "blurb": "ERS Sleep and Breathing Conference 2027 held in Antwerp, Belgium.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -6458,7 +6645,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Precision oncology summit held at King Salman Congress Centre, Madinah.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -6484,7 +6672,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Joint reconstruction congress held at Jumeirah Emirates Towers, Dubai.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "id": "wco6-sso-11th-saudi-optometry-conference-2027",
@@ -6509,7 +6698,8 @@ window.HOGGY_CONFERENCES = [
   "datesConfirmed": true,
   "dateStatus": "confirmed",
   "sourceUrl": "https://sso.org.sa/en/sso2027-wco6/",
-  "lastVerified": "2026-11-10"
+  "lastVerified": "2026-11-10",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -6535,7 +6725,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The AACR's flagship annual meeting on cancer research from basic science to clinical translation.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -6561,7 +6752,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual meeting of cataract and refractive surgeons.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -6586,7 +6778,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.nzasm.org.nz/",
   "blurb": "RANZCOG Aotearoa New Zealand annual scientific meeting at Napier, with post-meeting workshops on 5 April 2027.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09"
+  "lastVerified": "2026-11-09",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -6612,7 +6805,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual meeting of ANZ respiratory clinicians and scientists.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -6638,7 +6832,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The 35th European Congress of Psychiatry organised by the European Psychiatric Association.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -6664,7 +6859,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Congress of perinatal and neonatal clinicians in Australia and New Zealand, set for Darwin.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -6714,7 +6910,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Dermatology and laser conference and exhibition at Dubai World Trade Centre with pre-conference courses.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -6740,7 +6937,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Biennial congress of the European Paediatric Neurology Society.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -6766,7 +6964,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual meeting for minimally invasive, endoscopic and GI surgery.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -6792,7 +6991,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Egyptian stroke conference listed for early April 2027 near Cairo.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -6889,7 +7089,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.eapd.eu/",
   "blurb": "15th EAPD Seminar held in Belgrade, Serbia.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -6938,7 +7139,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://rheum.ca/event/2027-annual-scientific-meeting/",
   "blurb": "Annual Scientific Meeting of the Canadian Rheumatology Association at the Hyatt Regency Vancouver.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -6963,7 +7165,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.essr.org/",
   "blurb": "ESSR Meets Estonia 2027 held in Tallinn.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -6989,7 +7192,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual congress of the Japan Surgical Society.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -7039,7 +7243,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "27th joint congress on osteoporosis, osteoarthritis and musculoskeletal diseases at VIECON Vienna.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -7064,7 +7269,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.naika.or.jp/info/next_lecture/",
   "blurb": "Meeting organised by Japanese Society of Internal Medicine in Osaka, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -7089,7 +7295,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.aans.org/en/Annual-Scientific-Meeting",
   "blurb": "Annual scientific meeting of the American Association of Neurological Surgeons in San Diego.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -7115,7 +7322,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Europe's main congress on clinical microbiology and infectious diseases.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "id": "idf-congress-singapore-2027",
@@ -7140,7 +7348,8 @@ window.HOGGY_CONFERENCES = [
   "datesConfirmed": true,
   "dateStatus": "confirmed",
   "sourceUrl": "https://idf2027.org/",
-  "lastVerified": "2026-11-10"
+  "lastVerified": "2026-11-10",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -7166,7 +7375,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The ACC's annual meeting held each spring covering all areas of cardiology.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -7191,7 +7401,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.aorn.org/help-faqs/expo",
   "blurb": "Annual conference and expo for perioperative nurses in Philadelphia.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -7216,7 +7427,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://kongress.dgim.de",
   "blurb": "133rd congress of the German Society of Internal Medicine, held at the RheinMain CongressCenter in Wiesbaden.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -7266,7 +7478,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The 53rd annual meeting of EBMT on haematopoietic stem cell transplantation and cellular therapy.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -7292,7 +7505,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual congress of the European Heart Rhythm Association on arrhythmia and pacing.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -7342,7 +7556,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual clinical genetics and genomics meeting of the ACMG.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -7367,7 +7582,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.amcpannual.org/",
   "blurb": "Annual meeting of the Academy of Managed Care Pharmacy at Moscone West, San Francisco.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -7393,7 +7609,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The ABA's annual meeting on burn care and research.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -7443,7 +7660,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual scientific conference of the Kenya Paediatric Association held at PrideInn Paradise Beach Resort, Shanzu.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -7469,7 +7687,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The Royal College of Emergency Medicine's flagship annual conference for emergency physicians and the wider emergency care team, held at Manchester Central.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -7495,7 +7714,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "National colorectal surgery congress at Susesi Congress Centre, Belek, Antalya.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -7520,7 +7740,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://gakkai.co.jp/jsprs70/",
   "blurb": "Meeting organised by Japan Society of Plastic and Reconstructive Surgery in Tokyo, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -7546,7 +7767,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual meeting of endodontists.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -7595,7 +7817,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://conference.asmirt.org/2027/",
   "blurb": "ASMIRT national conference for radiographers, radiation therapists and sonographers.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -7741,7 +7964,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual congress for oncology nurses.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -7766,7 +7990,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.panlar.org/",
   "blurb": "The Pan-American League of Associations for Rheumatology holds its 2027 congress in Buenos Aires.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -7792,7 +8017,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual congenital and structural heart interventions meeting at Wyndham Grand Istanbul.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -7913,7 +8139,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.j-endo.jp/modules/meeting/index.php?content_id=1",
   "blurb": "Meeting organised by Japan Endocrine Society in Naha, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -7938,7 +8165,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://jssr2027.org/en/",
   "blurb": "Annual meeting on spine surgery at the Kyoto International Conference Center.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09"
+  "lastVerified": "2026-11-09",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -7963,7 +8191,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.jsrt.or.jp/gmeeting/soukai83/",
   "blurb": "Meeting organised by Japanese Society of Radiological Technology in Yokohama, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -7988,7 +8217,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://site2.convention.co.jp/jrs86/",
   "blurb": "General meeting of the Japan Radiological Society held at Pacifico Yokohama.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -8014,7 +8244,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The ACP's annual internal medicine CME meeting.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -8087,7 +8318,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://acorl.org.co/eventos/curso-internacional-curso-internacional-acorl-2027",
   "blurb": "International ENT course at the Hotel Las Américas convention centre; ACORL notes the dates are subject to change.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -8113,7 +8345,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The 23rd congress of the European Association of Dermato-Oncology, on-site at the Hofburg in Vienna.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -8139,7 +8372,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "An ESC congress on cardiovascular prevention and rehabilitation.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -8165,7 +8399,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual meeting of the Japanese Society of Pathology.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -8191,7 +8426,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual congress of the Japanese Urological Association.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -8264,7 +8500,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://sbpt.org.br/portal/eventos-sbpt/",
   "blurb": "SBPT national update course in pulmonology held in São Paulo.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -8289,7 +8526,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.saha.org.ar/congresos/xxxiii-congreso-buenos-aires-2027",
   "blurb": "Held at the Marriott Buenos Aires Downtown.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -8314,7 +8552,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.jse.gr.jp/contents/congress/congress.html",
   "blurb": "Meeting organised by Japanese Society of Echocardiography in Matsumoto, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -8340,7 +8579,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual scientific meeting of the Japanese Respiratory Society.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -8366,7 +8606,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Spring conference of the Korean Society of Cardiology, listed for BEXCO Busan.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -8391,7 +8632,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.rssa.co.za/news-and-events/rssa-ct-mr-cardiac-imaging-congress-16-18-april-2027",
   "blurb": "Hands-on cardiac CT and MR imaging course at The Westin Cape Town.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -8417,7 +8659,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Orthopaedic subspecialty meeting listed on the SAOA local events calendar.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -8442,7 +8685,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://pdpsummit.nursingworld.org/",
   "blurb": "Professional development and practice summit for nurses hosted by the American Nurses Association in San Antonio.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -8452,7 +8696,7 @@ window.HOGGY_CONFERENCES = [
   "organiser": "European Society of Pediatric Otorhinolaryngology (ESPO)",
   "specialty": "Surgery",
   "city": "Prague",
-  "country": "Czech Republic",
+  "country": "Czechia",
   "countryCode": "CZ",
   "region": "Europe",
   "lat": 50.08,
@@ -8468,7 +8712,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "18th congress of the European Society of Pediatric Otorhinolaryngology (ENT) at Prague Congress Centre.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -8494,7 +8739,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "International dental congress and exhibition held at the Centro de Eventos do Ceará, listed for 17-20 April 2027.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -8543,7 +8789,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://congress.iffsreproduction.org/",
   "blurb": "The 26th IFFS World Congress, held in Brisbane.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -8568,7 +8815,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://virtualcommunities.naccho.org/preparednesssummit/home",
   "blurb": "Public health preparedness summit held at the Hilton Downtown Atlanta.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -8594,7 +8842,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "KMA annual scientific conference, Mombasa.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -8644,7 +8893,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual UK professional conference for diabetes care, held at the Liverpool Experience Campus.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -8669,7 +8919,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://congreso.citologiala.org",
   "blurb": "Held jointly with the International Academy of Cytology tutorial at the Oceania Convention Center in Florianópolis.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -8694,7 +8945,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://apoa2027.org/",
   "blurb": "Meeting organised by Asia Pacific Orthopaedic Association in Taipei, Taiwan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -8719,7 +8971,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://pan-ng.org/panconf/about",
   "blurb": "Annual scientific conference of the Paediatric Association of Nigeria at the International Conference Centre, Umuahia, with pre-conference workshops on 19-20 April 2027.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -8769,7 +9022,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Biennial European Pain Federation congress (Pain in Europe XV) covering pain medicine and research.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -8795,7 +9049,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "37th annual congress on paediatric urology.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -8892,7 +9147,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.sbp.com.br/especiais/eventos/18o-congresso-brasileiro-de-alergia-e-imunologia-pediatrica",
   "blurb": "Joint Alergoped and Dermaped 2027 meeting at the Windsor Barra Hotel in Barra da Tijuca.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -8918,7 +9174,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "National family and community medicine congress, listed for 22-25 April 2027 (host city not stated on the homepage).",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -8992,7 +9249,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual congress of the Sociedade Brasileira de Reprodução Humana, usually held in São Paulo around May. Host city rotates; São Paulo is the most likely venue. Dates expected; not yet announced.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -9074,7 +9332,7 @@ window.HOGGY_CONFERENCES = [
   "organiser": "WONCA Asia Pacific Region",
   "specialty": "General Practice",
   "city": "Hong Kong",
-  "country": "Hong Kong SAR",
+  "country": "Hong Kong",
   "countryCode": "HK",
   "region": "Asia-Pacific",
   "lat": 22.32,
@@ -9089,7 +9347,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://admin.globalfamilydoctor.com/Conferences/APR2027.aspx",
   "blurb": "Meeting organised by WONCA Asia Pacific Region in Hong Kong, Hong Kong SAR.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -9114,7 +9373,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://isoukai2027.jp/",
   "blurb": "Meeting organised by Japan Medical Congress 2027 organising committee in Osaka, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -9139,7 +9399,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.jsog.or.jp/en/6508/",
   "blurb": "Annual congress of the Japan Society of Obstetrics and Gynecology, presided by Prof. Etsuko Miyagi of Yokohama City University.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -9164,7 +9425,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://eso-stroke.org/events/",
   "blurb": "ESO-listed Lisbon Stroke Summit 2027 held in Lisbon, Portugal.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -9238,7 +9500,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "AAEM27, the 33rd annual scientific assembly.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -9336,7 +9599,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "26th annual European congress of the European Society for Trauma and Emergency Surgery.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -9362,7 +9626,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual meeting of the Japan College of Rheumatology.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -9388,7 +9653,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual meeting of the Japan Pediatric Society.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -9461,7 +9727,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://acpacares.org/annual-meeting/",
   "blurb": "ACPA annual meeting in Toronto, starting with a pre-conference symposium.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09"
+  "lastVerified": "2026-11-09",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -9561,7 +9828,8 @@ window.HOGGY_CONFERENCES = [
   "lastVerified": "2026-11-09",
   "provenance": "organiser-page",
   "cpdVerified": true,
-  "cpdSourceUrl": "https://www.rheumatology.org.uk/events-learning/conferences/annualconference"
+  "cpdSourceUrl": "https://www.rheumatology.org.uk/events-learning/conferences/annualconference",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -9586,7 +9854,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.canadianpainsociety.ca",
   "blurb": "Canadian Pain Society annual scientific meeting, listed for the Westin Harbour Castle, Toronto.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09"
+  "lastVerified": "2026-11-09",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -9707,7 +9976,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.euroelso-congress.com/",
   "blurb": "EuroELSO 2027 congress on extracorporeal life support, with a pre-congress meeting on April 28 and 29.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -9757,7 +10027,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "National paediatric cardiology and cardiac surgery congress at Liberty Lykia, Fethiye.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -9782,7 +10053,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.phlebology.com.au/conference/2027",
   "blurb": "Venous and lymphatic medicine meeting held at QT Queenstown.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -9808,7 +10080,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual meeting of ESGE on gynaecological endoscopy, with pre-courses on 28 April.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -9834,7 +10107,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The 65th annual ESPE meeting on paediatric endocrinology, held at Gothia Towers.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -9933,7 +10207,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The ANZCA annual meeting on anaesthesia and pain medicine.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -9959,7 +10234,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual scientific meeting for nuclear medicine physicians, scientists and technologists; the 2027 ASM is listed on the society site.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -9985,7 +10261,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual IARS meeting on anaesthesia research and practice.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -10011,7 +10288,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual meeting of the major US paediatric academic societies.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -10109,7 +10387,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "A major neurology meeting.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -10135,7 +10414,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The 107th AATS annual meeting.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -10160,7 +10440,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.amsig.org/events/",
   "blurb": "AMSIG annual scientific meeting listed for Pullman East Melbourne.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09"
+  "lastVerified": "2026-11-09",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -10186,7 +10467,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "A major psychiatry meeting.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -10212,7 +10494,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "CIRSE-organised conference on image-guided interventional oncology.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -10238,7 +10521,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "RANZCOG regional symposium promoted on the college homepage for 2027.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -10264,7 +10548,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual critical care nursing conference and exhibition.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -10290,7 +10575,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The oldest radiology society in the US, holding its annual meeting each spring.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -10339,7 +10625,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.istm.org/cistm20/",
   "blurb": "The 20th ISTM conference brings together clinicians, researchers and educators in travel and tropical medicine in Bangkok.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -10365,7 +10652,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The SCAI's annual meeting on interventional cardiology.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -10391,7 +10679,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "A major annual meeting for gene and cell therapy research and clinical development.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -10416,7 +10705,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.ser.es/evento/congreso-nacional/",
   "blurb": "53rd national congress of the Spanish Society of Rheumatology at the Palacio de Congresos de Malaga.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -10466,7 +10756,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Youth health conference at the Qt Hotel Gold Coast, listed on the ASHM events calendar.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -10492,7 +10783,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual meeting of Australasian infectious diseases physicians, microbiologists and researchers.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -10517,7 +10809,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.eapcnet.eu/important-announcement-regarding-the-eapc-congress-2027/",
   "blurb": "EAPC 2027 congress at the Scottish Event Campus, rescheduled from the original May 2027 dates.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -10591,7 +10884,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual meeting of general internal medicine clinicians and educators.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -10640,7 +10934,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.jsge.or.jp/conference/honbu/soukai",
   "blurb": "General meeting of the Japanese Society of Gastroenterology at Keio Plaza Hotel Sapporo and Grand Mercure Sapporo Odori Park.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -10665,7 +10960,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://psychology.org.au/training-and-careers/aps-conferences",
   "blurb": "APS symposium on running a psychology practice, held at the Crowne Plaza Hobart.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -10715,7 +11011,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Orthopaedic subspecialty meeting at Sandton Convention Centre, listed on the SAOA calendar.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -10741,7 +11038,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual critical care conference themed 'From Evidence to Excellence' held in Dubai.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -10790,7 +11088,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.cshp.ca/Site/website/Content/Professional-Development/PPC-2027.aspx",
   "blurb": "Professional Practice Conference of the Canadian Society of Hospital Pharmacists in downtown Toronto.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -10912,7 +11211,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual congress of the European Society of Endocrinology with an ECE@HOME remote option.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -10937,7 +11237,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.ismrm.org/meetings-workshops/future-ismrm-meetings/",
   "blurb": "Annual meeting of ISMRM and ISMRT in Vancouver.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -10987,7 +11288,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The 27th International Conference on Integrated Care, run with the International Journal of Integrated Care and Estonia's Ministry of Social Affairs.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -11061,7 +11363,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual meeting of geriatricians in Australia and New Zealand, with 11-14 May 2027 announced on the society site.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -11087,7 +11390,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "SCM27, the NKF's annual clinical nephrology meeting.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -11112,7 +11416,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://nzssd.org.nz/meetings/meeting/98/2027-nzssd-annual-scientific-meeting",
   "blurb": "Annual scientific meeting of the New Zealand Society for the Study of Diabetes, held in Blenheim.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -11426,7 +11731,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The 30th European Congress of Obstetrics and Gynaecology, held jointly with the 102nd SIGO National Congress.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -11452,7 +11758,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "ESMO's annual congress on breast cancer research and clinical practice, with online participation available.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -11598,7 +11905,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual congress of the Japanese Society of Intensive Care Medicine.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -11623,7 +11931,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.kidney.org/spring-clinical",
   "blurb": "Spring Clinical Meetings of the National Kidney Foundation at Walt Disney World Swan and Dolphin, Orlando.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -11696,7 +12005,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.prevention2027.com/",
   "blurb": "Preventive health conference held at the Perth Convention and Exhibition Centre.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -11794,7 +12104,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The 7th World Congress of Dermoscopy, hosted at the Lyon Convention Centre with Lyon University Hospital dermatology support.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -11820,7 +12131,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "SEMDSA annual congress at Indaba Hotel and Conference Centre.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -11894,7 +12206,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The 52nd annual regional anaesthesia and acute pain meeting.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -11944,7 +12257,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual meeting on cardiac arrhythmia.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -11970,7 +12284,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual meeting of the Japanese Orthopaedic Association.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -12020,7 +12335,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The ATS annual conference on pulmonary, critical care and sleep medicine.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -12046,7 +12362,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The ACD annual scientific meeting.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -12096,7 +12413,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "18th congress of the European society dedicated to cornea and ocular surface disease.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -12145,7 +12463,8 @@ window.HOGGY_CONFERENCES = [
   "datesConfirmed": true,
   "dateStatus": "confirmed",
   "sourceUrl": "https://world.physio/congress/future-congresses",
-  "lastVerified": "2026-11-10"
+  "lastVerified": "2026-11-10",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -12195,7 +12514,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The joint annual meeting of the major US gastroenterology, hepatology, endoscopy and GI surgery societies.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -12220,7 +12540,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://news.ddw.org/news/save-the-date-for-ddw-2027/",
   "blurb": "Digestive Disease Week in Washington, DC and online.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -12270,7 +12591,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual conference of Canadian emergency physicians.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -12296,7 +12618,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual congress of ANZ psychiatrists.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -12370,7 +12693,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "A major course in interventional cardiovascular medicine, held at the Palais des Congres in Paris.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -12396,7 +12720,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The 34th ECO, held jointly with the IFSO-EC congress on obesity and metabolic surgery.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -12422,7 +12747,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Latin a major healthcare trade fair and conference programme, held at São Paulo Expo.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -12496,7 +12822,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "SAEM27, the annual meeting for academic emergency medicine.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -12546,7 +12873,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Australia's national dental congress, announced for Adelaide on the ADA site.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -12596,7 +12924,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The EFORT annual congress, held at the Megaron Athens International Conference Centre.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -12622,7 +12951,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The biennial European congress on menopause and andropause, scheduled for Gothenburg in 2027.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -12648,7 +12978,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Europe's main annual stroke conference.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -12674,7 +13005,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual meeting of the Japanese Society of Neurology.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -12700,7 +13032,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual conference of the Royal College of Paediatrics and Child Health, in Liverpool with an online option.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -12725,7 +13058,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.sgaim.ch",
   "blurb": "Spring congress of the Swiss Society of General Internal Medicine at Congress Center Basel, with pre-courses on 18 May and a livestream option.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -12750,7 +13084,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://site2.convention.co.jp/jsir2027/en/",
   "blurb": "JSIR annual meeting at the Kobe Portopia Hotel.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09"
+  "lastVerified": "2026-11-09",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -12776,7 +13111,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The AGS annual meeting on geriatrics and ageing.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -12802,7 +13138,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual conference of Canadian paediatricians.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -12827,7 +13164,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://eadv.org/events/",
   "blurb": "EADV Symposium 2027 held in Dresden, Germany.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -12853,7 +13191,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The 10th EAP Congress and Mastercourse, organised with the Spanish Association of Paediatrics, focusing on paediatric respiratory disease.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "id": "imcas-americas-2027-sao-paulo",
@@ -12878,7 +13217,8 @@ window.HOGGY_CONFERENCES = [
   "datesConfirmed": true,
   "dateStatus": "confirmed",
   "sourceUrl": "https://www.imcas.com/en/imcas-americas-2027",
-  "lastVerified": "2026-11-10"
+  "lastVerified": "2026-11-10",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -12976,7 +13316,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual meeting on obstetric anaesthesia.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -13002,7 +13343,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The 8th World Psoriasis & Psoriatic Arthritis Conference; the organiser page shows 20 May 2027, while city and end date come from the EADV calendar.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -13028,7 +13370,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The ACOG annual meeting on women's health.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -13053,7 +13396,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.asgbi.org.uk/event/asgbi-events",
   "blurb": "Surgical congress of the Association of Surgeons of Great Britain and Ireland, held at Manchester Central.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -13079,7 +13423,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The AUA's annual meeting covering all areas of urologic practice and research.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -13104,7 +13449,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.psa.org.au/networking-events/information-on-major-events-and-conferences/",
   "blurb": "PSA conference for consultant pharmacists at the Geelong Convention and Event Centre.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -13130,7 +13476,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "54th annual congress on bone and mineral research and clinical care.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -13204,7 +13551,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Foot surgery congress at Droombos, Windhoek, with a pre-congress workshop on 20 May.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -13229,7 +13577,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.congre.co.jp/ldmf2027/",
   "blurb": "Meeting organised by Liver, Diabetes and Metabolism Study Group (Japan) in Tokyo, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -13255,7 +13604,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "ARA Annual Scientific Meeting; the 2027 ASM is listed on the association site.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -13281,7 +13631,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual congress of the Heart Failure Association of the ESC.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -13331,7 +13682,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The Royal College of Nursing's annual Congress, held in person in Liverpool.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -13405,7 +13757,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Retina congress at Fairmont Amman with faculty from 14 countries.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -13598,7 +13951,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.sap.org.ar/congresos",
   "blurb": "In-person SAP congress at the Centro de Docencia y Capacitación Dr. Carlos A. Gianantonio in Buenos Aires.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -13623,7 +13977,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://jast-hp.org/meeting/coming/",
   "blurb": "Meeting organised by Japanese Association for the Surgery of Trauma in Izumo, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -13648,7 +14003,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://congresosepar.com/SEPAR2027",
   "blurb": "60th national congress of the Spanish Society of Pulmonology and Thoracic Surgery, held in Palma de Mallorca.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -13697,7 +14053,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://cicm.org.au/",
   "blurb": "CICM ASM at the Adelaide Convention Centre, with a pre-conference day on 26 May.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -13746,7 +14103,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.sap.org.ar/congresos",
   "blurb": "In-person SAP congress on breastfeeding held at the Gianantonio training centre in Buenos Aires.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -13771,7 +14129,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.congre.co.jp/jsdt2027/outline.html",
   "blurb": "Meeting organised by Japanese Society for Dialysis Therapy in Tokyo, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -13821,7 +14180,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Glaucoma society congress at Capital Zimbali, KwaZulu-Natal.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -13847,7 +14207,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The ESAIC's annual European anaesthesiology congress.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -13873,7 +14234,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual meeting of the European Society of Thoracic Surgeons.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -13899,7 +14261,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "95th annual EAS Congress on atherosclerosis, lipids and cardiovascular prevention.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -13925,7 +14288,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual meeting of the European Society for Paediatric Infectious Diseases.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -13999,7 +14363,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The joint COA/CORS/CORA annual orthopaedic meeting.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -14145,7 +14510,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The 59th annual meeting of ESPGHAN on paediatric gastroenterology, hepatology and nutrition.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -14171,7 +14537,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual congress of the European Hernia Society, held at the Flanders Meeting & Convention Center Antwerp.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -14196,7 +14563,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.sfcardio.fr/congres-detail/printemps-de-la-cardiologie-2027/",
   "blurb": "Spring cardiology meeting of the Societe Francaise de Cardiologie at the World Trade Center Marseille.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -14318,7 +14686,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The 64th congress of the European Renal Association, held at Rotterdam Ahoy with a virtual option.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -14368,7 +14737,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "World reconstructive microsurgery congress hosted in Istanbul.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -14394,7 +14764,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The orthodontists' annual session, moved to Vancouver for 2027.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -14420,7 +14791,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "A major global oncology meeting, held in Chicago around late May or early June.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -14446,7 +14818,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual meeting for cardiovascular ultrasound and echocardiography.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -14472,7 +14845,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "An ESC congress on cardio-oncology.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -14642,7 +15016,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The Endocrine Society's annual scientific meeting.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -14668,7 +15043,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual meeting for nuclear medicine and molecular imaging.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -14717,7 +15093,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://aasm.org/event/sleep-2027/",
   "blurb": "Annual meeting of the Associated Professional Sleep Societies at the Colorado Convention Center, Denver.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -14742,7 +15119,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://smdm.org/annual-meeting/",
   "blurb": "Annual meeting of the Society for Medical Decision Making, held in Toronto.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09"
+  "lastVerified": "2026-11-09",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -14767,7 +15145,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://britishcardiovascularsociety.org.uk/annual-conference-v2/",
   "blurb": "Annual conference of the British Cardiovascular Society, held at Manchester Central.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -14793,7 +15172,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual congress of the European Society of Paediatric Radiology, held at the Majestic Hotel Harrogate.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -14818,7 +15198,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.ukio.org.uk/",
   "blurb": "UKIO 2027 is an imaging and oncology congress at the Liverpool Experience Campus.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -14892,7 +15273,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The 31st WONCA Europe conference for family doctors and primary care, in Ljubljana.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -15062,7 +15444,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual congress for cancer nurses; the CNSA 2027 Congress abstract call is open.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -15328,7 +15711,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "A major congress on rheumatology and musculoskeletal disease.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -15354,7 +15738,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "EHMA's 32nd annual conference on health management and health systems.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -15427,7 +15812,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://site2.convention.co.jp/jsh63/",
   "blurb": "Meeting organised by Japan Society of Hepatology in Matsuyama, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -15452,7 +15838,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.jarm.or.jp/member/meeting.html",
   "blurb": "Meeting organised by Japanese Association of Rehabilitation Medicine in Hakodate, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -15478,7 +15865,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The 69th annual scientific meeting on headache medicine.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -15504,7 +15892,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual congress of the European Hematology Association covering malignant and non-malignant haematology.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -15530,7 +15919,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "36th annual ESH meeting on hypertension and cardiovascular protection.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -15579,7 +15969,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://jscc.or.jp/academic-meeting/",
   "blurb": "Meeting organised by Japanese Society of Clinical Cytology in Miyagi, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -15604,7 +15995,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.congre.co.jp/69jgs/outline.html",
   "blurb": "Meeting organised by Japan Geriatrics Society in Kagoshima, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -15629,7 +16021,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.escardio.org/Congresses-Events",
   "blurb": "ACNAP 2027 meeting listed on the ESC congress calendar.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -15678,7 +16071,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://afcs2027.jp/",
   "blurb": "Meeting organised by Asian Federation of Cytology Societies in Sendai, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -15704,7 +16098,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual meeting of Canadian anaesthesiologists.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -15730,7 +16125,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual congress of the European Academy of Allergy and Clinical Immunology.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -15780,7 +16176,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual meeting of the Japanese Society of Nephrology.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -15902,7 +16299,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual European congress of neurology.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -15928,7 +16326,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual conference of the European Society of Human Genetics.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -16002,7 +16401,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual congress of the European Association for Cancer Research.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -16052,7 +16452,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual international congress of the Royal College of Psychiatrists, held in Glasgow.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -16078,7 +16479,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "A major national gathering of nurse practitioners.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -16152,7 +16554,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The 35th international congress of the European Association for Endoscopic Surgery, at the CCD Congress Center.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -16178,7 +16581,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual meeting and postgraduate course of the European Society of Gastrointestinal and Abdominal Radiology (38th edition).",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -16204,7 +16608,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Biennial 19th ICML on lymphoma at Palazzo dei Congressi, Lugano.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -16302,7 +16707,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual international liver congress of the European Association for the Study of the Liver.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -16375,7 +16781,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://audiologyconference.org",
   "blurb": "New Zealand Audiological Society conference marking 50 years of the society, at the NZICC in Auckland.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -16425,7 +16832,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual meeting of Australian plastic surgeons.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -16547,7 +16955,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The ADA's annual diabetes research and care meeting.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -16573,7 +16982,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual meeting of Japanese palliative care professionals.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -16598,7 +17008,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://soe2027.soevision.org/",
   "blurb": "Joint congress of the European Society of Ophthalmology and the International Society of Ocular Trauma at the Megaron Athens International Conference Centre.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -16647,7 +17058,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://anzup.org.au/asm2027/",
   "blurb": "ANZUP annual scientific meeting on genitourinary cancer, held in New Zealand for the first time.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -16696,7 +17108,8 @@ window.HOGGY_CONFERENCES = [
   "datesConfirmed": true,
   "dateStatus": "confirmed",
   "sourceUrl": "https://www.ilds.org/what-we-do/world-congress-of-dermatology/wcd2027/",
-  "lastVerified": "2026-11-10"
+  "lastVerified": "2026-11-10",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -16746,7 +17159,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "BSG's annual gastroenterology and hepatology meeting at the SEC Glasgow.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -16771,7 +17185,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.eurospine.org/events",
   "blurb": "In-person EUROSPINE education week at IRCAD covering the Diploma curriculum and endoscopy courses.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -16796,7 +17211,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://convention.nata.org/",
   "blurb": "NATA convention and AT Expo at the New Orleans Convention Center.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -16821,7 +17237,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://rcog.eventsair.com/ntc2027",
   "blurb": "In-person RCOG conference for trainees in obstetrics and gynaecology, held in Cambridge.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -16847,7 +17264,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "AFRAN congress held jointly with the 11th NESOT conference and the AfPNA paediatric nephrology congress at Mlimani City.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -16873,7 +17291,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Healthcare exhibition and conferences at Al Manara International Conference Center, Egypt International Exhibition Center.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -16899,7 +17318,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual meeting on microbiology.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -16924,7 +17344,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.phaa.net.au/events",
   "blurb": "Conference on communicable diseases and immunisation held at the Cairns Convention Centre.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -16950,7 +17371,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "CIRSE-organised conference on embolotherapy techniques in interventional radiology.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -17071,7 +17493,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://jspccs.jp/meeting/",
   "blurb": "Meeting organised by Japanese Society of Pediatric Cardiology and Cardiac Surgery in Karuizawa, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -17097,7 +17520,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "A joint EANO and SNO meeting on paediatric neuro-oncology.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -17122,7 +17546,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://escap2027.eu/",
   "blurb": "ESCAP international congress on child and adolescent mental health, themed Child and Adolescent Mental Health in a Polarised World, with a Research Academy on 22-23 June.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -17148,7 +17573,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual scientific meeting of the European Society of Musculoskeletal Radiology.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -17174,7 +17600,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual congress of Japanese psychiatrists.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -17223,7 +17650,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.jscrs.org/index/page/id/28",
   "blurb": "Meeting organised by Japanese Society of Cataract and Refractive Surgery in Kobe, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -17249,7 +17677,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "New South Wales state conference for midwives, listed on the college homepage.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -17275,7 +17704,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The 82nd annual meeting of Canadian urologists.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -17301,7 +17731,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The 107th annual meeting of the British Association of Dermatologists, held in Liverpool.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -17326,7 +17757,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.ics.ac.uk/events",
   "blurb": "The Intensive Care Society's State of the Art congress (#SOA27) takes place in Birmingham.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -17376,7 +17808,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "ESMO's annual congress covering diagnosis and treatment of gastrointestinal cancers.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -17401,7 +17834,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.esophagus.jp/private/society/",
   "blurb": "Meeting organised by Japan Esophageal Society in Tokyo, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -17451,7 +17885,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "A major European reproductive medicine meeting.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -17477,7 +17912,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual conference for health professional educators; the 2027 event has a dedicated page on the association site.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -17503,7 +17939,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The UK medical education association's annual scholarship meeting, held at Harrogate Convention Centre.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -17528,7 +17965,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://rcog.eventsair.com/rcog-fibroid-summit-2027-from-action-to-implementation",
   "blurb": "In-person RCOG summit on fibroid care held at the RCOG in London.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -17578,7 +18016,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The Latin American congress on respiratory medicine.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -17651,7 +18090,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.jspc.gr.jp/syukai/syukai",
   "blurb": "Meeting organised by Japan Society of Pain Clinicians in Kobe, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -17772,7 +18212,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://ptbun.org.pl/?p=5430",
   "blurb": "Joint neuroscience meeting of the European Society for Neurochemistry and the Polish Neuroscience Society in Warsaw.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -17797,7 +18238,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://theasmmeeting.org.au/",
   "blurb": "National annual scientific meeting of the Australian Society for Microbiology at ICC Sydney.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -17846,7 +18288,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.jsgct.jp/about/meeting/",
   "blurb": "Meeting organised by Japan Society of Gene and Cell Therapy in Fukuoka, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -18015,7 +18458,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.jspnm.jp/modules/meeting/index.php?content_id=1",
   "blurb": "Meeting organised by Japan Society of Perinatal and Neonatal Medicine in Yokohama, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -18041,7 +18485,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "College conference on emergency care outside metropolitan centres; the college site lists 18-20 July 2027.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -18067,7 +18512,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "A major dementia research conference.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -18116,7 +18562,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://rmsanz.net/asm-conference/",
   "blurb": "Annual scientific meeting of the rehabilitation medicine society, held at Pullman Melbourne Albert Park.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -18165,7 +18612,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.jnss.org/",
   "blurb": "Meeting organised by Japan Neuroscience Society in Chiba, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -18191,7 +18639,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The 32nd annual congress of the European College of Sport Science, hosted by Manchester Metropolitan University.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -18265,7 +18714,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual Latin American interventional cardiology congress, held jointly with a national society each year.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -18314,7 +18764,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.midwife-conference.org.nz",
   "blurb": "Biennial conference of the NZ College of Midwives at Takina Wellington, with masterclasses on 21 July.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -18387,7 +18838,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.sbh.org.br/",
   "blurb": "Held at IDOMED Campus Vista Carioca in Rio de Janeiro.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -18412,7 +18864,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.adips.org/",
   "blurb": "Annual scientific meeting of the Australasian Diabetes in Pregnancy Society, held in Darwin, Northern Territory.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -18437,7 +18890,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://aoa.org.au/events",
   "blurb": "NSW Branch annual scientific meeting in Sydney.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -18463,7 +18917,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual meeting of medical physicists working in imaging and radiation therapy.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -18489,7 +18944,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual meeting on laboratory medicine.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -18514,7 +18970,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.nutrition.org/meetings/",
   "blurb": "The American Society for Nutrition's annual meeting on nutrition science and practice, held in Las Vegas, Nevada.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -18540,7 +18997,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual meeting of retina specialists.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -18566,7 +19024,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Surgical innovation congress at The Civic Centre, Victoria Island, with a skills day on 27 July.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -18591,7 +19050,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://festivalofnursing.com",
   "blurb": "Nursing festival at the Adelaide Convention Centre with a Care Systems Forum, Nurse Employers Forum and Future Nurses Expo.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -18616,7 +19076,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://aoa.org.au/events",
   "blurb": "Tasmania Branch annual scientific meeting in Launceston.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -18641,7 +19102,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://anzsomasm.org.au",
   "blurb": "ANZSOM annual scientific meeting at the Brisbane Convention and Exhibition Centre.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -18715,7 +19177,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "National forum for nurses run by the Australian College of Nursing.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -18750,10 +19213,10 @@ window.HOGGY_CONFERENCES = [
   "specialty": "Cardiology",
   "city": "Auckland",
   "country": "New Zealand",
-  "countryCode": "AU",
+  "countryCode": "NZ",
   "region": "Asia-Pacific",
-  "lat": -34.93,
-  "lng": 138.6,
+  "lat": -36.85,
+  "lng": 174.76,
   "start": "2027-08-05",
   "end": "2027-08-08",
   "format": "Hybrid",
@@ -18765,7 +19228,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual scientific meeting of ANZ cardiologists.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "id": "neurotrauma-new-delhi-2027",
@@ -18790,7 +19254,8 @@ window.HOGGY_CONFERENCES = [
   "datesConfirmed": true,
   "dateStatus": "confirmed",
   "sourceUrl": "https://neurosocietyindia.com/neurotrauma-2027/",
-  "lastVerified": "2026-11-10"
+  "lastVerified": "2026-11-10",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -18816,7 +19281,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Pharmaceutical Society of Australia national conference for community and hospital pharmacists.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -18841,7 +19307,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://aoa.org.au/events",
   "blurb": "Queensland Branch annual scientific meeting held in Noosa.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -18963,7 +19430,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The joint SNO/ASCO meeting on brain and CNS metastases.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -19012,7 +19480,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://aoa.org.au/events",
   "blurb": "Western Australia Branch 55th annual scientific meeting in Perth.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -19037,7 +19506,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://dietitiansaustralia.org.au/national-conference-2027",
   "blurb": "National conference of Dietitians Australia, themed Evolve: Dietetics for a Changing World, held at Doltone House, Jones Bay Wharf.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -19062,7 +19532,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.ranzcr2027.co.nz/",
   "blurb": "RANZCR New Zealand annual scientific meeting at the Cordis Hotel, Auckland.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09"
+  "lastVerified": "2026-11-09",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -19112,7 +19583,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The Australasian Diabetes Congress for diabetes clinicians and researchers.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -19138,7 +19610,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The 17th Australasian Viral Hepatitis Conference at the Novotel Wollongong Northbeach.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -19283,7 +19756,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.sgcr-wires.com/",
   "blurb": "Meeting organised by Asian Musculoskeletal Society, Singapore Radiological Society and College of Radiologists Singapore in Singapore, Singapore.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -19333,7 +19807,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual New Zealand dental profession conference.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -19358,7 +19833,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.menopause.org.au/eventdetails/42066/the-29th-australasian-menopause-society-annual-congress",
   "blurb": "Annual congress of the Australasian Menopause Society, held at the Hotel Grand Chancellor in Hobart, Tasmania.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -19407,7 +19883,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.jsnr.or.jp/meeting/",
   "blurb": "Meeting organised by Japan Society of Nursing Research in Fukuoka, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -19481,7 +19958,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual meeting of European dental educators, themed 'Future Skills, Enduring Values'.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -19554,7 +20032,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://faobmb.com/event/18th-faobmb-congress-in-kuala-lumpur-malaysia/",
   "blurb": "The 18th FAOBMB Congress is held at the Nexus Connexion Conference & Events Centre in Kuala Lumpur.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -19579,7 +20058,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://aplarcongress.com/",
   "blurb": "The APLAR 2027 congress is listed as a save-the-date for Kuala Lumpur.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -19868,7 +20348,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://sbpt.org.br/portal/eventos-sbpt/",
   "blurb": "SBPT joint congresses on asthma and on COPD and smoking, held with the XIII Centro-Oeste pulmonology congress in Goiânia.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -19893,7 +20374,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.imcas.com/en/imcas-china-2027/introduction",
   "blurb": "IMCAS aesthetic and anti-aging medicine congress at the W Hotel The Bund, Shanghai.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09"
+  "lastVerified": "2026-11-09",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -19919,7 +20401,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "A major annual cardiology congress, held each late summer.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -19993,7 +20476,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Multidisciplinary oncology congress at the CTICC with an ASTRO refresher course on 25-26 August.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -20004,10 +20488,10 @@ window.HOGGY_CONFERENCES = [
   "specialty": "Medical Education",
   "city": "Helsinki",
   "country": "Finland",
-  "countryCode": "CZ",
+  "countryCode": "FI",
   "region": "Europe",
-  "lat": 50.08,
-  "lng": 14.44,
+  "lat": 60.2016,
+  "lng": 24.938,
   "start": "2027-08-28",
   "end": "2027-09-01",
   "format": "Hybrid",
@@ -20019,7 +20503,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "A major international conference on health professions education.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -20045,7 +20530,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Biennial world congress on medical and health informatics, first held in the Middle East.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -20239,7 +20725,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "44th annual congress of the European Society of Regional Anaesthesia and Pain Therapy.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -20360,7 +20847,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.ebmt.org/events",
   "blurb": "12th EBMT international course on transplant and cellular therapy, Barcelona.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -20386,7 +20874,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "SBEM's national endocrinology and metabolism update congress, listed for 3-6 September 2027 in Brasília.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -20436,7 +20925,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The 80th national congress of the Brazilian Society of Dermatology, scheduled for 4-6 September 2027 in Brasília.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -20462,7 +20952,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The 39th European Congress of Pathology, held at the MECC Maastricht.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -20488,7 +20979,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Triennial 8th European Congress of Immunology at Fortezza da Basso, Florence.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -20562,7 +21054,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual SAOA congress, Century City, Cape Town.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -20587,7 +21080,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://allergy.org.au/conferences/ascia-annual-conference",
   "blurb": "ASCIA annual conference at the National Convention Centre Canberra.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -20757,7 +21251,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "National congress of the Brazilian Society of Rheumatology.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -20902,7 +21397,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.ebmt.org/events",
   "blurb": "First EBMT master course on clinical research in HCT and cellular therapies, Naples.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -20952,7 +21448,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual meeting of the College of American Pathologists.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -21001,7 +21498,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.jcc.gr.jp/",
   "blurb": "Meeting organised by Japanese College of Cardiology in Kyoto, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -21051,7 +21549,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual clinical nutrition and metabolism congress hosted in Istanbul.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -21101,7 +21600,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "48th ETA annual meeting on thyroid disease, at Philharmonie Essen.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -21127,7 +21627,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "A major respiratory medicine congress held each September.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -21225,7 +21726,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Pan-African anaesthesia congress at the Julius Nyerere International Convention Centre, with pre-congress workshops on 12 September.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -21251,7 +21753,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "First IBRO World Congress held in Africa, at the CTICC.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -21805,7 +22308,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual conference for emergency nurses.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -22022,7 +22526,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://cbr.org.br/calendario-de-eventos/56o-congresso-brasileiro-de-radiologia-em-diagnostico-por-imagem-cbr27/",
   "blurb": "The annual national congress of the Brazilian College of Radiology and Diagnostic Imaging, scheduled for Foz do Iguaçu.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -22191,7 +22696,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.eano.eu",
   "blurb": "Meeting of the European Association of Neuro-Oncology, held in Athens.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -22217,7 +22723,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The 27th EURETINA Congress on retinal disease, held at the Bella Center.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -22242,7 +22749,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.sfcardio.fr/congres-detail/journees-nationales-du-gers-p-2027/",
   "blurb": "31st national days of the GERS-P cardiology group at the Palais des Congres d Issy-les-Moulineaux.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -22267,7 +22775,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://nzraasm.eenz.com",
   "blurb": "New Zealand Rheumatology Association annual scientific meeting at the Copthorne Bay of Islands.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -22365,7 +22874,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Europe's flagship medical oncology congress held each autumn.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -22414,7 +22924,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.nhg.org/wetenschapsdag",
   "blurb": "Annual scientific day of the Dutch College of General Practitioners.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -22439,7 +22950,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.jsphcs.jp/event/",
   "blurb": "Meeting organised by Japanese Society of Pharmaceutical Health Care and Sciences in Nagoya, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -22465,7 +22977,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual meeting for otolaryngology and head and neck surgery.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -22515,7 +23028,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The AAFP's annual family medicine CME event.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -22540,7 +23054,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.hivsrh.conference.org.au/",
   "blurb": "Australasian HIV&AIDS Conference held jointly with the sexual health conference at Hotel Grand Chancellor Hobart.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -22566,7 +23081,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "A major diabetes research meeting.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -22591,7 +23107,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.hivsrh.conference.org.au/",
   "blurb": "Sexual and reproductive health conference held jointly with the HIV&AIDS conference in Hobart.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -22640,7 +23157,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.phaa.net.au/events",
   "blurb": "National public health conference held at the Darwin Convention Centre.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -22834,7 +23352,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Europe's main dermatology and venereology congress.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -22860,7 +23379,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The Association of Anaesthetists' annual festival of learning, held at ICC Birmingham.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -22982,7 +23502,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The 34th EAO annual scientific meeting, held jointly with SEPES.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -23007,7 +23528,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.ebmt.org/events",
   "blurb": "EBMT meeting on cellular therapies for autoimmune diseases, Berlin.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -23080,7 +23602,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://jsn.or.jp/medic/congress/meeting/2020/future.php",
   "blurb": "Meeting organised by Japanese Society of Nephrology in Takasaki, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -23106,7 +23629,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual congress of the Cardiovascular and Interventional Radiological Society of Europe.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -23132,7 +23656,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Europe's major neuropsychopharmacology and psychiatry congress.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -23158,7 +23683,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The ESICM annual congress on intensive care medicine.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -23256,7 +23782,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The congress of the European Society for Organ Transplantation, held in Prague.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -23281,7 +23808,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://conferences.miccai.org/2027/en/",
   "blurb": "30th International Conference on Medical Image Computing and Computer Assisted Intervention at the New Zealand International Convention Centre.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -23307,7 +23835,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual meeting of the European Society for Vascular Surgery at the CCL Lisbon Congress Centre.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -23332,7 +23861,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.acmhn.org/events",
   "blurb": "Annual international conference of the Australian College of Mental Health Nurses, held in Hobart, Tasmania.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -23525,7 +24055,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://rcog.eventsair.com/annual-professional-development2027",
   "blurb": "In-person professional development conference at the RCOG building in London.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -23574,7 +24105,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.congresomastologia.cl/",
   "blurb": "Breast disease congress at the InterContinental Santiago, Las Condes.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -23599,7 +24131,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://jsn.or.jp/medic/congress/meeting/2020/future.php",
   "blurb": "Meeting organised by Japanese Society of Nephrology in Kurume, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -23648,7 +24181,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://ectrims.eu/ectrims2027",
   "blurb": "Congress of the European Committee for Treatment and Research in Multiple Sclerosis, held in Vienna.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -23674,7 +24208,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual scientific meeting of Japanese acute and emergency medicine.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -23699,7 +24234,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.sap.org.ar/congresos",
   "blurb": "In-person SAP congress on disability in paediatrics at the Sheraton Buenos Aires Hotel & Convention Center.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -23725,7 +24261,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "A major healthcare exhibition and conference.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -23751,7 +24288,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Digital health summit at Kigali Convention Centre (save-the-date).",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -24065,7 +24603,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The 41st annual meeting of the European Association for Cardio-Thoracic Surgery.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -24091,7 +24630,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "59th ESPN annual meeting on paediatric nephrology.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -24117,7 +24657,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "21st biennial European AIDS Conference on HIV and co-infections.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -24143,7 +24684,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual meeting of the Spine Society of Europe, held at the CCIB in Barcelona.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -24193,7 +24735,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The joint annual meeting of IDSA and partner infectious disease societies.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-06",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -24314,7 +24857,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://magnetpathwaycon.nursingworld.org/",
   "blurb": "Conference for Magnet and Pathway to Excellence organisations in Orlando.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -24339,7 +24883,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://apsavd.org/events",
   "blurb": "Meeting organised by Asia Pacific Society of Vascular Diseases in Pattaya, Thailand.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -24556,7 +25101,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.jscp.gr.jp/act.html",
   "blurb": "Meeting organised by Japanese Society for Clinical Pathway in Kobe, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -24581,7 +25127,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.sap.org.ar/congresos",
   "blurb": "Listed on the SAP congress calendar within its Oct 6-10, 2027 events programme at the Sheraton Buenos Aires.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -24606,7 +25153,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.radiology.jp/meeting/meeting.html",
   "blurb": "Autumn clinical meeting of the Japan Radiological Society at Kyoto International Conference Hall.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -24775,7 +25323,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.jsnp.org/annual_meeting/future.php",
   "blurb": "Meeting organised by Japanese Society of Nephrology and Pharmacotherapy in Hiroshima, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -24825,7 +25374,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual congress of the European Association of Nuclear Medicine, held at Congress Center Hamburg.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -24851,7 +25401,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual scientific meeting of the Australian Orthopaedic Association.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -24877,7 +25428,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "A global health policy summit held annually in Berlin.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -25167,7 +25719,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual scientific meeting of the European Society for Magnetic Resonance in Medicine and Biology.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -25336,8 +25889,9 @@ window.HOGGY_CONFERENCES = [
   "url": "https://portal.cardiol.br",
   "blurb": "The annual national congress of Brazilian cardiology.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "lastVerified": "2026-11-10",
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -25387,7 +25941,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual meeting of the Japan Society of Clinical Oncology.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -25437,7 +25992,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Autumn scientific meeting of Korean cardiologists, listed for the Grand Walkerhill Seoul.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -25462,7 +26018,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.essr.org/",
   "blurb": "MSIC 2027 musculoskeletal imaging course listed by ESSR, held in Munich.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -25512,7 +26069,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The ANZ radiology and radiation oncology annual meeting.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -25585,7 +26143,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.jsaweb.jp/modules/meeting/index.php?content_id=2",
   "blurb": "Annual scientific meeting of the Japanese Society of Allergology, presided by Prof. Yasuhiro Gon of Nihon University.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -25611,7 +26170,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The AAP's annual paediatric education conference.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -25637,7 +26197,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The ASA's annual meeting for anaesthesiology and perioperative medicine.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -25687,7 +26248,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Europe's major cataract and refractive surgery meeting.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -25809,7 +26371,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual meeting on transfusion medicine and biotherapies.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -25835,7 +26398,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The ACS's annual surgical education meeting.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -25861,7 +26425,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The European congress for emergency medicine.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -25887,7 +26452,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "A major gastroenterology and hepatology congress, held at the Bella Center in Copenhagen.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -26009,7 +26575,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual scientific meeting of New Zealand orthopaedic surgeons.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -26035,7 +26602,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The CRF's annual interventional cardiology conference.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -26060,7 +26628,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.augs.org/annual-meeting/",
   "blurb": "Joint meeting of the American Urogynecologic Society and the International Urogynecological Association in Boston.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -26085,7 +26654,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.aphrs.org/",
   "blurb": "Meeting organised by Asia Pacific Heart Rhythm Society in Taipei, Taiwan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -27022,7 +27592,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://ccs.ca/canadian-cardiovascular-congress/",
   "blurb": "The Canadian Cardiovascular Society's annual congress, scheduled for Halifax, Nova Scotia.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -27048,7 +27619,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "A three-day first-edition international emergency nursing conference by ENA and Elsevier with plenaries, podium and poster presentations.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -27074,7 +27646,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual congress of the Japanese Ophthalmological Society.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -27243,7 +27816,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.rssa.co.za/congress-and-workshops",
   "blurb": "Head and neck imaging congress at the Century City Conference Centre, run with ESOR and ARRS.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -27292,7 +27866,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.cns.org/meetings/past-and-future-annual-meetings",
   "blurb": "Annual meeting of the Congress of Neurological Surgeons in Phoenix.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -27342,7 +27917,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "A major neuroscience research meeting.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -27368,7 +27944,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The college's annual scientific meeting for O&G specialists.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -27394,7 +27971,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "World neurology congress in Cape Town with CME-accredited sessions.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -27420,7 +27998,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual meeting on pulmonary, critical care and sleep medicine.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -27446,7 +28025,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Combined annual meeting of haematologists, pathologists and scientists in Australia and New Zealand.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -27472,7 +28052,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The AACAP's annual child and adolescent psychiatry meeting.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -27522,7 +28103,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual meeting of US emergency physicians.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -27548,7 +28130,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "A major healthcare exhibition and conference programme in Riyadh.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -27598,7 +28181,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "A major annual human genetics and genomics meeting.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -27648,7 +28232,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "34th annual congress on gene and cell therapy.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -27673,7 +28258,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.aanem.org/meetings/future-annual-meetings",
   "blurb": "Annual meeting of the American Association of Neuromuscular & Electrodiagnostic Medicine in San Antonio.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -27747,7 +28333,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "A major nephrology meeting, held each autumn.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -28012,7 +28599,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.jarm.or.jp/member/meeting.html",
   "blurb": "Meeting organised by Japanese Association of Rehabilitation Medicine in Yokohama, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -28038,7 +28626,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "World meeting on sexual medicine held jointly with the Middle East Society for Sexual Medicine.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -28136,7 +28725,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Joint annual meeting of Japan's major gastroenterology, hepatology and endoscopy societies.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -28233,7 +28823,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.sigmanursing.org/connect-engage/meetings-events",
   "blurb": "Biennial convention of Sigma Nursing in Denver.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -28259,7 +28850,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Biennial physiotherapy and rehabilitation conference in Dubai.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -28380,7 +28972,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.ebmt.org/events",
   "blurb": "EBMT meeting on lymphoma, multiple myeloma and CLL, Barcelona.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -28502,7 +29095,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The global conference of family doctors and general practitioners.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -28528,7 +29122,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The major Asia-Pacific respiratory medicine congress.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -28722,7 +29317,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Medical education conference hosted at Arabian Gulf University, Bahrain.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -28771,7 +29367,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.aarc.org/events-and-programs/aarc-congress/",
   "blurb": "Annual congress of the American Association for Respiratory Care in Seattle.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -28797,7 +29394,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "A major annual gathering of US public health professionals.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -28823,7 +29421,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The 76th annual meeting on tropical medicine and global health.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -28945,7 +29544,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual meeting on molecular diagnostics.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -29018,7 +29618,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.phaa.net.au/events",
   "blurb": "Food and public health conference held at the Pullman East Melbourne.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -29044,7 +29645,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The annual assembly for physiatrists.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -29093,7 +29695,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.thyroid.org/professionals/meetings/",
   "blurb": "Annual meeting of the American Thyroid Association at the Hyatt Regency Denver.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -29407,7 +30010,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Australia's multidisciplinary cancer care annual meeting.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -29648,7 +30252,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.jsao.org/meeting-seminar/annual-meeting/",
   "blurb": "Meeting organised by Japanese Society for Artificial Organs in Fukuoka, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -29673,7 +30278,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.jslm.org/branches/meeting/index.html",
   "blurb": "Meeting organised by Japanese Society of Laboratory Medicine in Utsunomiya, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -29771,7 +30377,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Periodontics and implant dentistry conference at King Saud University main hall.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -29796,7 +30403,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.congre.co.jp/49jsh2027/outline.html",
   "blurb": "Meeting organised by Japanese Society of Hypertension in Fukuoka, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -29822,7 +30430,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The AAMC's annual meeting on academic medicine and medical education.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -29848,7 +30457,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "A major ophthalmology meeting.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -29969,7 +30579,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://jscc.or.jp/academic-meeting/",
   "blurb": "Meeting organised by Japanese Society of Clinical Cytology in Iwate, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -30091,7 +30702,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Health economics and outcomes research conference at Allianz MiCo, Milan.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -30117,7 +30729,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "A major radiology meeting, held at McCormick Place each Nov/Dec.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -30215,7 +30828,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The major annual European public health conference.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -30288,7 +30902,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.streams.co.jp/apfcp/",
   "blurb": "Meeting organised by Asia Pacific Federation of Coloproctology in Sydney, Australia.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -30577,7 +31192,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://convention.asha.org/about-the-convention/locations/",
   "blurb": "Annual convention of the American Speech-Language-Hearing Association in New Orleans.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -30650,7 +31266,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.ebmt.org/events",
   "blurb": "EBMT joint working party meeting with the 29th Infectious Diseases course and 19th Nurses Group meeting, Krakow.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -30988,7 +31605,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual meeting of Australasian immunologists and allied researchers.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -31373,7 +31991,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.saafrica.org/pages/2026/08/25/icasa-2027-official-speech-by-saa-president-icasa-2027-president/",
   "blurb": "Biennial pan-African conference on HIV and sexually transmitted infections, hosted in Benin for the first time.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -31447,7 +32066,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "A major annual symposium on breast cancer research.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -31545,7 +32165,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "First in-person WAS World Congress on African soil.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -31643,7 +32264,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Respiratory medicine congress at Sopatel Silmande Hotel.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -32220,7 +32842,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.jspen.or.jp/meeting/headquarters",
   "blurb": "Meeting organised by Japanese Society for Clinical Nutrition and Metabolism in Yokohama, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -32653,7 +33276,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://aoa.org.au/events",
   "blurb": "Combined Tasmania and Victorian Branch annual scientific meeting in Hobart.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -32775,7 +33399,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Allergy, asthma and immunology annual meeting.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -33016,7 +33641,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.jsmo.or.jp/academic-meeting/",
   "blurb": "Meeting organised by Japanese Society of Medical Oncology in Kyoto, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -33281,7 +33907,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.jgca.jp/meeting/kaisaiyotei/",
   "blurb": "Meeting organised by Japanese Gastric Cancer Association in Utsunomiya, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -33307,7 +33934,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Hospice and palliative medicine annual assembly.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -33333,7 +33961,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "A major orthopaedic meeting, at the San Diego Convention Center.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -33551,7 +34180,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Interventional radiology annual meeting at the Pennsylvania Convention Center.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -33672,7 +34302,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.aanem.org/meetings/future-annual-meetings",
   "blurb": "Hands-on neuromuscular ultrasound and EMG course held in San Diego.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -33793,7 +34424,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.napnap.org/future-conference-dates/",
   "blurb": "NAPNAP's annual national conference for pediatric nurse practitioners, listed for the Hilton Anatole with a pre-conference day on 22 March 2028.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -33986,7 +34618,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.sages.org/meetings/",
   "blurb": "Annual meeting of SAGES at the Charlotte Convention Center.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -34036,7 +34669,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "ACC's annual scientific session and expo in Chicago.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -34157,7 +34791,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.kidney.org/spring-clinical",
   "blurb": "Spring Clinical Meetings of the National Kidney Foundation in Boston.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -34182,7 +34817,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.acponline.org/meetings-courses/internal-medicine-meeting",
   "blurb": "Annual Internal Medicine Meeting of the American College of Physicians in Washington, DC.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -34255,7 +34891,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.jse.gr.jp/contents/congress/congress.html",
   "blurb": "Meeting organised by Japanese Society of Echocardiography in Takamatsu, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -34305,7 +34942,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual critical care congress, now held in spring.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -34690,7 +35328,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.jssoc.or.jp/modules/meeting/index.php?content_id=3",
   "blurb": "Meeting organised by Japan Surgical Society in Kyoto, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -34763,7 +35402,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.naika.or.jp/info/next_lecture/",
   "blurb": "Meeting organised by Japanese Society of Internal Medicine in Tokyo, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -35004,7 +35644,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.ryumachi-jp.com/meeting-education/shukai/",
   "blurb": "Meeting organised by Japan College of Rheumatology in Yokohama, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -35173,7 +35814,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.jpeds.or.jp/seminar/academic-meeting/20090.html",
   "blurb": "Meeting organised by Japan Pediatric Society in Niigata, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -35198,7 +35840,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.jsog.or.jp/en/6508/",
   "blurb": "Annual congress of the Japan Society of Obstetrics and Gynecology, presided by Prof. Akihiko Sekizawa of Showa Medical University.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -35223,7 +35866,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.aans.org/en/Annual-Scientific-Meeting",
   "blurb": "Annual scientific meeting of the American Association of Neurological Surgeons in Washington, DC.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -35273,7 +35917,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "A major neurology meeting, in Los Angeles with an online component.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -35298,7 +35943,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.aorn.org/help-faqs/expo",
   "blurb": "Annual conference and expo for perioperative nurses in Atlanta.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -35755,7 +36401,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.j-endo.jp/modules/meeting/index.php?content_id=1",
   "blurb": "Meeting organised by Japan Endocrine Society in Nara, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -35780,7 +36427,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.jsge.or.jp/conference/honbu/soukai",
   "blurb": "General meeting of the Japanese Society of Gastroenterology at Sendai International Center.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -36142,7 +36790,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Global electrophysiology and arrhythmia meeting.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -36264,7 +36913,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "A major psychiatry meeting.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -36314,7 +36964,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Health economics and outcomes research meeting at Gaylord National.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -36411,7 +37062,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.asgbi.org.uk/event/asgbi-events",
   "blurb": "Surgical congress of the Association of Surgeons of Great Britain and Ireland, held at ICC Wales.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -36844,7 +37496,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.efp.org/europerio/europerio12/",
   "blurb": "Periodontology and implant dentistry congress organised by the European Federation of Periodontology in Munich.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -37109,7 +37762,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://eadv.org/events/",
   "blurb": "EADV Symposium 2028 held in Dublin, Ireland.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -37158,7 +37812,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.sgcr-wires.com/apscvir2028",
   "blurb": "Meeting organised by Asia Pacific Society of Cardiovascular and Interventional Radiology, Singapore Radiological Society and College of Radiologists Singapore in Singapore, Singapore.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -37831,7 +38486,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.acorn.org.au/events",
   "blurb": "Biennial international conference of the Australian College of Perioperative Nurses, held in Geelong, Victoria.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -38024,7 +38680,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://iap-aus-conference.org.au/annual-scientific-meeting-2028/",
   "blurb": "Annual scientific meeting of the Australasian Division of the International Academy of Pathology, in Cairns, Queensland.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09"
+  "lastVerified": "2026-11-09",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -38097,7 +38754,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.esophagus.jp/private/society/",
   "blurb": "Meeting organised by Japan Esophageal Society in Sendai, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -38122,7 +38780,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://jast-hp.org/meeting/coming/",
   "blurb": "Meeting organised by Japanese Association for the Surgery of Trauma in Osaka, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -38228,7 +38887,7 @@ window.HOGGY_CONFERENCES = [
   "organiser": "Asian Oceanian Society of Radiology with the Hong Kong College of Radiologists",
   "specialty": "Radiology",
   "city": "Hong Kong",
-  "country": "Hong Kong SAR",
+  "country": "Hong Kong",
   "countryCode": "HK",
   "region": "Asia-Pacific",
   "lat": 22.32,
@@ -38243,7 +38902,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.theaosr.org/events",
   "blurb": "Meeting organised by Asian Oceanian Society of Radiology with the Hong Kong College of Radiologists in Hong Kong, Hong Kong SAR.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -38940,7 +39600,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.jarm.or.jp/member/meeting.html",
   "blurb": "Meeting organised by Japanese Association of Rehabilitation Medicine in Chiba, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -39013,7 +39674,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://jscc.or.jp/academic-meeting/",
   "blurb": "Meeting organised by Japanese Society of Clinical Cytology in Hokkaido, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -39038,7 +39700,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://jsn.or.jp/medic/congress/meeting/2020/future.php",
   "blurb": "Meeting organised by Japanese Society of Nephrology in Yokohama, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -39064,7 +39727,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Major diabetes research meeting, George R. Brown Convention Center.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -39522,7 +40186,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "European nephrology, dialysis and transplantation congress at CityCube Berlin.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -40004,7 +40669,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "European neurology congress at Rotterdam Ahoy.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -40413,7 +41079,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.jscrs.org/index/page/id/28",
   "blurb": "Meeting organised by Japanese Society of Cataract and Refractive Surgery in Yokohama, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -40534,7 +41201,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.jsgct.jp/about/meeting/",
   "blurb": "Meeting organised by Japan Society of Gene and Cell Therapy in Osaka, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -40823,7 +41491,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://psychology.org.au/training-and-careers/aps-conferences",
   "blurb": "International Congress of Psychology hosted by the APS at the Melbourne Convention and Exhibition Centre.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -41065,7 +41734,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Medical physics annual meeting at the Walter E. Washington Convention Center.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -41091,7 +41761,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "A major dementia research conference.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -41141,7 +41812,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Specialty conference on autoimmune neurology, Orlando and online.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -41670,7 +42342,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://allergy.org.au/conferences/ascia-annual-conference",
   "blurb": "ASCIA annual conference at the Perth Convention Exhibition Centre.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -42007,7 +42680,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.jslm.org/branches/meeting/index.html",
   "blurb": "Meeting organised by Japanese Society of Laboratory Medicine in Sapporo, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -42224,7 +42898,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.entnet.org/future-meeting-information/",
   "blurb": "Annual meeting and OTO Expo of the AAO-HNSF in Orlando.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -42298,7 +42973,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Major global thoracic oncology conference.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -42899,7 +43575,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.cns.org/meetings/past-and-future-annual-meetings",
   "blurb": "Annual meeting of the Congress of Neurological Surgeons in Nashville.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -42925,7 +43602,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Annual emergency medicine scientific assembly.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -42999,7 +43677,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "A major diabetes research meeting.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -43720,7 +44399,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.augs.org/annual-meeting/",
   "blurb": "49th annual meeting of the American Urogynecologic Society in Louisville.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -44610,7 +45290,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Neurology practice-focused fall conference, Las Vegas and online.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -44684,7 +45365,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "CHEST annual meeting for chest medicine.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -45214,7 +45896,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "ASPS annual meeting for plastic surgeons.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -45263,7 +45946,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.jscp.gr.jp/act.html",
   "blurb": "Meeting organised by Japanese Society for Clinical Pathway in Morioka, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -45288,7 +45972,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.jsaweb.jp/modules/meeting/index.php?content_id=2",
   "blurb": "Annual scientific meeting of the Japanese Society of Allergology, presided by Prof. Hiroyuki Nagase of Teikyo University.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -45314,7 +45999,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "A major ophthalmology meeting at McCormick Place.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -45459,7 +46145,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://jsn.or.jp/medic/congress/meeting/2020/future.php",
   "blurb": "Meeting organised by Japanese Society of Nephrology in Osaka, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -45917,7 +46604,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Tropical medicine and global health annual meeting.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -46614,7 +47302,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.ranzcr.com/whats-on/annual-scientific-meetings",
   "blurb": "RANZCR annual scientific meeting for radiologists and radiation oncologists, listed for the International Convention Centre Sydney.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -46639,7 +47328,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.jshem.or.jp/meeting/anualmeeting/",
   "blurb": "Meeting organised by Japanese Society of Hematology in Tokyo, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -46713,7 +47403,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "ASA's annual anaesthesiology meeting in Chicago.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -46763,7 +47454,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "ACS annual surgical congress in Boston.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -46908,7 +47600,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://acccn.com.au/events/conferences-2/",
   "blurb": "Annual scientific meeting of the Australasian College of Critical Care Nurses, listed for Perth. Venue not yet announced.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09"
+  "lastVerified": "2026-11-09",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -46982,7 +47675,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "Human genetics and genomics annual meeting (Wednesday to Sunday format).",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -47295,7 +47989,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.jsco.or.jp/annualmeeting_seminar/future_annualmeeting.html",
   "blurb": "Meeting organised by Japan Society of Clinical Oncology in Kobe, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -47416,7 +48111,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://jsn.or.jp/medic/congress/meeting/2020/future.php",
   "blurb": "Meeting organised by Japanese Society of Nephrology in Sendai, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -47490,7 +48186,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "European health economics and outcomes research conference at Bella Center.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -47539,7 +48236,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.aanem.org/meetings/future-annual-meetings",
   "blurb": "Annual meeting of the American Association of Neuromuscular & Electrodiagnostic Medicine in Louisville.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -47708,7 +48406,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.jarm.or.jp/member/meeting.html",
   "blurb": "Meeting organised by Japanese Association of Rehabilitation Medicine in Sendai, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -47733,7 +48432,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.jsge.or.jp/conference/honbu/taikai",
   "blurb": "Annual meeting of the Japanese Society of Gastroenterology at Kobe Convention Center, presided by Prof. Hajime Isomoto of Tottori University.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "confirmed",
@@ -47758,7 +48458,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.jsphcs.jp/event/",
   "blurb": "Meeting organised by Japanese Society of Pharmaceutical Health Care and Sciences in Chiba, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -47808,7 +48509,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "The AAP Experience national paediatrics conference.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -48049,7 +48751,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.aarc.org/events-and-programs/aarc-congress/",
   "blurb": "Annual congress of the American Association for Respiratory Care in San Antonio.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -48794,7 +49497,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://jscc.or.jp/academic-meeting/",
   "blurb": "Meeting organised by Japanese Society of Clinical Cytology in Kanagawa, Japan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -48892,7 +49596,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "SfN's annual neuroscience meeting.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -49277,7 +49982,8 @@ window.HOGGY_CONFERENCES = [
   "url": "https://convention.asha.org/about-the-convention/locations/",
   "blurb": "Annual convention of the American Speech-Language-Hearing Association in Denver.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07"
+  "lastVerified": "2026-11-07",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",
@@ -49639,7 +50345,8 @@ window.HOGGY_CONFERENCES = [
   "blurb": "RSNA's annual radiology meeting, held after Thanksgiving in even years.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
-  "provenance": "organiser-page"
+  "provenance": "organiser-page",
+  "legacyConfirmed": true
  },
  {
   "dateStatus": "estimated",

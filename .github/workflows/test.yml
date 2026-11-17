@@ -9,6 +9,12 @@ jobs:
         with: { node-version: 24 }
       - run: npm ci
       - run: npm test
+      - name: Data validator and merge check (B30)
+        run: |
+          node tools/validate-data.js
+          node tools/merge-shards.js --dry
+          # conferences.js must be exactly what the merge produces (no unmerged shard, no edit the merge would undo)
+          node tools/merge-shards.js > /dev/null && git diff --exit-code --stat data/conferences.js
   test-postgres:
     runs-on: ubuntu-latest
     services:
