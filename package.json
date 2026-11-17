@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "node server.js",
-    "test": "node --test tests/hoggy.test.js tests/pdf.test.js tests/pack.test.js tests/home.test.js tests/reviews.test.js tests/courses.test.js tests/pg.test.js",
+    "test": "node --test tests/hoggy.test.js tests/pdf.test.js tests/pack.test.js tests/home.test.js tests/reviews.test.js tests/rated.test.js tests/courses.test.js tests/pg.test.js",
     "merge": "node tools/merge-shards.js",
     "test:pg": "node tests/run-pg.js"
   },

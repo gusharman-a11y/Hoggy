@@ -322,3 +322,22 @@ details.how .note{margin-top:6px;max-width:62ch}
 @media (max-width:1000px){.facts.kfacts{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:640px){.facts.kfacts{gap:8px}.kfacts .fact{padding:10px}.kfacts .fact .note{font-size:11.5px}}
 @media (max-width:640px){.course-card .art{aspect-ratio:3.2/1}.course-card{gap:10px}}
+/* Highest rated by attendees (Home section, Discover list) and "Covered in" links */
+.top-grid{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+.topcard .art.sm{aspect-ratio:3/1}
+.top-score{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px;font-size:15px}
+.top-score .stars{color:var(--accent)}
+.top-n{flex-basis:100%;font-size:12.5px;color:var(--muted)}
+.toplist{margin:0 0 8px}
+.toplist .section{margin-top:8px}
+.toprank{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap:18px}
+.toprank li{position:relative;min-width:0}
+.toprank .rank{position:absolute;top:-8px;left:-6px;z-index:1;width:28px;height:28px;border-radius:99px;display:grid;place-items:center;background:var(--accent);color:var(--accent-ink);font-weight:800;font-size:13px}
+.toprank .card{height:100%}
+.top-empty{font-size:14px;color:var(--muted)}
+.linkbtn{background:none;border:0;padding:0;font:inherit;color:inherit;text-decoration:underline;cursor:pointer}
+.cov-list{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.cov-item{padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--card);overflow-wrap:anywhere}
+.cov-item a{font-weight:600}
+.cov-meta{margin-top:2px}
+@media (max-width:640px){.top-grid,.toprank{grid-template-columns:1fr;gap:12px}.topcard .art.sm{aspect-ratio:4/1}.toprank .rank{left:-4px}}

@@ -77,7 +77,7 @@ const safeUrl = u => { try { const x = new URL(u); return x.protocol === 'https:
 
 /* ---------- reviews: per conference series (every edition), from the Hoggy server ---------- */
 const DIM_LABELS = [['content', 'Content & speakers'], ['networking', 'Networking'], ['venue', 'Venue & organisation'], ['value', 'Value for money'], ['cpd', 'CPD worth']];
-const NET = { online: false, user: null, rev: 0, ratings: {}, reviews: {}, mine: [], busy: false };
+const NET = { online: false, user: null, rev: 0, ratings: {}, reviews: {}, mine: [], busy: false, top: {}, cov: {} };
 const SKEYS = new WeakMap(); /* computed once per conference object */
 const skey = c => { let k = SKEYS.get(c); if (!k) { k = window.HoggySeries ? window.HoggySeries.seriesKey(c) : c.id; SKEYS.set(c, k); } return k; };
 const editionsOf = key => CONFS.filter(c => skey(c) === key).sort((a, b) => a.start.localeCompare(b.start));
@@ -123,6 +123,16 @@ const cpdTotal = () => S.cpd.filter(e => String(e.date).startsWith(String(S.prof
 
 /* ---------- receipt files: device copy (IndexedDB) plus a server copy when signed in ---------- */
 if (hasLegacyCaps(S.profile.caps)) { S.profile.caps = {}; try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { } window.__capsCleared = true; }
+/* one-time move of a saved specialty to the canonical list (e.g. "Anaesthesiology" -> "Anaesthesia"). An unknown name is
+   left as the user typed it. profile.specV marks the profile as done, so a later choice is never rewritten. */
+const SPEC_V = 1;
+function migrateSpecialty(p) {
+  if (!p || p.specV >= SPEC_V) return false;
+  const HS = window.HoggySpecialties, c = HS && p.specialty ? HS.canon(p.specialty) : null;
+  if (!HS) return false;
+  if (c) p.specialty = c; p.specV = SPEC_V; return true;
+}
+if (migrateSpecialty(S.profile)) { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { } }
 const FILES = new Set(); const UNSAVED = new Set(); let FILES_LOADED = false;
 const RH = { 'X-Requested-With': 'hoggy' };
 const fileUrl = (k, name) => '/api/rfile/' + encodeURIComponent(k) + (name ? '?name=' + encodeURIComponent(name) : '');
@@ -250,7 +260,8 @@ const VIEWS = {
     const ex = examples.length ? `<div class="section"><h2>Coming up, dates confirmed</h2><a href="#/discover">Browse all</a></div><div class="grid ex">${examples.map(card).join('')}</div>` : '';
     const close = `<section class="hero hero-close"><h2>Ready for your next conference?</h2><p>Start with a search. No account needed to browse; sign in when you want your trips and receipts synced.</p>
       <div class="row"><a class="btn primary lg" href="#/discover">Find conferences</a>${NET.online && !NET.user ? '<button type="button" class="btn ghost lg" data-act="signin">Sign in</button>' : ''}</div></section>`;
-    return active ? dash + how + ben + live : hero + how + ben + live + ex + close;
+    const top = topSection(); /* nothing at all until a series has 3 reviews */
+    return active ? dash + how + top + ben + live : hero + how + top + ben + live + ex + close;
   },
   discover() {
     const specs = [...new Set(CONFS.map(c => c.specialty))].sort(), regs = [...new Set(CONFS.map(c => c.region))].sort(), ctry = [...new Set(CONFS.map(c => c.country))].sort();
@@ -263,8 +274,9 @@ const VIEWS = {
         ${HOL.length ? `<select id="fHol" aria-label="School holidays"><option value="">Any time of year</option><option value="ANZ">In any AU or NZ school holidays</option><option value="AU">In any Australian school holidays</option>${HOL.map(r => `<option value="${esc(r.code)}">In ${esc(r.name)} school holidays</option>`).join('')}</select>` : ''}
         <select id="fCpd" aria-label="CPD credits"><option value="0">Any CPD</option><option value="1">CPD credits published</option></select>
         <select id="fConf" aria-label="Date status"><option value="">Any dates</option><option value="1">Confirmed dates only</option></select>
-        <select id="fSort" aria-label="Sort"><option value="date">Soonest</option><option value="rating">Top rated</option><option value="cpd">Most CPD (published)</option><option value="price">Lowest price</option><option value="match">Best match</option></select>
+        <select id="fSort" aria-label="Sort"><option value="date">Soonest</option><option value="rating">Highest rated by attendees</option><option value="cpd">Most CPD (published)</option><option value="price">Lowest price</option><option value="match">Best match</option></select>
         <span class="count" id="count"></span></div></div>
+    <section id="topList" class="toplist" aria-labelledby="topH" hidden></section>
     <div class="grid" id="results"></div>`;
   },
   trips() {
@@ -501,6 +513,39 @@ const HOL = (window.HOGGY_HOLIDAYS && window.HOGGY_HOLIDAYS.regions) || [];
 const holRegions = code => code === 'AU' ? HOL.filter(r => r.country === 'AU') : code === 'ANZ' ? HOL : HOL.filter(r => r.code === code);
 /* the school-holiday regions whose break overlaps this conference (any day of it) */
 const holHits = (c, code) => holRegions(code).filter(r => r.holidays.some(h => h.start <= c.end && h.end >= c.start));
+/* ---------- "Highest rated by attendees": series with 3+ reviews, by the weighted score (GET /api/top-rated) ---------- */
+const TOP_N = { home: 6, discover: 12 };
+async function loadTop(spec = '') {
+  const r = await api('/api/top-rated?limit=12' + (spec ? '&specialty=' + encodeURIComponent(spec) : ''));
+  if (r.error || !Array.isArray(r.series)) return false;
+  NET.top[spec] = r.series; return true;
+}
+function topCard(x) {
+  const c = byId(x.confId); if (!c) return '';
+  return `<article class="card topcard" tabindex="0" role="button" data-act="open" data-id="${esc(c.id)}" aria-label="${esc(x.title)}: ${esc(x.avg.toFixed(1))} out of 5 from ${esc(plural(x.n, 'review'))}, ${esc(x.verified)} verified">
+    <div class="art sm" style="background:${grad(c)}"><b>${esc(initials(c))}</b><span class="cc">${FLAG(c.countryCode)} ${esc(c.countryCode)}</span></div>
+    <div><h3>${esc(x.title)}</h3><div class="meta"><span>${esc(c.specialty)}</span><span>${x.upcoming ? 'Next: ' + esc(c.city) + ' · ' + esc(range(c)) : 'Last held ' + esc(c.start.slice(0, 4))}</span></div></div>
+    <div class="top-score"><span class="stars" aria-hidden="true">${stars(x.avg)}</span> <b>${x.avg.toFixed(1)}</b><span class="top-n">${plural(x.n, 'review')} · ${x.verified} verified</span></div></article>`;
+}
+function topSection() {
+  const L = (NET.online && NET.top[''] || []).filter(x => byId(x.confId)).slice(0, TOP_N.home);
+  if (!L.length) return '';
+  return `<section class="toprated" aria-labelledby="topHomeH"><div class="section"><h2 id="topHomeH">Highest rated by attendees</h2><a href="#/discover" data-act="toplist">See the list</a></div>
+    <p class="note" style="margin:-6px 0 12px">Conferences with at least 3 reviews, scored across every year. Verified reviews count in full, unverified ones half.</p>
+    <div class="grid top-grid">${L.map(topCard).join('')}</div></section>`;
+}
+function drawTopList() {
+  const el = $('#topList'); if (!el) return;
+  if (UI.sort !== 'rating') { el.hidden = true; el.innerHTML = ''; return; }
+  el.hidden = false;
+  const spec = UI.spec === 'All' ? '' : UI.spec, head = `<div class="section"><h2 id="topH">Highest rated by attendees${spec ? ' · ' + esc(spec) : ''}</h2></div>`;
+  if (!NET.online) { el.innerHTML = head + '<p class="note">Attendee scores need the Hoggy server.</p>'; return; }
+  const L = NET.top[spec];
+  if (!L) { el.innerHTML = head + '<p class="note">Loading scores…</p>'; loadTop(spec).then(ok => { if (ok && route() === 'discover' && UI.sort === 'rating') drawTopList(); }); return; }
+  const shown = L.filter(x => byId(x.confId)).slice(0, TOP_N.discover);
+  el.innerHTML = head + (shown.length ? `<ol class="toprank">${shown.map((x, i) => `<li><span class="rank" aria-hidden="true">${i + 1}</span>${topCard(x)}</li>`).join('')}</ol>`
+    : `<p class="note top-empty">No conference has 3 reviews yet — <button type="button" class="linkbtn" data-act="topfind">review one you've attended</button></p>`);
+}
 const UI = { hol: '', confirmed: '', limit: 48, q: '', spec: 'All', region: '', country: '', month: '', cpd: 0, sort: 'date' };
 function results() {
   let L = upcoming();
@@ -515,6 +560,7 @@ function results() {
   if (UI.confirmed) L = L.filter(c => c.datesConfirmed !== false);
   const srt = { date: (a, b) => a.start.localeCompare(b.start), rating: (a, b) => (rating(b) || 0) - (rating(a) || 0), cpd: (a, b) => (b.cpdVerified ? b.cpdHours : 0) - (a.cpdVerified ? a.cpdHours : 0), price: (a, b) => a.priceFrom - b.priceFrom, match: (a, b) => matchScore(b) - matchScore(a) };
   L.sort(srt[UI.sort]);
+  drawTopList();
   const cm = q && COURSES.cat ? HC.searchCourses(COURSES.cat, q) : [];
   $('#count').textContent = `${L.length} result${L.length === 1 ? '' : 's'}${cm.length ? ' · ' + plural(cm.length, 'course') : ''}`;
   $('#results').innerHTML = cm.map(courseCard).join('') + L.slice(0, UI.limit).map(card).join('') + (L.length > UI.limit ? `<div style="grid-column:1/-1;text-align:center;padding:14px"><button class="btn" data-act="more">Show more (${L.length - UI.limit} left)</button></div>` : '') || (cm.length ? '' : '<div class="empty" style="grid-column:1/-1"><h3>No conferences match</h3><p>Try removing a filter.</p></div>');
@@ -574,11 +620,12 @@ function detail(id, fetchReviews = true) {
   ${c.flagged ? '<p class="check warn" style="margin:0 0 10px">! Hoggy\'s updater noticed a change or problem on the organiser site (dead link or cancellation wording). Check the official site before booking.</p>' : ''}<div class="pills" style="margin:0 0 14px" aria-label="Quality signals">${c.cpdBody && c.cpdVerified ? `<span class="pill g">Accreditation: ${esc(c.cpdBody)}</span>` : '<span class="pill w">Accreditation: confirm with organiser</span>'}<span class="pill ${c.datesConfirmed === false ? 'w' : 'g'}">${c.datesConfirmed === false ? 'Dates estimated' : 'Dates confirmed'}</span><span class="pill">Run by ${esc(c.organiser)}</span><span class="pill">${esc(c.format)}</span>${c.attendees >= 3000 ? '<span class="pill">Large (3,000+)</span>' : c.attendees ? '<span class="pill">~' + esc(Number(c.attendees).toLocaleString()) + ' attendees</span>' : ''}</div>
   <p class="note" style="margin:-6px 0 12px">Elsewhere on the web: <a style="text-decoration:underline" target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=${encodeURIComponent(c.name + ' ' + c.start.slice(0, 4) + ' review')}">search reviews</a> (external, not part of Hoggy's score)</p>
   <div class="row"><a class="btn sm" target="_blank" rel="noopener noreferrer" href="${esc(L.flights)}">✈ Flights ${icon('ext')}</a><a class="btn sm" target="_blank" rel="noopener noreferrer" href="${esc(L.hotels)}">🛏 Hotels ${icon('ext')}</a><button class="btn sm ghost" data-act="ics" data-id="${esc(id)}">+ Calendar</button></div>
-  ${reviewsSection(c, R)}</div></div>`);
+  ${reviewsSection(c, R)}${coverageSection(c)}</div></div>`);
+  if (NET.online && fetchReviews) loadCoverage(skey(c)).then(ok => { if (ok && !$('#overlay').hidden && $('#covsec') && $('#covsec').dataset.id === id) $('#covsec').outerHTML = coverageSection(c); });
   if (NET.online && fetchReviews) loadReviews(id).then(ok => { if (ok && !$('#overlay').hidden && $('#rvsec') && $('#rvsec').dataset.id === id) detail(id, false); }); /* fetch once per open; re-rendering with fetch again looped forever */
 }
 /* ---------- reviews section, review form, proof upload ---------- */
-const HOW_SCORES = 'Scores cover every year of this conference. A verified review counts in full and an unverified one counts half. A score shows once there are at least 3 reviews. "Verified attendee" means Hoggy holds a registration receipt you emailed to your Hoggy address, or an admin has checked your certificate or receipt.';
+const HOW_SCORES = 'Scores cover every year of this conference. A verified review counts in full and an unverified one counts half. A score shows once there are at least 3 reviews. "Verified attendee" means a Hoggy admin has checked a registration receipt you emailed to your Hoggy address, or a certificate or receipt you uploaded.';
 const edLabel = r => 'Attended ' + r.editionYear + (r.city ? ' · ' + r.city : '');
 const shareLink = key => location.origin + location.pathname + '#/review/' + key;
 function scoreLine(sc) {
@@ -589,8 +636,8 @@ function scoreLine(sc) {
 function reviewItem(v, c) {
   const dims = DIM_LABELS.filter(([k]) => v.ratings && v.ratings[k]).map(([k, l]) => `${l} ${v.ratings[k]}`).join(' · ');
   const state = v.verified ? '<span class="pill g">✓ Verified attendee</span>' : '<span class="pill">Attended (not verified)</span>';
-  const own = v.mine ? (v.verify === 'pending_proof' ? '<span class="pill w">Proof sent · being checked</span>' : v.proof === 'rejected' && !v.verified ? '<span class="pill b">Proof not accepted</span>' : '') : '';
-  const acts = !NET.user ? '' : v.mine ? `<div class="row rv-acts"><button class="btn sm ghost" data-act="rvedit" data-id="${esc(v.id)}" data-conf="${esc(c.id)}">Edit</button>${v.verified || v.verify === 'pending_proof' ? '' : `<button class="btn sm ghost" data-act="rvproof" data-id="${esc(v.id)}" data-conf="${esc(c.id)}">Add proof</button>`}<button class="btn sm ghost danger" data-act="rvdel" data-id="${esc(v.id)}" data-conf="${esc(c.id)}">Delete</button></div>` : `<div class="row rv-acts"><button class="btn sm ghost" data-act="rvreport" data-id="${esc(v.id)}" data-conf="${esc(c.id)}">Report</button></div>`;
+  const own = v.mine ? (v.verify === 'pending_proof' ? '<span class="pill w">Proof sent · being checked</span>' : v.verify === 'pending_receipt' ? '<span class="pill w">Emailed receipt · being checked</span>' : v.proof === 'rejected' && !v.verified ? '<span class="pill b">Proof not accepted</span>' : '') : '';
+  const acts = !NET.user ? '' : v.mine ? `<div class="row rv-acts"><button class="btn sm ghost" data-act="rvedit" data-id="${esc(v.id)}" data-conf="${esc(c.id)}">Edit</button>${v.verified || v.verify === 'pending_proof' || v.verify === 'pending_receipt' ? '' : `<button class="btn sm ghost" data-act="rvproof" data-id="${esc(v.id)}" data-conf="${esc(c.id)}">Add proof</button>`}<button class="btn sm ghost danger" data-act="rvdel" data-id="${esc(v.id)}" data-conf="${esc(c.id)}">Delete</button></div>` : `<div class="row rv-acts"><button class="btn sm ghost" data-act="rvreport" data-id="${esc(v.id)}" data-conf="${esc(c.id)}">Report</button></div>`;
   return `<div class="review"><div class="who rv-who"><span>${esc(v.author)}</span> ${state}${own}<span class="stars rv-stars" aria-label="${esc(Number(v.rating).toFixed(1))} out of 5">${stars(v.rating)}</span></div><div class="note rv-ed">${esc(edLabel(v))}</div>${dims ? `<div class="note rv-dims">${esc(dims)}</div>` : ''}<p>${esc(v.text)}</p>${acts}</div>`;
 }
 function reviewsSection(c, R) {
@@ -603,6 +650,32 @@ function reviewsSection(c, R) {
   <p class="note" style="margin:6px 0 4px">Went in an earlier year? That counts. Share the link with colleagues who attended.</p>
   ${R.length ? R.map(v => reviewItem(v, c)).join('') : '<p class="note">No reviews yet. If you have been to this conference in any year, yours can be the first.</p>'}</section>`;
 }
+/* ---------- "Covered in": approved journal and press links for the series (links only, never article text) ---------- */
+async function loadCoverage(key) { const r = await api('/api/coverage?series=' + encodeURIComponent(key)); if (r.error || !Array.isArray(r)) return false; NET.cov[key] = r; return true; }
+function coverageSection(c) {
+  if (!NET.online) return '';
+  const key = skey(c), L = NET.cov[key] || [];
+  const items = window.HoggyCoverage ? L.map(l => window.HoggyCoverage.itemHtml(l, esc)).join('') : '';
+  const suggest = `<button class="btn sm ghost" data-act="covsuggest" data-id="${esc(c.id)}">Suggest a link</button>`;
+  return `<section id="covsec" class="cov" data-id="${esc(c.id)}" aria-labelledby="covh"><div class="section" style="margin-top:28px"><h2 id="covh" style="font-size:20px">Covered in</h2></div>
+  ${items ? `<ul class="cov-list">${items}</ul>` : '<p class="note">No journal or press coverage listed yet.</p>'}
+  <div class="row" style="margin:8px 0 0">${suggest}<span class="note" style="margin:0">Links open the publisher's site. An admin checks every suggestion first.</span></div></section>`;
+}
+function coverageDialog(c) {
+  const T = window.HoggyCoverage.TYPES, Y = new Date().getFullYear();
+  simpleDialog('Suggest a link', `<p class="note" style="margin-top:-6px">A meeting report, abstract supplement, society journal issue or news story about ${esc(seriesTitleOf(c))}. Link to the publisher's page; please don't paste article text.</p>
+    ${field('cv1', 'Type', `<select id="cv1" name="type">${Object.entries(T).map(([k, l]) => `<option value="${k}">${esc(l)}</option>`).join('')}</select>`)}
+    ${field('cv2', 'Link (https)', '<input id="cv2" type="url" name="url" required maxlength="500" placeholder="https://" inputmode="url">')}
+    <div class="two">${field('cv3', 'Publication', '<input id="cv3" type="text" name="publication" required maxlength="120" placeholder="Journal, society or news outlet">')}${field('cv4', 'Year', `<input id="cv4" type="number" name="year" min="1950" max="${Y + 1}" step="1" placeholder="${Y}">`)}</div>
+    ${field('cv5', 'Title (optional)', '<input id="cv5" type="text" name="title" maxlength="200">')}<p class="note" id="cverr" role="alert" style="color:var(--bad);min-height:18px"></p>`, async fd => {
+    const body = { series: skey(c), type: fd.get('type'), url: String(fd.get('url') || '').trim(), publication: String(fd.get('publication') || '').trim(), year: fd.get('year') ? +fd.get('year') : null, title: String(fd.get('title') || '').trim() };
+    const v = window.HoggyCoverage.validate(body); if (!v.ok) return $('#cverr').textContent = v.error;
+    const r = await api('/api/coverage', { method: 'POST', body });
+    if (r.error) return $('#cverr').textContent = r.error === 'offline' ? 'Server not reachable. Try again.' : r.error;
+    toast('Thanks · an admin will check the link before it shows'); detail(c.id, false);
+  }, 'Send for checking');
+}
+const seriesTitleOf = c => window.HoggySeries ? window.HoggySeries.seriesTitle(c) : c.name;
 const GUIDE = 'Keep it honest and about the event: the programme, speakers, venue, value and CPD. Do not name or criticise individuals, and never include patient information. Reviews that break these rules are removed.';
 /* open the review form for a series; signed-out visitors sign in first and come straight back */
 function startReview(key, opts = {}) {
@@ -642,14 +715,15 @@ function reviewForm(key, opts = {}) {
     await refreshReviews(latest.id);
     if (ed) { toast('Review updated'); return backToConf(opts.conf || latest.id); }
     const made = (r.reviews || []).map(x => ({ ...x, seriesKey: key }));
-    if (made.every(x => x.verify === 'verified')) { toast('Review posted · verified from your emailed registration receipt'); return backToConf(latest.id); }
-    proofDialog(made.filter(x => x.verify !== 'verified'), { conf: latest.id, title, posted: true });
+    const need = made.filter(x => x.verify === 'none');
+    if (!need.length) { toast(made.some(x => x.verify === 'pending_receipt') ? 'Review posted · an admin is checking your emailed registration receipt' : 'Review posted · verified from your emailed registration receipt'); return backToConf(latest.id); }
+    proofDialog(need, { conf: latest.id, title, posted: true });
   });
 }
 function proofDialog(list, opts = {}) {
   openOverlay(`<div class="sheet center rv-sheet" role="dialog" aria-modal="true" aria-label="Add proof of attendance"><div style="padding:22px"><div class="row" style="justify-content:space-between;align-items:flex-start;flex-wrap:nowrap;margin-bottom:10px"><h2 style="font-size:24px;margin:0">${opts.posted ? 'Thanks, your review is up' : 'Add proof of attendance'}</h2><button type="button" class="icon-btn" style="flex:none" data-act="close" aria-label="Close">${icon('x')}</button></div>
   <p style="color:var(--muted);font-size:14px">${opts.posted ? 'It shows as “Attended (not verified)” for now. ' : ''}Upload a certificate of attendance, CPD certificate or registration receipt and a Hoggy admin will check it. Once approved, your review shows “✓ Verified attendee”.</p>
-  <p class="note">PDF, JPG or PNG, up to 5 MB. Only Hoggy admins can open it, and it is deleted once checked. Cover anything you do not want seen, such as your registration number. Emailing your registration receipt to your Hoggy address also verifies it.</p>
+  <p class="note">PDF, JPG or PNG, up to 5 MB. Only Hoggy admins can open it, and it is deleted once checked. Cover anything you do not want seen, such as your registration number. You can also email your registration receipt to your Hoggy address and an admin will check that instead.</p>
   <div class="list" style="margin-top:12px">${list.map(r => `<form class="li pf-row" data-rv="${esc(r.id)}"><div class="grow"><div class="t">${esc(edLabel(r))}</div><div class="two pf-in"><select name="kind" aria-label="Type of proof for ${esc(r.editionYear)}"><option value="certificate">Certificate of attendance</option><option value="cpd">CPD certificate</option><option value="receipt">Registration receipt</option></select><input type="file" name="file" accept="application/pdf,image/jpeg,image/png" aria-label="Proof file for ${esc(r.editionYear)}"></div><div class="note pf-msg" aria-live="polite"></div></div><button class="btn sm primary" type="submit">Upload</button></form>`).join('')}</div>
   <div class="row" style="justify-content:flex-end;margin:16px 0 0"><button class="btn" data-act="rvdone" data-id="${esc(opts.conf || '')}">${opts.posted ? 'Skip for now' : 'Done'}</button></div></div></div>`, true);
   document.querySelectorAll('.pf-row').forEach(f => f.addEventListener('submit', async e => {
@@ -665,7 +739,7 @@ function proofDialog(list, opts = {}) {
     refreshReviews(opts.conf);
   }));
 }
-async function refreshReviews(confId) { await Promise.all([confId ? loadReviews(confId) : null, loadRatings(), loadMine()]); }
+async function refreshReviews(confId) { NET.top = {}; await Promise.all([confId ? loadReviews(confId) : null, loadRatings(), loadMine(), loadTop('')]); }
 function backToConf(confId) { if (confId && byId(confId)) detail(confId, false); else closeOverlay(); if (route() === 'trips') render(); }
 function field(id, label, html) { return `<div class="field"><label for="${id}">${label}</label>${html}</div>`; }
 function receiptDialog(opts = {}) {
@@ -810,7 +884,7 @@ async function pushState() {
 async function pullState(force) {
   const r = await api('/api/state'); if (r.error) return;
   const hasLocal = !!(S.trips.length || S.receipts.length || S.cpd.length || (S.certs || []).length), me = String(NET.user.id), owner = getOwner();
-  const adopt = st => { const d = defaults(), keep = (S.profile || {}).employer || {}; S = { ...d, ...st, reviews: S.reviews, profile: { ...d.profile, ...(st.profile || {}), caps: { ...((st.profile || {}).caps || {}) }, employer: { ...((st.profile || {}).employer || {}), ...(owner === me ? keep : {}) } } }; S.trips = S.trips.filter(keepTrip); if (hasLegacyCaps(S.profile.caps)) S.profile.caps = {}; try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { } };
+  const adopt = st => { const d = defaults(), keep = (S.profile || {}).employer || {}; S = { ...d, ...st, reviews: S.reviews, profile: { ...d.profile, ...(st.profile || {}), caps: { ...((st.profile || {}).caps || {}) }, employer: { ...((st.profile || {}).employer || {}), ...(owner === me ? keep : {}) } } }; S.trips = S.trips.filter(keepTrip); if (hasLegacyCaps(S.profile.caps)) S.profile.caps = {}; if (migrateSpecialty(S.profile)) scheduleSync(); try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { } };
   if (owner && owner !== me && hasLocal) { /* another person's data is on this browser: never push it into this account */
     await DB.wipe(); FILES.clear(); UNSAVED.clear(); const th = (S.profile || {}).theme; S = defaults(); if (th) S.profile.theme = th;
     if (r.state) adopt(r.state); else try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { }
@@ -853,7 +927,7 @@ async function boot() {
   await loadConferences();
   const me = await api('/api/me');
   if (me.error) { NET.online = false; renderAcct(); syncFiles(); return; }
-  NET.online = true; NET.user = me.user; await loadRatings();
+  NET.online = true; NET.user = me.user; await Promise.all([loadRatings(), loadTop('')]);
   if (NET.user) { await pullState(); await pullInbox(); await loadMine(); setInterval(() => pullInbox(), 60000); }
   syncFiles();
   NET.booted = true; openReviewLink();
@@ -918,6 +992,9 @@ document.addEventListener('click', async e => {
   }
   if (a === 'rvreport') { if (!confirm('Report this review to the Hoggy moderators? Use this for abuse, named individuals, patient information or reviews that are not about the event.')) return; const r = await api('/api/reviews/' + encodeURIComponent(id) + '/report', { method: 'POST' }); toast(r.error ? r.error : 'Thanks, reported for moderation'); return; }
   if (a === 'more') { UI.limit += 48; return results(); }
+  if (a === 'toplist') { e.preventDefault(); UI.sort = 'rating'; UI.limit = 48; location.hash = '#/discover'; if (route() === 'discover') render(); return; }
+  if (a === 'topfind') { UI.sort = 'date'; render(); const q = $('#q'); if (q) q.focus(); toast('Search for a conference you have attended, open it and choose Review'); return; }
+  if (a === 'covsuggest') { const c = byId(id); if (!c) return; if (!NET.user) return authDialog('Sign in to suggest a link', () => coverageDialog(c)); return coverageDialog(c); }
   if (a === 'ext') return; /* external link inside a clickable row: let it open, do nothing else */
   if (a === 'opencourse') { location.hash = '#/courses/' + id; return; }
   if (a === 'session') return sessionSheet(id);
