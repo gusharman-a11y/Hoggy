@@ -19,6 +19,7 @@ Internal. DRAFT FOR ANGUS REVIEW. Re-prioritised after round 4 (6 Nov 2026). Siz
 | B24 (part) | "Claim-ready" heading and home copy | app.js:146, 189. Remaining overclaims are B37 |
 | B36 (part) | Verified attendee decided on the server only; reviews per conference series | 11 Nov 2026. Client fields and synced trips are ignored (negative tests in `tests/reviews.test.js`). Verified = a registration receipt the server received by email naming the conference and dated in its window, or an admin-approved proof upload (private, admin-only file route, deleted after the decision). Old verified flags reset on migration. Scores weight verified x1, unverified x0.5, shown from 3 reviews. Admin endpoints need `HOGGY_ADMINS` and `HOGGY_ADMIN_KEY` (warning at start if the key is missing) |
 | B06 (part) | 477 conferences, 51 specialties (met), 58 countries | `merge-shards --dry` |
+| B44 (new) | Persistent storage: Supabase Postgres when `DATABASE_URL` is set (accounts, sessions, reviews, files, rate limits, inbound secret shared by every Vercel instance); SQLite fallback | 17 Nov 2026. `lib/db.js`, `db/postgres/001_init.sql` (RLS on, no policies, no anon grants). `npm test` (SQLite) and `npm run test:pg` (local Postgres, also through PgBouncer transaction mode) pass; two-instance test registers on one and signs in on the other. Also covers the "persistent rate limits" part of B15 |
 
 ## Decisions and blockers for the user
 

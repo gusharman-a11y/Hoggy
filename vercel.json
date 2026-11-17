@@ -3,6 +3,7 @@
   "framework": null,
   "buildCommand": "mkdir -p public && printf 'User-agent: *\nAllow: /\n' > public/robots.txt",
   "outputDirectory": "public",
+  "regions": ["syd1"],
   "functions": {
     "api/index.js": {
       "includeFiles": "{index.html,app.js,styles.css,admin.html,admin.js,parse.js,pack.js,stats.js,data/**,lib/**,db/**,node_modules/pdfjs-dist/legacy/build/**}",
