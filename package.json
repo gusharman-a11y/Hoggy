@@ -12,6 +12,7 @@
     "merge": "node tools/merge-shards.js"
   },
   "dependencies": {
-    "pdfjs-dist": "4.10.38"
+    "pdfjs-dist": "4.10.38",
+    "pg": "8.23.1"
   }
 }

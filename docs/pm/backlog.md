@@ -32,7 +32,7 @@ Internal. DRAFT FOR ANGUS REVIEW. Re-prioritised after round 4 (6 Nov 2026). Siz
 | D6 | "Claim-ready, not guaranteed" | Applied in the receipts heading and home copy. Confirm, then B37 removes the remaining overclaims | Angus |
 | D7 | Target markets and CPD bodies for v1 | Open. AU 55, NZ 8 rows (33 of 63 confirmed) | Angus |
 | D8 | Unsourced CPD, price, attendees: hide or label | Team chose **label**. Round 4 recommendation changes to **hide** the typical CPD number and accreditation pill until sourced: the one organiser figure sampled (BSR, 22 credits) contradicted ours (15) | Angus |
-| D9 | Relax zero-dependency rule for PDF text or OCR | Open. Blocks B09 | Angus |
+| D9 | Relax zero-dependency rule for PDF text or OCR | Open for OCR. Blocks B09. Approved exceptions: `pdfjs-dist` 4.10.38 (PDF text layer) and, 17 Nov 2026, `pg` 8.23.1 (node-postgres, MIT, pure JS, pinned exactly) for the production database on Supabase Postgres; loaded only when `DATABASE_URL` is set, SQLite stays the zero-dependency fallback | Angus |
 | D10 | Updater: queue or auto-apply | Team chose **queue**; built. Confirm | Angus |
 | D11 (new) | Make `HOGGY_ADMIN_KEY` mandatory whenever `HOGGY_ADMINS` is set | Recommend yes. Closes the optional-key gap (F12) | Angus |
 
