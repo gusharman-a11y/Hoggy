@@ -2,7 +2,7 @@
 /* Home page facts, travel links, external-link attributes and the drawer re-render loop. Run: node --test tests/ */
 const test = require('node:test'), assert = require('node:assert/strict');
 const path = require('node:path'), fs = require('node:fs'), vm = require('node:vm');
-const { homeStats, exampleConfs, travelLinks } = require('../stats.js');
+const { homeStats, exampleConfs, travelLinks, dateEvidence } = require('../stats.js');
 const ROOT = path.join(__dirname, '..');
 const read = f => fs.readFileSync(path.join(ROOT, f), 'utf8');
 const confs = () => { const ctx = { window: {} }; vm.runInNewContext(read('data/conferences.js'), ctx); return ctx.window.HOGGY_CONFERENCES; };
@@ -12,11 +12,16 @@ test('home stats: exact counts, percentage rounded down, no padding', () => {
   assert.equal(s.conferences, up.length);
   assert.equal(s.countries, new Set(up.map(c => c.countryCode)).size);
   assert.equal(s.specialties, new Set(up.map(c => c.specialty)).size);
-  const conf = up.filter(c => c.datesConfirmed !== false && c.sourceUrl).length;
-  assert.equal(s.confirmed, conf);
+  /* B30: "confirmed" counts only rows with stored evidence; legacy confirmations are counted apart */
+  const conf = up.filter(c => c.datesConfirmed === true && c.datesSourceUrl && c.datesQuote && c.verifiedOn && !c.legacyConfirmed).length;
+  const legacy = up.filter(c => c.datesConfirmed !== false && !(c.datesSourceUrl && c.datesQuote && c.verifiedOn && !c.legacyConfirmed)).length;
+  assert.equal(s.confirmed, conf); assert.equal(s.unchecked, legacy);
   assert.ok(s.confirmedPct <= conf / up.length * 100 && s.confirmedPct > conf / up.length * 100 - 1, 'floor, never rounded up');
-  const t = homeStats([{ end: '2027-01-01', countryCode: 'AU', specialty: 'A', datesConfirmed: true, sourceUrl: 'https://x' }, { end: '2027-01-01', countryCode: 'AU', specialty: 'A', datesConfirmed: false }, { end: '2027-01-01', countryCode: 'NZ', specialty: 'B', datesConfirmed: false }], '2026-01-01');
-  assert.deepEqual(t, { conferences: 3, countries: 2, specialties: 2, confirmed: 1, confirmedPct: 33 });
+  const ev = { datesSourceUrl: 'https://x/2027', datesQuote: '1 January 2027', verifiedOn: '2026-01-01' };
+  const t = homeStats([{ end: '2027-01-01', countryCode: 'AU', specialty: 'A', datesConfirmed: true, sourceUrl: 'https://x', ...ev }, { end: '2027-01-01', countryCode: 'AU', specialty: 'A', datesConfirmed: false }, { end: '2027-01-01', countryCode: 'NZ', specialty: 'B', datesConfirmed: false }], '2026-01-01');
+  assert.deepEqual(t, { conferences: 3, countries: 2, specialties: 2, confirmed: 1, confirmedPct: 33, unchecked: 0, uncheckedPct: 0 });
+  const u = homeStats([{ end: '2027-01-01', datesConfirmed: true, legacyConfirmed: true, sourceUrl: 'https://x' }, { end: '2027-01-01', datesConfirmed: true, sourceUrl: 'https://x', ...ev, legacyConfirmed: true }], '2026-01-01');
+  assert.equal(u.confirmed, 0, 'legacy rows are never counted as confirmed, even with partial evidence'); assert.equal(u.unchecked, 2);
   assert.equal(homeStats([], day).confirmedPct, 0);
   assert.equal(homeStats([{ end: '2020-01-01' }], day).conferences, 0, 'past events not counted');
 });
@@ -26,6 +31,22 @@ test('home examples: upcoming, confirmed, one per specialty', () => {
   assert.equal(ex.length, 4);
   assert.equal(new Set(ex.map(c => c.specialty)).size, 4);
   for (const c of ex) { assert.ok(c.end >= '2026-11-11'); assert.notEqual(c.datesConfirmed, false); assert.match(c.sourceUrl, /^https:\/\//); }
+});
+
+test('date status (B30): confirmed needs stored evidence; legacy and evidence-less rows are "unchecked"', () => {
+  const ev = { datesConfirmed: true, datesSourceUrl: 'https://a.org/c27', datesQuote: '3-5 May 2027', verifiedOn: '2026-11-17' };
+  assert.equal(dateEvidence(ev), 'confirmed');
+  assert.equal(dateEvidence({ ...ev, legacyConfirmed: true }), 'unchecked');
+  assert.equal(dateEvidence({ ...ev, datesQuote: '' }), 'unchecked');
+  assert.equal(dateEvidence({ datesConfirmed: true, sourceUrl: 'https://a.org' }), 'unchecked');
+  assert.equal(dateEvidence({ ...ev, datesConfirmed: false }), 'estimated');
+  const L = [{ id: 'a', start: '2027-01-01', end: '2027-01-02', specialty: 'A', sourceUrl: 'https://a', datesConfirmed: true, legacyConfirmed: true },
+    { id: 'b', start: '2027-02-01', end: '2027-02-02', specialty: 'B', sourceUrl: 'https://b', ...ev }];
+  assert.deepEqual(exampleConfs(L, '2026-11-17', 1).map(c => c.id), ['b'], 'rows with evidence come first');
+  assert.deepEqual(exampleConfs(L, '2026-11-17', 2).map(c => c.id), ['b', 'a'], 'legacy rows only fill the row');
+  const src = read('app.js');
+  assert.match(src, /every\(c => dateEv\(c\) === 'confirmed'\) \? 'Coming up, dates confirmed' : 'Coming up'/, 'the examples heading only claims "dates confirmed" when every card has evidence');
+  assert.match(src, /source not yet re-checked/);
 });
 
 test('travel links: prefilled Google Flights and Booking.com searches', () => {

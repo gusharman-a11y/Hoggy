@@ -2,16 +2,28 @@
    Honest numbers only: counts are exact, percentages are rounded DOWN, nothing is padded. */
 (function (root) {
 'use strict';
+/* Date status of a conference row (B30):
+   'confirmed'  read on the organiser's page with the page link, a verbatim quote and the date it was read stored
+                (tools/merge-shards.js downgrades rows whose evidence breaks the rule in tools/evidence.js, so presence is enough here);
+   'unchecked'  confirmed before Hoggy stored quotes (legacyConfirmed), or by any path without the evidence: dates kept, badge differs;
+   'estimated'  not confirmed. */
+function dateEvidence(c) {
+  if (!c || c.datesConfirmed === false) return 'estimated';
+  if (c.datesSourceUrl && c.datesQuote && c.verifiedOn && !c.legacyConfirmed && !c.estimateReason) return 'confirmed';
+  return 'unchecked';
+}
 function homeStats(list, todayIso) {
   const all = Array.isArray(list) ? list : [];
   const up = todayIso ? all.filter(c => c && c.end >= todayIso) : all;
-  const confirmed = up.filter(c => c.datesConfirmed !== false && c.sourceUrl).length;
+  const confirmed = up.filter(c => dateEvidence(c) === 'confirmed').length, unchecked = up.filter(c => dateEvidence(c) === 'unchecked').length;
   return {
     conferences: up.length,
     countries: new Set(up.map(c => c.countryCode).filter(Boolean)).size,
     specialties: new Set(up.map(c => c.specialty).filter(Boolean)).size,
     confirmed,
-    confirmedPct: up.length ? Math.floor(confirmed / up.length * 100) : 0
+    confirmedPct: up.length ? Math.floor(confirmed / up.length * 100) : 0,
+    unchecked,
+    uncheckedPct: up.length ? Math.floor(unchecked / up.length * 100) : 0
   };
 }
 /* Discover subtitle facts: the same exact counts as the home page plus the span of start dates actually listed,
@@ -22,11 +34,15 @@ function discoverSummary(list, todayIso) {
   const starts = up.map(c => c.start).filter(Boolean).sort();
   return Object.assign(homeStats(all, todayIso), { from: starts[0] || '', to: starts[starts.length - 1] || '' });
 }
-/* A few upcoming conferences with organiser-confirmed dates, soonest first, one per specialty. */
+/* A few upcoming conferences with organiser-confirmed dates, soonest first, one per specialty: rows with stored evidence first,
+   then (only to fill the row) confirmed rows whose source has not been re-checked. The caller labels the section from the result. */
 function exampleConfs(list, todayIso, n) {
-  const seen = new Set(), out = [];
-  const L = (Array.isArray(list) ? list : []).filter(c => c && c.end >= todayIso && c.datesConfirmed !== false && c.sourceUrl).sort((a, b) => a.start.localeCompare(b.start));
-  for (const c of L) { if (seen.has(c.specialty)) continue; seen.add(c.specialty); out.push(c); if (out.length >= (n || 4)) break; }
+  const seen = new Set(), out = [], k = n || 4;
+  const L = (Array.isArray(list) ? list : []).filter(c => c && c.end >= todayIso && c.sourceUrl).sort((a, b) => a.start.localeCompare(b.start));
+  for (const want of ['confirmed', 'unchecked']) for (const c of L) {
+    if (out.length >= k) break;
+    if (dateEvidence(c) !== want || seen.has(c.specialty)) continue; seen.add(c.specialty); out.push(c);
+  }
   return out;
 }
 /* Prefilled search links (Hoggy does not book). Google Flights reads "Flights to X from Y on DATE through DATE". */
@@ -39,6 +55,6 @@ function travelLinks(c, from) {
     stays: `https://www.google.com/travel/hotels/${q(c.city)}?q=${q('hotels in ' + where)}&dates=${out},${back}`
   };
 }
-const api = { homeStats, discoverSummary, exampleConfs, travelLinks, addDays };
+const api = { dateEvidence, homeStats, discoverSummary, exampleConfs, travelLinks, addDays };
 if (typeof module !== 'undefined' && module.exports) module.exports = api; else root.HoggyStats = api;
 })(typeof window !== 'undefined' ? window : globalThis);

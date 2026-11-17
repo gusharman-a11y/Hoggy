@@ -1,8 +1,5 @@
 'use strict';
-/* Copy lint (B35): no unsourced superlatives or promises in anything a user reads.
-   Banned: largest, biggest, leading, best, premier, foremost, guarantee(d), world's, world-leading, #1, number one,
-   top rated / top-rated, never lose, watertight, seamless. "Highest rated" is allowed only as the exact label
-   "Highest rated by attendees". "Guaranteed claim" is never allowed: the word is "claim-ready".
+/* Copy lint (B35): no unsourced superlatives or promises in anything a user reads (word list: tools/copy-lint.js).
    History: the first version of this check (tests/hoggy.test.js) held `\b` as literal backspace characters, so it never
    fired. The control-character guard below stops that happening again. */
 const test = require('node:test'), assert = require('node:assert/strict');
@@ -10,23 +7,8 @@ const fs = require('node:fs'), path = require('node:path'), vm = require('node:v
 const ROOT = path.join(__dirname, '..');
 const read = f => fs.readFileSync(path.join(ROOT, f), 'utf8');
 
-const BANNED = [
-  /\b(largest|biggest|leading|best|premier|foremost|world'?s|world-leading|number one|never lose|watertight|seamless)\b/i,
-  /\bguarantee\w*/i,
-  /\btop[- ]rated\b/i,
-  /(?<![\w&])#1(?!\w)/,
-  /\bhighest[- ]rated\b(?! by attendees)/i
-];
-/* Names that are code, not copy: the public API path keeps its URL. */
-const ALLOWED = [/\/api\/top-rated/g];
-
-function lint(text) {
-  let t = String(text);
-  for (const a of ALLOWED) t = t.replace(a, ' ');
-  const hits = [];
-  t.split('\n').forEach((line, i) => { for (const re of BANNED) { const m = line.match(re); if (m) hits.push({ line: i + 1, word: m[0], text: line.trim().slice(0, 140) }); } });
-  return hits;
-}
+/* The word list and lint() live in tools/copy-lint.js (also used by tools/validate-data.js). */
+const { BANNED, lint } = require('../tools/copy-lint.js');
 const show = (f, hits) => hits.map(h => `${f}:${h.line} "${h.word}" in: ${h.text}`).join('\n');
 
 /* Every file whose strings reach a user (UI, admin desk, claim pack, server messages, README). */
@@ -57,7 +39,8 @@ test('copy lint: every conference string field is clean (names, blurbs, notes)',
   const ctx = { window: {} }; vm.runInNewContext(read('data/conferences.js'), ctx);
   const rows = ctx.window.HOGGY_CONFERENCES, bad = [];
   assert.ok(rows.length > 100);
-  for (const c of rows) for (const [k, v] of Object.entries(c)) if (typeof v === 'string' && !/url$/i.test(k) && lint(v).length) bad.push(`${c.id}.${k}: ${v.slice(0, 100)}`);
+  /* datesQuote is the organiser's own wording, quoted verbatim with its source (B30), so it is not Hoggy's copy */
+  for (const c of rows) for (const [k, v] of Object.entries(c)) if (typeof v === 'string' && !/url$/i.test(k) && k !== 'datesQuote' && lint(v).length) bad.push(`${c.id}.${k}: ${v.slice(0, 100)}`);
   assert.equal(bad.length, 0, 'superlatives in data/conferences.js:\n' + bad.join('\n'));
   /* the same check fails on a seeded row, so it cannot silently stop working again */
   assert.ok(lint('The largest gastroenterology congress.').length);
@@ -68,9 +51,12 @@ test('Discover subtitle is computed from the data, not a fixed year or "worldwid
   assert.match(body, /discoverSummary\(CONFS, today\(\)\)/);
   assert.doesNotMatch(body, /worldwide|mostly 20\d\d/i);
   const { discoverSummary } = require('../stats.js');
+  const ev = { datesConfirmed: true, datesSourceUrl: 'https://y/2028', datesQuote: '1-2 February 2028', verifiedOn: '2026-05-01' };
   const L = [{ start: '2026-01-02', end: '2026-01-03', countryCode: 'AU', specialty: 'A', sourceUrl: 'https://x' },
     { start: '2027-05-01', end: '2027-05-03', countryCode: 'NZ', specialty: 'B', datesConfirmed: false },
-    { start: '2028-02-01', end: '2028-02-02', countryCode: 'AU', specialty: 'A', sourceUrl: 'https://y' }];
-  assert.deepEqual(discoverSummary(L, '2026-06-01'), { conferences: 2, countries: 2, specialties: 2, confirmed: 1, confirmedPct: 50, from: '2027-05-01', to: '2028-02-01' });
-  assert.deepEqual(discoverSummary([], '2026-06-01'), { conferences: 0, countries: 0, specialties: 0, confirmed: 0, confirmedPct: 0, from: '', to: '' });
+    { start: '2027-06-01', end: '2027-06-03', countryCode: 'NZ', specialty: 'B', datesConfirmed: true, legacyConfirmed: true, sourceUrl: 'https://z' },
+    { start: '2028-02-01', end: '2028-02-02', countryCode: 'AU', specialty: 'A', sourceUrl: 'https://y', ...ev }];
+  assert.deepEqual(discoverSummary(L, '2026-06-01'), { conferences: 3, countries: 2, specialties: 2, confirmed: 1, confirmedPct: 33, unchecked: 1, uncheckedPct: 33, from: '2027-05-01', to: '2028-02-01' });
+  assert.deepEqual(discoverSummary([], '2026-06-01'), { conferences: 0, countries: 0, specialties: 0, confirmed: 0, confirmedPct: 0, unchecked: 0, uncheckedPct: 0, from: '', to: '' });
+  assert.match(body, /ds\.unchecked/, 'the subtitle names the not-yet-re-checked rows separately');
 });

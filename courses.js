@@ -75,6 +75,7 @@ function sessionEvent(s, course) {
     name: course ? course.name : s.courseId, organiser: s.provider, city: s.city, region: s.region, country: COUNTRY[s.country] || s.country, countryCode: s.country,
     venue: s.venue || '', start: s.start, end: s.end, endInferred: !!s.endInferred, variant: s.variant || 'full',
     url: isHttps(s.bookingUrl) ? s.bookingUrl : s.sourceUrl, sourceUrl: s.sourceUrl, lastVerified: s.lastVerified, datesConfirmed: true, dateStatus: 'confirmed',
+    datesSourceUrl: s.sourceUrl, datesQuote: s.datesQuote, verifiedOn: s.lastVerified, /* sessions always carry their quote (tools/check-courses.js) */
     specialty: 'Course', format: 'In person', attendees: 0, priceFrom: 0,
     cpdHours: cpd ? s.cpdHours : 0, cpdVerified: cpd, cpdBody: cpd ? s.provider : '',
     blurb: [course ? shortName(course) + ' course' : 'Course', s.provider, s.venue].filter(Boolean).join(' · ')
