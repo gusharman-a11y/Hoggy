@@ -9,6 +9,7 @@ const ROOT = path.join(__dirname, '..');
 const SKIP = !TDB.PG && 'needs Postgres: npm run test:pg';
 const INIT = fs.readFileSync(path.join(ROOT, 'db', 'postgres', '001_init.sql'), 'utf8');
 const STEP2 = fs.readFileSync(path.join(ROOT, 'db', 'postgres', '002_receipt_checks_coverage.sql'), 'utf8');
+const STEP3 = fs.readFileSync(path.join(ROOT, 'db', 'postgres', '003_hospitals.sql'), 'utf8');
 const N_CONFS = (() => { const ctx = { window: {} }; vm.runInNewContext(fs.readFileSync(path.join(ROOT, 'data', 'conferences.js'), 'utf8'), ctx); return ctx.window.HOGGY_CONFERENCES.length; })();
 
 test('adapter: placeholders and schema-qualified table names', () => {
@@ -18,14 +19,14 @@ test('adapter: placeholders and schema-qualified table names', () => {
   assert.equal(toPg('INSERT INTO meta(key,value) VALUES(?,?) ON CONFLICT(key) DO UPDATE SET value=excluded.value', 's1'), 'INSERT INTO s1.meta(key,value) VALUES($1,$2) ON CONFLICT(key) DO UPDATE SET value=excluded.value');
   assert.equal(toPg('UPDATE reviews_v1 SET a=1', 'h'), 'UPDATE h.reviews_v1 SET a=1');
   /* every table the server queries is known to the adapter (an unqualified table would fail in Postgres) */
-  const src = fs.readFileSync(path.join(ROOT, 'server.js'), 'utf8') + fs.readFileSync(path.join(ROOT, 'lib', 'ingest.js'), 'utf8');
+  const src = fs.readFileSync(path.join(ROOT, 'server.js'), 'utf8') + fs.readFileSync(path.join(ROOT, 'lib', 'ingest.js'), 'utf8') + fs.readFileSync(path.join(ROOT, 'lib', 'hospital-api.js'), 'utf8');
   const used = new Set([...src.matchAll(/\b(?:FROM|JOIN|INTO|UPDATE)\s+([a-z_][a-z0-9_]*)\b(?!\s*\.)/g)].map(m => m[1]));
   const { TABLES } = require('../lib/db.js');
   for (const t of used) if (!['reviews_v1', 'set'].includes(t)) assert.ok(TABLES.includes(t), 'adapter does not qualify table ' + t);
   assert.match(JSON.parse(fs.readFileSync(path.join(ROOT, 'vercel.json'), 'utf8')).functions['api/index.js'].includeFiles, /db\/\*\*/, 'the schema file ships to Vercel');
   /* the schema file creates every table the server uses */
-  for (const t of TABLES.filter(x => !['proofs', 'reviews_v1'].includes(x))) assert.match(INIT + STEP2, new RegExp(`CREATE TABLE IF NOT EXISTS hoggy\\.${t}\\(`), 'missing in db/postgres/*.sql: ' + t);
-  assert.deepEqual(fs.readdirSync(path.join(ROOT, 'db', 'postgres')).sort(), ['001_init.sql', '002_receipt_checks_coverage.sql'], 'numbered schema files');
+  for (const t of TABLES.filter(x => !['proofs', 'reviews_v1'].includes(x))) assert.match(INIT + STEP2 + STEP3, new RegExp(`CREATE TABLE IF NOT EXISTS hoggy\\.${t}\\(`), 'missing in db/postgres/*.sql: ' + t);
+  assert.deepEqual(fs.readdirSync(path.join(ROOT, 'db', 'postgres')).sort(), ['001_init.sql', '002_receipt_checks_coverage.sql', '003_hospitals.sql'], 'numbered schema files');
 });
 
 test('001_init.sql: runs on a fresh database, runs again, RLS on with no policies, nothing for anon/authenticated', { skip: SKIP }, async (t) => {
@@ -44,12 +45,27 @@ test('001_init.sql: runs on a fresh database, runs again, RLS on with no policie
   await c.query(INIT);
   await c.query(INIT); /* idempotent */
   await c.query(STEP2); await c.query(STEP2); /* 002 on top of 001, twice */
+  await c.query(STEP3); await c.query(STEP3); /* 003 on top, twice */
   const tables = (await c.query("SELECT c.relname, c.relrowsecurity FROM pg_class c JOIN pg_namespace n ON n.oid=c.relnamespace WHERE n.nspname='hoggy' AND c.relkind='r' ORDER BY 1")).rows;
-  assert.deepEqual(tables.map(r => r.relname), ['attend_receipts', 'candidates', 'conferences', 'coverage', 'date_changes', 'files', 'inbox', 'ingest_runs', 'meta', 'rate_hits', 'receipt_checks', 'review_proofs', 'review_reports', 'reviews', 'sessions', 'state', 'users']);
+  assert.deepEqual(tables.map(r => r.relname), ['allowances', 'approvals', 'attend_receipts', 'candidates', 'claims', 'conferences', 'coverage', 'date_changes', 'files', 'inbox', 'ingest_runs', 'memberships', 'meta', 'notifications', 'orgs', 'rate_hits', 'receipt_checks', 'review_proofs', 'review_reports', 'reviews', 'sessions', 'state', 'users']);
   /* 002's checks: https only, a publication, a known type */
   await assert.rejects(c.query("INSERT INTO hoggy.coverage(series_key,type,publication,url,added_on) VALUES('s','news','BMJ','http://x.org',1)"), e => e.code === '23514', 'http refused');
   await assert.rejects(c.query("INSERT INTO hoggy.coverage(series_key,type,publication,url,added_on) VALUES('s','news','  ','https://x.org',1)"), e => e.code === '23514', 'empty publication refused');
   await assert.rejects(c.query("INSERT INTO hoggy.coverage(series_key,type,publication,url,added_on) VALUES('s','blog','BMJ','https://x.org',1)"), e => e.code === '23514', 'unknown type refused');
+  /* 003's checks: join code alphabet, one hospital per user, known roles and statuses, positive amounts */
+  await assert.rejects(c.query("INSERT INTO hoggy.orgs(name,join_code,created) VALUES('H','ABCD0FGH',1)"), e => e.code === '23514', 'code without 0/O/1/I');
+  await c.query("INSERT INTO hoggy.orgs(name,join_code,created) VALUES('H','ABCDEFGH',1)");
+  await assert.rejects(c.query("INSERT INTO hoggy.orgs(name,join_code,created) VALUES('H2','ABCDEFGH',1)"), e => e.code === '23505', 'unique join code');
+  await c.query("INSERT INTO hoggy.users(email,pass,inbox,created) VALUES('m@example.com','x:y','dr-m',1)");
+  const ids = (await c.query("SELECT (SELECT id FROM hoggy.users WHERE email='m@example.com') u, (SELECT id FROM hoggy.orgs WHERE join_code='ABCDEFGH') o")).rows[0];
+  await assert.rejects(c.query('INSERT INTO hoggy.memberships(user_id,org_id,role,created) VALUES($1,$2,$3,1)', [ids.u, ids.o, 'owner']), e => e.code === '23514', 'unknown role');
+  await c.query('INSERT INTO hoggy.memberships(user_id,org_id,role,created) VALUES($1,$2,$3,1)', [ids.u, ids.o, 'admin']);
+  await assert.rejects(c.query('INSERT INTO hoggy.memberships(user_id,org_id,role,created) VALUES($1,$2,$3,1)', [ids.u, ids.o, 'doctor']), e => e.code === '23505', 'one hospital per user');
+  await assert.rejects(c.query("INSERT INTO hoggy.approvals(org_id,user_id,trip_ref,snapshot,year,estimate_cents,currency,status,created,updated) VALUES($1,$2,'t1','{}',2027,100,'AUD','maybe',1,1)", [ids.o, ids.u]), e => e.code === '23514', 'unknown approval status');
+  await assert.rejects(c.query("INSERT INTO hoggy.claims(org_id,user_id,trip_ref,snapshot,year,total_cents,currency,submitted) VALUES($1,$2,'t1','{}',2027,0,'AUD',1)", [ids.o, ids.u]), e => e.code === '23514', 'claim total above zero');
+  await c.query('DELETE FROM hoggy.users WHERE id=$1', [ids.u]);
+  assert.equal((await c.query('SELECT COUNT(*)::int n FROM hoggy.memberships')).rows[0].n, 0, 'membership goes with the user');
+  await c.query('DELETE FROM hoggy.orgs');
   assert.ok(tables.every(r => r.relrowsecurity), 'RLS enabled on every table');
   assert.equal((await c.query("SELECT COUNT(*)::int n FROM pg_policies WHERE schemaname='hoggy'")).rows[0].n, 0, 'no policies');
   /* even if someone grants anon SELECT, RLS without policies returns nothing */
@@ -57,8 +73,9 @@ test('001_init.sql: runs on a fresh database, runs again, RLS on with no policie
   await c.query('GRANT USAGE ON SCHEMA hoggy TO anon; GRANT SELECT ON hoggy.users TO anon');
   await c.query('SET ROLE anon'); assert.equal((await c.query('SELECT COUNT(*)::int n FROM hoggy.users')).rows[0].n, 0, 'RLS hides every row from anon'); await c.query('RESET ROLE');
   /* running the file again (as the server does on a cold start) takes that grant away */
-  await c.query(INIT); await c.query(STEP2);
+  await c.query(INIT); await c.query(STEP2); await c.query(STEP3);
   await c.query('GRANT SELECT ON hoggy.coverage TO anon'); await c.query(STEP2); /* 002 takes a stray grant away too */
+  await c.query('GRANT SELECT ON hoggy.approvals, hoggy.claims TO anon'); await c.query(STEP3); /* and 003 */
   for (const r of ['anon', 'authenticated']) {
     await c.query(`SET ROLE ${r}`);
     await assert.rejects(c.query('SELECT 1 FROM hoggy.users'), e => e.code === '42501', r + ' has no access');
@@ -71,8 +88,8 @@ test('001_init.sql: runs on a fresh database, runs again, RLS on with no policie
   let out = ''; srv.stdout.on('data', d => out += d); srv.stderr.on('data', d => out += d);
   let hz; for (let i = 0; i < 150 && !hz; i++) { try { hz = await (await fetch(`http://127.0.0.1:${port}/healthz`)).json(); } catch (e) { await new Promise(r => setTimeout(r, 100)); } }
   assert.equal(hz.db, 'pg'); assert.equal(hz.conferences, N_CONFS, out);
-  assert.match(out, /postgres schema hoggy is up to date \(001_init\.sql applied\)/); assert.match(out, /postgres schema hoggy is up to date \(002_receipt_checks_coverage\.sql applied\)/); assert.doesNotMatch(out, /migration failed/);
-  assert.equal((await c.query("SELECT COUNT(*)::int n FROM hoggy.meta WHERE key IN ('schema_hash','schema_hash:002','conf_seed_hash','inbound_secret')")).rows[0].n, 4);
+  assert.match(out, /postgres schema hoggy is up to date \(001_init\.sql applied\)/); assert.match(out, /postgres schema hoggy is up to date \(002_receipt_checks_coverage\.sql applied\)/); assert.match(out, /\(003_hospitals\.sql applied\)/); assert.doesNotMatch(out, /migration failed/);
+  assert.equal((await c.query("SELECT COUNT(*)::int n FROM hoggy.meta WHERE key IN ('schema_hash','schema_hash:002','schema_hash:003','conf_seed_hash','inbound_secret')")).rows[0].n, 5);
 });
 
 /* ---------- two serverless instances: two processes, each loading api/index.js (as Vercel does), one database ---------- */
