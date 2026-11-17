@@ -656,15 +656,36 @@ async function boot() {
   if (window.__capsCleared) { window.__capsCleared = false; toast('Old default spending caps were removed. Enter your own policy limits in Settings if your employer sets them.'); }
   bgRender();
 }
+/* Sign in / create account. Password rule shown next to the field; errors say what to do next. */
+const PW_MIN = 10;
 function authDialog(title, then) {
-  let mode = 'login';
-  const draw = () => { openOverlay(`<div class="sheet center" role="dialog" aria-modal="true" aria-label="Account"><form id="af" style="padding:22px"><div class="row" style="justify-content:space-between;margin-bottom:14px"><h2 style="font-size:24px;margin:0">${esc(title || (mode === 'login' ? 'Welcome back' : 'Create your account'))}</h2><button type="button" class="icon-btn" data-act="close" aria-label="Close">${icon('x')}</button></div>
-    ${mode === 'register' ? field('au1', 'Name', '<input id="au1" type="text" name="name" maxlength="80" autocomplete="name">') : ''}${field('au2', 'Email', '<input id="au2" type="text" name="email" required autocomplete="email" autofocus>')}${field('au3', 'Password' + (mode === 'register' ? ' (10+ characters)' : ''), `<input id="au3" type="password" name="password" required autocomplete="${mode === 'login' ? 'current-password' : 'new-password'}">`)}
-    <p class="note" id="aerr" style="color:var(--bad);min-height:18px"></p><div class="row" style="justify-content:space-between;margin:6px 0 20px"><button type="button" class="btn ghost sm" id="amode">${mode === 'login' ? 'Create account' : 'I have an account'}</button><button class="btn primary" type="submit">${mode === 'login' ? 'Sign in' : 'Create account'}</button></div></form></div>`, true);
-    $('#amode').addEventListener('click', () => { mode = mode === 'login' ? 'register' : 'login'; title = ''; draw(); });
-    $('#af').addEventListener('submit', async e => { e.preventDefault(); const f = new FormData(e.target), r = await api('/api/' + mode, { method: 'POST', body: { email: f.get('email'), password: f.get('password'), name: f.get('name') || '' } });
-      if (r.error) return $('#aerr').textContent = r.error === 'offline' ? 'Server not reachable. Start it with: node server.js' : r.error;
-      NET.user = r.user; if (!S.profile.name && r.user.name) S.profile.name = r.user.name; closeOverlay(true); toast('Signed in'); await pullState(); await pullInbox(); await loadMine(); syncFiles(); render(); if (then) then(); }); };
+  let mode = 'login', email = '', msg = '', offerSignin = false;
+  const draw = () => { const reg = mode === 'register'; openOverlay(`<div class="sheet center" role="dialog" aria-modal="true" aria-label="Account"><form id="af" novalidate style="padding:22px"><div class="row" style="justify-content:space-between;margin-bottom:14px"><h2 style="font-size:24px;margin:0">${esc(title || (reg ? 'Create your account' : 'Welcome back'))}</h2><button type="button" class="icon-btn" data-act="close" aria-label="Close">${icon('x')}</button></div>
+    ${reg ? field('au1', 'Name', '<input id="au1" type="text" name="name" maxlength="80" autocomplete="name">') : ''}${field('au2', 'Email', `<input id="au2" type="email" name="email" required maxlength="254" autocomplete="email" inputmode="email" value="${esc(email)}" autofocus>`)}
+    <div class="field"><label for="au3">Password</label><input id="au3" type="password" name="password" required maxlength="200" autocomplete="${reg ? 'new-password' : 'current-password'}"${reg ? ` minlength="${PW_MIN}" aria-describedby="au3h"` : ''}>${reg ? `<p class="note field-hint" id="au3h">At least ${PW_MIN} characters</p>` : ''}</div>
+    <p class="note" id="aerr" role="alert" style="color:var(--bad);min-height:18px">${esc(msg)}${offerSignin ? ' <button type="button" class="btn ghost sm" id="ato">Sign in instead</button>' : ''}</p><div class="row" style="justify-content:space-between;margin:6px 0 20px"><button type="button" class="btn ghost sm" id="amode">${reg ? 'I have an account' : 'Create account'}</button><button class="btn primary" type="submit" id="asub">${reg ? 'Create account' : 'Sign in'}</button></div></form></div>`, true);
+    const pwIn = $('#au3'), hint = $('#au3h');
+    const swap = (m, keepMsg) => { email = $('#au2').value.trim(); mode = m; title = ''; if (!keepMsg) { msg = ''; offerSignin = false; } draw(); };
+    $('#amode').addEventListener('click', () => swap(reg ? 'login' : 'register'));
+    if ($('#ato')) $('#ato').addEventListener('click', () => { msg = ''; offerSignin = false; swap('login', true); });
+    if (hint) pwIn.addEventListener('input', () => { hint.classList.toggle('ok', pwIn.value.length >= PW_MIN); hint.classList.remove('bad'); });
+    const say = (text, offer) => { msg = text; offerSignin = !!offer; $('#aerr').innerHTML = esc(text) + (offer ? ' <button type="button" class="btn ghost sm" id="ato">Sign in instead</button>' : ''); if (offer) $('#ato').addEventListener('click', () => { msg = ''; offerSignin = false; swap('login', true); }); };
+    $('#af').addEventListener('submit', async e => {
+      e.preventDefault(); const f = new FormData(e.target), em = String(f.get('email') || '').trim(), pw = String(f.get('password') || '');
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)) { say('Enter a valid email address.'); return $('#au2').focus(); }
+      if (reg && pw.length < PW_MIN) { if (hint) hint.classList.add('bad'); say(`Use at least ${PW_MIN} characters for your password.`); return pwIn.focus(); }
+      if (!pw) { say('Enter your password.'); return pwIn.focus(); }
+      const btn = $('#asub'); btn.disabled = true; btn.textContent = reg ? 'Creating account…' : 'Signing in…'; say('');
+      const r = await api('/api/' + mode, { method: 'POST', body: { email: em, password: pw, name: f.get('name') || '' } });
+      if (r.error) {
+        btn.disabled = false; btn.textContent = reg ? 'Create account' : 'Sign in';
+        if (r.error === 'offline') return say(r.status === 0 ? 'Can\u2019t reach Hoggy. Check your connection and try again.' : 'Hoggy is not responding right now. Try again in a minute.');
+        if (r.status >= 500) return say('Something went wrong on our side. Try again in a minute.');
+        if (reg && r.status === 409) { email = em; return say(r.error, true); }
+        if (r.status === 401) { pwIn.value = ''; pwIn.focus(); }
+        return say(r.error);
+      }
+      NET.user = r.user; if (!S.profile.name && r.user.name) S.profile.name = r.user.name; closeOverlay(true); toast(reg ? 'Account created. You are signed in' : 'Signed in'); await pullState(); await pullInbox(); await loadMine(); syncFiles(); render(); if (then) then(); }); };
   draw();
 }
 function renderAcct() { const a = $('#acct'); if (!a) return; a.innerHTML = !NET.online ? '<div class="saved-title" style="text-transform:none;letter-spacing:0;font-weight:400">Offline mode — data stays on this device.</div>' : NET.user ? `<div class="li" style="padding:6px 12px"><div class="grow"><div class="t" style="font-size:13px;overflow:hidden;text-overflow:ellipsis">${esc(NET.user.name || NET.user.email)}</div><div class="s">Synced</div></div><button class="btn sm" data-act="signout">Sign out</button></div>` : '<div style="padding:0 12px"><button class="btn sm primary" data-act="signin" style="width:100%">Sign in to sync</button></div>'; }
@@ -697,7 +718,7 @@ document.addEventListener('click', async e => {
   if (a === 'signin') return authDialog();
   if (a === 'signout') { await pushState(); await api('/api/logout', { method: 'POST' }); NET.user = null; NET.rev = 0; if (confirm('Signed out. Remove your trips, receipts and files from this device too?\n\nOK = remove them (recommended on a shared computer). Your account copy is kept.\nCancel = keep them on this device.')) { await DB.wipe(); FILES.clear(); UNSAVED.clear(); const th = S.profile.theme; S = defaults(); if (th) S.profile.theme = th; try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { } setOwner(''); } toast('Signed out'); render(); return; }
   if (a === 'checkinbox') return pullInbox(true);
-  if (a === 'delaccount') { if (confirm('Delete your account, synced data and reviews from the server? Data on this device stays until you erase it.')) { const pw = prompt('Enter your password to confirm'); if (!pw) return; const r = await api('/api/account', { method: 'DELETE', body: { password: pw } }); if (r.error) return toast(r.error); NET.user = null; toast('Account deleted'); render(); } return; }
+  if (a === 'delaccount') { if (confirm('Delete your account, synced data and reviews from the server? Data on this device stays until you erase it.')) { const pw = prompt('Enter your password to confirm'); if (!pw) return; const r = await api('/api/account', { method: 'DELETE', body: { password: pw } }); if (r.error) return toast(r.error === 'offline' ? 'Can\u2019t reach Hoggy. Try again in a minute.' : r.error); NET.user = null; toast('Account deleted'); render(); } return; }
   if (a === 'open') { if (e.target.closest('[data-act=save]')) return; return detail(id); }
   if (a === 'save') { e.stopPropagation(); const i = S.saved.indexOf(id); i < 0 ? S.saved.push(id) : S.saved.splice(i, 1); save(); toast(i < 0 ? 'Saved' : 'Removed from saved'); renderNav(); if (!$('#overlay').hidden) detail(id); else { if (route() === 'discover') results(); else render(); } return; }
   if (a === 'plan') { if (!S.trips.some(t => t.confId === id)) { S.trips.push({ id: uid(), confId: id, status: 'planned', bookings: [] }); if (!S.saved.includes(id)) S.saved.push(id); save(); } closeOverlay(); toast('Trip planned'); location.hash = '#/trips'; render(); return; }
