@@ -1,0 +1,425 @@
+{
+ "generated": "2026-11-17",
+ "note": "Facts only from provider/course-owner pages read on lastVerified, each with sourceUrl + quote. null = not published or not readable this run. cpdHours 0 = check provider.",
+ "courses": [
+  {
+   "id": "apls",
+   "name": "Advanced Paediatric Life Support (APLS)",
+   "providers": [
+    {
+     "name": "APLS Australia",
+     "url": "https://www.apls.org.au/",
+     "calendar": "https://www.apls.org.au/courses/calendar",
+     "bookingPlatform": "Arlo (apls.arlo.co)",
+     "feed": "https://apls.arlo.co/api/2012-02-01/pub/resources/eventsearch/",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "audience": "Doctors, nurses and paramedics with a minimum of two years clinical experience; junior clinicians are pointed to the one-day PLS course.",
+   "audienceEvidence": {
+    "sourceUrl": "https://www.apls.org.au/faqs",
+    "quote": "The APLS course is designed for doctors, nurses and paramedics with a minimum of two years’ clinical experience.",
+    "lastVerified": "2026-11-17"
+   },
+   "format": "Mandatory pre-course online learning, then three face-to-face days (scenarios, skill stations, workshops) with practical and written assessment.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.apls.org.au/courses/details?eventtemplate=38-apls-2027",
+    "quote": "Three days face-to-face, 10 hours+ pre-course preparation",
+    "lastVerified": "2026-11-17"
+   },
+   "typicalLength": "3 days face-to-face + 10+ hours pre-course",
+   "certificateValidityYears": 5,
+   "validitySource": "https://www.apls.org.au/faqs",
+   "validityQuote": "candidates are issued with a certificate valid for five years.",
+   "recertification": "APLS 2 Day Refresher (variant \"refresher\"): for people who completed a full APLS course within the last 5 years and are clinically current with paediatric patients; accreditation again lasts 5 years.",
+   "recertificationEvidence": {
+    "sourceUrl": "https://www.apls.org.au/faqs",
+    "quote": "To be eligible to attend a 2 Day Refresher, we request that you have (a) successfully completed a full APLS course within the last 5 years ... Accreditation lasts for 5 years, same as the 3 day course.",
+    "lastVerified": "2026-11-17"
+   },
+   "feeRange": {
+    "currency": "AUD",
+    "min": 1920,
+    "max": 3300,
+    "text": "Doctors $3300, Nurse/Paramedic $1920 (3-day course)"
+   },
+   "feeSource": "https://www.apls.org.au/courses/details?eventtemplate=38-apls-2027",
+   "feeQuote": "Doctors $3300 Nurse/Paramedic $1920",
+   "feeNote": "Each 2027 event in the Arlo feed advertises $3,300 and a discounted offer of $2,120 (refresher $2,800 / $2,120); the course text still says $1,920. Check before showing a nurse price.",
+   "cpdHours": 0,
+   "cpdNote": "check provider (Arlo template lists Credits \"PD points: 3\" with no college or unit named)",
+   "verified": true,
+   "lastVerified": "2026-11-17",
+   "notInScopeYet": "PLS (one-day Paediatric Life Support) is also in the APLS feed (template 37) and was not added."
+  },
+  {
+   "id": "als1",
+   "name": "Advanced Life Support Level 1 (ALS1)",
+   "providers": [
+    {
+     "name": "Australian Resuscitation Council (ARC); delivered by ARC-accredited course centres",
+     "url": "https://www.resus.org.au/training-and-education/advanced-life-support-courses/advanced-life-support-courses/als-1",
+     "calendar": "https://www.resus.org.au/training-and-education/advanced-life-support-courses/course-dates",
+     "verified": true
+    },
+    {
+     "name": "The Prince Charles Hospital, Metro North (course centre)",
+     "url": "https://metronorth.health.qld.gov.au/tpch/health-professionals/education-opportunities/advanced-life-support",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "nzEquivalent": "nzrc-core-immediate",
+   "audience": "Healthcare staff with limited or infrequent exposure to crisis events who need ALS training; CPR competence is a prerequisite.",
+   "audienceEvidence": {
+    "sourceUrl": "https://www.resus.org.au/training-and-education/advanced-life-support-courses/advanced-life-support-courses/als-1",
+    "quote": "It is ideal for those in healthcare with limited or infrequent exposure to crisis events needing advanced life support training.",
+    "lastVerified": "2026-11-17"
+   },
+   "format": "Course manual sent at least two weeks before, then a one-day face-to-face course.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.resus.org.au/training-and-education/advanced-life-support-courses/advanced-life-support-courses/als-1",
+    "quote": "This is a one-day course ... Candidates are sent a manual at least two weeks prior to the course to commence preparation for the face-to-face component.",
+    "lastVerified": "2026-11-17"
+   },
+   "typicalLength": "1 day",
+   "certificateValidityYears": 4,
+   "validitySource": "https://www.resus.org.au/training-and-education/advanced-life-support-courses/course-dates",
+   "validityQuote": "ALS1 and ALS2 Provider certificates are recognised by the Australian Resuscitation Council for four years . (Revalidation periods may vary based on the requirements of credentialling bodies or employers.)",
+   "recertification": "Repeat the ALS1 course.",
+   "recertificationEvidence": {
+    "sourceUrl": "https://www.resus.org.au/training-and-education/advanced-life-support-courses/course-dates",
+    "quote": "To recertify ALS1 you will need to undertake another ALS1 course.",
+    "lastVerified": "2026-11-17"
+   },
+   "feeRange": null,
+   "feeSource": null,
+   "feeNote": "Fees are set by each course centre.",
+   "feeEvidence": {
+    "sourceUrl": "https://www.resus.org.au/training-and-education/advanced-life-support-courses/course-dates",
+    "quote": "Course fees are set by the course centres and can vary across locations",
+    "lastVerified": "2026-11-17"
+   },
+   "feeExamples": [
+    {
+     "provider": "The Prince Charles Hospital (Metro North), Brisbane",
+     "quote": "ALS Level 1 ... All other participants: $750 (GST Incl) ... ALS Level 2 ... All other participants: $1,500 (GST Incl)",
+     "sourceUrl": "https://metronorth.health.qld.gov.au/tpch/health-professionals/education-opportunities/advanced-life-support",
+     "lastVerified": "2026-11-17"
+    }
+   ],
+   "cpdHours": 0,
+   "cpdNote": "RACP 9 hours (Category 1); pre-approved by RACGP; ANZCA and CICM recognition. See cpdByCollege.",
+   "cpdByCollege": [
+    {
+     "college": "RACP",
+     "hours": 9,
+     "appliesTo": "als1",
+     "quote": "Category 1 Structured learning projects at 1 credit per hour / Advanced Life Support Level 1 (ALS1) - 9 hours",
+     "sourceUrl": "https://www.resus.org.au/training-and-education/advanced-life-support-courses/continual-professional-development"
+    },
+    {
+     "college": "RACGP",
+     "hours": null,
+     "appliesTo": "als1, als2, als2 recertification",
+     "quote": "The Royal Australian College of General Practitioners (RACGP) has pre-approved the following Australian Resuscitation Council ALS courses",
+     "sourceUrl": "https://www.resus.org.au/training-and-education/advanced-life-support-courses/continual-professional-development"
+    },
+    {
+     "college": "ANZCA",
+     "hours": null,
+     "appliesTo": "als1, als2",
+     "quote": "ARC cardiac arrest recognition code: ER-19-CA-877 ... This recognition code is valid until June 30 th 2027",
+     "sourceUrl": "https://www.resus.org.au/training-and-education/advanced-life-support-courses/continual-professional-development"
+    },
+    {
+     "college": "CICM",
+     "hours": null,
+     "appliesTo": "als1 (1 hour), als2 (1.5 hours), Category 2A/2B points per hour",
+     "quote": "Accreditation start date: 14/06/2022 Accreditation end date: 14/06/2027",
+     "sourceUrl": "https://www.resus.org.au/training-and-education/advanced-life-support-courses/continual-professional-development"
+    }
+   ],
+   "verified": true,
+   "lastVerified": "2026-11-17"
+  },
+  {
+   "id": "als2",
+   "name": "Advanced Life Support Level 2 (ALS2)",
+   "providers": [
+    {
+     "name": "Australian Resuscitation Council (ARC); delivered by ARC-accredited course centres",
+     "url": "https://www.resus.org.au/training-and-education/advanced-life-support-courses/advanced-life-support-courses/als-2",
+     "calendar": "https://www.resus.org.au/training-and-education/advanced-life-support-courses/course-dates",
+     "verified": true
+    },
+    {
+     "name": "ACRRM: one-day ALS2 for rural doctors (variant \"acrrm-one-day\")",
+     "url": "https://www.acrrm.org.au/courses/face-to-face/als",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "nzEquivalent": "nzrc-core-advanced",
+   "audience": "Doctors, critical-care nurses (ED, CCU, ICU, HDU, acute admissions), resuscitation/MET team members and paramedics; CPR competence is a prerequisite.",
+   "audienceEvidence": {
+    "sourceUrl": "https://www.resus.org.au/training-and-education/advanced-life-support-courses/advanced-life-support-courses/als-2",
+    "quote": "Appropriate participants include doctors, and nurses working in critical care areas (e.g. ED, CCU, ICU, HDU, acute admissions units) or in the resuscitation /medical emergency team, and paramedics.",
+    "lastVerified": "2026-11-17"
+   },
+   "format": "ALS2 manual sent one month before plus a pre-course MCQ paper, then two face-to-face days. A one-day ALS2 recertification course exists for current ALS2 holders.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.resus.org.au/training-and-education/advanced-life-support-courses/advanced-life-support-courses/als-2",
+    "quote": "This is a two-day course ... candidates are sent the ALS2 manual one month prior to the course. Candidates are required to complete a pre-course multiple choice question paper",
+    "lastVerified": "2026-11-17"
+   },
+   "typicalLength": "2 days (recertification: 1 day; ACRRM version: online modules + 1 day)",
+   "certificateValidityYears": 4,
+   "validitySource": "https://www.resus.org.au/training-and-education/advanced-life-support-courses/course-dates",
+   "validityQuote": "ALS1 and ALS2 Provider certificates are recognised by the Australian Resuscitation Council for four years . (Revalidation periods may vary based on the requirements of credentialling bodies or employers.)",
+   "recertification": "Full two-day ALS2, or the one-day ALS2 recertification course (requires a current ARC ALS2 certificate).",
+   "recertificationEvidence": {
+    "sourceUrl": "https://www.resus.org.au/training-and-education/advanced-life-support-courses/course-dates",
+    "quote": "To recertify ALS2, you may either undertake a full two-day ALS2 course or the ALS2 one-day recertification course (you must hold a current Australian Resuscitation Council ALS2 certificate to enrol in this)",
+    "lastVerified": "2026-11-17"
+   },
+   "feeRange": null,
+   "feeSource": null,
+   "feeNote": "Set by each course centre.",
+   "feeExamples": [
+    {
+     "provider": "The Prince Charles Hospital (Metro North), Brisbane",
+     "quote": "ALS Level 1 ... All other participants: $750 (GST Incl) ... ALS Level 2 ... All other participants: $1,500 (GST Incl)",
+     "sourceUrl": "https://metronorth.health.qld.gov.au/tpch/health-professionals/education-opportunities/advanced-life-support",
+     "lastVerified": "2026-11-17"
+    },
+    {
+     "provider": "ACRRM",
+     "quote": "Member: 1810.00 Non Member: 1995.00",
+     "sourceUrl": "https://www.acrrm.org.au/courses/face-to-face/als",
+     "lastVerified": "2026-11-17"
+    }
+   ],
+   "cpdHours": 0,
+   "cpdNote": "RACP 18 hours (Category 1); RACGP pre-approved; ANZCA and CICM recognition (see cpdByCollege). ACRRM lists 15 CPD hours for its own ALS2 sessions (on each session row).",
+   "cpdByCollege": [
+    {
+     "college": "RACP",
+     "hours": 18,
+     "appliesTo": "als2",
+     "quote": "Advanced Life Support Level 2 (ALS2) - 18 hours",
+     "sourceUrl": "https://www.resus.org.au/training-and-education/advanced-life-support-courses/continual-professional-development"
+    },
+    {
+     "college": "RACGP",
+     "hours": null,
+     "appliesTo": "als1, als2, als2 recertification",
+     "quote": "The Royal Australian College of General Practitioners (RACGP) has pre-approved the following Australian Resuscitation Council ALS courses",
+     "sourceUrl": "https://www.resus.org.au/training-and-education/advanced-life-support-courses/continual-professional-development"
+    },
+    {
+     "college": "ANZCA",
+     "hours": null,
+     "appliesTo": "als1, als2",
+     "quote": "ARC cardiac arrest recognition code: ER-19-CA-877 ... This recognition code is valid until June 30 th 2027",
+     "sourceUrl": "https://www.resus.org.au/training-and-education/advanced-life-support-courses/continual-professional-development"
+    },
+    {
+     "college": "CICM",
+     "hours": null,
+     "appliesTo": "als1 (1 hour), als2 (1.5 hours), Category 2A/2B points per hour",
+     "quote": "Accreditation start date: 14/06/2022 Accreditation end date: 14/06/2027",
+     "sourceUrl": "https://www.resus.org.au/training-and-education/advanced-life-support-courses/continual-professional-development"
+    },
+    {
+     "college": "ACRRM",
+     "hours": 15,
+     "appliesTo": "ACRRM ALS2 sessions",
+     "quote": "CPD Hours 15",
+     "sourceUrl": "https://www.acrrm.org.au/courses/face-to-face/als"
+    }
+   ],
+   "acrrmNote": "ACRRM describes its course as designed \"to meet and exceed the standard set by the Australian Resuscitation Council\". It is not on the ARC course-dates page, so whether it is ARC co-badged is not confirmed.",
+   "verified": true,
+   "lastVerified": "2026-11-17"
+  },
+  {
+   "id": "nzrc-core-advanced",
+   "name": "NZRC CORE Advanced",
+   "nzEquivalentOf": "als2",
+   "providers": [
+    {
+     "name": "New Zealand Resuscitation Council (course owner): delivered by registered providers, e.g. Triple One Care, Emcare Services",
+     "url": "https://www.nzrc.org.nz/",
+     "verified": false,
+     "blocked": "nzrc.org.nz redirects to www.resus.org.nz, which the session proxy refuses"
+    }
+   ],
+   "countries": [
+    "NZ"
+   ],
+   "audience": "Health professionals who may be expected to manage a resuscitation event (experienced nurses, anaesthetic technicians, GPs, dentists providing sedation, paramedics, registrars).",
+   "audienceEvidence": {
+    "sourceUrl": "https://www.nzda.org.nz/education/courses-events/auckland-nzrc-core-advanced-6",
+    "quote": "CORE Advanced is for Dental and Health Professionals that may be expected to manage a resuscitation event.",
+    "lastVerified": "2026-11-17"
+   },
+   "format": "Full-day (8 hour) practical session ending with a written assessment; reading the reference book is recommended.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.nzda.org.nz/education/courses-events/auckland-nzrc-core-advanced-6",
+    "quote": "The practical session is a full day (8hrs) finishing with a written assessment.",
+    "lastVerified": "2026-11-17"
+   },
+   "typicalLength": "1 day",
+   "certificateValidityYears": null,
+   "validitySource": null,
+   "recertification": null,
+   "feeRange": null,
+   "feeSource": null,
+   "otherEvidence": [
+    {
+     "sourceUrl": "https://www.nzda.org.nz/education/courses-events/core-advanced-206",
+     "quote": "NZ Resuscitation Council CORE Advanced will meet all requirements for medical personnel and is required for GP fellowship.",
+     "lastVerified": "2026-11-17"
+    }
+   ],
+   "cpdHours": 0,
+   "cpdNote": "check provider",
+   "verified": true,
+   "verifiedScope": "audience/format from provider listings on NZDA only; NZRC own pages not read",
+   "lastVerified": "2026-11-17"
+  },
+  {
+   "id": "nzrc-core-immediate",
+   "name": "NZRC CORE Immediate",
+   "nzEquivalentOf": "als1",
+   "providers": [
+    {
+     "name": "New Zealand Resuscitation Council (course owner): delivered by registered providers, e.g. Triple One Care, Resus Nelson",
+     "url": "https://www.nzrc.org.nz/",
+     "verified": false,
+     "blocked": "www.resus.org.nz refused by session proxy"
+    }
+   ],
+   "countries": [
+    "NZ"
+   ],
+   "audience": "Per the Triple One Care listing: dentists (RA sedation only), dental therapists, hygienists, orthodontic auxiliaries, clinical dental technicians and other health professionals undertaking restricted activities.",
+   "audienceEvidence": {
+    "sourceUrl": "https://www.nzda.org.nz/education/courses-events/auckland-nzrc-core-immediate-8",
+    "quote": "This course is for dentists (providing RA sedation only), dental therapists, dental hygienists orthodontic auxiliaries, Clinical Dental Technicians and other trained health professionals undertaking restricted activities.",
+    "lastVerified": "2026-11-17"
+   },
+   "format": "Six-hour practical course (one provider); another provider adds self-directed pre-course learning.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.nzda.org.nz/education/courses-events/auckland-nzrc-core-immediate-8",
+    "quote": "NZRC CORE Immediate, previously known as Level 4 Resuscitation is an Immediate course that runs for 6 hours. It does not include a skill or theory assessment.",
+    "lastVerified": "2026-11-17"
+   },
+   "typicalLength": "about 6 hours",
+   "certificateValidityYears": null,
+   "validitySource": null,
+   "recertification": null,
+   "feeRange": null,
+   "feeSource": null,
+   "cpdHours": 0,
+   "cpdNote": "check provider",
+   "verified": true,
+   "verifiedScope": "provider listings on NZDA only; audience shown is the dental-focused listing",
+   "lastVerified": "2026-11-17"
+  },
+  {
+   "id": "emst",
+   "name": "Early Management of Severe Trauma (EMST)",
+   "providers": [
+    {
+     "name": "Royal Australasian College of Surgeons (RACS)",
+     "url": "https://www.surgeons.org/Education/skills-training-courses/early-management-of-severe-trauma-emst",
+     "schedulePage": "https://www.surgeons.org/Education/Skills-training-courses/early-management-of-severe-trauma-emst/schedule-and-fees",
+     "verified": false,
+     "blocked": "Cloudflare challenge (HTTP 403, cf-mitigated: challenge), skipped"
+    }
+   ],
+   "countries": [
+    "AU",
+    "NZ"
+   ],
+   "audience": null,
+   "format": null,
+   "typicalLength": null,
+   "certificateValidityYears": null,
+   "validitySource": null,
+   "recertification": null,
+   "feeRange": null,
+   "feeSource": null,
+   "cpdHours": 0,
+   "cpdNote": "check provider",
+   "verified": false,
+   "lastVerified": null,
+   "renameNote": "Not confirmed: a web-search snippet says RACS renamed EMST to ATLS from 1 January 2026. Rename to \"ATLS (formerly EMST)\" once read on surgeons.org.",
+   "leads": [
+    {
+     "url": "https://www.surgeons.org/Education/skills-training-courses/early-management-of-severe-trauma-emst",
+     "kind": "search-snippet",
+     "seen": "2026-11-17",
+     "says": "known as EMST until 31 December 2025; schedule published as a PDF"
+    }
+   ]
+  },
+  {
+   "id": "pals",
+   "name": "Paediatric Advanced Life Support (PALS, American Heart Association)",
+   "providers": [
+    {
+     "name": "American Heart Association via its International Training Centres",
+     "url": "https://international.heart.org/en/courses/pals-provider-course",
+     "verified": false,
+     "blocked": "Cloudflare 403"
+    },
+    {
+     "name": "Medcast (AU)",
+     "url": "https://medcast.com.au/",
+     "verified": false,
+     "blocked": "robots.txt disallows ClaudeBot / anthropic-ai"
+    }
+   ],
+   "countries": [
+    "AU",
+    "NZ"
+   ],
+   "audience": null,
+   "format": null,
+   "typicalLength": null,
+   "certificateValidityYears": null,
+   "validitySource": null,
+   "recertification": null,
+   "feeRange": null,
+   "feeSource": null,
+   "cpdHours": 0,
+   "cpdNote": "check provider",
+   "verified": false,
+   "lastVerified": null,
+   "leads": [
+    {
+     "url": "https://international.heart.org/en/courses/pals-provider-course",
+     "kind": "search-snippet",
+     "seen": "2026-11-17",
+     "says": "instructor-led, blended (HeartCode) or RQI; card valid 2 years (unverified)"
+    },
+    {
+     "url": "https://medicaltrainingsolutions.arlo.co/w/courses/49-paediatric-advanced-life-support",
+     "kind": "search-snippet",
+     "seen": "2026-11-17",
+     "says": "course named Paediatric Advanced Life Support, states it is not APLS; AHA status unknown"
+    }
+   ]
+  }
+ ]
+}
