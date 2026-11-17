@@ -27,7 +27,7 @@ test('conference dataset: schema, unique ids, valid dates, https urls', () => {
     assert.match(x.url, /^https:\/\//, x.id); assert.match(x.countryCode, /^[A-Z]{2}$/, x.id);
     assert.ok(x.cpdHours >= 0 && x.name && x.city && x.specialty, x.id);
     if (x.datesConfirmed === true) assert.ok(x.sourceUrl && /^https:\/\//.test(x.sourceUrl), 'confirmed row needs sourceUrl ' + x.id);
-    assert.ok(!/(largest|world's leading)/i.test(x.blurb), 'unsourced superlative ' + x.id);
+    assert.ok(!/\b(largest|biggest|leading|premier|best|world'?s)\b/i.test(x.blurb), 'unsourced superlative ' + x.id); /* full lint: tests/copy.test.js */
   }
 });
 
