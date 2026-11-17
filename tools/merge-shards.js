@@ -4,6 +4,7 @@
 const fs = require('node:fs'), path = require('node:path'), vm = require('node:vm');
 const root = path.join(__dirname, '..'), dry = process.argv.includes('--dry');
 const mainFile = path.join(root, 'data', 'conferences.js'), shardDir = path.join(root, 'data', 'shards');
+const { CANON, canon } = require('./specialties'); // tools/specialties.json: one name per specialty
 const ctx = { window: {} }; vm.runInNewContext(fs.readFileSync(mainFile, 'utf8'), ctx);
 const base = ctx.window.HOGGY_CONFERENCES;
 const REQ = ['id', 'name', 'organiser', 'specialty', 'city', 'country', 'countryCode', 'region', 'start', 'end', 'format', 'cpdHours', 'url', 'blurb'];
@@ -18,6 +19,7 @@ const valid = c => {
   if (!/^https:\/\//.test(c.url)) return 'url must be https';
   if (!/^[A-Z]{2}$/.test(c.countryCode)) return 'bad countryCode';
   if (!REGIONS.has(c.region)) return 'bad region';
+  if (!CANON.has(c.specialty)) return 'unknown specialty "' + c.specialty + '" (add it to tools/specialties.json)';
   if (!['In-person', 'Hybrid'].includes(c.format)) return 'bad format';
   if (typeof c.cpdHours !== 'number' || c.cpdHours < 0 || c.cpdHours > 100) return 'bad cpdHours';
   return null;
@@ -34,6 +36,7 @@ for (const f of shardFiles.filter(x => !x.startsWith('provenance-') && !x.starts
     if ((CONFIRMED_ONLY.has(f) || f.startsWith('desk-')) && c.datesConfirmed !== true) { stats.skippedUnconfirmed = (stats.skippedUnconfirmed || 0) + 1; continue; }
     if (f.startsWith('exp-')) { c.datesConfirmed = false; c.dateStatus = 'estimated'; c.cpdHours = c.cpdHours || 0; if (!c.end) c.end = c.start; }
     if (DROP.has(c.id)) continue;
+    if (c.specialty != null && c.specialty !== '') c.specialty = canon(c.specialty) || c.specialty; // variants -> canonical; unknown ones fail valid()
     const why = valid(c); if (why) { stats.invalid++; rejects.push(`${f}: ${c.id || c.name}: ${why}`); continue; }
     const key = norm(c.name) + c.start.slice(0, 4);
     if (seenId.has(c.id)) { stats.dupId++; continue; }
@@ -44,7 +47,9 @@ for (const f of shardFiles.filter(x => !x.startsWith('provenance-') && !x.starts
   }
 }
 /* normalisation: never present guesses as facts */
+const badSpec = new Map();
 for (const c of out) {
+  const sp = canon(c.specialty); if (sp) c.specialty = sp; else badSpec.set(c.specialty, (badSpec.get(c.specialty) || 0) + 1);
   if (!c.cpdVerified && c.cpdHours) c.cpdHours = 0; // 20 was a placeholder guess
   c.blurb = String(c.blurb).replace(/(?:the )?(?:[A-Za-z]+ )?[A-Za-z]+['’]s (?:largest|biggest|leading|premier|foremost) /gi, 'a major ').replace(/(?:the )?(?:largest|biggest) /gi, 'a major ').replace(/a a major/gi, 'a major').replace(/The (?:Middle|Far|Near) a major/g, 'A major').replace(/^a major/, 'A major');
 }
@@ -76,4 +81,5 @@ console.log('provenance', JSON.stringify(prov));
 out.sort((a, b) => a.start.localeCompare(b.start) || a.name.localeCompare(b.name));
 console.log(JSON.stringify(stats), 'total', out.length, 'specialties', new Set(out.map(c => c.specialty)).size, 'countries', new Set(out.map(c => c.country)).size, 'confirmed', out.filter(c => c.datesConfirmed).length);
 if (rejects.length) console.log('rejected:\n  ' + rejects.slice(0, 40).join('\n  '));
+if (badSpec.size) { console.error('FAIL: specialties not in tools/specialties.json: ' + [...badSpec].map(([k, v]) => `"${k}" (${v})`).join(', ')); process.exit(1); }
 if (!dry) fs.writeFileSync(mainFile, 'window.HOGGY_CONFERENCES = ' + JSON.stringify(out, null, 1) + ';\n');
