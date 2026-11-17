@@ -76,7 +76,7 @@ function client(B) {
 const ALL5 = v => ({ content: v, networking: v, venue: v, value: v, cpd: v });
 const PDF = Buffer.from('%PDF-1.4\n1 0 obj<<>>endobj\n%%EOF');
 
-test('reviews API: series, one per edition, client cannot forge verified, proof privacy, admin approve, receipt auto-verify', async (t) => {
+test('reviews API: series, one per edition, client cannot forge verified, proof privacy, admin approve, emailed receipt goes to the admin queue', async (t) => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'hoggy-rv-')), { B, env } = await startServer(t, dir);
   const key = seriesKey(byId('jsca-46th-2026')), Y = new Date().getUTCFullYear();
   const a = client(B), b = client(B), c = client(B), admin = client(B);
@@ -159,16 +159,72 @@ test('reviews API: series, one per edition, client cannot forge verified, proof 
   assert.equal((await b.call(`/api/reviews/${rid}/report`, { method: 'POST' }))[0], 200);
   const [, rep] = await admin.call('/api/admin/reported', {}, { 'X-Admin-Key': 'test-admin-key' }); assert.equal(rep[0].id, rid); assert.equal(rep[0].editionYear, Y - 8); assert.match(rep[0].title, /Clinical Anesthesia/);
 
-  /* automatic verification: a registration receipt the server received by email for an edition that has happened */
+  /* emailed registration receipt (decision B): it no longer verifies on its own; it waits on the admin desk */
   assert.equal((await admin.call('/api/admin/conferences/jsca-46th-2026', { method: 'POST', body: JSON.stringify({ patch: { start: `${Y - 5}-11-12`, end: `${Y - 5}-11-14` } }) }, { 'X-Admin-Key': 'test-admin-key' }))[0], 200, 'test fixture: an edition that has happened');
   const [, cm] = await c.call('/api/me'); const secret = await TDB.inboundSecret(dir, env);
-  const mail = body => fetch(B + '/api/inbound/email', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Hoggy-Secret': secret }, body: JSON.stringify({ To: cm.user.inbox, From: 'Congress Secretariat <reg@congre.co.jp>', ...body }) });
+  const mail = (body, to = cm.user.inbox) => fetch(B + '/api/inbound/email', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Hoggy-Secret': secret }, body: JSON.stringify({ To: to, From: 'Congress Secretariat <reg@congre.co.jp>', ...body }) });
+  const AK = { 'X-Admin-Key': 'test-admin-key' };
   assert.equal((await mail({ Subject: 'Hotel receipt', TextBody: `Hilton Wakayama\nTotal JPY 40,000.00\n${Y - 5}-11-12\n46th Annual Meeting of the Japan Society for Clinical Anesthesia` })).status, 200);
   const [s5, mc] = await c.call('/api/reviews', { method: 'POST', body: JSON.stringify({ series: key, editions: [{ year: Y - 5 }], ratings: ALL5(4), text: 'Useful refresher sessions' }) });
   assert.equal(s5, 201); assert.equal(mc.reviews[0].verify, 'none', 'a hotel receipt is not a registration receipt');
-  assert.equal((await mail({ Subject: 'Registration confirmation', TextBody: `Thank you for registering for the 46th Annual Meeting of the Japan Society for Clinical Anesthesia.\nTotal JPY 20,000.00\nPaid ${Y - 5}-08-01` })).status, 200);
-  const [, list6] = await c.call('/api/reviews?series=' + key); assert.equal(list6.find(r => r.id === mc.reviews[0].id).verified, true, 'matching registration receipt verifies the existing review');
-  const [, myc] = await c.call('/api/my-reviews'); assert.equal(myc[0].verify, 'verified');
+  assert.deepEqual((await admin.call('/api/admin/receipts', {}, AK))[1], [], 'a hotel receipt queues nothing');
+  const regPdf = Buffer.from('%PDF-1.4\n% registration receipt\n%%EOF');
+  assert.equal((await mail({ Subject: 'Registration confirmation', TextBody: `Thank you for registering for the 46th Annual Meeting of the Japan Society for Clinical Anesthesia.\nTotal JPY 20,000.00\nPaid ${Y - 5}-08-01`, Attachments: [{ Name: 'receipt.pdf', ContentType: 'application/pdf', Content: regPdf.toString('base64') }] })).status, 200);
+  const [, list6] = await c.call('/api/reviews?series=' + key); const cr = list6.find(r => r.id === mc.reviews[0].id);
+  assert.equal(cr.verified, false, 'a matching receipt no longer verifies by itself: "Attended (not verified)"'); assert.equal(cr.verify, 'pending_receipt');
+  const [, asOther] = await b.call('/api/reviews?series=' + key); assert.equal(asOther.find(r => r.id === cr.id).verify, undefined, 'others never see the pending state');
+  let [, myc] = await c.call('/api/my-reviews'); assert.equal(myc[0].verify, 'pending_receipt');
+  [, rt] = await a.call('/api/ratings'); const verifiedBefore = rt[key].verified;
+  /* the queue: review plus the matched receipt's vendor, date, amount and subject; file for admins only */
+  assert.equal((await c.call('/api/admin/receipts', {}, AK))[0], 403, 'not for the reviewer');
+  assert.equal((await client(B).call('/api/admin/receipts'))[0], 401, 'signed out');
+  assert.equal((await admin.call('/api/admin/receipts'))[0], 403, 'admin without the key');
+  const [sq, rq] = await admin.call('/api/admin/receipts', {}, AK); assert.equal(sq, 200); assert.equal(rq.length, 1);
+  const item = rq[0];
+  assert.equal(item.seriesKey, key); assert.equal(item.editionYear, Y - 5); assert.equal(item.receiptDate, `${Y - 5}-08-01`); assert.equal(item.amount, 20000); assert.match(item.currency, /^[A-Z]{3}$/);
+  assert.equal(item.subject, 'Registration confirmation'); assert.ok(item.vendor); assert.match(item.title, /Clinical Anesthesia/); assert.equal(item.hasFile, true); assert.equal(item.fileType, 'application/pdf');
+  assert.equal(item.review.id, cr.id); assert.equal(item.review.text, 'Useful refresher sessions'); assert.equal(item.review.verify, 'pending_receipt');
+  assert.equal((await c.call(`/api/admin/receipts/${item.id}/file`, {}, AK))[0], 403, 'the reviewer cannot fetch the admin copy');
+  assert.equal((await client(B).call(`/api/admin/receipts/${item.id}/file`))[0], 401);
+  assert.equal((await c.call(`/api/admin/receipts/${item.id}`, { method: 'POST', body: JSON.stringify({ action: 'approve' }) }, AK))[0], 403, 'the reviewer cannot approve');
+  const [sfr, , rfr] = await admin.call(`/api/admin/receipts/${item.id}/file`, {}, AK); assert.equal(sfr, 200);
+  assert.ok(Buffer.from(await rfr.arrayBuffer()).equals(regPdf), 'the receipt file the server received'); assert.match(rfr.headers.get('cache-control'), /no-store/); assert.match(rfr.headers.get('content-disposition'), /attachment/);
+  /* a second matching receipt for the same year does not add a second item */
+  await mail({ Subject: 'Registration confirmation (copy)', TextBody: `Thank you for registering for the 46th Annual Meeting of the Japan Society for Clinical Anesthesia.\nTotal JPY 20,000.00\nPaid ${Y - 5}-08-01` });
+  assert.equal((await admin.call('/api/admin/receipts', {}, AK))[1].length, 1, 'one open item per edition');
+  /* approve: verified (verified_by receipt), file deleted, counted as verified */
+  assert.equal((await admin.call(`/api/admin/receipts/${item.id}`, { method: 'POST', body: JSON.stringify({ action: 'nope' }) }, AK))[0], 400);
+  assert.equal((await admin.call(`/api/admin/receipts/${item.id}`, { method: 'POST', body: JSON.stringify({ action: 'approve' }) }, AK))[0], 200);
+  const [, list7] = await b.call('/api/reviews?series=' + key); assert.equal(list7.find(r => r.id === cr.id).verified, true, 'admin-approved receipt verifies');
+  [, myc] = await c.call('/api/my-reviews'); assert.equal(myc[0].verify, 'verified');
+  [, rt] = await a.call('/api/ratings'); assert.equal(rt[key].verified, verifiedBefore + 1);
+  assert.equal((await admin.call(`/api/admin/receipts/${item.id}/file`, {}, AK))[0], 410, 'admin copy deleted after the decision');
+  assert.equal((await admin.call(`/api/admin/receipts/${item.id}`, { method: 'POST', body: JSON.stringify({ action: 'reject' }) }, AK))[0], 404, 'decided once');
+  assert.deepEqual((await admin.call('/api/admin/receipts', {}, AK))[1], []);
+  if (!TDB.PG) { const d = new DatabaseSync(path.join(dir, 'hoggy.db')); assert.equal(d.prepare('SELECT verified_by v FROM reviews WHERE id=?').get(cr.id).v, 'receipt'); d.close(); }
+  else assert.equal((await TDB.pgQuery(`SELECT verified_by v FROM ${env.HOGGY_PG_SCHEMA}.reviews WHERE id=$1`, [cr.id]))[0].v, 'receipt');
+
+  /* receipt first, review later: the review starts pending, and a rejection leaves it unverified */
+  const d2 = client(B); await d2.register(`d${Date.now()}@example.com`, 'Dr D'); const [, dm] = await d2.call('/api/me');
+  await mail({ Subject: 'Registration confirmation', TextBody: `Thank you for registering for the 46th Annual Meeting of the Japan Society for Clinical Anesthesia.\nTotal JPY 20,000.00\nPaid ${Y - 5}-07-15` }, dm.user.inbox);
+  const [, dq] = await admin.call('/api/admin/receipts', {}, AK); assert.equal(dq.length, 1); assert.equal(dq[0].review, null, 'no review yet'); assert.equal(dq[0].hasFile, true, 'the forwarded email text is kept as the file');
+  const [, dr] = await d2.call('/api/reviews', { method: 'POST', body: JSON.stringify({ series: key, editions: [{ year: Y - 5 }], ratings: ALL5(3), text: 'Solid meeting overall' }) });
+  assert.equal(dr.reviews[0].verify, 'pending_receipt', 'a waiting receipt makes the new review pending, not verified');
+  assert.equal((await admin.call(`/api/admin/receipts/${dq[0].id}`, { method: 'POST', body: JSON.stringify({ action: 'reject', note: 'different person' }) }, AK))[0], 200);
+  const [, list8] = await d2.call('/api/reviews?series=' + key); const drv = list8.find(r => r.id === dr.reviews[0].id); assert.equal(drv.verified, false); assert.equal(drv.verify, 'none');
+});
+
+test('admin receipt approval before the review: the later review is verified', async (t) => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'hoggy-rc-')), { B, env } = await startServer(t, dir), Y = new Date().getUTCFullYear(), key = seriesKey(byId('jsca-46th-2026'));
+  const admin = client(B), e = client(B), AK = { 'X-Admin-Key': 'test-admin-key' };
+  await admin.register('admin@example.com', 'Admin'); await e.register(`e${Date.now()}@example.com`, 'Dr E');
+  await admin.call('/api/admin/conferences/jsca-46th-2026', { method: 'POST', body: JSON.stringify({ patch: { start: `${Y - 2}-11-12`, end: `${Y - 2}-11-14` } }) }, AK);
+  const [, em] = await e.call('/api/me'), secret = await TDB.inboundSecret(dir, env);
+  await fetch(B + '/api/inbound/email', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Hoggy-Secret': secret }, body: JSON.stringify({ To: em.user.inbox, From: 'Secretariat <reg@example.org>', Subject: 'Registration receipt', TextBody: `Registration: 46th Annual Meeting of the Japan Society for Clinical Anesthesia\nTotal JPY 18,000.00\nPaid ${Y - 2}-09-01` }) });
+  const [, q] = await admin.call('/api/admin/receipts', {}, AK); assert.equal(q.length, 1);
+  assert.equal((await admin.call(`/api/admin/receipts/${q[0].id}`, { method: 'POST', body: JSON.stringify({ action: 'approve' }) }, AK))[0], 200);
+  const [, made] = await e.call('/api/reviews', { method: 'POST', body: JSON.stringify({ series: key, editions: [{ year: Y - 2 }], ratings: ALL5(4), text: 'Good mix of sessions' }) });
+  assert.equal(made.reviews[0].verify, 'verified', 'approved before the review was written');
 });
 
 test('migration: old per-conference reviews move into the series model; client-derived verified flags are reset', { skip: TDB.PG && 'SQLite-only: legacy databases are SQLite; Postgres starts on the series model' }, async (t) => {

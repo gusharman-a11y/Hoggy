@@ -1,6 +1,6 @@
 'use strict';
 /* Hoggy backend. Node 22+. Run: node server.js
-   Storage: Postgres when DATABASE_URL is set (production: Supabase, schema `hoggy`, see db/postgres/001_init.sql),
+   Storage: Postgres when DATABASE_URL is set (production: Supabase, schema `hoggy`, see db/postgres/001_init.sql and 002_*.sql),
    otherwise SQLite in HOGGY_DATA (node:sqlite; local dev and tests). Both go through lib/db.js. */
 const http = require('node:http');
 const fs = require('node:fs');
@@ -11,7 +11,8 @@ const DB = require('./lib/db.js');
 const { parseReceipt } = require('./parse.js');
 const { pdfText } = require('./lib/pdftext.js');
 const { makeIngest, validate: validateConf } = require('./lib/ingest.js');
-const { seriesKey, validKey } = require('./lib/series.js');
+const { seriesKey, seriesTitle, validKey } = require('./lib/series.js');
+const COV = require('./lib/coverage.js');
 const RV = require('./lib/reviews.js');
 const ADMIN_KEY = process.env.HOGGY_ADMIN_KEY || '';
 const REPORT_MIN_AGE = (process.env.HOGGY_REPORT_MIN_AGE_H === undefined ? 24 : +process.env.HOGGY_REPORT_MIN_AGE_H) * 3600e3;
@@ -55,16 +56,21 @@ CREATE TABLE IF NOT EXISTS date_changes(id INTEGER PRIMARY KEY, conf_id TEXT NOT
 CREATE TABLE IF NOT EXISTS review_reports(review_id INTEGER NOT NULL, user_id INTEGER NOT NULL, created INTEGER NOT NULL, weight INTEGER DEFAULT 1, PRIMARY KEY(review_id, user_id));
 CREATE TABLE IF NOT EXISTS meta(key TEXT PRIMARY KEY, value TEXT NOT NULL);
 CREATE TABLE IF NOT EXISTS rate_hits(key TEXT NOT NULL, t INTEGER NOT NULL);
-CREATE INDEX IF NOT EXISTS rate_hits_key_t ON rate_hits(key, t);`;
+CREATE INDEX IF NOT EXISTS rate_hits_key_t ON rate_hits(key, t);
+CREATE TABLE IF NOT EXISTS receipt_checks(id TEXT PRIMARY KEY, user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE, series_key TEXT NOT NULL, edition_year INTEGER NOT NULL, conf_id TEXT NOT NULL, inbox_id TEXT, vendor TEXT, amount REAL, currency TEXT, receipt_date TEXT, subject TEXT, file_name TEXT, file_type TEXT, size INTEGER NOT NULL DEFAULT 0, data BLOB, status TEXT NOT NULL DEFAULT 'pending', note TEXT, created INTEGER NOT NULL, decided INTEGER, decided_by TEXT);
+CREATE INDEX IF NOT EXISTS rc_edition ON receipt_checks(user_id, series_key, edition_year);
+CREATE TABLE IF NOT EXISTS coverage(id INTEGER PRIMARY KEY, series_key TEXT NOT NULL, type TEXT NOT NULL CHECK (type IN ('meeting-report','abstract-supplement','society-journal','news')), title TEXT, publication TEXT NOT NULL CHECK (length(trim(publication)) > 0), year INTEGER, url TEXT NOT NULL CHECK (url LIKE 'https://%'), added_by INTEGER REFERENCES users(id) ON DELETE SET NULL, added_on INTEGER NOT NULL, status TEXT NOT NULL DEFAULT 'pending', decided INTEGER, decided_by TEXT, UNIQUE(series_key, url));
+CREATE INDEX IF NOT EXISTS coverage_series ON coverage(series_key, status);`;
+/* receipt_checks and coverage: same tables as db/postgres/002_receipt_checks_coverage.sql */
 /* legacy (before B36): rows were tied to client-synced trips, so they no longer verify anything; kept only so old SQLite databases open */
 const SQLITE_LEGACY = 'CREATE TABLE IF NOT EXISTS proofs(user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE, conf_id TEXT NOT NULL, receipt_date TEXT, created INTEGER NOT NULL, PRIMARY KEY(user_id, conf_id))';
 
 const sha = v => crypto.createHash('sha256').update(String(v)).digest('hex');
 const setMeta = (t, key, value) => t.run('INSERT INTO meta(key,value) VALUES(?,?) ON CONFLICT(key) DO UPDATE SET value=excluded.value', key, value);
 
-/* Schema. SQLite: CREATE IF NOT EXISTS plus the old column and review migrations. Postgres: db/postgres/001_init.sql (the
-   same file you apply by hand), run only when its hash differs from meta.schema_hash, under an advisory lock so two cold
-   starts never run DDL at the same time. */
+/* Schema. SQLite: CREATE IF NOT EXISTS plus the old column and review migrations. Postgres: db/postgres/NNN_*.sql (the
+   same files you apply by hand), each run only when its hash differs from the one in meta, under an advisory lock so two
+   cold starts never run DDL at the same time. */
 async function migrate() {
   if (db.kind === 'sqlite') {
     await db.exec(SQLITE_SCHEMA);
@@ -72,15 +78,20 @@ async function migrate() {
     await db.exec(SQLITE_LEGACY);
     return; /* migrateReviews() runs after the seed: it looks up each old review's conference */
   }
-  const sql = fs.readFileSync(path.join(__dirname, 'db', 'postgres', '001_init.sql'), 'utf8').replace(/\bhoggy\b/g, db.schema), h = sha(sql);
-  let cur = null; try { cur = await db.get("SELECT value FROM meta WHERE key='schema_hash'"); } catch (e) { /* fresh database: no meta table yet */ }
-  if (cur && cur.value === h) return;
-  try {
-    await db.tx(async t => { await t.get('SELECT pg_advisory_xact_lock(hashtext(?))', 'hoggy-schema:' + db.schema); await t.exec(sql); await setMeta(t, 'schema_hash', h); });
-    console.log(`postgres schema ${db.schema} is up to date`);
-  } catch (e) {
-    /* e.g. tables created by another role: keep serving if the tables are there, the queries will say if not */
-    console.error(`postgres schema ${db.schema}: migration failed (${e.message}); continuing with the existing schema`);
+  /* every numbered file in db/postgres, in order; each is tracked by its own hash (001: meta.schema_hash, later files:
+     meta."schema_hash:NNN") so a new file runs once without re-running the ones before it */
+  const files = fs.readdirSync(path.join(__dirname, 'db', 'postgres')).filter(f => /^\d{3}_[\w-]+\.sql$/.test(f)).sort();
+  for (const f of files) {
+    const sql = fs.readFileSync(path.join(__dirname, 'db', 'postgres', f), 'utf8').replace(/\bhoggy\b/g, db.schema), h = sha(sql), n = f.slice(0, 3), mk = n === '001' ? 'schema_hash' : 'schema_hash:' + n;
+    let cur = null; try { cur = await db.get('SELECT value FROM meta WHERE key=?', mk); } catch (e) { /* fresh database: no meta table yet */ }
+    if (cur && cur.value === h) continue;
+    try {
+      await db.tx(async t => { await t.get('SELECT pg_advisory_xact_lock(hashtext(?))', 'hoggy-schema:' + db.schema); await t.exec(sql); await setMeta(t, mk, h); });
+      console.log(`postgres schema ${db.schema} is up to date (${f} applied)`);
+    } catch (e) {
+      /* e.g. tables created by another role: keep serving if the tables are there, the queries will say if not */
+      console.error(`postgres schema ${db.schema}: migration failed in ${f} (${e.message}); continuing with the existing schema`);
+    }
   }
 }
 
@@ -193,7 +204,7 @@ function getCourses() {
 async function seriesIdx() {
   const cc = await getConfs(); if (cc.series) return cc.series;
   const by = new Map(), ofConf = new Map();
-  for (const c of cc.list) { const k = seriesKey(c); ofConf.set(c.id, k); (by.get(k) || by.set(k, []).get(k)).push({ id: c.id, year: +c.start.slice(0, 4), city: c.city, start: c.start, end: c.end, name: c.name }); }
+  for (const c of cc.list) { const k = seriesKey(c); ofConf.set(c.id, k); (by.get(k) || by.set(k, []).get(k)).push({ id: c.id, year: +c.start.slice(0, 4), city: c.city, country: c.country, specialty: c.specialty, start: c.start, end: c.end, name: c.name }); }
   return (cc.series = { by, ofConf });
 }
 const seriesName = (idx, key) => { const e = (idx.by.get(key) || []).slice().sort((a, b) => b.start.localeCompare(a.start))[0]; return e ? e.name : key; };
@@ -223,6 +234,22 @@ const clientIp = req => TRUST_PROXY ? String(req.headers['x-forwarded-for'] || '
 /* public scores, cached per process; with a shared database other instances' new reviews show within 15 s */
 let ratingsCache = null;
 const RATINGS_TTL = PG ? 15e3 : 60e3;
+/* scores per series (shared by /api/ratings and /api/top-rated); the ranking is derived from the same cache entry */
+async function getRatings() {
+  if (!ratingsCache || now() - ratingsCache.t > RATINGS_TTL) {
+    const by = {};
+    for (const r of await db.all(`SELECT series_key, user_id, verify, rating, content, networking, venue, value, cpd FROM reviews WHERE ${VISIBLE}`)) (by[r.series_key] || (by[r.series_key] = [])).push(r);
+    ratingsCache = { t: now(), v: Object.fromEntries(Object.entries(by).map(([k, rows]) => [k, RV.scoreOf(rows)])) };
+  }
+  return ratingsCache;
+}
+/* a series' card details: the next upcoming edition (else the latest), its title without the year, its specialty */
+function seriesMeta(idx, key) {
+  const eds = idx.by.get(key); if (!eds || !eds.length) return null;
+  const day = new Date().toISOString().slice(0, 10), up = eds.filter(e => e.end >= day).sort((a, b) => a.start.localeCompare(b.start))[0];
+  const e = up || eds.slice().sort((a, b) => b.start.localeCompare(a.start))[0];
+  return { title: seriesTitle({ name: e.name }), confId: e.id, specialty: e.specialty || '', city: e.city || '', country: e.country || '', start: e.start, upcoming: !!up };
+}
 /* a review counts unless 3 reports from accounts older than HOGGY_REPORT_MIN_AGE_H hide it */
 const VISIBLE = '(SELECT COUNT(*) FROM review_reports x WHERE x.weight=1 AND x.review_id=reviews.id) < 3';
 /* what anyone may see about a review; the verification state comes only from the server's own records */
@@ -318,13 +345,19 @@ async function api(req, res, url) {
     res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-cache', ETag: cc.etag }); return res.end(cc.body);
   }
   /* public: community scores per conference SERIES (all editions), weighted verified x1, unverified x0.5, hidden under 3 reviews */
-  if (p === '/api/ratings' && m === 'GET') {
-    if (!ratingsCache || now() - ratingsCache.t > RATINGS_TTL) {
-      const by = {};
-      for (const r of await db.all(`SELECT series_key, user_id, verify, rating, content, networking, venue, value, cpd FROM reviews WHERE ${VISIBLE}`)) (by[r.series_key] || (by[r.series_key] = [])).push(r);
-      ratingsCache = { t: now(), v: Object.fromEntries(Object.entries(by).map(([k, rows]) => [k, RV.scoreOf(rows)])) };
-    }
-    return json(res, 200, ratingsCache.v);
+  if (p === '/api/ratings' && m === 'GET') return json(res, 200, (await getRatings()).v);
+  /* public: "Highest rated by attendees" — series with 3+ reviews, by the weighted score; ?specialty= filters, ?limit= 1..50 */
+  if (p === '/api/top-rated' && m === 'GET') {
+    const rc = await getRatings(), idx = await seriesIdx(), spec = clean(url.searchParams.get('specialty'), 80), lim = Math.min(50, Math.max(1, Math.floor(+url.searchParams.get('limit')) || 6));
+    if (!rc.top || rc.topIdx !== idx) { rc.top = RV.topRated(rc.v, k => seriesMeta(idx, k), { limit: 1e6 }); rc.topIdx = idx; }
+    const list = (spec ? rc.top.filter(x => x.specialty === spec) : rc.top).slice(0, lim);
+    return json(res, 200, { min: RV.MIN_REVIEWS, specialty: spec || null, series: list }, { 'Cache-Control': 'public, max-age=30' });
+  }
+  /* public: approved "Covered in" links for a series (?series=<key> or ?conf=<id>) */
+  if (p === '/api/coverage' && m === 'GET') {
+    const key = url.searchParams.has('series') ? clean(url.searchParams.get('series'), 80) : (await seriesIdx()).ofConf.get(clean(url.searchParams.get('conf'), 80));
+    if (!key || !validKey(key)) return json(res, 200, []);
+    return json(res, 200, (await db.all("SELECT id, series_key \"seriesKey\", type, title, publication, year, url, added_on \"addedOn\" FROM coverage WHERE series_key=? AND status='approved' ORDER BY year DESC, added_on DESC LIMIT 50", key)).map(r => ({ ...r, typeLabel: COV.TYPES[r.type] || r.type })));
   }
   if (p === '/api/reviews' && m === 'GET') {
     const me = await userOf(req), key = url.searchParams.has('series') ? clean(url.searchParams.get('series'), 80) : (await seriesIdx()).ofConf.get(clean(url.searchParams.get('conf'), 80));
@@ -383,9 +416,48 @@ async function api(req, res, url) {
       await db.tx(async t => { /* the file is deleted either way; only the decision is kept */
         await t.run('UPDATE review_proofs SET status=?, note=?, decided=?, decided_by=?, data=NULL WHERE id=?', b.action === 'approve' ? 'approved' : 'rejected', clean(b.note, 200) || null, now(), u.email, pf.id);
         if (b.action === 'approve') await t.run("UPDATE reviews SET verify='verified', verified_by='admin' WHERE id=?", pf.review_id);
-        else await t.run("UPDATE reviews SET verify='none' WHERE id=? AND verify='pending_proof'", pf.review_id);
+        else await t.run("UPDATE reviews SET verify=CASE WHEN EXISTS (SELECT 1 FROM receipt_checks k WHERE k.user_id=reviews.user_id AND k.series_key=reviews.series_key AND k.edition_year=reviews.edition_year AND k.status='pending') THEN 'pending_receipt' ELSE 'none' END WHERE id=? AND verify='pending_proof'", pf.review_id);
       });
       ratingsCache = null; return json(res, 200, { ok: true });
+    }
+    /* emailed registration receipts that matched an edition (decision B): admin approves or rejects; the file is admin-only */
+    if (p === '/api/admin/receipts' && m === 'GET') {
+      const idx = await seriesIdx();
+      const rows = await db.all(`SELECT k.id, k.series_key "seriesKey", k.edition_year "editionYear", k.conf_id "confId", k.vendor, k.amount, k.currency, k.receipt_date "receiptDate", k.subject, k.file_name "fileName", k.file_type "fileType", k.size, k.created, u.email, u.name,
+          r.id "reviewId", r.author, r.text, r.rating, r.city, r.verify FROM receipt_checks k JOIN users u ON u.id=k.user_id LEFT JOIN reviews r ON r.user_id=k.user_id AND r.series_key=k.series_key AND r.edition_year=k.edition_year WHERE k.status='pending' ORDER BY k.created LIMIT 200`);
+      return json(res, 200, rows.map(({ reviewId, author, text, rating, city, verify, ...k }) => ({ ...k, title: seriesName(idx, k.seriesKey), hasFile: k.size > 0, review: reviewId ? { id: reviewId, author, text, rating, city: city || '', verify } : null })));
+    }
+    if ((am = p.match(/^\/api\/admin\/receipts\/([a-f0-9]{32})\/file$/)) && m === 'GET') {
+      const f = await db.get('SELECT file_name name, file_type type, data FROM receipt_checks WHERE id=?', am[1]); if (!f) return err(res, 404, 'not found'); if (!f.data) return err(res, 410, 'file deleted after the decision');
+      res.writeHead(200, { 'Content-Type': f.type || 'application/octet-stream', 'Content-Disposition': 'attachment; filename="' + String(f.name || 'receipt').replace(/[^\w.\- ]/g, '_') + '"', 'Cache-Control': 'private, no-store', 'X-Content-Type-Options': 'nosniff' });
+      return res.end(Buffer.from(f.data));
+    }
+    if ((am = p.match(/^\/api\/admin\/receipts\/([a-f0-9]{32})$/)) && m === 'POST') {
+      const b = await readJson(req, 2e3), k = await db.get("SELECT id, user_id, series_key, edition_year FROM receipt_checks WHERE id=? AND status='pending'", am[1]); if (!k) return err(res, 404, 'not found');
+      if (b.action !== 'approve' && b.action !== 'reject') return err(res, 400, 'approve|reject');
+      await db.tx(async t => { /* the admin copy of the file is deleted either way (the user keeps theirs); the decision is kept */
+        await t.run('UPDATE receipt_checks SET status=?, note=?, decided=?, decided_by=?, data=NULL WHERE id=?', b.action === 'approve' ? 'approved' : 'rejected', clean(b.note, 200) || null, now(), u.email, k.id);
+        if (b.action === 'approve') await t.run("UPDATE reviews SET verify='verified', verified_by='receipt' WHERE user_id=? AND series_key=? AND edition_year=? AND verify!='verified'", k.user_id, k.series_key, k.edition_year);
+        else await t.run("UPDATE reviews SET verify='none' WHERE user_id=? AND series_key=? AND edition_year=? AND verify='pending_receipt'", k.user_id, k.series_key, k.edition_year);
+      });
+      ratingsCache = null; return json(res, 200, { ok: true });
+    }
+    /* "Covered in" links: pending suggestions, approve/reject, and admin-added links (published straight away) */
+    if (p === '/api/admin/coverage' && m === 'GET') {
+      const idx = await seriesIdx();
+      return json(res, 200, (await db.all(`SELECT c.id, c.series_key "seriesKey", c.type, c.title, c.publication, c.year, c.url, c.added_on "addedOn", u.email "addedBy" FROM coverage c LEFT JOIN users u ON u.id=c.added_by WHERE c.status='pending' ORDER BY c.added_on LIMIT 200`)).map(r => ({ ...r, typeLabel: COV.TYPES[r.type] || r.type, seriesTitle: seriesName(idx, r.seriesKey) })));
+    }
+    if (p === '/api/admin/coverage' && m === 'POST') {
+      const b = await readJson(req, 4e3), idx = await seriesIdx(), ref = clean(b.series || b.conf, 80), key = idx.by.has(ref) ? ref : idx.ofConf.get(ref);
+      if (!key) return err(res, 400, 'unknown conference: use a conference id or series key');
+      const v = COV.validate(b); if (!v.ok) return err(res, 400, v.error);
+      try { const r = await db.get("INSERT INTO coverage(series_key,type,title,publication,year,url,added_by,added_on,status,decided,decided_by) VALUES(?,?,?,?,?,?,?,?,'approved',?,?) RETURNING id", key, v.value.type, v.value.title || null, v.value.publication, v.value.year, v.value.url, u.id, now(), now(), u.email); return json(res, 201, { ok: true, id: r.id, seriesKey: key, status: 'approved' }); }
+      catch (e) { if (DB.isUnique(e)) return err(res, 409, 'that link is already listed for this conference'); throw e; }
+    }
+    if ((am = p.match(/^\/api\/admin\/coverage\/(\d{1,12})$/)) && m === 'POST') {
+      const b = await readJson(req, 1e3); if (b.action !== 'approve' && b.action !== 'reject') return err(res, 400, 'approve|reject');
+      const r = await db.run("UPDATE coverage SET status=?, decided=?, decided_by=? WHERE id=? AND status='pending'", b.action === 'approve' ? 'approved' : 'rejected', now(), u.email, +am[1]);
+      if (!r.changes) return err(res, 404, 'not found'); return json(res, 200, { ok: true });
     }
     if ((am = p.match(/^\/api\/admin\/reviews\/(\d{1,12})$/)) && m === 'POST') { const b = await readJson(req, 1e3); if (b.action === 'delete') await db.run('DELETE FROM reviews WHERE id=?', +am[1]); else if (b.action === 'restore') await db.run('DELETE FROM review_reports WHERE review_id=?', +am[1]); else return err(res, 400, 'delete|restore'); ratingsCache = null; return json(res, 200, { ok: true }); }
     if (p === '/api/admin/ingest' && m === 'POST') { runIngest(60); return json(res, 202, { started: true }); }
@@ -403,9 +475,18 @@ async function api(req, res, url) {
     if (!r.changes) { const c2 = await db.get('SELECT rev FROM state WHERE user_id=?', u.id); return json(res, 409, { error: 'conflict', rev: c2 ? c2.rev : 0 }); }
     return json(res, 200, { rev: rev + 1 });
   }
+  /* a signed-in user suggests a "Covered in" link: always pending until an admin approves it */
+  if (p === '/api/coverage' && m === 'POST') {
+    const b = await readJson(req, 4e3), idx = await seriesIdx(), key = clean(b.series, 80);
+    if (!validKey(key) || !idx.by.has(key)) return err(res, 400, 'unknown conference');
+    const v = COV.validate(b); if (!v.ok) return err(res, 400, v.error);
+    if (await limited('cov:' + u.id, 20, 3600e3)) return err(res, 429, 'too many suggestions, try later');
+    try { const r = await db.get("INSERT INTO coverage(series_key,type,title,publication,year,url,added_by,added_on,status) VALUES(?,?,?,?,?,?,?,?,'pending') RETURNING id", key, v.value.type, v.value.title || null, v.value.publication, v.value.year, v.value.url, u.id, now()); return json(res, 201, { ok: true, id: r.id, status: 'pending' }); }
+    catch (e) { if (DB.isUnique(e)) return err(res, 409, 'That link has already been suggested for this conference.'); throw e; }
+  }
   if (p === '/api/my-reviews' && m === 'GET') return json(res, 200, await db.all('SELECT id, series_key "seriesKey", edition_year "editionYear", verify FROM reviews WHERE user_id=?', u.id));
   /* Post one review per year attended (several past years in one go). Ratings and comment are the user's; verification never
-     comes from the request: only a registration receipt the server received by email, or an admin-approved proof. */
+     comes from the request: only an admin-approved registration receipt the server received by email, or an admin-approved proof. */
   if (p === '/api/reviews' && m === 'POST') {
     const b = await readJson(req, 8e3), key = clean(b.series, 80), eds = validKey(key) ? (await seriesIdx()).by.get(key) : null;
     if (!eds) return err(res, 400, 'unknown conference');
@@ -429,9 +510,11 @@ async function api(req, res, url) {
       out = await db.tx(async t => {
         const o = [];
         for (const e of list) {
-          const auto = !!(await t.get('SELECT 1 FROM attend_receipts WHERE user_id=? AND series_key=? AND edition_year=?', u.id, key, e.year));
-          const r = await t.get('INSERT INTO reviews(user_id,series_key,edition_year,conf_id,city,rating,content,networking,venue,value,cpd,text,author,created,updated,verify,verified_by) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) RETURNING id', u.id, key, e.year, e.confId, e.city, RV.overall(R), R.content, R.networking, R.venue, R.value, R.cpd, text, u.name || 'Clinician', now(), now(), auto ? 'verified' : 'none', auto ? 'receipt' : null);
-          o.push({ id: r.id, editionYear: e.year, city: e.city || '', verify: auto ? 'verified' : 'none' });
+          /* an emailed receipt for this edition: verified only once an admin approved it; while it waits, pending_receipt */
+          const rc = await t.get("SELECT status FROM receipt_checks WHERE user_id=? AND series_key=? AND edition_year=? AND status IN ('pending','approved') ORDER BY (status='approved') DESC LIMIT 1", u.id, key, e.year);
+          const verify = !rc ? 'none' : rc.status === 'approved' ? 'verified' : 'pending_receipt';
+          const r = await t.get('INSERT INTO reviews(user_id,series_key,edition_year,conf_id,city,rating,content,networking,venue,value,cpd,text,author,created,updated,verify,verified_by) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) RETURNING id', u.id, key, e.year, e.confId, e.city, RV.overall(R), R.content, R.networking, R.venue, R.value, R.cpd, text, u.name || 'Clinician', now(), now(), verify, verify === 'verified' ? 'receipt' : null);
+          o.push({ id: r.id, editionYear: e.year, city: e.city || '', verify });
         }
         return o;
       });
@@ -543,7 +626,7 @@ async function inbound(res, b) {
   const forParse = `Subject: ${subject}\n${text.slice(0, 20000)}`;
   let parsed = parseReceipt(forParse.includes('From:') ? forParse : `From: ${sender}\n${forParse}`, 'AUD');
   const atts = Array.isArray(b.Attachments || b.attachments) ? (b.Attachments || b.attachments).slice(0, 5) : [];
-  let fileId = null, fileName = null, fileType = null, pdfT = '';
+  let fileId = null, fileName = null, fileType = null, fileData = null, pdfT = '';
   for (const a of atts) {
     const type = String(a.ContentType || a.type || '').toLowerCase(), data = Buffer.from(String(a.Content || a.content || ''), 'base64');
     if (!ALLOWED_FILES.has(type) || !data.length || data.length > 8e6 || !magicOk(type, data)) continue;
@@ -555,28 +638,32 @@ async function inbound(res, b) {
 Subject: ${subject}
 ${pt}`, 'AUD'); parsed = { ...pp, ...Object.fromEntries(Object.entries(parsed).filter(([k, v]) => v != null && v !== '' && !(k === 'category' && v === 'Other'))) }; }
     }
-    await db.run('INSERT INTO files(id,user_id,name,type,data) VALUES(?,?,?,?,?)', fileId, u.id, fileName, type, data); break;
+    await db.run('INSERT INTO files(id,user_id,name,type,data) VALUES(?,?,?,?,?)', fileId, u.id, fileName, type, data); fileData = data; break;
   }
-  if (!fileId && text) { fileId = rid(16); fileName = 'forwarded-email.txt'; fileType = 'text/plain'; await db.run('INSERT INTO files(id,user_id,name,type,data) VALUES(?,?,?,?,?)', fileId, u.id, fileName, 'text/plain', Buffer.from(text.slice(0, 50000))); }
+  if (!fileId && text) { fileId = rid(16); fileName = 'forwarded-email.txt'; fileType = 'text/plain'; fileData = Buffer.from(text.slice(0, 50000)); await db.run('INSERT INTO files(id,user_id,name,type,data) VALUES(?,?,?,?,?)', fileId, u.id, fileName, 'text/plain', fileData); }
   const id = rid(12);
-  try { await matchAttendance(u.id, id, parsed, `${subject}\n${text.slice(0, 20000)}\n${pdfT.slice(0, 20000)}`); } catch (e) { console.error('attendance match failed', e.message); }
+  try { await matchAttendance(u.id, id, { ...parsed, subject }, `${subject}\n${text.slice(0, 20000)}\n${pdfT.slice(0, 20000)}`, fileData ? { name: fileName, type: fileType, data: fileData } : null); } catch (e) { console.error('attendance match failed', e.message); }
   await db.run('INSERT INTO inbox(id,user_id,vendor,amount,currency,date,category,subject,sender,file_id,file_name,file_type,created) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)', id, u.id, clean(parsed.vendor || subject, 80), parsed.amount ?? null, clean(parsed.currency || 'AUD', 3), parsed.date || null, parsed.category || 'Other', subject, sender, fileId, fileName, fileType, now());
   return json(res, 200, { ok: true, id });
 }
 
-/* Automatic "Verified attendee": a registration receipt this server received by email at the user's private address, that
-   names the conference and is dated from 400 days before it to 7 days after. Client-synced trips are never consulted. */
-async function matchAttendance(userId, inboxId, parsed, text) {
+/* A registration receipt this server received by email at the user's private address, that names the conference and is
+   dated from 400 days before it to 7 days after. Since the owner's decision B it does NOT verify on its own: each match
+   becomes a pending item on the admin desk (with a private copy of the receipt file, deleted once an admin decides) and the
+   review shows "Attended (not verified)" until an admin approves. Client-synced trips are never consulted. */
+async function matchAttendance(userId, inboxId, parsed, text, file) {
   if (parsed.category !== 'Registration' || !parsed.date) return 0;
   let n = 0;
   for (const c of (await getConfs()).list) {
     if (c.start > new Date().toISOString().slice(0, 10) || !RV.inWindow(parsed.date, c) || !RV.mentions(text, c)) continue;
     const key = seriesKey(c), year = +c.start.slice(0, 4);
-    await db.run('INSERT INTO attend_receipts(user_id,series_key,edition_year,conf_id,inbox_id,receipt_date,created) VALUES(?,?,?,?,?,?,?) ON CONFLICT DO NOTHING', userId, key, year, c.id, inboxId, parsed.date, now());
-    await db.run("UPDATE reviews SET verify='verified', verified_by='receipt' WHERE user_id=? AND series_key=? AND edition_year=? AND verify!='verified'", userId, key, year);
+    /* one open item per edition: a second receipt for the same year adds nothing while one waits or was approved */
+    if (await db.get("SELECT 1 FROM receipt_checks WHERE user_id=? AND series_key=? AND edition_year=? AND status IN ('pending','approved')", userId, key, year)) continue;
+    await db.run('INSERT INTO receipt_checks(id,user_id,series_key,edition_year,conf_id,inbox_id,vendor,amount,currency,receipt_date,subject,file_name,file_type,size,data,status,created) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
+      rid(16), userId, key, year, c.id, inboxId, clean(parsed.vendor, 80) || null, parsed.amount ?? null, clean(parsed.currency || 'AUD', 3), parsed.date, clean(parsed.subject, 200) || null, file ? file.name : null, file ? file.type : null, file ? file.data.length : 0, file ? file.data : null, 'pending', now());
+    await db.run("UPDATE reviews SET verify='pending_receipt' WHERE user_id=? AND series_key=? AND edition_year=? AND verify='none'", userId, key, year);
     n++;
   }
-  if (n) ratingsCache = null;
   return n;
 }
 
@@ -591,7 +678,7 @@ async function backup() {
 }
 /* ---------- static ---------- */
 const MIME = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.ico': 'image/x-icon' };
-const PUBLIC = new Set(['index.html', 'app.js', 'parse.js', 'pack.js', 'stats.js', 'courses.js', 'data/courses/catalogue.json', 'data/courses/sessions.json', 'styles.css', 'lib/series.js', 'data/conferences.js', 'data/holidays.js', 'data/cpd-nz.js', 'admin.html', 'admin.js']);
+const PUBLIC = new Set(['index.html', 'app.js', 'parse.js', 'pack.js', 'stats.js', 'courses.js', 'data/courses/catalogue.json', 'data/courses/sessions.json', 'styles.css', 'lib/series.js', 'lib/coverage.js', 'lib/specialties.js', 'data/conferences.js', 'data/holidays.js', 'data/cpd-nz.js', 'admin.html', 'admin.js']);
 const DEMO_NOTE = '<div class="demo-note" role="note">Preview — accounts and receipts reset from time to time.</div>';
 function serveStatic(req, res, url) {
   let rel; try { rel = decodeURIComponent(url.pathname).replace(/^\/+/, '') || 'index.html'; } catch (e) { res.writeHead(400); return res.end('Bad request'); }
