@@ -1,0 +1,13 @@
+{
+ "https://www.esgi.example/congress/esgi-2027": "esgi-2027.html",
+ "https://asm.anzpm.example/2027/": "anzpm-2027.html",
+ "https://www.anzpm.example": { "blocked": "forbidden" },
+ "https://www.aspc.example/annual-meeting": "aspc-annual-meeting.html",
+ "https://www.jsdr.example/meeting/58th/": "jsdr-58th.html",
+ "https://www.socbr.example/": "socbr-home.html",
+ "https://www.socbr.example/congresso-2027/": "socbr-congresso-2027.html",
+ "https://www.bsn.example/events/winter-meeting": { "blocked": "challenge" },
+ "https://www.dgkn.example/jahrestagung-2027": "dgkn-2027.html",
+ "https://www.cso.example/congress-2027": "cso-2027.html",
+ "https://www.sfr.example/journees-2027": "sfr-journees.html"
+}

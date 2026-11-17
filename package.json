@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "node server.js",
-    "test": "node --test tests/hoggy.test.js tests/pdf.test.js tests/pack.test.js tests/home.test.js tests/reviews.test.js tests/rated.test.js tests/courses.test.js tests/hospital.test.js tests/receipts.test.js tests/copy.test.js tests/validate.test.js tests/pg.test.js && node tools/validate-data.js",
+    "test": "node --test tests/hoggy.test.js tests/pdf.test.js tests/pack.test.js tests/home.test.js tests/reviews.test.js tests/rated.test.js tests/courses.test.js tests/hospital.test.js tests/receipts.test.js tests/copy.test.js tests/validate.test.js tests/verify-dates.test.js tests/pg.test.js && node tools/validate-data.js",
     "merge": "node tools/merge-shards.js",
     "validate": "node tools/validate-data.js",
     "verify-dates": "node tools/verify-dates.js",
