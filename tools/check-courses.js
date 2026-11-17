@@ -1,9 +1,11 @@
 'use strict';
 /* Validates data/courses/catalogue.json and data/courses/sessions.json against the Hoggy data rules
    (docs/team/country-desks.md): https only, evidence on every confirmed row, sane dates, no duplicates,
-   no superlatives, CPD only when cited. Exits 1 on any error. Usage: node tools/check-courses.js [--today YYYY-MM-DD] */
+   no superlatives, CPD only when cited. Exits 1 on any error.
+   Usage: node tools/check-courses.js [--today YYYY-MM-DD] [--dir DIR]   (--dir: check a copy, e.g. before a refresh writes) */
 const fs = require('node:fs'), path = require('node:path');
-const dir = path.join(__dirname, '..', 'data', 'courses');
+const di = process.argv.indexOf('--dir');
+const dir = di > 0 ? path.resolve(process.argv[di + 1]) : path.join(__dirname, '..', 'data', 'courses');
 const ti = process.argv.indexOf('--today');
 const today = ti > 0 ? process.argv[ti + 1] : new Date().toISOString().slice(0, 10);
 const errors = [], warnings = [];

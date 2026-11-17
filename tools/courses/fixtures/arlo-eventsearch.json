@@ -1,0 +1,170 @@
+{
+ "_note": "trimmed from https://apls.arlo.co/api/2012-02-01/pub/resources/eventsearch/ fetched 2026-11-17 (3 of 77 items)",
+ "StartIndex": 0,
+ "Count": 3,
+ "Items": [
+  {
+   "ViewUri": "https://www.apls.org.au/courses/details?eventtemplate=36-apls-2-day-refresher-2026",
+   "RegistrationInfo": {
+    "RegisterUri": "https://apls.arlo.co/waiting-list?sid=01088885bc6e48e48f8b53896ec6f744",
+    "RegisterMessage": "Join waiting list"
+   },
+   "EventID": 1786,
+   "EventTemplateID": 36,
+   "Name": "REFRESHER - Melbourne 2-3 Dec 2026",
+   "Code": "REFRESHER Melbourne 2-3 Dec 26",
+   "Summary": "The Advanced Paediatric Life Support 2 Day Refresher – extending skills for active clinicians program is designed for candidates who have successfully completed the 3 day APLS course in the past 5 years and are currently clinically active. ",
+   "StartDateTime": "2026-12-02T08:30:00.0000000+11:00",
+   "EndDateTime": "2026-12-03T16:45:00.0000000+11:00",
+   "Location": {
+    "VenueID": 3,
+    "Name": "Melbourne",
+    "VenueName": "APLS Melbourne Training Centre",
+    "StreetLine1": "Level 5, 505 Little Collins Street",
+    "City": "Melbourne",
+    "Suburb": "Melbourne",
+    "State": "VIC",
+    "Country": "Australia",
+    "PostCode": "3000",
+    "PointLatitude": -37.8171802,
+    "PointLongitude": 144.957799,
+    "ViewUri": "https://www.apls.org.au/courses/venue?venue=3-apls-melbourne-training-centre"
+   },
+   "IsFull": true,
+   "AdvertisedOffers": [
+    {
+     "OfferID": 0,
+     "IsDiscountOffer": false,
+     "OfferAmount": {
+      "CurrencyCode": "AUD",
+      "AmountTaxExclusive": 2800,
+      "AmountTaxInclusive": 2800,
+      "FormattedAmountTaxExclusive": "$2,800.00",
+      "FormattedAmountTaxInclusive": "$2,800.00"
+     }
+    },
+    {
+     "OfferID": 1,
+     "IsDiscountOffer": true,
+     "ReplacesOfferID": 0,
+     "OfferAmount": {
+      "CurrencyCode": "AUD",
+      "AmountTaxExclusive": 2120,
+      "AmountTaxInclusive": 2120,
+      "FormattedAmountTaxExclusive": "$2,120.00",
+      "FormattedAmountTaxInclusive": "$2,120.00"
+     }
+    }
+   ]
+  },
+  {
+   "ViewUri": "https://www.apls.org.au/courses/details?eventtemplate=38-apls-2027",
+   "RegistrationInfo": {
+    "RegisterUri": "https://apls.arlo.co/register?sgid=7a40dff68de04c2383e54695602c01dc",
+    "RegisterMessage": "Register"
+   },
+   "EventID": 1857,
+   "EventTemplateID": 38,
+   "Name": "APLS - Adelaide 29-31 Jan 2027",
+   "Code": "APLS Adelaide 29-31 Jan 27",
+   "Summary": "The Advanced Paediatric Life Support course is an internationally recognised three day program for increasing your confidence and skills in managing paediatric emergencies. ",
+   "StartDateTime": "2027-01-29T09:00:00.0000000+10:30",
+   "EndDateTime": "2027-01-31T17:00:00.0000000+10:30",
+   "Location": {
+    "VenueID": 4,
+    "Name": "Adelaide",
+    "VenueName": "Adelaide Education Development Centre",
+    "StreetLine1": "4 Milner Street",
+    "City": "Adelaide",
+    "Suburb": "Hindmarsh",
+    "State": "SA",
+    "Country": "Australia",
+    "PostCode": "5007",
+    "PointLatitude": -34.9058097,
+    "PointLongitude": 138.5708453,
+    "ViewUri": "https://www.apls.org.au/courses/venue?venue=4-adelaide-education-development-centre"
+   },
+   "IsFull": false,
+   "PlacesRemaining": 12,
+   "AdvertisedOffers": [
+    {
+     "OfferID": 0,
+     "IsDiscountOffer": false,
+     "OfferAmount": {
+      "CurrencyCode": "AUD",
+      "AmountTaxExclusive": 3300,
+      "AmountTaxInclusive": 3300,
+      "FormattedAmountTaxExclusive": "$3,300.00",
+      "FormattedAmountTaxInclusive": "$3,300.00"
+     }
+    },
+    {
+     "OfferID": 1,
+     "IsDiscountOffer": true,
+     "ReplacesOfferID": 0,
+     "OfferAmount": {
+      "CurrencyCode": "AUD",
+      "AmountTaxExclusive": 2120,
+      "AmountTaxInclusive": 2120,
+      "FormattedAmountTaxExclusive": "$2,120.00",
+      "FormattedAmountTaxInclusive": "$2,120.00"
+     }
+    }
+   ]
+  },
+  {
+   "ViewUri": "https://www.apls.org.au/courses/details?eventtemplate=35-apls-2026",
+   "RegistrationInfo": {
+    "RegisterUri": "https://apls.arlo.co/waiting-list?sid=155030e38e2543bca9574f9573f81441",
+    "RegisterMessage": "Join waiting list"
+   },
+   "EventID": 1774,
+   "EventTemplateID": 35,
+   "Name": "APLS - Launceston 4-6 Dec 2026",
+   "Code": "APLS Launceston 4-6 Dec 26",
+   "Summary": "The Advanced Paediatric Life Support course is an internationally recognised three day program for increasing your confidence and skills in managing paediatric emergencies. ",
+   "StartDateTime": "2026-12-04T09:00:00.0000000+11:00",
+   "EndDateTime": "2026-12-06T17:00:00.0000000+11:00",
+   "Location": {
+    "VenueID": 249,
+    "Name": "Launceston",
+    "VenueName": "Hotel Grand Chancellor Launceston",
+    "StreetLine1": "29 Cameron Street",
+    "City": "Hobart",
+    "Suburb": "Launceston",
+    "State": "TAS",
+    "Country": "Australia",
+    "PostCode": "7250",
+    "PointLatitude": -41.4345144775533,
+    "PointLongitude": 147.140605635582,
+    "ViewUri": "https://www.apls.org.au/courses/venue?venue=249-hotel-grand-chancellor-launceston"
+   },
+   "IsFull": true,
+   "AdvertisedOffers": [
+    {
+     "OfferID": 0,
+     "IsDiscountOffer": false,
+     "OfferAmount": {
+      "CurrencyCode": "AUD",
+      "AmountTaxExclusive": 3300,
+      "AmountTaxInclusive": 3300,
+      "FormattedAmountTaxExclusive": "$3,300.00",
+      "FormattedAmountTaxInclusive": "$3,300.00"
+     }
+    },
+    {
+     "OfferID": 1,
+     "IsDiscountOffer": true,
+     "ReplacesOfferID": 0,
+     "OfferAmount": {
+      "CurrencyCode": "AUD",
+      "AmountTaxExclusive": 2120,
+      "AmountTaxInclusive": 2120,
+      "FormattedAmountTaxExclusive": "$2,120.00",
+      "FormattedAmountTaxInclusive": "$2,120.00"
+     }
+    }
+   ]
+  }
+ ]
+}

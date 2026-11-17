@@ -1,0 +1,11 @@
+{
+ "https://apls.arlo.co/api/2012-02-01/pub/resources/eventsearch/?fields=EventID,EventTemplateID,Name,Code,StartDateTime,EndDateTime,Location,IsFull,PlacesRemaining,AdvertisedOffers,RegistrationInfo,ViewUri,Summary&top=200": "arlo-eventsearch.json",
+ "https://www.resus.org.au/training-and-education/advanced-life-support-courses/course-dates": "arc-course-dates.html",
+ "https://www.acrrm.org.au/courses/face-to-face/als": "acrrm-als.html",
+ "https://www.acrrm.org.au/courses/face-to-face/rest": "acrrm-rest.html",
+ "https://www.acrrm.org.au/courses/face-to-face/paediatric-emergencies-for-rural-generalists": "acrrm-paediatric-emergencies.html",
+ "https://www.acrrm.org.au/courses/face-to-face/reot": "acrrm-reot.html",
+ "https://www.nzda.org.nz/education/courses-events/search-events?title=core": "nzda-search.html",
+ "https://www.nzda.org.nz/education/courses-events/core-advanced-206": "nzda-core-advanced-206.html",
+ "https://www.nzda.org.nz/education/courses-events/auckland-nzrc-core-immediate-8": "nzda-auckland-nzrc-core-immediate-8.html"
+}

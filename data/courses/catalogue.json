@@ -420,6 +420,247 @@
      "says": "course named Paediatric Advanced Life Support, states it is not APLS; AHA status unknown"
     }
    ]
+  },
+  {
+   "id": "acrrm-rest",
+   "name": "Rural Emergency Skills Training (REST)",
+   "providers": [
+    {
+     "name": "ACRRM (Australian College of Rural and Remote Medicine)",
+     "url": "https://www.acrrm.org.au/courses/face-to-face/rest",
+     "calendar": "https://www.acrrm.org.au/courses/face-to-face/upcoming-face-to-face-courses",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "audience": "Rural generalists and other clinicians managing emergencies in pre-hospital, small rural hospital and rural practice settings.",
+   "audienceEvidence": {
+    "sourceUrl": "https://www.acrrm.org.au/courses/face-to-face/rest",
+    "quote": "REST covers many of the common emergencies that are likely to present in the pre-hospital, small rural hospital, and private rural practice environments.",
+    "lastVerified": "2026-11-17"
+   },
+   "format": "About 12 hours of self-directed online learning and assessments, then two face-to-face workshop days (attendance on both days is mandatory).",
+   "formatEvidence": {
+    "sourceUrl": "https://www.acrrm.org.au/courses/face-to-face/rest",
+    "quote": "The REST course has approximately 12 hours of self-directed online learning followed by two hands-on workshop days.",
+    "lastVerified": "2026-11-17"
+   },
+   "typicalLength": "12 hours online + 2 days face-to-face",
+   "certificateValidityYears": null,
+   "validitySource": null,
+   "recertification": null,
+   "feeRange": {
+    "currency": "AUD",
+    "min": 3630,
+    "max": 4180,
+    "text": "ACRRM member $3,630, non-member $4,180"
+   },
+   "feeSource": "https://www.acrrm.org.au/courses/face-to-face/rest",
+   "feeQuote": "Member: 3630.00 Non Member: 4180.00",
+   "feeNote": "Same fee on every session row listed on 2026-11-17; currency not printed (Australian college).",
+   "cpdHours": 0,
+   "cpdNote": "ACRRM CPD 28 hours per session row (other colleges: check provider). See cpdByCollege.",
+   "cpdByCollege": [
+    {
+     "college": "ACRRM",
+     "hours": 28,
+     "appliesTo": "each session (CPD Hours column)",
+     "quote": "Educational Activity: 15 hours (includes 12 hours of online learning) | Performance Review: 13 hours | Emergency Medicine MOPS: 6 hours | Surgery MOPS: 6 hours",
+     "sourceUrl": "https://www.acrrm.org.au/courses/face-to-face/rest"
+    }
+   ],
+   "otherEvidence": [
+    {
+     "sourceUrl": "https://www.acrrm.org.au/courses/face-to-face/rest",
+     "quote": "Meets Australian Resuscitation Council Basic Life Support standards.",
+     "lastVerified": "2026-11-17"
+    },
+    {
+     "sourceUrl": "https://www.acrrm.org.au/courses/face-to-face/rest",
+     "quote": "It is mandatory that participants be present for the entire duration of the REST course over both days.",
+     "lastVerified": "2026-11-17"
+    }
+   ],
+   "verified": true,
+   "lastVerified": "2026-11-17",
+   "sessionNote": "Session rows give the first day only; end = next day, flagged endInferred."
+  },
+  {
+   "id": "acrrm-paediatric-emergencies",
+   "name": "Paediatric Emergencies for Rural Generalists",
+   "providers": [
+    {
+     "name": "ACRRM (Australian College of Rural and Remote Medicine)",
+     "url": "https://www.acrrm.org.au/courses/face-to-face/paediatric-emergencies-for-rural-generalists",
+     "calendar": "https://www.acrrm.org.au/courses/face-to-face/upcoming-face-to-face-courses",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "audience": "Rural generalists, GPs, registrars and clinicians strengthening paediatric emergency response in rural settings.",
+   "audienceEvidence": {
+    "sourceUrl": "https://www.acrrm.org.au/courses/face-to-face/paediatric-emergencies-for-rural-generalists",
+    "quote": "Appropriate for: Rural Generalists, GPs, registrars, and clinicians seeking to strengthen their paediatric emergency response in rural settings.",
+    "lastVerified": "2026-11-17"
+   },
+   "format": "About 8 hours of online learning, then two face-to-face workshop days (procedural skills and simulations); guided assessment instead of formal exams.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.acrrm.org.au/courses/face-to-face/paediatric-emergencies-for-rural-generalists",
+    "quote": "this blended course includes 8 hours of flexible, self-paced online learning followed by two days of practical, face-to-face workshops",
+    "lastVerified": "2026-11-17"
+   },
+   "typicalLength": "8 hours online + 2 days face-to-face",
+   "certificateValidityYears": null,
+   "validitySource": null,
+   "recertification": null,
+   "feeRange": {
+    "currency": "AUD",
+    "min": 3160,
+    "max": 3480,
+    "text": "ACRRM member $3,160, non-member $3,480"
+   },
+   "feeSource": "https://www.acrrm.org.au/courses/face-to-face/paediatric-emergencies-for-rural-generalists",
+   "feeQuote": "Member: 3160.00 Non Member: 3480.00",
+   "feeNote": "Same fee on every session row listed on 2026-11-17; currency not printed (Australian college).",
+   "cpdHours": 0,
+   "cpdNote": "ACRRM CPD 23.5 hours per session row (other colleges: check provider). See cpdByCollege.",
+   "cpdByCollege": [
+    {
+     "college": "ACRRM",
+     "hours": 23.5,
+     "appliesTo": "each session (CPD Hours column)",
+     "quote": "Educational Activity: 7 hours (including online learning) | Performance Review: 14 hours | Emergency Medicine MOPS: 6 hours | Anaesthetic MOPS: 1 hour | AST-Paediatrics MOPS: 6 hours | Obstetrics and Gynaecology MOPS: 6 hours",
+     "sourceUrl": "https://www.acrrm.org.au/courses/face-to-face/paediatric-emergencies-for-rural-generalists"
+    }
+   ],
+   "qualificationNote": "ACRRM states the course meets ARC standards for Paediatric Advanced Life Support and gives a PALS qualification in line with ANZCOR guidelines. It is not the American Heart Association PALS (catalogue id pals).",
+   "otherEvidence": [
+    {
+     "sourceUrl": "https://www.acrrm.org.au/courses/face-to-face/paediatric-emergencies-for-rural-generalists",
+     "quote": "this hands-on course meets Australian Resuscitation Council standards for Paediatric Advanced Life Support (PALS) with participants gaining a Paediatric Advanced Life Support (PALS) qualification in line with ANZCOR guidelines.",
+     "lastVerified": "2026-11-17"
+    }
+   ],
+   "verified": true,
+   "lastVerified": "2026-11-17",
+   "sessionNote": "Session titles print both dates (e.g. \"Perth 27-28 Jan 2027\"); end is taken from the title."
+  },
+  {
+   "id": "acrrm-anr",
+   "name": "Advanced Neonatal Resuscitation (ANR)",
+   "providers": [
+    {
+     "name": "ACRRM (Australian College of Rural and Remote Medicine)",
+     "url": "https://www.acrrm.org.au/courses/face-to-face/advanced-neonatal-resuscitation",
+     "calendar": "https://www.acrrm.org.au/courses/face-to-face/upcoming-face-to-face-courses",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "audience": "ACRRM fellows and registrars, rural GPs and generalists, obstetricians, early-career doctors, paramedics, midwives, nurses and others caring for newborns who need resuscitation.",
+   "audienceEvidence": {
+    "sourceUrl": "https://www.acrrm.org.au/courses/face-to-face/advanced-neonatal-resuscitation",
+    "quote": "Appropriate for: ACRRM Fellows, Registrars, Rural General Practitioners, Rural Generalists, Obstetricians, Early-career doctors, Paramedics, Midwives, Nurses, and any healthcare professional involved in the initial care of newborns requiring resuscitation.",
+    "lastVerified": "2026-11-17"
+   },
+   "format": "4 hours of online learning, then a one-day scenario-based workshop based on the ANZCOR newborn resuscitation guidelines.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.acrrm.org.au/courses/face-to-face/advanced-neonatal-resuscitation",
+    "quote": "Delivered through 4 hours of online learning, followed by a one-day immersive workshop",
+    "lastVerified": "2026-11-17"
+   },
+   "typicalLength": "4 hours online + 1 day face-to-face",
+   "certificateValidityYears": null,
+   "validitySource": null,
+   "recertification": null,
+   "feeRange": {
+    "currency": "AUD",
+    "min": 1795,
+    "max": 2065,
+    "text": "ACRRM member $1,795, non-member $2,065"
+   },
+   "feeSource": "https://www.acrrm.org.au/courses/face-to-face/advanced-neonatal-resuscitation",
+   "feeQuote": "Member: 1795.00 Non Member: 2065.00",
+   "feeNote": "Same fee on every session row listed on 2026-11-17; currency not printed (Australian college).",
+   "cpdHours": 0,
+   "cpdNote": "ACRRM CPD 11 hours per session row (other colleges: check provider). See cpdByCollege.",
+   "cpdByCollege": [
+    {
+     "college": "ACRRM",
+     "hours": 11,
+     "appliesTo": "each session (CPD Hours column)",
+     "quote": "Educational Activity: 3.5 hours | Performance Review: 7.5 hours",
+     "sourceUrl": "https://www.acrrm.org.au/courses/face-to-face/advanced-neonatal-resuscitation"
+    }
+   ],
+   "verified": true,
+   "lastVerified": "2026-11-17"
+  },
+  {
+   "id": "acrrm-reot",
+   "name": "Rural Emergency Obstetrics Training (REOT)",
+   "providers": [
+    {
+     "name": "ACRRM (Australian College of Rural and Remote Medicine)",
+     "url": "https://www.acrrm.org.au/courses/face-to-face/reot",
+     "calendar": "https://www.acrrm.org.au/courses/face-to-face/upcoming-face-to-face-courses",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "audience": "Rural generalists (with or without obstetrics), early-career doctors, RANZCOG trainees, paramedics and nurses in rural or remote maternity or emergency care.",
+   "audienceEvidence": {
+    "sourceUrl": "https://www.acrrm.org.au/courses/face-to-face/reot",
+    "quote": "Appropriate for: Rural Generalists (with or without obstetrics specialisation), early-career Doctors, RANZCOG trainees, Paramedics, and Nurses working in rural or remote settings who play a role in maternity or emergency care.",
+    "lastVerified": "2026-11-17"
+   },
+   "format": "8 hours of online pre-learning, then a one-day face-to-face workshop; certification in Maternity Emergencies and Neonatal Resuscitation for First Responders (ARC guidelines).",
+   "formatEvidence": {
+    "sourceUrl": "https://www.acrrm.org.au/courses/face-to-face/reot",
+    "quote": "Through a blend of 8 hours of interactive online pre-learning and an intensive one-day face-to-face workshop",
+    "lastVerified": "2026-11-17"
+   },
+   "typicalLength": "8 hours online + 1 day face-to-face",
+   "certificateValidityYears": null,
+   "validitySource": null,
+   "recertification": null,
+   "feeRange": {
+    "currency": "AUD",
+    "min": 1885,
+    "max": 2170,
+    "text": "ACRRM member $1,885, non-member $2,170"
+   },
+   "feeSource": "https://www.acrrm.org.au/courses/face-to-face/reot",
+   "feeQuote": "Member: 1885.00 Non Member: 2170.00",
+   "feeNote": "Same fee on every session row listed on 2026-11-17; currency not printed (Australian college).",
+   "cpdHours": 0,
+   "cpdNote": "ACRRM CPD 16 hours per session row (other colleges: check provider). See cpdByCollege.",
+   "cpdByCollege": [
+    {
+     "college": "ACRRM",
+     "hours": 16,
+     "appliesTo": "each session (CPD Hours column)",
+     "quote": "Educational Activity: 6 hours | Performance Review: 9.5 hours",
+     "sourceUrl": "https://www.acrrm.org.au/courses/face-to-face/reot"
+    }
+   ],
+   "otherEvidence": [
+    {
+     "sourceUrl": "https://www.acrrm.org.au/courses/face-to-face/reot",
+     "quote": "Participants will gain certification in Maternity Emergencies and Neonatal Resuscitation for First Responders as defined by the guidelines of the Australian Resuscitation Council (ARC)",
+     "lastVerified": "2026-11-17"
+    }
+   ],
+   "verified": true,
+   "lastVerified": "2026-11-17"
   }
  ]
 }
