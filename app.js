@@ -182,6 +182,27 @@ function receiptIssues(r) {
   return issues;
 }
 const ready = r => !receiptIssues(r).some(i => i.lvl === 'bad');
+/* tax-invoice check (AUD receipts): flags with help text, never a block */
+const HP = () => window.HoggyPack;
+const taxHtml = (r, n) => HP().taxFlags(r).slice(0, n || 3).map(f => `<div class="check ${f.code === 'no-abn-small' ? 'info' : 'warn'} taxflag" data-testid="tax-flag" data-code="${esc(f.code)}"><span aria-hidden="true">!</span><span>${esc(f.t)}<span class="help">${esc(f.help)}</span></span></div>`).join('');
+/* receipt checklist per trip: from the approval request, the trip's saved estimate or the study-leave draft */
+function tripEstimate(t) {
+  const a = inHosp() ? approvalOf(t) : null, c = ofTrip(t);
+  if (a && a.costs) return Object.fromEntries(Object.entries(a.costs).map(([k, v]) => [k, (+v || 0) / 100]));
+  return t.estimate || ((S.leave || {})[c && c.id] || {}).est || null;
+}
+const tripChecklist = t => { const c = ofTrip(t); return HP().checklist({ estimate: tripEstimate(t), kind: c && c.kind === 'course' ? 'course' : 'conference' }, S.receipts.filter(r => r.tripId === t.id), (S.claims[t.id] || {}).waived); };
+function checklistHtml(t) {
+  const list = tripChecklist(t);
+  return `<div class="checklist" data-testid="checklist" data-trip="${esc(t.id)}"><h4>Receipt checklist</h4><ul>${list.map(i => `<li class="ci ${i.status}" data-key="${esc(i.key)}" data-status="${esc(i.status)}"><span class="ci-mark" aria-hidden="true">${i.status === 'ok' ? '✓' : i.status === 'waived' ? '–' : '○'}</span><span class="ci-t"><b>${esc(i.label)}</b> ${i.status === 'ok' ? `<span class="note">${plural(i.receipts, 'receipt')}</span>` : i.status === 'waived' ? `<span class="note">No receipt. Reason: ${esc(i.reason)}</span>` : '<span class="note">No receipt yet</span>'}</span>${i.status === 'missing' ? `<button class="btn sm ghost" data-act="noreceipt" data-id="${esc(t.id)}" data-v="${esc(i.key)}">I don't have this receipt</button>` : i.status === 'waived' ? `<button class="btn sm ghost" data-act="undonoreceipt" data-id="${esc(t.id)}" data-v="${esc(i.key)}">Undo</button>` : ''}<span class="sr-only">${i.status === 'ok' ? 'done' : i.status === 'waived' ? 'no receipt, reason given' : 'missing'}</span></li>`).join('')}</ul></div>`;
+}
+/* amounts by currency on a claim, so foreign receipts are never added to the home total unconverted */
+function currencyHtml(rs) {
+  const home = S.profile.currency, by = HP().currencyTotals(rs, homeAmt, home);
+  if (!by.some(x => x.currency !== home)) return '';
+  return `<div class="pills cur-split" data-testid="currency-split" aria-label="Amounts by currency">${by.map(x => x.currency === home ? `<span class="pill">${esc(money(x.amount, home))}</span>` : `<span class="pill ${x.noRate ? 'b' : ''}">${esc(money(x.amount, x.currency))} ${x.noRate ? '· no exchange rate, not in the total' : '→ ' + esc(money(x.converted, home))}</span>`).join('')}</div>`;
+}
+const currencyLine = rs => { const home = S.profile.currency, by = HP().currencyTotals(rs, homeAmt, home).filter(x => x.currency !== home); return by.length ? 'Foreign-currency receipts: ' + by.map(x => `${money(x.amount, x.currency)} = ${x.noRate ? 'no exchange rate entered, not in the total' : money(x.converted, home) + ' at the rates in the schedule'}`).join('; ') + '.' : ''; };
 
 /* ---------- router / shell ---------- */
 /* [label, icon, hidden from the nav]. On phones Courses sits under Discover (Conferences / Courses toggle) to keep the tab bar at 7 */
@@ -293,18 +314,19 @@ const VIEWS = {
           <div class="row"><button class="btn sm" data-act="open" data-id="${esc(c.id)}">Details</button>${t.status === 'planned' ? `<button class="btn sm primary" data-act="attend" data-id="${esc(t.id)}">Mark attended</button>` : ''}<button class="btn sm danger" data-act="rmtrip" data-id="${esc(t.id)}">Remove</button></div></div>
           ${tripHospBox(t)}
           ${NET.online && c.kind !== 'course' && c.end < today() && !reviewedYear(skey(c), +c.start.slice(0, 4)) ? `<div class="rv-prompt"><span><b>How was it?</b> Review it in a minute. It helps colleagues choose.</span><button class="btn sm primary" data-act="review" data-id="${esc(c.id)}" data-year="${esc(c.start.slice(0, 4))}">Review ${esc(c.start.slice(0, 4))}</button></div>` : ''}
-          <div class="row" style="margin-top:16px"><label class="from-field">Flying from <input type="text" data-from="${esc(t.id)}" value="${esc(t.from || S.profile.homeAirport || S.profile.city || '')}" maxlength="40" placeholder="City or airport" aria-label="Flying from (city or airport code) for ${esc(c.name)}"></label><a class="btn sm" target="_blank" rel="noopener noreferrer" data-flights="${esc(t.id)}" href="${esc(L.flights)}">✈ Search flights ${icon('ext')}</a><a class="btn sm" target="_blank" rel="noopener noreferrer" href="${esc(L.hotels)}">🛏 Search hotels ${icon('ext')}</a><button class="btn sm ghost" data-act="addbook" data-id="${esc(t.id)}">${icon('plus')} Log a booking</button><button class="btn sm ghost" data-act="addreceipt" data-id="${esc(t.id)}">${icon('receipt')} Add receipt</button></div>
-          ${(t.bookings || []).length ? `<div class="list" style="margin-top:12px">${t.bookings.map(b => `<div class="li"><div class="grow"><div class="t">${esc(b.type)} · ${esc(b.vendor)}</div><div class="s">Ref ${esc(b.ref || '—')} · ${esc(b.date ? fmtD(b.date) : '')}</div></div><div class="amt">${money(b.amount)}</div><button class="icon-btn" data-act="rmbook" data-id="${esc(t.id)}" data-b="${esc(b.id)}" aria-label="Remove booking">${icon('x')}</button></div>`).join('')}</div>` : ''}</div>`; }).join('')
+          <div class="row" style="margin-top:16px"><label class="from-field">Flying from <input type="text" data-from="${esc(t.id)}" value="${esc(t.from || S.profile.homeAirport || S.profile.city || '')}" maxlength="40" placeholder="City or airport" aria-label="Flying from (city or airport code) for ${esc(c.name)}"></label><a class="btn sm" target="_blank" rel="noopener noreferrer" data-flights="${esc(t.id)}" href="${esc(L.flights)}">✈ Search flights ${icon('ext')}</a><a class="btn sm" target="_blank" rel="noopener noreferrer" href="${esc(L.hotels)}">🛏 Search hotels ${icon('ext')}</a><button class="btn sm ghost" data-act="addbook" data-id="${esc(t.id)}">${icon('plus')} Log a booking</button>${snapBtn(t.id)}<button class="btn sm ghost" data-act="addreceipt" data-id="${esc(t.id)}">${icon('receipt')} Add receipt</button></div>
+          ${(t.bookings || []).length ? `<div class="list" style="margin-top:12px">${t.bookings.map(b => `<div class="li"><div class="grow"><div class="t">${esc(b.type)} · ${esc(b.vendor)}</div><div class="s">Ref ${esc(b.ref || '—')} · ${esc(b.date ? fmtD(b.date) : '')}</div></div><div class="amt">${money(b.amount)}</div><button class="icon-btn" data-act="rmbook" data-id="${esc(t.id)}" data-b="${esc(b.id)}" aria-label="Remove booking">${icon('x')}</button></div>`).join('')}</div>` : ''}${checklistHtml(t)}</div>`; }).join('')
         : `<div class="empty"><h3>No trips yet</h3><p>Save a conference and hit “Plan trip” to start. Hoggy prefills flight and hotel searches for the exact dates.</p><p style="margin-top:16px"><a class="btn primary" href="#/discover">Browse conferences</a></p></div>`) +
       `<p class="note">Hoggy opens prefilled search pages with Google Flights and Booking.com. You complete the purchase with the provider, then log the booking and forward the receipt here.</p>`;
   },
   receipts() {
     const rs = S.receipts.slice().sort((a, b) => (b.created || 0) - (a.created || 0)), addr = NET.user ? NET.user.inbox : '';
-    return `<div class="page-head"><div><h1>Receipts</h1><p>Every receipt in one place, checked against your claim rules the moment it arrives.</p></div><button class="btn primary" data-act="addreceipt">${icon('plus')} Add receipt</button></div>
+    return `<div class="page-head"><div><h1>Receipts</h1><p>Every receipt in one place, checked against your claim rules the moment it arrives.</p></div><div class="row head-acts">${snapBtn('', true)}<button class="btn" data-act="addreceipt">${icon('plus')} Add receipt</button></div></div>
     <div class="cols"><div>
       <div class="drop" id="drop"><p style="color:var(--text);font-weight:700;font-size:17px">Drop receipts here</p><p style="margin-top:4px">PDF, JPG or PNG — or paste a forwarded email in the add dialog.</p><p style="margin-top:14px"><button class="btn" data-act="addreceipt">Choose files</button></p></div>
       <div class="panel" style="margin-top:14px"><h3>${rs.length} receipt${rs.length === 1 ? '' : 's'}</h3>${rs.length ? `<div class="list">${rs.map(r => { const iss = receiptIssues(r), bad = iss.filter(i => i.lvl === 'bad').length, trip = S.trips.find(t => t.id === r.tripId);
-        return `<div class="li"><div class="thumb" data-file="${esc(r.fileKey || '')}">${icon('file')}</div><div class="grow"><div class="t">${esc(r.vendor || 'Unnamed')}</div><div class="s">${esc(r.category)} · ${esc(r.date ? fmtD(r.date) : 'no date')}${trip ? ' · ' + esc(ofTrip(trip).name) : ''}</div>${iss.slice(0, 2).map(i => `<div class="check ${i.lvl}">${i.lvl === 'bad' ? '✕' : '!'} ${esc(i.t)}</div>`).join('')}</div><div style="text-align:right"><div class="amt">${money(r.amount, r.currency)}</div><span class="status ${esc(r.status)}">${esc(r.status === 'captured' ? (bad ? 'Needs info' : 'Ready') : r.status)}</span></div>${r.fileKey ? `<button class="icon-btn" data-act="openfile" data-id="${esc(r.id)}" aria-label="Download receipt file" title="Download receipt file">${icon('file')}</button>` : ''}<button class="icon-btn" data-act="editreceipt" data-id="${esc(r.id)}" aria-label="Edit receipt">${icon('gear')}</button></div>`; }).join('')}</div>` : '<div class="empty"><h3>Nothing yet</h3><p>Forward an email or drop a file to get started.</p></div>'}</div></div>
+        const tf = taxHtml(r, 2);
+        return `<div class="li rc"><div class="thumb" data-file="${esc(r.fileKey || '')}">${icon('file')}</div><div class="grow"><div class="t">${esc(r.vendor || 'Unnamed')}</div><div class="s">${esc(r.category)} · ${esc(r.date ? fmtD(r.date) : 'no date')}${trip ? ' · ' + esc(ofTrip(trip).name) : ''}</div>${iss.slice(0, 2).map(i => `<div class="check ${i.lvl}">${i.lvl === 'bad' ? '✕' : '!'} ${esc(i.t)}</div>`).join('')}</div><div class="rc-amt" style="text-align:right"><div class="amt">${money(r.amount, r.currency)}</div><span class="status ${esc(r.status)}">${esc(r.status === 'captured' ? (bad ? 'Needs info' : 'Ready') : r.status)}</span></div>${r.fileKey ? `<button class="icon-btn" data-act="openfile" data-id="${esc(r.id)}" aria-label="Download receipt file" title="Download receipt file">${icon('file')}</button>` : ''}<button class="icon-btn" data-act="editreceipt" data-id="${esc(r.id)}" aria-label="Edit receipt">${icon('gear')}</button>${tf ? `<div class="li-flags">${tf}</div>` : ''}</div>`; }).join('')}</div>` : '<div class="empty"><h3>Nothing yet</h3><p>Forward an email or drop a file to get started.</p></div>'}</div></div>
     <div><div class="panel"><h3>Your forwarding address</h3>${addr ? `<div class="copybox"><span style="flex:1">${esc(addr)}</span><button class="icon-btn" data-act="copy" data-v="${esc(addr)}" aria-label="Copy address">${icon('copy')}</button></div><p class="note">Auto-forward travel and booking emails here. They land in your Receipts within a minute with the vendor, amount and date read for you and a suggested trip, which you confirm.</p><p style="margin-top:10px"><button class="btn sm" data-act="checkinbox">Check inbox now</button></p>` : `<p style="color:var(--muted)">${NET.online ? 'Sign in to get your personal forwarding address.' : 'The Hoggy server is not running, so email forwarding is off. Paste emails or drop files instead.'}</p>${NET.online ? '<p style="margin-top:10px"><button class="btn sm primary" data-act="signin">Sign in</button></p>' : ''}`}</div>
       <div class="panel"><h3>How Hoggy makes your claim claim-ready</h3>${['Every receipt must have a file, amount, date and trip','Amounts are checked against the caps you enter in Settings, and dates against the conference window','Duplicates and foreign currency are flagged','Export and submit unlock once every receipt has its file, amount, date and trip'].map(t => `<div class="check ok">✓ ${esc(t)}</div>`).join('')}</div></div></div>`;
   },
@@ -319,7 +341,8 @@ const VIEWS = {
           <div class="row" style="margin:14px 0 6px;justify-content:space-between"><span style="font-weight:600">Claim readiness</span><span style="color:${allReady ? 'var(--ok)' : 'var(--warn)'};font-weight:700">${rd}/${rs.length} receipts ready</span></div><div class="bar"><i class="${allReady ? '' : 'warn'}" style="width:${pct}%"></i></div>
           ${rs.filter(r => !ready(r)).map(r => `<div class="check bad">✕ ${esc(r.vendor || 'Receipt')}: ${esc(receiptIssues(r).filter(i => i.lvl === 'bad').map(i => i.t).join(', '))} <a href="#/receipts" data-act="editreceipt" data-id="${esc(r.id)}" style="text-decoration:underline;margin-left:6px">Fix</a></div>`).join('')}
           ${pol.map(i => `<div class="check ${i.lvl}">${i.lvl === 'bad' ? '✕' : '!'} ${esc(i.t)}</div>`).join('')}
-          <div class="pills" style="margin-top:14px">${cats.map(([k, v]) => `<span class="pill">${esc(k)} ${money(v)}</span>`).join('')}</div>
+          <div class="pills" style="margin-top:14px">${cats.map(([k, v]) => `<span class="pill">${esc(k)} ${money(v)}</span>`).join('')}</div>${currencyHtml(rs)}
+          ${checklistHtml(t)}${claimWarn(t, rs)}
           <div class="row" style="margin-top:16px"><button class="btn sm" data-act="exportcsv" data-id="${esc(t.id)}" ${allReady ? '' : 'disabled'}>Export CSV</button><button class="btn sm" data-act="printpack" data-id="${esc(t.id)}" ${allReady ? '' : 'disabled'}>Print claim pack</button><button class="btn sm primary" data-act="emailpack" data-id="${esc(t.id)}" ${allReady ? '' : 'disabled'}${claimsTo() ? ` title="Draft to ${esc(claimsTo())}"` : ''}>${inHosp() && !EMP().adminEmail && HOSP.org.claimsEmail ? 'Email to ' + esc(HOSP.org.name) + ' claims' : 'Email to claims admin'}</button><button class="btn sm" data-act="mailtopack" data-id="${esc(t.id)}" ${allReady ? '' : 'disabled'} title="For webmail: downloads the schedule and opens a prefilled email; you attach the files">Webmail instead</button>
             ${hc && hc.status === 'paid' ? '' : st === 'draft' || rs.some(r => r.status === 'captured') ? `<button class="btn sm primary" data-act="submitclaim" data-id="${esc(t.id)}" ${allReady ? '' : 'disabled'}>${hc ? 'Update submitted claim' : 'Mark submitted'}</button>` : ''}${st === 'claimed' && !hc ? `<button class="btn sm primary" data-act="paidclaim" data-id="${esc(t.id)}">Mark reimbursed</button>` : ''}</div>
           ${hc ? `<p class="note" data-testid="claim-hosp">${hc.status === 'paid' ? `<b>Paid</b> by ${esc(HOSP.org.name)} on ${esc(fmtD(dayOf(hc.paid)))} (${hmoney(hc.totalCents)}).` : `With ${esc(HOSP.org.name)} finance since ${esc(fmtD(dayOf(hc.submitted)))} (${hmoney(hc.totalCents)}). Finance marks it paid; you see it here.`}</p>` : claim.submitted ? `<p class="note">Submitted ${esc(fmtD(claim.submitted))}${claim.paid ? ' · reimbursed ' + esc(fmtD(claim.paid)) : ''}</p>` : ''}</div>`; }).join('')
@@ -964,6 +987,8 @@ function receiptDialog(opts = {}) {
   <div class="two">${field('rv1', 'Vendor', `<input id="rv1" type="text" name="vendor" required maxlength="80" value="${esc(v.vendor || '')}">`)}${field('rv2', 'Category', `<select id="rv2" name="category">${CATS.map(k => `<option ${k === (v.category || 'Other') ? 'selected' : ''}>${k}</option>`).join('')}</select>`)}</div>
   <div class="two">${field('rv3', 'Amount', `<input id="rv3" type="number" step="0.01" min="0" name="amount" required value="${esc(v.amount ?? '')}">`)}${field('rv4', 'Currency', `<input id="rv4" type="text" name="currency" maxlength="3" value="${esc(v.currency || S.profile.currency)}">`)}</div>
   <div class="two">${field('rv5', 'Date', `<input id="rv5" type="date" name="date" required value="${esc(v.date || '')}">`)}${field('rv6', 'Trip', `<select id="rv6" name="tripId">${tripOpts}</select>`)}</div>
+  <div class="two">${field('rv12', 'Supplier ABN (Australian receipts)', `<input id="rv12" type="text" name="abn" inputmode="numeric" maxlength="20" autocomplete="off" value="${esc(v.abn ? HP().fmtAbn(v.abn) : '')}">`)}${field('rv13', 'GST included', `<input id="rv13" type="number" step="0.01" min="0" name="gst" value="${esc(v.gst ?? '')}">`)}</div>
+  <label class="tick"><input type="checkbox" name="taxInvoice" ${v.taxInvoice ? 'checked' : ''}> The document says “Tax invoice”</label>
   ${field('rv8', 'Exchange rate to ' + S.profile.currency + ' (only for foreign currency)', `<input id="rv8" type="number" step="0.0001" min="0" name="fxRate" value="${esc(v.fxRate || '')}">`)}
   <div class="two">${field('rv9', 'Nights (accommodation)', `<input id="rv9" type="number" min="0" step="1" name="nights" value="${esc(v.nights || '')}">`)}${field('rv10', 'Personal portion to exclude', `<input id="rv10" type="number" min="0" step="0.01" name="personal" value="${esc(v.personal || '')}">`)}</div>
   ${field('rv11', 'Justification for exceeding policy (only if over a limit)', `<input id="rv11" type="text" name="excuse" maxlength="200" value="${esc(v.excuse || '')}">`)}
@@ -973,15 +998,91 @@ function receiptDialog(opts = {}) {
   const form = $('#rf'); let pending = files.slice();
   if (!ed) {
     const fi = $('#rfile'); fi.addEventListener('change', () => { pending = [...fi.files]; });
-    $('#parse').addEventListener('click', () => { const p = parseReceipt($('#rtext').value); if (!p.amount && !p.vendor) return $('#pmsg').textContent = 'Nothing recognised — fill in manually.'; if (p.vendor) form.vendor.value = p.vendor; if (p.amount) form.amount.value = p.amount; if (p.currency) form.currency.value = p.currency; if (p.date) form.date.value = p.date; form.category.value = p.category; $('#pmsg').textContent = 'Filled in — check it looks right.'; });
+    $('#parse').addEventListener('click', () => { const p = parseReceipt($('#rtext').value); if (!p.amount && !p.vendor) return $('#pmsg').textContent = 'Nothing recognised — fill in manually.'; if (p.vendor) form.vendor.value = p.vendor; if (p.amount) form.amount.value = p.amount; if (p.currency) form.currency.value = p.currency; if (p.date) form.date.value = p.date; form.category.value = p.category; if (p.abn) form.abn.value = HP().fmtAbn(p.abn); if (p.gst != null) form.gst.value = p.gst; form.taxInvoice.checked = !!p.taxInvoice; $('#pmsg').textContent = 'Filled in — check it looks right.'; });
     if (files.length) { const n = files[0].name.replace(/\.[^.]+$/, '').replace(/[_-]+/g, ' '); form.vendor.value = n.slice(0, 60); form.date.value = today(); }
   }
-  form.addEventListener('submit', async e => { e.preventDefault(); const f = new FormData(form), base = { vendor: String(f.get('vendor')).trim().slice(0, 80), category: f.get('category'), amount: Math.round((+f.get('amount') || 0) * 100) / 100, currency: String(f.get('currency') || S.profile.currency).toUpperCase().slice(0, 3), fxRate: +f.get('fxRate') || 0, excuse: String(f.get('excuse') || '').trim().slice(0, 200), nights: Math.max(0, Math.round(+f.get('nights') || 0)), personal: Math.max(0, +f.get('personal') || 0), date: f.get('date'), tripId: f.get('tripId'), note: String(f.get('note') || '').slice(0, 200) };
+  form.addEventListener('submit', async e => { e.preventDefault(); const f = new FormData(form), base = { vendor: String(f.get('vendor')).trim().slice(0, 80), category: f.get('category'), amount: Math.round((+f.get('amount') || 0) * 100) / 100, currency: String(f.get('currency') || S.profile.currency).toUpperCase().slice(0, 3), fxRate: +f.get('fxRate') || 0, excuse: String(f.get('excuse') || '').trim().slice(0, 200), nights: Math.max(0, Math.round(+f.get('nights') || 0)), personal: Math.max(0, +f.get('personal') || 0), date: f.get('date'), tripId: f.get('tripId'), note: String(f.get('note') || '').slice(0, 200), ...taxFields(f) };
     if (ed) { Object.assign(ed, base); }
     else { const list = pending.length ? pending : [null]; for (const file of list) { const r = { id: uid(), ...base, status: 'captured', created: Date.now() }; if (file && !['application/pdf', 'image/png', 'image/jpeg', 'image/webp'].includes(file.type)) { toast(file.name + ': only PDF, JPG, PNG or WebP are supported. For iPhone HEIC photos, share as JPG or take a screenshot'); continue; }
       if (file) { if (file.size > 15e6) { toast(file.name + ' is over 15 MB, skipped'); continue; } r.fileKey = 'f-' + r.id; r.fileName = file.name; try { await putFile(r.fileKey, file, file.name); } catch (er) { delete r.fileKey; toast('Could not store file'); } } else if (!$('#rtext').value.trim()) { /* manual entry, no file */ } else { r.fileKey = 't-' + r.id; r.fileName = 'forwarded-email.txt'; try { await putFile(r.fileKey, new Blob([$('#rtext').value.slice(0, 20000)], { type: 'text/plain' }), r.fileName); } catch (er) { delete r.fileKey; } } S.receipts.push(r); } }
     save(); closeOverlay(); toast('Receipt saved'); render(); });
 }
+/* ABN, GST and "tax invoice" from a receipt form (blank ABN or GST = not on the receipt) */
+const taxFields = f => { const abn = String(f.get('abn') || '').replace(/[^\d]/g, '').slice(0, 11), g = String(f.get('gst') || '').trim(); return { abn, gst: g === '' ? null : Math.max(0, Math.round(+g * 100) / 100 || 0), taxInvoice: f.get('taxInvoice') === 'on' }; };
+function claimWarn(t, rs) {
+  const miss = HP().missingOf(tripChecklist(t)), fl = rs.filter(r => HP().taxFlags(r).some(x => x.code !== 'no-abn-small'));
+  if (!miss.length && !fl.length) return '';
+  return `<div class="claim-warn" role="note" data-testid="claim-warn">${miss.length ? `<p><b>Missing receipts:</b> ${esc(miss.map(i => i.label).join(', '))}. You can still send the claim. Add the receipt, or tap “I don't have this receipt” and say why: the reason goes on the schedule.</p>` : ''}${fl.length ? `<p><b>May not count as a tax invoice:</b> ${esc(fl.map(r => r.vendor || r.category).join(', '))}. This is listed on the schedule; see the note on each receipt.</p>` : ''}</div>`;
+}
+
+/* ---------- Snap receipt: photo or PDF -> "Check this receipt" card -> "Looks right" saves it ----------
+   Signed in and online, the file goes to /api/receipts/read (Claude when the server has a key, else the PDF text parser).
+   Offline or signed out the photo is still saved with the receipt; there is just no automatic reading. */
+const SNAP_STORE = ['application/pdf', 'image/png', 'image/jpeg', 'image/webp'];
+const snapBtn = (tripId, big) => `<label class="btn ${big ? 'primary' : 'sm'} snap-btn">${icon('receipt')} Snap receipt<input type="file" class="snap-in" data-snap="${esc(tripId || '')}" accept="image/*,application/pdf" capture="environment" aria-label="Snap receipt${tripId ? ' for this trip' : ''}"></label>`;
+const isHeic = f => /^image\/hei[cf]$/i.test(f.type || '') || /\.hei[cf]$/i.test(f.name || '');
+/* re-encode a photo as JPEG, at most `max` px on the long side (smaller upload; also turns HEIC into JPEG where the browser can decode it) */
+async function toJpeg(file, max) {
+  const bmp = await createImageBitmap(file), k = Math.min(1, max / Math.max(bmp.width, bmp.height)), c = document.createElement('canvas');
+  c.width = Math.max(1, Math.round(bmp.width * k)); c.height = Math.max(1, Math.round(bmp.height * k)); c.getContext('2d').drawImage(bmp, 0, 0, c.width, c.height); if (bmp.close) bmp.close();
+  const b = await new Promise(r => c.toBlob(r, 'image/jpeg', 0.85)); if (!b) throw new Error('encode failed'); return b;
+}
+/* a trip whose dates fit the receipt date (bookings are often made months before) */
+const suggestTrip = d => { if (!d) return ''; const fit = S.trips.filter(t => { const c = ofTrip(t); return c && d >= addDays(c.start, -270) && d <= addDays(c.end, 7); }); return fit.length === 1 ? fit[0].id : ''; };
+const addDays = (iso, n) => { const t = new Date(iso + 'T00:00:00Z'); t.setUTCDate(t.getUTCDate() + n); return t.toISOString().slice(0, 10); };
+async function snapDialog(file, tripId) {
+  let store = file, name = file.name || 'receipt';
+  if (isHeic(file)) { try { store = await toJpeg(file, 3000); name = name.replace(/\.[^.]+$/, '') + '.jpg'; } catch (e) { return toast('This HEIC photo cannot be opened here. Share it as JPG, or take a screenshot of it.'); } }
+  else if (!SNAP_STORE.includes(file.type)) return toast((file.name || 'That file') + ': use a JPG, PNG or WebP photo, or a PDF.');
+  if (store.size > 15e6) return toast((file.name || 'That file') + ' is over 15 MB.');
+  const preview = /^image\//.test(store.type) ? URL.createObjectURL(store) : '', tripOpts = `<option value="">— choose trip —</option>` + S.trips.map(t => `<option value="${esc(t.id)}" ${tripId === t.id ? 'selected' : ''}>${esc(ofTrip(t).name)}</option>`).join('');
+  openOverlay(`<div class="sheet center" role="dialog" aria-modal="true" aria-labelledby="scH"><form id="scf" class="snap-card" style="padding:22px" data-testid="snap-card"><div class="row" style="justify-content:space-between;margin-bottom:10px"><h2 id="scH" style="font-size:24px;margin:0">Check this receipt</h2><button type="button" class="icon-btn" data-act="close" aria-label="Close">${icon('x')}</button></div>
+    <div class="snap-top">${preview ? `<img class="snap-prev" alt="Your receipt photo" src="${preview}">` : `<div class="snap-prev pdf">${icon('file')}<span>${esc(name)}</span></div>`}<div class="grow"><p class="snap-msg" id="scmsg" role="status" aria-live="polite">${!NET.online ? 'You are offline, so Hoggy cannot read it now. Fill in the details; the file is saved with the receipt.' : !NET.user ? 'Sign in to have Hoggy read receipts for you. For now, fill in the details; the file is saved with the receipt.' : 'Reading the receipt…'}</p><p class="note" id="scsrc"></p></div></div>
+    <div class="two">${field('sc1', 'Supplier', '<input id="sc1" type="text" name="vendor" required maxlength="80" autocomplete="off">')}${field('sc2', 'Category', `<select id="sc2" name="category">${CATS.map(k => `<option>${k}</option>`).join('')}</select>`)}</div>
+    <div class="two">${field('sc3', 'Total', '<input id="sc3" type="number" step="0.01" min="0" name="amount" required inputmode="decimal">')}${field('sc4', 'Currency', `<input id="sc4" type="text" name="currency" maxlength="3" value="${esc(S.profile.currency)}" autocapitalize="characters">`)}</div>
+    <div class="two">${field('sc5', 'Date', '<input id="sc5" type="date" name="date" required>')}${field('sc6', 'Trip', `<select id="sc6" name="tripId">${tripOpts}</select>`)}</div>
+    <div class="two">${field('sc7', 'Supplier ABN', '<input id="sc7" type="text" name="abn" inputmode="numeric" maxlength="20" autocomplete="off">')}${field('sc8', 'GST included', '<input id="sc8" type="number" step="0.01" min="0" name="gst" inputmode="decimal">')}</div>
+    <label class="tick"><input type="checkbox" name="taxInvoice" id="sc9"> The document says “Tax invoice”</label>
+    <div class="field" id="scfx" hidden><label for="sc10">Exchange rate to ${esc(S.profile.currency)}</label><input id="sc10" type="number" step="0.0001" min="0" name="fxRate"></div>
+    <div id="scflags" aria-live="polite"></div>
+    <div class="row" style="justify-content:flex-end;margin:10px 0 6px"><button class="btn primary" type="submit" id="scok">Looks right</button></div></form></div>`, true);
+  const form = $('#scf'), touched = new Set();
+  const flags = () => { const f = new FormData(form), r = { category: f.get('category'), amount: +f.get('amount') || 0, currency: String(f.get('currency') || '').toUpperCase(), ...taxFields(f) }; $('#scfx').hidden = !r.currency || r.currency === S.profile.currency; $('#scflags').innerHTML = taxHtml(r); };
+  form.addEventListener('input', e => { if (e.target.name) touched.add(e.target.name); flags(); });
+  form.addEventListener('change', flags); flags();
+  const put = (k, v) => { if (v == null || v === '' || touched.has(k)) return; const el = form.elements[k]; if (el.type === 'checkbox') el.checked = !!v; else el.value = v; };
+  if (NET.online && NET.user) (async () => {
+    let body = store; if (/^image\//.test(store.type)) { try { body = await toJpeg(store, 2000); } catch (e) { body = store; } }
+    let r = { error: 'skip' };
+    if (body.size <= (body.type === 'application/pdf' ? 10e6 : 5e6)) { try { const res = await fetch('/api/receipts/read?cur=' + encodeURIComponent(S.profile.currency), { method: 'POST', headers: { ...RH, 'Content-Type': body.type }, credentials: 'same-origin', body }); r = await res.json().catch(() => ({ error: 'bad' })); if (!res.ok) r.error = r.error || 'failed'; } catch (e) { r = { error: 'offline' }; } }
+    if (!form.isConnected) return;
+    if (r.error) { $('#scmsg').textContent = r.error === 'offline' ? 'Could not reach Hoggy, so the receipt was not read. Fill in the details.' : r.error === 'skip' ? 'This file is too large to read. Fill in the details.' : r.error; return; }
+    put('vendor', r.supplierName); if (r.category && r.category !== 'Other') put('category', r.category); put('amount', r.totalCents != null ? (r.totalCents / 100).toFixed(2) : ''); put('currency', r.currency);
+    put('date', r.date); put('abn', r.supplierAbn ? HP().fmtAbn(r.supplierAbn) : ''); put('gst', r.gstCents != null ? (r.gstCents / 100).toFixed(2) : ''); put('taxInvoice', r.isTaxInvoice === true);
+    if (!tripId && !touched.has('tripId')) put('tripId', suggestTrip(r.date));
+    form.dataset.source = r.source; form.dataset.confidence = r.confidence;
+    $('#scmsg').textContent = r.note || 'Check every field.';
+    $('#scsrc').innerHTML = r.source === 'none' ? '' : `<span class="pill ${r.confidence === 'high' ? 'g' : r.confidence === 'medium' ? '' : 'w'}" data-testid="snap-confidence">${r.confidence === 'high' ? 'High' : r.confidence === 'medium' ? 'Medium' : 'Low'} confidence</span>`;
+    flags();
+  })();
+  form.addEventListener('submit', async e => {
+    e.preventDefault(); const f = new FormData(form), cur = String(f.get('currency') || S.profile.currency).toUpperCase().replace(/[^A-Z]/g, '').slice(0, 3) || S.profile.currency;
+    const r = { id: uid(), vendor: String(f.get('vendor')).trim().slice(0, 80), category: f.get('category'), amount: Math.round((+f.get('amount') || 0) * 100) / 100, currency: cur, fxRate: cur === S.profile.currency ? 0 : +f.get('fxRate') || 0, date: f.get('date'), tripId: f.get('tripId'), note: '', excuse: '', nights: 0, personal: 0, ...taxFields(f), status: 'captured', created: Date.now(), read: { source: form.dataset.source || 'none', confidence: form.dataset.confidence || 'low' } };
+    $('#scok').disabled = true;
+    r.fileKey = 'f-' + r.id; r.fileName = name;
+    try { await putFile(r.fileKey, store, name); } catch (er) { delete r.fileKey; delete r.fileName; toast('Could not store the file on this device'); }
+    S.receipts.push(r); save(); if (preview) URL.revokeObjectURL(preview); closeOverlay(); toast('Receipt saved'); render();
+  });
+}
+document.addEventListener('change', e => { const i = e.target; if (!i || !i.matches || !i.matches('input[data-snap]')) return; const f = i.files && i.files[0], tid = i.dataset.snap; i.value = ''; if (f) snapDialog(f, tid && S.trips.some(t => t.id === tid) ? tid : ''); });
+function noReceiptDialog(tripId, key) {
+  const t = S.trips.find(x => x.id === tripId), it = t && tripChecklist(t).find(i => i.key === key); if (!it) return;
+  simpleDialog(`No ${it.label.toLowerCase()} receipt`, `<p class="note" style="margin:0 0 12px">Say why you don't have it. The reason is printed on the claim pack schedule so your claims admin sees it.</p>${field('nr1', 'Reason', '<textarea id="nr1" name="reason" rows="3" required minlength="3" maxlength="300" placeholder="For example: registration was paid by the department"></textarea>')}`, f => {
+    const reason = String(f.get('reason') || '').trim().slice(0, 300); if (reason.length < 3) return toast('Add a reason');
+    const c = S.claims[tripId] = { ...(S.claims[tripId] || {}) }; c.waived = { ...(c.waived || {}), [key]: { reason, date: today() } }; save(); closeOverlay(); render();
+  }, 'Save reason');
+}
+
 function simpleDialog(title, body, onSubmit, cta = 'Save') {
   openOverlay(`<div class="sheet center" role="dialog" aria-modal="true" aria-label="${esc(title)}"><form id="sf" style="padding:22px"><div class="row" style="justify-content:space-between;margin-bottom:14px"><h2 style="font-size:24px;margin:0">${esc(title)}</h2><button type="button" class="icon-btn" data-act="close" aria-label="Close">${icon('x')}</button></div>${body}<div class="row" style="justify-content:flex-end;margin:6px 0 20px"><button class="btn primary" type="submit" autofocus>${esc(cta)}</button></div></form></div>`, true);
   $('#sf').addEventListener('submit', e => { e.preventDefault(); onSubmit(new FormData(e.target)); });
@@ -997,7 +1098,8 @@ function claimBody(t, rs) {
     `Name: ${S.profile.name || ''}`, e.employeeId ? `Employee ID: ${e.employeeId}` : '', e.costCentre ? `Cost centre: ${e.costCentre}` : '',
     `Total claimed: ${money(tot)} across ${rs.length} receipt${rs.length > 1 ? 's' : ''}`, '',
     'The attached claim-schedule.csv lists every line. Each receipt file is attached and numbered R1, R2 and so on in the same order.',
-    fx.length ? `Foreign-currency items use the exchange rates I entered in the schedule (${[...new Set(fx.map(r => r.currency))].join(', ')} to ${S.profile.currency}).` : '',
+    fx.length ? `Foreign-currency items use the exchange rates I entered in the schedule (${[...new Set(fx.map(r => r.currency))].join(', ')} to ${S.profile.currency}). ${currencyLine(rs)}` : '',
+    (() => { const n = HP().packNotes(tripChecklist(t), rs); return n.lines.length ? '\n' + n.lines.join('\n') : ''; })(),
     notes.length ? '\nNotes on individual items:\n' + notes.map(r => `- ${r.vendor || r.category}: ${r.note}`).join('\n') : '',
     (() => { const ex = policyFor(t, rs); return ex.length ? '\nItems over a policy limit, with my justification:\n' + ex.map(i => `- ${i.t}${(rs.find(r => r.id === i.id) || {}).excuse ? ' Justification: ' + rs.find(r => r.id === i.id).excuse : ''}`).join('\n') : ''; })(),
     rs.some(r => +r.personal) ? '\nPersonal portions have been excluded from the amounts above and are shown in the schedule.' : '',
@@ -1014,14 +1116,14 @@ async function emailPack(t) {
     atts.push({ name: `R${i + 1}-${r.vendor || 'receipt'}-${r.date || ''}${ext}`, type: b.type || 'application/octet-stream', data: u8 });
   }
   if (missing.length) return toast('Cannot build the pack: file missing for ' + missing.join(', '));
-  atts.unshift({ name: 'claim-schedule.csv', type: 'text/csv', data: new TextEncoder().encode(csv([['Ref', ...CLAIM_HEAD()], ...claimRows(t).map((row, i) => ['R' + (i + 1), ...row])])) });
+  atts.unshift({ name: 'claim-schedule.csv', type: 'text/csv', data: new TextEncoder().encode(scheduleCsv(t, true)) });
   const eml = window.HoggyPack.buildEml({ to, subject: claimSubject(t), body: claimBody(t, rs), attachments: atts });
   download(`claim-${c.id}.eml`, eml, 'message/rfc822');
   toast(size > 20e6 ? `Pack is ${(size / 1e6).toFixed(0)} MB. Many mail systems reject over 20 MB, so check before sending.` : 'Open the downloaded .eml in Outlook or Apple Mail. It opens as a draft to ' + to + '. Send it, then press Mark submitted.');
 }
 function mailtoPack(t) {
   const e = EMP(), rs = S.receipts.filter(r => r.tripId === t.id).sort((a, b) => (a.date || '').localeCompare(b.date || ''));
-  download(`claim-${ofTrip(t).id}.csv`, csv([['Ref', ...CLAIM_HEAD()], ...claimRows(t).map((row, i) => ['R' + (i + 1), ...row])]));
+  download(`claim-${ofTrip(t).id}.csv`, scheduleCsv(t, true));
   location.href = 'mailto:' + encodeURIComponent(claimsTo()) + '?subject=' + encodeURIComponent(claimSubject(t)) + '&body=' + encodeURIComponent(claimBody(t, rs).slice(0, 1500) + '\n\n[Attach the downloaded schedule and your receipt files before sending.]');
   toast('Attach the downloaded schedule and your receipt files, then send.');
 }
@@ -1049,17 +1151,21 @@ function leaveDialog(confId) {
 }
 
 /* ---------- claim pack ---------- */
-const CLAIM_HEAD = () => ['Date', 'Vendor', 'Category', 'Amount', 'Currency', 'FX rate', 'Claimed (' + S.profile.currency + ')', 'Personal portion excluded', 'Nights', 'Note', 'Policy check', 'Policy clause', 'File', 'Conference'];
+const CLAIM_HEAD = () => ['Date', 'Vendor', 'Category', 'Amount', 'Currency', 'FX rate', 'Claimed (' + S.profile.currency + ')', 'Personal portion excluded', 'Nights', 'Note', 'Policy check', 'Policy clause', 'File', 'Conference', 'Supplier ABN', 'GST', 'Tax invoice check'];
+const tripReceipts = t => S.receipts.filter(r => r.tripId === t.id).sort((a, b) => (a.date || '').localeCompare(b.date || ''));
+/* what the schedule adds under the receipt lines: receipts the doctor does not have (with the reason) and tax-invoice flags */
+const notesOf = t => HP().packNotes(tripChecklist(t), tripReceipts(t));
+const scheduleCsv = (t, refs) => { const n = notesOf(t), head = refs ? ['Ref', ...CLAIM_HEAD()] : CLAIM_HEAD(), rows = claimRows(t).map((row, i) => refs ? ['R' + (i + 1), ...row] : row); return csv([head, ...rows, ...(n.csvRows.length ? [[], ['Schedule notes'], ...n.csvRows] : [])]); };
 function claimRows(t) {
   const c = ofTrip(t), rs = S.receipts.filter(r => r.tripId === t.id).sort((a, b) => (a.date || '').localeCompare(b.date || '')), pol = policyFor(t, rs), e = EMP(), lim = !!(e.hotelPerNight || e.mealsPerDay || Object.values(S.profile.caps || {}).some(Boolean));
-  return rs.map(r => { const p = pol.filter(i => i.id === r.id); return [r.date, r.vendor, r.category, r.amount, r.currency, r.fxRate || '', Math.round(claimAmt(r) * 100) / 100, r.personal || '', r.nights || '', r.note || '', p.length ? 'OVER LIMIT, justified: ' + (r.excuse || '') : (lim ? 'Within limits entered' : 'No limits entered'), p.length ? (e.clause || '') : '', r.fileName || '', c.name]; });
+  return rs.map(r => { const p = pol.filter(i => i.id === r.id); return [r.date, r.vendor, r.category, r.amount, r.currency, r.fxRate || '', Math.round(claimAmt(r) * 100) / 100, r.personal || '', r.nights || '', r.note || '', p.length ? 'OVER LIMIT, justified: ' + (r.excuse || '') : (lim ? 'Within limits entered' : 'No limits entered'), p.length ? (e.clause || '') : '', r.fileName || '', c.name, r.abn ? HP().fmtAbn(r.abn) : '', r.gst ?? '', HP().taxFlags(r).map(x => x.t).join('; ') || ((r.currency || 'AUD') === 'AUD' ? 'OK' : 'Not checked (not AUD)')]; });
 }
 function printPack(t) {
   const c = ofTrip(t), rs = S.receipts.filter(r => r.tripId === t.id).sort((a, b) => (a.date || '').localeCompare(b.date || '')), tot = rs.reduce((a, r) => a + claimAmt(r), 0);
   let html = '';
   const w = { document: { write: s => { html += s; }, close() { } } };
   const rows = rs.map((r, i) => `<tr><td>R${i + 1}</td><td>${esc(r.date)}</td><td>${esc(r.vendor)}</td><td>${esc(r.category)}</td><td>${esc([r.note, r.personal ? 'Personal portion ' + money(r.personal) + ' excluded' : '', r.excuse ? 'Over limit, justified: ' + r.excuse : ''].filter(Boolean).join('. '))}</td><td style="text-align:right">${esc(money(claimAmt(r)))}${r.currency !== S.profile.currency ? ' (' + esc(money(r.amount, r.currency)) + ' @ ' + esc(r.fxRate) + ')' : ''}</td></tr>`).join('');
-  w.document.write(`<!doctype html><meta charset="utf-8"><title>Expense claim — ${esc(c.name)}</title><style>body{font:14px/1.5 -apple-system,Segoe UI,sans-serif;max-width:800px;margin:40px auto;padding:0 20px;color:#111}table{width:100%;border-collapse:collapse;margin-top:20px}td,th{border-bottom:1px solid #ddd;padding:8px;text-align:left}h1{margin:0}.t{font-size:22px;font-weight:700;text-align:right;margin-top:16px}</style><h1>Expense claim</h1><p>${esc(S.profile.name || 'Clinician')} · ${esc(c.name)}, ${esc(c.city)} · ${esc(range(c))}<br>Prepared with Hoggy on ${esc(fmtD(today()))}. ${rs.length} receipt${rs.length > 1 ? 's' : ''}. The receipt files are sent separately, numbered R1 to R${rs.length} in date order.</p><table><tr><th>Ref</th><th>Date</th><th>Vendor</th><th>Category</th><th>Note</th><th style="text-align:right">Amount</th></tr>${rows}</table><div class="t">Total ${esc(money(tot))}</div>`);
+  w.document.write(`<!doctype html><meta charset="utf-8"><title>Expense claim — ${esc(c.name)}</title><style>body{font:14px/1.5 -apple-system,Segoe UI,sans-serif;max-width:800px;margin:40px auto;padding:0 20px;color:#111}table{width:100%;border-collapse:collapse;margin-top:20px}td,th{border-bottom:1px solid #ddd;padding:8px;text-align:left}h1{margin:0}.t{font-size:22px;font-weight:700;text-align:right;margin-top:16px}</style><h1>Expense claim</h1><p>${esc(S.profile.name || 'Clinician')} · ${esc(c.name)}, ${esc(c.city)} · ${esc(range(c))}<br>Prepared with Hoggy on ${esc(fmtD(today()))}. ${rs.length} receipt${rs.length > 1 ? 's' : ''}. The receipt files are sent separately, numbered R1 to R${rs.length} in date order.</p><table><tr><th>Ref</th><th>Date</th><th>Vendor</th><th>Category</th><th>Note</th><th style="text-align:right">Amount</th></tr>${rows}</table><div class="t">Total ${esc(money(tot))}</div>${currencyLine(rs) ? `<p>${esc(currencyLine(rs))}</p>` : ''}${(() => { const n = HP().packNotes(tripChecklist(t), rs); return (n.missing.length ? `<h2>Receipts not attached</h2><table><tr><th>Receipt</th><th>Reason</th></tr>${n.missing.map(i => `<tr><td>${esc(i.label)}</td><td>${esc(i.status === 'waived' ? i.reason : 'Not added yet (no reason given)')}</td></tr>`).join('')}</table>` : '') + (n.flagged.length ? `<h2>Tax invoice check</h2><table><tr><th>Ref</th><th>Vendor</th><th>Note</th></tr>${n.flagged.map(x => `<tr><td>${esc(x.ref)}</td><td>${esc(x.vendor)}</td><td>${esc(x.flags.map(f => f.t).join('; '))}</td></tr>`).join('')}</table>` : ''); })()}`);
   const f = document.createElement('iframe'); f.setAttribute('sandbox', 'allow-same-origin allow-modals'); f.style.cssText = 'position:fixed;width:0;height:0;border:0'; f.srcdoc = html;
   f.onload = () => { try { f.contentWindow.focus(); f.contentWindow.print(); } catch (e) { toast('Print failed — use Export CSV'); } setTimeout(() => f.remove(), 3000); };
   document.body.appendChild(f);
@@ -1236,11 +1342,13 @@ document.addEventListener('click', async e => {
   if (a === 'editreceipt') { e.preventDefault(); return receiptDialog({ edit: id }); }
   if (a === 'rmreceipt') { if (confirm('Delete this receipt?')) { const r = S.receipts.find(x => x.id === id); if (r?.fileKey) delFile(r.fileKey); S.receipts = S.receipts.filter(x => x.id !== id); save(); closeOverlay(); render(); } return; }
   if (a === 'copy') { try { await navigator.clipboard.writeText(el.dataset.v); toast('Copied'); } catch (er) { toast('Copy failed — select and copy manually'); } return; }
-  if (a === 'exportcsv') { const t = S.trips.find(x => x.id === id); download(`claim-${ofTrip(t).id}.csv`, csv([CLAIM_HEAD(), ...claimRows(t)])); return; }
+  if (a === 'exportcsv') { const t = S.trips.find(x => x.id === id); download(`claim-${ofTrip(t).id}.csv`, scheduleCsv(t, false)); return; }
   if (a === 'printpack') return printPack(S.trips.find(x => x.id === id));
   if (a === 'emailpack') return emailPack(S.trips.find(x => x.id === id));
   if (a === 'mailtopack') return mailtoPack(S.trips.find(x => x.id === id));
   if (a === 'leave') return leaveDialog(id);
+  if (a === 'noreceipt') return noReceiptDialog(id, el.dataset.v);
+  if (a === 'undonoreceipt') { const c = S.claims[id]; if (c && c.waived) { const w = { ...c.waived }; delete w[el.dataset.v]; S.claims[id] = { ...c, waived: w }; save(); render(); } return; }
   if (['reqapproval', 'hnotesread', 'hcode', 'hleave', 'apdecide', 'teamyear', 'setallow', 'resetallow', 'rmmember', 'markpaid'].includes(a)) return hospAct(a, el, id);
   if (a === 'submitclaim') { const t = S.trips.find(x => x.id === id);
     if (inHosp()) { /* a server record finance can see; the local status follows only once the server has it */

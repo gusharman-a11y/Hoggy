@@ -378,3 +378,33 @@ details.hnew summary{cursor:pointer;font-weight:600}
 .acct-panel p,#hosp .s,#hosp .t,.hosp-home .t{overflow-wrap:anywhere}
 .nav .badge.desk-only{display:none}
 @media (min-width:901px){.nav .badge.mob-only{display:none}.nav .badge.desk-only{display:inline-block}}
+/* Snap receipt, receipt checklist, tax-invoice flags */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.head-acts{gap:8px}
+.snap-btn{position:relative;overflow:hidden;cursor:pointer}
+.snap-btn .snap-in{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;font-size:0}
+.snap-btn:focus-within{outline:2px solid var(--accent);outline-offset:2px}
+.snap-top{display:flex;gap:14px;align-items:flex-start;margin-bottom:14px}
+.snap-prev{width:96px;height:120px;object-fit:cover;border-radius:12px;border:1px solid var(--line);flex:none;background:var(--card-2)}
+.snap-prev.pdf{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:11px;color:var(--muted);padding:6px;text-align:center;overflow-wrap:anywhere}
+.snap-msg{margin:0;font-weight:600}
+.snap-top .grow{min-width:0}
+.tick{display:flex;gap:8px;align-items:center;font-weight:500;margin:0 0 12px}
+.check.info{color:var(--muted)}
+.taxflag .help{display:block;color:var(--muted);font-size:12.5px;margin-top:2px}
+.checklist{margin-top:14px;border-top:1px solid var(--line);padding-top:12px}
+.checklist h4{margin:0 0 6px;font-size:14px}
+.checklist ul{list-style:none;margin:0;padding:0}
+.ci{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;padding:6px 0;font-size:14px}
+.ci-mark{width:20px;text-align:center;font-weight:800;color:var(--faint)}
+.ci.ok .ci-mark{color:var(--ok)}.ci.missing .ci-mark{color:var(--warn)}
+.ci-t{flex:1 1 180px;min-width:0;overflow-wrap:anywhere}
+.ci-t .note{margin:0 0 0 4px}
+.claim-warn{margin-top:12px;border:1px solid var(--warn);border-radius:12px;padding:10px 14px;font-size:14px}
+.claim-warn p{margin:4px 0}
+.cur-split{margin-top:8px}
+.li.rc{flex-wrap:wrap}
+.li.rc .li-flags{flex-basis:100%;padding-left:58px;margin-top:-6px}
+.li.rc .li-flags .check{margin-top:4px}
+@media (max-width:600px){.li.rc .li-flags{padding-left:0}}
+@media (max-width:600px){.li.rc{row-gap:8px}.li.rc .grow{flex-basis:calc(100% - 60px)}.li.rc .rc-amt{margin-left:auto}}
