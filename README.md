@@ -5,7 +5,8 @@ Medical conference scanner: discover conferences, plan trips, forward receipts, 
 ## Run
 
 ```
-npm install             # runtime dependencies: pdfjs-dist (reads PDF receipts), pg (Postgres, used only when DATABASE_URL is set)
+npm install             # runtime dependencies: pdfjs-dist (reads PDF receipts), pg (Postgres, used only when DATABASE_URL is set),
+                        # @anthropic-ai/sdk (reads receipt photos, used only when ANTHROPIC_API_KEY is set)
 node server.js          # Node 22+; SQLite in data-store/ unless DATABASE_URL is set
 ```
 
@@ -30,6 +31,11 @@ Open http://127.0.0.1:8123. Without the server (any static host) the app still w
   - Endpoints: `GET/POST /api/org`, `POST /api/org/join|leave|code|settings|allowance`, `GET /api/org/team?year=`, `POST /api/org/members/<userId>` `{role}|{action:'remove'}`, `GET /api/budget?year=`, `GET /api/approvals/mine`, `GET/POST /api/approvals`, `POST /api/approvals/<id>` `{action, comment}`, `GET /api/claims/mine`, `GET/POST /api/claims`, `POST /api/claims/<id>/paid`, `GET /api/notifications`, `POST /api/notifications/read` (`lib/hospital-api.js`, pure rules in `lib/hospital.js`).
   - Security: the hospital always comes from the caller's membership, never from the request; a record in another hospital is 404, a page your role cannot use is 403; doctors see only their own requests and claims; join attempts are limited to 10 per account and 30 per network per hour (`rate_hits`), and a wrong code gives no hint.
   - Navigation: Approvals, Team and Finance claims appear in the desktop sidebar only for the roles that use them. On phones the tab bar keeps its 7 tabs; these pages open from Settings, Your hospital, and Settings carries a badge for unread notices, requests to decide and claims to pay.
+- **Snap receipt.** `POST /api/receipts/read` (signed in; raw file body with its `Content-Type`; JPG, PNG or WebP up to 5 MB, PDF up to 10 MB; the first bytes must match the type; HEIC is refused with a message, and the browser converts HEIC to JPEG where it can; 30 reads per user per hour in `rate_hits`, `HOGGY_READ_PER_HOUR`). Returns `{supplierName, supplierAbn, totalCents, gstCents, currency, date, isTaxInvoice, category, confidence, abnValid, source, note}`, every field validated on the server (`lib/receipt-reader.js`). PDFs with a text layer are read on the server by `parse.js`; photos and PDFs without text go to Claude only when `ANTHROPIC_API_KEY` is set (model `RECEIPT_MODEL`, default `claude-opus-5-5`, structured JSON output, low effort, server-side fallback on a refusal). Without the key, photos come back empty with low confidence. Nothing is stored by this call: the "Check this receipt" card shows the fields, all editable, and "Looks right" saves the receipt and its file the usual way. Offline or signed out, a snapped photo is still saved, just not read.
+  - **Privacy:** receipt images (and PDFs without a text layer) are sent to Anthropic only when `ANTHROPIC_API_KEY` is set. Without it nothing leaves the server. Tell users before you set the key.
+- **Receipt checklist per trip** (Trips and Claims): one line per category with an estimate above 0 (from the trip's approval request, its saved estimate, or the study-leave draft); without an estimate, Registration, Flights and Accommodation for a conference and Registration for a course. ✓ once a receipt of that category exists (Ground transport and Meals count as Other). "I don't have this receipt" needs a reason, kept in the synced state (`claims[tripId].waived`). Export, Email and Mark submitted stay available and show what is missing; the reasons go on the claim pack schedule (CSV "Schedule notes", printed pack, email body).
+- **Tax-invoice check** (Australian-dollar receipts only, `pack.js taxFlags`): no supplier ABN, an ABN that fails the ATO check digits, GST shown without the words "tax invoice", and $82.50 or more including GST without an ABN. Each flag says the receipt "may not count as a tax invoice" and how to get one (for flights: the airline's Manage booking page). Flags never block; they are listed on the schedule.
+- **Currencies:** `parse.js` reads ISO codes and symbols at the total (JPY, ¥, USD, US$, EUR, €, GBP, £, NZD, NZ$, SGD, S$ and more); a bare `$` is the home currency unless the document names a dollar currency or shows an ABN or GST (AUD). Claims show subtotals per currency; a foreign receipt without an exchange rate is marked "not in the total" and blocks export as before.
 - `POST /api/inbound/email` with header `X-Hoggy-Secret` (or HTTP Basic, password = secret) — inbound-email webhook (Postmark-style JSON, or `{to,from,subject,text,attachments}`). Matches `dr-<token>@receipts.hoggy.app` to a user, parses the receipt, stores the attachment, and the app pulls it into Receipts within a minute.
 - Storage goes through `lib/db.js`: **Postgres** when `DATABASE_URL` is set (production, see below), otherwise **SQLite** in `data-store/` (SQLite file, daily backups, inbound secret). Back that folder up; do not publish it.
 
@@ -72,6 +78,8 @@ Postgres on Supabase (project `ipnkzavrbfzuphicycuc`, region ap-southeast-2). Ev
    | `HOGGY_INBOUND_SECRET` | a long random string (`openssl rand -hex 24`); the inbound-email provider sends it as `X-Hoggy-Secret` |
    | `HOGGY_ADMIN_KEY` | a long random string; admins send it as `X-Admin-Key` at `/admin.html` |
    | `HOGGY_ADMINS` | comma-separated admin emails, e.g. `you@example.com` |
+   | `ANTHROPIC_API_KEY` (optional) | turns on reading receipt photos with Claude. Receipt images are then sent to Anthropic; without it nothing is sent |
+   | `RECEIPT_MODEL` (optional) | the Claude model for receipts, default `claude-opus-5-5` |
    | `HOGGY_PG_CA` (optional) | Supabase's CA certificate (PEM text, Database Settings, SSL) to verify the server certificate; without it the connection is encrypted but the certificate is not checked |
 
 3. Redeploy and open `/healthz`: it should say `"db":"pg"` and the conference count. The "Preview" notice is gone.
@@ -88,6 +96,7 @@ Notes:
 
 - `npm test` runs everything on SQLite (a `DATABASE_URL` in your shell is ignored).
 - `NODE_PATH=/opt/node-tools/node_modules node tests/e2e/hospital-flow.js <screenshot dir>` (Playwright, not part of `npm test`) runs the hospital journey in Chromium at 390x844 and 1280x900 on a throwaway server and fails on any console error or horizontal scroll.
+- `NODE_PATH=/opt/node-tools/node_modules node tests/e2e/snap-flow.js <screenshot dir>` runs Snap receipt in Chromium at both sizes: check card auto-fill, "Looks right", checklist tick, "I don't have this receipt", tax-invoice flag and help text, the schedule CSV, and a photo snapped offline. Its server runs with `HOGGY_FAKE_READER=1`, a fixture that stands in for Claude (ignored on Vercel). Tests never call the Anthropic API.
 - `npm run test:pg` runs the same suite plus `tests/pg.test.js` against a **local** Postgres (each server gets a throwaway schema): `createdb hoggy_test`, then `HOGGY_TEST_DATABASE_URL=postgres://postgres:<pw>@127.0.0.1:5432/hoggy_test npm run test:pg`. It refuses a non-local host. `tests/pg.test.js` also checks the schema file on a fresh database (RLS, no anon access) and runs two instances (two processes loading `api/index.js`) on one database: register on one, sign in on the other, shared reviews, files, inbound secret and rate limits.
 
 ## Trust rules
@@ -99,4 +108,4 @@ Notes:
 
 ## Not built
 
-Live booking (needs airline/hotel partner APIs and keys; Hoggy opens prefilled searches), password reset and email verification (need outbound mail), photo/scan receipt OCR (PDFs with a text layer are read; image-only receipts are stored but not read), automatic currency rates (foreign receipts take a manually entered exchange rate).
+Live booking (needs airline/hotel partner APIs and keys; Hoggy opens prefilled searches), password reset and email verification (need outbound mail), receipt photo reading without an Anthropic key (PDFs with a text layer are read on the server; photos are read only when `ANTHROPIC_API_KEY` is set), accuracy measured on real receipts (B09), automatic currency rates (foreign receipts take a manually entered exchange rate).
