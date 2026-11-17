@@ -58,6 +58,74 @@ function buildEml({ to, subject, body, attachments }) {
   return L.join('\r\n');
 }
 
-const api = { evaluate, leaveDays, buildEml, safeName, u8b64 };
+
+/* ---------- Australian tax-invoice checks (ATO): plain flags, never a block ----------
+   An ABN has 11 digits; subtract 1 from the first, weight by 10,1,3,5,...,19, and the sum divides by 89. A purchase of
+   $82.50 or more including GST needs a tax invoice (supplier ABN, the words "tax invoice", GST) for the GST credit; many
+   employers ask for one either way. We only say a receipt "may not count as a tax invoice": the employer decides. */
+const ABN_W = [10, 1, 3, 5, 7, 9, 11, 13, 15, 17, 19];
+const normAbn = s => { const d = String(s || '').replace(/[\s-]/g, ''); return /^\d{11}$/.test(d) ? d : ''; };
+function abnValid(s) { const a = normAbn(s); if (!a) return false; const d = a.split('').map(Number); d[0] -= 1; return d.reduce((t, x, i) => t + x * ABN_W[i], 0) % 89 === 0; }
+const fmtAbn = s => { const a = normAbn(s); return a ? `${a.slice(0, 2)} ${a.slice(2, 5)} ${a.slice(5, 8)} ${a.slice(8)}` : String(s || ''); };
+const TAX_HELP = {
+  Flights: 'This looks like a booking confirmation. Download the tax invoice from the airline\'s Manage booking page and add it.',
+  Accommodation: 'Ask the hotel for a tax invoice at checkout, or download it from the booking site, and add it.',
+  Registration: 'Download the tax invoice from the organiser\'s registration page, or ask the organiser for one, and add it.',
+};
+const taxHelp = cat => TAX_HELP[cat] || 'Ask the supplier for a tax invoice and add it.';
+/* r: {category, amount, currency, abn, gst, taxInvoice}. AUD receipts only; returns [{code, t, help}] */
+function taxFlags(r) {
+  if (!r || String(r.currency || 'AUD').toUpperCase() !== 'AUD') return [];
+  const out = [], amt = +r.amount || 0, gst = +r.gst || 0, typed = String(r.abn || '').trim(), abn = normAbn(typed);
+  if (typed && !abnValid(typed)) out.push({ code: 'abn-invalid', t: `ABN ${fmtAbn(typed)} does not pass the ATO check, so this may not count as a tax invoice`, help: 'Check the ABN against the receipt. If it was typed correctly, ask the supplier for a corrected tax invoice.' });
+  else if (!abn && amt >= 82.5) out.push({ code: 'no-abn', t: 'No supplier ABN on a receipt of $82.50 or more, so it may not count as a tax invoice', help: taxHelp(r.category) });
+  else if (!abn) out.push({ code: 'no-abn-small', t: 'No supplier ABN found', help: 'Under $82.50 including GST, a receipt without an ABN is often accepted. Check with your employer.' });
+  if (gst > 0 && r.taxInvoice !== true) out.push({ code: 'gst-no-wording', t: 'GST is shown but the document does not say "tax invoice", so it may not count as one', help: taxHelp(r.category) });
+  return out;
+}
+
+/* ---------- receipt checklist per trip ----------
+   Built from the trip's estimate (approval request, its saved estimate or the study-leave draft): every category with an
+   estimate above 0. Without one: Registration, Flights and Accommodation for a conference, Registration for a course. */
+const CHECK = [['registration', 'Registration'], ['flights', 'Flights'], ['accommodation', 'Accommodation'], ['other', 'Other']];
+const MAIN = new Set(['Registration', 'Flights', 'Accommodation']);
+const coversKey = (k, cat) => k === 'other' ? !MAIN.has(cat) : (CHECK.find(x => x[0] === k) || [])[1] === cat;
+/* trip: {estimate:{registration,flights,accommodation,other}, kind:'conference'|'course'}; waived: {key:{reason}} */
+function checklist(trip, receipts, waived) {
+  const est = (trip && trip.estimate) || null, w = waived || {};
+  let keys = est ? CHECK.filter(([k]) => +est[k] > 0).map(x => x[0]) : [];
+  if (!keys.length) keys = trip && trip.kind === 'course' ? ['registration'] : ['registration', 'flights', 'accommodation'];
+  return keys.map(k => {
+    const label = CHECK.find(x => x[0] === k)[1], n = (receipts || []).filter(r => coversKey(k, r.category)).length, reason = String((w[k] && w[k].reason) || '').trim();
+    return { key: k, label, receipts: n, status: n ? 'ok' : reason ? 'waived' : 'missing', reason: n ? '' : reason };
+  });
+}
+const missingOf = list => list.filter(i => i.status === 'missing');
+
+/* per-currency subtotals so a claim never silently adds yen to dollars. home(r) = amount in the home currency (0 without a rate) */
+function currencyTotals(receipts, home, homeCur) {
+  const by = new Map();
+  for (const r of receipts || []) {
+    const c = String(r.currency || homeCur).toUpperCase(), o = by.get(c) || { currency: c, amount: 0, converted: 0, count: 0, noRate: 0 };
+    o.amount = r2(o.amount + (+r.amount || 0)); o.count++;
+    if (c === homeCur) o.converted = r2(o.converted + (+r.amount || 0)); else if (+r.fxRate > 0) o.converted = r2(o.converted + home(r)); else o.noRate++;
+    by.set(c, o);
+  }
+  return [...by.values()].sort((a, b) => (a.currency === homeCur ? -1 : b.currency === homeCur ? 1 : a.currency.localeCompare(b.currency)));
+}
+
+/* What the claim pack schedule says beyond the receipt lines: receipts the doctor does not have (with the reason) and
+   receipts flagged by the tax-invoice check. Shared by the CSV, the printed pack and the email body. */
+function packNotes(list, receipts) {
+  const missing = (list || []).filter(i => i.status !== 'ok'), flagged = [];
+  (receipts || []).forEach((r, i) => { const f = taxFlags(r); if (f.length) flagged.push({ ref: 'R' + (i + 1), vendor: r.vendor || r.category || 'Receipt', flags: f }); });
+  const lines = [];
+  if (missing.length) lines.push('Receipts not attached:', ...missing.map(i => `- ${i.label}: ${i.status === 'waived' ? 'I don\'t have this receipt. Reason: ' + i.reason : 'not added yet (no reason given)'}`));
+  if (flagged.length) { if (lines.length) lines.push(''); lines.push('Tax invoice check (Australian receipts):', ...flagged.map(x => `- ${x.ref} ${x.vendor}: ${x.flags.map(f => f.t).join('; ')}`)); }
+  const csvRows = [...missing.map(i => ['Missing receipt', i.label, i.status === 'waived' ? 'Reason: ' + i.reason : 'Not added yet']), ...flagged.map(x => ['Tax invoice check', x.ref + ' ' + x.vendor, x.flags.map(f => f.t).join('; ')])];
+  return { missing, flagged, lines, csvRows };
+}
+
+const api = { evaluate, leaveDays, buildEml, safeName, u8b64, abnValid, normAbn, fmtAbn, taxFlags, taxHelp, checklist, missingOf, currencyTotals, packNotes, CHECK };
 if (typeof module !== 'undefined' && module.exports) module.exports = api; else root.HoggyPack = api;
 })(typeof window !== 'undefined' ? window : globalThis);
