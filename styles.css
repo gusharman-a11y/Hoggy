@@ -282,3 +282,43 @@ details.how .note{margin-top:6px;max-width:62ch}
 .pf-in input[type=file]{min-width:0;max-width:100%;font-size:13px}
 .rv-prompt{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:14px;padding:12px 14px;border-radius:12px;background:var(--accent-soft);color:var(--text);font-size:14px}
 @media (max-width:640px){.rate{display:grid;grid-template-columns:1fr}.rate-opts{display:grid;grid-template-columns:repeat(5,1fr)}.rate-opts span{width:auto;height:40px}.rates{gap:10px}}
+/* ---------- courses and certificates ---------- */
+.seg{display:inline-flex;gap:4px;padding:4px;margin:0 0 14px;background:var(--card-2);border-radius:99px}
+.seg a{padding:7px 16px;border-radius:99px;font-weight:600;font-size:13.5px;color:var(--muted)}
+.seg a:hover{color:var(--text)}
+.seg a[aria-current=page]{background:var(--text);color:var(--bg)}
+.back{display:inline-block;color:var(--muted);font-weight:600;font-size:13.5px;margin-bottom:12px}
+.back:hover{color:var(--text)}
+.loading{min-height:240px;display:grid;place-items:center;color:var(--muted);border:1px dashed var(--line);border-radius:var(--r)}
+.facts.cfacts{grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:0}
+.fact .v,.fact .note{overflow-wrap:anywhere}
+.cfacts .fact .v{font-weight:600}
+.sess-filters{margin:0 0 10px}
+.sess-list{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:4px 10px}
+.li.sess{cursor:pointer;flex-wrap:wrap;align-items:flex-start;border-radius:10px}
+.li.sess:hover{background:var(--card-2)}
+.sdate{width:52px;flex:none;text-align:center;border-radius:12px;background:var(--card-2);padding:7px 0;line-height:1.1}
+.sdate b{display:block;font-size:20px;font-weight:800;letter-spacing:-.03em}
+.sdate span{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:700}
+.sess-acts{display:flex;gap:8px;flex-wrap:wrap;align-self:center}
+.remind{border-color:rgba(255,179,64,.45);margin-bottom:22px}
+.remind h2{font-size:18px;font-weight:700;display:flex;align-items:center;gap:8px}
+.remind h2 .ico{color:var(--warn)}
+.remind .li{flex-wrap:wrap}
+.cert-ico{color:var(--accent);background:var(--accent-soft)}
+.exp{font-weight:700}
+.cert-near{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);display:flex;flex-direction:column;align-items:flex-start;gap:4px}
+.cert-near .note{margin:0}
+.near{background:none;border:0;padding:4px 0;text-align:left;color:var(--text);font-size:14px}
+.near:hover{color:var(--accent)}
+.nodates h3{font-size:18px}
+.field[hidden]{display:none}
+@media (max-width:640px){.sess-acts{width:100%;padding-left:66px}.sess-acts .btn{flex:1 1 auto}.remind .li .btn{flex:1 1 100%}}
+@media (max-width:900px){.nav a.desk{display:none}.nav a.alt-cur{color:var(--text);background:var(--card-2)}.nav a.alt-cur svg{color:var(--accent)}}
+.course-card .art b{font-size:clamp(24px,2.6vw,32px);line-height:1.05}
+.ch1{font-size:clamp(28px,3.6vw,42px)}
+.facts.kfacts{grid-template-columns:repeat(4,minmax(0,1fr));margin:0 0 6px}
+.kfacts .fact .v{font-size:14.5px}
+@media (max-width:1000px){.facts.kfacts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.facts.kfacts{gap:8px}.kfacts .fact{padding:10px}.kfacts .fact .note{font-size:11.5px}}
+@media (max-width:640px){.course-card .art{aspect-ratio:3.2/1}.course-card{gap:10px}}
