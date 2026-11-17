@@ -1121,7 +1121,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 0,
   "attendees": 8000,
   "url": "https://www.sabcs.org",
-  "blurb": "Premier breast cancer research symposium at the Henry B. Gonzalez Convention Center.",
+  "blurb": "Major breast cancer research symposium at the Henry B. Gonzalez Convention Center.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
   "provenance": "organiser-page"
@@ -10388,7 +10388,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 900,
   "attendees": 8000,
   "url": "https://annualmeeting.asgct.org",
-  "blurb": "The leading annual meeting for gene and cell therapy research and clinical development.",
+  "blurb": "A major annual meeting for gene and cell therapy research and clinical development.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
   "provenance": "organiser-page"
@@ -12367,7 +12367,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 600,
   "attendees": 12000,
   "url": "https://www.pcronline.com/courses/europcr",
-  "blurb": "The world-leading course in interventional cardiovascular medicine, held at the Palais des Congres in Paris.",
+  "blurb": "A major course in interventional cardiovascular medicine, held at the Palais des Congres in Paris.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
   "provenance": "organiser-page"
@@ -14417,7 +14417,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 1100,
   "attendees": 40000,
   "url": "https://www.asco.org",
-  "blurb": "The leading global oncology meeting, held in Chicago around late May or early June.",
+  "blurb": "A major global oncology meeting, held in Chicago around late May or early June.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
   "provenance": "organiser-page"
@@ -17448,7 +17448,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 850,
   "attendees": 10000,
   "url": "https://www.eshre.eu",
-  "blurb": "The leading European reproductive medicine meeting.",
+  "blurb": "A major European reproductive medicine meeting.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
   "provenance": "organiser-page"
@@ -20016,7 +20016,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 700,
   "attendees": 4000,
   "url": "https://amee.org",
-  "blurb": "The leading international conference on health professions education.",
+  "blurb": "A major international conference on health professions education.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
   "provenance": "organiser-page"
@@ -31444,7 +31444,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 1000,
   "attendees": 8000,
   "url": "https://www.sabcs.org",
-  "blurb": "The leading annual symposium on breast cancer research.",
+  "blurb": "A major annual symposium on breast cancer research.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
   "provenance": "organiser-page"
@@ -39061,7 +39061,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 0,
   "attendees": 12000,
   "url": "https://professional.diabetes.org/scientific-sessions",
-  "blurb": "Leading diabetes research meeting, George R. Brown Convention Center.",
+  "blurb": "Major diabetes research meeting, George R. Brown Convention Center.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
   "provenance": "organiser-page"
@@ -42295,7 +42295,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 0,
   "attendees": 7000,
   "url": "https://wclc.iaslc.org",
-  "blurb": "Leading global thoracic oncology conference.",
+  "blurb": "Major global thoracic oncology conference.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
   "provenance": "organiser-page"
@@ -45237,7 +45237,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 0,
   "attendees": 12000,
   "url": "https://www.crf.org/tct",
-  "blurb": "Transcatheter Cardiovascular Therapeutics, leading interventional cardiology meeting.",
+  "blurb": "Transcatheter Cardiovascular Therapeutics, a major interventional cardiology meeting.",
   "datesConfirmed": false
  },
  {
