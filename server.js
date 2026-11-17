@@ -1,6 +1,6 @@
 'use strict';
 /* Hoggy backend. Node 22+. Run: node server.js
-   Storage: Postgres when DATABASE_URL is set (production: Supabase, schema `hoggy`, see db/postgres/001_init.sql and 002_*.sql),
+   Storage: Postgres when DATABASE_URL is set (production: Supabase, schema `hoggy`, see db/postgres/001_init.sql to 003_*.sql),
    otherwise SQLite in HOGGY_DATA (node:sqlite; local dev and tests). Both go through lib/db.js. */
 const http = require('node:http');
 const fs = require('node:fs');
@@ -14,6 +14,7 @@ const { makeIngest, validate: validateConf } = require('./lib/ingest.js');
 const { seriesKey, seriesTitle, validKey } = require('./lib/series.js');
 const COV = require('./lib/coverage.js');
 const RV = require('./lib/reviews.js');
+const { makeHospitalApi } = require('./lib/hospital-api.js');
 const ADMIN_KEY = process.env.HOGGY_ADMIN_KEY || '';
 const REPORT_MIN_AGE = (process.env.HOGGY_REPORT_MIN_AGE_H === undefined ? 24 : +process.env.HOGGY_REPORT_MIN_AGE_H) * 3600e3;
 const ADMINS = new Set(String(process.env.HOGGY_ADMINS || '').toLowerCase().split(',').map(s => s.trim()).filter(Boolean));
@@ -60,8 +61,20 @@ CREATE INDEX IF NOT EXISTS rate_hits_key_t ON rate_hits(key, t);
 CREATE TABLE IF NOT EXISTS receipt_checks(id TEXT PRIMARY KEY, user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE, series_key TEXT NOT NULL, edition_year INTEGER NOT NULL, conf_id TEXT NOT NULL, inbox_id TEXT, vendor TEXT, amount REAL, currency TEXT, receipt_date TEXT, subject TEXT, file_name TEXT, file_type TEXT, size INTEGER NOT NULL DEFAULT 0, data BLOB, status TEXT NOT NULL DEFAULT 'pending', note TEXT, created INTEGER NOT NULL, decided INTEGER, decided_by TEXT);
 CREATE INDEX IF NOT EXISTS rc_edition ON receipt_checks(user_id, series_key, edition_year);
 CREATE TABLE IF NOT EXISTS coverage(id INTEGER PRIMARY KEY, series_key TEXT NOT NULL, type TEXT NOT NULL CHECK (type IN ('meeting-report','abstract-supplement','society-journal','news')), title TEXT, publication TEXT NOT NULL CHECK (length(trim(publication)) > 0), year INTEGER, url TEXT NOT NULL CHECK (url LIKE 'https://%'), added_by INTEGER REFERENCES users(id) ON DELETE SET NULL, added_on INTEGER NOT NULL, status TEXT NOT NULL DEFAULT 'pending', decided INTEGER, decided_by TEXT, UNIQUE(series_key, url));
-CREATE INDEX IF NOT EXISTS coverage_series ON coverage(series_key, status);`;
-/* receipt_checks and coverage: same tables as db/postgres/002_receipt_checks_coverage.sql */
+CREATE INDEX IF NOT EXISTS coverage_series ON coverage(series_key, status);
+CREATE TABLE IF NOT EXISTS orgs(id INTEGER PRIMARY KEY, name TEXT NOT NULL CHECK (length(trim(name)) > 0), join_code TEXT NOT NULL UNIQUE CHECK (length(join_code) = 8), claims_email TEXT, default_allowance_cents INTEGER NOT NULL DEFAULT 0 CHECK (default_allowance_cents >= 0), currency TEXT NOT NULL DEFAULT 'AUD', created INTEGER NOT NULL);
+CREATE TABLE IF NOT EXISTS memberships(user_id INTEGER PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE, org_id INTEGER NOT NULL REFERENCES orgs(id) ON DELETE CASCADE, role TEXT NOT NULL CHECK (role IN ('doctor','manager','finance','admin')), created INTEGER NOT NULL);
+CREATE INDEX IF NOT EXISTS memberships_org ON memberships(org_id, role);
+CREATE TABLE IF NOT EXISTS allowances(user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE, org_id INTEGER NOT NULL REFERENCES orgs(id) ON DELETE CASCADE, year INTEGER NOT NULL, allowance_cents INTEGER NOT NULL CHECK (allowance_cents >= 0), set_by INTEGER REFERENCES users(id) ON DELETE SET NULL, updated INTEGER NOT NULL, PRIMARY KEY(user_id, org_id, year));
+CREATE TABLE IF NOT EXISTS approvals(id INTEGER PRIMARY KEY, org_id INTEGER NOT NULL REFERENCES orgs(id) ON DELETE CASCADE, user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE, trip_ref TEXT NOT NULL, conf_id TEXT, snapshot TEXT NOT NULL, year INTEGER NOT NULL, estimate_cents INTEGER NOT NULL CHECK (estimate_cents > 0), currency TEXT NOT NULL, status TEXT NOT NULL DEFAULT 'pending' CHECK (status IN ('pending','approved','rejected')), manager_comment TEXT, decided_by INTEGER REFERENCES users(id) ON DELETE SET NULL, created INTEGER NOT NULL, updated INTEGER NOT NULL, decided INTEGER, UNIQUE(org_id, user_id, trip_ref));
+CREATE INDEX IF NOT EXISTS approvals_org_status ON approvals(org_id, status);
+CREATE INDEX IF NOT EXISTS approvals_user ON approvals(user_id, year);
+CREATE TABLE IF NOT EXISTS claims(id INTEGER PRIMARY KEY, org_id INTEGER NOT NULL REFERENCES orgs(id) ON DELETE CASCADE, user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE, approval_id INTEGER REFERENCES approvals(id) ON DELETE SET NULL, trip_ref TEXT NOT NULL, conf_id TEXT, snapshot TEXT NOT NULL, year INTEGER NOT NULL, total_cents INTEGER NOT NULL CHECK (total_cents > 0), currency TEXT NOT NULL, receipts INTEGER NOT NULL DEFAULT 0, status TEXT NOT NULL DEFAULT 'submitted' CHECK (status IN ('submitted','paid')), submitted INTEGER NOT NULL, paid INTEGER, paid_by INTEGER REFERENCES users(id) ON DELETE SET NULL, UNIQUE(org_id, user_id, trip_ref));
+CREATE INDEX IF NOT EXISTS claims_org_status ON claims(org_id, status);
+CREATE INDEX IF NOT EXISTS claims_user ON claims(user_id, year);
+CREATE TABLE IF NOT EXISTS notifications(id INTEGER PRIMARY KEY, user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE, org_id INTEGER REFERENCES orgs(id) ON DELETE CASCADE, kind TEXT NOT NULL, text TEXT NOT NULL, link TEXT, created INTEGER NOT NULL, seen INTEGER);
+CREATE INDEX IF NOT EXISTS notifications_user ON notifications(user_id, created);`;
+/* receipt_checks and coverage: same tables as db/postgres/002_receipt_checks_coverage.sql; orgs to notifications: 003_hospitals.sql */
 /* legacy (before B36): rows were tied to client-synced trips, so they no longer verify anything; kept only so old SQLite databases open */
 const SQLITE_LEGACY = 'CREATE TABLE IF NOT EXISTS proofs(user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE, conf_id TEXT NOT NULL, receipt_date TEXT, created INTEGER NOT NULL, PRIMARY KEY(user_id, conf_id))';
 
@@ -260,6 +273,7 @@ function pubReview(r, me) {
   return o;
 }
 const DIMS = RV.DIMS;
+const HOSP = makeHospitalApi({ db, now: () => now(), clean: (v, n) => clean(v, n), emailOk: e => emailOk(e), limited: (k, n, w) => limited(k, n, w), readJson: (r, l) => readJson(r, l), json: (r, c, o) => json(r, c, o), err: (r, c, msg) => err(r, c, msg), getConfs: () => getConfs(), isUnique: DB.isUnique });
 /* housekeeping: every 10 minutes per process, and on the first request after that on a serverless instance */
 let lastHk = 0;
 async function housekeep() {
@@ -269,6 +283,7 @@ async function housekeep() {
     await db.run('DELETE FROM rate_hits WHERE t < ?', t - 3600e3);
     await db.run('DELETE FROM files WHERE id IN (SELECT file_id FROM inbox WHERE created < ? AND file_id IS NOT NULL)', old);
     await db.run('DELETE FROM inbox WHERE created < ?', old);
+    await db.run('DELETE FROM notifications WHERE created < ?', t - 120 * 864e5);
   } catch (e) { console.error('housekeeping failed', e.message); }
 }
 setInterval(() => { if (ready) housekeep(); }, 600e3).unref();
@@ -464,6 +479,8 @@ async function api(req, res, url) {
     if (p === '/api/admin/runs' && m === 'GET') return json(res, 200, (await db.all('SELECT id, started, finished, summary FROM ingest_runs ORDER BY id DESC LIMIT 20')).map(r => ({ ...r, summary: JSON.parse(r.summary) })));
     return err(res, 404, 'not found');
   }
+  /* hospitals: organisations, roles, approvals, budgets, claims to finance, notifications (lib/hospital-api.js) */
+  if (await HOSP.handle(req, res, url, u, ip)) return;
   if (p === '/api/state' && m === 'GET') { const r = await db.get('SELECT json, rev FROM state WHERE user_id=?', u.id); return json(res, 200, r ? { state: JSON.parse(r.json), rev: r.rev } : { state: null, rev: 0 }); }
   if (p === '/api/state' && m === 'PUT') {
     if (await limited('st:' + u.id, 60, 60e3)) return err(res, 429, 'slow down');
@@ -606,6 +623,7 @@ async function api(req, res, url) {
   if (p === '/api/account' && m === 'DELETE') {
     const b = await readJson(req, 2e3), row = await db.get('SELECT pass FROM users WHERE id=?', u.id);
     if (!(await checkPw(String(b.password || ''), row.pass))) return err(res, 403, MSG.pwBad);
+    await HOSP.beforeAccountDelete(u.id); /* the hospital keeps an admin, or is removed with its last member */
     await db.run('DELETE FROM users WHERE id=?', u.id); ratingsCache = null;
     res.setHeader('Set-Cookie', 'hoggy_sid=; HttpOnly; SameSite=Lax; Path=/; Max-Age=0'); return json(res, 200, { ok: true });
   }
