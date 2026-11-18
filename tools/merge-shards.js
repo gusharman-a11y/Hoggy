@@ -11,7 +11,8 @@ const argv = process.argv.slice(2), opt = k => { const i = argv.indexOf(k); retu
 const root = path.resolve(opt('--root') || path.join(__dirname, '..')), dry = argv.includes('--dry'), MIGRATE = argv.includes('--migrate-legacy');
 const { evidenceProblem, hasAnyEvidence } = require('./evidence');
 const mainFile = path.join(root, 'data', 'conferences.js'), shardDir = path.join(root, 'data', 'shards');
-const { CANON, canon } = require('./specialties'); // tools/specialties.json: one name per specialty
+const { CANON, canon } = require('./specialties');
+const { demangle } = require('./demangle'); // tools/specialties.json: one name per specialty
 const ctx = { window: {} }; vm.runInNewContext(fs.readFileSync(mainFile, 'utf8'), ctx);
 const base = ctx.window.HOGGY_CONFERENCES;
 const REQ = ['id', 'name', 'organiser', 'specialty', 'city', 'country', 'countryCode', 'region', 'start', 'end', 'format', 'cpdHours', 'url', 'blurb'];
@@ -42,7 +43,7 @@ const wasLegacy = new Set(base.filter(c => c.legacyConfirmed).map(c => c.id));
 const out = base.map(c => { const r = { ...c, dateStatus: c.dateStatus || (c.datesConfirmed === false ? 'estimated' : 'confirmed'), sourceUrl: c.sourceUrl || c.url }; if (r.lastVerified === '2026-11-06' && !r.provenance) delete r.lastVerified; return r; }), seenId = new Set(out.map(c => c.id)), seenKey = new Set(out.map(c => norm(c.name) + c.start.slice(0, 4))), seenUrlDate = new Set(out.map(c => host(c.url) + c.start));
 const stats = { added: 0, dupId: 0, dupName: 0, invalid: 0 }, rejects = [];
 const shardFiles = fs.existsSync(shardDir) ? fs.readdirSync(shardDir).filter(x => x.endsWith('.json') && x !== 'holidays.json') : [];
-for (const f of shardFiles.filter(x => !x.startsWith('provenance-') && !x.startsWith('cpd-'))) {
+for (const f of shardFiles.filter(x => !x.startsWith('provenance-') && !x.startsWith('cpd-') && !x.startsWith('fix-'))) {
   let arr; try { arr = JSON.parse(fs.readFileSync(path.join(shardDir, f), 'utf8')); } catch (e) { console.error(f, 'unparseable:', e.message); continue; }
   for (const c of arr) {
     if ((CONFIRMED_ONLY.has(f) || f.startsWith('desk-')) && c.datesConfirmed !== true) { stats.skippedUnconfirmed = (stats.skippedUnconfirmed || 0) + 1; continue; }
@@ -63,6 +64,7 @@ const badSpec = new Map();
 for (const c of out) {
   const sp = canon(c.specialty); if (sp) c.specialty = sp; else badSpec.set(c.specialty, (badSpec.get(c.specialty) || 0) + 1);
   if (!c.cpdVerified && c.cpdHours) c.cpdHours = 0; // 20 was a placeholder guess
+  for (const k of ['name', 'organiser', 'blurb']) if (typeof c[k] === 'string') c[k] = demangle(c[k]);
   c.blurb = String(c.blurb).replace(/(?:the )?(?:[A-Za-z]+ )?[A-Za-z]+['’]s (?:largest|biggest|leading|premier|foremost) /gi, 'a major ').replace(/(?:the )?(?:largest|biggest) /gi, 'a major ').replace(/a a major/gi, 'a major').replace(/The (?:Middle|Far|Near) a major/g, 'A major').replace(/^a major/, 'A major');
 }
 /* a provenance entry that moves a row to another country must also move its code and map pin (B30 found Auckland filed under AU
@@ -105,6 +107,37 @@ for (const f of shardFiles.filter(x => x.startsWith('cpd-'))) {
     if (e.stated === true && typeof e.cpdHours === 'number' && e.cpdHours > 0 && e.cpdHours <= 100 && /^https:\/\//.test(e.sourceUrl || '')) { Object.assign(row, { cpdHours: e.cpdHours, cpdBody: String(e.cpdBody || '').slice(0, 80), cpdVerified: true, cpdSourceUrl: e.sourceUrl }); cpdStats.applied++; }
   }
 }
+/* fix-*.json (x10 expert review, 18 Nov 2026): corrections the daily merge must keep re-applying, because conferences.js is
+   the merge's own base. Entry: { id, note, remove?: true, evidenceTo?: id, set?: { specialty|name|organiser|blurb }, strip?: [fields],
+   estimateReason? }. remove drops the row (a shard re-adding it is dropped again); evidenceTo first moves its B30 evidence (dates,
+   place, quote) onto the row that is kept; strip zeroes unsourced figures; set fields are checked (specialty must be canonical). */
+const SET_OK = new Set(['specialty', 'name', 'organiser', 'blurb']), STRIP_OK = new Set(['attendees', 'priceFrom', 'cpdBody', 'cpdHours']);
+const fixStats = { removed: 0, evidenceMoved: 0, set: 0, stripped: 0, missing: [] };
+for (const f of shardFiles.filter(x => x.startsWith('fix-'))) {
+  let arr; try { arr = JSON.parse(fs.readFileSync(path.join(shardDir, f), 'utf8')); } catch (e) { console.error(f, 'unparseable'); process.exit(1); }
+  for (const e of arr) {
+    const i = out.findIndex(c => c.id === e.id); if (i < 0) { fixStats.missing.push(`${f}: ${e.id}`); continue; }
+    const row = out[i];
+    if (e.set) for (const [k, v] of Object.entries(e.set)) {
+      if (!SET_OK.has(k)) { console.error(`FAIL: ${f} ${e.id}: cannot set ${k}`); process.exit(1); }
+      if (k === 'specialty' && !CANON.has(v)) { console.error(`FAIL: ${f} ${e.id}: specialty "${v}" is not canonical`); process.exit(1); }
+      row[k] = v; fixStats.set++;
+    }
+    for (const k of e.strip || []) { if (!STRIP_OK.has(k)) { console.error(`FAIL: ${f} ${e.id}: cannot strip ${k}`); process.exit(1); } row[k] = k === 'cpdBody' ? '' : 0; if (k.startsWith('cpd')) delete row.cpdVerified; fixStats.stripped++; }
+    if (e.estimateReason && row.datesConfirmed === false) row.estimateReason = String(e.estimateReason).slice(0, 300);
+    if (e.remove) {
+      const to = e.evidenceTo && out.find(c => c.id === e.evidenceTo);
+      if (e.evidenceTo && !to) fixStats.missing.push(`${f}: evidenceTo ${e.evidenceTo}`);
+      if (to && row.datesConfirmed === true && row.datesQuote) {
+        for (const k of ['start', 'end', 'city', 'country', 'countryCode', 'lat', 'lng', 'datesSourceUrl', 'datesQuote', 'verifiedOn', 'sourceUrl', 'organiserUrl', 'societyUrl']) if (row[k] != null && row[k] !== '') to[k] = row[k];
+        Object.assign(to, { datesConfirmed: true, dateStatus: 'confirmed', lastVerified: row.verifiedOn || TODAY, provenance: 'organiser-page' }); delete to.legacyConfirmed; delete to.estimateReason; fixStats.evidenceMoved++;
+      }
+      out.splice(i, 1); fixStats.removed++;
+    }
+  }
+}
+console.log('fixes', JSON.stringify({ ...fixStats, missing: fixStats.missing.length }));
+if (fixStats.missing.length) console.log('fix entries whose row is not there:\n  ' + fixStats.missing.join('\n  '));
 /* B30 evidence rule, last so it sees every change above */
 const ev = { confirmedWithEvidence: 0, legacy: 0, downgraded: 0 }, downgrades = [];
 for (const c of out) {

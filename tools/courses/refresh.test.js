@@ -11,6 +11,8 @@ test('refresh --dry --from fixtures: partial pages are not taken as cancellation
   assert.match(r.stdout, /^# Course refresh /m);
   assert.match(r.stdout, /ARC course-dates page \| suspicious: \d+ sessions vs \d+ held; kept old rows/, 'a 9-row ARC page must not drop hundreds of sessions');
   assert.match(r.stdout, /ACRRM advanced-neonatal-resuscitation \| failed: not in saved set/);
-  assert.match(r.stdout, /refresh \d{4}-\d{2}-\d{2}: added \d+, updated \d+, unchanged \d+, removed \d+, kept \d+/);
+  assert.match(r.stdout, /refresh \d{4}-\d{2}-\d{2}: core added \d+, updated \d+, unchanged \d+, removed \d+, kept \d+/);
+  assert.match(r.stdout, /^merge-courses: .*resus: \+\d+ types, \+\d+ sessions/m, 'the x10 sources are merged on every run (no network with --from)');
+  assert.doesNotMatch(r.stdout, /## x10 source runs/, '--from never runs the x10 sources');
   assert.equal(fs.readFileSync(ses, 'utf8'), before, '--dry writes nothing');
 });

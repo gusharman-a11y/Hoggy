@@ -58,7 +58,7 @@ const DB = { db: null,
 const fmtD = (s, o) => { const d = new Date(s + (String(s).length === 10 ? 'T00:00:00' : '')); return isNaN(d) ? '—' : d.toLocaleDateString('en-AU', o || { day: 'numeric', month: 'short', year: 'numeric' }); };
 /* date status (B30): 'confirmed' (organiser page, quote and check date stored), 'unchecked' (confirmed before quotes were stored), 'estimated' */
 const dateEv = c => window.HoggyStats && HoggyStats.dateEvidence ? HoggyStats.dateEvidence(c) : (c.datesConfirmed === false ? 'estimated' : 'unchecked');
-const range = c => { if (c.datesConfirmed === false) return 'Expected ' + new Date(c.start + 'T00:00:00').toLocaleDateString('en-AU', { month: 'short', year: 'numeric' }); const a = new Date(c.start + 'T00:00:00'), b = new Date(c.end + 'T00:00:00'); if (c.end === c.start) return a.toLocaleDateString('en-AU', { day: 'numeric', month: 'short', year: 'numeric' }); return a.getMonth() === b.getMonth() ? `${a.getDate()}–${b.getDate()} ${a.toLocaleDateString('en-AU', { month: 'short', year: 'numeric' })}` : `${fmtD(c.start, { day: 'numeric', month: 'short' })} – ${fmtD(c.end)}`; };
+const range = c => { if (c.datesConfirmed === false) return 'Usually ' + new Date(c.start + 'T00:00:00').toLocaleDateString('en-AU', { month: 'short', year: 'numeric' }); const a = new Date(c.start + 'T00:00:00'), b = new Date(c.end + 'T00:00:00'); if (c.end === c.start) return a.toLocaleDateString('en-AU', { day: 'numeric', month: 'short', year: 'numeric' }); return a.getMonth() === b.getMonth() ? `${a.getDate()}–${b.getDate()} ${a.toLocaleDateString('en-AU', { month: 'short', year: 'numeric' })}` : `${fmtD(c.start, { day: 'numeric', month: 'short' })} – ${fmtD(c.end)}`; };
 const money = (n, cur) => { try { return new Intl.NumberFormat('en-AU', { style: 'currency', currency: cur || S.profile.currency, maximumFractionDigits: 2 }).format(n || 0); } catch (e) { return (cur || '') + ' ' + (n || 0).toFixed(2); } };
 const hash = s => { let h = 2166136261; for (const c of String(s)) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); } return h >>> 0; };
 const HUES = { Cardiology: 350, Oncology: 300, 'General Practice': 160, 'Emergency Medicine': 15, Neurology: 262, Anaesthesia: 200, Surgery: 5, Paediatrics: 45, Psychiatry: 280, Radiology: 220, Dermatology: 25, 'Critical Care': 340, 'Public Health': 140, Endocrinology: 190, Respiratory: 205, 'Infectious Disease': 95, 'Obstetrics & Gynaecology': 320, Orthopaedics: 30, Ophthalmology: 235, 'Medical Education': 120 };
@@ -67,7 +67,7 @@ const grad = c => { const h = hue(c); return `linear-gradient(135deg,hsl(${h} 70
 const initials = c => { if (c.short) return c.short; const m = c.name.match(/\b[A-Z]{2,6}\b/); return m ? m[0] : c.name.split(/\s+/).filter(w => /^[A-Za-z]/.test(w)).slice(0, 2).map(w => w[0]).join('').toUpperCase(); };
 /* courses (data/courses via /api/courses): catalogue, upcoming sessions, and course sessions in trips (CEV: id -> event) */
 const HC = window.HoggyCourses;
-const COURSES = { cat: null, sessions: [], loaded: false };
+const COURSES = { cat: null, summary: {}, sessions: [], have: new Set(), full: false, loaded: false, pending: new Map() };
 const CEV = new Map();
 const byId = id => CONFS.find(c => c.id === id) || CEV.get(id);
 /* a trip stays while its conference is known, or when it is a course trip carrying its own copy of the session */
@@ -284,8 +284,10 @@ const VIEWS = {
       ['Dates you can check', 'Confirmed dates come from the organiser\'s own page, with the link, the wording Hoggy read and the date it checked. Dates confirmed before Hoggy stored the wording say so until they are re-checked, and estimates are labelled.']];
     const ben = `<section aria-labelledby="benH"><div class="section"><h2 id="benH">What you get</h2></div>
       <div class="benefits">${benefits.map(([t, d]) => `<div class="benefit"><span class="tick" aria-hidden="true">✓</span><div><h3>${t}</h3><p>${d}</p></div></div>`).join('')}</div></section>`;
-    const live = st && st.conferences ? `<section class="live" aria-labelledby="liveH"><div class="live-head"><h2 id="liveH">Live data</h2><span>Counted from Hoggy's conference list just now</span></div>
-      <dl class="live-grid"><div><dt>Upcoming conferences</dt><dd>${n(st.conferences)}</dd></div><div><dt>Countries</dt><dd>${n(st.countries)}</dd></div><div><dt>Specialties</dt><dd>${n(st.specialties)}</dd></div><div><dt>Dates confirmed on the organiser's page</dt><dd>${st.confirmedPct}%</dd><span class="live-sub">${st.confirmed ? `${n(st.confirmed)} of ${n(st.conferences)}, each with the page and the wording Hoggy read.` : 'None yet with the page and the wording Hoggy read stored.'}${st.unchecked ? ` A further ${n(st.unchecked)} were confirmed before Hoggy stored the wording and are being re-checked.` : ''} The rest are estimates and say so.</span></div></dl></section>` : '';
+    const ct = COURSES.loaded ? HC.courseTotals(COURSES.summary, COURSES.cat) : null;
+    const live = st && st.conferences ? `<section class="live" aria-labelledby="liveH"><div class="live-head"><h2 id="liveH">Live data</h2><span>Counted from Hoggy's conference and course lists just now</span></div>
+      <dl class="live-grid"><div><dt>Upcoming conferences</dt><dd>${n(st.conferences)}</dd></div><div><dt>Countries</dt><dd>${n(st.countries)}</dd></div><div><dt>Specialties</dt><dd>${n(st.specialties)}</dd></div>${ct && ct.sessions ? `<div><dt>Course sessions</dt><dd>${n(ct.sessions)}</dd><span class="live-sub">${n(ct.types)} course types in ${n(ct.countries)} countries, dates read on each provider's page.</span></div>` : ''}
+      <div class="live-dates"><dt>Conference dates</dt><dd class="split"><span><b>${n(st.confirmed)}</b> confirmed, with the organiser's page and wording stored</span><span><b>${n(st.unchecked)}</b> confirmed earlier, being re-checked</span><span><b>${n(st.estimated)}</b> estimated, and labelled as estimates</span></dd></div></dl></section>` : '';
     const ex = examples.length ? `<div class="section"><h2>${examples.every(c => dateEv(c) === 'confirmed') ? 'Coming up, dates confirmed' : 'Coming up'}</h2><a href="#/discover">Browse all</a></div><div class="grid ex">${examples.map(card).join('')}</div>` : '';
     const close = `<section class="hero hero-close"><h2>Ready for your next conference?</h2><p>Start with a search. No account needed to browse; sign in when you want your trips and receipts synced.</p>
       <div class="row"><a class="btn primary lg" href="#/discover">Find conferences</a>${NET.online && !NET.user ? '<button type="button" class="btn ghost lg" data-act="signin">Sign in</button>' : ''}</div></section>`;
@@ -295,7 +297,8 @@ const VIEWS = {
   discover() {
     const specs = [...new Set(CONFS.map(c => c.specialty))].sort(), regs = [...new Set(CONFS.map(c => c.region))].sort(), ctry = [...new Set(CONFS.map(c => c.country))].sort();
     const HS = window.HoggyStats, ds = HS && HS.discoverSummary ? HS.discoverSummary(CONFS, today()) : null, n = v => Number(v).toLocaleString('en-AU'), mon = iso => fmtD(iso, { month: 'short', year: 'numeric' });
-    const sub = ds && ds.conferences ? `${n(ds.conferences)} upcoming conferences in ${n(ds.countries)} countries, ${esc(mon(ds.from))} to ${esc(mon(ds.to))}. ${n(ds.confirmed)} (${ds.confirmedPct}%) have dates confirmed on the organiser's page with the wording stored${ds.unchecked ? `, ${n(ds.unchecked)} (${ds.uncheckedPct}%) were confirmed earlier and are being re-checked` : ''}; the rest are marked as estimates.` : `${n(upcoming().length)} upcoming conferences.`;
+    const ct = COURSES.loaded ? HC.courseTotals(COURSES.summary, COURSES.cat) : null;
+    const sub = ds && ds.conferences ? `${n(ds.conferences)} upcoming conferences in ${n(ds.countries)} countries, ${esc(mon(ds.from))} to ${esc(mon(ds.to))}: ${n(ds.confirmed)} confirmed with the organiser's page stored · ${n(ds.unchecked)} confirmed earlier, being re-checked · ${n(ds.estimated)} estimated (labelled).${ct && ct.sessions ? ` Courses: ${n(ct.sessions)} sessions of ${n(ct.types)} course types.` : ''}` : `${n(upcoming().length)} upcoming conferences.`;
     return `<div class="page-head"><div><h1>Discover</h1><p>${sub} Filter by specialty, region, country, month and published CPD.</p></div></div>${segToggle('discover')}
     <div class="filters"><label class="search">${icon('search')}<input id="q" type="search" placeholder="Search conferences, courses, cities…" aria-label="Search conferences and courses" autocomplete="off"></label>
       <div class="chips" id="specChips" role="group" aria-label="Specialty"><button class="chip" aria-pressed="true" data-spec="All">All</button>${specs.map(s => `<button class="chip" aria-pressed="false" data-spec="${esc(s)}">${esc(s)}</button>`).join('')}</div>
@@ -363,15 +366,19 @@ const VIEWS = {
   courses() {
     const { parts, q } = hashParts();
     if (parts[1]) {
-      if (CUI.course !== parts[1] || q.toString()) Object.assign(CUI, { course: parts[1], state: q.get('state') || '', city: q.get('city') || '', month: q.get('month') || '', limit: 25 });
+      if (CUI.course !== parts[1] || q.toString()) {
+        const c0 = q.get('country') != null ? q.get('country') : listPlace();
+        Object.assign(CUI, { course: parts[1], country: c0 && !c0.startsWith('w:') ? c0 : '', state: q.get('state') || '', city: q.get('city') || '', month: q.get('month') || '', lang: q.get('lang') || CUI.listLang || 'en', limit: 25 });
+        /* a country with no session of this course: show all countries rather than an empty list */
+        if (CUI.country && COURSES.loaded && !HC.countFor(COURSES.summary[parts[1]], CUI.country, 'any').n) CUI.country = '';
+      }
       return courseView(parts[1]);
     }
-    const head = `<div class="page-head"><div><h1>Courses</h1><p>Life support courses in Australia and New Zealand, with dates read from each provider's own page. Plan the trip like a conference, and add your certificate to see when it is due.</p></div><a class="btn" href="#/certs">${icon('cert')} My certificates${S.certs.length ? ' (' + S.certs.length + ')' : ''}</a></div>${segToggle('courses')}`;
+    if (q.get('country') != null) CUI.place = q.get('country');
+    if (q.get('lang')) CUI.listLang = q.get('lang');
+    const head = `<div class="page-head"><div><h1>Courses</h1><p>Life support, emergency, procedural and GP skills courses, with dates read from each provider's own page. Plan the trip like a conference, and add your certificate to see when it is due.</p></div><a class="btn" href="#/certs">${icon('cert')} My certificates${S.certs.length ? ' (' + S.certs.length + ')' : ''}</a></div>${segToggle('courses')}`;
     if (!COURSES.cat) return head + '<div class="loading" aria-busy="true">Loading courses…</div>';
-    const order = c => (c.verified === true ? 0 : 2) + ((c.countries || []).includes('AU') ? 0 : 1);
-    const list = COURSES.cat.courses.slice().sort((a, b) => order(a) - order(b));
-    return head + remindCard() + `<div class="grid">${list.map(courseCard).join('')}</div>
-      <p class="note" style="margin-top:18px">So far Hoggy lists APLS, ALS1 and ALS2 in Australia and the NZRC CORE courses in New Zealand. EMST and PALS dates are not available yet. Course dates were last checked on ${esc(fmtD(COURSES.cat.generated))}.</p>`;
+    return head + remindCard() + courseListView();
   },
   certs() {
     const rows = certRows();
@@ -395,10 +402,16 @@ const VIEWS = {
 };
 
 /* ---------- courses: catalogue, course pages, sessions, certificates ---------- */
+/* x10 (18 Nov 2026): ~3,300 sessions in 45 countries. /api/courses gives the catalogue and per-course counts; a course's sessions
+   load when its page (or a certificate's "near you") needs them. Offline or on a static host the bundled files load whole. */
 const courseOf = id => COURSES.cat ? HC.courseById(COURSES.cat, id) : null;
 const sessionById = id => COURSES.sessions.find(s => s.id === id) || null;
+const haveSessions = id => COURSES.full || COURSES.have.has(id);
 const cgrad = c => { const h = { apls: 32, als1: 196, als2: 218, emst: 8, pals: 290 }[c.id] ?? (c.countries && c.countries.includes('NZ') ? 168 : hash(c.id) % 360); return `linear-gradient(135deg,hsl(${h} 62% 40%),hsl(${(h + 36) % 360} 70% 26%))`; };
-const CUI = { course: '', state: '', city: '', month: '', limit: 25 };
+/* list filters (place: '' all, 'AU', or 'w:Europe'; lang: 'en' English or not stated, 'any', or a language) and the course page filters */
+const CUI = { course: '', state: '', city: '', month: '', country: '', lang: 'en', limit: 25, place: null, listLang: 'en', q: '', lim: 24 };
+const homePlace = () => HC.countryCodeOf(S.profile.country);
+const listPlace = () => CUI.place == null ? homePlace() : CUI.place;
 const monthLabel = ym => new Date(ym + '-01T00:00:00').toLocaleDateString('en-AU', { month: 'long', year: 'numeric' });
 const extA = (url, label, cls = 'btn sm') => `<a class="${cls}" data-act="ext" target="_blank" rel="noopener noreferrer" href="${esc(safeUrl(url))}">${label} ${icon('ext')}</a>`;
 const srcLink = (url, label = 'source') => url && safeUrl(url) !== '#' ? `<a class="u" target="_blank" rel="noopener noreferrer" href="${esc(safeUrl(url))}">${esc(label)}</a>` : '';
@@ -410,12 +423,18 @@ function whenText(iso) { const d = HC.daysBetween(today(), iso); if (d === 0) re
 const myRegion = () => HC.regionOf(S.profile);
 const findHref = id => '#/courses/' + encodeURIComponent(id) + (myRegion() ? '?state=' + encodeURIComponent(myRegion()) : '');
 const segToggle = cur => `<nav class="seg" aria-label="Show"><a href="#/discover" ${cur === 'discover' ? 'aria-current="page"' : ''}>Conferences</a><a href="#/courses" ${cur === 'courses' ? 'aria-current="page"' : ''}>Courses</a></nav>`;
-function courseCard(c) {
-  const ss = HC.filterSessions(COURSES.sessions, { courseId: c.id }, today()), v = HC.validityOf(c), eq = HC.equivalentLabel(COURSES.cat, c);
+const commercialPill = x => x && x.providerType === 'commercial' ? '<span class="pill" title="A commercial education company, not a college or society">Commercial provider</span>' : '';
+/* "Box Hill, VIC" in Australia and New Zealand; "Leiden, Netherlands" elsewhere */
+const placeOf = s => ['AU', 'NZ'].includes(s.country) ? `${s.city}, ${s.region}` : `${s.city}, ${HC.countryName(s.country)}`;
+/* place = where the list is looking; '' and 'any' mean everywhere / any language */
+function courseCard(c, place = listPlace(), lang = CUI.listLang) {
+  const sum = COURSES.summary[c.id], k = HC.countFor(sum, place, lang), all = HC.countFor(sum, '', 'any'), v = HC.validityOf(c), eq = HC.equivalentLabel(COURSES.cat, c), body = HC.bodyLabel(c.id);
+  const where = place ? HC.placeLabel(place) : '';
+  const line = k.n ? `${plural(k.n, 'upcoming session')}${where ? ' in ' + esc(where) : ''} · next ${esc(fmtD(k.next))}` : all.n ? `${plural(all.n, 'upcoming session')} elsewhere` : 'Dates not available yet — check provider';
   return `<article class="card course-card" tabindex="0" role="button" data-act="opencourse" data-id="${esc(c.id)}" aria-label="${esc(c.name)}">
-    <div class="art" style="background:${cgrad(c)}"><b>${esc(HC.shortName(c))}</b><span class="cc">${esc((c.countries || []).join(' · '))}</span></div>
-    <div><h3>${esc(c.name)}</h3><div class="meta">${eq ? `<span>${esc(eq)}</span>` : ''}<span>${ss.length ? `${plural(ss.length, 'upcoming session')} · next ${esc(fmtD(ss[0].start))}` : 'Dates not available yet — check provider'}</span></div></div>
-    <div class="pills"><span class="pill g">Course</span>${v ? `<span class="pill">Certificate ${esc(v.years)} years</span>` : ''}</div></article>`;
+    <div class="art" style="background:${cgrad(c)}"><b>${esc(HC.shortName(c))}</b><span class="cc">${esc((c.countries || []).slice(0, 4).join(' · '))}${(c.countries || []).length > 4 ? ' +' + ((c.countries || []).length - 4) : ''}</span></div>
+    <div><h3>${esc(c.name)}</h3><div class="meta">${body ? `<span>${esc(body)}</span>` : eq ? `<span>${esc(eq)}</span>` : ''}<span>${line}</span></div></div>
+    <div class="pills"><span class="pill g">Course</span>${v ? `<span class="pill">Certificate ${esc(v.years)} years</span>` : ''}${commercialPill(c)}</div></article>`;
 }
 /* reminder card for Home (and the Courses page): certificates due within 6 months or expired.
    TODO(D3): outbound email reminders (6 and 3 months before expiry, and on expiry) need an email provider and sender domain
@@ -425,28 +444,34 @@ function remindCard() {
   return `<section class="panel remind" aria-labelledby="remH"><div class="row" style="justify-content:space-between"><h2 id="remH">${icon('cert')} Certificate ${due.length > 1 ? 'renewals' : 'renewal'} coming up</h2><a class="btn sm ghost" href="#/certs">My certificates</a></div>
     <div class="list">${due.map(x => `<div class="li"><div class="grow"><div class="t">${esc(x.short || x.courseId)} certificate</div><div class="s">${x.st === 'expired' ? 'Expired' : 'Expires'} ${esc(fmtD(x.expires))} · ${esc(whenText(x.expires))}</div></div>${statusPill(x.st)}<a class="btn sm primary" href="${esc(findHref(x.courseId))}">Find a session</a></div>`).join('')}</div></section>`;
 }
+/* prices stay in the currency the provider lists (no conversion) */
 function sessionMeta(s) {
-  const price = s.priceFrom ? `From ${money(s.priceFrom, s.currency || 'AUD')}` : 'Price: check provider';
-  const seats = s.seatsStatus === 'full' ? 'Full' : s.seatsStatus === 'waitlist' ? 'Waitlist' : s.seatsStatus === 'open' ? (s.placesRemaining != null ? plural(s.placesRemaining, 'place') + ' left' : 'Places open') : '';
+  const price = s.priceFrom ? `From ${money(s.priceFrom, s.currency)}` : 'Price: check provider';
+  const seats = s.seatsStatus === 'full' ? 'Full' : s.seatsStatus === 'closed' ? 'Booking closed' : s.seatsStatus === 'waitlist' ? 'Waitlist' : s.seatsStatus === 'open' ? (s.placesRemaining != null ? plural(s.placesRemaining, 'place') + ' left' : 'Places open') : '';
   return { price, seats };
 }
 const bookLabel = s => HC.isArcList(s) ? 'Booking via course centre (ARC list)' : 'Book with provider';
 function sessionRow(s) {
-  const d = new Date(s.start + 'T00:00:00'), m = sessionMeta(s), c = courseOf(s.courseId), planned = S.trips.some(t => t.confId === 'crs-' + s.id);
+  const d = new Date(s.start + 'T00:00:00'), m = sessionMeta(s), c = courseOf(s.courseId), planned = S.trips.some(t => t.confId === 'crs-' + s.id), lang = HC.languageLabel(s);
+  const pills = [HC.VARIANT_LABEL[s.variant] ? `<span class="pill">${esc(HC.VARIANT_LABEL[s.variant])}</span>` : '', lang ? `<span class="pill w">${esc(lang)}</span>` : '', commercialPill(s)].join('');
   return `<div class="li sess" role="button" tabindex="0" data-act="session" data-id="${esc(s.id)}" aria-label="${esc(HC.shortName(c))} ${esc(range(s))}, ${esc(s.city)}">
     <div class="sdate" aria-hidden="true"><b>${d.getDate()}</b><span>${esc(d.toLocaleDateString('en-AU', { month: 'short' }))}</span></div>
-    <div class="grow"><div class="t">${esc(range(s))} · ${esc(HC.lengthLabel(s))}</div><div class="s">${esc(s.city)}, ${esc(s.region)}${s.venue ? ' · ' + esc(s.venue) : ''}</div><div class="s">${esc(s.provider)} · ${esc(m.price)}${m.seats ? ' · ' + esc(m.seats) : ''}</div>${HC.VARIANT_LABEL[s.variant] ? `<div class="pills" style="margin-top:6px"><span class="pill">${esc(HC.VARIANT_LABEL[s.variant])}</span></div>` : ''}</div>
+    <div class="grow"><div class="t">${esc(range(s))} · ${esc(HC.lengthLabel(s))}</div><div class="s">${esc(placeOf(s))}${s.venue ? ' · ' + esc(s.venue) : ''}</div><div class="s">${esc(s.provider)} · ${esc(m.price)}${m.seats ? ' · ' + esc(m.seats) : ''}</div>${pills ? `<div class="pills" style="margin-top:6px">${pills}</div>` : ''}</div>
     <div class="sess-acts">${extA(s.bookingUrl, esc(bookLabel(s)))}<button class="btn sm primary" data-act="plancourse" data-id="${esc(s.id)}" ${planned ? 'disabled' : ''}>${planned ? 'In your trips' : 'Plan trip'}</button></div></div>`;
 }
+const sessFilter = () => ({ courseId: CUI.course, country: CUI.country, lang: CUI.lang, state: CUI.state, city: CUI.city, month: CUI.month });
 function sessionList() {
-  const L = HC.filterSessions(COURSES.sessions, { courseId: CUI.course, state: CUI.state, city: CUI.city, month: CUI.month }, today());
+  const L = HC.filterSessions(COURSES.sessions, sessFilter(), today());
   const cnt = $('#sessCount'), box = $('#sessList'); if (!box) return;
   cnt.textContent = plural(L.length, 'session');
-  box.innerHTML = L.length ? L.slice(0, CUI.limit).map(sessionRow).join('') + (L.length > CUI.limit ? `<div style="text-align:center;padding:14px"><button class="btn" data-act="moresess">Show more (${L.length - CUI.limit} left)</button></div>` : '') : '<div class="empty"><h3>No sessions match</h3><p>Try another state, city or month.</p></div>';
+  box.innerHTML = L.length ? L.slice(0, CUI.limit).map(sessionRow).join('') + (L.length > CUI.limit ? `<div style="text-align:center;padding:14px"><button class="btn" data-act="moresess">Show more (${L.length - CUI.limit} left)</button></div>` : '') : `<div class="empty"><h3>No sessions match</h3><p>${CUI.country || CUI.lang !== 'any' ? 'Try all countries or any language, or ' : 'Try '}another state, city or month.</p></div>`;
 }
 function courseFilters() {
-  const o = HC.filterOptions(COURSES.sessions, { courseId: CUI.course, state: CUI.state }, today());
-  return `<div class="selects sess-filters"><select id="cState" aria-label="State or region"><option value="">All states and regions</option>${o.states.map(x => `<option ${x === CUI.state ? 'selected' : ''}>${esc(x)}</option>`).join('')}</select>
+  const o = HC.filterOptions(COURSES.sessions, sessFilter(), today());
+  const langs = o.langs.filter(l => l !== 'English');
+  return `<div class="selects sess-filters"><select id="cCountry" aria-label="Country"><option value="">All countries</option>${o.countries.map(x => `<option value="${esc(x)}" ${x === CUI.country ? 'selected' : ''}>${esc(HC.countryName(x))}</option>`).join('')}</select>
+    <select id="cLang" aria-label="Language"><option value="en" ${CUI.lang === 'en' ? 'selected' : ''}>English (or not stated)</option><option value="any" ${CUI.lang === 'any' ? 'selected' : ''}>Any language</option>${langs.map(x => `<option value="${esc(x)}" ${x === CUI.lang ? 'selected' : ''}>Taught in ${esc(x)}</option>`).join('')}</select>
+    ${o.states.length > 1 ? `<select id="cState" aria-label="State or region"><option value="">All states and regions</option>${o.states.map(x => `<option ${x === CUI.state ? 'selected' : ''}>${esc(x)}</option>`).join('')}</select>` : ''}
     <select id="cCity" aria-label="City"><option value="">All cities</option>${o.cities.map(x => `<option ${x === CUI.city ? 'selected' : ''}>${esc(x)}</option>`).join('')}</select>
     <select id="cMonth" aria-label="Month"><option value="">Any month</option>${o.months.map(x => `<option value="${esc(x)}" ${x === CUI.month ? 'selected' : ''}>${esc(monthLabel(x))}</option>`).join('')}</select><span class="count" id="sessCount"></span></div>`;
 }
@@ -463,36 +488,80 @@ function feeFact(c) {
   const ex = (c.feeExamples || []).filter(x => x.sourceUrl);
   return fact('Fees', CHECK, [c.feeNote ? esc(c.feeNote) : '', ...ex.map(x => `Example: ${esc(x.provider)} (${srcLink(x.sourceUrl)})`)].filter(Boolean).join(' '));
 }
+/* the same kind of certificate from other bodies, and only the recognition statements the catalogue quotes */
+function familyPanel(fam, place, lang, cur) {
+  const rows = fam.members.map(([id, label]) => ({ c: courseOf(id), label })).filter(x => x.c);
+  if (rows.length < 2) return '';
+  const rec = HC.recognitionOf(COURSES.cat, fam);
+  return `<section class="panel family" aria-label="${esc(fam.label)}"><h3 style="margin:0 0 4px">${esc(fam.label)}</h3><p class="note" style="margin:0 0 8px">Different bodies certify this course. Check which certificate your employer, college or registration body accepts.</p>
+    <div class="list">${rows.map(({ c, label }) => { const k = HC.countFor(COURSES.summary[c.id], place, lang), a = HC.countFor(COURSES.summary[c.id], '', 'any');
+      return `<a class="li fam-row${c.id === cur ? ' cur' : ''}" href="#/courses/${esc(c.id)}${place ? '?country=' + encodeURIComponent(place) : ''}" ${c.id === cur ? 'aria-current="page"' : ''}><div class="grow"><div class="t">${esc(fam.short)} — ${esc(label)}</div><div class="s">${k.n ? `${plural(k.n, 'session')}${place ? ' in ' + esc(HC.placeLabel(place)) : ''} · next ${esc(fmtD(k.next))}` : a.n ? `None${place ? ' in ' + esc(HC.placeLabel(place)) : ''} · ${plural(a.n, 'session')} elsewhere` : 'Dates not available yet'}</div></div></a>`; }).join('')}</div>
+    ${rec.map(r => `<p class="note" style="margin:8px 0 0">${esc(HC.bodyLabel(r.courseId).replace(/^[^—]*— /, ''))} says: “${esc(r.text)}” ${srcLink(r.sourceUrl, 'source')}</p>`).join('')}</section>`;
+}
 function courseView(id) {
   const c = courseOf(id);
   if (!COURSES.cat) return `<a class="back" href="#/courses">← All courses</a><div class="loading" aria-busy="true">Loading course dates…</div>`;
   if (!c) return `<a class="back" href="#/courses">← All courses</a><div class="empty"><h3>Course not found</h3><p><a class="u" href="#/courses">See all courses</a></p></div>`;
   const v = HC.validityOf(c), eq = HC.equivalentLabel(COURSES.cat, c), nz = (COURSES.cat.courses || []).find(x => x.nzEquivalentOf === c.id), ev = (c.audienceEvidence || {}), fv = (c.formatEvidence || {});
-  const ss = HC.filterSessions(COURSES.sessions, { courseId: c.id }, today()), owner = (c.providers || [])[0] || {};
-  const head = `<a class="back" href="#/courses">← All courses</a><div class="page-head"><div>${eq ? `<span class="eyebrow">${esc(eq)}</span>` : ''}<h1 class="ch1">${esc(c.name)}</h1><p>${esc(owner.name || '')}${nz ? ` · In New Zealand: <a class="u" href="#/courses/${esc(nz.id)}">${esc(nz.name)}</a>` : ''}</p></div><a class="btn sm" href="#/certs">${icon('cert')} My certificates</a></div>`;
+  const owner = (c.providers || [])[0] || {}, fam = HC.familyOf(c.id), body = HC.bodyLabel(c.id);
+  const head = `<a class="back" href="#/courses">← All courses</a><div class="page-head"><div>${body ? `<span class="eyebrow">${esc(body)}</span>` : eq ? `<span class="eyebrow">${esc(eq)}</span>` : ''}<h1 class="ch1">${esc(c.name)}</h1><p>${esc(owner.name || '')}${nz ? ` · In New Zealand: <a class="u" href="#/courses/${esc(nz.id)}">${esc(nz.name)}</a>` : ''}</p>${c.providerType === 'commercial' ? '<div class="pills" style="margin-top:6px"><span class="pill">Commercial provider</span></div>' : ''}</div><a class="btn sm" href="#/certs">${icon('cert')} My certificates</a></div>`
+    + (c.userNote ? `<p class="check warn" style="margin:0 0 12px">${esc(c.userNote)}</p>` : '');
   /* key facts first (they decide whether to book), then the sessions, then the longer description */
   const facts = `<div class="facts kfacts">${fact('Length', c.typicalLength ? esc(c.typicalLength) : CHECK)}${fact('Certificate validity', v ? esc(v.years) + ' years' : CHECK, v ? `As published by the course owner. ${srcLink(v.source)}` : 'Not confirmed in Hoggy yet.')}${feeFact(c)}${cpdFact(c)}</div>`;
   const about = `<section aria-labelledby="aboutH"><div class="section"><h2 id="aboutH">About this course</h2></div><div class="facts cfacts">${fact("Who it's for", c.audience ? esc(c.audience) : CHECK, srcLink(ev.sourceUrl))}${fact('Format', c.format ? esc(c.format) : CHECK, srcLink(fv.sourceUrl))}${fact('Renewal', c.recertification ? esc(c.recertification) : CHECK, srcLink((c.recertificationEvidence || {}).sourceUrl))}</div>
-    <p class="note" style="margin:-4px 0 0">Course pages: ${(c.providers || []).filter(p => p.url).map(p => srcLink(p.url, p.name)).join(' · ')}</p></section>`;
-  if (c.verified !== true || !ss.length) {
+    <p class="note" style="margin:-4px 0 0">${c.verified === true ? '' : 'Hoggy has not reviewed this course\'s facts yet (dates are read per session). '}Course pages: ${(c.providers || []).filter(p => p.url).map(p => srcLink(p.url, p.name)).join(' · ')}</p></section>` + (fam ? familyPanel(fam, CUI.country, CUI.lang, c.id) : '');
+  if (!haveSessions(c.id)) return head + facts + '<div class="loading" aria-busy="true">Loading sessions…</div>' + about;
+  const ss = HC.filterSessions(COURSES.sessions, { courseId: c.id }, today());
+  /* sessions carry their own evidence (provider page, quote, date read), so they show even before the course facts are reviewed */
+  if (!ss.length) {
     return head + facts + `<div class="panel nodates" style="margin-top:4px"><h3>Dates not available yet — check provider</h3><p style="color:var(--muted)">Hoggy shows only dates it has read on the provider's own page, and it has none for this course yet.${c.renameNote ? ' The course owner may have changed its name; this is not confirmed.' : ''}</p><div class="row" style="margin-top:12px">${(c.providers || []).filter(p => p.url).map(p => extA(p.schedulePage || p.url, 'Check ' + esc(p.name.split(/[(:;]/)[0].trim()))).join('')}</div></div>` + about;
   }
+  const kinds = [...new Set(ss.map(s => s.sourceKind).filter(Boolean))].slice(0, 3);
   return head + facts + `<div class="section" style="margin-top:22px"><h2>Upcoming sessions</h2></div>${courseFilters()}<div class="list sess-list" id="sessList"></div>
-    <p class="note">Dates come from ${c.id.startsWith('als') ? 'the Australian Resuscitation Council course list, ACRRM and course centres' : 'the provider\'s own page'}, last checked ${esc(fmtD(ss[0].lastVerified))}. “(inferred)” means the page gave only a start date and Hoggy took the length from the course title; check with the provider. Sessions and seats change, so confirm when you book.</p>` + about;
+    <p class="note">Dates come from ${c.id.startsWith('als') ? 'the Australian Resuscitation Council course list, ACRRM and course centres' : 'the provider\'s own page'}${kinds.length ? ' (' + esc(kinds.join('; ')) + ')' : ''}, last checked ${esc(fmtD(ss[0].lastVerified))}. “(inferred)” means the page gave only a start date and Hoggy took the length from the course page; check with the provider. Prices are in the currency the provider lists; Hoggy does not convert them. Sessions and seats change, so confirm when you book.</p>` + about;
 }
 function sessionSheet(sid, fallback) {
   const s = sessionById(sid), c = courseOf(s ? s.courseId : fallback && fallback.courseId), e = s ? HC.sessionEvent(s, c) : fallback; if (!e) return;
   if (!CEV.has(e.id) || s) CEV.set(e.id, e);
-  const trip = S.trips.find(t => t.confId === e.id), L = links(e), m = s ? sessionMeta(s) : null, name = c ? c.name : e.name;
+  const trip = S.trips.find(t => t.confId === e.id), L = links(e), m = s ? sessionMeta(s) : null, name = c ? c.name : e.name, lang = s ? HC.languageLabel(s) : '';
+  const opts = s && Array.isArray(s.durationOptions) ? `<div class="section" style="margin-top:14px"><h3 style="margin:0">Lengths on offer</h3></div><div class="list">${s.durationOptions.map(o => `<div class="li"><div class="grow"><div class="t">${esc(o.days)} day${o.days === 1 ? '' : 's'} · ends ${esc(fmtD(o.end))}</div><div class="s">${o.priceFrom ? esc(money(o.priceFrom, o.currency)) : 'Price: check provider'}${o.seatsStatus === 'closed' ? ' · Booking closed' : ''}</div></div>${extA(o.bookingUrl || o.sourceUrl, 'Book')}</div>`).join('')}</div>` : '';
+  const pe = s && s.providerEvidence ? `<p class="note">Price and places read on the provider's own booking page${s.providerEvidence.lastVerified ? ', checked ' + esc(fmtD(s.providerEvidence.lastVerified)) : ''} · ${srcLink(s.providerEvidence.sourceUrl, 'booking page')}</p>` : '';
   openOverlay(`<div class="sheet" role="dialog" aria-modal="true" aria-label="${esc(name)} session"><div class="sheet-wrap"><button class="icon-btn close" data-act="close" aria-label="Close">${icon('x')}</button><div class="art" style="background:${c ? cgrad(c) : grad(e)}"><b>${esc(e.short)}</b></div></div>
-  <div class="body"><span class="eyebrow">Course session</span><h2>${esc(name)}</h2><p style="color:var(--muted)">${esc(e.organiser)} · ${esc(e.city)}, ${esc(e.region || e.country)}</p>
-  ${s ? '' : '<p class="check warn">! This session is no longer on the provider list (it may have finished). The details below are what you planned.</p>'}
+  <div class="body"><span class="eyebrow">Course session${c && HC.bodyLabel(c.id) ? ' · ' + esc(HC.bodyLabel(c.id)) : ''}</span><h2>${esc(name)}</h2><p style="color:var(--muted)">${esc(e.organiser)} · ${esc(s ? placeOf(s) : e.city + ', ' + (e.region || e.country))}</p>
+  ${s ? '' : '<p class="check warn">! This session is no longer on the provider list (it may have finished). The details below are what you planned.</p>'}${lang ? `<p class="check warn">${esc(lang)}, as listed by the provider.</p>` : ''}
   <div class="row" style="margin-top:16px">${s ? `<button class="btn primary" data-act="plancourse" data-id="${esc(s.id)}" ${trip ? 'disabled' : ''}>${trip ? 'In your trips' : 'Plan trip'}</button>${extA(s.bookingUrl, esc(bookLabel(s)), 'btn')}` : ''}<button class="btn ghost" data-act="ics" data-id="${esc(e.id)}">+ Calendar</button></div>
-  <div class="facts">${fact('When', esc(range(e)), esc(HC.lengthLabel(e)) + (e.endInferred ? ' · end date inferred from the course length' : ''))}${fact('Where', esc(e.city) + ', ' + esc(e.region || e.country), e.venue ? esc(e.venue) : 'Venue: check provider')}
-    ${fact('Price', m ? esc(m.price) : CHECK, s && s.priceNote ? esc(s.priceNote) : '')}${fact('Places', m && m.seats ? esc(m.seats) : 'Check provider')}${fact('Provider', esc(e.organiser))}${fact('Type', esc(HC.VARIANT_LABEL[e.variant] || 'Full course'), e.cpdVerified ? esc(e.cpdHours) + ' CPD hours listed by the provider' : '')}</div>
-  <p class="note">Dates confirmed on ${s && HC.isArcList(s) ? 'the ARC course list' : 'the provider page'}${e.lastVerified ? ', checked ' + esc(fmtD(e.lastVerified)) : ''}${srcLink(e.sourceUrl) ? ' · ' + srcLink(e.sourceUrl, 'source page') : ''}</p>
+  <div class="facts">${fact('When', esc(range(e)), esc(s ? HC.lengthLabel(s) : HC.lengthLabel(e)) + (e.endInferred ? ' · end date inferred from the course length' : ''))}${fact('Where', esc(s ? placeOf(s) : e.city + ', ' + (e.region || e.country)), e.venue ? esc(e.venue) : 'Venue: check provider')}
+    ${fact('Price', m ? esc(m.price) : CHECK, s && s.priceFrom && s.currency && s.currency !== S.profile.currency ? `In ${esc(s.currency)}, as the provider lists it (not converted).${s.priceNote ? ' ' + esc(s.priceNote) : ''}` : s && s.priceNote ? esc(s.priceNote) : '')}${fact('Places', m && m.seats ? esc(m.seats) : 'Check provider')}${fact('Provider', esc(e.organiser) + (s && s.providerType === 'commercial' ? ' <span class="pill">Commercial provider</span>' : ''))}${fact('Type', esc(HC.VARIANT_LABEL[e.variant] || 'Full course'), e.cpdVerified ? esc(e.cpdHours) + ' CPD hours listed by the provider' : '')}</div>
+  ${opts}${s && (s.accessNote || s.bookingNote || s.sessionNote) ? `<p class="note">${esc([s.accessNote, s.bookingNote, s.sessionNote].filter(Boolean).join(' · '))}</p>` : ''}
+  <p class="note">Dates confirmed on ${s && HC.isArcList(s) ? 'the ARC course list' : 'the provider page'}${e.lastVerified ? ', checked ' + esc(fmtD(e.lastVerified)) : ''}${srcLink(e.sourceUrl) ? ' · ' + srcLink(e.sourceUrl, 'source page') : ''}</p>${pe}
   <div class="row" style="margin-top:12px"><a class="btn sm" target="_blank" rel="noopener noreferrer" href="${esc(L.flights)}">✈ Flights ${icon('ext')}</a><a class="btn sm" target="_blank" rel="noopener noreferrer" href="${esc(L.hotels)}">🛏 Hotels ${icon('ext')}</a>${c ? `<a class="btn sm ghost" href="#/courses/${esc(c.id)}">About this course</a>` : ''}</div></div></div>`);
 }
+/* the Courses list: country or region (default: the profile's country), language (default English or not stated), search;
+   certificate families grouped with the certifying body named; the rest as cards, most relevant first, paged */
+function courseListView() {
+  const place = listPlace(), lang = CUI.listLang, q = CUI.q.trim().toLowerCase(), cs = HC.countriesIn(COURSES.summary);
+  const tot = HC.courseTotals(COURSES.summary, COURSES.cat), hp = homePlace();
+  const placeOpts = [[hp, HC.countryName(hp) + ' (your country)'], ...(hp !== 'AU' ? [['AU', 'Australia']] : []), ...(hp !== 'NZ' ? [['NZ', 'New Zealand']] : []), ['w:Australia and New Zealand', 'Australia and New Zealand'], ...(hp !== 'GB' ? [['GB', 'United Kingdom']] : []), ['w:Europe', 'Europe (all countries)'], ['', 'All countries']]
+    .concat(cs.filter(([cc]) => ![hp, 'AU', 'NZ', 'GB'].includes(cc)).map(([cc, n]) => [cc, `${HC.countryName(cc)} (${n})`]).sort((a, b) => a[1].localeCompare(b[1])));
+  const langs = HC.languagesIn(COURSES.summary, place).filter(l => l !== 'English');
+  const filters = `<div class="selects course-filters"><label class="search">${icon('search')}<input id="cq" type="search" placeholder="Search courses (ALS, ultrasound, IUD…)" aria-label="Search courses" value="${esc(CUI.q)}" autocomplete="off"></label>
+    <select id="cPlace" aria-label="Country or region">${placeOpts.map(([v, l]) => `<option value="${esc(v)}" ${v === place ? 'selected' : ''}>${esc(l)}</option>`).join('')}</select>
+    <select id="cListLang" aria-label="Language"><option value="en" ${lang === 'en' ? 'selected' : ''}>English (or not stated)</option><option value="any" ${lang === 'any' ? 'selected' : ''}>Any language</option>${langs.map(l => `<option value="${esc(l)}" ${l === lang ? 'selected' : ''}>Taught in ${esc(l)}</option>`).join('')}</select></div>`;
+  const match = c => !q || [c.name, HC.shortName(c), HC.bodyLabel(c.id), c.certifyingBody || '', ...(c.providers || []).map(p => p.name)].join(' ').toLowerCase().includes(q);
+  const inFam = new Set([].concat(...HC.FAMILIES.map(f => f.members.map(m => m[0]))));
+  const here = c => HC.countFor(COURSES.summary[c.id], place, lang).n;
+  const fams = HC.FAMILIES.filter(f => f.members.some(([id]) => { const c = courseOf(id); return c && match(c); })).map(f => familyPanel(f, place, lang, '')).join('');
+  /* a course shows when it has sessions here, or has none anywhere but names this country (dates not out yet); relevance 0 (ERC) only on request */
+  const show = c => match(c) && (here(c) > 0 ? (HC.relevanceOf(c) > 0 || place || lang !== 'en') : !HC.countFor(COURSES.summary[c.id], '', 'any').n && (!place || (c.countries || []).some(cc => HC.inPlace(cc, place))));
+  const rest = COURSES.cat.courses.filter(c => !inFam.has(c.id) && show(c))
+    .sort((a, b) => HC.relevanceOf(b) - HC.relevanceOf(a) || (here(b) > 0) - (here(a) > 0) || (a.verified === true ? 0 : 1) - (b.verified === true ? 0 : 1) || a.name.localeCompare(b.name));
+  const cards = rest.slice(0, CUI.lim).map(c => courseCard(c, place, lang)).join('') + (rest.length > CUI.lim ? `<div style="grid-column:1/-1;text-align:center;padding:14px"><button class="btn" data-act="morecourses">Show more (${rest.length - CUI.lim} left)</button></div>` : '');
+  return filters + (fams ? `<div class="section" style="margin-top:14px"><h2>Life support and trauma certificates</h2></div><div class="fam-grid">${fams}</div>` : '')
+    + `<div class="section" style="margin-top:18px"><h2>${q ? 'Courses matching “' + esc(CUI.q) + '”' : 'Other courses'}${place ? ' · ' + esc(HC.placeLabel(place)) : ''}</h2><span class="count">${plural(rest.length, 'course')}</span></div>`
+    + (cards ? `<div class="grid">${cards}</div>` : '<div class="empty"><h3>No other courses here yet</h3><p>Try all countries, or any language.</p></div>')
+    + `<p class="note" style="margin-top:18px">Hoggy lists ${n0(tot.types)} course types with ${n0(tot.sessions)} upcoming sessions in ${n0(tot.countries)} countries, each read from the provider's or course owner's own page. Prices stay in the currency the provider lists. EMST, CCrISP and ASSET dates from RACS are not available yet. Course dates were last checked on ${esc(fmtD(COURSES.cat.generated))}.</p>`;
+}
+const n0 = v => Number(v || 0).toLocaleString('en-AU');
 function planCourse(sid) {
   const s = sessionById(sid); if (!s) return toast('That session is no longer listed');
   const r = HC.planTrip(S.trips, s, courseOf(s.courseId), uid());
@@ -532,8 +601,8 @@ function certDialog(opts = {}) {
   sel.addEventListener('change', upd); upd();
 }
 function certItem(x) {
-  const near = COURSES.loaded ? HC.nearSessions(COURSES.sessions, x.courseId, myRegion(), today(), 3) : null, reg = myRegion();
-  const nearHtml = !COURSES.loaded ? '<p class="note">Loading sessions…</p>' : near.list.length ? `<div class="note" style="margin:0 0 4px">${near.local ? 'Next sessions near you (' + esc(reg) + ')' : (reg ? 'None listed in ' + esc(reg) + ' yet. Soonest elsewhere' : 'Next sessions') }</div>${near.list.map(s => `<button class="near" data-act="session" data-id="${esc(s.id)}"><b>${esc(fmtD(s.start, { day: 'numeric', month: 'short' }))}</b> ${esc(s.city)}, ${esc(s.region)} · ${esc(s.provider)}</button>`).join('')}<a class="u note" href="${esc(near.local ? findHref(x.courseId) : '#/courses/' + encodeURIComponent(x.courseId))}">All ${esc(x.short || '')} sessions</a>` : '<p class="note">Dates not available yet — check provider.</p>';
+  const ok = COURSES.loaded && haveSessions(x.courseId), near = ok ? HC.nearSessions(COURSES.sessions, x.courseId, myRegion(), today(), 3, homePlace()) : null, reg = myRegion();
+  const nearHtml = !ok ? '<p class="note">Loading sessions…</p>' : near.list.length ? `<div class="note" style="margin:0 0 4px">${near.local ? 'Next sessions near you (' + esc(reg) + ')' : (reg ? 'None listed in ' + esc(reg) + ' yet. Soonest elsewhere' : 'Next sessions') }</div>${near.list.map(s => `<button class="near" data-act="session" data-id="${esc(s.id)}"><b>${esc(fmtD(s.start, { day: 'numeric', month: 'short' }))}</b> ${esc(placeOf(s))} · ${esc(s.provider)}</button>`).join('')}<a class="u note" href="${esc(near.local ? findHref(x.courseId) : '#/courses/' + encodeURIComponent(x.courseId))}">All ${esc(x.short || '')} sessions</a>` : '<p class="note">Dates not available yet — check provider.</p>';
   return `<div class="panel cert"><div class="row" style="justify-content:space-between;align-items:flex-start"><div class="row" style="gap:14px;align-items:flex-start;flex-wrap:nowrap;min-width:0"><div class="thumb cert-ico">${icon('cert')}</div><div style="min-width:0"><h3 style="margin:0">${esc(x.short || x.courseId)} <span style="font-weight:500;color:var(--muted);font-size:14px">${esc(x.courseName || '')}</span></h3>
     <div class="s" style="color:var(--muted);font-size:13.5px">Completed ${esc(fmtD(x.completed))}${x.number ? ' · No. ' + esc(x.number) : ''}</div>
     <div class="row" style="margin-top:8px;gap:8px">${x.expires ? `<span class="exp">${x.st === 'expired' ? 'Expired' : 'Expires'} ${esc(fmtD(x.expires))} (${esc(whenText(x.expires))})</span>` : ''}${statusPill(x.st)}</div>
@@ -601,16 +670,27 @@ function results() {
 }
 const AFTER = {
   courses() {
-    if (!$('#sessList')) return;
-    const keep = () => { const q = new URLSearchParams(); for (const k of ['state', 'city', 'month']) if (CUI[k]) q.set(k, CUI[k]); history.replaceState(null, '', '#/courses/' + CUI.course + (q.toString() ? '?' + q : '')); };
+    const hp = hashParts().parts; if (hp[1]) needSessions([hp[1]]);
+    if (!$('#sessList')) { /* the list page */
+      const q = $('#cq'); if (!q) return;
+      const keep = () => { const u = new URLSearchParams(); if (CUI.place != null) u.set('country', CUI.place); if (CUI.listLang !== 'en') u.set('lang', CUI.listLang); history.replaceState(null, '', '#/courses' + (u.toString() ? '?' + u : '')); };
+      let t = null; q.addEventListener('input', e => { clearTimeout(t); t = setTimeout(() => { CUI.q = e.target.value; CUI.lim = 24; render(); const n = $('#cq'); if (n) { n.focus(); n.setSelectionRange(n.value.length, n.value.length); } }, 200); });
+      $('#cPlace').addEventListener('change', e => { CUI.place = e.target.value; CUI.listLang = 'en'; CUI.lim = 24; keep(); render(); });
+      $('#cListLang').addEventListener('change', e => { CUI.listLang = e.target.value; CUI.lim = 24; keep(); render(); });
+      return;
+    }
+    const keep = () => { const q = new URLSearchParams(); for (const k of ['country', 'state', 'city', 'month']) if (CUI[k]) q.set(k, CUI[k]); if (CUI.lang !== 'en') q.set('lang', CUI.lang); history.replaceState(null, '', '#/courses/' + CUI.course + (q.toString() ? '?' + q : '')); };
     const redraw = () => { keep(); const f = $('.sess-filters'); f.outerHTML = courseFilters(); wire(); sessionList(); };
     const wire = () => {
-      $('#cState').addEventListener('change', e => { CUI.state = e.target.value; CUI.city = ''; CUI.limit = 25; redraw(); });
+      $('#cCountry').addEventListener('change', e => { CUI.country = e.target.value; CUI.state = ''; CUI.city = ''; CUI.limit = 25; redraw(); });
+      $('#cLang').addEventListener('change', e => { CUI.lang = e.target.value; CUI.limit = 25; redraw(); });
+      if ($('#cState')) $('#cState').addEventListener('change', e => { CUI.state = e.target.value; CUI.city = ''; CUI.limit = 25; redraw(); });
       $('#cCity').addEventListener('change', e => { CUI.city = e.target.value; CUI.limit = 25; keep(); sessionList(); });
       $('#cMonth').addEventListener('change', e => { CUI.month = e.target.value; CUI.limit = 25; keep(); sessionList(); });
     };
     wire(); sessionList();
   },
+  certs() { needSessions((S.certs || []).map(c => c.courseId)); },
   discover() {
     const sync = () => { $('#q').value = UI.q; $('#fRegion').value = UI.region; $('#fCountry').value = UI.country; $('#fMonth').value = UI.month; $('#fCpd').value = UI.cpd; $('#fConf').value = UI.confirmed; if ($('#fHol')) $('#fHol').value = UI.hol; $('#fSort').value = UI.sort; document.querySelectorAll('[data-spec]').forEach(b => b.setAttribute('aria-pressed', b.dataset.spec === UI.spec)); };
     sync(); results();
@@ -1246,12 +1326,34 @@ async function loadConferences() {
   const r = await api('/api/conferences'); if (r.error || !Array.isArray(r.conferences) || r.conferences.length < 10) return;
   CONFS.length = 0; r.conferences.forEach(c => CONFS.push(c)); NET.confUpdated = r.updated;
 }
+/* courses: the catalogue with per-course counts first; a course's sessions when a page needs them. A static host (no API) gets the
+   bundled files whole, and the counts are worked out here. */
+async function loadStaticCourses() {
+  try {
+    const [a, b] = await Promise.all(['data/courses/catalogue.json', 'data/courses/sessions.json'].map(u => fetch(u, { credentials: 'same-origin' }).then(x => x.ok ? x.json() : null)));
+    if (!a || !b) return false;
+    Object.assign(COURSES, { cat: { generated: a.generated, courses: a.courses }, sessions: HC.upcomingSessions(b.sessions, today()), full: true, loaded: true });
+    COURSES.summary = HC.courseSummary(COURSES.sessions, today()); return true;
+  } catch (e) { return false; }
+}
+function ensureSessions(id) {
+  if (!id || haveSessions(id)) return Promise.resolve(true);
+  if (COURSES.pending.has(id)) return COURSES.pending.get(id);
+  const p = api('/api/courses?course=' + encodeURIComponent(id)).then(async r => {
+    if (r.error || !Array.isArray(r.sessions)) return (await loadStaticCourses()) && COURSES.full;
+    COURSES.sessions = HC.upcomingSessions(COURSES.sessions.filter(s => s.courseId !== id).concat(r.sessions), today()); COURSES.have.add(id); return true;
+  }).finally(() => COURSES.pending.delete(id));
+  COURSES.pending.set(id, p); return p;
+}
+/* load what the current page shows, then redraw once */
+function needSessions(ids) {
+  const want = [...new Set(ids.filter(id => id && !haveSessions(id)))]; if (!want.length || !COURSES.loaded) return;
+  Promise.all(want.map(ensureSessions)).then(() => { if (['courses', 'certs'].includes(route())) bgRender(); });
+}
 async function loadCourses() {
-  let r = await api('/api/courses');
-  if (r.error || !Array.isArray(r.courses) || !Array.isArray(r.sessions)) { /* static host or server down: the bundled files */
-    try { const [a, b] = await Promise.all(['data/courses/catalogue.json', 'data/courses/sessions.json'].map(u => fetch(u, { credentials: 'same-origin' }).then(x => x.ok ? x.json() : null))); if (!a || !b) return; r = { generated: a.generated, courses: a.courses, sessions: b.sessions }; } catch (e) { return; }
-  }
-  COURSES.cat = { generated: r.generated, courses: r.courses }; COURSES.sessions = HC.upcomingSessions(r.sessions, today()); COURSES.loaded = true;
+  const r = await api('/api/courses');
+  if (r.error || !Array.isArray(r.courses) || !r.summary) { if (!(await loadStaticCourses())) return; }
+  else Object.assign(COURSES, { cat: { generated: r.generated, courses: r.courses }, summary: r.summary, loaded: true });
   if (['courses', 'certs', 'discover'].includes(route())) bgRender(); else renderNav();
 }
 async function boot() {
@@ -1333,6 +1435,7 @@ document.addEventListener('click', async e => {
   if (a === 'session') return sessionSheet(id);
   if (a === 'plancourse') return planCourse(id);
   if (a === 'moresess') { CUI.limit += 25; return sessionList(); }
+  if (a === 'morecourses') { CUI.lim += 24; return bgRender(); }
   if (a === 'addcert') return certDialog();
   if (a === 'editcert') return certDialog({ edit: id });
   if (a === 'opencert') { const c = S.certs.find(x => x.id === id); return c && openFile(c); }

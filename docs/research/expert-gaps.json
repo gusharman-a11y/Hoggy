@@ -1,0 +1,6605 @@
+{
+ "generated": "2026-11-18",
+ "about": "inWave1 = matched in unmerged wave-1 files (data/shards/x10-*.json, data/courses/incoming/*catalogue.json). Expert target list for Hoggy (AU/NZ first). present = matched by series name/id in data/conferences.js or a course id in data/courses/catalogue.json on 2026-11-18. officialUrl is the organiser home page (not a date source); null = provider not yet identified. priority 1 = a doctor would notice it missing.",
+ "counts": {
+  "total": 488,
+  "byPriority": [
+   {
+    "priority": 1,
+    "total": 161,
+    "missing": 35,
+    "missingAfterWave1": 30
+   },
+   {
+    "priority": 2,
+    "total": 188,
+    "missing": 80,
+    "missingAfterWave1": 73
+   },
+   {
+    "priority": 3,
+    "total": 139,
+    "missing": 79,
+    "missingAfterWave1": 78
+   }
+  ],
+  "byKind": [
+   {
+    "kind": "conference",
+    "total": 395,
+    "missing": 117
+   },
+   {
+    "kind": "course",
+    "total": 93,
+    "missing": 77
+   }
+  ]
+ },
+ "items": [
+  {
+   "kind": "conference",
+   "specialty": "Emergency Medicine",
+   "name": "ACEM Annual Scientific Meeting",
+   "organiser": "Australasian College for Emergency Medicine",
+   "officialUrl": "https://acem.org.au",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "College ASM: every Fellow and trainee in this specialty expects to find it",
+   "present": true,
+   "presentIds": [
+    "acem-asm"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Emergency Medicine",
+   "name": "ACEM Regional, Rural and Remote EM Conference",
+   "organiser": "Australasian College for Emergency Medicine",
+   "officialUrl": "https://acem.org.au",
+   "country": "AU",
+   "priority": 2,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": true,
+   "presentIds": [
+    "acem-rural-remote-em-conference"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Emergency Medicine",
+   "name": "ACEM Winter Symposium",
+   "organiser": "Australasian College for Emergency Medicine",
+   "officialUrl": "https://acem.org.au",
+   "country": "AU",
+   "priority": 2,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Emergency Medicine",
+   "name": "Don't Forget the Bubbles (DFTB) Conference",
+   "organiser": "DFTB (paediatric EM education charity)",
+   "officialUrl": "https://dontforgetthebubbles.com",
+   "country": "AU/UK",
+   "priority": 2,
+   "why": "Big paeds-EM FOAMed conference; ED and paediatric registrars look for it",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Emergency Medicine",
+   "name": "CODA Change Conference",
+   "organiser": "CODA (critical care/EM education)",
+   "officialUrl": "https://codachange.org",
+   "country": "AU",
+   "priority": 3,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Emergency Medicine",
+   "name": "International Conference on Emergency Medicine (ICEM)",
+   "organiser": "International Federation for Emergency Medicine",
+   "officialUrl": "https://www.ifem.cc",
+   "country": "INTL",
+   "priority": 2,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Emergency Medicine",
+   "name": "RCEM Annual Scientific Conference",
+   "organiser": "Royal College of Emergency Medicine",
+   "officialUrl": "https://rcem.ac.uk",
+   "country": "GB",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "rcem-annual-conference"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Emergency Medicine",
+   "name": "ACEP Scientific Assembly",
+   "organiser": "American College of Emergency Physicians",
+   "officialUrl": "https://www.acep.org",
+   "country": "US",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "acep-scientific-assembly",
+    "acep-scientific-assembly-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Emergency Medicine",
+   "name": "EUSEM European Emergency Medicine Congress",
+   "organiser": "European Society for Emergency Medicine",
+   "officialUrl": "https://eusem.org",
+   "country": "EU",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "eusem-congress",
+    "eusem-congress-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Emergency Medicine",
+   "name": "SAEM Annual Meeting",
+   "organiser": "Society for Academic Emergency Medicine",
+   "officialUrl": "https://www.saem.org",
+   "country": "US",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "saem-annual-meeting",
+    "saem-annual-meeting-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Emergency Medicine",
+   "name": "Wilderness Medical Society / WMS conferences",
+   "organiser": "Wilderness Medical Society",
+   "officialUrl": "https://wms.org",
+   "country": "US",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "wms-summer-conference-2027",
+    "wms-summer-conference-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Emergency Medicine",
+   "name": "College of Emergency Nursing Australasia International Conference",
+   "organiser": "CENA",
+   "officialUrl": "https://www.cena.org.au",
+   "country": "AU",
+   "priority": 3,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "Emergency Medicine",
+   "name": "Advanced Paediatric Life Support (APLS)",
+   "organiser": "APLS Australia",
+   "officialUrl": "https://www.apls.org.au",
+   "country": "AU",
+   "priority": 1,
+   "why": "Required or expected for training / credentialing in AU/NZ",
+   "present": true,
+   "presentIds": [
+    "apls"
+   ],
+   "upcomingSessions": 77
+  },
+  {
+   "kind": "course",
+   "specialty": "Emergency Medicine",
+   "name": "ALS2 (Advanced Life Support Level 2)",
+   "organiser": "Australian Resuscitation Council accredited centres",
+   "officialUrl": "https://www.resus.org.au",
+   "country": "AU",
+   "priority": 1,
+   "why": "Required or expected for training / credentialing in AU/NZ",
+   "present": true,
+   "presentIds": [
+    "als2"
+   ],
+   "upcomingSessions": 201
+  },
+  {
+   "kind": "course",
+   "specialty": "Emergency Medicine",
+   "name": "EMST (Early Management of Severe Trauma, ATLS-based)",
+   "organiser": "Royal Australasian College of Surgeons",
+   "officialUrl": "https://www.surgeons.org",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "Required or expected for training / credentialing in AU/NZ - catalogue entry exists but 0 sessions (RACS site blocked) - doctors will see it as missing",
+   "present": true,
+   "presentIds": [
+    "emst"
+   ],
+   "upcomingSessions": 0,
+   "note": "In catalogue but 0 sessions: users see it as missing"
+  },
+  {
+   "kind": "course",
+   "specialty": "Emergency Medicine",
+   "name": "ETM (Emergency Trauma Management)",
+   "organiser": "ETM Course (Australia)",
+   "officialUrl": "https://www.etmcourse.com",
+   "country": "AU",
+   "priority": 1,
+   "why": "Trauma course widely accepted for ED/rural credentialing alongside EMST",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "Emergency Medicine",
+   "name": "ASUM Certificate in Clinician Performed Ultrasound (CCPU) / EM POCUS units",
+   "organiser": "Australasian Society for Ultrasound in Medicine",
+   "officialUrl": "https://www.asum.com.au",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "Standard POCUS credential in ED/ICU/anaesthesia",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "Emergency Medicine",
+   "name": "ACEM Emergency Medicine Certificate / Diploma (EMC/EMD)",
+   "organiser": "Australasian College for Emergency Medicine",
+   "officialUrl": "https://acem.org.au",
+   "country": "AU/NZ",
+   "priority": 2,
+   "why": "Entry qualification for GPs/RMOs working in ED",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "Emergency Medicine",
+   "name": "ATACC (Anaesthesia Trauma and Critical Care course)",
+   "organiser": "ATACC Group",
+   "officialUrl": "https://www.atacc.co.uk",
+   "country": "GB/AU",
+   "priority": 3,
+   "why": "Common CPD / skills course in this field",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "Emergency Medicine",
+   "name": "MIMMS (Major Incident Medical Management and Support)",
+   "organiser": "ALSG / national MIMMS providers",
+   "officialUrl": "https://www.alsg.org",
+   "country": "GB/AU",
+   "priority": 3,
+   "why": "Common CPD / skills course in this field",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "Emergency Medicine",
+   "name": "ACLS / BLS (American Heart Association)",
+   "organiser": "AHA International Training Centres",
+   "officialUrl": "https://international.heart.org",
+   "country": "INTL",
+   "priority": 2,
+   "why": "Required by many private hospitals, IMGs and overseas employers",
+   "present": false,
+   "inWave1": [
+    "nz-acls",
+    "pacls"
+   ]
+  },
+  {
+   "kind": "course",
+   "specialty": "Emergency Medicine",
+   "name": "PHTLS (Prehospital Trauma Life Support)",
+   "organiser": "NAEMT (with local faculty)",
+   "officialUrl": "https://www.naemt.org",
+   "country": "INTL",
+   "priority": 3,
+   "why": "Common CPD / skills course in this field",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "Emergency Medicine",
+   "name": "FACEM / Primary exam preparation courses (hospital-run)",
+   "organiser": "ACEM-accredited training hospitals",
+   "officialUrl": "https://acem.org.au",
+   "country": "AU/NZ",
+   "priority": 3,
+   "why": "Registrars search for exam prep",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Anaesthesia",
+   "name": "ANZCA Annual Scientific Meeting",
+   "organiser": "Australian and New Zealand College of Anaesthetists",
+   "officialUrl": "https://www.anzca.edu.au",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "College ASM: every Fellow and trainee in this specialty expects to find it - 2027 present; add 2028 edition",
+   "present": true,
+   "presentIds": [
+    "anzca-asm"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Anaesthesia",
+   "name": "ASA National Scientific Congress",
+   "organiser": "Australian Society of Anaesthetists",
+   "officialUrl": "https://asa.org.au",
+   "country": "AU",
+   "priority": 1,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": true,
+   "presentIds": [
+    "asa-nsc-2027",
+    "asa-nsc-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Anaesthesia",
+   "name": "NZSA Annual Scientific Meeting",
+   "organiser": "New Zealand Society of Anaesthetists",
+   "officialUrl": "https://www.anaesthesia.nz",
+   "country": "NZ",
+   "priority": 1,
+   "why": "NZ national meeting: NZ doctors expect it alongside the AU one",
+   "present": true,
+   "presentIds": [
+    "anzca-perioperative-medicine-sig-2026",
+    "anzca-rural-sig-meeting-2027",
+    "wa-ace-country-conference-2027",
+    "nsw-ace-winter-meeting-2027",
+    "qld-ace-sanctuary-symposium-2027"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Anaesthesia",
+   "name": "ANZCA Victorian / NSW / Queensland / WA / SA-NT regional CME meetings",
+   "organiser": "ANZCA regional committees",
+   "officialUrl": "https://www.anzca.edu.au",
+   "country": "AU",
+   "priority": 2,
+   "why": "State/branch or regional meeting: local CPD, registrar papers, short travel",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Anaesthesia",
+   "name": "ANZCA Combined/Obstetric Anaesthesia SIG meeting",
+   "organiser": "ANZCA/ASA Obstetric Anaesthesia SIG",
+   "officialUrl": "https://www.anzca.edu.au",
+   "country": "AU",
+   "priority": 3,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Anaesthesia",
+   "name": "ANZCA Airway Management SIG meeting",
+   "organiser": "ANZCA/ASA SIG",
+   "officialUrl": "https://www.anzca.edu.au",
+   "country": "AU",
+   "priority": 3,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Anaesthesia",
+   "name": "SPANZA Annual Scientific Meeting (paediatric anaesthesia)",
+   "organiser": "Society for Paediatric Anaesthesia in New Zealand and Australia",
+   "officialUrl": "https://www.spanza.org.au",
+   "country": "AU/NZ",
+   "priority": 2,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Anaesthesia",
+   "name": "Euroanaesthesia",
+   "organiser": "European Society of Anaesthesiology and Intensive Care",
+   "officialUrl": "https://www.esaic.org",
+   "country": "EU",
+   "priority": 1,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "esaic-masterclass-statistics-2027",
+    "euroanaesthesia"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Anaesthesia",
+   "name": "ANESTHESIOLOGY Annual Meeting",
+   "organiser": "American Society of Anesthesiologists",
+   "officialUrl": "https://www.asahq.org",
+   "country": "US",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "asa-anesthesiology",
+    "asa-anesthesiology-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Anaesthesia",
+   "name": "Association of Anaesthetists Annual Congress / WSM",
+   "organiser": "Association of Anaesthetists (UK & Ireland)",
+   "officialUrl": "https://anaesthetists.org",
+   "country": "GB",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "association-of-anaesthetists-winter-scientific-meeting",
+    "association-of-anaesthetists-gasfest",
+    "bapras-winter-scientific-meeting-2027",
+    "bapras-winter-scientific-meeting-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Anaesthesia",
+   "name": "World Congress of Anaesthesiologists (WCA)",
+   "organiser": "World Federation of Societies of Anaesthesiologists",
+   "officialUrl": "https://wfsahq.org",
+   "country": "INTL",
+   "priority": 2,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Anaesthesia",
+   "name": "Difficult Airway Society Annual Scientific Meeting",
+   "organiser": "Difficult Airway Society",
+   "officialUrl": "https://das.uk.com",
+   "country": "GB",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Anaesthesia",
+   "name": "ESRA Congress (regional anaesthesia)",
+   "organiser": "European Society of Regional Anaesthesia & Pain Therapy",
+   "officialUrl": "https://esraeurope.org",
+   "country": "EU",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "esra-annual-congress",
+    "esra-annual-congress-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Anaesthesia",
+   "name": "ASRA Pain Medicine Spring Meeting",
+   "organiser": "American Society of Regional Anesthesia and Pain Medicine",
+   "officialUrl": "https://www.asra.com",
+   "country": "US",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "asra-regional-anesthesiology-meeting",
+    "asra-pain-medicine-meeting"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Anaesthesia",
+   "name": "SOAP Annual Meeting (obstetric anaesthesia)",
+   "organiser": "Society for Obstetric Anesthesia and Perinatology",
+   "officialUrl": "https://www.soap.org",
+   "country": "US",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "soap-annual-meeting",
+    "soap-annual-meeting-2028"
+   ]
+  },
+  {
+   "kind": "course",
+   "specialty": "Anaesthesia",
+   "name": "EMAC (Effective Management of Anaesthetic Crises)",
+   "organiser": "ANZCA (accredited simulation centres)",
+   "officialUrl": "https://www.anzca.edu.au",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "Required or expected for training / credentialing in AU/NZ - core ANZCA trainee course and an emergency-response CPD activity",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "Anaesthesia",
+   "name": "ALS2 / ANZCA-recognised ALS",
+   "organiser": "ARC accredited centres",
+   "officialUrl": "https://www.resus.org.au",
+   "country": "AU",
+   "priority": 1,
+   "why": "ANZCA CPD emergency-response requirement",
+   "present": true,
+   "presentIds": [
+    "als2"
+   ],
+   "upcomingSessions": 201
+  },
+  {
+   "kind": "course",
+   "specialty": "Anaesthesia",
+   "name": "CICO / difficult airway workshops (ANZCA-recognised emergency response)",
+   "organiser": "Hospital simulation centres, ANZCA-recognised",
+   "officialUrl": "https://www.anzca.edu.au",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "ANZCA CPD emergency responses (CICO) every triennium",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "Anaesthesia",
+   "name": "Rural Anaesthetic Crisis Management (RACM)",
+   "organiser": "ACRRM",
+   "officialUrl": "https://www.acrrm.org.au",
+   "country": "AU",
+   "priority": 2,
+   "why": "For GP anaesthetists (JCCA)",
+   "present": false,
+   "inWave1": [
+    "acrrm-racm"
+   ]
+  },
+  {
+   "kind": "course",
+   "specialty": "Anaesthesia",
+   "name": "ACRRM Advanced Airway Management",
+   "organiser": "ACRRM",
+   "officialUrl": "https://www.acrrm.org.au",
+   "country": "AU",
+   "priority": 2,
+   "why": "Core rural generalist / remote emergency course",
+   "present": false,
+   "inWave1": [
+    "acrrm-advanced-airway"
+   ]
+  },
+  {
+   "kind": "course",
+   "specialty": "Anaesthesia",
+   "name": "Perioperative / basic TTE course (iTE / HeartWeb)",
+   "organiser": "University of Melbourne Ultrasound Education Group",
+   "officialUrl": "https://www.heartweb.com.au",
+   "country": "AU",
+   "priority": 3,
+   "why": "Common CPD / skills course in this field",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "Anaesthesia",
+   "name": "Ultrasound-guided regional anaesthesia workshops",
+   "organiser": "ASUM / ANZCA-endorsed providers",
+   "officialUrl": "https://www.asum.com.au",
+   "country": "AU",
+   "priority": 2,
+   "why": "Common CPD / skills course in this field",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "Anaesthesia",
+   "name": "ANZCA Primary / Final exam courses (state-based)",
+   "organiser": "ANZCA regional committees and hospitals",
+   "officialUrl": "https://www.anzca.edu.au",
+   "country": "AU/NZ",
+   "priority": 3,
+   "why": "Exam prep, registrars search for it",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Pain Medicine",
+   "name": "FPM Spring Meeting",
+   "organiser": "Faculty of Pain Medicine, ANZCA",
+   "officialUrl": "https://www.anzca.edu.au",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "College ASM: every Fellow and trainee in this specialty expects to find it",
+   "present": true,
+   "presentIds": [
+    "fpm-symposium-2027"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Pain Medicine",
+   "name": "Australian Pain Society ASM",
+   "organiser": "Australian Pain Society",
+   "officialUrl": "https://www.apsoc.org.au",
+   "country": "AU",
+   "priority": 1,
+   "why": "National society ASM: the main AU/NZ meeting for this field - present, but mapped to Anaesthesia: remap",
+   "present": true,
+   "presentIds": [
+    "australian-pain-society-asm"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Pain Medicine",
+   "name": "NZ Pain Society ASM",
+   "organiser": "New Zealand Pain Society",
+   "officialUrl": "https://www.nzps.org.nz",
+   "country": "NZ",
+   "priority": 2,
+   "why": "NZ national meeting: NZ doctors expect it alongside the AU one",
+   "present": true,
+   "presentIds": [
+    "nzps-asm-2027"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Pain Medicine",
+   "name": "IASP World Congress on Pain",
+   "organiser": "International Association for the Study of Pain",
+   "officialUrl": "https://www.iasp-pain.org",
+   "country": "INTL",
+   "priority": 2,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Pain Medicine",
+   "name": "EFIC Congress (Pain in Europe)",
+   "organiser": "European Pain Federation",
+   "officialUrl": "https://europeanpainfederation.eu",
+   "country": "EU",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "efic-pain-in-europe-congress",
+    "efic-pain-in-europe-congress-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Critical Care",
+   "name": "CICM Annual Scientific Meeting",
+   "organiser": "College of Intensive Care Medicine of ANZ",
+   "officialUrl": "https://www.cicm.org.au",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "College ASM: every Fellow and trainee in this specialty expects to find it",
+   "present": true,
+   "presentIds": [
+    "cicm-asm-2027"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Critical Care",
+   "name": "ANZICS/ACCCN Intensive Care ASM",
+   "organiser": "ANZICS and ACCCN",
+   "officialUrl": "https://www.anzics.org",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": true,
+   "presentIds": [
+    "anzics-asm"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Critical Care",
+   "name": "ANZICS Safety & Quality Conference",
+   "organiser": "ANZICS",
+   "officialUrl": "https://www.anzics.org",
+   "country": "AU",
+   "priority": 3,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Critical Care",
+   "name": "ESICM LIVES",
+   "organiser": "European Society of Intensive Care Medicine",
+   "officialUrl": "https://www.esicm.org",
+   "country": "EU",
+   "priority": 1,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "esicm-intensive-care-innovation-2027",
+    "esicm-lives-physiology-transbiology-2027",
+    "esicm-lives",
+    "esicm-lives-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Critical Care",
+   "name": "ISICEM (Brussels Intensive Care Symposium)",
+   "organiser": "Erasme University Hospital",
+   "officialUrl": "https://www.isicem.org",
+   "country": "EU",
+   "priority": 1,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Critical Care",
+   "name": "SCCM Critical Care Congress",
+   "organiser": "Society of Critical Care Medicine",
+   "officialUrl": "https://www.sccm.org",
+   "country": "US",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "sccm-critical-care-congress",
+    "ksccm-annual-meeting",
+    "sccm-critical-care-congress-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Critical Care",
+   "name": "Critical Care Reviews Meeting (CCR)",
+   "organiser": "Critical Care Reviews",
+   "officialUrl": "https://criticalcarereviews.com",
+   "country": "GB",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Critical Care",
+   "name": "ELSO Annual Conference / EuroELSO / APELSO",
+   "organiser": "Extracorporeal Life Support Organization",
+   "officialUrl": "https://www.elso.org",
+   "country": "INTL",
+   "priority": 3,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Critical Care",
+   "name": "Intensive Care Society State of the Art (SOA)",
+   "organiser": "Intensive Care Society (UK)",
+   "officialUrl": "https://ics.ac.uk",
+   "country": "GB",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "ics-state-of-the-art-2027",
+    "anzics-asm"
+   ]
+  },
+  {
+   "kind": "course",
+   "specialty": "Critical Care",
+   "name": "BASIC (Basic Assessment & Support in Intensive Care)",
+   "organiser": "BASIC Collaboration (CUHK), run by AU/NZ ICUs",
+   "officialUrl": "https://www.aic.cuhk.edu.hk/web8/",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "Standard first ICU course for CICM trainees/RMOs",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "Critical Care",
+   "name": "ALS2",
+   "organiser": "ARC accredited centres",
+   "officialUrl": "https://www.resus.org.au",
+   "country": "AU",
+   "priority": 1,
+   "why": "Required or expected for training / credentialing in AU/NZ",
+   "present": true,
+   "presentIds": [
+    "als2"
+   ],
+   "upcomingSessions": 201
+  },
+  {
+   "kind": "course",
+   "specialty": "Critical Care",
+   "name": "ECMO specialist / physician course",
+   "organiser": "Alfred Health ECMO / ELSO-endorsed centres",
+   "officialUrl": "https://www.elso.org",
+   "country": "AU",
+   "priority": 2,
+   "why": "Common CPD / skills course in this field",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "Critical Care",
+   "name": "Critical care echo / FUSIC / CCPU",
+   "organiser": "ASUM; Intensive Care Society (FUSIC)",
+   "officialUrl": "https://www.asum.com.au",
+   "country": "AU/GB",
+   "priority": 1,
+   "why": "CICM trainees and ICU consultants need accredited POCUS",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "Critical Care",
+   "name": "DETECT (Deteriorating patient) / adult & paediatric",
+   "organiser": "NSW Clinical Excellence Commission",
+   "officialUrl": "https://www.cec.health.nsw.gov.au",
+   "country": "AU",
+   "priority": 3,
+   "why": "Hospital mandatory for NSW JMOs",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "Critical Care",
+   "name": "CICM First Part / Second Part exam courses",
+   "organiser": "CICM-accredited ICUs",
+   "officialUrl": "https://www.cicm.org.au",
+   "country": "AU/NZ",
+   "priority": 3,
+   "why": "Exam prep",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Paediatrics",
+   "name": "RACP Congress (Paediatrics & Child Health Division program)",
+   "organiser": "Royal Australasian College of Physicians",
+   "officialUrl": "https://www.racp.edu.au",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "College ASM: every Fellow and trainee in this specialty expects to find it",
+   "present": true,
+   "presentIds": [
+    "racp-congress"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Paediatrics",
+   "name": "Paediatric Society of New Zealand ASM",
+   "organiser": "Paediatric Society of NZ",
+   "officialUrl": "https://www.paediatrics.org.nz",
+   "country": "NZ",
+   "priority": 1,
+   "why": "NZ national meeting: NZ doctors expect it alongside the AU one",
+   "present": true,
+   "presentIds": [
+    "paediatric-society-nz-conference"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Paediatrics",
+   "name": "PSANZ Congress (perinatal/neonatal)",
+   "organiser": "Perinatal Society of Australia and New Zealand",
+   "officialUrl": "https://psanz.com.au",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": true,
+   "presentIds": [
+    "psanz-congress"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Paediatrics",
+   "name": "APEG ASM (paediatric endocrinology)",
+   "organiser": "Australasian Paediatric Endocrine Group",
+   "officialUrl": "https://apeg.org.au",
+   "country": "AU",
+   "priority": 2,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": true,
+   "presentIds": [
+    "apeg-asm-2027",
+    "apeg-asm-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Paediatrics",
+   "name": "ANZCHOG ASM (paediatric oncology/haematology)",
+   "organiser": "ANZ Children's Haematology/Oncology Group",
+   "officialUrl": "https://www.anzchog.org",
+   "country": "AU/NZ",
+   "priority": 2,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": true,
+   "presentIds": [
+    "siop-congress-2027-sydney"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Paediatrics",
+   "name": "Australasian Adolescent & Youth Health conference (AAAH)",
+   "organiser": "AAAH",
+   "officialUrl": "https://www.aaah.org.au",
+   "country": "AU",
+   "priority": 3,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": true,
+   "presentIds": [
+    "aaah-youth-health-conference"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Paediatrics",
+   "name": "DFTB Conference (paeds EM)",
+   "organiser": "DFTB",
+   "officialUrl": "https://dontforgetthebubbles.com",
+   "country": "AU/UK",
+   "priority": 2,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Paediatrics",
+   "name": "Pediatric Academic Societies (PAS) Meeting",
+   "organiser": "Pediatric Academic Societies",
+   "officialUrl": "https://www.pas-meeting.org",
+   "country": "US",
+   "priority": 2,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "pas-meeting",
+    "pas-meeting-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Paediatrics",
+   "name": "AAP National Conference & Exhibition",
+   "organiser": "American Academy of Pediatrics",
+   "officialUrl": "https://www.aap.org",
+   "country": "US",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "aap-national-conference",
+    "aap-national-conference-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Paediatrics",
+   "name": "RCPCH Conference",
+   "organiser": "Royal College of Paediatrics and Child Health",
+   "officialUrl": "https://www.rcpch.ac.uk",
+   "country": "GB",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "rcpch-conference"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Paediatrics",
+   "name": "International Pediatric Association Congress",
+   "organiser": "IPA",
+   "officialUrl": "https://ipa-world.org",
+   "country": "INTL",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Paediatrics",
+   "name": "ESPID Annual Meeting (paediatric ID)",
+   "organiser": "European Society for Paediatric Infectious Diseases",
+   "officialUrl": "https://www.espid.org",
+   "country": "EU",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "espid-meeting",
+    "espid-meeting-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Paediatrics",
+   "name": "ESPGHAN Annual Meeting (paed gastro)",
+   "organiser": "ESPGHAN",
+   "officialUrl": "https://www.espghan.org",
+   "country": "EU",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "espghan-gi-winter-school-2027",
+    "espghan-wilson-disease-children-2027",
+    "espghan-annual-meeting",
+    "espghan-annual-meeting-2028"
+   ]
+  },
+  {
+   "kind": "course",
+   "specialty": "Paediatrics",
+   "name": "APLS",
+   "organiser": "APLS Australia",
+   "officialUrl": "https://www.apls.org.au",
+   "country": "AU",
+   "priority": 1,
+   "why": "Required or expected for training / credentialing in AU/NZ",
+   "present": true,
+   "presentIds": [
+    "apls"
+   ],
+   "upcomingSessions": 77
+  },
+  {
+   "kind": "course",
+   "specialty": "Paediatrics",
+   "name": "PLS (Paediatric Life Support, 1 day)",
+   "organiser": "APLS Australia",
+   "officialUrl": "https://www.apls.org.au",
+   "country": "AU",
+   "priority": 2,
+   "why": "Junior doctor / nurse paeds course",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "Paediatrics",
+   "name": "NeoResus (newborn resuscitation)",
+   "organiser": "Safer Care Victoria NeoResus program",
+   "officialUrl": "https://www.neoresus.org.au",
+   "country": "AU",
+   "priority": 1,
+   "why": "Newborn resus credential for paeds, O&G, GP obstetricians, midwives",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "Paediatrics",
+   "name": "S.T.A.B.L.E. Program (neonatal stabilisation)",
+   "organiser": "The S.T.A.B.L.E. Program",
+   "officialUrl": "https://stableprogram.org",
+   "country": "INTL/AU",
+   "priority": 2,
+   "why": "Common CPD / skills course in this field",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "Paediatrics",
+   "name": "APLS NZ / NZRC newborn & paediatric courses",
+   "organiser": "NZ Resuscitation Council",
+   "officialUrl": "https://www.nzrc.org.nz",
+   "country": "NZ",
+   "priority": 1,
+   "why": "NZ equivalent - currently zero NZ paeds sessions",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "Paediatrics",
+   "name": "Sydney Child Health Program / Diploma of Child Health",
+   "organiser": "University of Sydney / Sydney Children's Hospitals Network",
+   "officialUrl": "https://www.sydney.edu.au",
+   "country": "AU",
+   "priority": 2,
+   "why": "GPs and RMOs heading to paediatrics",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "Paediatrics",
+   "name": "Optimus paediatric emergency care education",
+   "organiser": "Children's Health Queensland",
+   "officialUrl": "https://www.childrens.health.qld.gov.au",
+   "country": "AU",
+   "priority": 3,
+   "why": "Common CPD / skills course in this field",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "Paediatrics",
+   "name": "PALS (AHA)",
+   "organiser": "AHA International Training Centres",
+   "officialUrl": "https://international.heart.org",
+   "country": "INTL",
+   "priority": 2,
+   "why": "catalogued, 0 sessions",
+   "present": true,
+   "presentIds": [
+    "pals"
+   ],
+   "upcomingSessions": 0,
+   "note": "In catalogue but 0 sessions: users see it as missing"
+  },
+  {
+   "kind": "conference",
+   "specialty": "Obstetrics & Gynaecology",
+   "name": "RANZCOG Annual Scientific Meeting",
+   "organiser": "Royal Australian and New Zealand College of O&G",
+   "officialUrl": "https://ranzcog.edu.au",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "College ASM: every Fellow and trainee in this specialty expects to find it",
+   "present": true,
+   "presentIds": [
+    "ranzcog-asm"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Obstetrics & Gynaecology",
+   "name": "RANZCOG Aotearoa NZ ASM",
+   "organiser": "RANZCOG NZ Committee",
+   "officialUrl": "https://ranzcog.edu.au",
+   "country": "NZ",
+   "priority": 1,
+   "why": "NZ national meeting: NZ doctors expect it alongside the AU one",
+   "present": true,
+   "presentIds": [
+    "ranzcog-aotearoa-nz-asm-2027"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Obstetrics & Gynaecology",
+   "name": "RANZCOG state/territory ASMs and regional symposia",
+   "organiser": "RANZCOG regional committees",
+   "officialUrl": "https://ranzcog.edu.au",
+   "country": "AU",
+   "priority": 2,
+   "why": "State/branch or regional meeting: local CPD, registrar papers, short travel",
+   "present": true,
+   "presentIds": [
+    "ranzcog-regional-symposium"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Obstetrics & Gynaecology",
+   "name": "AGES ASM (gynaecological endoscopy)",
+   "organiser": "Australasian Gynaecological Endoscopy & Surgery Society",
+   "officialUrl": "https://ages.com.au",
+   "country": "AU",
+   "priority": 1,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": true,
+   "presentIds": [
+    "ages-asm-2027",
+    "ages-asm-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Obstetrics & Gynaecology",
+   "name": "SOMANZ ASM (obstetric medicine)",
+   "organiser": "Society of Obstetric Medicine of Australia and NZ",
+   "officialUrl": "https://www.somanz.org",
+   "country": "AU/NZ",
+   "priority": 2,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Obstetrics & Gynaecology",
+   "name": "UGSA ASM (urogynaecology)",
+   "organiser": "Urogynaecological Society of Australasia",
+   "officialUrl": "https://www.ugsa.com.au",
+   "country": "AU",
+   "priority": 2,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Obstetrics & Gynaecology",
+   "name": "Australasian Menopause Society Congress",
+   "organiser": "Australasian Menopause Society",
+   "officialUrl": "https://www.menopause.org.au",
+   "country": "AU",
+   "priority": 2,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": true,
+   "presentIds": [
+    "imscon-hyderabad-2027-expected",
+    "ams-annual-congress-2027",
+    "menopause-society-annual-meeting-2027",
+    "imscon-hyderabad-2028-expected",
+    "menopause-society-annual-meeting-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Obstetrics & Gynaecology",
+   "name": "ASCCP (colposcopy) ASM",
+   "organiser": "Australian Society for Colposcopy and Cervical Pathology",
+   "officialUrl": "https://www.asccp.org.au",
+   "country": "AU",
+   "priority": 3,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Obstetrics & Gynaecology",
+   "name": "RCOG World Congress",
+   "organiser": "Royal College of Obstetricians and Gynaecologists",
+   "officialUrl": "https://www.rcog.org.uk",
+   "country": "GB/INTL",
+   "priority": 1,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "rcog-world-congress-2027"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Obstetrics & Gynaecology",
+   "name": "ISUOG World Congress",
+   "organiser": "International Society of Ultrasound in O&G",
+   "officialUrl": "https://www.isuog.org",
+   "country": "INTL",
+   "priority": 1,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "isuog-world-congress-2027"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Obstetrics & Gynaecology",
+   "name": "FIGO World Congress",
+   "organiser": "International Federation of Gynecology and Obstetrics",
+   "officialUrl": "https://www.figo.org",
+   "country": "INTL",
+   "priority": 2,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "xxvi-figo-world-congress-2027"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Obstetrics & Gynaecology",
+   "name": "ACOG Annual Clinical & Scientific Meeting",
+   "organiser": "American College of Obstetricians and Gynecologists",
+   "officialUrl": "https://www.acog.org",
+   "country": "US",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "acog-annual-meeting"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Obstetrics & Gynaecology",
+   "name": "AAGL Global Congress (MIGS)",
+   "organiser": "AAGL",
+   "officialUrl": "https://www.aagl.org",
+   "country": "US",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "aagl-global-congress-2027",
+    "aagl-global-congress-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Obstetrics & Gynaecology",
+   "name": "IUGA Annual Meeting",
+   "organiser": "International Urogynecological Association",
+   "officialUrl": "https://www.iuga.org",
+   "country": "INTL",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "augs-iuga-joint-meeting-2027"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Obstetrics & Gynaecology",
+   "name": "Jean Hailes Women's Health events/conference",
+   "organiser": "Jean Hailes for Women's Health",
+   "officialUrl": "https://www.jeanhailes.org.au",
+   "country": "AU",
+   "priority": 3,
+   "why": "GP women's health CPD",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "Obstetrics & Gynaecology",
+   "name": "FSEP (Fetal Surveillance Education Program)",
+   "organiser": "RANZCOG",
+   "officialUrl": "https://fsep.ranzcog.edu.au",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "Required or expected for training / credentialing in AU/NZ - hospitals require regular fetal surveillance training for intrapartum clinicians",
+   "present": false,
+   "inWave1": [
+    "fsep-full-day"
+   ]
+  },
+  {
+   "kind": "course",
+   "specialty": "Obstetrics & Gynaecology",
+   "name": "PROMPT (PRactical Obstetric Multi-Professional Training)",
+   "organiser": "PROMPT Maternity Foundation; AU/NZ state programs",
+   "officialUrl": "https://www.promptmaternity.org",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "Hospital-mandated maternity emergency training",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "Obstetrics & Gynaecology",
+   "name": "ALSO, now PIMS / AIMS in Australia (Preparation / Advancing in Maternity Safety)",
+   "organiser": "AMaRE Australia (ALSO derivative with AAFP)",
+   "officialUrl": "https://www.amare.org.au",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "GP obstetricians and rural generalists search for \"ALSO\"; in AU it is now PIMS (part 1) and AIMS (part 2) run by AMaRE. Add alias ALSO",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "Obstetrics & Gynaecology",
+   "name": "MOET (Managing Obstetric Emergencies and Trauma)",
+   "organiser": "ALSG / MOET Australia (to identify)",
+   "officialUrl": "https://www.alsg.org",
+   "country": "AU/GB",
+   "priority": 2,
+   "why": "Senior obstetric emergency course",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "Obstetrics & Gynaecology",
+   "name": "ACRRM REOT",
+   "organiser": "ACRRM",
+   "officialUrl": "https://www.acrrm.org.au",
+   "country": "AU",
+   "priority": 1,
+   "why": "Core rural generalist / remote emergency course",
+   "present": true,
+   "presentIds": [
+    "acrrm-reot"
+   ],
+   "upcomingSessions": 7
+  },
+  {
+   "kind": "course",
+   "specialty": "Obstetrics & Gynaecology",
+   "name": "RANZCOG Certificate / Diploma of Women's Health (CWH/DRANZCOG)",
+   "organiser": "RANZCOG",
+   "officialUrl": "https://ranzcog.edu.au",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "Main O&G qualification for GPs/rural generalists",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "Obstetrics & Gynaecology",
+   "name": "Colposcopy training / NCSP colposcopy recognition",
+   "organiser": "RANZCOG / ASCCP",
+   "officialUrl": "https://ranzcog.edu.au",
+   "country": "AU",
+   "priority": 2,
+   "why": "Common CPD / skills course in this field",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "Obstetrics & Gynaecology",
+   "name": "Obstetric & gynaecological ultrasound (ASUM / COGU)",
+   "organiser": "ASUM; RANZCOG COGU",
+   "officialUrl": "https://www.asum.com.au",
+   "country": "AU",
+   "priority": 3,
+   "why": "Common CPD / skills course in this field",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "Obstetrics & Gynaecology",
+   "name": "Menopause essentials / AMS courses",
+   "organiser": "Australasian Menopause Society",
+   "officialUrl": "https://www.menopause.org.au",
+   "country": "AU",
+   "priority": 3,
+   "why": "Common CPD / skills course in this field",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Reproductive Medicine",
+   "name": "FSANZ Annual Conference",
+   "organiser": "Fertility Society of Australia and New Zealand",
+   "officialUrl": "https://www.fertilitysociety.com.au",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "National society ASM: the main AU/NZ meeting for this field - present, mapped O&G; dual-map to Reproductive Medicine",
+   "present": true,
+   "presentIds": [
+    "fsanz-annual-conference"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Reproductive Medicine",
+   "name": "ESHRE Annual Meeting",
+   "organiser": "European Society of Human Reproduction and Embryology",
+   "officialUrl": "https://www.eshre.eu",
+   "country": "EU",
+   "priority": 1,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "eshre-annual-meeting",
+    "eshre-annual-meeting-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Reproductive Medicine",
+   "name": "ASRM Scientific Congress",
+   "organiser": "American Society for Reproductive Medicine",
+   "officialUrl": "https://www.asrm.org",
+   "country": "US",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "asrm-scientific-congress",
+    "asrm-scientific-congress-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "General Practice",
+   "name": "RACGP GP Conference (GP2x)",
+   "organiser": "Royal Australian College of General Practitioners",
+   "officialUrl": "https://www.racgp.org.au",
+   "country": "AU",
+   "priority": 1,
+   "why": "College ASM: every Fellow and trainee in this specialty expects to find it",
+   "present": true,
+   "presentIds": [
+    "gp26-racgp",
+    "racgp-gp-conference"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "General Practice",
+   "name": "Rural Medicine Australia (RMA)",
+   "organiser": "ACRRM and RDAA",
+   "officialUrl": "https://www.rma.org.au",
+   "country": "AU",
+   "priority": 1,
+   "why": "College ASM: every Fellow and trainee in this specialty expects to find it",
+   "present": true,
+   "presentIds": [
+    "rma-rural-medicine-australia",
+    "rdaa-rural-medicine-australia-2027",
+    "rdaa-rural-medicine-australia-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "General Practice",
+   "name": "RNZCGP Conference for General Practice",
+   "organiser": "Royal NZ College of GPs",
+   "officialUrl": "https://www.rnzcgp.org.nz",
+   "country": "NZ",
+   "priority": 1,
+   "why": "NZ national meeting: NZ doctors expect it alongside the AU one",
+   "present": true,
+   "presentIds": [
+    "rnzcgp-conference"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "General Practice",
+   "name": "Hauora Taiwhenua Rural Health Conference (NZ)",
+   "organiser": "Hauora Taiwhenua Rural Health Network",
+   "officialUrl": "https://www.hauorataiwhenua.org.nz",
+   "country": "NZ",
+   "priority": 2,
+   "why": "NZ national meeting: NZ doctors expect it alongside the AU one",
+   "present": true,
+   "presentIds": [
+    "hauora-taiwhenua-national-rural-health-conference-2027"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "General Practice",
+   "name": "RDAQ Annual Conference",
+   "organiser": "Rural Doctors Association of Queensland",
+   "officialUrl": "https://www.rdaq.com.au",
+   "country": "AU",
+   "priority": 2,
+   "why": "State/branch or regional meeting: local CPD, registrar papers, short travel",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "General Practice",
+   "name": "NSW Rural Doctors Network / RDAN conferences",
+   "organiser": "NSW RDN, Rural Doctors Association of NSW",
+   "officialUrl": "https://www.nswrdn.com.au",
+   "country": "AU",
+   "priority": 3,
+   "why": "State/branch or regional meeting: local CPD, registrar papers, short travel",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "General Practice",
+   "name": "RACGP faculty events (state faculty days, Rural/Aboriginal health)",
+   "organiser": "RACGP faculties",
+   "officialUrl": "https://www.racgp.org.au",
+   "country": "AU",
+   "priority": 2,
+   "why": "State/branch or regional meeting: local CPD, registrar papers, short travel",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "General Practice",
+   "name": "Healthed Women's & Children's Health Update / GP education evenings",
+   "organiser": "Healthed (commercial, industry-supported)",
+   "officialUrl": "https://www.healthed.com.au",
+   "country": "AU",
+   "priority": 2,
+   "why": "Very widely attended GP CPD; label as commercial",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "General Practice",
+   "name": "GPCE (GP education & expo)",
+   "organiser": "GPCE (commercial)",
+   "officialUrl": "https://www.gpce.com.au",
+   "country": "AU",
+   "priority": 3,
+   "why": "Big GP expo; industry-heavy - label commercial",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "General Practice",
+   "name": "WA Rural Health Conference",
+   "organiser": "Rural Health West",
+   "officialUrl": "https://www.ruralhealthwest.com.au",
+   "country": "AU",
+   "priority": 3,
+   "why": "State/branch or regional meeting: local CPD, registrar papers, short travel",
+   "present": true,
+   "presentIds": [
+    "wa-rural-health-conference-2027"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "General Practice",
+   "name": "National Rural Health Conference",
+   "organiser": "National Rural Health Alliance",
+   "officialUrl": "https://www.ruralhealth.org.au",
+   "country": "AU",
+   "priority": 2,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": true,
+   "presentIds": [
+    "hauora-taiwhenua-national-rural-health-conference-2027",
+    "national-rural-health-conference"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "General Practice",
+   "name": "WONCA World Conference",
+   "organiser": "World Organization of Family Doctors",
+   "officialUrl": "https://www.globalfamilydoctor.com",
+   "country": "INTL",
+   "priority": 2,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "wonca-asia-pacific-regional-hong-kong-2027",
+    "wonca-europe-conference",
+    "wonca-world-conference"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "General Practice",
+   "name": "WONCA Asia Pacific Regional Conference",
+   "organiser": "WONCA Asia Pacific",
+   "officialUrl": "https://www.globalfamilydoctor.com",
+   "country": "APAC",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "wonca-asia-pacific-regional-hong-kong-2027"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "General Practice",
+   "name": "RCGP Annual Conference",
+   "organiser": "Royal College of General Practitioners",
+   "officialUrl": "https://www.rcgp.org.uk",
+   "country": "GB",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "rcgp-annual-conference-2027",
+    "rcgp-annual-conference-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "General Practice",
+   "name": "AAFP FMX",
+   "organiser": "American Academy of Family Physicians",
+   "officialUrl": "https://www.aafp.org",
+   "country": "US",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "aafp-fmx",
+    "aafp-fmx-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "General Practice",
+   "name": "CRANAplus Conference (remote health)",
+   "organiser": "CRANAplus",
+   "officialUrl": "https://crana.org.au",
+   "country": "AU",
+   "priority": 3,
+   "why": "Remote area teams incl. RGs",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "General Practice",
+   "name": "Australasian Society of Lifestyle Medicine conference",
+   "organiser": "ASLM",
+   "officialUrl": "https://www.lifestylemedicine.org.au",
+   "country": "AU",
+   "priority": 3,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "General Practice",
+   "name": "GPMHSC Mental Health Skills Training (MHST)",
+   "organiser": "GP Mental Health Standards Collaboration (accredited providers)",
+   "officialUrl": "https://gpmhsc.org.au",
+   "country": "AU",
+   "priority": 1,
+   "why": "Unlocks higher GP mental-health plan items; every GP looks for it",
+   "present": false,
+   "inWave1": [
+    "rhw-mental-health-skills-training"
+   ]
+  },
+  {
+   "kind": "course",
+   "specialty": "General Practice",
+   "name": "GPMHSC Focussed Psychological Strategies (FPS) training",
+   "organiser": "GPMHSC accredited providers",
+   "officialUrl": "https://gpmhsc.org.au",
+   "country": "AU",
+   "priority": 2,
+   "why": "Needed to claim FPS items",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "General Practice",
+   "name": "Skin Cancer Medicine / Surgery certificates",
+   "organiser": "Skin Cancer College Australasia",
+   "officialUrl": "https://www.skincancercollege.org",
+   "country": "AU",
+   "priority": 1,
+   "why": "Most popular GP procedural CPD",
+   "present": false,
+   "inWave1": [
+    "scca-certificate-skin-cancer-medicine",
+    "scca-advanced-skin-surgery-workshop",
+    "scca-certificate-dermoscopy",
+    "healthcert-skin-cancer-medicine-workshop"
+   ]
+  },
+  {
+   "kind": "course",
+   "specialty": "General Practice",
+   "name": "HealthCert skin cancer / aesthetic / women's health certificates",
+   "organiser": "HealthCert (university-partnered, commercial)",
+   "officialUrl": "https://www.healthcert.com",
+   "country": "AU",
+   "priority": 2,
+   "why": "Widely used; label commercial",
+   "present": false,
+   "inWave1": [
+    "healthcert-skin-cancer-medicine-workshop",
+    "healthcert-skin-cancer-surgery-workshop",
+    "healthcert-clinical-procedures-workshop",
+    "healthcert-msk-sports-medicine-workshop"
+   ]
+  },
+  {
+   "kind": "course",
+   "specialty": "General Practice",
+   "name": "IUD / implant insertion and Certificate in Sexual & Reproductive Health",
+   "organiser": "Family Planning Australia (and state FP orgs: SHINE SA, SHQ, FP Tasmania etc.)",
+   "officialUrl": "https://www.fpnsw.org.au",
+   "country": "AU",
+   "priority": 1,
+   "why": "Core women's-health procedural training for GPs",
+   "present": false,
+   "inWave1": [
+    "iud-insertion-training",
+    "iud-insertion-train-the-trainer"
+   ]
+  },
+  {
+   "kind": "course",
+   "specialty": "General Practice",
+   "name": "MS-2 Step medical abortion prescriber training",
+   "organiser": "MS Health",
+   "officialUrl": "https://www.ms2step.com.au",
+   "country": "AU",
+   "priority": 2,
+   "why": "Required to prescribe MS-2 Step",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "General Practice",
+   "name": "ASHM s100 HIV / hepatitis B / hepatitis C prescriber courses",
+   "organiser": "ASHM",
+   "officialUrl": "https://ashm.org.au",
+   "country": "AU",
+   "priority": 1,
+   "why": "Required for s100 prescribing; GP and sexual health",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "General Practice",
+   "name": "RACGP / ACRRM emergency & procedural skills (e.g. GPs in Emergency)",
+   "organiser": "RACGP, ACRRM",
+   "officialUrl": "https://www.racgp.org.au",
+   "country": "AU",
+   "priority": 2,
+   "why": "Common CPD / skills course in this field",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "General Practice",
+   "name": "CPR / BLS (practice accreditation requirement)",
+   "organiser": "ARC-aligned providers (St John, Red Cross, Royal Life Saving)",
+   "officialUrl": "https://www.resus.org.au",
+   "country": "AU",
+   "priority": 2,
+   "why": "RACGP Standards require CPR training for practice staff at least every 3 years",
+   "present": false,
+   "inWave1": [
+    "bls-instructor"
+   ]
+  },
+  {
+   "kind": "course",
+   "specialty": "General Practice",
+   "name": "CASA Designated Aviation Medical Examiner (DAME) training",
+   "organiser": "Civil Aviation Safety Authority",
+   "officialUrl": "https://www.casa.gov.au",
+   "country": "AU",
+   "priority": 3,
+   "why": "Common CPD / skills course in this field",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "General Practice",
+   "name": "Antenatal shared-care accreditation (state hospital programs)",
+   "organiser": "State health services / hospitals",
+   "officialUrl": "https://www.health.nsw.gov.au",
+   "country": "AU",
+   "priority": 3,
+   "why": "Common CPD / skills course in this field",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "General Practice",
+   "name": "RACGP Aboriginal & Torres Strait Islander health / cultural safety modules",
+   "organiser": "RACGP / ACRRM / AIDA",
+   "officialUrl": "https://www.racgp.org.au",
+   "country": "AU",
+   "priority": 3,
+   "why": "Cultural-safety CPD is a Medical Board CPD expectation",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "General Practice",
+   "name": "ACRRM REST (Rural Emergency Skills Training)",
+   "organiser": "ACRRM",
+   "officialUrl": "https://www.acrrm.org.au",
+   "country": "AU",
+   "priority": 1,
+   "why": "Core rural generalist / remote emergency course",
+   "present": true,
+   "presentIds": [
+    "acrrm-rest"
+   ],
+   "upcomingSessions": 19
+  },
+  {
+   "kind": "course",
+   "specialty": "General Practice",
+   "name": "ACRRM Paediatric Emergencies for Rural Generalists",
+   "organiser": "ACRRM",
+   "officialUrl": "https://www.acrrm.org.au",
+   "country": "AU",
+   "priority": 1,
+   "why": "Core rural generalist / remote emergency course",
+   "present": true,
+   "presentIds": [
+    "acrrm-paediatric-emergencies"
+   ],
+   "upcomingSessions": 9
+  },
+  {
+   "kind": "course",
+   "specialty": "General Practice",
+   "name": "ACRRM Advanced Neonatal Resuscitation",
+   "organiser": "ACRRM",
+   "officialUrl": "https://www.acrrm.org.au",
+   "country": "AU",
+   "priority": 2,
+   "why": "Core rural generalist / remote emergency course",
+   "present": true,
+   "presentIds": [
+    "acrrm-anr"
+   ],
+   "upcomingSessions": 4
+  },
+  {
+   "kind": "course",
+   "specialty": "General Practice",
+   "name": "ACRRM PHEC (Pre-Hospital Emergency Care)",
+   "organiser": "ACRRM",
+   "officialUrl": "https://www.acrrm.org.au",
+   "country": "AU",
+   "priority": 1,
+   "why": "Core rural generalist / remote emergency course - seen on ACRRM, not yet added",
+   "present": false,
+   "inWave1": [
+    "acrrm-phec"
+   ]
+  },
+  {
+   "kind": "course",
+   "specialty": "General Practice",
+   "name": "ACRRM POCUS for Rural Generalists",
+   "organiser": "ACRRM",
+   "officialUrl": "https://www.acrrm.org.au",
+   "country": "AU",
+   "priority": 2,
+   "why": "Core rural generalist / remote emergency course - seen on ACRRM, not yet added",
+   "present": false,
+   "inWave1": [
+    "acrrm-pocus-rg"
+   ]
+  },
+  {
+   "kind": "course",
+   "specialty": "General Practice",
+   "name": "ACRRM Emergency Week",
+   "organiser": "ACRRM",
+   "officialUrl": "https://www.acrrm.org.au",
+   "country": "AU",
+   "priority": 3,
+   "why": "Core rural generalist / remote emergency course",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "General Practice",
+   "name": "CRANAplus REC / MEC (Remote Emergency Care / Maternity Emergency Care)",
+   "organiser": "CRANAplus",
+   "officialUrl": "https://crana.org.au",
+   "country": "AU",
+   "priority": 1,
+   "why": "Core rural generalist / remote emergency course - core remote emergency courses for RGs and remote teams",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "General Practice",
+   "name": "RESUS4KIDS, now KidsResus (NSW)",
+   "organiser": "Sydney Children's Hospitals Network / NSW HETI",
+   "officialUrl": "https://www.heti.nsw.gov.au",
+   "country": "AU",
+   "priority": 2,
+   "why": "NSW paediatric life support course; replaced by KidsResus from Aug 2025 (completions recognised). Add alias RESUS4KIDS",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "General Practice",
+   "name": "EMST / ETM for rural generalists",
+   "organiser": "RACS / ETM",
+   "officialUrl": "https://www.surgeons.org",
+   "country": "AU",
+   "priority": 1,
+   "why": "Core rural generalist / remote emergency course",
+   "present": true,
+   "presentIds": [
+    "emst"
+   ],
+   "upcomingSessions": 0,
+   "note": "In catalogue but 0 sessions: users see it as missing"
+  },
+  {
+   "kind": "conference",
+   "specialty": "Surgery",
+   "name": "RACS Annual Scientific Congress",
+   "organiser": "Royal Australasian College of Surgeons",
+   "officialUrl": "https://www.surgeons.org",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "College ASM: every Fellow and trainee in this specialty expects to find it - 2027 present; add 2028",
+   "present": true,
+   "presentIds": [
+    "racs-asc"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Surgery",
+   "name": "RACS state ASMs (NSW, Victorian Annual Surgical Meeting, QLD, WA, SA, Tas, NZ)",
+   "organiser": "RACS state/NZ committees",
+   "officialUrl": "https://www.surgeons.org",
+   "country": "AU/NZ",
+   "priority": 2,
+   "why": "State/branch or regional meeting: local CPD, registrar papers, short travel",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Surgery",
+   "name": "General Surgeons Australia / NZAGS meetings",
+   "organiser": "GSA; NZ Association of General Surgeons",
+   "officialUrl": "https://www.generalsurgeons.com.au",
+   "country": "AU/NZ",
+   "priority": 2,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Surgery",
+   "name": "CSSANZ ASM (colorectal)",
+   "organiser": "Colorectal Surgical Society of Australia and NZ",
+   "officialUrl": "https://www.cssanz.org",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": true,
+   "presentIds": [
+    "cssanz-asm-2027",
+    "cssanz-asm-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Surgery",
+   "name": "BreastSurgANZ ASM",
+   "organiser": "BreastSurgANZ",
+   "officialUrl": "https://www.breastsurganz.org",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": true,
+   "presentIds": [
+    "breastsurganz-asm-2027",
+    "breastsurganz-asm-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Surgery",
+   "name": "ANZHPBA ASM (HPB)",
+   "organiser": "ANZ Hepatic, Pancreatic & Biliary Association",
+   "officialUrl": "https://www.anzhpba.com",
+   "country": "AU/NZ",
+   "priority": 2,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Surgery",
+   "name": "ANZMOSS ASM (bariatric)",
+   "organiser": "ANZ Metabolic and Obesity Surgery Society",
+   "officialUrl": "https://anzmoss.com.au",
+   "country": "AU/NZ",
+   "priority": 2,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Surgery",
+   "name": "ANZ Endocrine Surgeons (ANZES) meeting",
+   "organiser": "ANZES",
+   "officialUrl": "https://www.endocrinesurgeons.org.au",
+   "country": "AU/NZ",
+   "priority": 3,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": true,
+   "presentIds": [
+    "aaes-annual-meeting-2027",
+    "aaes-annual-meeting-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Surgery",
+   "name": "Australasian Trauma Society / Trauma conference",
+   "organiser": "Australasian Trauma Society",
+   "officialUrl": "https://www.traumasociety.com.au",
+   "country": "AU",
+   "priority": 2,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Surgery",
+   "name": "Surgical Research Society of ANZ meeting",
+   "organiser": "SRS ANZ",
+   "officialUrl": "https://www.surgicalresearchsociety.org.au",
+   "country": "AU",
+   "priority": 3,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Surgery",
+   "name": "ACS Clinical Congress",
+   "organiser": "American College of Surgeons",
+   "officialUrl": "https://www.facs.org",
+   "country": "US",
+   "priority": 1,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "acs-clinical-congress",
+    "acs-clinical-congress-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Surgery",
+   "name": "ASGBI International Surgical Congress",
+   "organiser": "Association of Surgeons of Great Britain & Ireland",
+   "officialUrl": "https://www.asgbi.org.uk",
+   "country": "GB",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "asgbi-international-surgical-congress-2027",
+    "asgbi-international-surgical-congress-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Surgery",
+   "name": "SAGES Annual Meeting",
+   "organiser": "Society of American Gastrointestinal and Endoscopic Surgeons",
+   "officialUrl": "https://www.sages.org",
+   "country": "US",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "sages-annual-meeting",
+    "sages-annual-meeting-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Surgery",
+   "name": "EAES Congress",
+   "organiser": "European Association for Endoscopic Surgery",
+   "officialUrl": "https://eaes.eu",
+   "country": "EU",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "surgical-innovation-summit-2027",
+    "eaes-congress",
+    "eaes-congress-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Surgery",
+   "name": "ESCP Annual Meeting (coloproctology)",
+   "organiser": "European Society of Coloproctology",
+   "officialUrl": "https://www.escp.eu.com",
+   "country": "EU",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "surgical-innovation-summit-2027",
+    "escp-annual-meeting-2027",
+    "escp-annual-meeting-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Surgery",
+   "name": "ASCRS Annual Scientific Meeting",
+   "organiser": "American Society of Colon and Rectal Surgeons",
+   "officialUrl": "https://fascrs.org",
+   "country": "US",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "tkrcd-antalya",
+    "ascrs-colorectal-annual-meeting-2027",
+    "ascrs-colorectal-annual-meeting-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Surgery",
+   "name": "IFSO World Congress",
+   "organiser": "International Federation for the Surgery of Obesity",
+   "officialUrl": "https://www.ifso.com",
+   "country": "INTL",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Surgery",
+   "name": "IHPBA World Congress",
+   "organiser": "International Hepato-Pancreato-Biliary Association",
+   "officialUrl": "https://www.ihpba.org",
+   "country": "INTL",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "Surgery",
+   "name": "CCrISP (Care of the Critically Ill Surgical Patient)",
+   "organiser": "RACS",
+   "officialUrl": "https://www.surgeons.org",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "Required or expected for training / credentialing in AU/NZ - SET trainees",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "Surgery",
+   "name": "ASSET (Australian and NZ Surgical Skills Education and Training)",
+   "organiser": "RACS",
+   "officialUrl": "https://www.surgeons.org",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "Required or expected for training / credentialing in AU/NZ - replaced BSS for SET trainees",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "Surgery",
+   "name": "EMST",
+   "organiser": "RACS",
+   "officialUrl": "https://www.surgeons.org",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "Required or expected for training / credentialing in AU/NZ",
+   "present": true,
+   "presentIds": [
+    "emst"
+   ],
+   "upcomingSessions": 0,
+   "note": "In catalogue but 0 sessions: users see it as missing"
+  },
+  {
+   "kind": "course",
+   "specialty": "Surgery",
+   "name": "TIPS (Training in Professional Skills)",
+   "organiser": "RACS",
+   "officialUrl": "https://www.surgeons.org",
+   "country": "AU/NZ",
+   "priority": 2,
+   "why": "mand for SET",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "Surgery",
+   "name": "Operating with Respect",
+   "organiser": "RACS",
+   "officialUrl": "https://www.surgeons.org",
+   "country": "AU/NZ",
+   "priority": 2,
+   "why": "RACS-mandated professionalism training",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "Surgery",
+   "name": "Foundation Skills for Surgical Educators",
+   "organiser": "RACS",
+   "officialUrl": "https://www.surgeons.org",
+   "country": "AU/NZ",
+   "priority": 3,
+   "why": "mand for surgical supervisors",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "Surgery",
+   "name": "DSTC (Definitive Surgical Trauma Care)",
+   "organiser": "IATSIC / RACS trauma committee",
+   "officialUrl": "https://www.iatsic.org",
+   "country": "AU/INTL",
+   "priority": 2,
+   "why": "Common CPD / skills course in this field",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "Surgery",
+   "name": "Surgical Teachers Course",
+   "organiser": "RACS",
+   "officialUrl": "https://www.surgeons.org",
+   "country": "AU/NZ",
+   "priority": 3,
+   "why": "Common CPD / skills course in this field",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Orthopaedics",
+   "name": "AOA Annual Scientific Meeting",
+   "organiser": "Australian Orthopaedic Association",
+   "officialUrl": "https://www.aoa.org.au",
+   "country": "AU",
+   "priority": 1,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": true,
+   "presentIds": [
+    "aoa-asm"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Orthopaedics",
+   "name": "AOA branch ASMs (NSW, Vic, Qld, WA, SA, Tas)",
+   "organiser": "AOA branches",
+   "officialUrl": "https://www.aoa.org.au",
+   "country": "AU",
+   "priority": 2,
+   "why": "State/branch or regional meeting: local CPD, registrar papers, short travel",
+   "present": true,
+   "presentIds": [
+    "aoa-wa-branch-scientific-papers-day-2027",
+    "aoa-vic-branch-asm-2027",
+    "aoa-qld-trifecta-2027",
+    "aoa-nsw-branch-asm-2027",
+    "aoa-tas-branch-asm-2027",
+    "aoa-qld-branch-asm-2027"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Orthopaedics",
+   "name": "NZOA ASM",
+   "organiser": "New Zealand Orthopaedic Association",
+   "officialUrl": "https://www.nzoa.org.nz",
+   "country": "NZ",
+   "priority": 1,
+   "why": "NZ national meeting: NZ doctors expect it alongside the AU one",
+   "present": true,
+   "presentIds": [
+    "nzoa-asm"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Orthopaedics",
+   "name": "Australian Arthroplasty Society / AOA subspecialty meetings (knee, shoulder, foot & ankle, paediatric)",
+   "organiser": "AOA subspecialty societies",
+   "officialUrl": "https://www.aoa.org.au",
+   "country": "AU",
+   "priority": 2,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Orthopaedics",
+   "name": "AAOS Annual Meeting",
+   "organiser": "American Academy of Orthopaedic Surgeons",
+   "officialUrl": "https://www.aaos.org",
+   "country": "US",
+   "priority": 1,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "aaos-annual-meeting",
+    "aaos-annual-meeting-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Orthopaedics",
+   "name": "EFORT Congress",
+   "organiser": "European Federation of National Associations of Orthopaedics and Traumatology",
+   "officialUrl": "https://www.efort.org",
+   "country": "EU",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "efort-congress",
+    "efort-congress-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Orthopaedics",
+   "name": "BOA Annual Congress",
+   "organiser": "British Orthopaedic Association",
+   "officialUrl": "https://www.boa.ac.uk",
+   "country": "GB",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "bota-annual-congress-2026",
+    "boa-congress-2027",
+    "boa-congress-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Orthopaedics",
+   "name": "ISAKOS Biennial Congress",
+   "organiser": "ISAKOS",
+   "officialUrl": "https://www.isakos.com",
+   "country": "INTL",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Orthopaedics",
+   "name": "APOA Congress",
+   "organiser": "Asia Pacific Orthopaedic Association",
+   "officialUrl": "https://www.apoaonline.com",
+   "country": "APAC",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "apoa-congress-taipei-2027"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Orthopaedics",
+   "name": "SICOT Orthopaedic World Congress",
+   "organiser": "SICOT",
+   "officialUrl": "https://www.sicot.org",
+   "country": "INTL",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "Orthopaedics",
+   "name": "AO Trauma courses (Basic Principles, Advanced, ORP)",
+   "organiser": "AO Foundation / AO Trauma ANZ",
+   "officialUrl": "https://www.aofoundation.org",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "Every ortho registrar does AO Principles",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Spine Surgery",
+   "name": "Spine Society of Australia ASM",
+   "organiser": "Spine Society of Australia",
+   "officialUrl": "https://www.spinesociety.org.au",
+   "country": "AU",
+   "priority": 1,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": true,
+   "presentIds": [
+    "ssa-asm-2027",
+    "ssa-asm-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Spine Surgery",
+   "name": "NASS Annual Meeting",
+   "organiser": "North American Spine Society",
+   "officialUrl": "https://www.spine.org",
+   "country": "US",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "nass-annual-meeting-2027",
+    "nass-annual-meeting-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Spine Surgery",
+   "name": "EUROSPINE",
+   "organiser": "EUROSPINE",
+   "officialUrl": "https://www.eurospine.org",
+   "country": "EU",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "eurospine-eduweek-2027",
+    "eurospine-annual-meeting",
+    "eurospine-annual-meeting-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Hand Surgery",
+   "name": "Australian Hand Surgery Society ASM",
+   "organiser": "Australian Hand Surgery Society (AOA subspecialty)",
+   "officialUrl": "https://aoa.org.au/member-groups/subspecialties/hand-surgery",
+   "country": "AU",
+   "priority": 1,
+   "why": "National society ASM: the main AU/NZ meeting for this field - AU count is 0",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Hand Surgery",
+   "name": "NZ Society for Surgery of the Hand meeting",
+   "organiser": "NZSSH",
+   "officialUrl": "https://www.nzssh.org.nz",
+   "country": "NZ",
+   "priority": 3,
+   "why": "NZ national meeting: NZ doctors expect it alongside the AU one",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Hand Surgery",
+   "name": "ASSH Annual Meeting",
+   "organiser": "American Society for Surgery of the Hand",
+   "officialUrl": "https://www.assh.org",
+   "country": "US",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "assh-annual-meeting-2027",
+    "assh-annual-meeting-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Hand Surgery",
+   "name": "IFSSH Triennial Congress",
+   "organiser": "IFSSH",
+   "officialUrl": "https://www.ifssh.info",
+   "country": "INTL",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Hand Surgery",
+   "name": "FESSH Congress",
+   "organiser": "Federation of European Societies for Surgery of the Hand",
+   "officialUrl": "https://www.fessh.com",
+   "country": "EU",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "xxxii-fessh-congress-2027",
+    "xxxiii-fessh-congress-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Urology",
+   "name": "USANZ ASM",
+   "organiser": "Urological Society of Australia and NZ",
+   "officialUrl": "https://www.usanz.org.au",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": true,
+   "presentIds": [
+    "usanz-asm"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Urology",
+   "name": "USANZ state section meetings",
+   "organiser": "USANZ sections",
+   "officialUrl": "https://www.usanz.org.au",
+   "country": "AU/NZ",
+   "priority": 3,
+   "why": "State/branch or regional meeting: local CPD, registrar papers, short travel",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Urology",
+   "name": "AUA Annual Meeting",
+   "organiser": "American Urological Association",
+   "officialUrl": "https://www.auanet.org",
+   "country": "US",
+   "priority": 1,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "aua-annual-meeting",
+    "aua-annual-meeting-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Urology",
+   "name": "EAU Annual Congress",
+   "organiser": "European Association of Urology",
+   "officialUrl": "https://uroweb.org",
+   "country": "EU",
+   "priority": 1,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "eau-annual-congress",
+    "eaun-international-meeting",
+    "eau-annual-congress-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Urology",
+   "name": "BAUS Annual Meeting",
+   "organiser": "British Association of Urological Surgeons",
+   "officialUrl": "https://www.baus.org.uk",
+   "country": "GB",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "baus-annual-meeting-2027",
+    "baus-annual-meeting-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Urology",
+   "name": "SIU Congress",
+   "organiser": "Société Internationale d'Urologie",
+   "officialUrl": "https://www.siu-urology.org",
+   "country": "INTL",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Urology",
+   "name": "World Congress of Endourology",
+   "organiser": "Endourological Society",
+   "officialUrl": "https://www.endourology.org",
+   "country": "INTL",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Neurosurgery",
+   "name": "Neurosurgical Society of Australasia ASM",
+   "organiser": "Neurosurgical Society of Australasia",
+   "officialUrl": "https://www.nsa.org.au",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "National society ASM: the main AU/NZ meeting for this field - AU/NZ count is 0",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Neurosurgery",
+   "name": "CNS Annual Meeting",
+   "organiser": "Congress of Neurological Surgeons",
+   "officialUrl": "https://www.cns.org",
+   "country": "US",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "cns-annual-meeting-2027",
+    "cns-annual-meeting-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Neurosurgery",
+   "name": "AANS Annual Scientific Meeting",
+   "organiser": "American Association of Neurological Surgeons",
+   "officialUrl": "https://www.aans.org",
+   "country": "US",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "aans-annual-scientific-meeting-2027",
+    "aans-annual-scientific-meeting-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Neurosurgery",
+   "name": "EANS Congress",
+   "organiser": "European Association of Neurosurgical Societies",
+   "officialUrl": "https://www.eans.org",
+   "country": "EU",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Neurosurgery",
+   "name": "WFNS World Congress",
+   "organiser": "World Federation of Neurosurgical Societies",
+   "officialUrl": "https://www.wfns.org",
+   "country": "INTL",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "wfns-20th-world-congress-of-neurosurgery-2027"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Cardiothoracic Surgery",
+   "name": "ANZSCTS ASM",
+   "organiser": "ANZ Society of Cardiac and Thoracic Surgeons",
+   "officialUrl": "https://www.anzscts.org",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": true,
+   "presentIds": [
+    "anzscts-asm-2027",
+    "anzscts-aotearoa-cardiothoracic-meeting-2027",
+    "anzscts-asm-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Cardiothoracic Surgery",
+   "name": "AATS Annual Meeting",
+   "organiser": "American Association for Thoracic Surgery",
+   "officialUrl": "https://www.aats.org",
+   "country": "US",
+   "priority": 1,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "aats-annual-meeting"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Cardiothoracic Surgery",
+   "name": "EACTS Annual Meeting",
+   "organiser": "European Association for Cardio-Thoracic Surgery",
+   "officialUrl": "https://www.eacts.org",
+   "country": "EU",
+   "priority": 1,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "eacts-mcs-summit-2026",
+    "eacts-annual-meeting",
+    "eacts-annual-meeting-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Cardiothoracic Surgery",
+   "name": "STS Annual Meeting",
+   "organiser": "Society of Thoracic Surgeons",
+   "officialUrl": "https://www.sts.org",
+   "country": "US",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "sts-annual-meeting",
+    "tsan-taipei-2027-expected",
+    "ests-annual-conference",
+    "jsanes-kobe-2027-expected",
+    "bad-annual-meeting",
+    "cap-acp-annual-meeting-2027"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Cardiothoracic Surgery",
+   "name": "ASCVTS Annual Meeting",
+   "organiser": "Asian Society for Cardiovascular and Thoracic Surgery",
+   "officialUrl": "https://www.ascvts.org",
+   "country": "APAC",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "ascvts-singapore-2027-expected",
+    "ascvts-singapore-2028-expected"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Vascular Surgery",
+   "name": "ANZSVS ASM",
+   "organiser": "ANZ Society for Vascular Surgery",
+   "officialUrl": "https://www.anzsvs.org.au",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "National society ASM: the main AU/NZ meeting for this field - present but mapped to Surgery: remap",
+   "present": true,
+   "presentIds": [
+    "anzsvs-asm"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Vascular Surgery",
+   "name": "Charing Cross (CX) Symposium",
+   "organiser": "CX Symposium",
+   "officialUrl": "https://www.cxsymposium.com",
+   "country": "GB",
+   "priority": 1,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Vascular Surgery",
+   "name": "SVS Vascular Annual Meeting (VAM)",
+   "organiser": "Society for Vascular Surgery",
+   "officialUrl": "https://vascular.org",
+   "country": "US",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "svs-vascular-annual-meeting-2027",
+    "svs-vascular-annual-meeting-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Vascular Surgery",
+   "name": "VEITHsymposium",
+   "organiser": "VEITHsymposium",
+   "officialUrl": "https://www.veithsymposium.org",
+   "country": "US",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "veith-symposium-2027",
+    "veith-symposium-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Vascular Surgery",
+   "name": "ESVS Annual Meeting",
+   "organiser": "European Society for Vascular Surgery",
+   "officialUrl": "https://esvs.org",
+   "country": "EU",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "esvs-annual-meeting",
+    "esvs-annual-meeting-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Vascular Medicine",
+   "name": "Australasian College of Phlebology ASM",
+   "organiser": "Australasian College of Phlebology",
+   "officialUrl": "https://www.phlebology.com.au",
+   "country": "AU/NZ",
+   "priority": 2,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": true,
+   "presentIds": [
+    "acp-conference-2027"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Plastic Surgery",
+   "name": "ASPS Annual Scientific Meeting (Plastic Surgery Congress)",
+   "organiser": "Australian Society of Plastic Surgeons",
+   "officialUrl": "https://plasticsurgery.org.au",
+   "country": "AU",
+   "priority": 1,
+   "why": "National society ASM: the main AU/NZ meeting for this field - present but mapped to Surgery: remap",
+   "present": true,
+   "presentIds": [
+    "asps-plastic-surgery-meeting"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Plastic Surgery",
+   "name": "NZAPS Annual Scientific Meeting",
+   "organiser": "NZ Association of Plastic Surgeons",
+   "officialUrl": "https://www.plasticsurgery.org.nz",
+   "country": "NZ",
+   "priority": 2,
+   "why": "NZ national meeting: NZ doctors expect it alongside the AU one",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Plastic Surgery",
+   "name": "ANZBA ASM (burns)",
+   "organiser": "ANZ Burn Association",
+   "officialUrl": "https://anzba.org.au",
+   "country": "AU/NZ",
+   "priority": 2,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": true,
+   "presentIds": [
+    "anzba-asm-2027",
+    "anzba-asm-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Plastic Surgery",
+   "name": "ASAPS Non-Surgical Symposium / Aesthetic meeting",
+   "organiser": "Australasian Society of Aesthetic Plastic Surgeons",
+   "officialUrl": "https://www.aestheticplasticsurgeons.org.au",
+   "country": "AU",
+   "priority": 3,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": true,
+   "presentIds": [
+    "asps-advanced-aesthetic-workshop-2027",
+    "asaps-aesthetic-meeting-2027",
+    "asaps-aesthetic-meeting-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Plastic Surgery",
+   "name": "Plastic Surgery The Meeting",
+   "organiser": "American Society of Plastic Surgeons",
+   "officialUrl": "https://www.plasticsurgery.org",
+   "country": "US",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "plastic-surgery-the-meeting-2027",
+    "plastic-surgery-the-meeting-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Plastic Surgery",
+   "name": "BAPRAS Scientific Meeting",
+   "organiser": "BAPRAS",
+   "officialUrl": "https://www.bapras.org.uk",
+   "country": "GB",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "bapras-winter-scientific-meeting-2027",
+    "bapras-winter-scientific-meeting-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Otolaryngology (ENT)",
+   "name": "ASOHNS ASM",
+   "organiser": "Australian Society of Otolaryngology Head and Neck Surgery",
+   "officialUrl": "https://www.asohns.org.au",
+   "country": "AU",
+   "priority": 1,
+   "why": "National society ASM: the main AU/NZ meeting for this field - present but mapped to Surgery; AU ENT count shows 0",
+   "present": true,
+   "presentIds": [
+    "asohns-asm"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Otolaryngology (ENT)",
+   "name": "NZSOHNS Annual Scientific Meeting (\"ORL 20xx\")",
+   "organiser": "NZ Society of Otolaryngology Head and Neck Surgery",
+   "officialUrl": "https://asohns.org.au",
+   "country": "NZ",
+   "priority": 1,
+   "why": "NZ national meeting: NZ doctors expect it alongside the AU one",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Otolaryngology (ENT)",
+   "name": "ANZ Head & Neck Cancer Society ASM",
+   "organiser": "ANZHNCS",
+   "officialUrl": "https://www.anzhncs.org",
+   "country": "AU/NZ",
+   "priority": 2,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Otolaryngology (ENT)",
+   "name": "AAO-HNSF Annual Meeting & OTO EXPO",
+   "organiser": "American Academy of Otolaryngology-Head and Neck Surgery",
+   "officialUrl": "https://www.entnet.org",
+   "country": "US",
+   "priority": 1,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "aao-hnsf-annual-meeting",
+    "aao-hnsf-annual-meeting-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Otolaryngology (ENT)",
+   "name": "IFOS World Congress",
+   "organiser": "International Federation of ORL Societies",
+   "officialUrl": "https://www.ifosworld.org",
+   "country": "INTL",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Otolaryngology (ENT)",
+   "name": "ENT UK / BACO",
+   "organiser": "ENT UK",
+   "officialUrl": "https://www.entuk.org",
+   "country": "GB",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Oral & Maxillofacial Surgery",
+   "name": "ANZAOMS Annual Scientific Meeting",
+   "organiser": "ANZ Association of Oral and Maxillofacial Surgeons",
+   "officialUrl": "https://www.anzaoms.org",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "National society ASM: the main AU/NZ meeting for this field - AU/NZ count is 0",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Oral & Maxillofacial Surgery",
+   "name": "AAOMS Annual Meeting",
+   "organiser": "American Association of Oral and Maxillofacial Surgeons",
+   "officialUrl": "https://www.aaoms.org",
+   "country": "US",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "aaoms-annual-meeting-2027",
+    "aaoms-annual-meeting-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Oral & Maxillofacial Surgery",
+   "name": "ICOMS (IAOMS)",
+   "organiser": "International Association of Oral and Maxillofacial Surgeons",
+   "officialUrl": "https://www.iaoms.org",
+   "country": "INTL",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Paediatric Surgery",
+   "name": "ANZAPS Annual Scientific Meeting",
+   "organiser": "Australian and NZ Association of Paediatric Surgeons",
+   "officialUrl": "https://www.anzaps.org",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "National society ASM: the main AU/NZ meeting for this field - AU/NZ count is 0",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Paediatric Surgery",
+   "name": "SPANZA/ANZAPS Joint Scientific Meeting (when held jointly)",
+   "organiser": "SPANZA and ANZAPS",
+   "officialUrl": "https://www.spanza.org.au",
+   "country": "AU/NZ",
+   "priority": 2,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Paediatric Surgery",
+   "name": "PAPS Annual Meeting",
+   "organiser": "Pacific Association of Pediatric Surgeons",
+   "officialUrl": "https://www.pacificpedsurg.org",
+   "country": "APAC",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Paediatric Surgery",
+   "name": "BAPS Annual International Congress",
+   "organiser": "British Association of Paediatric Surgeons",
+   "officialUrl": "https://www.baps.org.uk",
+   "country": "GB",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Paediatric Surgery",
+   "name": "APSA Annual Meeting",
+   "organiser": "American Pediatric Surgical Association",
+   "officialUrl": "https://apsapedsurg.org",
+   "country": "US",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "apsa-annual-meeting-2027",
+    "apsa-annual-meeting-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Ophthalmology",
+   "name": "RANZCO Annual Scientific Congress",
+   "organiser": "Royal Australian and NZ College of Ophthalmologists",
+   "officialUrl": "https://ranzco.edu",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "College ASM: every Fellow and trainee in this specialty expects to find it",
+   "present": true,
+   "presentIds": [
+    "ranzco-congress"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Ophthalmology",
+   "name": "RANZCO NZ Branch / state branch meetings",
+   "organiser": "RANZCO branches",
+   "officialUrl": "https://ranzco.edu",
+   "country": "AU/NZ",
+   "priority": 2,
+   "why": "State/branch or regional meeting: local CPD, registrar papers, short travel",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Ophthalmology",
+   "name": "ANZGS Congress (glaucoma)",
+   "organiser": "ANZ Glaucoma Society",
+   "officialUrl": "https://www.anzgs.org",
+   "country": "AU/NZ",
+   "priority": 2,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": true,
+   "presentIds": [
+    "anzgs-congress-2027"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Ophthalmology",
+   "name": "ANZ Society of Retinal Specialists / Retina meetings",
+   "organiser": "ANZSRS (RANZCO subspecialty group)",
+   "officialUrl": "https://ranzco.edu/anzsrs/",
+   "country": "AU/NZ",
+   "priority": 3,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Ophthalmology",
+   "name": "AAO Annual Meeting",
+   "organiser": "American Academy of Ophthalmology",
+   "officialUrl": "https://www.aao.org",
+   "country": "US",
+   "priority": 1,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "paao-congress-2027-lima",
+    "aao-annual-meeting",
+    "aao-annual-meeting-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Ophthalmology",
+   "name": "ESCRS Congress",
+   "organiser": "European Society of Cataract & Refractive Surgeons",
+   "officialUrl": "https://www.escrs.org",
+   "country": "EU",
+   "priority": 1,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "escrs-congress",
+    "escrs-congress-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Ophthalmology",
+   "name": "APAO Congress",
+   "organiser": "Asia-Pacific Academy of Ophthalmology",
+   "officialUrl": "https://www.apaophth.org",
+   "country": "APAC",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "apao-congress",
+    "apaoc-hong-kong-2028-expected"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Ophthalmology",
+   "name": "World Ophthalmology Congress",
+   "organiser": "International Council of Ophthalmology",
+   "officialUrl": "https://icoph.org",
+   "country": "INTL",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Ophthalmology",
+   "name": "ASCRS Annual Meeting",
+   "organiser": "American Society of Cataract and Refractive Surgery",
+   "officialUrl": "https://ascrs.org",
+   "country": "US",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "ascrs-annual-meeting"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Ophthalmology",
+   "name": "ARVO Annual Meeting",
+   "organiser": "Association for Research in Vision and Ophthalmology",
+   "officialUrl": "https://www.arvo.org",
+   "country": "US",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "arvo-annual-meeting-2027",
+    "arvo-annual-meeting-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Optometry",
+   "name": "Optometry Australia / state \"Super Sunday\" & SRC conferences",
+   "organiser": "Optometry Australia and state divisions",
+   "officialUrl": "https://www.optometry.org.au",
+   "country": "AU",
+   "priority": 2,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Dermatology",
+   "name": "ACD Annual Scientific Meeting",
+   "organiser": "Australasian College of Dermatologists",
+   "officialUrl": "https://www.dermcoll.edu.au",
+   "country": "AU",
+   "priority": 1,
+   "why": "College ASM: every Fellow and trainee in this specialty expects to find it",
+   "present": true,
+   "presentIds": [
+    "acd-asm"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Dermatology",
+   "name": "NZDS Annual Conference",
+   "organiser": "New Zealand Dermatological Society",
+   "officialUrl": "https://nzdsi.org",
+   "country": "NZ",
+   "priority": 2,
+   "why": "NZ national meeting: NZ doctors expect it alongside the AU one",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Dermatology",
+   "name": "Skin Cancer College Australasia Conference",
+   "organiser": "Skin Cancer College Australasia",
+   "officialUrl": "https://www.skincancercollege.org",
+   "country": "AU",
+   "priority": 1,
+   "why": "GP skin cancer doctors expect it",
+   "present": true,
+   "presentIds": [
+    "skin-cancer-college-conference-2027",
+    "skin-cancer-college-conference-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Dermatology",
+   "name": "AAD Annual Meeting",
+   "organiser": "American Academy of Dermatology",
+   "officialUrl": "https://www.aad.org",
+   "country": "US",
+   "priority": 1,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "aad-annual-meeting"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Dermatology",
+   "name": "EADV Congress",
+   "organiser": "European Academy of Dermatology and Venereology",
+   "officialUrl": "https://eadv.org",
+   "country": "EU",
+   "priority": 1,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "eadv-spring-2027",
+    "eadv-symposium-2027",
+    "eadv-congress",
+    "eadv-spring-2028",
+    "eadv-symposium-2028",
+    "eadv-congress-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Dermatology",
+   "name": "World Congress of Dermatology",
+   "organiser": "International League of Dermatological Societies",
+   "officialUrl": "https://www.ilds.org",
+   "country": "INTL",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "wcd-26th-world-congress-dermatology-2027"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Dermatology",
+   "name": "World Congress of Dermoscopy (IDS)",
+   "organiser": "International Dermoscopy Society",
+   "officialUrl": "https://dermoscopy-ids.org",
+   "country": "INTL",
+   "priority": 3,
+   "why": "GP skin cancer doctors attend",
+   "present": true,
+   "presentIds": [
+    "world-congress-of-dermoscopy"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Cardiology",
+   "name": "CSANZ Annual Scientific Meeting",
+   "organiser": "Cardiac Society of Australia and New Zealand",
+   "officialUrl": "https://www.csanz.edu.au",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": true,
+   "presentIds": [
+    "csanz-annual-scientific-meeting"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Cardiology",
+   "name": "CSANZ NZ Annual Scientific Meeting",
+   "organiser": "CSANZ NZ Region",
+   "officialUrl": "https://www.csanz.edu.au",
+   "country": "NZ",
+   "priority": 2,
+   "why": "NZ national meeting: NZ doctors expect it alongside the AU one",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Cardiology",
+   "name": "ANZET (endovascular / structural heart)",
+   "organiser": "CSANZ / ANZET",
+   "officialUrl": "https://www.csanz.edu.au",
+   "country": "AU",
+   "priority": 2,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Cardiology",
+   "name": "Heart Rhythm / CSANZ EP meetings & APHRS Scientific Session",
+   "organiser": "APHRS",
+   "officialUrl": "https://www.aphrs.org",
+   "country": "APAC",
+   "priority": 2,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": true,
+   "presentIds": [
+    "aphrs-summit-shenzhen-2027",
+    "aphrs-scientific-session-taipei-2027"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Cardiology",
+   "name": "ESC Congress",
+   "organiser": "European Society of Cardiology",
+   "officialUrl": "https://www.escardio.org",
+   "country": "EU",
+   "priority": 1,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "esc-congress"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Cardiology",
+   "name": "ACC Annual Scientific Session",
+   "organiser": "American College of Cardiology",
+   "officialUrl": "https://www.acc.org",
+   "country": "US",
+   "priority": 1,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "acc-scientific-session",
+    "acc-scientific-session-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Cardiology",
+   "name": "AHA Scientific Sessions",
+   "organiser": "American Heart Association",
+   "officialUrl": "https://professional.heart.org",
+   "country": "US",
+   "priority": 1,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "aha-hypertension-scientific-sessions-2027",
+    "aha-scientific-sessions",
+    "aha-hypertension-scientific-sessions-2028",
+    "aha-scientific-sessions-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Cardiology",
+   "name": "TCT (Transcatheter Cardiovascular Therapeutics)",
+   "organiser": "Cardiovascular Research Foundation",
+   "officialUrl": "https://www.crf.org",
+   "country": "US",
+   "priority": 1,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "tct-conference",
+    "tct-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Cardiology",
+   "name": "EuroPCR",
+   "organiser": "PCR",
+   "officialUrl": "https://www.pcronline.com",
+   "country": "EU",
+   "priority": 1,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "europcr",
+    "europcr-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Cardiology",
+   "name": "Heart Rhythm (HRS)",
+   "organiser": "Heart Rhythm Society",
+   "officialUrl": "https://www.heartrhythm.com",
+   "country": "US",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "heart-rhythm",
+    "csanz-hrs-pfa-summit-2027",
+    "heart-rhythm-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Cardiology",
+   "name": "EHRA Congress",
+   "organiser": "European Heart Rhythm Association",
+   "officialUrl": "https://www.escardio.org",
+   "country": "EU",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "ehra-congress",
+    "ehra-congress-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Cardiology",
+   "name": "ASE Scientific Sessions (echo)",
+   "organiser": "American Society of Echocardiography",
+   "officialUrl": "https://www.asecho.org",
+   "country": "US",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "jse-echo-38th-annual-meeting-2027",
+    "ase-scientific-sessions",
+    "bsecho-annual-meeting-2027",
+    "jse-echo-39th-annual-meeting-2028",
+    "bsecho-annual-meeting-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Cardiology",
+   "name": "CSI Frankfurt (structural)",
+   "organiser": "CSI Congress",
+   "officialUrl": "https://www.csi-congress.org",
+   "country": "EU",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "csi-frankfurt-2027"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Cardiology",
+   "name": "HBPRCA ASM (hypertension)",
+   "organiser": "High Blood Pressure Research Council of Australia",
+   "officialUrl": "https://www.hbprca.com.au",
+   "country": "AU",
+   "priority": 3,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": true,
+   "presentIds": [
+    "hbprca-asm-2027",
+    "hbprca-asm-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Respiratory",
+   "name": "TSANZ Annual Scientific Meeting",
+   "organiser": "Thoracic Society of Australia and New Zealand",
+   "officialUrl": "https://www.thoracic.org.au",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": true,
+   "presentIds": [
+    "tsanz-asm",
+    "transplant-tsanz-asm-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Respiratory",
+   "name": "TSANZ branch ASMs (NSW/ACT, Vic, Qld, NZ etc.)",
+   "organiser": "TSANZ branches",
+   "officialUrl": "https://www.thoracic.org.au",
+   "country": "AU/NZ",
+   "priority": 3,
+   "why": "State/branch or regional meeting: local CPD, registrar papers, short travel",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Respiratory",
+   "name": "ERS International Congress",
+   "organiser": "European Respiratory Society",
+   "officialUrl": "https://www.ersnet.org",
+   "country": "EU",
+   "priority": 1,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "ers-congress"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Respiratory",
+   "name": "ATS International Conference",
+   "organiser": "American Thoracic Society",
+   "officialUrl": "https://conference.thoracic.org",
+   "country": "US",
+   "priority": 1,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "ats-international-conference"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Respiratory",
+   "name": "APSR Congress",
+   "organiser": "Asian Pacific Society of Respirology",
+   "officialUrl": "https://www.apsresp.org",
+   "country": "APAC",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "apsr-congress",
+    "apsr-seoul-2028-expected"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Respiratory",
+   "name": "CHEST Annual Meeting",
+   "organiser": "American College of Chest Physicians",
+   "officialUrl": "https://www.chestnet.org",
+   "country": "US",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "chest-annual-meeting",
+    "chest-annual-meeting-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Sleep Medicine",
+   "name": "Sleep DownUnder",
+   "organiser": "Australasian Sleep Association",
+   "officialUrl": "https://www.sleep.org.au",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "National society ASM: the main AU/NZ meeting for this field - present but mapped Respiratory: remap/dual-map",
+   "present": true,
+   "presentIds": [
+    "sleep-downunder"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Sleep Medicine",
+   "name": "SLEEP (APSS) Annual Meeting",
+   "organiser": "Associated Professional Sleep Societies",
+   "officialUrl": "https://www.sleepmeeting.org",
+   "country": "US",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "sleep-2027",
+    "world-sleep-2027"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Sleep Medicine",
+   "name": "World Sleep Congress",
+   "organiser": "World Sleep Society",
+   "officialUrl": "https://worldsleepsociety.org",
+   "country": "INTL",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "world-sleep-2027"
+   ]
+  },
+  {
+   "kind": "course",
+   "specialty": "Respiratory",
+   "name": "Spirometry training course (ANZSRS-accredited)",
+   "organiser": "ANZSRS / accredited providers",
+   "officialUrl": "https://www.anzsrs.org.au",
+   "country": "AU/NZ",
+   "priority": 3,
+   "why": "cpd for GPs/respiratory",
+   "present": false,
+   "inWave1": [
+    "sapmea-copd-spirometry-workshop"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Gastroenterology",
+   "name": "Australian Gastroenterology Week (AGW)",
+   "organiser": "Gastroenterological Society of Australia",
+   "officialUrl": "https://www.gesa.org.au",
+   "country": "AU",
+   "priority": 1,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": true,
+   "presentIds": [
+    "gesa-australian-gastroenterology-week"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Gastroenterology",
+   "name": "NZSG Annual Scientific Meeting",
+   "organiser": "NZ Society of Gastroenterology",
+   "officialUrl": "https://www.nzsg.org.nz",
+   "country": "NZ",
+   "priority": 1,
+   "why": "NZ national meeting: NZ doctors expect it alongside the AU one",
+   "present": true,
+   "presentIds": [
+    "anzsgm-asm",
+    "nzsg-asm"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Gastroenterology",
+   "name": "GESA IBD / Liver / Endoscopy meetings (e.g. ANZ IBD meeting, AGW workshops)",
+   "organiser": "GESA",
+   "officialUrl": "https://www.gesa.org.au",
+   "country": "AU",
+   "priority": 3,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Gastroenterology",
+   "name": "Digestive Disease Week (DDW)",
+   "organiser": "DDW",
+   "officialUrl": "https://ddw.org",
+   "country": "US",
+   "priority": 1,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "cddw",
+    "ddw",
+    "ddw-2027",
+    "jddw"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Gastroenterology",
+   "name": "UEG Week",
+   "organiser": "United European Gastroenterology",
+   "officialUrl": "https://ueg.eu",
+   "country": "EU",
+   "priority": 1,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "ueg-week",
+    "ueg-week-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Gastroenterology",
+   "name": "The Liver Meeting (AASLD)",
+   "organiser": "American Association for the Study of Liver Diseases",
+   "officialUrl": "https://www.aasld.org",
+   "country": "US",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "ddw",
+    "ddw-2027",
+    "aasld-liver-meeting-2027",
+    "aasld-liver-meeting-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Gastroenterology",
+   "name": "EASL Congress",
+   "organiser": "European Association for the Study of the Liver",
+   "officialUrl": "https://easl.eu",
+   "country": "EU",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "easl-congress",
+    "easl-congress-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Gastroenterology",
+   "name": "APDW (Asian Pacific Digestive Week)",
+   "organiser": "APDWF",
+   "officialUrl": "https://www.apdwf.org",
+   "country": "APAC",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Gastroenterology",
+   "name": "ECCO Congress (IBD)",
+   "organiser": "European Crohn's and Colitis Organisation",
+   "officialUrl": "https://www.ecco-ibd.eu",
+   "country": "EU",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "ecco-congress",
+    "ecco-congress-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Gastroenterology",
+   "name": "APASL Annual Conference",
+   "organiser": "Asian Pacific Association for the Study of the Liver",
+   "officialUrl": "https://apasl.info",
+   "country": "APAC",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "apasl-single-topic-conference-dhaka-2026",
+    "apasl-taipei-2027-expected",
+    "apasl-2027",
+    "apasl-single-topic-conference-kaohsiung-2027",
+    "apasl-single-topic-conference-danang-2027",
+    "apasl-single-topic-conference-chongqing-2027"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Endocrinology",
+   "name": "ESA Annual Scientific Meeting",
+   "organiser": "Endocrine Society of Australia",
+   "officialUrl": "https://www.endocrinesociety.org.au",
+   "country": "AU",
+   "priority": 1,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": true,
+   "presentIds": [
+    "esa-annual-scientific-meeting"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Endocrinology",
+   "name": "ESA Clinical Weekend",
+   "organiser": "Endocrine Society of Australia",
+   "officialUrl": "https://www.endocrinesociety.org.au",
+   "country": "AU",
+   "priority": 2,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Endocrinology",
+   "name": "Australasian Diabetes Congress (ADS/ADEA)",
+   "organiser": "Australian Diabetes Society and ADEA",
+   "officialUrl": "https://www.diabetessociety.com.au",
+   "country": "AU",
+   "priority": 1,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": true,
+   "presentIds": [
+    "australasian-diabetes-congress"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Endocrinology",
+   "name": "NZSSD ASM",
+   "organiser": "NZ Society for the Study of Diabetes",
+   "officialUrl": "https://www.nzssd.org.nz",
+   "country": "NZ",
+   "priority": 2,
+   "why": "NZ national meeting: NZ doctors expect it alongside the AU one",
+   "present": true,
+   "presentIds": [
+    "nzssd-asm-2027"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Endocrinology",
+   "name": "ANZBMS ASM (bone)",
+   "organiser": "ANZ Bone and Mineral Society",
+   "officialUrl": "https://www.anzbms.org.au",
+   "country": "AU/NZ",
+   "priority": 2,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": true,
+   "presentIds": [
+    "anzbms-asm-2027",
+    "anzbms-asm-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Endocrinology",
+   "name": "ENDO (Endocrine Society)",
+   "organiser": "Endocrine Society",
+   "officialUrl": "https://www.endocrine.org",
+   "country": "US",
+   "priority": 1,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "endo-annual-meeting"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Endocrinology",
+   "name": "EASD Annual Meeting",
+   "organiser": "European Association for the Study of Diabetes",
+   "officialUrl": "https://www.easd.org",
+   "country": "EU",
+   "priority": 1,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "easd-annual-meeting",
+    "easd-annual-meeting-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Endocrinology",
+   "name": "ADA Scientific Sessions",
+   "organiser": "American Diabetes Association",
+   "officialUrl": "https://professional.diabetes.org",
+   "country": "US",
+   "priority": 1,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "ada-scientific-sessions",
+    "ada-scientific-sessions-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Endocrinology",
+   "name": "ATTD (diabetes technology)",
+   "organiser": "ATTD",
+   "officialUrl": "https://attd.kenes.com",
+   "country": "EU",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "attd-asia-2026",
+    "attd-2027"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Endocrinology",
+   "name": "ECE (European Congress of Endocrinology)",
+   "organiser": "European Society of Endocrinology",
+   "officialUrl": "https://www.ese-hormones.org",
+   "country": "EU",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "european-congress-of-endocrinology"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Obesity Medicine",
+   "name": "ANZOS ASM",
+   "organiser": "ANZ Obesity Society",
+   "officialUrl": "https://anzos.com",
+   "country": "AU/NZ",
+   "priority": 2,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": true,
+   "presentIds": [
+    "anzos-asm-2027",
+    "anzos-asm-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Obesity Medicine",
+   "name": "European Congress on Obesity (ECO)",
+   "organiser": "EASO",
+   "officialUrl": "https://easo.org",
+   "country": "EU",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "european-congress-on-obesity"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Obesity Medicine",
+   "name": "ObesityWeek",
+   "organiser": "The Obesity Society / ASMBS",
+   "officialUrl": "https://obesityweek.org",
+   "country": "US",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "obesityweek-2027",
+    "obesityweek-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Nephrology",
+   "name": "ANZSN Annual Scientific Meeting",
+   "organiser": "Australian and New Zealand Society of Nephrology",
+   "officialUrl": "https://www.nephrology.edu.au",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "National society ASM: the main AU/NZ meeting for this field - AU/NZ nephrology count is 0",
+   "present": true,
+   "presentIds": [
+    "anzsn-dnt-workshop-2027"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Nephrology",
+   "name": "ANZSN Dialysis, Nephrology & Transplantation (DNT) Workshop",
+   "organiser": "ANZSN",
+   "officialUrl": "https://www.nephrology.edu.au",
+   "country": "AU",
+   "priority": 1,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": true,
+   "presentIds": [
+    "anzsn-dnt-workshop-2027"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Nephrology",
+   "name": "ANZSN Advanced Trainee / Clinical Nephrology courses",
+   "organiser": "ANZSN",
+   "officialUrl": "https://www.nephrology.edu.au",
+   "country": "AU",
+   "priority": 2,
+   "why": "Trainee education",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Nephrology",
+   "name": "ASN Kidney Week",
+   "organiser": "American Society of Nephrology",
+   "officialUrl": "https://www.asn-online.org",
+   "country": "US",
+   "priority": 1,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "uk-kidney-week-2027",
+    "asn-kidney-week",
+    "uk-kidney-week-2028",
+    "asn-kidney-week-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Nephrology",
+   "name": "ERA Congress",
+   "organiser": "European Renal Association",
+   "officialUrl": "https://www.era-online.org",
+   "country": "EU",
+   "priority": 1,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "era-education-cairo",
+    "era-congress",
+    "era-congress-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Nephrology",
+   "name": "World Congress of Nephrology (ISN)",
+   "organiser": "International Society of Nephrology",
+   "officialUrl": "https://www.theisn.org",
+   "country": "INTL",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "world-congress-of-nephrology-2027",
+    "world-congress-of-nephrology-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Nephrology",
+   "name": "Renal Society of Australasia conference",
+   "organiser": "Renal Society of Australasia",
+   "officialUrl": "https://www.renalsociety.org",
+   "country": "AU",
+   "priority": 3,
+   "why": "Renal nursing/allied",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Transplantation",
+   "name": "TSANZ (Transplantation Society of ANZ) ASM",
+   "organiser": "Transplantation Society of Australia and New Zealand",
+   "officialUrl": "https://www.tsanz.com.au",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "National society ASM: the main AU/NZ meeting for this field - only 2028 present; 2027 missing",
+   "present": true,
+   "presentIds": [
+    "transplant-tsanz-asm-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Transplantation",
+   "name": "World Transplant Congress / ATC",
+   "organiser": "American Transplant Congress",
+   "officialUrl": "https://atcmeeting.org",
+   "country": "US",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "american-transplant-congress-2027",
+    "atc-american-transplant-congress-2027",
+    "american-transplant-congress-2028",
+    "atc-american-transplant-congress-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Transplantation",
+   "name": "TTS International Congress",
+   "organiser": "The Transplantation Society",
+   "officialUrl": "https://www.tts.org",
+   "country": "INTL",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Transplantation",
+   "name": "ESOT Congress",
+   "organiser": "European Society for Organ Transplantation",
+   "officialUrl": "https://esot.org",
+   "country": "EU",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "esot-congress"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Haematology",
+   "name": "HAA Annual Scientific Meeting (HSANZ/ANZSBT/THANZ)",
+   "organiser": "Haematology Society of ANZ et al.",
+   "officialUrl": "https://www.haa.org.au",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": true,
+   "presentIds": [
+    "haa-hsanz-asm"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Haematology",
+   "name": "ALLG ASM",
+   "organiser": "Australasian Leukaemia & Lymphoma Group",
+   "officialUrl": "https://www.allg.org.au",
+   "country": "AU/NZ",
+   "priority": 2,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": true,
+   "presentIds": [
+    "allg-asm-2027",
+    "allg-asm-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Haematology",
+   "name": "ASH Annual Meeting",
+   "organiser": "American Society of Hematology",
+   "officialUrl": "https://www.hematology.org",
+   "country": "US",
+   "priority": 1,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "ash-annual-meeting-2026",
+    "ash-annual-meeting",
+    "ash-annual-meeting-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Haematology",
+   "name": "EHA Congress",
+   "organiser": "European Hematology Association",
+   "officialUrl": "https://ehaweb.org",
+   "country": "EU",
+   "priority": 1,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "eha-ebmt-car-t-2027",
+    "eha-congress",
+    "eha-congress-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Haematology",
+   "name": "ISTH Congress",
+   "organiser": "International Society on Thrombosis and Haemostasis",
+   "officialUrl": "https://www.isth.org",
+   "country": "INTL",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Haematology",
+   "name": "ANZTCT ASM (transplant & cellular therapies)",
+   "organiser": "ANZ Transplant & Cellular Therapies",
+   "officialUrl": "https://www.anztct.org.au",
+   "country": "AU/NZ",
+   "priority": 3,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Oncology",
+   "name": "COSA ASM",
+   "organiser": "Clinical Oncology Society of Australia",
+   "officialUrl": "https://www.cosa.org.au",
+   "country": "AU",
+   "priority": 1,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": true,
+   "presentIds": [
+    "cosa-asm"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Oncology",
+   "name": "MOGA ASM",
+   "organiser": "Medical Oncology Group of Australia",
+   "officialUrl": "https://www.moga.org.au",
+   "country": "AU",
+   "priority": 1,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": true,
+   "presentIds": [
+    "moga-asm"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Oncology",
+   "name": "NZSO / Cancer Society NZ oncology meeting",
+   "organiser": "NZ Society for Oncology",
+   "officialUrl": "https://www.nzso.org.nz",
+   "country": "NZ",
+   "priority": 3,
+   "why": "NZ national meeting: NZ doctors expect it alongside the AU one",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Oncology",
+   "name": "Breast Cancer Trials ASM",
+   "organiser": "Breast Cancer Trials (ANZ)",
+   "officialUrl": "https://www.breastcancertrials.org.au",
+   "country": "AU/NZ",
+   "priority": 2,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Oncology",
+   "name": "TOGA / Thoracic Oncology Group ASM",
+   "organiser": "Thoracic Oncology Group of Australasia",
+   "officialUrl": "https://www.thoraciconcology.org.au",
+   "country": "AU/NZ",
+   "priority": 3,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Oncology",
+   "name": "COGNO ASM (neuro-oncology)",
+   "organiser": "Cooperative Trials Group for Neuro-Oncology",
+   "officialUrl": "https://www.cogno.org.au",
+   "country": "AU",
+   "priority": 3,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Oncology",
+   "name": "ANZSA (sarcoma) ASM",
+   "organiser": "Australia and New Zealand Sarcoma Association",
+   "officialUrl": "https://sarcoma.org.au",
+   "country": "AU/NZ",
+   "priority": 3,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Oncology",
+   "name": "AGITG / ANZGOG / ANZUP / TROG / MASC trial-group ASMs",
+   "organiser": "Cancer trial groups",
+   "officialUrl": "https://www.agitg.org.au",
+   "country": "AU/NZ",
+   "priority": 2,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": true,
+   "presentIds": [
+    "masc-scientific-meeting-2026",
+    "trog-asm-2027",
+    "anzgog-asm-2027",
+    "anzup-asm-2027",
+    "agitg-asm-2027",
+    "anzgog-asm-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Oncology",
+   "name": "ASCO Annual Meeting",
+   "organiser": "American Society of Clinical Oncology",
+   "officialUrl": "https://www.asco.org",
+   "country": "US",
+   "priority": 1,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "asco-annual-meeting"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Oncology",
+   "name": "ESMO Congress",
+   "organiser": "European Society for Medical Oncology",
+   "officialUrl": "https://www.esmo.org",
+   "country": "EU",
+   "priority": 1,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "esmo-congress"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Oncology",
+   "name": "ESMO Asia Congress",
+   "organiser": "ESMO",
+   "officialUrl": "https://www.esmo.org",
+   "country": "APAC",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Oncology",
+   "name": "San Antonio Breast Cancer Symposium",
+   "organiser": "SABCS",
+   "officialUrl": "https://www.sabcs.org",
+   "country": "US",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "sabcs-2026",
+    "sabcs",
+    "sabcs-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Oncology",
+   "name": "IASLC World Conference on Lung Cancer",
+   "organiser": "IASLC",
+   "officialUrl": "https://www.iaslc.org",
+   "country": "INTL",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "wclc-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Oncology",
+   "name": "ASCO GU / ASCO GI Symposia",
+   "organiser": "ASCO",
+   "officialUrl": "https://www.asco.org",
+   "country": "US",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "asco-gi-symposium-2027",
+    "asco-gu-symposium-2027",
+    "asco-gi-symposium-2028",
+    "asco-gu-symposium-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Oncology",
+   "name": "MASCC Annual Meeting (supportive care)",
+   "organiser": "Multinational Association of Supportive Care in Cancer",
+   "officialUrl": "https://mascc.org",
+   "country": "INTL",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "mascc-isoo-annual-meeting-2027"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Radiation Oncology",
+   "name": "RANZCR ASM (Faculty of Radiation Oncology stream)",
+   "organiser": "RANZCR",
+   "officialUrl": "https://www.ranzcr.com",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "College ASM: every Fellow and trainee in this specialty expects to find it",
+   "present": true,
+   "presentIds": [
+    "ranzcr-asm",
+    "ranzcr-asm-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Radiation Oncology",
+   "name": "ASTRO Annual Meeting",
+   "organiser": "American Society for Radiation Oncology",
+   "officialUrl": "https://www.astro.org",
+   "country": "US",
+   "priority": 1,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "astro-annual-meeting-2027",
+    "astro-annual-meeting-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Radiation Oncology",
+   "name": "ESTRO Congress",
+   "organiser": "European Society for Radiotherapy and Oncology",
+   "officialUrl": "https://www.estro.org",
+   "country": "EU",
+   "priority": 1,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "european-lung-cancer-congress",
+    "estro-congress",
+    "estro-congress-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Radiation Oncology",
+   "name": "TROG ASM",
+   "organiser": "Trans Tasman Radiation Oncology Group",
+   "officialUrl": "https://www.trog.com.au",
+   "country": "AU/NZ",
+   "priority": 2,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend - present, mapped Oncology",
+   "present": true,
+   "presentIds": [
+    "trog-asm-2027"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Radiology",
+   "name": "RANZCR Annual Scientific Meeting",
+   "organiser": "Royal Australian and NZ College of Radiologists",
+   "officialUrl": "https://www.ranzcr.com",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "College ASM: every Fellow and trainee in this specialty expects to find it",
+   "present": true,
+   "presentIds": [
+    "ranzcr-asm",
+    "ranzcr-asm-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Radiology",
+   "name": "RANZCR NZ ASM / state branch meetings",
+   "organiser": "RANZCR branches",
+   "officialUrl": "https://www.ranzcr.com",
+   "country": "AU/NZ",
+   "priority": 2,
+   "why": "State/branch or regional meeting: local CPD, registrar papers, short travel",
+   "present": true,
+   "presentIds": [
+    "ranzcr-nz-asm-2027"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Radiology",
+   "name": "IRSA ASM (interventional radiology)",
+   "organiser": "Interventional Radiology Society of Australasia",
+   "officialUrl": "https://www.irsa.com.au",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Radiology",
+   "name": "ANZSNR ASM (neuroradiology)",
+   "organiser": "ANZ Society of Neuroradiology",
+   "officialUrl": "https://www.anzsnr.org",
+   "country": "AU/NZ",
+   "priority": 2,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": true,
+   "presentIds": [
+    "anzsnr-asm-2027"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Radiology",
+   "name": "ASUM ASM",
+   "organiser": "Australasian Society for Ultrasound in Medicine",
+   "officialUrl": "https://www.asum.com.au",
+   "country": "AU/NZ",
+   "priority": 2,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": true,
+   "presentIds": [
+    "asum-asm"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Radiology",
+   "name": "RSNA Annual Meeting",
+   "organiser": "Radiological Society of North America",
+   "officialUrl": "https://www.rsna.org",
+   "country": "US",
+   "priority": 1,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "rsna-annual-meeting-2026",
+    "rsna-annual-meeting",
+    "rsna-annual-meeting-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Radiology",
+   "name": "European Congress of Radiology (ECR)",
+   "organiser": "European Society of Radiology",
+   "officialUrl": "https://www.myesr.org",
+   "country": "EU",
+   "priority": 1,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "ecr-congress",
+    "ecr-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Radiology",
+   "name": "CIRSE Annual Congress",
+   "organiser": "Cardiovascular and Interventional Radiological Society of Europe",
+   "officialUrl": "https://www.cirse.org",
+   "country": "EU",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "cirse-annual-congress"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Radiology",
+   "name": "SIR Annual Scientific Meeting",
+   "organiser": "Society of Interventional Radiology",
+   "officialUrl": "https://www.sirweb.org",
+   "country": "US",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "sir-annual-scientific-meeting",
+    "jsir-56th-2027",
+    "sir-congresso-reumatologia-2027",
+    "sir-annual-scientific-meeting-2028",
+    "sir-congresso-reumatologia-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Radiology",
+   "name": "ISMRM Annual Meeting",
+   "organiser": "ISMRM",
+   "officialUrl": "https://www.ismrm.org",
+   "country": "INTL",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "ismrm-annual-meeting-2027",
+    "ismrm-annual-meeting-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Nuclear Medicine",
+   "name": "ANZSNM ASM",
+   "organiser": "ANZ Society of Nuclear Medicine",
+   "officialUrl": "https://www.anzsnm.org.au",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "National society ASM: the main AU/NZ meeting for this field - present but mapped Radiology: remap",
+   "present": true,
+   "presentIds": [
+    "anzsnm-asm"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Nuclear Medicine",
+   "name": "SNMMI Annual Meeting",
+   "organiser": "Society of Nuclear Medicine and Molecular Imaging",
+   "officialUrl": "https://www.snmmi.org",
+   "country": "US",
+   "priority": 1,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "snmmi-annual-meeting",
+    "snmmi-annual-meeting-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Nuclear Medicine",
+   "name": "EANM Congress",
+   "organiser": "European Association of Nuclear Medicine",
+   "officialUrl": "https://www.eanm.org",
+   "country": "EU",
+   "priority": 1,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "eanm-congress",
+    "eanm-congress-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Medical Physics",
+   "name": "EPSM",
+   "organiser": "ACPSEM",
+   "officialUrl": "https://www.acpsem.org.au",
+   "country": "AU/NZ",
+   "priority": 2,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": true,
+   "presentIds": [
+    "epsm-2026"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Medical Physics",
+   "name": "AAPM Annual Meeting",
+   "organiser": "American Association of Physicists in Medicine",
+   "officialUrl": "https://www.aapm.org",
+   "country": "US",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "aapm-pain-medicine-annual-meeting-2027",
+    "aapm-annual-meeting",
+    "aapmr-annual-assembly",
+    "aapm-pain-medicine-annual-meeting-2028",
+    "aapm-annual-meeting-2028",
+    "aapmr-annual-assembly-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Pathology",
+   "name": "RCPA Pathology Update",
+   "organiser": "Royal College of Pathologists of Australasia",
+   "officialUrl": "https://www.rcpa.edu.au",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "College ASM: every Fellow and trainee in this specialty expects to find it",
+   "present": true,
+   "presentIds": [
+    "rcpa-pathology-update-2027",
+    "rcpa-pathology-update-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Pathology",
+   "name": "AACB Annual Scientific Conference",
+   "organiser": "Australasian Association for Clinical Biochemistry and Laboratory Medicine",
+   "officialUrl": "https://www.aacb.asn.au",
+   "country": "AU/NZ",
+   "priority": 2,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": true,
+   "presentIds": [
+    "rcpa-aacb-chemical-pathology-course-2027",
+    "aacb-scientific-meeting-2027",
+    "aacb-scientific-meeting-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Pathology",
+   "name": "IAP Australasian Division ASM",
+   "organiser": "IAP Australasian Division",
+   "officialUrl": "https://www.iap-aus.org",
+   "country": "AU/NZ",
+   "priority": 2,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": true,
+   "presentIds": [
+    "iap-australasian-asm-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Pathology",
+   "name": "USCAP Annual Meeting",
+   "organiser": "United States and Canadian Academy of Pathology",
+   "officialUrl": "https://www.uscap.org",
+   "country": "US",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "uscap-annual-meeting",
+    "uscap-annual-meeting-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Pathology",
+   "name": "European Congress of Pathology",
+   "organiser": "European Society of Pathology",
+   "officialUrl": "https://www.esp-pathology.org",
+   "country": "EU",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "european-congress-of-pathology"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Genetics",
+   "name": "HGSA ASM",
+   "organiser": "Human Genetics Society of Australasia",
+   "officialUrl": "https://www.hgsa.org.au",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": true,
+   "presentIds": [
+    "hgsa-asm"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Genetics",
+   "name": "ASHG Annual Meeting",
+   "organiser": "American Society of Human Genetics",
+   "officialUrl": "https://www.ashg.org",
+   "country": "US",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "ashg-annual-meeting",
+    "ashg-annual-meeting-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Genetics",
+   "name": "ESHG Conference",
+   "organiser": "European Society of Human Genetics",
+   "officialUrl": "https://www.eshg.org",
+   "country": "EU",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "european-human-genetics-conference",
+    "eshg-conference-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Genetics",
+   "name": "ACMG Annual Clinical Genetics Meeting",
+   "organiser": "American College of Medical Genetics and Genomics",
+   "officialUrl": "https://www.acmg.net",
+   "country": "US",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "acmg-annual-meeting"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Allergy & Immunology",
+   "name": "ASCIA Annual Conference",
+   "organiser": "Australasian Society of Clinical Immunology and Allergy",
+   "officialUrl": "https://www.allergy.org.au",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": true,
+   "presentIds": [
+    "ascia-annual-conference-2027",
+    "ascia-annual-conference-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Allergy & Immunology",
+   "name": "EAACI Congress",
+   "organiser": "European Academy of Allergy and Clinical Immunology",
+   "officialUrl": "https://eaaci.org",
+   "country": "EU",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "eaaci-congress"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Allergy & Immunology",
+   "name": "AAAAI Annual Meeting",
+   "organiser": "American Academy of Allergy, Asthma & Immunology",
+   "officialUrl": "https://www.aaaai.org",
+   "country": "US",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "aaaai-annual-meeting",
+    "aaaai-annual-meeting-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Allergy & Immunology",
+   "name": "WAO World Allergy Congress",
+   "organiser": "World Allergy Organization",
+   "officialUrl": "https://www.worldallergy.org",
+   "country": "INTL",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Immunology",
+   "name": "ASI Annual Scientific Meeting",
+   "organiser": "Australian and NZ Society for Immunology",
+   "officialUrl": "https://www.immunology.org.au",
+   "country": "AU/NZ",
+   "priority": 2,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": true,
+   "presentIds": [
+    "asi-annual-meeting"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Infectious Disease",
+   "name": "ASID Annual Scientific Meeting",
+   "organiser": "Australasian Society for Infectious Diseases",
+   "officialUrl": "https://www.asid.net.au",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": true,
+   "presentIds": [
+    "asid-asm"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Infectious Disease",
+   "name": "ASM (microbiology) ASM",
+   "organiser": "Australian Society for Microbiology",
+   "officialUrl": "https://www.theasm.org.au",
+   "country": "AU",
+   "priority": 2,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": true,
+   "presentIds": [
+    "asm-microbiology-2027"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Infectious Disease",
+   "name": "ACIPC International Conference",
+   "organiser": "Australasian College for Infection Prevention and Control",
+   "officialUrl": "https://www.acipc.org.au",
+   "country": "AU",
+   "priority": 2,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": true,
+   "presentIds": [
+    "acipc-conference-2027",
+    "acipc-conference-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Infectious Disease",
+   "name": "ASHM HIV&AIDS and Viral Hepatitis conferences",
+   "organiser": "ASHM",
+   "officialUrl": "https://ashm.org.au",
+   "country": "AU",
+   "priority": 1,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": true,
+   "presentIds": [
+    "ashm-viral-hepatitis-conference",
+    "australasian-hiv-aids-conference-2027"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Infectious Disease",
+   "name": "Australasian College of Tropical Medicine conference",
+   "organiser": "ACTM",
+   "officialUrl": "https://www.tropmed.org",
+   "country": "AU",
+   "priority": 3,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Infectious Disease",
+   "name": "ESCMID Global",
+   "organiser": "European Society of Clinical Microbiology and Infectious Diseases",
+   "officialUrl": "https://www.escmid.org",
+   "country": "EU",
+   "priority": 1,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "escmid-global",
+    "7th-escmid-conference-on-vaccines-2027",
+    "escmid-global-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Infectious Disease",
+   "name": "IDWeek",
+   "organiser": "IDSA / SHEA / HIVMA / PIDS / SIDP",
+   "officialUrl": "https://idweek.org",
+   "country": "US",
+   "priority": 1,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "idweek",
+    "idweek-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Infectious Disease",
+   "name": "CISTM (travel medicine)",
+   "organiser": "International Society of Travel Medicine",
+   "officialUrl": "https://www.istm.org",
+   "country": "INTL",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "cistm20-bangkok-2027"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Infectious Disease",
+   "name": "AIDS / IAS Conference",
+   "organiser": "International AIDS Society",
+   "officialUrl": "https://www.iasociety.org",
+   "country": "INTL",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Infectious Disease",
+   "name": "CROI",
+   "organiser": "CROI Foundation",
+   "officialUrl": "https://www.croiconference.org",
+   "country": "US",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "croi-conference",
+    "croi-conference-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Sexual Health",
+   "name": "Australasian Sexual & Reproductive Health Conference",
+   "organiser": "ASHM / AChSHM / Sexual Health Society of Victoria etc.",
+   "officialUrl": "https://ashm.org.au",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": true,
+   "presentIds": [
+    "australasian-sexual-reproductive-health-conference-2027"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Sexual Health",
+   "name": "IUSTI World / Asia-Pacific Congress",
+   "organiser": "International Union against Sexually Transmitted Infections",
+   "officialUrl": "https://www.iusti.org",
+   "country": "INTL",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "Sexual Health",
+   "name": "Certificate in Sexual and Reproductive Health (doctors)",
+   "organiser": "Family Planning NSW / state FP organisations",
+   "officialUrl": "https://www.fpnsw.org.au",
+   "country": "AU",
+   "priority": 2,
+   "why": "Common CPD / skills course in this field",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "Infectious Disease",
+   "name": "ISTM Certificate of Knowledge in Travel Health / travel medicine courses",
+   "organiser": "ISTM; ACTM",
+   "officialUrl": "https://www.istm.org",
+   "country": "INTL/AU",
+   "priority": 2,
+   "why": "Common CPD / skills course in this field",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Neurology",
+   "name": "ANZAN ASM",
+   "organiser": "Australian and New Zealand Association of Neurologists",
+   "officialUrl": "https://www.anzan.org.au",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": true,
+   "presentIds": [
+    "anzan-asm-2027",
+    "anzan-asm-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Neurology",
+   "name": "Stroke Society of Australasia ASM",
+   "organiser": "Stroke Society of Australasia",
+   "officialUrl": "https://www.strokesociety.com.au",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Neurology",
+   "name": "Epilepsy Society of Australia ASM",
+   "organiser": "Epilepsy Society of Australia",
+   "officialUrl": "https://www.epilepsy-society.org.au",
+   "country": "AU",
+   "priority": 2,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": true,
+   "presentIds": [
+    "anzan-eeg-esa-epilepsy-courses-2027"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Neurology",
+   "name": "MS Australia Progress in MS Research",
+   "organiser": "MS Australia",
+   "officialUrl": "https://www.msaustralia.org.au",
+   "country": "AU",
+   "priority": 3,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Neurology",
+   "name": "ANZ Headache Society meeting",
+   "organiser": "ANZHS",
+   "officialUrl": "https://anzheadachesociety.org",
+   "country": "AU/NZ",
+   "priority": 3,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Neurology",
+   "name": "AAN Annual Meeting",
+   "organiser": "American Academy of Neurology",
+   "officialUrl": "https://www.aan.com",
+   "country": "US",
+   "priority": 1,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "aan-annual-meeting",
+    "aan-fall-conference-2027",
+    "aan-annual-meeting-2028",
+    "aan-autoimmune-neurology-conference-2028",
+    "aan-fall-conference-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Neurology",
+   "name": "EAN Congress",
+   "organiser": "European Academy of Neurology",
+   "officialUrl": "https://www.ean.org",
+   "country": "EU",
+   "priority": 1,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "ean-congress",
+    "ean-congress-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Neurology",
+   "name": "ECTRIMS Congress",
+   "organiser": "ECTRIMS",
+   "officialUrl": "https://ectrims.eu",
+   "country": "EU",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "ectrims-congress-2027",
+    "ectrims-2027",
+    "ectrims-congress-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Neurology",
+   "name": "World Stroke Congress",
+   "organiser": "World Stroke Organization",
+   "officialUrl": "https://www.world-stroke.org",
+   "country": "INTL",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Neurology",
+   "name": "European Stroke Organisation Conference (ESOC)",
+   "organiser": "ESO",
+   "officialUrl": "https://eso-stroke.org",
+   "country": "EU",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "lisbon-stroke-summit-2027",
+    "esoc",
+    "esoc-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Neurology",
+   "name": "International Congress of Parkinson's Disease and Movement Disorders",
+   "organiser": "MDS",
+   "officialUrl": "https://www.movementdisorders.org",
+   "country": "INTL",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Neurology",
+   "name": "AES Annual Meeting (epilepsy)",
+   "organiser": "American Epilepsy Society",
+   "officialUrl": "https://www.aesnet.org",
+   "country": "US",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "aes-annual-meeting",
+    "aes-annual-meeting-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Psychiatry",
+   "name": "RANZCP Congress",
+   "organiser": "Royal Australian and NZ College of Psychiatrists",
+   "officialUrl": "https://www.ranzcp.org",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "College ASM: every Fellow and trainee in this specialty expects to find it",
+   "present": true,
+   "presentIds": [
+    "ranzcp-congress"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Psychiatry",
+   "name": "RANZCP Faculty of Child & Adolescent Psychiatry conference",
+   "organiser": "RANZCP",
+   "officialUrl": "https://www.ranzcp.org",
+   "country": "AU/NZ",
+   "priority": 2,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": true,
+   "presentIds": [
+    "ranzcp-fcap-conference-2027",
+    "ranzcp-child-adolescent-forensic-conference-2027"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Psychiatry",
+   "name": "RANZCP Faculty of Psychiatry of Old Age conference",
+   "organiser": "RANZCP",
+   "officialUrl": "https://www.ranzcp.org",
+   "country": "AU/NZ",
+   "priority": 2,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": true,
+   "presentIds": [
+    "ranzcp-fpoa-conference-2027"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Psychiatry",
+   "name": "RANZCP Faculty of Forensic Psychiatry conference",
+   "organiser": "RANZCP",
+   "officialUrl": "https://www.ranzcp.org",
+   "country": "AU/NZ",
+   "priority": 2,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": true,
+   "presentIds": [
+    "ranzcp-child-adolescent-forensic-conference-2027"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Psychiatry",
+   "name": "RANZCP Faculty of Psychotherapy / Adult Psychiatry conferences",
+   "organiser": "RANZCP",
+   "officialUrl": "https://www.ranzcp.org",
+   "country": "AU/NZ",
+   "priority": 3,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Psychiatry",
+   "name": "RANZCP branch conferences (NSW, Vic, Qld, WA, SA, NZ)",
+   "organiser": "RANZCP branches",
+   "officialUrl": "https://www.ranzcp.org",
+   "country": "AU/NZ",
+   "priority": 2,
+   "why": "State/branch or regional meeting: local CPD, registrar papers, short travel",
+   "present": true,
+   "presentIds": [
+    "ranzcp-sa-branch-conference-2027"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Psychiatry",
+   "name": "TheMHS Conference",
+   "organiser": "TheMHS Learning Network",
+   "officialUrl": "https://www.themhs.org",
+   "country": "AU",
+   "priority": 3,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": true,
+   "presentIds": [
+    "themhs-conference-2027",
+    "themhs-conference-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Psychiatry",
+   "name": "APA Annual Meeting",
+   "organiser": "American Psychiatric Association",
+   "officialUrl": "https://www.psychiatry.org",
+   "country": "US",
+   "priority": 1,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "apa-annual-meeting",
+    "apa-annual-meeting-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Psychiatry",
+   "name": "RCPsych International Congress",
+   "organiser": "Royal College of Psychiatrists",
+   "officialUrl": "https://www.rcpsych.ac.uk",
+   "country": "GB",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "rcpsych-international-congress"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Psychiatry",
+   "name": "EPA European Congress of Psychiatry",
+   "organiser": "European Psychiatric Association",
+   "officialUrl": "https://www.europsy.net",
+   "country": "EU",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "epa-congress"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Psychiatry",
+   "name": "WPA World Congress of Psychiatry",
+   "organiser": "World Psychiatric Association",
+   "officialUrl": "https://www.wpanet.org",
+   "country": "INTL",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Psychiatry",
+   "name": "Society for Mental Health Research conference",
+   "organiser": "SMHR",
+   "officialUrl": "https://www.smhr.org.au",
+   "country": "AU",
+   "priority": 3,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "Psychiatry",
+   "name": "ECT training / credentialing (state programs)",
+   "organiser": "State health services (e.g. NSW ECT minimum standards)",
+   "officialUrl": "https://www.health.nsw.gov.au",
+   "country": "AU",
+   "priority": 3,
+   "why": "Common CPD / skills course in this field",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Addiction Medicine",
+   "name": "APSAD Conference",
+   "organiser": "Australasian Professional Society on Alcohol and other Drugs",
+   "officialUrl": "https://www.apsad.org.au",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "National society ASM: the main AU/NZ meeting for this field - present, mapped Psychiatry; dual-map Addiction Medicine",
+   "present": true,
+   "presentIds": [
+    "apsad-conference"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Addiction Medicine",
+   "name": "RACP AChAM / addiction medicine meetings",
+   "organiser": "RACP Australasian Chapter of Addiction Medicine",
+   "officialUrl": "https://www.racp.edu.au",
+   "country": "AU/NZ",
+   "priority": 2,
+   "why": "College ASM: every Fellow and trainee in this specialty expects to find it",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Addiction Medicine",
+   "name": "ASAM Annual Conference",
+   "organiser": "American Society of Addiction Medicine",
+   "officialUrl": "https://www.asam.org",
+   "country": "US",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "asam-annual-conference-2027",
+    "asam-annual-conference-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Addiction Medicine",
+   "name": "ISAM Annual Meeting",
+   "organiser": "International Society of Addiction Medicine",
+   "officialUrl": "https://www.isamweb.com",
+   "country": "INTL",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "isam-annual-congress-2027"
+   ]
+  },
+  {
+   "kind": "course",
+   "specialty": "Addiction Medicine",
+   "name": "Opioid treatment prescriber accreditation (state, e.g. NSW OTAC)",
+   "organiser": "State health departments",
+   "officialUrl": "https://www.health.nsw.gov.au",
+   "country": "AU",
+   "priority": 2,
+   "why": "Needed to prescribe OAT in most states",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Internal Medicine",
+   "name": "RACP Congress",
+   "organiser": "RACP",
+   "officialUrl": "https://www.racp.edu.au",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "College ASM: every Fellow and trainee in this specialty expects to find it",
+   "present": true,
+   "presentIds": [
+    "racp-congress"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Internal Medicine",
+   "name": "IMSANZ ASM",
+   "organiser": "Internal Medicine Society of Australia and NZ",
+   "officialUrl": "https://www.imsanz.org.au",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "National society ASM: the main AU/NZ meeting for this field - General Medicine AU count is 0",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Internal Medicine",
+   "name": "SOMANZ ASM",
+   "organiser": "SOMANZ",
+   "officialUrl": "https://www.somanz.org",
+   "country": "AU/NZ",
+   "priority": 2,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Internal Medicine",
+   "name": "ACP Internal Medicine Meeting",
+   "organiser": "American College of Physicians",
+   "officialUrl": "https://www.acponline.org",
+   "country": "US",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "acp-internal-medicine-meeting",
+    "acp-internal-medicine-meeting-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Internal Medicine",
+   "name": "RCP / RCPE medicine conferences",
+   "organiser": "Royal College of Physicians (London/Edinburgh)",
+   "officialUrl": "https://www.rcp.ac.uk",
+   "country": "GB",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "rcpe-st-andrews-day-symposium-2026"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Geriatrics",
+   "name": "ANZSGM ASM",
+   "organiser": "ANZ Society for Geriatric Medicine",
+   "officialUrl": "https://www.anzsgm.org",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": true,
+   "presentIds": [
+    "anzsgm-asm"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Geriatrics",
+   "name": "AGS Annual Scientific Meeting",
+   "organiser": "American Geriatrics Society",
+   "officialUrl": "https://www.americangeriatrics.org",
+   "country": "US",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "ags-annual-scientific-meeting",
+    "ags-annual-scientific-meeting-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Geriatrics",
+   "name": "EuGMS Congress",
+   "organiser": "European Geriatric Medicine Society",
+   "officialUrl": "https://www.eugms.org",
+   "country": "EU",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "eugms-congress-2027",
+    "eugms-congress-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Geriatrics",
+   "name": "IAGG World / Asia-Oceania Congress",
+   "organiser": "International Association of Gerontology and Geriatrics",
+   "officialUrl": "https://www.iagg.info",
+   "country": "INTL",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Rehabilitation Medicine",
+   "name": "RMSANZ / AFRM ASM",
+   "organiser": "Rehabilitation Medicine Society of ANZ; RACP AFRM",
+   "officialUrl": "https://www.rmsanz.net",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": true,
+   "presentIds": [
+    "rmsanz-asm-2027"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Rehabilitation Medicine",
+   "name": "ISPRM World Congress",
+   "organiser": "International Society of Physical and Rehabilitation Medicine",
+   "officialUrl": "https://www.isprm.org",
+   "country": "INTL",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "isprm-world-congress-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Rehabilitation Medicine",
+   "name": "ANZSCoS ASM (spinal cord)",
+   "organiser": "ANZ Spinal Cord Society",
+   "officialUrl": "https://www.anzscos.org",
+   "country": "AU/NZ",
+   "priority": 3,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Palliative Care",
+   "name": "ANZSPM Palliative Medicine Conference",
+   "organiser": "ANZ Society of Palliative Medicine",
+   "officialUrl": "https://www.anzspm.org.au",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "National society ASM: the main AU/NZ meeting for this field - doctor-led meeting missing",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Palliative Care",
+   "name": "Palliative Care Australia / Oceanic Palliative Care Conference",
+   "organiser": "Palliative Care Australia",
+   "officialUrl": "https://palliativecare.org.au",
+   "country": "AU",
+   "priority": 2,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": true,
+   "presentIds": [
+    "pca-palliative-care-conference"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Palliative Care",
+   "name": "EAPC World Congress",
+   "organiser": "European Association for Palliative Care",
+   "officialUrl": "https://www.eapcnet.eu",
+   "country": "EU",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "eapc-world-congress-2027"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Palliative Care",
+   "name": "AAHPM / HPNA Annual Assembly",
+   "organiser": "American Academy of Hospice and Palliative Medicine",
+   "officialUrl": "https://aahpm.org",
+   "country": "US",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "aahpm-annual-assembly",
+    "aahpm-annual-assembly-2028"
+   ]
+  },
+  {
+   "kind": "course",
+   "specialty": "Palliative Care",
+   "name": "PEPA (Program of Experience in the Palliative Approach) workshops",
+   "organiser": "PEPA (Australian Government funded)",
+   "officialUrl": "https://pepaeducation.com",
+   "country": "AU",
+   "priority": 2,
+   "why": "cpd for GPs/physicians",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Rheumatology",
+   "name": "ARA ASM",
+   "organiser": "Australian Rheumatology Association",
+   "officialUrl": "https://rheumatology.org.au",
+   "country": "AU",
+   "priority": 1,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": true,
+   "presentIds": [
+    "ara-asm",
+    "ara-asm-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Rheumatology",
+   "name": "NZRA ASM",
+   "organiser": "NZ Rheumatology Association",
+   "officialUrl": "https://www.rheumatology.org.nz",
+   "country": "NZ",
+   "priority": 2,
+   "why": "NZ national meeting: NZ doctors expect it alongside the AU one",
+   "present": true,
+   "presentIds": [
+    "nzra-asm-2027-paihia"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Rheumatology",
+   "name": "ACR Convergence",
+   "organiser": "American College of Rheumatology",
+   "officialUrl": "https://rheumatology.org",
+   "country": "US",
+   "priority": 1,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "acr-convergence-2027",
+    "acr-convergence-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Rheumatology",
+   "name": "EULAR Congress",
+   "organiser": "EULAR",
+   "officialUrl": "https://www.eular.org",
+   "country": "EU",
+   "priority": 1,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "eular-congress",
+    "eular-congress-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Rheumatology",
+   "name": "APLAR Congress",
+   "organiser": "Asia Pacific League of Associations for Rheumatology",
+   "officialUrl": "https://www.aplar.org",
+   "country": "APAC",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "aplar-kuala-lumpur-2027",
+    "aplar-seoul-2028-expected"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Clinical Pharmacology & Toxicology",
+   "name": "ASCEPT ASM",
+   "organiser": "ASCEPT",
+   "officialUrl": "https://www.ascept.org",
+   "country": "AU/NZ",
+   "priority": 2,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": true,
+   "presentIds": [
+    "ascept-asm-2027",
+    "ascept-asm-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Clinical Pharmacology & Toxicology",
+   "name": "APAMT Congress (medical toxicology)",
+   "organiser": "Asia Pacific Association of Medical Toxicology",
+   "officialUrl": "https://www.asiatox.org",
+   "country": "APAC",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Clinical Pharmacology & Toxicology",
+   "name": "EAPCCT Congress",
+   "organiser": "European Association of Poisons Centres and Clinical Toxicologists",
+   "officialUrl": "https://www.eapcct.org",
+   "country": "EU",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Occupational Medicine",
+   "name": "ANZSOM ASM",
+   "organiser": "ANZ Society of Occupational Medicine",
+   "officialUrl": "https://www.anzsom.org.au",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "National society ASM: the main AU/NZ meeting for this field - present but mapped Internal Medicine: remap",
+   "present": true,
+   "presentIds": [
+    "anzsom-asm-2027"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Occupational Medicine",
+   "name": "AFOEM / RACP Congress occupational stream",
+   "organiser": "RACP AFOEM",
+   "officialUrl": "https://www.racp.edu.au",
+   "country": "AU/NZ",
+   "priority": 2,
+   "why": "College ASM: every Fellow and trainee in this specialty expects to find it",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Occupational Medicine",
+   "name": "SPUMS ASM (diving & hyperbaric)",
+   "organiser": "South Pacific Underwater Medicine Society",
+   "officialUrl": "https://spums.org.au",
+   "country": "AU/NZ",
+   "priority": 3,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Occupational Medicine",
+   "name": "ASAM (aerospace medicine) ASM",
+   "organiser": "Australasian Society of Aerospace Medicine",
+   "officialUrl": "https://www.asam.org.au",
+   "country": "AU/NZ",
+   "priority": 3,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Occupational Medicine",
+   "name": "ICOH World Congress",
+   "organiser": "International Commission on Occupational Health",
+   "officialUrl": "https://www.icohweb.org",
+   "country": "INTL",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "icoh-35th-international-congress-on-occupational-health-2027"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Sports Medicine",
+   "name": "ACSEP Annual Conference",
+   "organiser": "Australasian College of Sport and Exercise Physicians",
+   "officialUrl": "https://www.acsep.org.au",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "College ASM: every Fellow and trainee in this specialty expects to find it",
+   "present": true,
+   "presentIds": [
+    "acsep-conference-2027",
+    "acsep-conference-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Sports Medicine",
+   "name": "SMA Conference",
+   "organiser": "Sports Medicine Australia",
+   "officialUrl": "https://sma.org.au",
+   "country": "AU",
+   "priority": 2,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": true,
+   "presentIds": [
+    "sma-sports-medicine-australia-conference"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Sports Medicine",
+   "name": "IOC World Conference on Prevention of Injury & Illness in Sport",
+   "organiser": "IOC",
+   "officialUrl": "https://www.ioc-preventionconference.org",
+   "country": "EU",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Sports Medicine",
+   "name": "ACSM Annual Meeting",
+   "organiser": "American College of Sports Medicine",
+   "officialUrl": "https://www.acsm.org",
+   "country": "US",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "acsm-annual-meeting-2027",
+    "acsm-annual-meeting-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Public Health",
+   "name": "PHAA conferences (Population Health Congress, Preventive Health, CDIC)",
+   "organiser": "Public Health Association of Australia",
+   "officialUrl": "https://www.phaa.net.au",
+   "country": "AU",
+   "priority": 1,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": true,
+   "presentIds": [
+    "phaa-screening-conference-2027",
+    "phaa-preventive-health-conference-2027",
+    "phaa-communicable-diseases-immunisation-conference-2027",
+    "phaa-population-health-congress",
+    "phaa-food-futures-conference-2027",
+    "phaa-manila-2028-expected"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Public Health",
+   "name": "AFPHM / RACP public health medicine meeting",
+   "organiser": "RACP AFPHM",
+   "officialUrl": "https://www.racp.edu.au",
+   "country": "AU/NZ",
+   "priority": 3,
+   "why": "College ASM: every Fellow and trainee in this specialty expects to find it",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Public Health",
+   "name": "World Congress on Public Health",
+   "organiser": "WFPHA",
+   "officialUrl": "https://www.wfpha.org",
+   "country": "INTL",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Indigenous Health",
+   "name": "AIDA Conference",
+   "organiser": "Australian Indigenous Doctors' Association",
+   "officialUrl": "https://aida.org.au",
+   "country": "AU",
+   "priority": 1,
+   "why": "Every Indigenous doctor/student and many others expect it",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Indigenous Health",
+   "name": "Te ORA Hui-a-Tau",
+   "organiser": "Te ORA (Māori Medical Practitioners Association)",
+   "officialUrl": "https://www.teora.maori.nz",
+   "country": "NZ",
+   "priority": 1,
+   "why": "NZ national meeting: NZ doctors expect it alongside the AU one",
+   "present": true,
+   "presentIds": [
+    "te-ora-hui-a-tau-2027",
+    "te-ora-hui-a-tau-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Indigenous Health",
+   "name": "LIME Network Conference",
+   "organiser": "LIME Network (University of Melbourne)",
+   "officialUrl": "https://limenetwork.net.au",
+   "country": "AU/NZ",
+   "priority": 2,
+   "why": "Indigenous health medical education",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Indigenous Health",
+   "name": "NACCHO Members' Conference",
+   "organiser": "NACCHO",
+   "officialUrl": "https://www.naccho.org.au",
+   "country": "AU",
+   "priority": 2,
+   "why": "ACCHO doctors",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Indigenous Health",
+   "name": "PRIDoC (Pacific Region Indigenous Doctors Congress)",
+   "organiser": "PRIDoC",
+   "officialUrl": "https://www.pridoc.org",
+   "country": "APAC",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "pridoc-2026"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Medical Education",
+   "name": "ANZAHPE Conference",
+   "organiser": "ANZ Association for Health Professional Educators",
+   "officialUrl": "https://www.anzahpe.org",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": true,
+   "presentIds": [
+    "anzahpe-conference"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Medical Education",
+   "name": "ANZ Prevocational Medical Education Forum",
+   "organiser": "Hosted by state postgraduate medical councils",
+   "officialUrl": "https://www.cpmec.org.au",
+   "country": "AU/NZ",
+   "priority": 2,
+   "why": "Main meeting for JMO educators/DCTs",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Medical Education",
+   "name": "SimHealth (Simulation Australasia)",
+   "organiser": "Simulation Australasia",
+   "officialUrl": "https://www.simulationaustralasia.com",
+   "country": "AU",
+   "priority": 2,
+   "why": "Sub-specialty / SIG meeting that consultants in the field attend",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Medical Education",
+   "name": "AMEE Conference",
+   "organiser": "AMEE",
+   "officialUrl": "https://amee.org",
+   "country": "EU",
+   "priority": 1,
+   "why": "Major international meeting Australians regularly travel to",
+   "present": true,
+   "presentIds": [
+    "amee-conference"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Medical Education",
+   "name": "Ottawa Conference (assessment)",
+   "organiser": "Ottawa Conference",
+   "officialUrl": "https://www.ottawaconference.org",
+   "country": "INTL",
+   "priority": 3,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Health Management",
+   "name": "RACMA Annual Conference",
+   "organiser": "Royal Australasian College of Medical Administrators",
+   "officialUrl": "https://racma.edu.au",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "College ASM: every Fellow and trainee in this specialty expects to find it - Health Management has no college meeting",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Health Management",
+   "name": "ISQua International Conference",
+   "organiser": "ISQua",
+   "officialUrl": "https://www.isqua.org",
+   "country": "INTL",
+   "priority": 2,
+   "why": "International meeting with a solid AU/NZ following",
+   "present": true,
+   "presentIds": [
+    "isqua-43rd-international-conference-2027"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Forensic Medicine",
+   "name": "ANZFSS International Symposium",
+   "organiser": "ANZ Forensic Science Society",
+   "officialUrl": "https://www.anzfss.org",
+   "country": "AU/NZ",
+   "priority": 2,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": false
+  },
+  {
+   "kind": "conference",
+   "specialty": "Wound Care",
+   "name": "Wounds Australia National Conference",
+   "organiser": "Wounds Australia (formerly AWMA)",
+   "officialUrl": "https://www.woundsaustralia.com.au",
+   "country": "AU",
+   "priority": 2,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": true,
+   "presentIds": [
+    "awma-conference-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Nursing",
+   "name": "ACCCN ASM",
+   "organiser": "Australian College of Critical Care Nurses",
+   "officialUrl": "https://www.acccn.com.au",
+   "country": "AU",
+   "priority": 3,
+   "why": "National society ASM: the main AU/NZ meeting for this field - 2028 present; 2027 joint with ANZICS",
+   "present": true,
+   "presentIds": [
+    "acccn-asm-2027",
+    "anzics-asm",
+    "acccn-asm-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Health Informatics",
+   "name": "HIC (Health Informatics Conference)",
+   "organiser": "Australasian Institute of Digital Health",
+   "officialUrl": "https://digitalhealth.org.au",
+   "country": "AU",
+   "priority": 2,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": true,
+   "presentIds": [
+    "hic-health-informatics-2027",
+    "hic-health-informatics-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Health Services Research",
+   "name": "HSRAANZ conference",
+   "organiser": "Health Services Research Association of ANZ",
+   "officialUrl": "https://www.hsraanz.org",
+   "country": "AU/NZ",
+   "priority": 3,
+   "why": "National society ASM: the main AU/NZ meeting for this field - present, mapped Public Health",
+   "present": true,
+   "presentIds": [
+    "hsr-2026-wellington"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Medical Research",
+   "name": "ASMR Medical Research Week / ASM",
+   "organiser": "Australian Society for Medical Research",
+   "officialUrl": "https://asmr.org.au",
+   "country": "AU",
+   "priority": 3,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": true,
+   "presentIds": [
+    "asmr-asm-2027",
+    "asmr-asm-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Nutrition",
+   "name": "Nutrition Society of Australia ASM",
+   "organiser": "NSA",
+   "officialUrl": "https://www.nsa.asn.au",
+   "country": "AU",
+   "priority": 3,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": true,
+   "presentIds": [
+    "nsa-asm-2026"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Allied Health",
+   "name": "Paramedics Australasia International Conference",
+   "organiser": "Paramedics Australasia",
+   "officialUrl": "https://paramedics.org",
+   "country": "AU/NZ",
+   "priority": 3,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": true,
+   "presentIds": [
+    "paramedics-australasia-conference-2027",
+    "paramedics-australasia-conference-2028"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Dentistry",
+   "name": "Australian Dental Congress",
+   "organiser": "Australian Dental Association",
+   "officialUrl": "https://www.ada.org.au",
+   "country": "AU",
+   "priority": 3,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": true,
+   "presentIds": [
+    "australian-dental-congress"
+   ]
+  },
+  {
+   "kind": "conference",
+   "specialty": "Pharmacy",
+   "name": "SHPA Medicines Management",
+   "organiser": "Advanced Pharmacy Australia (SHPA)",
+   "officialUrl": "https://www.adpha.au",
+   "country": "AU",
+   "priority": 3,
+   "why": "National society ASM: the main AU/NZ meeting for this field",
+   "present": true,
+   "presentIds": [
+    "advanced-pharmacy-medicines-management"
+   ]
+  },
+  {
+   "kind": "course",
+   "specialty": "Medical Education",
+   "name": "AMC Clinical exam / IMG bridging & orientation programs",
+   "organiser": "Australian Medical Council; state IMG programs",
+   "officialUrl": "https://www.amc.org.au",
+   "country": "AU",
+   "priority": 2,
+   "why": "IMGs are a big Hoggy audience",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "General Medicine",
+   "name": "Hospital ALS1 / BLS (JMO mandatory)",
+   "organiser": "ARC accredited centres / employers",
+   "officialUrl": "https://www.resus.org.au",
+   "country": "AU",
+   "priority": 2,
+   "why": "Annual employer requirement for interns/RMOs",
+   "present": true,
+   "presentIds": [
+    "als1"
+   ],
+   "upcomingSessions": 258
+  },
+  {
+   "kind": "course",
+   "specialty": "General Medicine",
+   "name": "NZRC CORE Advanced (NZ ALS2 equivalent)",
+   "organiser": "NZ Resuscitation Council providers",
+   "officialUrl": "https://www.nzrc.org.nz",
+   "country": "NZ",
+   "priority": 1,
+   "why": "mand (NZ): only 2 sessions held",
+   "present": true,
+   "presentIds": [
+    "nzrc-core-advanced"
+   ],
+   "upcomingSessions": 2
+  },
+  {
+   "kind": "course",
+   "specialty": "General Medicine",
+   "name": "NZRC CORE Immediate",
+   "organiser": "NZ Resuscitation Council providers",
+   "officialUrl": "https://www.nzrc.org.nz",
+   "country": "NZ",
+   "priority": 2,
+   "why": "NZ JMO requirement",
+   "present": true,
+   "presentIds": [
+    "nzrc-core-immediate"
+   ],
+   "upcomingSessions": 2
+  },
+  {
+   "kind": "course",
+   "specialty": "General Medicine",
+   "name": "Clinical leadership / supervisor training (e.g. Teaching on the Run)",
+   "organiser": "State postgraduate councils / universities",
+   "officialUrl": "https://www.teachingontherun.com",
+   "country": "AU",
+   "priority": 3,
+   "why": "Common CPD / skills course in this field",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "Radiology",
+   "name": "Fluoroscopy / radiation use licence training (state)",
+   "organiser": "State radiation regulators (e.g. NSW EPA, Vic DH, Qld Health)",
+   "officialUrl": "https://www.arpansa.gov.au",
+   "country": "AU",
+   "priority": 3,
+   "why": "Required for doctors operating fluoroscopy (ortho, cardiology, urology, GI)",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "Cardiology",
+   "name": "Cardiac CT / echo accreditation courses",
+   "organiser": "Conjoint Committee for Recognition of Training in CT Coronary Angiography; ASUM/ASE",
+   "officialUrl": "https://www.ranzcr.com",
+   "country": "AU",
+   "priority": 3,
+   "why": "Common CPD / skills course in this field",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "Ophthalmology",
+   "name": "Ophthalmology for GPs / ED (e.g. RANZCO short courses)",
+   "organiser": "RANZCO",
+   "officialUrl": "https://ranzco.edu",
+   "country": "AU",
+   "priority": 3,
+   "why": "Common CPD / skills course in this field",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "Dermatology",
+   "name": "Dermoscopy courses (ACD / SCCA / IDS)",
+   "organiser": "ACD; SCCA",
+   "officialUrl": "https://www.dermcoll.edu.au",
+   "country": "AU",
+   "priority": 2,
+   "why": "Common CPD / skills course in this field",
+   "present": false,
+   "inWave1": [
+    "scca-certificate-dermoscopy"
+   ]
+  },
+  {
+   "kind": "course",
+   "specialty": "Orthopaedics",
+   "name": "Plastering / fracture management workshops for GPs & ED",
+   "organiser": "AOA / hospital ED education units",
+   "officialUrl": "https://www.aoa.org.au",
+   "country": "AU",
+   "priority": 3,
+   "why": "Common CPD / skills course in this field",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "Psychiatry",
+   "name": "RANZCP CPD: Psychotherapy / CBT short courses",
+   "organiser": "RANZCP accredited providers",
+   "officialUrl": "https://www.ranzcp.org",
+   "country": "AU/NZ",
+   "priority": 3,
+   "why": "Common CPD / skills course in this field",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "Emergency Medicine",
+   "name": "Procedural sedation course (ED / GP)",
+   "organiser": "ACEM / ANZCA PS09-aligned providers",
+   "officialUrl": "https://acem.org.au",
+   "country": "AU",
+   "priority": 3,
+   "why": "Common CPD / skills course in this field",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "Obstetrics & Gynaecology",
+   "name": "Neonatal resuscitation for maternity clinicians (NeoResus / NZRC Newborn)",
+   "organiser": "NeoResus; NZRC",
+   "officialUrl": "https://www.neoresus.org.au",
+   "country": "AU/NZ",
+   "priority": 1,
+   "why": "Annual hospital requirement in maternity units",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "Critical Care",
+   "name": "Paediatric critical care / transport course (e.g. NETS, PIPER)",
+   "organiser": "NETS NSW, PIPER (Vic), RSQ (Qld)",
+   "officialUrl": "https://www.nets.org.au",
+   "country": "AU",
+   "priority": 3,
+   "why": "Common CPD / skills course in this field",
+   "present": false
+  },
+  {
+   "kind": "course",
+   "specialty": "Surgery",
+   "name": "Basic laparoscopic / robotic skills courses",
+   "organiser": "RACS; hospital skills centres",
+   "officialUrl": "https://www.surgeons.org",
+   "country": "AU",
+   "priority": 3,
+   "why": "Common CPD / skills course in this field",
+   "present": false
+  }
+ ]
+}

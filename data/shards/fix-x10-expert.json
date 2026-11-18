@@ -1,0 +1,256 @@
+[
+ {
+  "id": "american-transplant-congress-2027",
+  "remove": true,
+  "evidenceTo": "atc-american-transplant-congress-2027",
+  "note": "duplicate of atc-american-transplant-congress-2027 (same meeting and dates); its evidence moves there (docs/research/expert-review.md §3.1b)"
+ },
+ {
+  "id": "american-transplant-congress-2028",
+  "remove": true,
+  "evidenceTo": "atc-american-transplant-congress-2028",
+  "note": "duplicate of atc-american-transplant-congress-2028; evidence moves there (docs/research/expert-review.md §3.1b)"
+ },
+ {
+  "id": "aacn-nti-2027",
+  "remove": true,
+  "note": "duplicate of aacn-nti, and its quote gives the exhibit dates, not the conference (docs/research/expert-review.md §3.1b)"
+ },
+ {
+  "id": "rhw-react-karratha-2027",
+  "remove": true,
+  "note": "Rural Health West course, listed as a course session (data/courses/sources/womens-gp.sessions.json); not a conference (docs/research/expert-review.md §3.1)"
+ },
+ {
+  "id": "rhw-neostars-northam-2027",
+  "remove": true,
+  "note": "Rural Health West course, listed as a course session (data/courses/sources/womens-gp.sessions.json); not a conference (docs/research/expert-review.md §3.1)"
+ },
+ {
+  "id": "rhw-peaches-geraldton-2027",
+  "remove": true,
+  "note": "Rural Health West course, listed as a course session (data/courses/sources/womens-gp.sessions.json); not a conference (docs/research/expert-review.md §3.1)"
+ },
+ {
+  "id": "rhw-tide-perth-2027",
+  "remove": true,
+  "note": "Rural Health West course, listed as a course session (data/courses/sources/womens-gp.sessions.json); not a conference (docs/research/expert-review.md §3.1)"
+ },
+ {
+  "id": "rhw-emergency-airway-busselton-2027",
+  "remove": true,
+  "note": "Rural Health West course, listed as a course session (data/courses/sources/womens-gp.sessions.json); not a conference (docs/research/expert-review.md §3.1)"
+ },
+ {
+  "id": "rdaa-rural-medicine-australia-2027",
+  "remove": true,
+  "note": "duplicate of the joint ACRRM/RDAA RMA series (rma-rural-medicine-australia) (docs/research/expert-blueprint.md §5)"
+ },
+ {
+  "id": "rdaa-rural-medicine-australia-2028",
+  "remove": true,
+  "note": "duplicate of the joint ACRRM/RDAA RMA series (docs/research/expert-blueprint.md §5)"
+ },
+ {
+  "id": "adea-conference-2027",
+  "remove": true,
+  "note": "ADEA meets in the joint ADS-ADEA Australasian Diabetes Congress (australasian-diabetes-congress, same dates) (docs/research/expert-blueprint.md §5)"
+ },
+ {
+  "id": "adea-conference-2028",
+  "remove": true,
+  "note": "ADEA meets in the joint ADS-ADEA Australasian Diabetes Congress (docs/research/expert-blueprint.md §5)"
+ },
+ {
+  "id": "rcpa-aacb-chemical-pathology-course-2027",
+  "remove": true,
+  "note": "a training course, not a scientific meeting: moved to courses (data/courses/sources/conf-courses.*) with its evidence (docs/research/expert-review.md §3.1)"
+ },
+ {
+  "id": "anzan-eeg-esa-epilepsy-courses-2027",
+  "remove": true,
+  "note": "training courses, not a scientific meeting: moved to courses (data/courses/sources/conf-courses.*) with its evidence (docs/research/expert-review.md §3.1)"
+ },
+ {
+  "id": "anzics-asm",
+  "strip": [
+   "attendees",
+   "priceFrom",
+   "cpdBody",
+   "cpdHours"
+  ],
+  "estimateReason": "Re-check on anzics.org: ACCCN now runs its own ASM (acccn-asm-2027, Sydney 5-8 Oct 2027), so the joint ANZICS-ACCCN estimate may be wrong",
+  "set": {
+   "name": "ANZICS Annual Scientific Meeting"
+  },
+  "note": "attendee, price and CPD figures had no source; conflicts with acccn-asm-2027 (docs/research/expert-review.md §3.1)"
+ },
+ {
+  "id": "asohns-asm",
+  "set": {
+   "specialty": "Otolaryngology (ENT)"
+  },
+  "note": "docs/research/expert-blueprint.md §5"
+ },
+ {
+  "id": "asps-plastic-surgery-meeting",
+  "set": {
+   "specialty": "Plastic Surgery"
+  },
+  "note": "docs/research/expert-blueprint.md §5"
+ },
+ {
+  "id": "anzsvs-asm",
+  "set": {
+   "specialty": "Vascular Surgery"
+  },
+  "note": "docs/research/expert-blueprint.md §5"
+ },
+ {
+  "id": "australian-pain-society-asm",
+  "set": {
+   "specialty": "Pain Medicine"
+  },
+  "note": "docs/research/expert-blueprint.md §5"
+ },
+ {
+  "id": "sleep-downunder",
+  "set": {
+   "specialty": "Sleep Medicine"
+  },
+  "note": "docs/research/expert-blueprint.md §5"
+ },
+ {
+  "id": "anzsnm-asm",
+  "set": {
+   "specialty": "Nuclear Medicine"
+  },
+  "note": "docs/research/expert-blueprint.md §5"
+ },
+ {
+  "id": "anzsom-asm-2027",
+  "set": {
+   "specialty": "Occupational Medicine"
+  },
+  "note": "docs/research/expert-blueprint.md §5"
+ },
+ {
+  "id": "apsad-conference",
+  "set": {
+   "specialty": "Addiction Medicine"
+  },
+  "note": "docs/research/expert-blueprint.md §5"
+ },
+ {
+  "id": "trog-asm-2027",
+  "set": {
+   "specialty": "Radiation Oncology"
+  },
+  "note": "docs/research/expert-blueprint.md §5"
+ },
+ {
+  "id": "fsanz-annual-conference",
+  "set": {
+   "specialty": "Reproductive Medicine"
+  },
+  "note": "docs/research/expert-blueprint.md §5"
+ },
+ {
+  "id": "iffs-world-congress-2027",
+  "set": {
+   "specialty": "Reproductive Medicine"
+  },
+  "note": "docs/research/expert-blueprint.md §5"
+ },
+ {
+  "id": "otaus-national-conference",
+  "set": {
+   "specialty": "Allied Health"
+  },
+  "note": "docs/research/expert-blueprint.md §5"
+ },
+ {
+  "id": "apa-physiotherapy-conference",
+  "set": {
+   "specialty": "Allied Health"
+  },
+  "note": "docs/research/expert-blueprint.md §5"
+ },
+ {
+  "id": "hsr-2026-wellington",
+  "set": {
+   "specialty": "Health Services Research"
+  },
+  "note": "docs/research/expert-blueprint.md §5"
+ },
+ {
+  "id": "lorne-protein-structure-function-2027",
+  "set": {
+   "specialty": "Medical Research"
+  },
+  "note": "docs/research/expert-blueprint.md §5"
+ },
+ {
+  "id": "miccai-2027-auckland",
+  "set": {
+   "specialty": "Health Informatics"
+  },
+  "note": "docs/research/expert-blueprint.md §5"
+ },
+ {
+  "id": "acm-national-conference-2027",
+  "set": {
+   "specialty": "Obstetrics & Gynaecology"
+  },
+  "note": "Australian College of Midwives meeting: midwifery maps to Obstetrics & Gynaecology in tools/specialties.json (docs/research/expert-review.md §3.1)"
+ },
+ {
+  "id": "acm-vic-state-conference-2027",
+  "set": {
+   "specialty": "Obstetrics & Gynaecology"
+  },
+  "note": "Australian College of Midwives meeting: midwifery maps to Obstetrics & Gynaecology in tools/specialties.json (docs/research/expert-review.md §3.1)"
+ },
+ {
+  "id": "acm-qld-state-conference-2027",
+  "set": {
+   "specialty": "Obstetrics & Gynaecology"
+  },
+  "note": "Australian College of Midwives meeting: midwifery maps to Obstetrics & Gynaecology in tools/specialties.json (docs/research/expert-review.md §3.1)"
+ },
+ {
+  "id": "acm-sa-state-conference-2027",
+  "set": {
+   "specialty": "Obstetrics & Gynaecology"
+  },
+  "note": "Australian College of Midwives meeting: midwifery maps to Obstetrics & Gynaecology in tools/specialties.json (docs/research/expert-review.md §3.1)"
+ },
+ {
+  "id": "acm-wa-state-conference-2027",
+  "set": {
+   "specialty": "Obstetrics & Gynaecology"
+  },
+  "note": "Australian College of Midwives meeting: midwifery maps to Obstetrics & Gynaecology in tools/specialties.json (docs/research/expert-review.md §3.1)"
+ },
+ {
+  "id": "acm-nsw-state-conference",
+  "set": {
+   "specialty": "Obstetrics & Gynaecology"
+  },
+  "note": "Australian College of Midwives meeting: midwifery maps to Obstetrics & Gynaecology in tools/specialties.json (docs/research/expert-review.md §3.1)"
+ },
+ {
+  "id": "siop-congress-2027-sydney",
+  "set": {
+   "specialty": "Paediatrics"
+  },
+  "note": "SIOP is paediatric oncology (docs/research/expert-review.md §3.1)"
+ },
+ {
+  "id": "mwia-western-pacific-regional-conference-2027",
+  "set": {
+   "specialty": "Health Management"
+  },
+  "note": "Medical Women's International Association: a professional meeting (docs/research/expert-review.md §3.1)"
+ }
+]

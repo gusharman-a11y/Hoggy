@@ -16,6 +16,8 @@ const COV = require('./lib/coverage.js');
 const RV = require('./lib/reviews.js');
 const { makeHospitalApi } = require('./lib/hospital-api.js');
 const READER = require('./lib/receipt-reader.js');
+const zlib = require('node:zlib');
+const HC = require('./courses.js');
 const ADMIN_KEY = process.env.HOGGY_ADMIN_KEY || '';
 const REPORT_MIN_AGE = (process.env.HOGGY_REPORT_MIN_AGE_H === undefined ? 24 : +process.env.HOGGY_REPORT_MIN_AGE_H) * 3600e3;
 const ADMINS = new Set(String(process.env.HOGGY_ADMINS || '').toLowerCase().split(',').map(s => s.trim()).filter(Boolean));
@@ -204,15 +206,25 @@ async function getConfs() {
   cc.etag = '"' + cc.updated + '-' + cc.list.length + '"';
   return (confCache = cc);
 }
-/* Courses: read once per process from data/courses/*.json; sessions that have finished are dropped (re-filtered each day). */
+/* Courses: read once per process from data/courses/*.json; sessions that have finished are dropped (re-filtered each day).
+   x10: ~3,300 sessions (3.9 MB), so GET /api/courses serves the catalogue with per-course counts (summary) and no sessions;
+   ?course=<id> serves one course's sessions; ?all=1 everything (tests, offline tools). Bodies are gzipped when the client asks. */
 let courseCache = null;
 function getCourses() {
   const day = new Date().toISOString().slice(0, 10);
   if (courseCache && courseCache.day === day) return courseCache;
   const raw = courseCache ? courseCache.raw : (() => { const r = f => JSON.parse(fs.readFileSync(path.join(COURSE_DIR, f), 'utf8')); return { cat: r('catalogue.json'), ses: r('sessions.json') }; })();
   const sessions = (raw.ses.sessions || []).filter(s => s.end >= day).sort((a, b) => a.start < b.start ? -1 : a.start > b.start ? 1 : 0);
-  const body = JSON.stringify({ generated: raw.cat.generated, courses: raw.cat.courses, sessions });
-  return (courseCache = { day, raw, body, etag: '"' + sha(body).slice(0, 20) + '"' });
+  const byCourse = new Map(); for (const s of sessions) (byCourse.get(s.courseId) || byCourse.set(s.courseId, []).get(s.courseId)).push(s);
+  const pack = obj => { const body = JSON.stringify(obj); return { body, gz: zlib.gzipSync(body), etag: '"' + sha(body).slice(0, 20) + '"' }; };
+  const list = pack({ generated: raw.cat.generated, courses: raw.cat.courses, summary: HC.courseSummary(sessions, day), sessionsTotal: sessions.length });
+  return (courseCache = { day, raw, list, byCourse, pack, packed: new Map(), all: null, sessions });
+}
+function courseBody(cc, id, all) {
+  if (all) return cc.all || (cc.all = cc.pack({ generated: cc.raw.cat.generated, courses: cc.raw.cat.courses, sessions: cc.sessions }));
+  if (!id) return cc.list;
+  if (!cc.packed.has(id)) { if (cc.packed.size > 400) cc.packed.clear(); cc.packed.set(id, cc.pack({ course: id, sessions: cc.byCourse.get(id) || [] })); }
+  return cc.packed.get(id);
 }
 /* series index, rebuilt with the conference cache: key -> editions [{id, year, city, start, end, name}], conference id -> key */
 async function seriesIdx() {
@@ -360,9 +372,12 @@ async function api(req, res, url) {
   }
   /* public: course catalogue and upcoming sessions (static files bundled with the function, like data/conferences.js) */
   if (p === '/api/courses' && m === 'GET') {
-    const cc = getCourses();
-    if (req.headers['if-none-match'] === cc.etag) { res.writeHead(304, { ETag: cc.etag }); return res.end(); }
-    res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-cache', ETag: cc.etag }); return res.end(cc.body);
+    const cc = getCourses(), id = clean(url.searchParams.get('course'), 60);
+    if (id && !/^[a-z0-9-]{1,60}$/.test(id)) return json(res, 400, { error: 'bad course id' });
+    const b = courseBody(cc, id, url.searchParams.get('all') === '1'), gz = /\bgzip\b/.test(req.headers['accept-encoding'] || '');
+    if (req.headers['if-none-match'] === b.etag) { res.writeHead(304, { ETag: b.etag }); return res.end(); }
+    res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-cache', ETag: b.etag, Vary: 'Accept-Encoding', ...(gz ? { 'Content-Encoding': 'gzip' } : {}) });
+    return res.end(gz ? b.gz : b.body);
   }
   /* public: community scores per conference SERIES (all editions), weighted verified x1, unverified x0.5, hidden under 3 reviews */
   if (p === '/api/ratings' && m === 'GET') return json(res, 200, (await getRatings()).v);

@@ -1,0 +1,35 @@
+{
+ "note": "Corrections tools/merge-courses.js applies on every merge, so a source re-run cannot undo them (x10 expert review, docs/research/expert-review.md §3.2-3.4, 18 Nov 2026). catalogue[]: { id, set } patches a course type from any source (allowed keys: name, userNote, providerType, relevance, certifyingBody). sessionRules[]: rows whose provider matches `provider` (a regex) get `set`; collapseLengthVariants folds a provider's same-course, same-start rows that differ only by a length variant (\"3-days\", \"5.5-days\") into one row with durationOptions; closedFromQuote sets seatsStatus \"closed\" when the date quote itself says Closed. relevance: 3 core for AU/NZ doctors ... 0 shown only when asked for (country or language chosen).",
+ "catalogue": [
+  { "id": "nz-acls", "set": { "name": "NZ provider ACLS courses (Emcare ACLS6, Resuscitation Matters ACLS)", "userNote": "Provider-branded courses run in New Zealand. They are not the American Heart Association ACLS certificate; check which certificate your employer asks for." } },
+  { "id": "pacls", "set": { "name": "Emcare Principles of Advanced Cardiac Life Support (PACLS, NZ)", "userNote": "A provider-branded course run in New Zealand, not the American Heart Association ACLS certificate." } },
+  { "id": "ccrisp", "set": { "userNote": "The RCS England course. In Australia and New Zealand, RACS runs its own CCrISP; check which one your training program asks for." } },
+  { "id": "bss", "set": { "userNote": "The UK Basic Surgical Skills course (RCS England, RCSEd). It is a different course from RACS's ASSET; check what your training program asks for." } },
+  { "id": "atls", "set": { "userNote": "ATLS as run in the UK. In Australia and New Zealand the RACS course is EMST; check which one your hospital or college asks for." } },
+  { "id": "rcsed-robotic-hugo", "set": { "userNote": "Industry-linked: taught on one vendor's robotic system (Medtronic Hugo)." } },
+  { "id": "ran-moum", "set": { "userNote": "A Royal Australian Navy course listed by SPUMS. Check with the provider that civilians can enrol." } },
+  { "id": "acccn-adult-als", "set": { "userNote": "Run by the critical care nurses' college; check that it meets your employer's ALS requirement." } },
+  { "id": "acccn-als-instructor", "set": { "relevance": 1 } },
+  { "id": "bls-instructor", "set": { "relevance": 1 } },
+  { "id": "ecg-12-lead", "set": { "relevance": 1 } },
+  { "id": "aiu-third-trimester-ultrasound-for-midwives", "set": { "relevance": 1 } },
+  { "id": "aiu-emergency-nurse-practitioner-ultrasound", "set": { "relevance": 1 } },
+  { "id": "aiu-return-to-clinical-practice", "set": { "relevance": 1 } },
+  { "id": "sexual-reproductive-health-certificate-nurses", "set": { "relevance": 1 } },
+  { "id": "cervical-screening-training-nurses", "set": { "relevance": 1 } },
+  { "id": "erc-als", "set": { "relevance": 0 } }, { "id": "erc-ils", "set": { "relevance": 0 } }, { "id": "erc-epals", "set": { "relevance": 0 } },
+  { "id": "erc-epils", "set": { "relevance": 0 } }, { "id": "erc-nls", "set": { "relevance": 0 } }, { "id": "erc-etc", "set": { "relevance": 0 } }, { "id": "erc-gic", "set": { "relevance": 0 } }
+ ],
+ "catalogueRules": [
+  { "idPrefix": "aiu-", "set": { "providerType": "commercial" } },
+  { "idPrefix": "healthcert-", "set": { "providerType": "commercial" } },
+  { "idPrefix": "healthed-", "set": { "providerType": "commercial" } },
+  { "ids": ["wilderness-rescue-medicine", "awls"], "set": { "providerType": "commercial" } }
+ ],
+ "sessionRules": [
+  { "provider": "^Australian Institute of Ultrasound", "set": { "providerType": "commercial" }, "collapseLengthVariants": true, "closedFromQuote": true },
+  { "provider": "^HealthCert", "set": { "providerType": "commercial" } },
+  { "provider": "^Healthed", "set": { "providerType": "commercial" } },
+  { "provider": "^RescueMED", "set": { "providerType": "commercial" } }
+ ]
+}

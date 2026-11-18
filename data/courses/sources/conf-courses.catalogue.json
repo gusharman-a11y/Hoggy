@@ -1,0 +1,42 @@
+{
+ "generated": "2026-11-18",
+ "note": "Courses that were listed as conferences until the x10 expert review (18 Nov 2026): training courses, not scientific meetings. Moved here with the evidence the x10-aunz-conf desk read on the organiser's page (data/shards/fix-x10-expert.json removes the conference rows). Course facts not reviewed yet (verified: false).",
+ "courses": [
+  {
+   "id": "rcpa-aacb-chemical-pathology-course",
+   "name": "Chemical Pathology Course (AACB with the RCPA)",
+   "providers": [
+    {
+     "name": "Australasian Association of Clinical Biochemistry and Laboratory Medicine (AACB), with the RCPA",
+     "url": "https://www.aacb.asn.au/AACB/Events/Event_Display.aspx?EventKey=CPC2027&WebsiteKey=d4c31fa4-467a-4959-b48b-cae3ea93e516"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "certifyingBody": "AACB and RCPA",
+   "verified": false,
+   "note": "Was the conference row rcpa-aacb-chemical-pathology-course-2027."
+  },
+  {
+   "id": "anzan-eeg-esa-epilepsy-courses",
+   "name": "EEG Course (ANZAN) and Clinical Epilepsy Course (ESA)",
+   "providers": [
+    {
+     "name": "Australian and New Zealand Association of Neurologists (ANZAN) with the Epilepsy Society of Australia (ESA)",
+     "url": "https://www.anzan.org.au/"
+    },
+    {
+     "name": "Registration page (iVvy)",
+     "url": "https://www.ivvy.com.au/event/EEG2027/"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "certifyingBody": "ANZAN and ESA",
+   "verified": false,
+   "note": "Was the conference row anzan-eeg-esa-epilepsy-courses-2027."
+  }
+ ]
+}

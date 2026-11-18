@@ -1,0 +1,192 @@
+{
+ "Count": 4,
+ "Items": [
+  {
+   "ViewUri": "https://resuscitationmatters.arlo.co/courses/2-advanced-resuscitation-course",
+   "RegistrationInfo": {
+    "RegisterUri": "https://resuscitationmatters.arlo.co/register?sgid=82ca56db23a046d183c7876bc6493d51",
+    "RegisterMessage": "Register"
+   },
+   "EventID": 798,
+   "EventTemplateID": 2,
+   "Name": "Advanced Resuscitation Course",
+   "Code": "ADVANC-168",
+   "Summary": "NZRC CORE Advanced",
+   "StartDateTime": "2026-12-12T08:00:00.0000000+13:00",
+   "EndDateTime": "2026-12-12T17:00:00.0000000+13:00",
+   "Location": {
+    "VenueID": 39,
+    "Name": "Christchurch",
+    "VenueName": "Resuscitation Matters",
+    "StreetLine1": "Unit 17/150 Cavendish Road",
+    "City": "Christchurch",
+    "Suburb": "Casebrook",
+    "Country": "New Zealand",
+    "PostCode": "8051",
+    "PointLatitude": -43.4738567,
+    "PointLongitude": 172.6083359,
+    "ViewUri": "https://resuscitationmatters.arlo.co/venues/39-resuscitation-matters"
+   },
+   "IsFull": false,
+   "PlacesRemaining": 8,
+   "AdvertisedOffers": [
+    {
+     "OfferID": 0,
+     "IsDiscountOffer": false,
+     "OfferAmount": {
+      "CurrencyCode": "NZD",
+      "AmountTaxExclusive": 585,
+      "AmountTaxInclusive": 672.75,
+      "FormattedAmountTaxExclusive": "$585.00",
+      "FormattedAmountTaxInclusive": "$672.75",
+      "TaxRate": {
+       "ShortName": "GST",
+       "Name": "GST (15%)",
+       "RatePercent": 15
+      }
+     }
+    }
+   ]
+  },
+  {
+   "ViewUri": "https://resuscitationmatters.arlo.co/courses/3-immediate-resuscitation-course",
+   "RegistrationInfo": {
+    "RegisterUri": "https://resuscitationmatters.arlo.co/waiting-list?sid=a7e717fac8b34427aaf1d6e692db8ffb",
+    "RegisterMessage": "Join waiting list"
+   },
+   "EventID": 818,
+   "EventTemplateID": 3,
+   "Name": "Immediate Resuscitation Course",
+   "Code": "IMMEDI-319",
+   "Summary": "Immediate Resuscitation Course",
+   "StartDateTime": "2026-11-27T08:00:00.0000000+13:00",
+   "EndDateTime": "2026-11-27T14:00:00.0000000+13:00",
+   "Location": {
+    "VenueID": 39,
+    "Name": "Christchurch",
+    "VenueName": "Resuscitation Matters",
+    "StreetLine1": "Unit 17/150 Cavendish Road",
+    "City": "Christchurch",
+    "Suburb": "Casebrook",
+    "Country": "New Zealand",
+    "PostCode": "8051",
+    "PointLatitude": -43.4738567,
+    "PointLongitude": 172.6083359,
+    "ViewUri": "https://resuscitationmatters.arlo.co/venues/39-resuscitation-matters"
+   },
+   "IsFull": true,
+   "AdvertisedOffers": [
+    {
+     "OfferID": 0,
+     "IsDiscountOffer": false,
+     "OfferAmount": {
+      "CurrencyCode": "NZD",
+      "AmountTaxExclusive": 380,
+      "AmountTaxInclusive": 437,
+      "FormattedAmountTaxExclusive": "$380.00",
+      "FormattedAmountTaxInclusive": "$437.00",
+      "TaxRate": {
+       "ShortName": "GST",
+       "Name": "GST (15%)",
+       "RatePercent": 15
+      }
+     }
+    }
+   ]
+  },
+  {
+   "ViewUri": "https://resuscitationmatters.arlo.co/courses/13-advanced-cardiac-life-support",
+   "RegistrationInfo": {
+    "RegisterUri": "https://resuscitationmatters.arlo.co/register?sgid=1652c3f13f754b36b56fef2b1e777977",
+    "RegisterMessage": "Register"
+   },
+   "EventID": 832,
+   "EventTemplateID": 13,
+   "Name": "Advanced Cardiac Life Support",
+   "Code": "ADVA-032",
+   "Summary": "A 6 hour assessed course covering all aspects of advanced cardiac life support.\nThis course meets requirements for the Royal New Zealand College of General Practitioners continued professional development",
+   "StartDateTime": "2026-11-21T08:00:00.0000000+13:00",
+   "EndDateTime": "2026-11-21T14:00:00.0000000+13:00",
+   "Location": {
+    "VenueID": 39,
+    "Name": "Christchurch",
+    "VenueName": "Resuscitation Matters",
+    "StreetLine1": "Unit 17/150 Cavendish Road",
+    "City": "Christchurch",
+    "Suburb": "Casebrook",
+    "Country": "New Zealand",
+    "PostCode": "8051",
+    "PointLatitude": -43.4738567,
+    "PointLongitude": 172.6083359,
+    "ViewUri": "https://resuscitationmatters.arlo.co/venues/39-resuscitation-matters"
+   },
+   "IsFull": false,
+   "PlacesRemaining": 6,
+   "AdvertisedOffers": [
+    {
+     "OfferID": 0,
+     "IsDiscountOffer": false,
+     "OfferAmount": {
+      "CurrencyCode": "NZD",
+      "AmountTaxExclusive": 385,
+      "AmountTaxInclusive": 442.75,
+      "FormattedAmountTaxExclusive": "$385.00",
+      "FormattedAmountTaxInclusive": "$442.75",
+      "TaxRate": {
+       "ShortName": "GST",
+       "Name": "GST (15%)",
+       "RatePercent": 15
+      }
+     }
+    }
+   ]
+  },
+  {
+   "ViewUri": "https://resuscitationmatters.arlo.co/courses/10-suturing-basics",
+   "RegistrationInfo": {
+    "RegisterUri": "https://resuscitationmatters.arlo.co/register?sgid=6a57e6aec2ca4dcc9ec1bb345dac1fb8",
+    "RegisterMessage": "Register"
+   },
+   "EventID": 846,
+   "EventTemplateID": 10,
+   "Name": "Suturing Basics",
+   "Code": "SUTU-025",
+   "Summary": "Suturing 101 for beginners",
+   "StartDateTime": "2026-12-15T08:30:00.0000000+13:00",
+   "EndDateTime": "2026-12-15T11:30:00.0000000+13:00",
+   "Location": {
+    "VenueID": 39,
+    "Name": "Christchurch",
+    "VenueName": "Resuscitation Matters",
+    "StreetLine1": "Unit 17/150 Cavendish Road",
+    "City": "Christchurch",
+    "Suburb": "Casebrook",
+    "Country": "New Zealand",
+    "PostCode": "8051",
+    "PointLatitude": -43.4738567,
+    "PointLongitude": 172.6083359,
+    "ViewUri": "https://resuscitationmatters.arlo.co/venues/39-resuscitation-matters"
+   },
+   "IsFull": false,
+   "PlacesRemaining": 5,
+   "AdvertisedOffers": [
+    {
+     "OfferID": 0,
+     "IsDiscountOffer": false,
+     "OfferAmount": {
+      "CurrencyCode": "NZD",
+      "AmountTaxExclusive": 335,
+      "AmountTaxInclusive": 385.25,
+      "FormattedAmountTaxExclusive": "$335.00",
+      "FormattedAmountTaxInclusive": "$385.25",
+      "TaxRate": {
+       "ShortName": "GST",
+       "Name": "GST (15%)",
+       "RatePercent": 15
+      }
+     }
+    }
+   ]
+  }
+ ]
+}

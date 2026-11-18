@@ -47,6 +47,10 @@ function rowProblems(c, today) {
   if (c.lat != null && (typeof c.lat !== 'number' || c.lat < -90 || c.lat > 90)) err('bad lat');
   if (c.lng != null && (typeof c.lng !== 'number' || c.lng < -180 || c.lng > 180)) err('bad lng');
   if (!c.lat && !c.lng) warn('no map pin (lat/lng 0)');
+  /* x10 expert review: figures shown to users need a source (the app hides them otherwise) */
+  if (c.attendees > 0 && !c.attendeesSourceUrl) warn('unsourced figure: attendees (hidden in the app)');
+  if (c.priceFrom > 0 && !c.priceSourceUrl) warn('unsourced figure: priceFrom (hidden in the app)');
+  if (c.cpdBody && !c.cpdVerified) warn('unsourced figure: cpdBody without cpdVerified (hidden in the app)');
   if (c.datesConfirmed !== true && c.datesConfirmed !== false) err('datesConfirmed must be true or false');
   if (c.dateStatus && c.dateStatus !== (c.datesConfirmed === false ? 'estimated' : 'confirmed')) err('dateStatus disagrees with datesConfirmed');
   /* evidence rule */
@@ -89,6 +93,9 @@ function validate({ root = path.join(__dirname, '..'), today = new Date().toISOS
   /* shards */
   const shardDir = path.join(root, 'data', 'shards'), files = fs.existsSync(shardDir) ? fs.readdirSync(shardDir).filter(f => f.endsWith('.json')).sort() : [];
   const shardStats = { files: files.length, rows: 0, merged: 0, pending: 0, evidenceEntries: 0 };
+  /* fix-*.json: corrections tools/merge-shards.js applies on every merge (removals, specialty, stripped figures) */
+  const removedByFix = new Set();
+  for (const f of files.filter(x => x.startsWith('fix-'))) { try { for (const e of JSON.parse(fs.readFileSync(path.join(shardDir, f), 'utf8'))) if (e && e.remove) removedByFix.add(e.id); } catch (e) { /* reported below */ } }
   for (const f of files) {
     let arr; try { arr = JSON.parse(fs.readFileSync(path.join(shardDir, f), 'utf8')); } catch (e) { E_('shards/' + f, 'unparseable: ' + e.message); continue; }
     if (f === 'holidays.json') continue;
@@ -98,6 +105,14 @@ function validate({ root = path.join(__dirname, '..'), today = new Date().toISOS
       const where = `shards/${f} ${e && (e.id || e.name) || '#' + i}`;
       if (!e || typeof e !== 'object') { E_(where, 'not an object'); continue; }
       if (f.startsWith('cpd-')) { if (!e.id) W(where, 'cpd entry without id'); continue; }
+      if (f.startsWith('fix-')) {
+        if (!e.id || !e.note) E_(where, 'fix entry needs id and note');
+        if (e.remove && ids.has(e.id)) E_(where, 'row is marked remove but is still in conferences.js (run tools/merge-shards.js)');
+        if (!e.remove && !ids.has(e.id)) W(where, 'fix for an id not in conferences.js');
+        if (e.set && e.set.specialty && !CANON.has(e.set.specialty)) E_(where, 'set.specialty is not canonical');
+        if (e.set && e.set.specialty && ids.has(e.id) && ids.get(e.id).specialty !== e.set.specialty) E_(where, 'specialty fix not applied (run tools/merge-shards.js)');
+        continue;
+      }
       if (f.startsWith('provenance-')) {
         if (!e.id) { E_(where, 'provenance entry without id'); continue; }
         const row = ids.get(e.id); if (!row) W(where, 'id not in conferences.js (entry ignored by the merge)');
@@ -115,6 +130,7 @@ function validate({ root = path.join(__dirname, '..'), today = new Date().toISOS
       /* conference rows: the merge validates, fixes (exp- shards) and de-duplicates these; problems here are warnings.
          Rows already in conferences.js are skipped by the merge (duplicate id), so only new rows are checked. */
       if (ids.has(e.id)) { shardStats.merged++; continue; }
+      if (removedByFix.has(e.id)) { shardStats.merged++; continue; } /* dropped on purpose by a fix-*.json entry */
       shardStats.pending++;
       const exp = f.startsWith('exp-'), probs = rowProblems({ datesConfirmed: false, ...e, ...(exp ? { datesConfirmed: false, end: e.end || e.start, cpdHours: e.cpdHours || 0 } : {}), dateStatus: undefined }, today)
         .filter(p => !/^missing (cpdHours|format)$|^no map pin|^bad format/.test(p.msg) || !exp);

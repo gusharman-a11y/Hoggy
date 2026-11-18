@@ -1,0 +1,1080 @@
+{
+ "generated": "2026-11-18",
+ "note": "x10 intl desk catalogue additions (course types not in data/courses/catalogue.json). Reused ids: none of the existing ids were changed; atls is new (EMST stays the AU/NZ id). verified:false = dates-only course type (no facts asserted).",
+ "courses": [
+  {
+   "id": "rcuk-als",
+   "name": "Advanced Life Support (ALS), Resuscitation Council UK",
+   "providers": [
+    {
+     "name": "Resuscitation Council UK (RCUK); delivered by RCUK-approved course centres",
+     "url": "https://www.resus.org.uk/training-courses/adult-life-support/als-2-day-course-advanced-life-support",
+     "calendar": "https://www.resus.org.uk/training-courses/adult-life-support/als-2-day-course-advanced-life-support",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "GB"
+   ],
+   "certifyingBody": "Resuscitation Council UK",
+   "audience": "The ALS provider course is designed for healthcare professionals who need skills in Advanced Life Support as part of their clinical duties, as well as those who teach these skills on a regular basis.",
+   "audienceEvidence": {
+    "sourceUrl": "https://www.resus.org.uk/training-courses/adult-life-support/als-2-day-course-advanced-life-support",
+    "quote": "The ALS provider course is designed for healthcare professionals who need skills in Advanced Life Support as part of their clinical duties, as well as those who teach these skills on a regular basis.",
+    "lastVerified": "2026-11-18"
+   },
+   "format": "Two face-to-face days (lectures, workshops, skill stations, cardiac arrest simulations) after pre-course e-learning and manual; e-ALS = e-learning + one face-to-face day; recertification = one day; short recertification = half day.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.resus.org.uk/training-courses/adult-life-support/als-2-day-course-advanced-life-support",
+    "quote": "This is a two day face-to-face course, and it will take place in a Resuscitation Council UK Course Centre.",
+    "lastVerified": "2026-11-18"
+   },
+   "typicalLength": "2 days (e-ALS and recertification: 1 day; short recertification: half day)",
+   "certificateValidityYears": 4,
+   "validitySource": "https://www.resus.org.uk/training-courses/adult-life-support/als-recertification-advanced-life-support",
+   "validityQuote": "Candidates who successfully complete the course will be awarded with a Resuscitation Council UK ALS provider certificate, which is valid for four years and recognised in healthcare settings in the UK, Europe and Australia.",
+   "feeNote": "Fees are set by each RCUK course centre; RCUK lists no fee. RCUK page: \"Course fees are decided locally by the Course Centre; Resuscitation Council UK only charges the Course Centre £31.57 per Candidate registration and £35.89 per ALS manual.\"",
+   "cpdHours": 0,
+   "cpdNote": "check provider (RCUK says its courses are recognised as CPD by the Medical, Dental and Nursing Royal Colleges; points per course are on the RCUK FAQ table)",
+   "variants": {
+    "full": "ALS: 2 Day Course",
+    "e-als": "e-ALS (e-learning + one-day face-to-face) | It involves one day of e-learning, which is done in your own time, before attending a one-day face-to-face course, providing increased flexibility and reducing the need for time away from work.",
+    "recertification": "ALS recertification, one day (certificate must be in date)",
+    "short-recertification": "ALS recertification short course, half day"
+   },
+   "recognition": "RCUK ALS page: \"Our ALS qualification is recognised by the European Resuscitation Council and the Australian Resuscitation Council, giving you the freedom to use your lifesaving skills in other countries.\"",
+   "recognitionEvidence": {
+    "sourceUrl": "https://www.resus.org.uk/training-courses/adult-life-support/als-2-day-course-advanced-life-support",
+    "quote": "Our ALS qualification is recognised by the European Resuscitation Council and the Australian Resuscitation Council, giving you the freedom to use your lifesaving skills in other countries.",
+    "lastVerified": "2026-11-18"
+   },
+   "relatedCourses": [
+    "als2",
+    "erc-als"
+   ],
+   "verified": true,
+   "lastVerified": "2026-11-18"
+  },
+  {
+   "id": "rcuk-oh-als",
+   "name": "Out-of-Hospital Advanced Life Support (OH-ALS), Resuscitation Council UK",
+   "providers": [
+    {
+     "name": "Resuscitation Council UK (RCUK); delivered by RCUK-approved course centres",
+     "url": "https://www.resus.org.uk/training-courses/adult-life-support/oh-als-2-day-course-out-hospital-advanced-life-support-course",
+     "calendar": "https://www.resus.org.uk/training-courses/adult-life-support/oh-als-2-day-course-out-hospital-advanced-life-support-course",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "GB"
+   ],
+   "certifyingBody": "Resuscitation Council UK",
+   "audience": "The OH-ALS course is designed for healthcare professionals who work in pre-hospital settings and need skills in Advanced Life Support as part of their clinical duties.",
+   "audienceEvidence": {
+    "sourceUrl": "https://www.resus.org.uk/training-courses/adult-life-support/oh-als-2-day-course-out-hospital-advanced-life-support-course",
+    "quote": "The OH-ALS course is designed for healthcare professionals who work in pre-hospital settings and need skills in Advanced Life Support as part of their clinical duties.",
+    "lastVerified": "2026-11-18"
+   },
+   "typicalLength": "2 days",
+   "feeNote": "Fees are set by each RCUK course centre; RCUK lists no fee. RCUK page: \"Course fees are decided locally by the course centre; Resuscitation Council UK only charges the course centre £31.57 per Candidate registration and £35.89 per ALS manual.\"",
+   "cpdHours": 0,
+   "cpdNote": "check provider (RCUK says its courses are recognised as CPD by the Medical, Dental and Nursing Royal Colleges; points per course are on the RCUK FAQ table)",
+   "verified": true,
+   "lastVerified": "2026-11-18"
+  },
+  {
+   "id": "rcuk-feel",
+   "name": "Focused Echocardiography in Emergency Life Support (FEEL), Resuscitation Council UK",
+   "providers": [
+    {
+     "name": "Resuscitation Council UK (RCUK); delivered by RCUK-approved course centres",
+     "url": "https://www.resus.org.uk/training-courses/adult-life-support/feel-focused-echocardiography-emergency-life-support",
+     "calendar": "https://www.resus.org.uk/training-courses/adult-life-support/feel-focused-echocardiography-emergency-life-support",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "GB"
+   ],
+   "certifyingBody": "Resuscitation Council UK",
+   "typicalLength": "1 day",
+   "certificateValidityYears": 4,
+   "validitySource": "https://www.resus.org.uk/training-courses/adult-life-support/feel-focused-echocardiography-emergency-life-support",
+   "validityQuote": "The certificate of FEEL completion is issued by Resuscitation Council UK and is valid for four years.",
+   "feeNote": "Fees are set by each RCUK course centre; RCUK lists no fee. RCUK page: \"Course fees are decided locally by the Course Centre.\"",
+   "cpdHours": 0,
+   "cpdNote": "check provider (RCUK says its courses are recognised as CPD by the Medical, Dental and Nursing Royal Colleges; points per course are on the RCUK FAQ table)",
+   "verified": true,
+   "lastVerified": "2026-11-18"
+  },
+  {
+   "id": "rcuk-nls",
+   "name": "Newborn Life Support (NLS), Resuscitation Council UK",
+   "providers": [
+    {
+     "name": "Resuscitation Council UK (RCUK); delivered by RCUK-approved course centres",
+     "url": "https://www.resus.org.uk/training-courses/newborn-life-support/nls-newborn-life-support",
+     "calendar": "https://www.resus.org.uk/training-courses/newborn-life-support/nls-newborn-life-support",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "GB"
+   ],
+   "certifyingBody": "Resuscitation Council UK",
+   "audience": "The NLS course is designed for any healthcare professional involved in the delivery and care of the newborn infant.",
+   "audienceEvidence": {
+    "sourceUrl": "https://www.resus.org.uk/training-courses/newborn-life-support/nls-newborn-life-support",
+    "quote": "The NLS course is designed for any healthcare professional involved in the delivery and care of the newborn infant.",
+    "lastVerified": "2026-11-18"
+   },
+   "format": "One-day course at an RCUK course centre.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.resus.org.uk/training-courses/newborn-life-support/nls-newborn-life-support",
+    "quote": "This is a one-day course and will take place in a Course Centre.",
+    "lastVerified": "2026-11-18"
+   },
+   "typicalLength": "1 day",
+   "certificateValidityYears": 4,
+   "validitySource": "https://www.resus.org.uk/training-courses/newborn-life-support/nls-newborn-life-support",
+   "validityQuote": "Successful Candidates receive a Resuscitation Council UK NLS provider certificate, which is valid for four years.",
+   "feeNote": "Fees are set by each RCUK course centre; RCUK lists no fee. RCUK page: \"Course fees are decided locally by the Course Centre; Resuscitation Council UK only charges the Course Centre £31.57 per Candidate registration and £19.80 per NLS manual.\"",
+   "cpdHours": 0,
+   "cpdNote": "check provider (RCUK says its courses are recognised as CPD by the Medical, Dental and Nursing Royal Colleges; points per course are on the RCUK FAQ table)",
+   "relatedCourses": [
+    "erc-nls",
+    "acrrm-anr"
+   ],
+   "verified": true,
+   "lastVerified": "2026-11-18"
+  },
+  {
+   "id": "rcuk-arni",
+   "name": "Advanced Resuscitation of the Newborn Infant (ARNI), Resuscitation Council UK",
+   "providers": [
+    {
+     "name": "Resuscitation Council UK (RCUK); delivered by RCUK-approved course centres",
+     "url": "https://www.resus.org.uk/training-courses/newborn-life-support/arni-advanced-resuscitation-newborn-infant",
+     "calendar": "https://www.resus.org.uk/training-courses/newborn-life-support/arni-advanced-resuscitation-newborn-infant",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "GB"
+   ],
+   "certifyingBody": "Resuscitation Council UK",
+   "audience": "The ARNI course is designed for healthcare professionals involved in the delivery and care of newborn infants in a role more advanced than that of first responder.",
+   "audienceEvidence": {
+    "sourceUrl": "https://www.resus.org.uk/training-courses/newborn-life-support/arni-advanced-resuscitation-newborn-infant",
+    "quote": "The ARNI course is designed for healthcare professionals involved in the delivery and care of newborn infants in a role more advanced than that of first responder.",
+    "lastVerified": "2026-11-18"
+   },
+   "typicalLength": "2 days",
+   "certificateValidityYears": 4,
+   "validitySource": "https://www.resus.org.uk/training-courses/newborn-life-support/arni-advanced-resuscitation-newborn-infant",
+   "validityQuote": "Candidates who successfully complete the course receive a Resuscitation Council UK ARNI certificate, which is valid for four years.",
+   "feeNote": "Fees are set by each RCUK course centre; RCUK lists no fee. RCUK page: \"Course fees are decided locally by the Course Centre; Resuscitation Council UK only charges the Course Centre £29.90 per Candidate registration and £33.35 per ARNI manual.\"",
+   "cpdHours": 0,
+   "cpdNote": "check provider (RCUK says its courses are recognised as CPD by the Medical, Dental and Nursing Royal Colleges; points per course are on the RCUK FAQ table)",
+   "verified": true,
+   "lastVerified": "2026-11-18"
+  },
+  {
+   "id": "rcuk-oh-nls",
+   "name": "Out-of-Hospital Newborn Life Support (OH-NLS), Resuscitation Council UK",
+   "providers": [
+    {
+     "name": "Resuscitation Council UK (RCUK); delivered by RCUK-approved course centres",
+     "url": "https://www.resus.org.uk/training-courses/newborn-life-support/oh-nls-out-hospital-newborn-life-support",
+     "calendar": "https://www.resus.org.uk/training-courses/newborn-life-support/oh-nls-out-hospital-newborn-life-support",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "GB"
+   ],
+   "certifyingBody": "Resuscitation Council UK",
+   "audience": "The OH-NLS course is suitable for both first-time candidates and those seeking to renew their OH-NLS certification.",
+   "audienceEvidence": {
+    "sourceUrl": "https://www.resus.org.uk/training-courses/newborn-life-support/oh-nls-out-hospital-newborn-life-support",
+    "quote": "The OH-NLS course is suitable for both first-time candidates and those seeking to renew their OH-NLS certification.",
+    "lastVerified": "2026-11-18"
+   },
+   "typicalLength": "1 day",
+   "certificateValidityYears": 4,
+   "validitySource": "https://www.resus.org.uk/training-courses/newborn-life-support/oh-nls-out-hospital-newborn-life-support",
+   "validityQuote": "Successful candidates receive a Resuscitation Council UK OH-NLS provider certificate, which is valid for four years.",
+   "feeNote": "Fees are set by each RCUK course centre; RCUK lists no fee. RCUK page: \"Course fees are set locally by individual centres.\"",
+   "cpdHours": 0,
+   "cpdNote": "check provider (RCUK says its courses are recognised as CPD by the Medical, Dental and Nursing Royal Colleges; points per course are on the RCUK FAQ table)",
+   "verified": true,
+   "lastVerified": "2026-11-18"
+  },
+  {
+   "id": "rcuk-epals",
+   "name": "European Paediatric Advanced Life Support (EPALS), Resuscitation Council UK",
+   "providers": [
+    {
+     "name": "Resuscitation Council UK (RCUK); delivered by RCUK-approved course centres",
+     "url": "https://www.resus.org.uk/training-courses/paediatric-life-support/epals-european-paediatric-advanced-life-support",
+     "calendar": "https://www.resus.org.uk/training-courses/paediatric-life-support/epals-european-paediatric-advanced-life-support",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "GB"
+   ],
+   "certifyingBody": "Resuscitation Council UK",
+   "audience": "The EPALS course is designed for healthcare professionals who need skills in managing deteriorating patients and cardiac arrests.",
+   "audienceEvidence": {
+    "sourceUrl": "https://www.resus.org.uk/training-courses/paediatric-life-support/epals-european-paediatric-advanced-life-support",
+    "quote": "The EPALS course is designed for healthcare professionals who need skills in managing deteriorating patients and cardiac arrests.",
+    "lastVerified": "2026-11-18"
+   },
+   "typicalLength": "2 days",
+   "certificateValidityYears": 4,
+   "validitySource": "https://www.resus.org.uk/training-courses/paediatric-life-support/epals-european-paediatric-advanced-life-support",
+   "validityQuote": "Candidates who successfully complete the course will be awarded with a Resuscitation Council UK EPALS certificate, which is valid for four years and recognised in healthcare settings in the UK and Europe.",
+   "feeNote": "Fees are set by each RCUK course centre; RCUK lists no fee. RCUK page: \"Course fees are decided locally by the Course Centre; Resuscitation Council UK only charges the Course Centre £31.57 per Candidate registration and £35.89 per EPALS manual.\"",
+   "cpdHours": 0,
+   "cpdNote": "check provider (RCUK says its courses are recognised as CPD by the Medical, Dental and Nursing Royal Colleges; points per course are on the RCUK FAQ table)",
+   "relatedCourses": [
+    "apls",
+    "erc-epals"
+   ],
+   "verified": true,
+   "lastVerified": "2026-11-18"
+  },
+  {
+   "id": "rcuk-ilsi",
+   "name": "Immediate Life Support Instructor course (ILSi), Resuscitation Council UK",
+   "providers": [
+    {
+     "name": "Resuscitation Council UK (RCUK); delivered by RCUK-approved course centres",
+     "url": "https://www.resus.org.uk/training-courses/instructor-courses/ilsi-immediate-life-support-instructor-course",
+     "calendar": "https://www.resus.org.uk/training-courses/instructor-courses/ilsi-immediate-life-support-instructor-course",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "GB"
+   ],
+   "certifyingBody": "Resuscitation Council UK",
+   "typicalLength": "1 day",
+   "cpdHours": 0,
+   "cpdNote": "check provider (RCUK says its courses are recognised as CPD by the Medical, Dental and Nursing Royal Colleges; points per course are on the RCUK FAQ table)",
+   "verified": true,
+   "lastVerified": "2026-11-18"
+  },
+  {
+   "id": "erc-als",
+   "name": "Advanced Life Support (ALS), European Resuscitation Council",
+   "providers": [
+    {
+     "name": "European Resuscitation Council (ERC); run by ERC course organisers (national councils, hospitals, training centres)",
+     "url": "https://www.erc.edu/",
+     "calendar": "https://cosy.erc.edu/en/sessions/calendar",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "AT",
+    "BA",
+    "BE",
+    "BG",
+    "CH",
+    "CY",
+    "CZ",
+    "DE",
+    "DK",
+    "ES",
+    "FI",
+    "GR",
+    "HR",
+    "HU",
+    "IS",
+    "LK",
+    "LU",
+    "MK",
+    "MT",
+    "NL",
+    "PE",
+    "PL",
+    "PT",
+    "RO",
+    "RS",
+    "SE",
+    "SI",
+    "SY",
+    "TN",
+    "TR",
+    "UA",
+    "UG",
+    "XK"
+   ],
+   "certifyingBody": "European Resuscitation Council",
+   "variants": {
+    "full": "CoSy course kind \"Full course\"",
+    "recertification": "CoSy course kind \"Recertification module hands-on\""
+   },
+   "note": "Sessions come from the ERC CoSy calendar (languages per session in `languages`; many are taught in Dutch, German or French). Course facts (audience, validity, fees) were not read from erc.edu in this run.",
+   "verified": false
+  },
+  {
+   "id": "erc-ils",
+   "name": "Immediate Life Support (ILS), European Resuscitation Council",
+   "providers": [
+    {
+     "name": "European Resuscitation Council (ERC); run by ERC course organisers (national councils, hospitals, training centres)",
+     "url": "https://www.erc.edu/",
+     "calendar": "https://cosy.erc.edu/en/sessions/calendar",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "AT",
+    "AW",
+    "BA",
+    "BE",
+    "CH",
+    "CY",
+    "CZ",
+    "DE",
+    "EG",
+    "ES",
+    "GR",
+    "HU",
+    "IS",
+    "LK",
+    "LU",
+    "NL",
+    "PT",
+    "RO",
+    "RS",
+    "UA"
+   ],
+   "certifyingBody": "European Resuscitation Council",
+   "variants": {
+    "full": "CoSy course kind \"Full course\"",
+    "recertification": "CoSy course kind \"Recertification module hands-on\""
+   },
+   "note": "Sessions come from the ERC CoSy calendar (languages per session in `languages`; many are taught in Dutch, German or French). Course facts (audience, validity, fees) were not read from erc.edu in this run.",
+   "verified": false
+  },
+  {
+   "id": "erc-epals",
+   "name": "European Paediatric Advanced Life Support (EPALS), European Resuscitation Council",
+   "providers": [
+    {
+     "name": "European Resuscitation Council (ERC); run by ERC course organisers (national councils, hospitals, training centres)",
+     "url": "https://www.erc.edu/",
+     "calendar": "https://cosy.erc.edu/en/sessions/calendar",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "AT",
+    "BE",
+    "BG",
+    "CH",
+    "CY",
+    "CZ",
+    "DE",
+    "DK",
+    "EG",
+    "ES",
+    "FR",
+    "HR",
+    "HU",
+    "IS",
+    "LU",
+    "NL",
+    "PL",
+    "PT",
+    "RS",
+    "SE",
+    "SY",
+    "UG"
+   ],
+   "certifyingBody": "European Resuscitation Council",
+   "variants": {
+    "full": "CoSy course kind \"Full course\"",
+    "recertification": "CoSy course kind \"Recertification module hands-on\""
+   },
+   "note": "Sessions come from the ERC CoSy calendar (languages per session in `languages`; many are taught in Dutch, German or French). Course facts (audience, validity, fees) were not read from erc.edu in this run.",
+   "verified": false
+  },
+  {
+   "id": "erc-epils",
+   "name": "European Paediatric Immediate Life Support (EPILS), European Resuscitation Council",
+   "providers": [
+    {
+     "name": "European Resuscitation Council (ERC); run by ERC course organisers (national councils, hospitals, training centres)",
+     "url": "https://www.erc.edu/",
+     "calendar": "https://cosy.erc.edu/en/sessions/calendar",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "AT",
+    "BE",
+    "CH",
+    "CZ",
+    "DE",
+    "ES",
+    "FR",
+    "IS",
+    "LU",
+    "UA"
+   ],
+   "certifyingBody": "European Resuscitation Council",
+   "variants": {
+    "full": "CoSy course kind \"Full course\"",
+    "recertification": "CoSy course kind \"Recertification module hands-on\""
+   },
+   "note": "Sessions come from the ERC CoSy calendar (languages per session in `languages`; many are taught in Dutch, German or French). Course facts (audience, validity, fees) were not read from erc.edu in this run.",
+   "verified": false
+  },
+  {
+   "id": "erc-nls",
+   "name": "Newborn/Neonatal Life Support (NLS), European Resuscitation Council",
+   "providers": [
+    {
+     "name": "European Resuscitation Council (ERC); run by ERC course organisers (national councils, hospitals, training centres)",
+     "url": "https://www.erc.edu/",
+     "calendar": "https://cosy.erc.edu/en/sessions/calendar",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "AT",
+    "BE",
+    "CZ",
+    "DE",
+    "FR",
+    "HR",
+    "HU",
+    "IS",
+    "LU",
+    "NL",
+    "PL",
+    "VN"
+   ],
+   "certifyingBody": "European Resuscitation Council",
+   "variants": {
+    "full": "CoSy course kind \"Full course\"",
+    "recertification": "CoSy course kind \"Recertification module hands-on\""
+   },
+   "note": "Sessions come from the ERC CoSy calendar (languages per session in `languages`; many are taught in Dutch, German or French). Course facts (audience, validity, fees) were not read from erc.edu in this run.",
+   "verified": false
+  },
+  {
+   "id": "erc-etc",
+   "name": "European Trauma Course (ETC), European Resuscitation Council",
+   "providers": [
+    {
+     "name": "European Resuscitation Council (ERC); run by ERC course organisers (national councils, hospitals, training centres)",
+     "url": "https://www.erc.edu/",
+     "calendar": "https://cosy.erc.edu/en/sessions/calendar",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "AE",
+    "BE",
+    "DE",
+    "ES",
+    "FI",
+    "GB",
+    "HR",
+    "HU",
+    "IT",
+    "NL",
+    "PL",
+    "PT",
+    "SE",
+    "SI"
+   ],
+   "certifyingBody": "European Resuscitation Council",
+   "variants": {
+    "full": "CoSy course kind \"Full course\"",
+    "recertification": "CoSy course kind \"Recertification module hands-on\""
+   },
+   "note": "Sessions come from the ERC CoSy calendar (languages per session in `languages`; many are taught in Dutch, German or French). Course facts (audience, validity, fees) were not read from erc.edu in this run.",
+   "verified": false
+  },
+  {
+   "id": "erc-gic",
+   "name": "Generic Instructor Course (GIC), European Resuscitation Council",
+   "providers": [
+    {
+     "name": "European Resuscitation Council (ERC); run by ERC course organisers (national councils, hospitals, training centres)",
+     "url": "https://www.erc.edu/",
+     "calendar": "https://cosy.erc.edu/en/sessions/calendar",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "AT",
+    "BE",
+    "CH",
+    "CZ",
+    "DE",
+    "ES",
+    "FR",
+    "GR",
+    "HU",
+    "IE",
+    "IS",
+    "NL",
+    "PL",
+    "RS",
+    "SE",
+    "SI",
+    "SY",
+    "UA",
+    "UG"
+   ],
+   "certifyingBody": "European Resuscitation Council",
+   "variants": {
+    "full": "CoSy course kind \"Full course\"",
+    "recertification": "CoSy course kind \"Recertification module hands-on\""
+   },
+   "note": "Sessions come from the ERC CoSy calendar (languages per session in `languages`; many are taught in Dutch, German or French). Course facts (audience, validity, fees) were not read from erc.edu in this run.",
+   "verified": false
+  },
+  {
+   "id": "atls",
+   "name": "Advanced Trauma Life Support (ATLS), UK (RCS England / RCSEd)",
+   "providers": [
+    {
+     "name": "Royal College of Surgeons of England (RCS England); regional sessions by RCS-approved centres",
+     "url": "https://www.rcseng.ac.uk/education-and-exams/courses/search/advanced-trauma-life-support-atls-provider-course-11e/",
+     "verified": true
+    },
+    {
+     "name": "Royal College of Surgeons of Edinburgh (RCSEd)",
+     "url": "https://services.rcsed.ac.uk/events-courses/advanced-trauma-life-support-atls/",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "GB"
+   ],
+   "audience": "This course is only suitable for doctors at FY2 grade and above, equivalent staff grades, eligible advanced clinical practitioners (ACP) and eligible hospital-based dentists.",
+   "audienceEvidence": {
+    "sourceUrl": "https://www.rcseng.ac.uk/education-and-exams/courses/search/advanced-trauma-life-support-atls-provider-course-11e/",
+    "quote": "This course is only suitable for doctors at FY2 grade and above, equivalent staff grades, eligible advanced clinical practitioners (ACP) and eligible hospital-based dentists.",
+    "lastVerified": "2026-11-18"
+   },
+   "variants": {
+    "Advanced Trauma Life Support (ATLS) Provider course 11E": "https://www.rcseng.ac.uk/education-and-exams/courses/search/advanced-trauma-life-support-atls-provider-course-11e/",
+    "Advanced Trauma Life Support (ATLS) Reverification course 11E": "https://www.rcseng.ac.uk/education-and-exams/courses/search/advanced-trauma-life-support-atls-reverification-course-11e/",
+    "Advanced Trauma Life Support (ATLS) Virtual Reverification course 11E": "https://www.rcseng.ac.uk/education-and-exams/courses/search/advanced-trauma-life-support-atls-virtual-reverification-course-11e/",
+    "Advanced Trauma Life Support (ATLS) Instructor course 11E": "https://www.rcseng.ac.uk/education-and-exams/courses/search/advanced-trauma-life-support-atls-instructor-course-11e/"
+   },
+   "cpdHours": 0,
+   "cpdNote": "check provider (RCS England page: \"34.00 CPD points\"; RCSEd page: \"Is CPD awarded for this course? Yes, 34 Hours\")",
+   "typicalLength": "2 days (RCS England provider course; RCSEd describes its course as 2.5 days)",
+   "formatEvidence": {
+    "sourceUrl": "https://www.rcseng.ac.uk/education-and-exams/courses/search/advanced-trauma-life-support-atls-provider-course-11e/",
+    "quote": "£999.00 2 Days 34.00 CPD points",
+    "lastVerified": "2026-11-18"
+   },
+   "programmeOwner": "American College of Surgeons (ACS)",
+   "programmeEvidence": {
+    "sourceUrl": "https://www.rcseng.ac.uk/education-and-exams/courses/search/advanced-trauma-life-support-atls-provider-course-11e/",
+    "quote": "The Royal College of Surgeons is proud to be the exclusive provider of ATLS® in the UK. The course and methodology were developed by the American College of Surgeons (ACS) in 1978 and are now taught in over 80 countries.",
+    "lastVerified": "2026-11-18"
+   },
+   "relatedCourses": [
+    "emst"
+   ],
+   "variantIds": {
+    "full": "provider course",
+    "reverification": "reverification (RCS England: for providers who took ATLS within the last four and a half years)",
+    "virtual-reverification": "online reverification",
+    "instructor": "instructor course (nominated Instructor Potential)"
+   },
+   "verified": true,
+   "lastVerified": "2026-11-18"
+  },
+  {
+   "id": "ccrisp",
+   "name": "Care of the Critically Ill Surgical Patient (CCrISP), RCS England",
+   "providers": [
+    {
+     "name": "Royal College of Surgeons of England (RCS England); regional sessions by RCS-approved centres",
+     "url": "https://www.rcseng.ac.uk/education-and-exams/courses/search/care-of-the-critically-ill-surgical-patient-ccrisp-provider-course-05e/",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "BH",
+    "GB",
+    "IN"
+   ],
+   "variants": {
+    "Care of the Critically Ill Surgical Patient CCrISP Provider course 05E": "https://www.rcseng.ac.uk/education-and-exams/courses/search/care-of-the-critically-ill-surgical-patient-ccrisp-provider-course-05e/"
+   },
+   "cpdHours": 0,
+   "cpdNote": "check provider",
+   "verified": true,
+   "lastVerified": "2026-11-18"
+  },
+  {
+   "id": "bss",
+   "name": "Basic Surgical Skills (BSS), RCS England / RCSEd",
+   "providers": [
+    {
+     "name": "Royal College of Surgeons of England (RCS England); regional sessions by RCS-approved centres",
+     "url": "https://www.rcseng.ac.uk/education-and-exams/courses/search/basic-surgical-skills-bss-course-07e/",
+     "verified": true
+    },
+    {
+     "name": "Royal College of Surgeons of Edinburgh (RCSEd)",
+     "url": "https://services.rcsed.ac.uk/events-courses/course-details-basic-surgical-skills/",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "GB",
+    "IN"
+   ],
+   "variants": {
+    "Basic Surgical Skills (BSS) course 07E": "https://www.rcseng.ac.uk/education-and-exams/courses/search/basic-surgical-skills-bss-course-07e/"
+   },
+   "cpdHours": 0,
+   "cpdNote": "check provider",
+   "verified": true,
+   "lastVerified": "2026-11-18"
+  },
+  {
+   "id": "atnc",
+   "name": "Advanced Trauma Nursing Course (ATNC), RCS England",
+   "providers": [
+    {
+     "name": "Royal College of Surgeons of England (RCS England); regional sessions by RCS-approved centres",
+     "url": "https://www.rcseng.ac.uk/education-and-exams/courses/search/advanced-trauma-nursing-course-atnc-provider-course-11e/",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "GB"
+   ],
+   "audience": "This course is suitable for Registered Nurses working in trauma teams.",
+   "audienceEvidence": {
+    "sourceUrl": "https://www.rcseng.ac.uk/education-and-exams/courses/search/advanced-trauma-nursing-course-atnc-provider-course-11e/",
+    "quote": "This course is suitable for Registered Nurses working in trauma teams.",
+    "lastVerified": "2026-11-18"
+   },
+   "variants": {
+    "Advanced Trauma Nursing Course (ATNC) Provider course 11E": "https://www.rcseng.ac.uk/education-and-exams/courses/search/advanced-trauma-nursing-course-atnc-provider-course-11e/",
+    "Advanced Trauma Nursing Course (ATNC) Instructor course 11E": "https://www.rcseng.ac.uk/education-and-exams/courses/search/advanced-trauma-nursing-course-atnc-instructor-course-11e/"
+   },
+   "cpdHours": 0,
+   "cpdNote": "check provider",
+   "verified": true,
+   "lastVerified": "2026-11-18"
+  },
+  {
+   "id": "dsts",
+   "name": "Definitive Surgical Trauma Skills (DSTS), RCS England",
+   "providers": [
+    {
+     "name": "Royal College of Surgeons of England (RCS England); regional sessions by RCS-approved centres",
+     "url": "https://www.rcseng.ac.uk/education-and-exams/courses/search/definitive-surgical-trauma-skills-dsts/",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "GB"
+   ],
+   "audience": "This course is suitable for: ST5-8, consultants and SAS grades.",
+   "audienceEvidence": {
+    "sourceUrl": "https://www.rcseng.ac.uk/education-and-exams/courses/search/definitive-surgical-trauma-skills-dsts/",
+    "quote": "This course is suitable for: ST5-8, consultants and SAS grades.",
+    "lastVerified": "2026-11-18"
+   },
+   "variants": {
+    "Definitive Surgical Trauma Skills (DSTS) course 02E": "https://www.rcseng.ac.uk/education-and-exams/courses/search/definitive-surgical-trauma-skills-dsts/"
+   },
+   "cpdHours": 0,
+   "cpdNote": "check provider",
+   "verified": true,
+   "lastVerified": "2026-11-18"
+  },
+  {
+   "id": "rcseng-cslap",
+   "name": "Core Skills in Laparoscopic Surgery, RCS England",
+   "providers": [
+    {
+     "name": "Royal College of Surgeons of England (RCS England); regional sessions by RCS-approved centres",
+     "url": "https://www.rcseng.ac.uk/education-and-exams/courses/search/core-skills-in-laparoscopic-surgery/",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "GB"
+   ],
+   "audience": "This course is suitable for: CT1-2 and ST3-4 and SAS grades.",
+   "audienceEvidence": {
+    "sourceUrl": "https://www.rcseng.ac.uk/education-and-exams/courses/search/core-skills-in-laparoscopic-surgery/",
+    "quote": "This course is suitable for: CT1-2 and ST3-4 and SAS grades.",
+    "lastVerified": "2026-11-18"
+   },
+   "variants": {
+    "Core Skills in Laparoscopic Surgery course 03E": "https://www.rcseng.ac.uk/education-and-exams/courses/search/core-skills-in-laparoscopic-surgery/"
+   },
+   "cpdHours": 0,
+   "cpdNote": "check provider",
+   "verified": true,
+   "lastVerified": "2026-11-18"
+  },
+  {
+   "id": "rcseng-islap",
+   "name": "Intermediate Skills in Laparoscopic Surgery, RCS England",
+   "providers": [
+    {
+     "name": "Royal College of Surgeons of England (RCS England); regional sessions by RCS-approved centres",
+     "url": "https://www.rcseng.ac.uk/education-and-exams/courses/search/intermediate-skills-in-laparoscopic-surgery/",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "GB"
+   ],
+   "audience": "This course is suitable for: ST3-5 and SAS grades.",
+   "audienceEvidence": {
+    "sourceUrl": "https://www.rcseng.ac.uk/education-and-exams/courses/search/intermediate-skills-in-laparoscopic-surgery/",
+    "quote": "This course is suitable for: ST3-5 and SAS grades.",
+    "lastVerified": "2026-11-18"
+   },
+   "variants": {
+    "Intermediate Skills in Laparoscopic Surgery course 02E": "https://www.rcseng.ac.uk/education-and-exams/courses/search/intermediate-skills-in-laparoscopic-surgery/"
+   },
+   "cpdHours": 0,
+   "cpdNote": "check provider",
+   "verified": true,
+   "lastVerified": "2026-11-18"
+  },
+  {
+   "id": "rcseng-pert",
+   "name": "Pre-Hospital and Emergency Department Resuscitative Thoracotomy (PERT), RCS England",
+   "providers": [
+    {
+     "name": "Royal College of Surgeons of England (RCS England); regional sessions by RCS-approved centres",
+     "url": "https://www.rcseng.ac.uk/education-and-exams/courses/search/prehospital-and-emergency-department-resuscitative-thoracotomy/",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "GB"
+   ],
+   "audience": "This course is suitable for: CT2, ST3-8 and SAS grades.",
+   "audienceEvidence": {
+    "sourceUrl": "https://www.rcseng.ac.uk/education-and-exams/courses/search/prehospital-and-emergency-department-resuscitative-thoracotomy/",
+    "quote": "This course is suitable for: CT2, ST3-8 and SAS grades.",
+    "lastVerified": "2026-11-18"
+   },
+   "variants": {
+    "Pre-Hospital and Emergency Department Resuscitative Thoracotomy (PERT) course 02E": "https://www.rcseng.ac.uk/education-and-exams/courses/search/prehospital-and-emergency-department-resuscitative-thoracotomy/"
+   },
+   "cpdHours": 0,
+   "cpdNote": "check provider",
+   "verified": true,
+   "lastVerified": "2026-11-18"
+  },
+  {
+   "id": "rcseng-sset",
+   "name": "Specialty Skills in Emergency Surgery and Trauma (SSET), RCS England",
+   "providers": [
+    {
+     "name": "Royal College of Surgeons of England (RCS England); regional sessions by RCS-approved centres",
+     "url": "https://www.rcseng.ac.uk/education-and-exams/courses/search/specialty-skills-in-emergency-surgery-and-trauma-sset/",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "GB"
+   ],
+   "audience": "This course is suitable for: FY2, CT1-2, senior paediatric trainees and SAS grades.",
+   "audienceEvidence": {
+    "sourceUrl": "https://www.rcseng.ac.uk/education-and-exams/courses/search/specialty-skills-in-emergency-surgery-and-trauma-sset/",
+    "quote": "This course is suitable for: FY2, CT1-2, senior paediatric trainees and SAS grades.",
+    "lastVerified": "2026-11-18"
+   },
+   "variants": {
+    "Specialty Skills in Emergency Surgery and Trauma (SSET) course 02E": "https://www.rcseng.ac.uk/education-and-exams/courses/search/specialty-skills-in-emergency-surgery-and-trauma-sset/"
+   },
+   "cpdHours": 0,
+   "cpdNote": "check provider",
+   "verified": true,
+   "lastVerified": "2026-11-18"
+  },
+  {
+   "id": "rcseng-ssshp",
+   "name": "Surgical Skills for Students and Health Professionals (SSSHP), RCS England",
+   "providers": [
+    {
+     "name": "Royal College of Surgeons of England (RCS England); regional sessions by RCS-approved centres",
+     "url": "https://www.rcseng.ac.uk/education-and-exams/courses/search/surgical-skills-for-students-and-health-professionals/",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "GB",
+    "IN"
+   ],
+   "audience": "This course is aimed at medical students.",
+   "audienceEvidence": {
+    "sourceUrl": "https://www.rcseng.ac.uk/education-and-exams/courses/search/surgical-skills-for-students-and-health-professionals/",
+    "quote": "This course is aimed at medical students.",
+    "lastVerified": "2026-11-18"
+   },
+   "variants": {
+    "Surgical Skills for Students and Health Professionals (SSSHP) course 02E": "https://www.rcseng.ac.uk/education-and-exams/courses/search/surgical-skills-for-students-and-health-professionals/"
+   },
+   "cpdHours": 0,
+   "cpdNote": "check provider",
+   "verified": true,
+   "lastVerified": "2026-11-18"
+  },
+  {
+   "id": "rcseng-step-up",
+   "name": "Step up your surgical responsibility - clinical skills and confident decision making, RCS England",
+   "providers": [
+    {
+     "name": "Royal College of Surgeons of England (RCS England); regional sessions by RCS-approved centres",
+     "url": "https://www.rcseng.ac.uk/education-and-exams/courses/search/step-up-your-surgical-responsibility-clinical-skills-and-confident-decision-making-01e/",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "GB"
+   ],
+   "audience": "This course is designed primarily for surgeons at ST3 or SAS‑equivalent level who are preparing for increased clinical and on‑call responsibility.",
+   "audienceEvidence": {
+    "sourceUrl": "https://www.rcseng.ac.uk/education-and-exams/courses/search/step-up-your-surgical-responsibility-clinical-skills-and-confident-decision-making-01e/",
+    "quote": "This course is designed primarily for surgeons at ST3 or SAS‑equivalent level who are preparing for increased clinical and on‑call responsibility.",
+    "lastVerified": "2026-11-18"
+   },
+   "variants": {
+    "Step up your surgical responsibility - clinical skills and confident decision making 01E": "https://www.rcseng.ac.uk/education-and-exams/courses/search/step-up-your-surgical-responsibility-clinical-skills-and-confident-decision-making-01e/"
+   },
+   "cpdHours": 0,
+   "cpdNote": "check provider",
+   "verified": true,
+   "lastVerified": "2026-11-18"
+  },
+  {
+   "id": "rcsed-notss",
+   "name": "Non-Technical Skills for Surgeons (NOTSS), RCSEd",
+   "providers": [
+    {
+     "name": "Royal College of Surgeons of Edinburgh (RCSEd)",
+     "url": "https://services.rcsed.ac.uk/events-courses/course-details-non-technical-skills-for-surgeons-notss/",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "GB"
+   ],
+   "note": "Dates from the RCSEd course page; session rows carry the page's CPD hours and \"From\" fee. Course facts not otherwise reviewed.",
+   "verified": false
+  },
+  {
+   "id": "rcsed-lap-emergency",
+   "name": "Laparoscopic Skills in Emergency Surgery, RCSEd",
+   "providers": [
+    {
+     "name": "Royal College of Surgeons of Edinburgh (RCSEd)",
+     "url": "https://services.rcsed.ac.uk/events-courses/laparoscopic-skills-in-emergency-surgery/",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "GB"
+   ],
+   "note": "Dates from the RCSEd course page; session rows carry the page's CPD hours and \"From\" fee. Course facts not otherwise reviewed.",
+   "verified": false
+  },
+  {
+   "id": "rcsed-hest",
+   "name": "Hostile Environment Surgical Training, United Kingdom (HEST®-UK), RCSEd",
+   "providers": [
+    {
+     "name": "Royal College of Surgeons of Edinburgh (RCSEd)",
+     "url": "https://services.rcsed.ac.uk/events-courses/hostile-environment-surgical-training-united-kingdom-hest-uk/",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "GB"
+   ],
+   "note": "Dates from the RCSEd course page; session rows carry the page's CPD hours and \"From\" fee. Course facts not otherwise reviewed.",
+   "verified": false
+  },
+  {
+   "id": "rcsed-core-ortho",
+   "name": "Core Skills in Orthopaedic Surgery, RCSEd",
+   "providers": [
+    {
+     "name": "Royal College of Surgeons of Edinburgh (RCSEd)",
+     "url": "https://services.rcsed.ac.uk/events-courses/core-skills-in-orthopaedic-surgery/",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "GB"
+   ],
+   "note": "Dates from the RCSEd course page; session rows carry the page's CPD hours and \"From\" fee. Course facts not otherwise reviewed.",
+   "verified": false
+  },
+  {
+   "id": "rcsed-oncoplastic-breast",
+   "name": "Oncoplastic Breast Surgery Course (Ajman University UAE), RCSEd",
+   "providers": [
+    {
+     "name": "Royal College of Surgeons of Edinburgh (RCSEd)",
+     "url": "https://services.rcsed.ac.uk/events-courses/course-details-oncoplastic-breast-surgery-course-ajman-university-uae/",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "AE"
+   ],
+   "note": "Dates from the RCSEd course page; session rows carry the page's CPD hours and \"From\" fee. Course facts not otherwise reviewed.",
+   "verified": false
+  },
+  {
+   "id": "rcsed-hand",
+   "name": "The Edinburgh Hand Course, RCSEd",
+   "providers": [
+    {
+     "name": "Royal College of Surgeons of Edinburgh (RCSEd)",
+     "url": "https://services.rcsed.ac.uk/events-courses/the-edinburgh-hand-course/",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "GB"
+   ],
+   "note": "Dates from the RCSEd course page; session rows carry the page's CPD hours and \"From\" fee. Course facts not otherwise reviewed.",
+   "verified": false
+  },
+  {
+   "id": "rcsed-robotic-hugo",
+   "name": "Essentials in Robotic Surgery (Medtronic Hugo RAS System), RCSEd",
+   "providers": [
+    {
+     "name": "Royal College of Surgeons of Edinburgh (RCSEd)",
+     "url": "https://services.rcsed.ac.uk/events-courses/essentials-in-robotic-surgery-medtronic-hugo-ras-system-afternoon-session/",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "GB"
+   ],
+   "note": "Dates from the RCSEd course page; session rows carry the page's CPD hours and \"From\" fee. Course facts not otherwise reviewed.",
+   "verified": false
+  },
+  {
+   "id": "rcsed-deviser",
+   "name": "DeVISER – Definitive Vascular Injury Surgical Evaluation and Reconstruction, RCSEd",
+   "providers": [
+    {
+     "name": "Royal College of Surgeons of Edinburgh (RCSEd)",
+     "url": "https://services.rcsed.ac.uk/events-courses/deviser-definitive-vascular-injury-surgical-evaluation-and-reconstruction/",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "GB"
+   ],
+   "note": "Dates from the RCSEd course page; session rows carry the page's CPD hours and \"From\" fee. Course facts not otherwise reviewed.",
+   "verified": false
+  },
+  {
+   "id": "rcsed-baets-thyroid",
+   "name": "BAETS Thyroid Masterclass, RCSEd",
+   "providers": [
+    {
+     "name": "Royal College of Surgeons of Edinburgh (RCSEd)",
+     "url": "https://services.rcsed.ac.uk/events-courses/baets-thyroid-masterclass/",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "GB"
+   ],
+   "note": "Dates from the RCSEd course page; session rows carry the page's CPD hours and \"From\" fee. Course facts not otherwise reviewed.",
+   "verified": false
+  },
+  {
+   "id": "rcsed-head-neck",
+   "name": "The Edinburgh Head and Neck Course (Module I / Module II), RCSEd",
+   "providers": [
+    {
+     "name": "Royal College of Surgeons of Edinburgh (RCSEd)",
+     "url": "https://services.rcsed.ac.uk/events-courses/the-edinburgh-head-and-neck-course-module-i-resectional-tactics-in-head-and-neck-surgery/",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "GB"
+   ],
+   "note": "Dates from the RCSEd course page; session rows carry the page's CPD hours and \"From\" fee. Course facts not otherwise reviewed.",
+   "verified": false
+  },
+  {
+   "id": "rcsed-baets-parathyroid",
+   "name": "BAETS Parathyroid Masterclass, RCSEd",
+   "providers": [
+    {
+     "name": "Royal College of Surgeons of Edinburgh (RCSEd)",
+     "url": "https://services.rcsed.ac.uk/events-courses/baets-parathyroid-masterclass/",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "GB"
+   ],
+   "note": "Dates from the RCSEd course page; session rows carry the page's CPD hours and \"From\" fee. Course facts not otherwise reviewed.",
+   "verified": false
+  },
+  {
+   "id": "rcsed-paediatric-surgery-basic",
+   "name": "Basic Skills in Paediatric Surgery, RCSEd",
+   "providers": [
+    {
+     "name": "Royal College of Surgeons of Edinburgh (RCSEd)",
+     "url": "https://services.rcsed.ac.uk/events-courses/basic-skills-in-paediatric-surgery/",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "GB"
+   ],
+   "note": "Dates from the RCSEd course page; session rows carry the page's CPD hours and \"From\" fee. Course facts not otherwise reviewed.",
+   "verified": false
+  },
+  {
+   "id": "rcsed-advanced-otology",
+   "name": "37th Advanced Otology Course, RCSEd",
+   "providers": [
+    {
+     "name": "Royal College of Surgeons of Edinburgh (RCSEd)",
+     "url": "https://services.rcsed.ac.uk/events-courses/37th-advanced-otology-course/",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "GB"
+   ],
+   "note": "Dates from the RCSEd course page; session rows carry the page's CPD hours and \"From\" fee. Course facts not otherwise reviewed.",
+   "verified": false
+  }
+ ]
+}
