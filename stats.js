@@ -23,7 +23,8 @@ function homeStats(list, todayIso) {
     confirmed,
     confirmedPct: up.length ? Math.floor(confirmed / up.length * 100) : 0,
     unchecked,
-    uncheckedPct: up.length ? Math.floor(unchecked / up.length * 100) : 0
+    uncheckedPct: up.length ? Math.floor(unchecked / up.length * 100) : 0,
+    estimated: up.length - confirmed - unchecked
   };
 }
 /* Discover subtitle facts: the same exact counts as the home page plus the span of start dates actually listed,

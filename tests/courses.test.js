@@ -125,7 +125,10 @@ test('no made-up dates for EMST and PALS', () => {
   }
   const src = read('app.js');
   assert.match(src, /Dates not available yet — check provider/);
-  assert.match(src, /if \(c\.verified !== true \|\| !ss\.length\) \{/, 'no session list for an unverified course');
+  /* x10: sessions carry their own evidence (provider page, quote, date read), so they list even before the course facts are
+     reviewed; a course with no read session shows the "check provider" panel */
+  assert.match(src, /if \(!ss\.length\) \{/, 'no session list without read sessions');
+  assert.match(src, /Hoggy has not reviewed this course\\'s facts yet/);
   assert.equal(HC.equivalentLabel(CAT, course('nzrc-core-immediate')), 'NZ equivalent of ALS1');
   assert.equal(HC.equivalentLabel(CAT, course('nzrc-core-advanced')), 'NZ equivalent of ALS2');
   assert.deepEqual(HC.searchCourses(CAT, 'als2').map(c => c.id).sort(), ['als2', 'nzrc-core-advanced']);
@@ -162,10 +165,18 @@ test('server: /api/courses and certificates persist through state sync', async (
   t.after(() => srv.kill());
   const B = `http://127.0.0.1:${port}`, H = { 'X-Requested-With': 'hoggy', 'Content-Type': 'application/json' };
   for (let i = 0; i < 80; i++) { try { await fetch(B + '/healthz'); break; } catch (e) { await new Promise(r => setTimeout(r, 100)); } }
+  /* x10: the list carries the catalogue and per-course counts, no sessions; ?course= gives one course; ?all=1 everything */
   const r = await fetch(B + '/api/courses'), j = await r.json(), today = new Date().toISOString().slice(0, 10);
   assert.equal(r.status, 200); assert.equal(j.courses.length, CAT.courses.length);
-  assert.ok(j.sessions.every(s => s.end >= today), 'finished sessions dropped');
-  assert.equal(j.sessions.filter(s => s.courseId === 'emst' || s.courseId === 'pals').length, 0);
+  assert.equal(j.sessions, undefined, 'the list does not carry every session');
+  assert.ok(j.summary && j.summary.als2 && j.summary.als2.n > 0 && j.sessionsTotal > 0);
+  assert.ok(r.headers.get('content-length') == null || +r.headers.get('content-length') < 400e3);
+  const one = await (await fetch(B + '/api/courses?course=als2')).json();
+  assert.equal(one.course, 'als2'); assert.equal(one.sessions.length, j.summary.als2.n); assert.ok(one.sessions.every(s => s.courseId === 'als2' && s.end >= today), 'finished sessions dropped');
+  assert.equal((await fetch(B + '/api/courses?course=bad%20id')).status, 400);
+  const all = await (await fetch(B + '/api/courses?all=1')).json();
+  assert.equal(all.sessions.length, j.sessionsTotal); assert.ok(all.sessions.every(s => s.end >= today));
+  assert.equal(all.sessions.filter(s => s.courseId === 'emst' || s.courseId === 'pals').length, 0);
   assert.equal((await fetch(B + '/api/courses', { headers: { 'If-None-Match': r.headers.get('etag') } })).status, 304);
   for (const f of ['courses.js', 'data/courses/catalogue.json', 'data/courses/sessions.json']) assert.equal((await fetch(B + '/' + f)).status, 200, f);
   /* certificates live in the synced state, like trips and receipts */

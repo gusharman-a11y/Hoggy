@@ -19,7 +19,7 @@ test('home stats: exact counts, percentage rounded down, no padding', () => {
   assert.ok(s.confirmedPct <= conf / up.length * 100 && s.confirmedPct > conf / up.length * 100 - 1, 'floor, never rounded up');
   const ev = { datesSourceUrl: 'https://x/2027', datesQuote: '1 January 2027', verifiedOn: '2026-01-01' };
   const t = homeStats([{ end: '2027-01-01', countryCode: 'AU', specialty: 'A', datesConfirmed: true, sourceUrl: 'https://x', ...ev }, { end: '2027-01-01', countryCode: 'AU', specialty: 'A', datesConfirmed: false }, { end: '2027-01-01', countryCode: 'NZ', specialty: 'B', datesConfirmed: false }], '2026-01-01');
-  assert.deepEqual(t, { conferences: 3, countries: 2, specialties: 2, confirmed: 1, confirmedPct: 33, unchecked: 0, uncheckedPct: 0 });
+  assert.deepEqual(t, { conferences: 3, countries: 2, specialties: 2, confirmed: 1, confirmedPct: 33, unchecked: 0, uncheckedPct: 0, estimated: 2 });
   const u = homeStats([{ end: '2027-01-01', datesConfirmed: true, legacyConfirmed: true, sourceUrl: 'https://x' }, { end: '2027-01-01', datesConfirmed: true, sourceUrl: 'https://x', ...ev, legacyConfirmed: true }], '2026-01-01');
   assert.equal(u.confirmed, 0, 'legacy rows are never counted as confirmed, even with partial evidence'); assert.equal(u.unchecked, 2);
   assert.equal(homeStats([], day).confirmedPct, 0);
