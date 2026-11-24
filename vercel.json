@@ -8,7 +8,7 @@
   ],
   "functions": {
     "api/index.js": {
-      "includeFiles": "{index.html,app.js,styles.css,admin.html,admin.js,parse.js,pack.js,stats.js,courses.js,data/**,lib/**,db/**,icons/**,tools/evidence.js,tools/official-domains.json,tools/copy-lint.js,node_modules/pdfjs-dist/legacy/build/**}",
+      "includeFiles": "{index.html,app.js,styles.css,admin.html,admin.js,parse.js,pack.js,stats.js,courses.js,motion.js,fonts/**,data/**,lib/**,db/**,icons/**,tools/evidence.js,tools/official-domains.json,tools/copy-lint.js,node_modules/pdfjs-dist/legacy/build/**}",
       "maxDuration": 30
     }
   },

@@ -326,7 +326,7 @@ async function housekeep() {
 }
 setInterval(() => { if (ready) housekeep(); }, 600e3).unref();
 
-const CSP = "default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' blob: data:; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'self' about:; frame-ancestors 'none'";
+const CSP = "default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' blob: data:; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'self' about:; frame-ancestors 'none'";
 function secHeaders(res) { res.setHeader('Content-Security-Policy', CSP); res.setHeader('X-Content-Type-Options', 'nosniff'); res.setHeader('Referrer-Policy', 'no-referrer'); res.setHeader('X-Frame-Options', 'DENY'); }
 function json(res, code, obj, extra = {}) { const b = JSON.stringify(obj); res.writeHead(code, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store', ...extra }); res.end(b); }
 const err = (res, code, msg) => json(res, code, { error: msg });
@@ -816,9 +816,9 @@ async function backup() {
   } catch (e) { console.error('backup failed', e.message); }
 }
 /* ---------- static ---------- */
-const MIME = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.ico': 'image/x-icon' };
+const MIME = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.ico': 'image/x-icon', '.woff2': 'font/woff2' };
 const ICONS = new Set(['icons/icon.svg', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/icon-maskable-512.png', 'icons/apple-touch-icon.png', 'icons/og.png']);
-const PUBLIC = new Set(['index.html', 'app.js', 'parse.js', 'pack.js', 'stats.js', 'courses.js', 'data/courses/catalogue.json', 'data/courses/sessions.json', 'styles.css', 'lib/series.js', 'lib/coverage.js', 'lib/specialties.js', 'lib/listings.js', 'data/conferences.js', 'data/holidays.js', 'data/cpd-nz.js', 'admin.html', 'admin.js']);
+const PUBLIC = new Set(['index.html', 'app.js', 'parse.js', 'pack.js', 'stats.js', 'courses.js', 'data/courses/catalogue.json', 'data/courses/sessions.json', 'styles.css', 'lib/series.js', 'lib/coverage.js', 'lib/specialties.js', 'lib/listings.js', 'lib/art.js', 'motion.js', 'fonts/bricolage-grotesque-display.woff2', 'fonts/instrument-sans.woff2', 'data/conferences.js', 'data/holidays.js', 'data/cpd-nz.js', 'admin.html', 'admin.js']);
 const DEMO_NOTE = '<div class="demo-note" role="note">Preview — accounts and receipts reset from time to time.</div>';
 function serveStatic(req, res, url) {
   let rel; try { rel = decodeURIComponent(url.pathname).replace(/^\/+/, '') || 'index.html'; } catch (e) { return html(req, res, 400, PAGES.notFound(req)); }
@@ -826,7 +826,7 @@ function serveStatic(req, res, url) {
   /* anything else is the friendly 404 page (the API answers JSON 404s itself) */
   if (!PUBLIC.has(rel) && !ICONS.has(rel)) return html(req, res, 404, PAGES.notFound(req));
   const f = path.join(__dirname, rel);
-  fs.readFile(f, (e, d) => { if (e) return html(req, res, 404, PAGES.notFound(req)); if (rel === 'index.html') { let t = String(d).replace(/%ORIGIN%/g, PAGES.originOf(req)); if (DEMO) t = t.replace('<body>', '<body>\n' + DEMO_NOTE); d = Buffer.from(t); } res.writeHead(200, { 'Content-Type': MIME[path.extname(f)] || 'application/octet-stream', 'Cache-Control': ICONS.has(rel) ? 'public, max-age=86400' : 'no-cache' }); res.end(req.method === 'HEAD' ? undefined : d); });
+  fs.readFile(f, (e, d) => { if (e) return html(req, res, 404, PAGES.notFound(req)); if (rel === 'index.html') { let t = String(d).replace(/%ORIGIN%/g, PAGES.originOf(req)); if (DEMO) t = t.replace('<body>', '<body>\n' + DEMO_NOTE); d = Buffer.from(t); } res.writeHead(200, { 'Content-Type': MIME[path.extname(f)] || 'application/octet-stream', 'Cache-Control': rel.startsWith('fonts/') ? 'public, max-age=31536000, immutable' : ICONS.has(rel) ? 'public, max-age=86400' : 'no-cache' }); res.end(req.method === 'HEAD' ? undefined : d); });
 }
 
 function html(req, res, code, body, extra = {}) { res.writeHead(code, { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-cache', ...extra }); res.end(req.method === 'HEAD' ? undefined : body); }
