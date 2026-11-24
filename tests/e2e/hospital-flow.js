@@ -81,7 +81,7 @@ async function run(browser, B, vp, tag) {
   const card = mgr.p.locator(`[data-testid="approval-req"][data-doctor="Dr Dana Doctor"]`); await card.waitFor();
   assert.match(await card.textContent(), /\$2,750\.00/); assert.match(await card.textContent(), /Left if approved/);
   await noScroll(mgr.p, 'approvals'); await mgr.p.screenshot({ path: path.join(OUT, `approvals-${tag}.png`), fullPage: !phone });
-  await card.locator('[data-act="apdecide"][data-v="approve"]').click(); await mgr.p.waitForSelector('.empty h3:text("Nothing waiting")');
+  await card.locator('[data-act="apdecide"][data-v="approve"]').click(); await mgr.p.waitForSelector('.empty h2:text("Nothing waiting")');
 
   /* 5. the doctor sees the approval, adds a receipt, builds the claim pack and marks it submitted */
   await doc.p.reload(); await go(doc.p, '#/trips'); await doc.p.waitForSelector('[data-testid="trip-approval"] .pill.g:text("Approved")');

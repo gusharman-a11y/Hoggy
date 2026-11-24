@@ -140,7 +140,7 @@ test('course links: external links open in a new tab with rel="noopener noreferr
   const tags = block.match(/<a\s[^>]*>/g) || [];
   assert.ok(tags.length > 5);
   for (const tag of tags) {
-    if (/href="#|href="\$\{esc\(findHref|href="\$\{esc\(near\.local/.test(tag)) continue; /* in-app links */
+    if (/href="#|href="\/[a-z]|href="\$\{esc\(findHref|href="\$\{esc\(near\.local/.test(tag)) continue; /* in-app links */
     assert.match(tag, /target="_blank"/, tag); assert.match(tag, /rel="noopener noreferrer"/, tag);
   }
   assert.match(block, /const extA = \(url, label, cls = 'btn sm'\) => `<a class="\$\{cls\}" data-act="ext" target="_blank" rel="noopener noreferrer" href="\$\{esc\(safeUrl\(url\)\)\}">/);
