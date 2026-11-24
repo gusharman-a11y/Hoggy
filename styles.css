@@ -753,8 +753,8 @@ body.site{min-height:100vh;display:flex;flex-direction:column}
 /* ---------- motion ---------- */
 .rv{transform:translateY(26px)}
 .rv.in{transform:none;transition:transform .7s var(--ease) var(--d,0ms)}
-::view-transition-old(root){animation:vt-out .16s ease both}
-::view-transition-new(root){animation:vt-in .3s var(--ease) both}
+::view-transition-old(root){animation:vt-out .12s ease both}
+::view-transition-new(root){animation:vt-in .22s var(--ease) both}
 @keyframes vt-out{to{opacity:0}}
 @keyframes vt-in{from{opacity:0;transform:translateY(12px)}}
 .demo-note{position:fixed;right:16px;bottom:16px;z-index:30;max-width:calc(100% - 32px);padding:6px 12px;border-radius:999px;background:var(--card);box-shadow:inset 0 0 0 1px var(--line);color:var(--faint);font-size:.75rem;font-weight:500;line-height:1.4;pointer-events:none}

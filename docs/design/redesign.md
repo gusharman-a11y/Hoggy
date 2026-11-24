@@ -87,8 +87,8 @@ Every plate is decorative (`aria-hidden`); the same facts are always in text nex
 ## Motion
 
 1. Motion explains where things came from; it never delays reading. Nothing a person waits for runs over 500 ms, and text in the page never fades (so contrast is always full).
-2. **Route changes** use the View Transitions API (the old page's snapshot fades for 160 ms while the new one rises
-   12 px over 300 ms) where supported; elsewhere the page simply swaps. The top bar and tab bar hold still.
+2. **Route changes** use the View Transitions API (the old page's snapshot fades for 120 ms while the new one rises
+   12 px over 220 ms) where supported; elsewhere the page simply swaps. The top bar and tab bar hold still.
 3. **Reveals**: blocks below the fold rise 26 px (transform only) the first time they enter the viewport;
    IntersectionObserver, once each. What is on screen at render never moves. The hero's plates wipe up (clip-path).
 4. **Numbers roll up** once (days to go, CPD hours, counts) with tabular numerals; final values are in the DOM from the
