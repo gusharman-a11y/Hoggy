@@ -33,7 +33,7 @@ async function run(browser, B, vp, tag) {
     await p.goto(B + '/#/settings'); await p.waitForSelector('.acct-panel [data-act="signin"]');
     await p.click('.acct-panel [data-act="signin"]'); await p.click('#amode');
     await p.fill('#au1', name); await p.fill('#au2', email); await p.fill('#au3', PW); await p.click('#asub');
-    await p.waitForSelector('#af', { state: 'detached' }); await p.waitForSelector('#hosp form, #hosp [data-testid="hosp-name"]');
+    await p.waitForSelector('#af', { state: 'detached' }); await p.waitForSelector('.getstarted'); /* sign-up lands on Home's Get started */ await p.evaluate(() => { location.hash = '#/settings'; }); await p.waitForSelector('#hosp form, #hosp [data-testid="hosp-name"]');
     return { p, email, name };
   }
   const noScroll = async (p, where) => {
