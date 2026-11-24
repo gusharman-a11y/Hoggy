@@ -1,13 +1,31 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-AU">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' blob: data:; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'self' about:">
 <meta name="referrer" content="no-referrer">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Hoggy · Medical conference scanner</title>
+<title>Hoggy · Medical conferences and courses</title>
 <meta name="description" content="Find upcoming medical conferences and courses, plan travel, track CPD and check your receipts are claim-ready.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2325e0a0'/%3E%3Cpath d='M10 8v16M22 8v16M10 16h12' stroke='%23052018' stroke-width='3.4' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#0b0d0e">
+<meta property="og:site_name" content="Hoggy">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hoggy · Medical conferences and courses">
+<meta property="og:description" content="Find upcoming medical conferences and courses, plan travel, track CPD and check your receipts are claim-ready.">
+<meta property="og:url" content="%ORIGIN%/">
+<meta property="og:image" content="%ORIGIN%/icons/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Hoggy: medical conferences and courses">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Hoggy · Medical conferences and courses">
+<meta name="twitter:description" content="Find upcoming medical conferences and courses, plan travel, track CPD and check your receipts are claim-ready.">
+<meta name="twitter:image" content="%ORIGIN%/icons/og.png">
+<link rel="canonical" href="%ORIGIN%/">
+<link rel="icon" href="/icons/icon.svg" type="image/svg+xml">
+<link rel="icon" href="/icons/icon-192.png" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -17,7 +35,7 @@
 <a class="skip" href="#main" data-act="skip">Skip to content</a>
 <div class="app">
   <aside class="side" aria-label="Primary">
-    <a class="brand" href="#/home" aria-label="Hoggy home"><span class="logo">H</span><span class="brand-name">Hoggy</span></a>
+    <a class="brand" href="#/home" aria-label="Hoggy home"><span class="logo" aria-hidden="true">H</span><span class="brand-name">Hoggy</span></a>
     <nav class="nav" id="nav"></nav>
     <div class="side-foot">
       <div id="acct"></div>
@@ -25,7 +43,7 @@
       <div id="savedList" class="saved-list"></div>
     </div>
   </aside>
-  <main id="main" class="main" tabindex="-1"></main>
+  <main id="main" class="main" tabindex="-1"><noscript><h1>Hoggy needs JavaScript</h1><p>Turn on JavaScript to search and plan. The <a href="/about">about</a>, <a href="/privacy">privacy</a> and <a href="/terms">terms</a> pages work without it.</p></noscript></main>
 </div>
 <div id="overlay" class="overlay" hidden></div>
 <div id="toasts" class="toasts" aria-live="polite"></div>
@@ -39,6 +57,7 @@
 <script src="lib/series.js"></script>
 <script src="lib/coverage.js"></script>
 <script src="lib/specialties.js"></script>
+<script src="lib/listings.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

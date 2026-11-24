@@ -94,6 +94,8 @@ const scoreShown = c => { const s = scoreOf(c); return s && s.avg != null ? s.av
 const reviewCount = c => { const s = scoreOf(c); return s ? s.n : 0; };
 const rating = c => scoreShown(c);
 const reviewedYear = (key, year) => NET.mine.some(r => r.seriesKey === key && r.editionYear === year);
+/* "Dr Ana Tanaka" -> "Ana": skip titles */
+const firstName = n => { const w = String(n).trim().split(/\s+/); return w.find(x => !/^(dr|prof|professor|a\/prof|assoc|associate|mr|mrs|ms|miss|mx|sir|dame)\.?$/i.test(x)) || w[0]; };
 const plural = (n, w) => `${n} ${w}${n === 1 ? '' : 's'}`;
 
 /* ---------- travel links (deep-link search, real booking happens with the partner) ---------- */
@@ -199,7 +201,7 @@ function tripEstimate(t) {
 const tripChecklist = t => { const c = ofTrip(t); return HP().checklist({ estimate: tripEstimate(t), kind: c && c.kind === 'course' ? 'course' : 'conference' }, S.receipts.filter(r => r.tripId === t.id), (S.claims[t.id] || {}).waived); };
 function checklistHtml(t) {
   const list = tripChecklist(t);
-  return `<div class="checklist" data-testid="checklist" data-trip="${esc(t.id)}"><h4>Receipt checklist</h4><ul>${list.map(i => `<li class="ci ${i.status}" data-key="${esc(i.key)}" data-status="${esc(i.status)}"><span class="ci-mark" aria-hidden="true">${i.status === 'ok' ? '✓' : i.status === 'waived' ? '–' : '○'}</span><span class="ci-t"><b>${esc(i.label)}</b> ${i.status === 'ok' ? `<span class="note">${plural(i.receipts, 'receipt')}</span>` : i.status === 'waived' ? `<span class="note">No receipt. Reason: ${esc(i.reason)}</span>` : '<span class="note">No receipt yet</span>'}</span>${i.status === 'missing' ? `<button class="btn sm ghost" data-act="noreceipt" data-id="${esc(t.id)}" data-v="${esc(i.key)}">I don't have this receipt</button>` : i.status === 'waived' ? `<button class="btn sm ghost" data-act="undonoreceipt" data-id="${esc(t.id)}" data-v="${esc(i.key)}">Undo</button>` : ''}<span class="sr-only">${i.status === 'ok' ? 'done' : i.status === 'waived' ? 'no receipt, reason given' : 'missing'}</span></li>`).join('')}</ul></div>`;
+  return `<div class="checklist" data-testid="checklist" data-trip="${esc(t.id)}"><h3>Receipt checklist</h3><ul>${list.map(i => `<li class="ci ${i.status}" data-key="${esc(i.key)}" data-status="${esc(i.status)}"><span class="ci-mark" aria-hidden="true">${i.status === 'ok' ? '✓' : i.status === 'waived' ? '–' : '○'}</span><span class="ci-t"><b>${esc(i.label)}</b> ${i.status === 'ok' ? `<span class="note">${plural(i.receipts, 'receipt')}</span>` : i.status === 'waived' ? `<span class="note">No receipt. Reason: ${esc(i.reason)}</span>` : '<span class="note">No receipt yet</span>'}</span>${i.status === 'missing' ? `<button class="btn sm ghost" data-act="noreceipt" data-id="${esc(t.id)}" data-v="${esc(i.key)}">I don't have this receipt</button>` : i.status === 'waived' ? `<button class="btn sm ghost" data-act="undonoreceipt" data-id="${esc(t.id)}" data-v="${esc(i.key)}">Undo</button>` : ''}<span class="sr-only">${i.status === 'ok' ? 'done' : i.status === 'waived' ? 'no receipt, reason given' : 'missing'}</span></li>`).join('')}</ul></div>`;
 }
 /* amounts by currency on a claim, so foreign receipts are never added to the home total unconverted */
 function currencyHtml(rs) {
@@ -211,7 +213,7 @@ const currencyLine = rs => { const home = S.profile.currency, by = HP().currency
 
 /* ---------- router / shell ---------- */
 /* [label, icon, hidden from the nav]. On phones Courses sits under Discover (Conferences / Courses toggle) to keep the tab bar at 7 */
-const ROUTES = { home: ['Home', 'home'], discover: ['Discover', 'search'], courses: ['Courses', 'course'], trips: ['Trips', 'plane'], receipts: ['Receipts', 'receipt'], claims: ['Claims', 'claim'], cpd: ['CPD', 'cpd'], settings: ['Settings', 'gear'], certs: ['My certificates', 'cert', true] };
+const ROUTES = { home: ['Home', 'home'], discover: ['Discover', 'search'], courses: ['Courses', 'course'], trips: ['Trips', 'plane'], receipts: ['Receipts', 'receipt'], claims: ['Claims', 'claim'], cpd: ['CPD', 'cpd'], settings: ['Settings', 'gear'], certs: ['My certificates', 'cert', true], 'list-event': ['List your event', 'plus', true] };
 const reviewHash = () => { const m = location.hash.match(/^#\/review\/([a-z0-9-]{1,80})$/); return m ? m[1] : null; };
 /* #/courses/<courseId>?state=NSW&month=2027-03 */
 const hashParts = () => { const [path, qs] = location.hash.replace(/^#\/?/, '').split('?'); return { parts: path.split('/'), q: new URLSearchParams(qs || '') }; };
@@ -236,16 +238,24 @@ function bgRender() {
   const a = document.activeElement; if (a && $('#main').contains(a) && a.matches('input,textarea,select')) { a.addEventListener('blur', () => setTimeout(bgRender, 0), { once: true }); return; }
   const y = window.scrollY; render(); if (window.scrollY !== y) window.scrollTo(0, y);
 }
-function render() { applyTheme(); renderNav(); const r = route(); $('#main').innerHTML = VIEWS[r](); (AFTER[r] || (() => { }))(); document.title = `${ROUTES[r][0]} · Hoggy`; }
+function render() { applyTheme(); renderNav(); const r = route(); $('#main').innerHTML = netBanner() + VIEWS[r]() + appFooter(); (AFTER[r] || (() => { }))(); document.title = r === 'home' ? 'Hoggy · Medical conferences and courses' : `${ROUTES[r][0]} · Hoggy`; }
+/* ---------- connection banner, footer ---------- */
+const TROUBLE = 'We\u2019re having trouble connecting \u2014 try again in a minute.';
+function netBanner() {
+  if (NET.offline) return `<div class="net-banner" role="status"><span>You\u2019re offline. Hoggy keeps working with what\u2019s on this device, and syncs when you\u2019re back online.</span></div>`;
+  if (NET.trouble) return `<div class="net-banner" role="status"><span>${TROUBLE} You can still browse conferences and courses.</span><button type="button" class="btn sm" data-act="retry">Try again</button></div>`;
+  return '';
+}
+const appFooter = () => `<footer class="app-foot" aria-label="Site"><nav aria-label="Footer"><ul><li><a href="/about">About Hoggy</a></li><li><a href="/privacy">Privacy</a></li><li><a href="/terms">Terms</a></li><li><a href="#/list-event">Organisers: list your event</a></li></ul></nav><p>Hoggy lists medical conferences and courses for planning. Check dates, fees and CPD with the organiser before you book.</p></footer>`;
 
 /* ---------- cards ---------- */
 const holPill = c => { if (typeof holHits !== 'function') return ''; const h = holHits(c, 'ANZ'); return h.length ? `<span class="pill g" title="${esc('School holidays overlap this conference in: ' + h.map(r => r.name).join(', '))}">School hols: ${esc(h.map(r => r.code).join(' '))}</span>` : ''; };
 function card(c) {
   const on = S.saved.includes(c.id), r = rating(c);
-  return `<article class="card" tabindex="0" role="button" data-act="open" data-id="${esc(c.id)}" aria-label="${esc(c.name)}">
-    <div class="art" style="background:${grad(c)}"><b>${esc(initials(c))}</b><span class="cc">${FLAG(c.countryCode)} ${esc(c.countryCode)}</span>
-      <button class="save ${on ? 'on' : ''}" data-act="save" data-id="${esc(c.id)}" aria-label="${on ? 'Unsave' : 'Save'} ${esc(c.name)}" aria-pressed="${on}">${icon('heart')}</button></div>
-    <div><h3>${esc(c.name)}</h3><div class="meta"><span>${esc(c.city)}, ${esc(c.country)}</span><span>${esc(range(c))}</span></div></div>
+  return `<article class="card" data-act="open" data-id="${esc(c.id)}">
+    <div class="art" style="background:${grad(c)}"><b aria-hidden="true">${esc(initials(c))}</b><span class="cc"><span aria-hidden="true">${FLAG(c.countryCode)} </span>${esc(c.countryCode)}</span>
+      <button class="save ${on ? 'on' : ''}" data-act="save" data-id="${esc(c.id)}" aria-label="Save ${esc(c.name)}" aria-pressed="${on}">${icon('heart')}</button></div>
+    <div><h3><a class="card-link" href="/conferences/${esc(encodeURIComponent(c.id))}" data-act="open" data-id="${esc(c.id)}">${esc(c.name)}</a></h3><div class="meta"><span>${esc(c.city)}, ${esc(c.country)}</span><span>${esc(range(c))}</span></div></div>
     <div class="pills"><span class="pill ${c.cpdVerified && c.cpdHours ? 'g' : ''}" title="${c.cpdVerified ? 'Credits stated by the organiser' : 'Credits not confirmed — ask the organiser'}">${esc(cpdLabel(c))}</span><span class="pill">${esc(c.specialty)}</span>${holPill(c)}<span class="pill">${scoreShown(c) != null ? '<span class="stars">★</span> ' + scoreShown(c).toFixed(1) : reviewCount(c) ? reviewCount(c) + ' early review' + (reviewCount(c) > 1 ? 's' : '') : 'New'}</span></div></article>`;
 }
 
@@ -257,13 +267,14 @@ const VIEWS = {
     const p = S.profile, trips = S.trips.filter(t => t.status === 'planned').sort((a, b) => ofTrip(a).start.localeCompare(ofTrip(b).start)), next = trips[0];
     const unclaimed = S.receipts.filter(r => r.status === 'captured').reduce((a, r) => a + homeAmt(r), 0), pending = S.receipts.filter(r => r.status === 'claimed').reduce((a, r) => a + homeAmt(r), 0);
     const tot = cpdTotal(), pct = Math.min(100, Math.round(tot / (p.cpdTarget || 1) * 100));
-    const active = S.trips.length || S.receipts.length || S.cpd.length || S.certs.length || inHosp();
+    const active = S.trips.length || S.receipts.length || S.cpd.length || S.certs.length || inHosp() || NET.user;
+    const fresh = S.onboard && !S.onboard.dismissed;
     const crs = certRows(), nextCert = crs.find(x => x.expires && x.st !== 'expired') || crs[0];
     const HS = window.HoggyStats, st = HS ? HS.homeStats(CONFS, today()) : null, examples = HS ? HS.exampleConfs(CONFS, today(), 4) : upcoming().slice(0, 4), n = v => Number(v).toLocaleString('en-AU');
-    const dash = `<section class="hero hero-dash"><h1>${p.name ? 'Welcome back, ' + esc(p.name.split(' ')[0]) + '.' : 'Welcome back.'}</h1>
+    const dash = `<section class="hero hero-dash"><h1>${fresh ? 'Welcome' : 'Welcome back'}${p.name ? ', ' + esc(firstName(p.name)) : ''}.</h1>
       <p>Your conferences, trips, receipts and CPD in one place.</p>
       <div class="row"><a class="btn primary" href="#/discover">Find conferences</a><a class="btn ghost" href="#/receipts">Add a receipt</a></div></section>
-    ${remindCard()}${hospHome()}<div class="tiles">
+    ${getStarted()}${remindCard()}${hospHome()}<div class="tiles">
       <a class="tile" href="#/trips"><div class="k">Next trip</div><div class="v" style="font-size:22px;line-height:1.15">${next ? esc(ofTrip(next).name) : 'None planned'}</div><div class="s">${next ? esc(ofTrip(next).city) + ' · ' + esc(range(ofTrip(next))) : 'Plan one from Discover'}</div></a>
       <a class="tile" href="#/cpd"><div class="k">CPD ${esc(p.cpdYear)}</div><div class="v">${tot}<span style="font-size:18px;color:var(--muted)"> / ${esc(p.cpdTarget)} h</span></div><div class="bar" style="margin-top:10px"><i style="width:${pct}%"></i></div></a>
       <a class="tile" href="#/claims"><div class="k">Not yet claimed</div><div class="v">${money(unclaimed)}</div><div class="s">${S.receipts.filter(r => r.status === 'captured').length} receipts waiting</div></a>
@@ -272,7 +283,9 @@ const VIEWS = {
     const hero = `<section class="hero hero-intro"><span class="eyebrow">Medical conference planner</span>
       <h1>Find the conference. Hoggy helps with the admin.</h1>
       <p>For doctors and clinicians who travel for CPD: find a meeting, plan the trip, keep every receipt and hand your hospital or employer a claim-ready pack.</p>
-      <div class="row"><a class="btn primary lg" href="#/discover">Find conferences</a><button type="button" class="btn ghost lg" data-act="howto">See how it works</button></div></section>`;
+      <form class="hero-search" id="heroSearch" role="search"><label class="search">${icon('search')}<span class="sr-only">Search conferences and courses</span><input id="hq" type="search" name="q" placeholder="Search by specialty, city or name" autocomplete="off"></label><button class="btn primary lg" type="submit">Search</button></form>
+      <p class="hero-sub">No account needed to search. <a class="u" href="#/discover">Browse all conferences</a> · <a class="u" href="#/courses">Browse courses</a></p>
+      <div class="row">${NET.online ? '<button type="button" class="btn ghost lg" data-act="register">Create an account</button>' : ''}<button type="button" class="btn ghost lg" data-act="howto">See how it works</button></div></section>`;
     const steps = [
       ['search', 'Find a conference', 'Search by specialty, country, month and CPD. Each listing says whether its dates are confirmed by the organiser or still an estimate.'],
       ['plane', 'Plan the trip', 'Save it as a trip. Hoggy opens flight and hotel searches prefilled with your dates, and you book with the provider.'],
@@ -289,11 +302,11 @@ const VIEWS = {
       <div class="benefits">${benefits.map(([t, d]) => `<div class="benefit"><span class="tick" aria-hidden="true">✓</span><div><h3>${t}</h3><p>${d}</p></div></div>`).join('')}</div></section>`;
     const ct = COURSES.loaded ? HC.courseTotals(COURSES.summary, COURSES.cat) : null;
     const live = st && st.conferences ? `<section class="live" aria-labelledby="liveH"><div class="live-head"><h2 id="liveH">Live data</h2><span>Counted from Hoggy's conference and course lists just now</span></div>
-      <dl class="live-grid"><div><dt>Upcoming conferences</dt><dd>${n(st.conferences)}</dd></div><div><dt>Countries</dt><dd>${n(st.countries)}</dd></div><div><dt>Specialties</dt><dd>${n(st.specialties)}</dd></div>${ct && ct.sessions ? `<div><dt>Course sessions</dt><dd>${n(ct.sessions)}</dd><span class="live-sub">${n(ct.types)} course types in ${n(ct.countries)} countries, dates read on each provider's page.</span></div>` : ''}
+      <dl class="live-grid"><div><dt>Upcoming conferences</dt><dd>${n(st.conferences)}</dd></div><div><dt>Countries</dt><dd>${n(st.countries)}</dd></div><div><dt>Specialties</dt><dd>${n(st.specialties)}</dd></div>${ct && ct.sessions ? `<div><dt>Course sessions</dt><dd>${n(ct.sessions)}<span class="live-sub">${n(ct.types)} course types in ${n(ct.countries)} countries, dates read on each provider's page.</span></dd></div>` : ''}
       <div class="live-dates"><dt>Conference dates</dt><dd class="split"><span><b>${n(st.confirmed)}</b> confirmed with source stored</span><span><b>${n(st.unchecked)}</b> confirmed earlier, being re-checked</span><span><b>${n(st.estimated)}</b> estimated (labelled)</span></dd></div></dl></section>` : '';
     const ex = examples.length ? `<div class="section"><h2>${examples.every(c => dateEv(c) === 'confirmed') ? 'Coming up, dates confirmed' : 'Coming up'}</h2><a href="#/discover">Browse all</a></div><div class="grid ex">${examples.map(card).join('')}</div>` : '';
-    const close = `<section class="hero hero-close"><h2>Ready for your next conference?</h2><p>Start with a search. No account needed to browse; sign in when you want your trips and receipts synced.</p>
-      <div class="row"><a class="btn primary lg" href="#/discover">Find conferences</a>${NET.online && !NET.user ? '<button type="button" class="btn ghost lg" data-act="signin">Sign in</button>' : ''}</div></section>`;
+    const close = `<section class="hero hero-close"><h2>Ready for your next conference?</h2><p>Start with a search. No account needed to browse; create one when you want your trips, receipts and CPD saved across devices.</p>
+      <div class="row"><a class="btn primary lg" href="#/discover">Find conferences</a>${NET.online && !NET.user ? '<button type="button" class="btn ghost lg" data-act="register">Create an account</button><button type="button" class="btn ghost lg" data-act="signin">Sign in</button>' : ''}</div></section>`;
     const top = topSection(); /* nothing at all until a series has 3 reviews */
     return active ? dash + how + top + ben + live : hero + how + top + ben + live + ex + close;
   },
@@ -302,7 +315,7 @@ const VIEWS = {
     const HS = window.HoggyStats, ds = HS && HS.discoverSummary ? HS.discoverSummary(CONFS, today()) : null, n = v => Number(v).toLocaleString('en-AU'), mon = iso => fmtD(iso, { month: 'short', year: 'numeric' });
     const ct = COURSES.loaded ? HC.courseTotals(COURSES.summary, COURSES.cat) : null;
     const sub = ds && ds.conferences ? `${n(ds.conferences)} upcoming conferences in ${n(ds.countries)} countries, ${esc(mon(ds.from))} to ${esc(mon(ds.to))}: ${n(ds.confirmed)} confirmed with source stored · ${n(ds.unchecked)} confirmed earlier, being re-checked · ${n(ds.estimated)} estimated (labelled).${ct && ct.sessions ? ` Courses: ${n(ct.sessions)} sessions of ${n(ct.types)} course types.` : ''}` : `${n(upcoming().length)} upcoming conferences.`;
-    return `<div class="page-head"><div><h1>Discover</h1><p>${sub} Filter by specialty, region, country, month and published CPD.</p></div></div>${segToggle('discover')}
+    return `<div class="page-head"><div><h1>Discover</h1><p>${sub} Filter by specialty, region, country, month and published CPD.</p></div><a class="btn sm ghost" href="#/list-event">Organisers: list your event</a></div>${segToggle('discover')}
     <div class="filters"><label class="search">${icon('search')}<input id="q" type="search" placeholder="Search conferences, courses, cities…" aria-label="Search conferences and courses" autocomplete="off"></label>
       <div class="chips" id="specChips" role="group" aria-label="Specialty"><button class="chip" aria-pressed="true" data-spec="All">All</button>${specs.map(s => `<button class="chip" aria-pressed="false" data-spec="${esc(s)}">${esc(s)}</button>`).join('')}</div>
       <div class="selects"><select id="fRegion" aria-label="Region"><option value="">All regions</option>${regs.map(r => `<option>${esc(r)}</option>`).join('')}</select>
@@ -314,19 +327,19 @@ const VIEWS = {
         <select id="fSort" aria-label="Sort"><option value="date">Soonest</option><option value="rating">Highest rated by attendees</option><option value="cpd">Most CPD (published)</option>${CONFS.some(figPrice) ? '<option value="price">Lowest price</option>' : ''}<option value="match">Closest match</option></select>
         <span class="count" id="count"></span></div></div>
     <section id="topList" class="toplist" aria-labelledby="topH" hidden></section>
-    <div class="grid" id="results"></div>`;
+    <h2 class="sr-only" id="resH">Results</h2><div class="grid" id="results" aria-labelledby="resH"></div>`;
   },
   trips() {
     const ts = S.trips.slice().sort((a, b) => ofTrip(a).start.localeCompare(ofTrip(b).start));
     return `<div class="page-head"><div><h1>Trips</h1><p>Plan travel, log bookings and mark conferences attended to log your CPD hours.</p></div><a class="btn primary" href="#/discover">${icon('plus')} Add a conference</a></div>` +
       (ts.length ? ts.map(t => { const c = ofTrip(t), L = links(c, t.from || undefined), spent = S.receipts.filter(r => r.tripId === t.id).reduce((a, r) => a + homeAmt(r), 0), booked = (t.bookings || []).reduce((a, b) => a + Number(b.amount || 0), 0);
-        return `<div class="panel"><div class="row" style="justify-content:space-between;align-items:flex-start"><div class="row" style="gap:14px;align-items:flex-start"><div class="thumb" style="width:64px;height:64px;background:${grad(c)};color:#fff;font-weight:800">${esc(initials(c))}</div><div><h3 style="margin:0">${esc(c.name)}</h3><div class="s" style="color:var(--muted)">${FLAG(c.countryCode)} ${esc(c.city)}, ${esc(c.country)} · ${esc(range(c))}</div><div class="pills" style="margin-top:8px"><span class="pill ${t.status === 'attended' ? 'g' : 'w'}">${t.status === 'attended' ? 'Attended' : 'Planned'}</span><span class="pill ${c.cpdVerified && c.cpdHours ? 'g' : ''}">${esc(cpdLabel(c))}</span><span class="pill">Booked ${money(booked)}</span><span class="pill">Receipts ${money(spent)}</span></div></div></div>
+        return `<div class="panel"><div class="row" style="justify-content:space-between;align-items:flex-start"><div class="row" style="gap:14px;align-items:flex-start"><div class="thumb" style="width:64px;height:64px;background:${grad(c)};color:#fff;font-weight:800">${esc(initials(c))}</div><div><h2 style="margin:0">${esc(c.name)}</h2><div class="s" style="color:var(--muted)">${FLAG(c.countryCode)} ${esc(c.city)}, ${esc(c.country)} · ${esc(range(c))}</div><div class="pills" style="margin-top:8px"><span class="pill ${t.status === 'attended' ? 'g' : 'w'}">${t.status === 'attended' ? 'Attended' : 'Planned'}</span><span class="pill ${c.cpdVerified && c.cpdHours ? 'g' : ''}">${esc(cpdLabel(c))}</span><span class="pill">Booked ${money(booked)}</span><span class="pill">Receipts ${money(spent)}</span></div></div></div>
           <div class="row"><button class="btn sm" data-act="open" data-id="${esc(c.id)}">Details</button>${t.status === 'planned' ? `<button class="btn sm primary" data-act="attend" data-id="${esc(t.id)}">Mark attended</button>` : ''}<button class="btn sm danger" data-act="rmtrip" data-id="${esc(t.id)}">Remove</button></div></div>
           ${tripHospBox(t)}
           ${NET.online && c.kind !== 'course' && c.end < today() && !reviewedYear(skey(c), +c.start.slice(0, 4)) ? `<div class="rv-prompt"><span><b>How was it?</b> Review it in a minute. It helps colleagues choose.</span><button class="btn sm primary" data-act="review" data-id="${esc(c.id)}" data-year="${esc(c.start.slice(0, 4))}">Review ${esc(c.start.slice(0, 4))}</button></div>` : ''}
           <div class="row" style="margin-top:16px"><label class="from-field">Flying from <input type="text" data-from="${esc(t.id)}" value="${esc(t.from || S.profile.homeAirport || S.profile.city || '')}" maxlength="40" placeholder="City or airport" aria-label="Flying from (city or airport code) for ${esc(c.name)}"></label><a class="btn sm" target="_blank" rel="noopener noreferrer" data-flights="${esc(t.id)}" href="${esc(L.flights)}">✈ Search flights ${icon('ext')}</a><a class="btn sm" target="_blank" rel="noopener noreferrer" href="${esc(L.hotels)}">🛏 Search hotels ${icon('ext')}</a><button class="btn sm ghost" data-act="addbook" data-id="${esc(t.id)}">${icon('plus')} Log a booking</button>${snapBtn(t.id)}<button class="btn sm ghost" data-act="addreceipt" data-id="${esc(t.id)}">${icon('receipt')} Add receipt</button></div>
           ${(t.bookings || []).length ? `<div class="list" style="margin-top:12px">${t.bookings.map(b => `<div class="li"><div class="grow"><div class="t">${esc(b.type)} · ${esc(b.vendor)}</div><div class="s">Ref ${esc(b.ref || '—')} · ${esc(b.date ? fmtD(b.date) : '')}</div></div><div class="amt">${money(b.amount)}</div><button class="icon-btn" data-act="rmbook" data-id="${esc(t.id)}" data-b="${esc(b.id)}" aria-label="Remove booking">${icon('x')}</button></div>`).join('')}</div>` : ''}${checklistHtml(t)}</div>`; }).join('')
-        : `<div class="empty"><h3>No trips yet</h3><p>Save a conference and hit “Plan trip” to start. Hoggy prefills flight and hotel searches for the exact dates.</p><p style="margin-top:16px"><a class="btn primary" href="#/discover">Browse conferences</a></p></div>`) +
+        : `<div class="empty"><h2>No trips yet</h2><p>Save a conference and hit “Plan trip” to start. Hoggy prefills flight and hotel searches for the exact dates.</p><p style="margin-top:16px"><a class="btn primary" href="#/discover">Browse conferences</a></p></div>`) +
       `<p class="note">Hoggy opens prefilled search pages with Google Flights and Booking.com. You complete the purchase with the provider, then log the booking and forward the receipt here.</p>`;
   },
   receipts() {
@@ -334,11 +347,11 @@ const VIEWS = {
     return `<div class="page-head"><div><h1>Receipts</h1><p>Your receipts in one place, checked for a file, amount, date and trip, and against the caps you enter in Settings.</p></div><div class="row head-acts">${snapBtn('', true)}<button class="btn" data-act="addreceipt">${icon('plus')} Add receipt</button></div></div>
     <div class="cols"><div>
       <div class="drop" id="drop"><p style="color:var(--text);font-weight:700;font-size:17px">Drop receipts here</p><p style="margin-top:4px">PDF, JPG or PNG — or paste a forwarded email in the add dialog.</p><p style="margin-top:14px"><button class="btn" data-act="addreceipt">Choose files</button></p></div>
-      <div class="panel" style="margin-top:14px"><h3>${rs.length} receipt${rs.length === 1 ? '' : 's'}</h3>${rs.length ? `<div class="list">${rs.map(r => { const iss = receiptIssues(r), bad = iss.filter(i => i.lvl === 'bad').length, trip = S.trips.find(t => t.id === r.tripId);
+      <div class="panel" style="margin-top:14px"><h2>${rs.length} receipt${rs.length === 1 ? '' : 's'}</h2>${rs.length ? `<div class="list">${rs.map(r => { const iss = receiptIssues(r), bad = iss.filter(i => i.lvl === 'bad').length, trip = S.trips.find(t => t.id === r.tripId);
         const tf = taxHtml(r, 2);
-        return `<div class="li rc"><div class="thumb" data-file="${esc(r.fileKey || '')}">${icon('file')}</div><div class="grow"><div class="t">${esc(r.vendor || 'Unnamed')}</div><div class="s">${esc(r.category)} · ${esc(r.date ? fmtD(r.date) : 'no date')}${trip ? ' · ' + esc(ofTrip(trip).name) : ''}</div>${iss.slice(0, 2).map(i => `<div class="check ${i.lvl}">${i.lvl === 'bad' ? '✕' : '!'} ${esc(i.t)}</div>`).join('')}</div><div class="rc-amt" style="text-align:right"><div class="amt">${money(r.amount, r.currency)}</div><span class="status ${esc(r.status)}">${esc(r.status === 'captured' ? (bad ? 'Needs info' : 'Ready') : r.status)}</span></div>${r.fileKey ? `<button class="icon-btn" data-act="openfile" data-id="${esc(r.id)}" aria-label="Download receipt file" title="Download receipt file">${icon('file')}</button>` : ''}<button class="icon-btn" data-act="editreceipt" data-id="${esc(r.id)}" aria-label="Edit receipt">${icon('gear')}</button>${tf ? `<div class="li-flags">${tf}</div>` : ''}</div>`; }).join('')}</div>` : '<div class="empty"><h3>Nothing yet</h3><p>Forward an email or drop a file to get started.</p></div>'}</div></div>
-    <div><div class="panel"><h3>Your forwarding address</h3>${addr ? `<div class="copybox"><span style="flex:1">${esc(addr)}</span><button class="icon-btn" data-act="copy" data-v="${esc(addr)}" aria-label="Copy address">${icon('copy')}</button></div><p class="note">Auto-forward travel and booking emails here. While Hoggy is open it checks for new ones every minute (or tap Check inbox now). It reads the vendor, amount and date where it can and suggests a trip when only one fits; you check each one.</p><p style="margin-top:10px"><button class="btn sm" data-act="checkinbox">Check inbox now</button></p>` : `<p style="color:var(--muted)">${NET.online ? 'Sign in to get your personal forwarding address.' : 'The Hoggy server is not running, so email forwarding is off. Paste emails or drop files instead.'}</p>${NET.online ? '<p style="margin-top:10px"><button class="btn sm primary" data-act="signin">Sign in</button></p>' : ''}`}</div>
-      <div class="panel"><h3>What Hoggy checks before you claim</h3>${['Every receipt must have a file, amount, date and trip','Amounts are checked against the caps you enter in Settings, and dates against the conference window','Duplicates and foreign currency are flagged','Export and email unlock once every receipt has its file, amount, date and trip, and nothing is over a limit without a justification'].map(t => `<div class="check">• ${esc(t)}</div>`).join('')}</div></div></div>`;
+        return `<div class="li rc"><div class="thumb" data-file="${esc(r.fileKey || '')}">${icon('file')}</div><div class="grow"><div class="t">${esc(r.vendor || 'Unnamed')}</div><div class="s">${esc(r.category)} · ${esc(r.date ? fmtD(r.date) : 'no date')}${trip ? ' · ' + esc(ofTrip(trip).name) : ''}</div>${iss.slice(0, 2).map(i => `<div class="check ${i.lvl}">${i.lvl === 'bad' ? '✕' : '!'} ${esc(i.t)}</div>`).join('')}</div><div class="rc-amt" style="text-align:right"><div class="amt">${money(r.amount, r.currency)}</div><span class="status ${esc(r.status)}">${esc(r.status === 'captured' ? (bad ? 'Needs info' : 'Ready') : r.status)}</span></div>${r.fileKey ? `<button class="icon-btn" data-act="openfile" data-id="${esc(r.id)}" aria-label="Download receipt file" title="Download receipt file">${icon('file')}</button>` : ''}<button class="icon-btn" data-act="editreceipt" data-id="${esc(r.id)}" aria-label="Edit receipt">${icon('gear')}</button>${tf ? `<div class="li-flags">${tf}</div>` : ''}</div>`; }).join('')}</div>` : `<div class="empty"><h2>No receipts yet</h2><p>Snap a photo, choose a file or forward a booking email to get started.</p><p style="margin-top:16px"><button class="btn primary" data-act="addreceipt">Add a receipt</button></p></div>`}</div></div>
+    <div><div class="panel"><h2>Your forwarding address</h2>${addr ? `<div class="copybox"><span style="flex:1">${esc(addr)}</span><button class="icon-btn" data-act="copy" data-v="${esc(addr)}" aria-label="Copy address">${icon('copy')}</button></div><p class="note">Auto-forward travel and booking emails here. While Hoggy is open it checks for new ones every minute (or tap Check inbox now). It reads the vendor, amount and date where it can and suggests a trip when only one fits; you check each one.</p><p style="margin-top:10px"><button class="btn sm" data-act="checkinbox">Check inbox now</button></p>` : `<p style="color:var(--muted)">${NET.online ? 'Sign in to get your personal forwarding address.' : (NET.trouble ? 'Hoggy can\u2019t connect right now, so your forwarding address isn\u2019t available. Try again in a minute; you can still add receipts as files.' : 'Your forwarding address needs an account. You can still add receipts as files.')}</p>${NET.online ? '<p style="margin-top:10px"><button class="btn sm primary" data-act="signin">Sign in</button></p>' : ''}`}</div>
+      <div class="panel"><h2>What Hoggy checks before you claim</h2>${['Every receipt must have a file, amount, date and trip','Amounts are checked against the caps you enter in Settings, and dates against the conference window','Duplicates and foreign currency are flagged','Export and email unlock once every receipt has its file, amount, date and trip, and nothing is over a limit without a justification'].map(t => `<div class="check">• ${esc(t)}</div>`).join('')}</div></div></div>`;
   },
   claims() {
     const ts = S.trips.filter(t => S.receipts.some(r => r.tripId === t.id));
@@ -347,7 +360,7 @@ const VIEWS = {
       (orphan.length ? `<div class="panel"><div class="check warn">! ${orphan.length} receipt${orphan.length > 1 ? 's are' : ' is'} not linked to a trip and can't be claimed. <a href="#/receipts" style="text-decoration:underline">Fix in Receipts</a></div></div>` : '') +
       (ts.length ? ts.map(t => { const c = ofTrip(t), rs = S.receipts.filter(r => r.tripId === t.id), tot = rs.reduce((a, r) => a + claimAmt(r), 0), rd = rs.filter(ready).length, pct = Math.round(rd / rs.length * 100), allReady0 = rd === rs.length, pol = policyFor(t, rs), allReady = allReady0 && !pol.some(i => i.lvl === 'bad'), claim = S.claims[t.id] || {}, hc = inHosp() ? hClaimOf(t) : null, st = hc ? (hc.status === 'paid' ? 'paid' : 'claimed') : rs.every(r => r.status === 'paid') ? 'paid' : rs.some(r => r.status === 'claimed' || r.status === 'paid') ? 'claimed' : 'draft';
         const cats = CATS.map(k => [k, rs.filter(r => r.category === k).reduce((a, r) => a + claimAmt(r), 0)]).filter(x => x[1]);
-        return `<div class="panel"><div class="row" style="justify-content:space-between"><div><h3 style="margin:0">${esc(c.name)}</h3><div class="s" style="color:var(--muted)">${esc(c.city)} · ${esc(range(c))}</div></div><div style="text-align:right"><div style="font-size:28px;font-weight:800;letter-spacing:-.04em">${money(tot)}</div><span class="status ${st === 'draft' ? 'captured' : st}">${st === 'draft' ? 'Draft' : st === 'claimed' ? 'Submitted' : 'Reimbursed'}</span></div></div>
+        return `<div class="panel"><div class="row" style="justify-content:space-between"><div><h2 style="margin:0">${esc(c.name)}</h2><div class="s" style="color:var(--muted)">${esc(c.city)} · ${esc(range(c))}</div></div><div style="text-align:right"><div style="font-size:28px;font-weight:800;letter-spacing:-.04em">${money(tot)}</div><span class="status ${st === 'draft' ? 'captured' : st}">${st === 'draft' ? 'Draft' : st === 'claimed' ? 'Submitted' : 'Reimbursed'}</span></div></div>
           <div class="row" style="margin:14px 0 6px;justify-content:space-between"><span style="font-weight:600">Claim readiness</span><span style="color:${allReady ? 'var(--ok)' : 'var(--warn)'};font-weight:700">${rd}/${rs.length} receipts ready</span></div><div class="bar"><i class="${allReady ? '' : 'warn'}" style="width:${pct}%"></i></div>
           ${rs.filter(r => !ready(r)).map(r => `<div class="check bad">✕ ${esc(r.vendor || 'Receipt')}: ${esc(receiptIssues(r).filter(i => i.lvl === 'bad').map(i => i.t).join(', '))} <a href="#/receipts" data-act="editreceipt" data-id="${esc(r.id)}" style="text-decoration:underline;margin-left:6px">Fix</a></div>`).join('')}
           ${pol.map(i => `<div class="check ${i.lvl}">${i.lvl === 'bad' ? '✕' : '!'} ${esc(i.t)}</div>`).join('')}
@@ -356,15 +369,15 @@ const VIEWS = {
           <div class="row" style="margin-top:16px"><button class="btn sm" data-act="exportcsv" data-id="${esc(t.id)}" ${allReady ? '' : 'disabled'}>Export CSV</button><button class="btn sm" data-act="printpack" data-id="${esc(t.id)}" ${allReady ? '' : 'disabled'}>Print claim pack</button><button class="btn sm primary" data-act="emailpack" data-id="${esc(t.id)}" ${allReady ? '' : 'disabled'}${claimsTo() ? ` title="Draft to ${esc(claimsTo())}"` : ''}>${inHosp() && !EMP().adminEmail && HOSP.org.claimsEmail ? 'Email to ' + esc(HOSP.org.name) + ' claims' : 'Email to claims admin'}</button><button class="btn sm" data-act="mailtopack" data-id="${esc(t.id)}" ${allReady ? '' : 'disabled'} title="For webmail: downloads the schedule and opens a prefilled email; you attach the files">Webmail instead</button>
             ${hc && hc.status === 'paid' ? '' : st === 'draft' || rs.some(r => r.status === 'captured') ? `<button class="btn sm primary" data-act="submitclaim" data-id="${esc(t.id)}" ${allReady ? '' : 'disabled'}>${hc ? 'Update submitted claim' : 'Mark submitted'}</button>` : ''}${st === 'claimed' && !hc ? `<button class="btn sm primary" data-act="paidclaim" data-id="${esc(t.id)}">Mark reimbursed</button>` : ''}</div>
           ${hc ? `<p class="note" data-testid="claim-hosp">${hc.status === 'paid' ? `<b>Paid</b> by ${esc(HOSP.org.name)} on ${esc(fmtD(dayOf(hc.paid)))} (${hmoney(hc.totalCents)}).` : `With ${esc(HOSP.org.name)} finance since ${esc(fmtD(dayOf(hc.submitted)))} (${hmoney(hc.totalCents)}). Finance marks it paid; you see it here.`}</p>` : claim.submitted ? `<p class="note">Submitted ${esc(fmtD(claim.submitted))}${claim.paid ? ' · reimbursed ' + esc(fmtD(claim.paid)) : ''}</p>` : ''}</div>`; }).join('')
-        : `<div class="empty"><h3>No claims yet</h3><p>Add receipts to a trip and they'll appear here with a readiness check.</p></div>`);
+        : `<div class="empty"><h2>No claims yet</h2><p>Add receipts to a trip and they'll appear here with a readiness check.</p><p style="margin-top:16px"><a class="btn primary" href="#/receipts">Add a receipt</a> <a class="btn ghost" href="#/trips">See your trips</a></p></div>`);
   },
   cpd() {
     const p = S.profile, tot = cpdTotal(), pct = Math.min(100, Math.round(tot / (p.cpdTarget || 1) * 100)), es = S.cpd.slice().sort((a, b) => b.date.localeCompare(a.date)), left = Math.max(0, p.cpdTarget - tot);
     const fut = upcoming().filter(c => c.specialty === p.specialty || true).sort((a, b) => b.cpdHours - a.cpdHours).slice(0, 4);
     return `<div class="page-head"><div><h1>CPD tracker</h1><p>When you mark a trip attended, enter the hours on your certificate and they are logged here. Add anything else by hand.</p></div><div class="row"><button class="btn" data-act="exportcpd">Export log</button><button class="btn primary" data-act="addcpd">${icon('plus')} Add entry</button></div></div>
-    <div class="cols"><div class="panel"><div class="row" style="gap:28px"><div class="ring" style="--p:${pct}"><span>${tot}<small>of ${esc(p.cpdTarget)} hrs</small></span></div><div><h3 style="margin:0 0 6px">${esc(p.cpdYear)} target · ${esc(p.cpdBody || 'your college')}</h3><p style="color:var(--muted)">${left ? `${left} hours to go.` : 'Target reached 🎉'}</p><p class="note">Change the target and body in Settings. Check your college's rules for how conference hours are weighted.</p></div></div>
-      <h3 style="margin-top:26px">Log</h3>${es.length ? `<table><thead><tr><th>Date</th><th>Activity</th><th>Source</th><th style="text-align:right">Hours</th><th></th></tr></thead><tbody>${es.map(e => `<tr><td>${esc(fmtD(e.date))}</td><td>${esc(e.title)}</td><td><span class="pill ${e.source === 'conference' ? 'g' : ''}">${esc(e.source)}</span></td><td style="text-align:right;font-weight:700">${esc(e.hours)}</td><td><button class="icon-btn" data-act="rmcpd" data-id="${esc(e.id)}" aria-label="Delete entry">${icon('x')}</button></td></tr>`).join('')}</tbody></table>` : '<div class="empty"><h3>No hours logged</h3><p>Mark a trip attended or add an entry.</p></div>'}</div>
-    <div><div class="panel"><h3>Close the gap</h3><p style="color:var(--muted);margin-bottom:10px">Upcoming conferences with published credits (otherwise soonest in your field):</p><div class="list">${fut.map(c => `<div class="li" style="cursor:pointer" tabindex="0" role="button" data-act="open" data-id="${esc(c.id)}"><div class="thumb" style="background:${grad(c)}"></div><div class="grow"><div class="t">${esc(c.name)}</div><div class="s">${esc(c.city)} · ${esc(range(c))}</div></div><span class="pill">${c.cpdVerified && c.cpdHours ? esc(c.cpdHours) + 'h' : 'CPD?'}</span></div>`).join('')}</div></div></div></div>${nzPanel()}`;
+    <div class="cols"><div class="panel"><div class="row" style="gap:28px"><div class="ring" style="--p:${pct}"><span>${tot}<small>of ${esc(p.cpdTarget)} hrs</small></span></div><div><h2 style="margin:0 0 6px">${esc(p.cpdYear)} target · ${esc(p.cpdBody || 'your college')}</h2><p style="color:var(--muted)">${left ? `${left} hours to go.` : 'Target reached 🎉'}</p><p class="note">Change the target and body in Settings. Check your college's rules for how conference hours are weighted.</p></div></div>
+      <h2 style="margin-top:26px">Log</h2>${es.length ? `<table><thead><tr><th>Date</th><th>Activity</th><th>Source</th><th style="text-align:right">Hours</th><th></th></tr></thead><tbody>${es.map(e => `<tr><td>${esc(fmtD(e.date))}</td><td>${esc(e.title)}</td><td><span class="pill ${e.source === 'conference' ? 'g' : ''}">${esc(e.source)}</span></td><td style="text-align:right;font-weight:700">${esc(e.hours)}</td><td><button class="icon-btn" data-act="rmcpd" data-id="${esc(e.id)}" aria-label="Delete entry">${icon('x')}</button></td></tr>`).join('')}</tbody></table>` : '<div class="empty"><h2>No hours logged</h2><p>Mark a trip attended or add an entry.</p><p style="margin-top:16px"><button class="btn primary" data-act="addcpd">Add an entry</button></p></div>'}</div>
+    <div><div class="panel"><h2>Close the gap</h2><p style="color:var(--muted);margin-bottom:10px">Upcoming conferences with published credits (otherwise soonest in your field):</p><div class="list">${fut.map(c => `<div class="li" style="cursor:pointer" tabindex="0" role="button" data-act="open" data-id="${esc(c.id)}"><div class="thumb" style="background:${grad(c)}"></div><div class="grow"><div class="t">${esc(c.name)}</div><div class="s">${esc(c.city)} · ${esc(range(c))}</div></div><span class="pill">${c.cpdVerified && c.cpdHours ? esc(c.cpdHours) + 'h' : 'CPD?'}</span></div>`).join('')}</div></div></div></div>${nzPanel()}`;
   },
   courses() {
     const { parts, q } = hashParts();
@@ -388,21 +401,21 @@ const VIEWS = {
   certs() {
     const rows = certRows();
     return `<a class="back" href="#/courses">← Courses</a><div class="page-head"><div><h1>My certificates</h1><p>Add your APLS, ALS or other course certificates. Hoggy works out the expiry from the validity the course owner publishes (APLS five years, ALS four years) and shows a reminder on your Home page from six months before.</p></div><button class="btn primary" data-act="addcert">${icon('plus')} Add certificate</button></div>`
-      + (rows.length ? rows.map(certItem).join('') : `<div class="empty"><h3>No certificates yet</h3><p>Add one and Hoggy shows when it is due for renewal, with the next sessions near you.</p><p style="margin-top:16px"><button class="btn primary" data-act="addcert">Add certificate</button></p></div>`)
+      + (rows.length ? rows.map(certItem).join('') : `<div class="empty"><h2>No certificates yet</h2><p>Add one and Hoggy shows when it is due for renewal, with the next sessions near you.</p><p style="margin-top:16px"><button class="btn primary" data-act="addcert">Add certificate</button></p></div>`)
       + `<p class="note">Reminders show inside Hoggy only, on Home and here. Email reminders are not available yet. "Near you" uses your state or region in Settings (or your home city).</p>`;
   },
   settings() {
     const p = S.profile, specs = [...new Set(CONFS.map(c => c.specialty))].sort();
     return `<div class="page-head"><div><h1>Settings</h1><p>Your profile drives recommendations, CPD targets and claim checks. Employer details such as your employee ID and approver stay on this device only. Trips, receipts and CPD sync with your account when you sign in.</p></div></div>
-    <div class="cols"><div class="panel"><h3>Profile</h3><form id="pf"><div class="two"><div class="field"><label for="pn">Name</label><input id="pn" type="text" name="name" value="${esc(p.name)}"></div><div class="field"><label for="ps">Specialty</label><select id="ps" name="specialty">${specs.map(s => `<option ${s === p.specialty ? 'selected' : ''}>${esc(s)}</option>`).join('')}</select></div></div>
+    <div class="cols"><div class="panel"><h2>Profile</h2><form id="pf"><div class="two"><div class="field"><label for="pn">Name</label><input id="pn" type="text" name="name" value="${esc(p.name)}"></div><div class="field"><label for="ps">Specialty</label><select id="ps" name="specialty">${specs.map(s => `<option ${s === p.specialty ? 'selected' : ''}>${esc(s)}</option>`).join('')}</select></div></div>
       <div class="two"><div class="field"><label for="pc">Home country</label><input id="pc" type="text" name="country" value="${esc(p.country)}"></div><div class="field"><label for="pci">Home city / airport code</label><input id="pci" type="text" name="homeAirport" value="${esc(p.homeAirport)}"></div></div>
       <div class="two"><div class="field"><label for="pcu">Currency</label><select id="pcu" name="currency">${['AUD', 'NZD', 'USD', 'GBP', 'EUR', 'CAD', 'SGD'].map(s => `<option ${s === p.currency ? 'selected' : ''}>${s}</option>`).join('')}</select></div><div class="field"><label for="pth">Theme</label><select id="pth" name="theme">${['auto', 'dark', 'light'].map(s => `<option ${s === p.theme ? 'selected' : ''}>${s}</option>`).join('')}</select></div></div>
       <div class="two"><div class="field"><label for="pct">Annual CPD target (hours)</label><input id="pct" type="number" min="1" max="500" name="cpdTarget" value="${esc(p.cpdTarget)}"></div><div class="field"><label for="pcb">CPD body</label><input id="pcb" type="text" name="cpdBody" value="${esc(p.cpdBody)}"></div></div>
       <div class="two"><div class="field"><label for="prg">State or region (for courses near you)</label><select id="prg" name="region"><option value="">Work it out from my home city${HC.regionOf({ ...p, region: '' }) ? ' (' + esc(HC.regionOf({ ...p, region: '' })) + ')' : ''}</option>${[...HC.STATES_AU, 'Auckland', 'Wellington', 'Nelson', 'Canterbury', 'Otago', 'Waikato'].map(r => `<option ${r === p.region ? 'selected' : ''}>${esc(r)}</option>`).join('')}</select></div>
       <div class="field"><label for="pcy">CPD year</label><input id="pcy" type="number" name="cpdYear" value="${esc(p.cpdYear)}"></div></div>
-      <h3 style="margin:18px 0 4px">Your employer</h3><p class="note" style="margin:0 0 10px">${inHosp() && HOSP.org.claimsEmail ? `Leave the claims admin's email blank to use ${esc(HOSP.org.name)}'s (${esc(HOSP.org.claimsEmail)}). ` : ''}Used to address claim emails and check receipts. Type figures from your own policy; Hoggy assumes none. Stored on this device only; not sent to Hoggy's server.</p><div class="two">${[['name','Employer / health service','text'],['adminEmail',"Claims admin's email",'email'],['approverName',"Approver's name (head of department)",'text'],['approverEmail',"Approver's email",'email'],['employeeId','Employee ID','text'],['costCentre','Cost centre','text'],['claimDays','Claim within (days after the trip)','number'],['hotelPerNight','Hotel limit per night (' + S.profile.currency + ')','number'],['mealsPerDay','Meals limit per day (' + S.profile.currency + ')','number'],['clause','Policy name and clause (printed beside any limit)','text']].map(([k, l, ty]) => `<div class="field"><label for="emp-${k}">${l}</label><input id="emp-${k}" type="${ty}" data-emp="${k}" ${ty === 'number' ? 'min="0" step="any"' : 'maxlength="120"'} value="${esc((p.employer || {})[k] || '')}"${k === 'adminEmail' && inHosp() && HOSP.org.claimsEmail ? ` placeholder="${esc(HOSP.org.claimsEmail)} (your hospital)"` : ''}></div>`).join('')}</div><h3 style="margin:18px 0 4px">Expense caps per receipt (optional)</h3><p class="note" style="margin:0 0 10px">Leave blank unless your employer sets a limit. Enter your own policy figures; Hoggy does not assume any.</p><div class="two">${CATS.map(k => `<div class="field"><label for="cap-${esc(k)}">${esc(k)}</label><input id="cap-${esc(k)}" type="number" min="0" data-cap="${esc(k)}" value="${esc(p.caps[k] || '')}"></div>`).join('')}</div>
+      <h2 style="margin:18px 0 4px">Your employer</h2><p class="note" style="margin:0 0 10px">${inHosp() && HOSP.org.claimsEmail ? `Leave the claims admin's email blank to use ${esc(HOSP.org.name)}'s (${esc(HOSP.org.claimsEmail)}). ` : ''}Used to address claim emails and check receipts. Type figures from your own policy; Hoggy assumes none. Stored on this device only; not sent to Hoggy's server.</p><div class="two">${[['name','Employer / health service','text'],['adminEmail',"Claims admin's email",'email'],['approverName',"Approver's name (head of department)",'text'],['approverEmail',"Approver's email",'email'],['employeeId','Employee ID','text'],['costCentre','Cost centre','text'],['claimDays','Claim within (days after the trip)','number'],['hotelPerNight','Hotel limit per night (' + S.profile.currency + ')','number'],['mealsPerDay','Meals limit per day (' + S.profile.currency + ')','number'],['clause','Policy name and clause (printed beside any limit)','text']].map(([k, l, ty]) => `<div class="field"><label for="emp-${k}">${l}</label><input id="emp-${k}" type="${ty}" data-emp="${k}" ${ty === 'number' ? 'min="0" step="any"' : 'maxlength="120"'} value="${esc((p.employer || {})[k] || '')}"${k === 'adminEmail' && inHosp() && HOSP.org.claimsEmail ? ` placeholder="${esc(HOSP.org.claimsEmail)} (your hospital)"` : ''}></div>`).join('')}</div><h2 style="margin:18px 0 4px">Expense caps per receipt (optional)</h2><p class="note" style="margin:0 0 10px">Leave blank unless your employer sets a limit. Enter your own policy figures; Hoggy does not assume any.</p><div class="two">${CATS.map(k => `<div class="field"><label for="cap-${esc(k)}">${esc(k)}</label><input id="cap-${esc(k)}" type="number" min="0" data-cap="${esc(k)}" value="${esc(p.caps[k] || '')}"></div>`).join('')}</div>
       <button class="btn primary" type="submit">Save</button></form></div>
-    <div>${hospPanel()}${NET.online ? `<div class="panel acct-panel"><h3>Account</h3>${NET.user ? `<p style="color:var(--muted);margin-bottom:12px">Signed in as ${esc(NET.user.email || NET.user.name)}. Trips, receipts and CPD sync to your account.</p><button class="btn" data-act="signout">Sign out</button>` : '<p style="color:var(--muted);margin-bottom:12px">Sign in to sync your trips, receipts and CPD across devices and get your receipt forwarding address.</p><button class="btn primary" data-act="signin">Sign in or create an account</button>'}</div>` : ''}<div class="panel"><h3>Your data</h3><p style="color:var(--muted);margin-bottom:12px">Stored on this device, and synced with your account if you sign in. Export a backup of your trips, receipts metadata and CPD log.</p><div class="row"><button class="btn" data-act="backup">Download backup</button><button class="btn danger" data-act="wipe">Erase everything</button>${NET.user ? '<button class="btn danger" data-act="delaccount">Delete account</button>' : ''}</div></div></div></div>`;
+    <div>${hospPanel()}${NET.trouble ? `<div class="panel acct-panel"><h2>Account</h2><p style="color:var(--muted)">${TROUBLE} Your trips and receipts on this device are safe.</p><p style="margin-top:12px"><button class="btn" data-act="retry">Try again</button></p></div>` : ''}${NET.online ? `<div class="panel acct-panel"><h2>Account</h2>${NET.user ? `<p style="color:var(--muted);margin-bottom:12px">Signed in as ${esc(NET.user.email || NET.user.name)}. Trips, receipts and CPD sync to your account.</p><button class="btn" data-act="signout">Sign out</button>` : '<p style="color:var(--muted);margin-bottom:12px">Sign in to sync your trips, receipts and CPD across devices and get your receipt forwarding address.</p><button class="btn primary" data-act="signin">Sign in or create an account</button>'}</div>` : ''}<div class="panel"><h2>Your data</h2><p style="color:var(--muted);margin-bottom:12px">Stored on this device, and synced with your account if you sign in. Export a backup of your trips, receipts metadata and CPD log.</p><div class="row"><button class="btn" data-act="backup">Download backup</button><button class="btn danger" data-act="wipe">Erase this device</button>${NET.user ? '<button class="btn danger" data-act="delaccount">Delete account</button>' : ''}</div></div></div></div>`;
   }
 };
 
@@ -436,9 +449,9 @@ function courseCard(c, place = listPlace(), lang = CUI.listLang) {
   const sum = COURSES.summary[c.id], k = HC.countFor(sum, place, lang), all = HC.countFor(sum, '', 'any'), v = HC.validityOf(c), eq = HC.equivalentLabel(COURSES.cat, c), body = HC.bodyLabel(c.id);
   const where = place ? HC.placeLabel(place) : '';
   const line = k.n ? `${plural(k.n, 'upcoming session')}${where ? ' in ' + esc(where) : ''} · next ${esc(fmtD(k.next))}` : all.n ? `${plural(all.n, 'upcoming session')} elsewhere` : 'Dates not available yet — check provider';
-  return `<article class="card course-card" tabindex="0" role="button" data-act="opencourse" data-id="${esc(c.id)}" aria-label="${esc(c.name)}">
-    <div class="art" style="background:${cgrad(c)}"><b>${esc(HC.shortName(c))}</b><span class="cc">${esc((c.countries || []).slice(0, 4).join(' · '))}${(c.countries || []).length > 4 ? ' +' + ((c.countries || []).length - 4) : ''}</span></div>
-    <div><h3>${esc(c.name)}</h3><div class="meta">${body ? `<span>${esc(body)}</span>` : eq ? `<span>${esc(eq)}</span>` : ''}<span>${line}</span></div></div>
+  return `<article class="card course-card" data-act="opencourse" data-id="${esc(c.id)}">
+    <div class="art" style="background:${cgrad(c)}"><b aria-hidden="true">${esc(HC.shortName(c))}</b><span class="cc">${esc((c.countries || []).slice(0, 4).join(' · '))}${(c.countries || []).length > 4 ? ' +' + ((c.countries || []).length - 4) : ''}</span></div>
+    <div><h3><a class="card-link" href="#/courses/${esc(c.id)}">${esc(c.name)}</a></h3><div class="meta">${body ? `<span>${esc(body)}</span>` : eq ? `<span>${esc(eq)}</span>` : ''}<span>${line}</span></div></div>
     <div class="pills"><span class="pill g">Course</span>${v ? `<span class="pill">Certificate ${esc(v.years)} years</span>` : ''}${commercialPill(c)}</div></article>`;
 }
 /* reminder card for Home (and the Courses page): certificates due within 6 months or expired.
@@ -459,9 +472,9 @@ const bookLabel = s => HC.isArcList(s) ? 'Booking via course centre (ARC list)' 
 function sessionRow(s) {
   const d = new Date(s.start + 'T00:00:00'), m = sessionMeta(s), c = courseOf(s.courseId), planned = S.trips.some(t => t.confId === 'crs-' + s.id), lang = HC.languageLabel(s);
   const pills = [HC.VARIANT_LABEL[s.variant] ? `<span class="pill">${esc(HC.VARIANT_LABEL[s.variant])}</span>` : '', lang ? `<span class="pill w">${esc(lang)}</span>` : '', commercialPill(s)].join('');
-  return `<div class="li sess" role="button" tabindex="0" data-act="session" data-id="${esc(s.id)}" aria-label="${esc(HC.shortName(c))} ${esc(range(s))}, ${esc(s.city)}">
+  return `<div class="li sess" data-act="session" data-id="${esc(s.id)}">
     <div class="sdate" aria-hidden="true"><b>${d.getDate()}</b><span>${esc(d.toLocaleDateString('en-AU', { month: 'short' }))}</span></div>
-    <div class="grow"><div class="t">${esc(range(s))} · ${esc(HC.lengthLabel(s))}</div><div class="s">${esc(placeOf(s))}${s.venue ? ' · ' + esc(s.venue) : ''}</div><div class="s">${esc(s.provider)} · ${esc(m.price)}${m.seats ? ' · ' + esc(m.seats) : ''}</div>${pills ? `<div class="pills" style="margin-top:6px">${pills}</div>` : ''}</div>
+    <div class="grow"><div class="t"><button type="button" class="linkbtn sess-open" data-act="session" data-id="${esc(s.id)}" aria-label="${esc(HC.shortName(c))} ${esc(range(s))}, ${esc(s.city)}: details">${esc(range(s))}</button> · ${esc(HC.lengthLabel(s))}</div><div class="s">${esc(placeOf(s))}${s.venue ? ' · ' + esc(s.venue) : ''}</div><div class="s">${esc(s.provider)} · ${esc(m.price)}${m.seats ? ' · ' + esc(m.seats) : ''}</div>${pills ? `<div class="pills" style="margin-top:6px">${pills}</div>` : ''}</div>
     <div class="sess-acts">${extA(s.bookingUrl, esc(bookLabel(s)))}<button class="btn sm primary" data-act="plancourse" data-id="${esc(s.id)}" ${planned ? 'disabled' : ''}>${planned ? 'In your trips' : 'Plan trip'}</button></div></div>`;
 }
 const sessFilter = () => ({ courseId: CUI.course, country: CUI.country, lang: CUI.lang, state: CUI.state, city: CUI.city, month: CUI.month });
@@ -469,7 +482,7 @@ function sessionList() {
   const L = HC.filterSessions(COURSES.sessions, sessFilter(), today());
   const cnt = $('#sessCount'), box = $('#sessList'); if (!box) return;
   cnt.textContent = plural(L.length, 'session');
-  box.innerHTML = L.length ? L.slice(0, CUI.limit).map(sessionRow).join('') + (L.length > CUI.limit ? `<div style="text-align:center;padding:14px"><button class="btn" data-act="moresess">Show more (${L.length - CUI.limit} left)</button></div>` : '') : `<div class="empty"><h3>No sessions match</h3><p>${CUI.country || CUI.lang !== 'any' ? 'Try all countries or any language, or ' : 'Try '}another state, city or month.</p></div>`;
+  box.innerHTML = L.length ? L.slice(0, CUI.limit).map(sessionRow).join('') + (L.length > CUI.limit ? `<div style="text-align:center;padding:14px"><button class="btn" data-act="moresess">Show more (${L.length - CUI.limit} left)</button></div>` : '') : `<div class="empty"><h2>No sessions match</h2><p>${CUI.country || CUI.lang !== 'any' ? 'Try all countries or any language, or ' : 'Try '}another state, city or month.</p></div>`;
 }
 function courseFilters() {
   const o = HC.filterOptions(COURSES.sessions, sessFilter(), today());
@@ -506,7 +519,7 @@ function familyPanel(fam, place, lang, cur) {
 function courseView(id) {
   const c = courseOf(id);
   if (!COURSES.cat) return `<a class="back" href="#/courses">← All courses</a><div class="loading" aria-busy="true">Loading course dates…</div>`;
-  if (!c) return `<a class="back" href="#/courses">← All courses</a><div class="empty"><h3>Course not found</h3><p><a class="u" href="#/courses">See all courses</a></p></div>`;
+  if (!c) return `<a class="back" href="#/courses">← All courses</a><div class="empty"><h2>Course not found</h2><p><a class="u" href="#/courses">See all courses</a></p></div>`;
   const v = HC.validityOf(c), eq = HC.equivalentLabel(COURSES.cat, c), nz = (COURSES.cat.courses || []).find(x => x.nzEquivalentOf === c.id), ev = (c.audienceEvidence || {}), fv = (c.formatEvidence || {});
   const owner = (c.providers || [])[0] || {}, fam = HC.familyOf(c.id), body = HC.bodyLabel(c.id);
   const head = `<a class="back" href="#/courses">← All courses</a><div class="page-head"><div>${body ? `<span class="eyebrow">${esc(body)}</span>` : eq ? `<span class="eyebrow">${esc(eq)}</span>` : ''}<h1 class="ch1">${esc(c.name)}</h1><p>${esc(owner.name || '')}${nz ? ` · In New Zealand: <a class="u" href="#/courses/${esc(nz.id)}">${esc(nz.name)}</a>` : ''}</p>${c.providerType === 'commercial' ? '<div class="pills" style="margin-top:6px"><span class="pill">Commercial provider</span></div>' : ''}</div><a class="btn sm" href="#/certs">${icon('cert')} My certificates</a></div>`
@@ -515,15 +528,16 @@ function courseView(id) {
   const facts = `<div class="facts kfacts">${fact('Length', c.typicalLength ? esc(c.typicalLength) : CHECK)}${fact('Certificate validity', v ? esc(v.years) + ' years' : CHECK, v ? `As published by the course owner. ${srcLink(v.source)}` : 'Not confirmed in Hoggy yet.')}${feeFact(c)}${cpdFact(c)}</div>`;
   const about = `<section aria-labelledby="aboutH"><div class="section"><h2 id="aboutH">About this course</h2></div><div class="facts cfacts">${fact("Who it's for", c.audience ? esc(c.audience) : CHECK, srcLink(ev.sourceUrl))}${fact('Format', c.format ? esc(c.format) : CHECK, srcLink(fv.sourceUrl))}${fact('Renewal', c.recertification ? esc(c.recertification) : CHECK, srcLink((c.recertificationEvidence || {}).sourceUrl))}</div>
     <p class="note" style="margin:-4px 0 0">${c.verified === true ? '' : 'Hoggy has not reviewed this course\'s facts yet (dates are read per session). '}Course pages: ${(c.providers || []).filter(p => p.url).map(p => srcLink(p.url, p.name)).join(' · ')}</p></section>` + (fam ? familyPanel(fam, CUI.country, CUI.lang, c.id) : '');
-  if (!haveSessions(c.id)) return head + facts + '<div class="loading" aria-busy="true">Loading sessions…</div>' + about;
+  const rep = `<p class="note report-line"><button type="button" class="linkbtn" data-act="report" data-kind="course" data-id="${esc(c.id)}">Report a problem with this listing</button> · <a class="u" href="/courses/${esc(c.id)}">Page link</a></p>`;
+  if (!haveSessions(c.id)) return head + facts + '<div class="loading" aria-busy="true">Loading sessions…</div>' + about + rep;
   const ss = HC.filterSessions(COURSES.sessions, { courseId: c.id }, today());
   /* sessions carry their own evidence (provider page, quote, date read), so they show even before the course facts are reviewed */
   if (!ss.length) {
-    return head + facts + `<div class="panel nodates" style="margin-top:4px"><h3>Dates not available yet — check provider</h3><p style="color:var(--muted)">Hoggy shows only dates it has read on the provider's own page, and it has none for this course yet.${c.renameNote ? ' The course owner may have changed its name; this is not confirmed.' : ''}</p><div class="row" style="margin-top:12px">${(c.providers || []).filter(p => p.url).map(p => extA(p.schedulePage || p.url, 'Check ' + esc(p.name.split(/[(:;]/)[0].trim()))).join('')}</div></div>` + about;
+    return head + facts + `<div class="panel nodates" style="margin-top:4px"><h2>Dates not available yet — check provider</h2><p style="color:var(--muted)">Hoggy shows only dates it has read on the provider's own page, and it has none for this course yet.${c.renameNote ? ' The course owner may have changed its name; this is not confirmed.' : ''}</p><div class="row" style="margin-top:12px">${(c.providers || []).filter(p => p.url).map(p => extA(p.schedulePage || p.url, 'Check ' + esc(p.name.split(/[(:;]/)[0].trim()))).join('')}</div></div>` + about + rep;
   }
   const kinds = [...new Set(ss.map(s => s.sourceKind).filter(Boolean))].slice(0, 3);
   return head + facts + `<div class="section" style="margin-top:22px"><h2>Upcoming sessions</h2></div>${courseFilters()}<div class="list sess-list" id="sessList"></div>
-    <p class="note">Dates come from ${c.id.startsWith('als') ? 'the Australian Resuscitation Council course list, ACRRM and course centres' : 'the provider\'s own page'}${kinds.length ? ' (' + esc(kinds.join('; ')) + ')' : ''}, last checked ${esc(fmtD(ss[0].lastVerified))}. “(inferred)” means the page gave only a start date and Hoggy took the length from the course page; check with the provider. Prices are in the currency the provider lists; Hoggy does not convert them. Sessions and seats change, so confirm when you book.</p>` + about;
+    <p class="note">Dates come from ${c.id.startsWith('als') ? 'the Australian Resuscitation Council course list, ACRRM and course centres' : 'the provider\'s own page'}${kinds.length ? ' (' + esc(kinds.join('; ')) + ')' : ''}, last checked ${esc(fmtD(ss[0].lastVerified))}. “(inferred)” means the page gave only a start date and Hoggy took the length from the course page; check with the provider. Prices are in the currency the provider lists; Hoggy does not convert them. Sessions and seats change, so confirm when you book.</p>` + about + rep;
 }
 function sessionSheet(sid, fallback) {
   const s = sessionById(sid), c = courseOf(s ? s.courseId : fallback && fallback.courseId), e = s ? HC.sessionEvent(s, c) : fallback; if (!e) return;
@@ -563,7 +577,7 @@ function courseListView() {
   const cards = rest.slice(0, CUI.lim).map(c => courseCard(c, place, lang)).join('') + (rest.length > CUI.lim ? `<div style="grid-column:1/-1;text-align:center;padding:14px"><button class="btn" data-act="morecourses">Show more (${rest.length - CUI.lim} left)</button></div>` : '');
   return filters + (fams ? `<div class="section" style="margin-top:14px"><h2>Life support and trauma certificates</h2></div><div class="fam-grid">${fams}</div>` : '')
     + `<div class="section" style="margin-top:18px"><h2>${q ? 'Courses matching “' + esc(CUI.q) + '”' : 'Other courses'}${place ? ' · ' + esc(HC.placeLabel(place)) : ''}</h2><span class="count">${plural(rest.length, 'course')}</span></div>`
-    + (cards ? `<div class="grid">${cards}</div>` : '<div class="empty"><h3>No other courses here yet</h3><p>Try all countries, or any language.</p></div>')
+    + (cards ? `<div class="grid">${cards}</div>` : '<div class="empty"><h2>No other courses here yet</h2><p>Try all countries, or any language.</p><p style="margin-top:16px"><a class="btn ghost" href="#/list-event">List a course session</a></p></div>')
     + `<p class="note" style="margin-top:18px">Hoggy lists ${n0(tot.types)} course types with ${n0(tot.sessions)} upcoming sessions in ${n0(tot.countries)} countries, each read from the provider's or course owner's own page. Prices stay in the currency the provider lists. EMST, CCrISP and ASSET dates from RACS are not available yet. Course dates were last checked on ${esc(fmtD(COURSES.cat.generated))}.</p>`;
 }
 const n0 = v => Number(v || 0).toLocaleString('en-AU');
@@ -630,9 +644,9 @@ async function loadTop(spec = '') {
 }
 function topCard(x) {
   const c = byId(x.confId); if (!c) return '';
-  return `<article class="card topcard" tabindex="0" role="button" data-act="open" data-id="${esc(c.id)}" aria-label="${esc(x.title)}: ${esc(x.avg.toFixed(1))} out of 5 from ${esc(plural(x.n, 'review'))}, ${esc(x.verified)} verified">
-    <div class="art sm" style="background:${grad(c)}"><b>${esc(initials(c))}</b><span class="cc">${FLAG(c.countryCode)} ${esc(c.countryCode)}</span></div>
-    <div><h3>${esc(x.title)}</h3><div class="meta"><span>${esc(c.specialty)}</span><span>${x.upcoming ? 'Next: ' + esc(c.city) + ' · ' + esc(range(c)) : 'Last held ' + esc(c.start.slice(0, 4))}</span></div></div>
+  return `<article class="card topcard" data-act="open" data-id="${esc(c.id)}">
+    <div class="art sm" style="background:${grad(c)}"><b aria-hidden="true">${esc(initials(c))}</b><span class="cc"><span aria-hidden="true">${FLAG(c.countryCode)} </span>${esc(c.countryCode)}</span></div>
+    <div><h3><a class="card-link" href="/conferences/${esc(encodeURIComponent(c.id))}" data-act="open" data-id="${esc(c.id)}" aria-label="${esc(x.title)}: ${esc(x.avg.toFixed(1))} out of 5 from ${esc(plural(x.n, 'review'))}, ${esc(x.verified)} verified">${esc(x.title)}</a></h3><div class="meta"><span>${esc(c.specialty)}</span><span>${x.upcoming ? 'Next: ' + esc(c.city) + ' · ' + esc(range(c)) : 'Last held ' + esc(c.start.slice(0, 4))}</span></div></div>
     <div class="top-score"><span class="stars" aria-hidden="true">${stars(x.avg)}</span> <b>${x.avg.toFixed(1)}</b><span class="top-n">${plural(x.n, 'review')} · ${x.verified} verified</span></div></article>`;
 }
 function topSection() {
@@ -647,7 +661,7 @@ function drawTopList() {
   if (UI.sort !== 'rating') { el.hidden = true; el.innerHTML = ''; return; }
   el.hidden = false;
   const spec = UI.spec === 'All' ? '' : UI.spec, head = `<div class="section"><h2 id="topH">Highest rated by attendees${spec ? ' · ' + esc(spec) : ''}</h2></div>`;
-  if (!NET.online) { el.innerHTML = head + '<p class="note">Attendee scores need the Hoggy server.</p>'; return; }
+  if (!NET.online) { el.innerHTML = head + '<p class="note">Attendee scores aren\u2019t available right now. Try again in a minute.</p>'; return; }
   const L = NET.top[spec];
   if (!L) { el.innerHTML = head + '<p class="note">Loading scores…</p>'; loadTop(spec).then(ok => { if (ok && route() === 'discover' && UI.sort === 'rating') drawTopList(); }); return; }
   const shown = L.filter(x => byId(x.confId)).slice(0, TOP_N.discover);
@@ -671,7 +685,7 @@ function results() {
   drawTopList();
   const cm = q && COURSES.cat ? HC.searchCourses(COURSES.cat, q) : [];
   $('#count').textContent = `${L.length} result${L.length === 1 ? '' : 's'}${cm.length ? ' · ' + plural(cm.length, 'course') : ''}`;
-  $('#results').innerHTML = cm.map(courseCard).join('') + L.slice(0, UI.limit).map(card).join('') + (L.length > UI.limit ? `<div style="grid-column:1/-1;text-align:center;padding:14px"><button class="btn" data-act="more">Show more (${L.length - UI.limit} left)</button></div>` : '') || (cm.length ? '' : '<div class="empty" style="grid-column:1/-1"><h3>No conferences match</h3><p>Try removing a filter.</p></div>');
+  $('#results').innerHTML = cm.map(courseCard).join('') + L.slice(0, UI.limit).map(card).join('') + (L.length > UI.limit ? `<div style="grid-column:1/-1;text-align:center;padding:14px"><button class="btn" data-act="more">Show more (${L.length - UI.limit} left)</button></div>` : '') || (cm.length ? '' : `<div class="empty" style="grid-column:1/-1"><h2>No conferences match</h2><p>Try a shorter search or fewer filters.</p><p style="margin-top:16px"><button class="btn primary" data-act="clearfilters">Clear search and filters</button> <a class="btn ghost" href="#/list-event">Know one we're missing?</a></p></div>`);
 }
 const AFTER = {
   courses() {
@@ -846,7 +860,7 @@ function hospPanel() {
       <details class="hnew"><summary>Hospital settings</summary><form id="hset" style="margin-top:10px">${field('hs1', 'Name', `<input id="hs1" name="name" type="text" maxlength="120" required value="${esc(o.name)}">`)}${field('hs2', 'Claims email (finance)', `<input id="hs2" name="claimsEmail" type="email" maxlength="254" value="${esc(o.claimsEmail)}">`)}${field('hs3', `Yearly study allowance per doctor (${esc(o.currency)})`, `<input id="hs3" name="allowance" type="number" min="0" step="1" value="${esc(o.defaultAllowanceCents / 100)}">`)}<button class="btn primary" type="submit">Save hospital</button></form></details>` : ''}
     <p style="margin-top:14px"><button class="btn sm danger" data-act="hleave">Leave hospital</button></p></div>`;
 }
-const gate = (title, who) => `<div class="page-head"><div><h1>${esc(title)}</h1></div></div><div class="empty"><h3>${!NET.user ? 'Sign in first' : !HOSP.loaded ? 'Loading…' : HOSP.org ? `Only ${who} can open this page` : 'Join a hospital first'}</h3><p>${HOSP.org ? `You are ${esc(ROLE_NAMES[HOSP.org.role])} at ${esc(HOSP.org.name)}.` : 'Hospitals are optional. Join or set one up under Settings, Your hospital.'}</p><p style="margin-top:16px"><a class="btn" href="#/settings">Settings</a></p></div>`;
+const gate = (title, who) => `<div class="page-head"><div><h1>${esc(title)}</h1></div></div><div class="empty"><h2>${!NET.user ? 'Sign in first' : !HOSP.loaded ? 'Loading…' : HOSP.org ? `Only ${who} can open this page` : 'Join a hospital first'}</h2><p>${HOSP.org ? `You are ${esc(ROLE_NAMES[HOSP.org.role])} at ${esc(HOSP.org.name)}.` : 'Hospitals are optional. Join or set one up under Settings, Your hospital.'}</p><p style="margin-top:16px"><a class="btn" href="#/settings">Settings</a></p></div>`;
 function miniBudget(b, extra) { return b ? `<dl class="budget-grid sm">${[['Allowance', b.allowance], ['Committed', b.committed], ['Spent', b.spent], ['Remaining', b.remaining]].map(([k, v]) => `<div class="${k === 'Remaining' && v < 0 ? 'over' : ''}"><dt>${k} ${esc(b.year)}</dt><dd>${hmoney(v)}</dd></div>`).join('')}${extra || ''}</dl>` : ''; }
 function approvalCard(a) {
   const ev = a.event || {}, after = a.budget ? a.budget.remaining - a.estimateCents : null;
@@ -862,7 +876,7 @@ Object.assign(VIEWS, {
     if (HOSP.pend === null) loadApprovals();
     const head = `<div class="page-head"><div><h1>Approvals</h1><p>Trip requests from ${esc(HOSP.org.name)}, with each doctor's study budget for the year of the event. Pending requests are not taken off a budget until approved.</p></div></div>`;
     if (HOSP.pend === null) return head + '<div class="loading" aria-busy="true">Loading…</div>';
-    return head + (HOSP.pend.length ? HOSP.pend.map(approvalCard).join('') : '<div class="empty"><h3>Nothing waiting</h3><p>New requests show here, and on your Home page.</p></div>')
+    return head + (HOSP.pend.length ? HOSP.pend.map(approvalCard).join('') : '<div class="empty"><h2>Nothing waiting</h2><p>New requests show here, and on your Home page.</p></div>')
       + (HOSP.decided.length ? `<div class="section"><h2>Decided recently</h2></div><div class="panel"><div class="list">${HOSP.decided.map(a => `<div class="li"><div class="grow"><div class="t">${esc(a.doctor)} · ${esc((a.event || {}).name)}</div><div class="s">${a.status === 'approved' ? 'Approved' : 'Not approved'}${a.decidedBy ? ' by ' + esc(a.decidedBy) : ''} · ${esc(fmtD(dayOf(a.decided)))}${a.comment ? ' · “' + esc(a.comment) + '”' : ''}</div></div><div class="amt">${hmoney(a.estimateCents)}</div></div>`).join('')}</div></div>` : '');
   },
   team() {
@@ -929,12 +943,13 @@ document.addEventListener('change', async e => {
 function openOverlay(html, center) {
   const o = $('#overlay'), wasOpen = !o.hidden, sh = o.querySelector('.sheet'), top = sh ? sh.scrollTop : 0, act = document.activeElement, actKey = act && o.contains(act) ? act.getAttribute('data-act') || act.id : '';
   o.className = 'overlay' + (center ? ' c' : '') + (wasOpen ? ' still' : ''); o.innerHTML = html;
-  if (!wasOpen) { o.hidden = false; o._prev = document.activeElement; document.body.style.overflow = 'hidden'; const f = o.querySelector('[autofocus],button.close'); f && f.focus({ preventScroll: true }); return; }
+  if (!wasOpen) { o.hidden = false; o._prev = document.activeElement; document.body.style.overflow = 'hidden'; $('.app').inert = true; const f = o.querySelector('[autofocus],button.close') || o.querySelector('.sheet [data-act=close],.sheet button,.sheet a[href],.sheet input'); f && f.focus({ preventScroll: true }); return; }
+  const af = o.querySelector('[autofocus]'); if (af && !o.contains(document.activeElement)) af.focus({ preventScroll: true });
   /* re-render of an open dialog: keep scroll position and focus, no re-animation */
   const ns = o.querySelector('.sheet'); if (ns) ns.scrollTop = top;
   const back = actKey && (o.querySelector(`[data-act="${CSS.escape(actKey)}"]`) || document.getElementById(actKey)); if (back) back.focus({ preventScroll: true });
 }
-function closeOverlay(keepHash) { if (!keepHash && reviewHash()) history.replaceState(null, '', '#/discover'); const o = $('#overlay'); const pv = o._prev && o._prev.isConnected ? o._prev : null; o._prev = null; o.hidden = true; o.className = 'overlay'; o.innerHTML = ''; document.body.style.overflow = ''; if (pv) pv.focus({ preventScroll: true }); }
+function closeOverlay(keepHash) { if (!keepHash && reviewHash()) history.replaceState(null, '', '#/discover'); const o = $('#overlay'); const pv = o._prev && o._prev.isConnected ? o._prev : null; o._prev = null; o.hidden = true; o.className = 'overlay'; o.innerHTML = ''; document.body.style.overflow = ''; $('.app').inert = false; if (pv) pv.focus({ preventScroll: true }); }
 /* the line under "When": what Hoggy read, where, and when (B30) */
 function dateNote(c) {
   const link = (u, t) => u && safeUrl(u) !== '#' ? ` · <a class="u" target="_blank" rel="noopener noreferrer" href="${esc(safeUrl(u))}">${t}</a>` : '';
@@ -954,6 +969,7 @@ function detail(id, fetchReviews = true) {
   ${c.flagged ? '<p class="check warn" style="margin:0 0 10px">! Hoggy\'s updater noticed a change or problem on the organiser site (dead link or cancellation wording). Check the official site before booking.</p>' : ''}<div class="pills" style="margin:0 0 14px" aria-label="Quality signals">${c.cpdBody && c.cpdVerified ? `<span class="pill g">Accreditation: ${esc(c.cpdBody)}</span>` : '<span class="pill w">Accreditation: confirm with organiser</span>'}${{ confirmed: '<span class="pill g">Dates confirmed</span>', unchecked: '<span class="pill" title="Confirmed before Hoggy stored the organiser\'s wording; being re-checked">Dates confirmed (not re-checked)</span>', estimated: '<span class="pill w">Dates estimated</span>' }[dateEv(c)]}<span class="pill">Run by ${esc(c.organiser)}</span><span class="pill">${esc(c.format)}</span>${figAtt(c) >= 3000 ? '<span class="pill">Large (3,000+)</span>' : figAtt(c) ? '<span class="pill">~' + esc(Number(figAtt(c)).toLocaleString()) + ' attendees</span>' : ''}</div>
   <p class="note" style="margin:-6px 0 12px">Elsewhere on the web: <a style="text-decoration:underline" target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=${encodeURIComponent(c.name + ' ' + c.start.slice(0, 4) + ' review')}">search reviews</a> (external, not part of Hoggy's score)</p>
   <div class="row"><a class="btn sm" target="_blank" rel="noopener noreferrer" href="${esc(L.flights)}">✈ Flights ${icon('ext')}</a><a class="btn sm" target="_blank" rel="noopener noreferrer" href="${esc(L.hotels)}">🛏 Hotels ${icon('ext')}</a><button class="btn sm ghost" data-act="ics" data-id="${esc(id)}">+ Calendar</button></div>
+  ${c.listingType === 'course' ? '<p class="note">Course session listed by its organiser.</p>' : ''}<p class="note report-line"><button type="button" class="linkbtn" data-act="report" data-kind="conference" data-id="${esc(id)}">Report a problem with this listing</button> · <a class="u" href="/conferences/${esc(encodeURIComponent(id))}">Page link</a></p>
   ${reviewsSection(c, R)}${coverageSection(c)}</div></div>`);
   if (NET.online && fetchReviews) loadCoverage(skey(c)).then(ok => { if (ok && !$('#overlay').hidden && $('#covsec') && $('#covsec').dataset.id === id) $('#covsec').outerHTML = coverageSection(c); });
   if (NET.online && fetchReviews) loadReviews(id).then(ok => { if (ok && !$('#overlay').hidden && $('#rvsec') && $('#rvsec').dataset.id === id) detail(id, false); }); /* fetch once per open; re-rendering with fetch again looped forever */
@@ -976,7 +992,7 @@ function reviewItem(v, c) {
 }
 function reviewsSection(c, R) {
   const key = skey(c), sc = scoreOf(c);
-  if (!NET.online) return `<div class="section" style="margin-top:28px"><h2 style="font-size:20px">Reviews</h2></div><p class="note">Reviews need the Hoggy server and an account. Offline mode cannot post or show shared reviews.</p>${R.map(v => `<div class="review"><div class="who">${esc(v.author)} <span class="pill">On this device only</span></div><p>${esc(v.text)}</p></div>`).join('')}`;
+  if (!NET.online) return `<div class="section" style="margin-top:28px"><h2 style="font-size:20px">Reviews</h2></div><p class="note">Reviews aren\u2019t available right now. Try again in a minute.</p>${R.map(v => `<div class="review"><div class="who">${esc(v.author)} <span class="pill">On this device only</span></div><p>${esc(v.text)}</p></div>`).join('')}`;
   const dimsHtml = sc && sc.avg != null ? `<div class="dimgrid wide">${DIM_LABELS.filter(([k]) => sc.dims && sc.dims[k]).map(([k, l]) => `<div class="dim"><span>${l}</span><b>${sc.dims[k].avg.toFixed(1)} <small>(${sc.dims[k].n})</small></b></div>`).join('')}</div>` : '';
   return `<section id="rvsec" data-id="${esc(c.id)}" aria-labelledby="rvh"><div class="section" style="margin-top:28px"><h2 id="rvh" style="font-size:20px">Reviews</h2><span class="rv-score">${scoreLine(sc)}</span></div>
   ${dimsHtml}<details class="how"><summary>How scores work</summary><p class="note">${esc(HOW_SCORES)}</p></details>
@@ -1005,7 +1021,7 @@ function coverageDialog(c) {
     const body = { series: skey(c), type: fd.get('type'), url: String(fd.get('url') || '').trim(), publication: String(fd.get('publication') || '').trim(), year: fd.get('year') ? +fd.get('year') : null, title: String(fd.get('title') || '').trim() };
     const v = window.HoggyCoverage.validate(body); if (!v.ok) return $('#cverr').textContent = v.error;
     const r = await api('/api/coverage', { method: 'POST', body });
-    if (r.error) return $('#cverr').textContent = r.error === 'offline' ? 'Server not reachable. Try again.' : r.error;
+    if (r.error) return $('#cverr').textContent = r.error === 'offline' ? 'Can\u2019t reach Hoggy right now. Try again in a minute.' : r.error;
     toast('Thanks · an admin will check the link before it shows'); detail(c.id, false);
   }, 'Send for checking');
 }
@@ -1014,7 +1030,7 @@ const GUIDE = 'Keep it honest and about the event: the programme, speakers, venu
 /* open the review form for a series; signed-out visitors sign in first and come straight back */
 function startReview(key, opts = {}) {
   if (!editionsOf(key).length) { toast('We could not find that conference'); return false; }
-  if (!NET.online) { toast('Reviews need the Hoggy server. Try again when you are online'); return false; }
+  if (!NET.online) { toast('Reviews aren\u2019t available right now. Try again in a minute.'); return false; }
   if (!NET.user) { authDialog('Sign in to review this conference', () => startReview(key, opts)); return true; }
   reviewForm(key, opts); return true;
 }
@@ -1045,7 +1061,7 @@ function reviewForm(key, opts = {}) {
     const r = ed ? await api('/api/reviews/' + encodeURIComponent(ed.id), { method: 'PUT', body: { ratings, text } })
       : await api('/api/reviews', { method: 'POST', body: { series: key, editions: yrs.map(y => ({ year: y, city: String(fd.get('city') || '').trim() })), ratings, text } });
     btn.disabled = false;
-    if (r.error) return errEl.textContent = r.error === 'offline' ? 'Server not reachable. Try again.' : r.error.charAt(0).toUpperCase() + r.error.slice(1) + '.';
+    if (r.error) return errEl.textContent = r.error === 'offline' ? 'Can\u2019t reach Hoggy right now. Try again in a minute.' : r.error.charAt(0).toUpperCase() + r.error.slice(1) + '.';
     await refreshReviews(latest.id);
     if (ed) { toast('Review updated'); return backToConf(opts.conf || latest.id); }
     const made = (r.reviews || []).map(x => ({ ...x, seriesKey: key }));
@@ -1274,6 +1290,7 @@ async function api(path, o = {}) {
   try {
     const r = await fetch(path, { method: o.method || 'GET', headers: { 'X-Requested-With': 'hoggy', ...(o.body ? { 'Content-Type': 'application/json' } : {}) }, body: o.body ? JSON.stringify(o.body) : undefined, credentials: 'same-origin' });
     const ct = r.headers.get('content-type') || '';
+    if (r.status >= 500) noteTrouble(true); else if (r.ok && NET.trouble && NET.online) noteTrouble(false);
     if (!ct.includes('json')) return { error: 'offline', status: r.status };
     const j = await r.json(); return r.ok ? j : { ...j, status: r.status };
   } catch (e) { return { error: 'offline', status: 0 }; }
@@ -1328,8 +1345,9 @@ async function pullInbox(manual) {
   if (n) { save(); toast(`${n} receipt${n > 1 ? 's' : ''} arrived by email`); bgRender(); } else if (manual) toast('Inbox is empty');
 }
 async function loadConferences() {
-  const r = await api('/api/conferences'); if (r.error || !Array.isArray(r.conferences) || r.conferences.length < 10) return;
-  CONFS.length = 0; r.conferences.forEach(c => CONFS.push(c)); NET.confUpdated = r.updated;
+  const r = await api('/api/conferences');
+  if (!r.error && Array.isArray(r.conferences) && r.conferences.length >= 10) { CONFS.length = 0; r.conferences.forEach(c => CONFS.push(c)); NET.confUpdated = r.updated; if (r.fallback) noteTrouble(true); }
+  if (DEEP.wait) { const f = DEEP.wait; DEEP.wait = null; f(); }
 }
 /* courses: the catalogue with per-course counts first; a course's sessions when a page needs them. A static host (no API) gets the
    bundled files whole, and the counts are worked out here. */
@@ -1362,13 +1380,17 @@ async function loadCourses() {
   if (['courses', 'certs', 'discover'].includes(route())) bgRender(); else renderNav();
 }
 async function boot() {
-  loadCourses();
+  if (NET.booting) return; NET.booting = true;
+  try { await boot0(); } finally { NET.booting = false; }
+}
+async function boot0() {
+  if (!COURSES.loaded) loadCourses();
   await loadConferences();
   const me = await api('/api/me');
-  if (me.error) { NET.online = false; renderAcct(); syncFiles(); return; }
-  NET.online = true; NET.user = me.user; await Promise.all([loadRatings(), loadTop('')]);
+  if (me.error) { NET.online = false; if (me.status >= 500) noteTrouble(true); renderAcct(); syncFiles(); bgRender(); return; }
+  NET.online = true; NET.user = me.user; noteTrouble(false); await Promise.all([loadRatings(), loadTop('')]);
   if (NET.user) { await pullState(); await pullInbox(); await loadMine(); await loadHosp(); }
-  setInterval(() => { if (NET.user) { pullInbox(); refreshHosp(); } }, 60000);
+  if (!NET.timer) NET.timer = setInterval(() => { if (NET.user) { pullInbox(); refreshHosp(); } }, 60000);
   syncFiles();
   NET.booted = true; openReviewLink();
   if (window.__capsCleared) { window.__capsCleared = false; toast('Old default spending caps were removed. Enter your own policy limits in Settings if your employer sets them.'); }
@@ -1376,14 +1398,26 @@ async function boot() {
 }
 /* Sign in / create account. Password rule shown next to the field; errors say what to do next. */
 const PW_MIN = 10;
-function authDialog(title, then) {
-  let mode = 'login', email = '', msg = '', offerSignin = false;
-  const draw = () => { const reg = mode === 'register'; openOverlay(`<div class="sheet center" role="dialog" aria-modal="true" aria-label="Account"><form id="af" novalidate style="padding:22px"><div class="row" style="justify-content:space-between;margin-bottom:14px"><h2 style="font-size:24px;margin:0">${esc(title || (reg ? 'Create your account' : 'Welcome back'))}</h2><button type="button" class="icon-btn" data-act="close" aria-label="Close">${icon('x')}</button></div>
-    ${reg ? field('au1', 'Name', '<input id="au1" type="text" name="name" maxlength="80" autocomplete="name">') : ''}${field('au2', 'Email', `<input id="au2" type="email" name="email" required maxlength="254" autocomplete="email" inputmode="email" value="${esc(email)}" autofocus>`)}
+/* the places a profile can say it is in: the conference list's own country spellings, Australia and New Zealand first */
+const COUNTRY_LIST = () => { const m = window.HoggyListings ? HoggyListings.countryMap(CONFS) : {}; const L = Object.entries(m).map(([code, v]) => ({ code, name: v.name })).sort((a, b) => a.name.localeCompare(b.name)); return [...L.filter(x => x.code === 'AU' || x.code === 'NZ'), ...L.filter(x => x.code !== 'AU' && x.code !== 'NZ')]; };
+const NZ_REGIONS = ['Auckland', 'Wellington', 'Nelson', 'Canterbury', 'Otago', 'Waikato'];
+const regionField = (country, cur, id) => { const L = country === 'Australia' ? HC.STATES_AU : country === 'New Zealand' ? NZ_REGIONS : null; return L ? field(id, country === 'Australia' ? 'State or territory' : 'Region', `<select id="${id}" name="region"><option value="">Choose…</option>${L.map(r => `<option ${r === cur ? 'selected' : ''}>${esc(r)}</option>`).join('')}</select>`) : ''; };
+function authDialog(title, then, opts = {}) {
+  if (NET.trouble && !NET.online) return openOverlay(`<div class="sheet center" role="dialog" aria-modal="true" aria-labelledby="atH"><div style="padding:22px"><div class="row" style="justify-content:space-between;margin-bottom:12px"><h2 id="atH" style="font-size:22px;margin:0">Sign-in is unavailable right now</h2><button type="button" class="icon-btn" data-act="close" aria-label="Close" autofocus>${icon('x')}</button></div><p style="color:var(--muted)">${TROUBLE} Your trips and receipts on this device are safe, and you can still browse conferences and courses.</p><div class="row" style="margin:18px 0 4px;justify-content:flex-end"><button class="btn" data-act="close">Close</button><button class="btn primary" data-act="retry">Try again</button></div></div></div>`, true);
+  let mode = opts.mode || 'login', email = '', msg = '', offerSignin = false;
+  const prof = { name: S.profile.name || '', specialty: S.profile.specialty, country: S.profile.country, region: S.profile.region || '' };
+  const specs = window.HoggySpecialties ? HoggySpecialties.DATA.canonical : [...new Set(CONFS.map(c => c.specialty))].sort();
+  const draw = () => { const reg = mode === 'register'; openOverlay(`<div class="sheet center" role="dialog" aria-modal="true" aria-labelledby="afH"><form id="af" novalidate style="padding:22px"><div class="row" style="justify-content:space-between;margin-bottom:14px"><h2 id="afH" style="font-size:24px;margin:0">${esc(title || (reg ? 'Create your account' : 'Welcome back'))}</h2><button type="button" class="icon-btn" data-act="close" aria-label="Close">${icon('x')}</button></div>
+    ${reg ? `<p class="note" style="margin:-6px 0 14px">Your specialty and location set what Hoggy shows first: conferences in your field and courses near you.</p>` : ''}
+    ${reg ? field('au1', 'Name', `<input id="au1" type="text" name="name" maxlength="80" autocomplete="name" value="${esc(prof.name)}">`) : ''}${field('au2', 'Email', `<input id="au2" type="email" name="email" required maxlength="254" autocomplete="email" inputmode="email" value="${esc(email)}"${reg ? '' : ' autofocus'}>`)}
     <div class="field"><label for="au3">Password</label><input id="au3" type="password" name="password" required maxlength="200" autocomplete="${reg ? 'new-password' : 'current-password'}"${reg ? ` minlength="${PW_MIN}" aria-describedby="au3h"` : ''}>${reg ? `<p class="note field-hint" id="au3h">At least ${PW_MIN} characters</p>` : ''}</div>
+    ${reg ? `${field('au4', 'Specialty', `<select id="au4" name="specialty">${specs.map(x => `<option ${x === prof.specialty ? 'selected' : ''}>${esc(x)}</option>`).join('')}</select>`)}<div class="two">${field('au5', 'Country', `<select id="au5" name="country">${COUNTRY_LIST().map(x => `<option ${x.name === prof.country ? 'selected' : ''}>${esc(x.name)}</option>`).join('')}</select>`)}<div id="au6w">${regionField(prof.country, prof.region, 'au6')}</div></div>` : ''}
     <p class="note" id="aerr" role="alert" style="color:var(--bad);min-height:18px">${esc(msg)}${offerSignin ? ' <button type="button" class="btn ghost sm" id="ato">Sign in instead</button>' : ''}</p><div class="row" style="justify-content:space-between;margin:6px 0 20px"><button type="button" class="btn ghost sm" id="amode">${reg ? 'I have an account' : 'Create account'}</button><button class="btn primary" type="submit" id="asub">${reg ? 'Create account' : 'Sign in'}</button></div></form></div>`, true);
     const pwIn = $('#au3'), hint = $('#au3h');
-    const swap = (m, keepMsg) => { email = $('#au2').value.trim(); mode = m; title = ''; if (!keepMsg) { msg = ''; offerSignin = false; } draw(); };
+    const keepProf = () => { if (!$('#au4')) return; prof.name = $('#au1').value; prof.specialty = $('#au4').value; prof.country = $('#au5').value; prof.region = $('#au6') ? $('#au6').value : ''; };
+    if ($('#au5')) $('#au5').addEventListener('change', () => { keepProf(); prof.region = ''; $('#au6w').innerHTML = regionField(prof.country, '', 'au6'); });
+    if (reg && !opts.focused) { opts.focused = true; $('#au1').focus(); }
+    const swap = (m, keepMsg) => { keepProf(); email = $('#au2').value.trim(); mode = m; title = ''; if (!keepMsg) { msg = ''; offerSignin = false; } draw(); };
     $('#amode').addEventListener('click', () => swap(reg ? 'login' : 'register'));
     if ($('#ato')) $('#ato').addEventListener('click', () => { msg = ''; offerSignin = false; swap('login', true); });
     if (hint) pwIn.addEventListener('input', () => { hint.classList.toggle('ok', pwIn.value.length >= PW_MIN); hint.classList.remove('bad'); });
@@ -1403,10 +1437,119 @@ function authDialog(title, then) {
         if (r.status === 401) { pwIn.value = ''; pwIn.focus(); }
         return say(r.error);
       }
-      NET.user = r.user; if (!S.profile.name && r.user.name) S.profile.name = r.user.name; closeOverlay(true); toast(reg ? 'Account created. You are signed in' : 'Signed in'); await pullState(); await pullInbox(); await loadMine(); await loadHosp(); syncFiles(); render(); if (then) then(); }); };
+      if (reg) keepProf();
+      NET.user = r.user; if (!S.profile.name && r.user.name) S.profile.name = r.user.name; closeOverlay(true); toast(reg ? 'Account created. You are signed in' : 'Signed in'); await pullState(); await pullInbox(); await loadMine(); await loadHosp(); syncFiles();
+      if (reg) { /* after pullState, which may have reset this device for the new account */
+        Object.assign(S.profile, { name: prof.name.trim().slice(0, 80) || S.profile.name, specialty: prof.specialty, country: prof.country, region: prof.region }); S.onboard = { at: Date.now() }; save();
+        if (!then) { if (route() !== 'home') location.hash = '#/home'; }
+      }
+      render(); if (then) then(); }); };
   draw();
 }
-function renderAcct() { const a = $('#acct'); if (!a) return; a.innerHTML = !NET.online ? '<div class="saved-title" style="text-transform:none;letter-spacing:0;font-weight:400">Offline mode — data stays on this device.</div>' : NET.user ? `<div class="li" style="padding:6px 12px"><div class="grow"><div class="t" style="font-size:13px;overflow:hidden;text-overflow:ellipsis">${esc(NET.user.name || NET.user.email)}</div><div class="s">Synced</div></div><button class="btn sm" data-act="signout">Sign out</button></div>` : '<div style="padding:0 12px"><button class="btn sm primary" data-act="signin" style="width:100%">Sign in to sync</button></div>'; }
+function renderAcct() { const a = $('#acct'); if (!a) return; a.innerHTML = !NET.online ? `<div class="saved-title" style="text-transform:none;letter-spacing:0;font-weight:400">${NET.trouble ? 'Sign-in is unavailable right now. Your data stays on this device.' : 'Not connected. Your data stays on this device.'}</div>` : NET.user ? `<div class="li" style="padding:6px 12px"><div class="grow"><div class="t" style="font-size:13px;overflow:hidden;text-overflow:ellipsis">${esc(NET.user.name || NET.user.email)}</div><div class="s">Synced</div></div><button class="btn sm" data-act="signout">Sign out</button></div>` : '<div style="padding:0 12px"><button class="btn sm primary" data-act="signin" style="width:100%">Sign in to sync</button></div>'; }
+
+/* ---------- client-ready: connection state, deep links, get started, report a problem, list your event ---------- */
+function noteTrouble(on) { if (!!NET.trouble === !!on) return; NET.trouble = !!on; if (NET.started) bgRender(); }
+/* links from the server-rendered pages: #/conference/<id>, #/report/conference/<id>, #/report/course/<id> */
+const DEEP = { wait: null };
+function deepLink() {
+  const m = location.hash.match(/^#\/(conference|report\/conference|report\/course)\/([a-z0-9-]{1,80})$/); if (!m) return false;
+  const id = m[2];
+  if (m[1] === 'report/course') { history.replaceState(null, '', '#/courses/' + id); render(); reportDialog('course', id); return true; }
+  history.replaceState(null, '', '#/discover'); render();
+  const open = () => { if (!byId(id)) return toast('That listing is not on Hoggy any more'); detail(id); if (m[1] === 'report/conference') reportDialog('conference', id); };
+  if (byId(id)) open(); else DEEP.wait = open;
+  return true;
+}
+/* after sign-up: a short checklist on Home until dismissed */
+function getStarted() {
+  if (!NET.user || !S.onboard || S.onboard.dismissed) return '';
+  const items = [
+    [!!S.profile.specialty, 'Pick your specialty', S.profile.specialty ? esc(S.profile.specialty) + ' · change it in Settings' : 'In Settings', '#/settings'],
+    [S.saved.length > 0, 'Save a conference', 'Tap the heart on any conference', '#/discover'],
+    [S.trips.length > 0, 'Plan a trip', 'Open a conference and choose Plan trip', '#/discover'],
+    [(S.certs || []).length > 0, 'Add a certificate', 'APLS, ALS or another course, to see when it is due', '#/certs']];
+  const done = items.filter(x => x[0]).length;
+  return `<section class="panel getstarted" aria-labelledby="gsH"><div class="row" style="justify-content:space-between"><h2 id="gsH">Get started <span class="pill ${done === items.length ? 'g' : ''}">${done} of ${items.length} done</span></h2><button type="button" class="btn sm ghost" data-act="dismissonboard">Hide this checklist</button></div>
+    <ul class="gs-list">${items.map(([ok, t, d, href]) => `<li class="${ok ? 'ok' : ''}"><span class="gs-mark" aria-hidden="true">${ok ? '✓' : ''}</span><a href="${href}"><b>${t}</b><span class="sr-only">${ok ? ' (done)' : ' (to do)'}</span><span class="s">${d}</span></a></li>`).join('')}</ul></section>`;
+}
+/* "Report a problem with this listing" */
+function reportDialog(kind, id) {
+  const name = kind === 'course' ? (courseOf(id) || {}).name || id : (byId(id) || {}).name || id;
+  const R = window.HoggyListings ? HoggyListings.REASONS : { other: 'Something else' };
+  openOverlay(`<div class="sheet center" role="dialog" aria-modal="true" aria-labelledby="rpH"><form id="rpf" novalidate style="padding:22px"><div class="row" style="justify-content:space-between;margin-bottom:6px"><h2 id="rpH" style="font-size:22px;margin:0">Report a problem</h2><button type="button" class="icon-btn" data-act="${kind === 'conference' ? 'rpback' : 'close'}" data-id="${esc(id)}" aria-label="Close">${icon('x')}</button></div>
+    <p class="note" style="margin:0 0 14px">${esc(name)}</p>
+    <fieldset class="rp-reasons"><legend>What is wrong?</legend>${Object.entries(R).map(([k, l], i) => `<label class="tick"><input type="radio" name="reason" value="${k}"${i === 0 ? ' autofocus' : ''}> ${esc(l)}</label>`).join('')}</fieldset>
+    ${field('rpn', 'Note (optional)', '<textarea id="rpn" name="note" maxlength="500" aria-describedby="rph" placeholder="For example, the right dates and where you saw them"></textarea>')}<p class="note field-hint" id="rph" style="margin-top:-6px">Please don’t include patient information.</p>
+    <div class="hp" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+    <p class="note" id="rperr" role="alert" style="color:var(--bad);min-height:18px"></p>
+    <div class="row" style="justify-content:flex-end;margin:4px 0 20px"><button type="button" class="btn" data-act="${kind === 'conference' ? 'rpback' : 'close'}" data-id="${esc(id)}">Cancel</button><button class="btn primary" type="submit">Send report</button></div></form></div>`, true);
+  $('#rpf').addEventListener('submit', async e => {
+    e.preventDefault(); const f = new FormData(e.target), body = { kind, id, reason: f.get('reason') || '', note: String(f.get('note') || ''), website: String(f.get('website') || '') };
+    const v = window.HoggyListings ? HoggyListings.validateReport(body) : { ok: true };
+    if (!v.ok) { $('#rperr').textContent = v.error; return (body.reason ? $('#rpn') : e.target.querySelector('input[name=reason]')).focus(); }
+    const btn = e.target.querySelector('[type=submit]'); btn.disabled = true; btn.textContent = 'Sending…';
+    const r = await api('/api/reports', { method: 'POST', body });
+    if (r.error) { btn.disabled = false; btn.textContent = 'Send report'; $('#rperr').textContent = r.status === 0 ? 'You’re offline. Try again when you’re back online.' : r.status >= 500 || r.error === 'offline' ? TROUBLE : r.error; return; }
+    toast('Thanks. The Hoggy team will check this listing.'); if (kind === 'conference' && byId(id)) detail(id, false); else closeOverlay();
+  });
+}
+/* "List your event": organisers, no account needed */
+const LE = { sent: false, err: '', field: '', vals: {} };
+VIEWS['list-event'] = function () {
+  const head = `<div class="page-head"><div><span class="eyebrow">For organisers</span><h1>List your event</h1><p>Run a medical conference or course session? Send it here. No account needed. A Hoggy admin checks every listing against your official event page before it appears, and your contact email is never shown.</p></div></div>`;
+  if (LE.sent) return head + `<section class="panel le-done" aria-labelledby="leDoneH" tabindex="-1" id="leDone"><h2 id="leDoneH">Thanks — your listing is with the Hoggy team</h2><p style="color:var(--muted);margin-top:8px">We’ll check it against your official event page. If something doesn’t match, we’ll email the contact address you gave. Approved listings show “Dates confirmed” with your page as the source.</p><div class="row" style="margin-top:16px"><button class="btn primary" data-act="leagain">List another event</button><a class="btn" href="#/discover">Browse conferences</a></div></section>`;
+  const v = LE.vals, specs = window.HoggySpecialties ? HoggySpecialties.DATA.canonical : [], ctry = COUNTRY_LIST();
+  const inv = k => LE.field === k ? ` aria-invalid="true" aria-describedby="le-err"` : '';
+  const val = k => esc(v[k] == null ? '' : v[k]);
+  const sel = (k, opts, ph) => `<select id="le-${k}" name="${k}"${inv(k)} required><option value="">${ph}</option>${opts.map(([o, l]) => `<option value="${esc(o)}" ${String(v[k] || '') === String(o) ? 'selected' : ''}>${esc(l)}</option>`).join('')}</select>`;
+  return head + `<div class="cols le-cols"><form id="lef" class="panel le-form" novalidate aria-describedby="le-intro">
+    <p class="note" id="le-intro" style="margin:0 0 14px">All fields are required unless marked optional.</p>
+    <div id="le-err" class="form-err" role="alert">${LE.err ? esc(LE.err) : ''}</div>
+    ${field('le-kind', 'Type of event', sel('kind', [['conference', 'Conference or scientific meeting'], ['course', 'Course session']], 'Choose…'))}
+    ${field('le-name', 'Event name', `<input id="le-name" name="name" type="text" maxlength="160" required value="${val('name')}"${inv('name')} placeholder="e.g. Annual Scientific Meeting 2027">`)}
+    ${field('le-organiser', 'Organiser or society', `<input id="le-organiser" name="organiser" type="text" maxlength="120" required value="${val('organiser')}"${inv('organiser')}>`)}
+    <div class="field"><label for="le-url">Official event page</label><input id="le-url" name="url" type="url" inputmode="url" maxlength="500" required value="${val('url')}" placeholder="https://"${LE.field === 'url' ? ' aria-invalid="true"' : ''} aria-describedby="le-urlh${LE.field === 'url' ? ' le-err' : ''}"><p class="note field-hint" id="le-urlh">The page on your own website that gives the dates (https). Not a home page or a listing site.</p></div>
+    <div class="two">${field('le-start', 'Start date', `<input id="le-start" name="start" type="date" required value="${val('start')}"${inv('start')}>`)}${field('le-end', 'End date', `<input id="le-end" name="end" type="date" required value="${val('end')}"${inv('end')}>`)}</div>
+    <div class="two">${field('le-city', 'City', `<input id="le-city" name="city" type="text" maxlength="80" required value="${val('city')}"${inv('city')}>`)}${field('le-countryCode', 'Country', sel('countryCode', ctry.map(x => [x.code, x.name]), 'Choose…'))}</div>
+    <div class="two">${field('le-specialty', 'Specialty', sel('specialty', specs.map(x => [x, x]), 'Choose…'))}${field('le-format', 'Format', sel('format', [['In-person', 'In person'], ['Hybrid', 'Hybrid (in person and online)']], 'Choose…'))}</div>
+    <fieldset class="le-cpd"><legend>CPD (optional, only if stated on your event page)</legend><div class="two">${field('le-cpdHours', 'CPD hours (optional)', `<input id="le-cpdHours" name="cpdHours" type="number" min="0" max="100" step="0.25" value="${val('cpdHours')}"${inv('cpdHours')}>`)}${field('le-cpdBody', 'Accredited by (optional)', `<input id="le-cpdBody" name="cpdBody" type="text" maxlength="60" value="${val('cpdBody')}" placeholder="e.g. RACP, ACEM">`)}</div></fieldset>
+    ${field('le-blurb', 'One-line description (optional)', `<input id="le-blurb" name="blurb" type="text" maxlength="240" value="${val('blurb')}"${inv('blurb')}>`)}
+    <div class="field"><label for="le-contactEmail">Contact email</label><input id="le-contactEmail" name="contactEmail" type="email" inputmode="email" autocomplete="email" maxlength="254" required value="${esc(v.contactEmail != null ? v.contactEmail : NET.user ? NET.user.email : '')}"${LE.field === 'contactEmail' ? ' aria-invalid="true"' : ''} aria-describedby="le-emh${LE.field === 'contactEmail' ? ' le-err' : ''}"><p class="note field-hint" id="le-emh">Kept private. Used only to check this listing with you; never shown on Hoggy.</p></div>
+    <label class="tick le-auth"><input type="checkbox" name="authorised" id="le-authorised" ${v.authorised ? 'checked' : ''}${inv('authorised')}> I’m authorised to list this event</label>
+    <div class="hp" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+    <div class="row" style="justify-content:space-between;margin-top:8px"><span class="note" style="margin:0">${NET.user ? `Signed in as ${esc(NET.user.email)}: the listing is linked to your account.` : NET.online ? 'Have a Hoggy account? <button type="button" class="linkbtn" data-act="signin">Sign in</button> (optional).' : ''}</span><button class="btn primary" type="submit" id="le-send">Send for checking</button></div>
+  </form>
+  <aside class="panel le-how" aria-labelledby="leHowH"><h2 id="leHowH">What happens next</h2><ol class="le-steps"><li>A Hoggy admin opens your official event page and checks the name, dates and city.</li><li>If they match, the listing goes live with “Dates confirmed” and your page as the source.</li><li>If something is unclear, we email you before listing it.</li></ol><p class="note">Listings never carry rankings or superlatives. CPD hours are shown only when your page states them. See the <a class="u" href="/terms">terms</a> and <a class="u" href="/privacy">privacy</a> pages.</p></aside></div>`;
+};
+AFTER['list-event'] = () => {
+  if (LE.sent) { const d = $('#leDone'); if (d) d.focus(); return; }
+  const f = $('#lef'); if (!f) return;
+  if (LE.field) { const el = $('#le-' + LE.field); if (el) el.focus(); }
+  f.addEventListener('submit', async e => {
+    e.preventDefault(); const fd = new FormData(f), b = Object.fromEntries(fd); b.authorised = !!fd.get('authorised'); LE.vals = { ...b };
+    const L = window.HoggyListings, today0 = today();
+    const v = L ? L.validateSubmission(b, { countries: L.countryMap(CONFS), today: today0 }) : { ok: true };
+    const c = v.ok && L ? L.validateContact(b) : v;
+    if (!v.ok || !c.ok) { const x = !v.ok ? v : c; LE.err = x.error; LE.field = x.field; return render(); }
+    const btn = $('#le-send'); btn.disabled = true; btn.textContent = 'Sending…';
+    const r = await api('/api/submissions', { method: 'POST', body: { ...b, cpdHours: b.cpdHours === '' ? null : +b.cpdHours } });
+    if (r.error) { LE.err = r.status === 0 ? 'You’re offline. Your details are still here; send again when you’re back online.' : r.status >= 500 || r.error === 'offline' ? TROUBLE + ' Your details are still here.' : r.error; LE.field = r.field || ''; return render(); }
+    Object.assign(LE, { sent: true, err: '', field: '', vals: {} }); render(); window.scrollTo(0, 0);
+  });
+};
+/* keep keyboard focus inside an open dialog; the page behind it is inert */
+document.addEventListener('keydown', e => {
+  const o = $('#overlay'); if (e.key !== 'Tab' || o.hidden) return;
+  const f = [...o.querySelectorAll('a[href],button:not([disabled]),input:not([disabled]):not([tabindex="-1"]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])')].filter(x => x.offsetParent !== null || x === document.activeElement);
+  if (!f.length) { e.preventDefault(); return; }
+  const first = f[0], last = f[f.length - 1];
+  if (!o.contains(document.activeElement)) { e.preventDefault(); first.focus(); }
+  else if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+  else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+});
+window.addEventListener('offline', () => { NET.offline = true; bgRender(); });
+window.addEventListener('online', () => { NET.offline = false; bgRender(); if (!NET.online) boot(); });
 
 /* ---------- global events ---------- */
 let md = null; document.addEventListener('mousedown', e => { md = e.target; });
@@ -1418,7 +1561,16 @@ document.addEventListener('click', async e => {
   if (!el) return;
   const a = el.dataset.act, id = el.dataset.id;
   if (a !== 'open' || !el.matches('a')) { /* allow links to proceed */ }
-  if (a === 'skip') { e.preventDefault(); $('#main').focus(); return; } /* don't put #main in the hash: the router would read it as a route */
+  if (a === 'open' && el.matches('a') && (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button > 0)) return; /* new tab: the page link */
+  if (a === 'open' && el.matches('a')) e.preventDefault();
+  if (a === 'skip') { e.preventDefault(); $('#main').focus(); return; }
+  if (a === 'register') return authDialog('', null, { mode: 'register' });
+  if (a === 'retry') { noteTrouble(false); toast('Trying again…'); closeOverlay(); NET.online = false; await boot(); if (NET.trouble) toast('Still having trouble. Try again in a minute.'); return; }
+  if (a === 'report') return reportDialog(el.dataset.kind, id);
+  if (a === 'rpback') { if (byId(id)) return detail(id, false); return closeOverlay(); }
+  if (a === 'dismissonboard') { S.onboard = { ...(S.onboard || {}), dismissed: true }; save(); render(); toast('Checklist hidden'); return; }
+  if (a === 'leagain') { LE.sent = false; render(); const n = $('#le-kind'); if (n) n.focus(); return; }
+  if (a === 'clearfilters') { Object.assign(UI, { q: '', spec: 'All', region: '', country: '', month: '', cpd: 0, confirmed: '', hol: '', limit: 48 }); render(); const q = $('#q'); if (q) q.focus(); return; } /* don't put #main in the hash: the router would read it as a route */
   if (a === 'howto') { const h = $('#how'); if (h) { h.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' }); h.focus({ preventScroll: true }); } return; }
   if (a === 'close') return closeOverlay();
   if (a === 'review') { const c = byId(id); if (c) startReview(skey(c), { year: el.dataset.year ? +el.dataset.year : undefined }); return; }
@@ -1449,7 +1601,7 @@ document.addEventListener('click', async e => {
   if (a === 'signin') return authDialog();
   if (a === 'signout') { await pushState(); await api('/api/logout', { method: 'POST' }); NET.user = null; NET.rev = 0; resetHosp(); if (confirm('Signed out. Remove your trips, receipts and files from this device too?\n\nOK = remove them (recommended on a shared computer). Your account copy is kept.\nCancel = keep them on this device.')) { await DB.wipe(); FILES.clear(); UNSAVED.clear(); const th = S.profile.theme; S = defaults(); if (th) S.profile.theme = th; try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { } setOwner(''); } toast('Signed out'); render(); return; }
   if (a === 'checkinbox') return pullInbox(true);
-  if (a === 'delaccount') { if (confirm('Delete your account, synced data and reviews from the server? Data on this device stays until you erase it.')) { const pw = prompt('Enter your password to confirm'); if (!pw) return; const r = await api('/api/account', { method: 'DELETE', body: { password: pw } }); if (r.error) return toast(r.error === 'offline' ? 'Can\u2019t reach Hoggy. Try again in a minute.' : r.error); NET.user = null; resetHosp(); toast('Account deleted'); render(); } return; }
+  if (a === 'delaccount') { if (confirm('Delete your account, synced data and reviews from Hoggy? Data on this device stays until you erase it.')) { const pw = prompt('Enter your password to confirm'); if (!pw) return; const r = await api('/api/account', { method: 'DELETE', body: { password: pw } }); if (r.error) return toast(r.error === 'offline' ? 'Can\u2019t reach Hoggy. Try again in a minute.' : r.error); NET.user = null; resetHosp(); toast('Account deleted'); render(); } return; }
   if (a === 'open') { if (e.target.closest('[data-act=save]')) return; return detail(id); }
   if (a === 'save') { e.stopPropagation(); const i = S.saved.indexOf(id); i < 0 ? S.saved.push(id) : S.saved.splice(i, 1); save(); toast(i < 0 ? 'Saved' : 'Removed from saved'); renderNav(); if (!$('#overlay').hidden) detail(id); else { if (route() === 'discover') results(); else render(); } return; }
   if (a === 'plan') { if (!S.trips.some(t => t.confId === id)) { S.trips.push({ id: uid(), confId: id, status: 'planned', bookings: [] }); if (!S.saved.includes(id)) S.saved.push(id); save(); } closeOverlay(); toast('Trip planned'); location.hash = '#/trips'; render(); return; }
@@ -1483,15 +1635,18 @@ document.addEventListener('click', async e => {
   if (a === 'rmcpd') { S.cpd = S.cpd.filter(x => x.id !== id); save(); render(); return; }
   if (a === 'exportcpd') return download('cpd-log.csv', csv([['Date', 'Activity', 'Source', 'Hours'], ...S.cpd.map(e => [e.date, e.title, e.source, e.hours])]));
   if (a === 'backup') return download('hoggy-backup.json', JSON.stringify(S, null, 2), 'application/json');
-  if (a === 'wipe') { if (confirm('Erase Hoggy data on this device?' + (NET.user ? '\n\nYour account copy is NOT deleted and will reload from the server.' : '\n\nThis cannot be undone.'))) { await DB.wipe(); FILES.clear(); UNSAVED.clear(); S = defaults(); try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { } setOwner(''); if (NET.user) { await pullState(true); await syncFiles(); } render(); toast('Erased on this device'); } return; }
+  if (a === 'wipe') { if (confirm('Erase Hoggy data on this device?' + (NET.user ? '\n\nYour account copy is NOT deleted and will reload from your account.' : '\n\nThis cannot be undone.'))) { await DB.wipe(); FILES.clear(); UNSAVED.clear(); S = defaults(); try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { } setOwner(''); if (NET.user) { await pullState(true); await syncFiles(); } render(); toast('Erased on this device'); } return; }
 });
+document.addEventListener('submit', e => { if (e.target && e.target.id === 'heroSearch') { e.preventDefault(); UI.q = String(new FormData(e.target).get('q') || '').trim(); UI.limit = 48; location.hash = '#/discover'; } });
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape' && !$('#overlay').hidden) closeOverlay();
   if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('.card, .sess')) { e.preventDefault(); const d = e.target.dataset; if (d.act === 'opencourse') location.hash = '#/courses/' + d.id; else if (d.act === 'session') sessionSheet(d.id); else detail(d.id); }
 });
-window.addEventListener('hashchange', () => { if (reviewHash()) { closeOverlay(true); render(); return openReviewLink(); } if (!knownRoute()) return; if (HOSP_ROUTES.some(([k]) => k === route())) { HOSP.pend = HOSP.team = HOSP.finance = null; } closeOverlay(); render(); $('#main').focus({ preventScroll: true }); window.scrollTo(0, 0); });
+window.addEventListener('hashchange', () => { if (deepLink()) return; if (reviewHash()) { closeOverlay(true); render(); return openReviewLink(); } if (!knownRoute()) return; if (HOSP_ROUTES.some(([k]) => k === route())) { HOSP.pend = HOSP.team = HOSP.finance = null; } closeOverlay(); render(); $('#main').focus({ preventScroll: true }); window.scrollTo(0, 0); });
 if (!CONFS.length) console.warn('Hoggy: no conference data loaded (data/conferences.js)');
 S.certs = Array.isArray(S.certs) ? S.certs : []; S.trips = S.trips.filter(keepTrip); S.saved = S.saved.filter(id => CONFS.some(c => c.id === id));
-render();
+NET.offline = navigator.onLine === false;
+if (!deepLink()) render();
+NET.started = true;
 boot();
 })();
