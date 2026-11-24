@@ -42,16 +42,18 @@ Fallback stack is `"Arial Narrow", "Helvetica Neue", Arial, sans-serif` for disp
 |---|---|---|---|
 | `--bg` | `#F4EFE6` | `#12110E` | canvas |
 | `--bg-2` | `#FBF8F2` | `#1A1814` | sheets, bars |
+| `--inv` / `--inv-text` | `#15130F` / `#F4EFE6` | `#F3EEE4` / `#15130F` | inverted blocks: tab bar, toasts, closing band |
+| `--line-2` | `#8A8172` | `#7D7566` | field borders, dashes (3:1 on the canvas) |
 | `--card` | `#FFFDF9` | `#1F1D18` | the few raised surfaces |
 | `--card-2` | `#EAE3D5` | `#2A2721` | fields, tracks |
 | `--text` | `#15130F` | `#F3EEE4` | ink |
-| `--muted` | `#5A5347` | `#B4AC9E` | secondary (≥ 6.4:1) |
-| `--faint` | `#6A6255` | `#9C9486` | tertiary (≥ 4.9:1) |
+| `--muted` | `#5A5347` | `#B4AC9E` | secondary |
+| `--faint` | `#6A6255` | `#9C9486` | tertiary |
 | `--line` | `rgba(21,19,15,.14)` | `rgba(243,238,228,.14)` | hairlines |
 | `--rule` | `#15130F` | `#F3EEE4` | ledger rules (1.5 px) |
 | `--flare` | `#FF4D1F` | `#FF5B2E` | the one loud colour: primary buttons, marks |
-| `--accent` | `#B8300A` | `#FF8A66` | accent as text / focus (≥ 4.9:1) |
-| `--accent-ink` | `#15130F` | `#15130F` | text on flare (6.6:1) |
+| `--accent` | `#B8300A` | `#FF8A66` | accent as text, focus ring |
+| `--accent-ink` | `#15130F` | `#15130F` | text on flare |
 | `--ok` | `#0E5A4E` | `#6FD3B8` | confirmed, ready, paid |
 | `--warn` | `#8A4B00` | `#F2B45C` | estimate, due, missing |
 | `--bad` | `#A81E1E` | `#FF8A80` | errors, expired |
@@ -84,11 +86,11 @@ Every plate is decorative (`aria-hidden`); the same facts are always in text nex
 
 ## Motion
 
-1. Motion explains where things came from; it never delays reading. Nothing over 600 ms, text never fades.
-2. **Route changes** use the View Transitions API (a 220 ms cross-fade with a 12 px rise) where supported; elsewhere the
-   page simply swaps.
-3. **Reveals**: plates wipe up (clip-path), blocks rise 24 px (transform only) the first time they enter the viewport.
-   IntersectionObserver, once each. No opacity changes, so contrast is always full.
+1. Motion explains where things came from; it never delays reading. Nothing a person waits for runs over 500 ms, and text in the page never fades (so contrast is always full).
+2. **Route changes** use the View Transitions API (the old page's snapshot fades for 160 ms while the new one rises
+   12 px over 300 ms) where supported; elsewhere the page simply swaps. The top bar and tab bar hold still.
+3. **Reveals**: blocks below the fold rise 26 px (transform only) the first time they enter the viewport;
+   IntersectionObserver, once each. What is on screen at render never moves. The hero's plates wipe up (clip-path).
 4. **Numbers roll up** once (days to go, CPD hours, counts) with tabular numerals; final values are in the DOM from the
    start for assistive tech.
 5. **The hero**: three live plates fan out from a stack and follow the pointer by a few degrees; the "what's on" strip
@@ -136,3 +138,11 @@ editorial grid, not a stretched phone.
 Confirmed / confirmed earlier / estimated wording is unchanged; estimates still read "Usually June 2027"; CPD, price and
 attendance still show only with a source and otherwise say "check organiser" or "check provider"; commercial providers
 and certifying bodies are still labelled; counts on Home are computed from the lists at render time.
+
+## Checks
+
+- axe-core: `tests/e2e/a11y.js` runs every route and the main dialogs at 390x844 and 1280x900 in light and dark and
+  fails on any serious or critical violation. Every text pair above is AA by that run.
+- Tap targets are 44 px or more (small buttons grow to 44 px on coarse pointers); focus is a 2.5 px accent ring.
+- Layout shift: the fonts are preloaded with `font-display: swap`, plates are inline SVG with a fixed aspect ratio and
+  motion is transform-only, so measured CLS is 0 on Home, Discover, Courses and the server pages.

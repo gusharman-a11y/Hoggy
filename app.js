@@ -10,7 +10,6 @@ const uid = () => Math.random().toString(36).slice(2, 10);
 const figAtt = c => c && c.attendees > 0 && c.attendeesSourceUrl ? c.attendees : 0;
 const figPrice = c => c && c.priceFrom > 0 && c.priceSourceUrl ? c.priceFrom : 0;
 const cpdLabel = c => c.cpdVerified && c.cpdHours ? c.cpdHours + ' CPD hrs' : c.kind === 'course' ? 'CPD: check provider' : 'CPD: check organiser';
-const FLAG = cc => /^[A-Za-z]{2}$/.test(cc || '') ? String.fromCodePoint(...[...cc.toUpperCase()].map(c => 127397 + c.charCodeAt(0))) : '';
 
 /* ---------- icons ---------- */
 const I = {
@@ -71,10 +70,6 @@ const dateEv = c => window.HoggyStats && HoggyStats.dateEvidence ? HoggyStats.da
 const range = c => { if (c.datesConfirmed === false) return 'Usually ' + new Date(c.start + 'T00:00:00').toLocaleDateString('en-AU', { month: 'long', year: 'numeric' }); const a = new Date(c.start + 'T00:00:00'), b = new Date(c.end + 'T00:00:00'); if (c.end === c.start) return a.toLocaleDateString('en-AU', { day: 'numeric', month: 'short', year: 'numeric' }); return a.getMonth() === b.getMonth() ? `${a.getDate()}–${b.getDate()} ${a.toLocaleDateString('en-AU', { month: 'short', year: 'numeric' })}` : `${fmtD(c.start, { day: 'numeric', month: 'short' })} – ${fmtD(c.end)}`; };
 const money = (n, cur) => { try { return new Intl.NumberFormat('en-AU', { style: 'currency', currency: cur || S.profile.currency, maximumFractionDigits: 2 }).format(n || 0); } catch (e) { return (cur || '') + ' ' + (n || 0).toFixed(2); } };
 const hash = s => { let h = 2166136261; for (const c of String(s)) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); } return h >>> 0; };
-const HUES = { Cardiology: 350, Oncology: 300, 'General Practice': 160, 'Emergency Medicine': 15, Neurology: 262, Anaesthesia: 200, Surgery: 5, Paediatrics: 45, Psychiatry: 280, Radiology: 220, Dermatology: 25, 'Critical Care': 340, 'Public Health': 140, Endocrinology: 190, Respiratory: 205, 'Infectious Disease': 95, 'Obstetrics & Gynaecology': 320, Orthopaedics: 30, Ophthalmology: 235, 'Medical Education': 120 };
-const hue = c => HUES[c.specialty] ?? hash(c.specialty) % 360;
-const grad = c => { const h = hue(c); return `linear-gradient(135deg,hsl(${h} 70% 42%),hsl(${(h + 40) % 360} 75% 28%))`; };
-const initials = c => { if (c.short) return c.short; const m = c.name.match(/\b[A-Z]{2,6}\b/); return m ? m[0] : c.name.split(/\s+/).filter(w => /^[A-Za-z]/.test(w)).slice(0, 2).map(w => w[0]).join('').toUpperCase(); };
 /* courses (data/courses via /api/courses): catalogue, upcoming sessions, and course sessions in trips (CEV: id -> event) */
 const HC = window.HoggyCourses;
 const COURSES = { cat: null, summary: {}, sessions: [], have: new Set(), full: false, loaded: false, pending: new Map() };
@@ -503,7 +498,6 @@ const VIEWS = {
 const courseOf = id => COURSES.cat ? HC.courseById(COURSES.cat, id) : null;
 const sessionById = id => COURSES.sessions.find(s => s.id === id) || null;
 const haveSessions = id => COURSES.full || COURSES.have.has(id);
-const cgrad = c => { const h = { apls: 32, als1: 196, als2: 218, emst: 8, pals: 290 }[c.id] ?? (c.countries && c.countries.includes('NZ') ? 168 : hash(c.id) % 360); return `linear-gradient(135deg,hsl(${h} 62% 40%),hsl(${(h + 36) % 360} 70% 26%))`; };
 /* list filters (place: '' all, 'AU', or 'w:Europe'; lang: 'en' English or not stated, 'any', or a language) and the course page filters */
 const CUI = { course: '', state: '', city: '', month: '', country: '', lang: 'en', limit: 25, place: null, listLang: 'en', q: '', lim: 24 };
 const homePlace = () => HC.countryCodeOf(S.profile.country);
