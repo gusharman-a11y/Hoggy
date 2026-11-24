@@ -2,12 +2,13 @@
 <html lang="en-AU">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' blob: data:; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'self' about:">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' blob: data:; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'self' about:">
 <meta name="referrer" content="no-referrer">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Hoggy · Medical conferences and courses</title>
 <meta name="description" content="Find upcoming medical conferences and courses, plan travel, track CPD and check your receipts are claim-ready.">
-<meta name="theme-color" content="#0b0d0e">
+<meta name="theme-color" content="#F4EFE6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#12110E" media="(prefers-color-scheme: dark)">
 <meta property="og:site_name" content="Hoggy">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Hoggy · Medical conferences and courses">
@@ -26,23 +27,18 @@
 <link rel="icon" href="/icons/icon-192.png" sizes="192x192" type="image/png">
 <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
 <link rel="manifest" href="/manifest.webmanifest">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" href="/fonts/bricolage-grotesque-display.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <a class="skip" href="#main" data-act="skip">Skip to content</a>
 <div class="app">
-  <aside class="side" aria-label="Primary">
-    <a class="brand" href="#/home" aria-label="Hoggy home"><span class="logo" aria-hidden="true">H</span><span class="brand-name">Hoggy</span></a>
-    <nav class="nav" id="nav"></nav>
-    <div class="side-foot">
-      <div id="acct"></div>
-      <div class="saved-title">Saved conferences</div>
-      <div id="savedList" class="saved-list"></div>
-    </div>
-  </aside>
+  <header class="side">
+    <a class="brand" href="#/home" aria-label="Hoggy home"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M3.5 23.5h25M7 23.5a9 9 0 0 1 18 0" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 4.5v5M7.2 8.4l2.9 4M24.8 8.4l-2.9 4M2.6 15.6l4.6 1.8M29.4 15.6l-4.6 1.8" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><circle cx="20.4" cy="19.6" r="1.5" fill="currentColor"/></svg><span class="brand-name">hoggy</span></a>
+    <nav class="nav" id="nav" aria-label="Primary"></nav>
+    <div class="side-foot" id="acct"></div>
+  </header>
   <main id="main" class="main" tabindex="-1"><noscript><h1>Hoggy needs JavaScript</h1><p>Turn on JavaScript to search and plan. The <a href="/about">about</a>, <a href="/privacy">privacy</a> and <a href="/terms">terms</a> pages work without it.</p></noscript></main>
 </div>
 <div id="overlay" class="overlay" hidden></div>
@@ -58,6 +54,8 @@
 <script src="lib/coverage.js"></script>
 <script src="lib/specialties.js"></script>
 <script src="lib/listings.js"></script>
+<script src="lib/art.js"></script>
+<script src="motion.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

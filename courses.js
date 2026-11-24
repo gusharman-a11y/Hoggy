@@ -100,7 +100,7 @@ const langOk = (s, lang) => { if (!lang || lang === 'any') return true; const L 
 /* "Taught in Dutch" when the provider names the languages and English is not one of them; '' otherwise */
 function languageLabel(s) { const L = langsOf(s); if (!L.length) return ''; return L.includes('English') ? (L.length > 1 ? 'Taught in ' + L.join(' or ') : '') : 'Taught in ' + L.join(' or '); }
 
-/* per-course counts for the course list without loading every session: { id: { n, next, by: [[country, lang, n, next]] } }
+/* per-course counts for the course list without loading every session: { id: { n, next, by: [[country, lang, n, next, city of the next one]] } }
    lang '' = not stated, '*' = all languages (count each session once) */
 function courseSummary(sessions, today) {
   const out = {};
@@ -108,23 +108,24 @@ function courseSummary(sessions, today) {
     const o = out[s.courseId] || (out[s.courseId] = { n: 0, next: s.start, by: {} });
     o.n++; if (s.start < o.next) o.next = s.start;
     const keys = ['*'].concat(langsOf(s).length ? langsOf(s) : ['']);
-    for (const l of keys) { const k = s.country + '|' + l, b = o.by[k] || (o.by[k] = [s.country, l, 0, s.start]); b[2]++; if (s.start < b[3]) b[3] = s.start; }
+    const where = s.city ? s.city + ((s.country === 'AU' || s.country === 'NZ') && s.region ? ', ' + s.region : '') : '';
+    for (const l of keys) { const k = s.country + '|' + l, b = o.by[k] || (o.by[k] = [s.country, l, 0, s.start, where]); b[2]++; if (s.start < b[3]) { b[3] = s.start; b[4] = where; } }
   }
   for (const id in out) out[id].by = Object.values(out[id].by);
   return out;
 }
-/* sessions of one course summary that match a place and language: { n, next } */
+/* sessions of one course summary that match a place and language: { n, next, city } (city: where the next one is) */
 function countFor(sum, place, lang) {
-  if (!sum) return { n: 0, next: '' };
-  let n = 0, next = '';
-  const add = b => { n += b[2]; if (!next || b[3] < next) next = b[3]; };
+  if (!sum) return { n: 0, next: '', city: '' };
+  let n = 0, next = '', city = '';
+  const add = b => { n += b[2]; if (!next || b[3] < next) { next = b[3]; city = b[4] || ''; } };
   for (const b of sum.by) {
     if (!inPlace(b[0], place)) continue;
     if (!lang || lang === 'any') { if (b[1] === '*') add(b); }
     else if (lang === 'en') { if (b[1] === 'English' || b[1] === '') add(b); }
     else if (b[1] === lang) add(b);
   }
-  return { n, next };
+  return { n, next, city };
 }
 /* languages offered in a place, for the language select (most sessions first) */
 function languagesIn(summary, place) {
