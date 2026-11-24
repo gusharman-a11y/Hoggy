@@ -18,6 +18,10 @@ const { makeHospitalApi } = require('./lib/hospital-api.js');
 const READER = require('./lib/receipt-reader.js');
 const zlib = require('node:zlib');
 const HC = require('./courses.js');
+const PAGES = require('./lib/pages.js');
+const LST = require('./lib/listings.js');
+const { evidenceProblem, isSiteRoot } = require('./tools/evidence.js');
+const { lint } = require('./tools/copy-lint.js');
 const ADMIN_KEY = process.env.HOGGY_ADMIN_KEY || '';
 const REPORT_MIN_AGE = (process.env.HOGGY_REPORT_MIN_AGE_H === undefined ? 24 : +process.env.HOGGY_REPORT_MIN_AGE_H) * 3600e3;
 const ADMINS = new Set(String(process.env.HOGGY_ADMINS || '').toLowerCase().split(',').map(s => s.trim()).filter(Boolean));
@@ -76,8 +80,13 @@ CREATE TABLE IF NOT EXISTS claims(id INTEGER PRIMARY KEY, org_id INTEGER NOT NUL
 CREATE INDEX IF NOT EXISTS claims_org_status ON claims(org_id, status);
 CREATE INDEX IF NOT EXISTS claims_user ON claims(user_id, year);
 CREATE TABLE IF NOT EXISTS notifications(id INTEGER PRIMARY KEY, user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE, org_id INTEGER REFERENCES orgs(id) ON DELETE CASCADE, kind TEXT NOT NULL, text TEXT NOT NULL, link TEXT, created INTEGER NOT NULL, seen INTEGER);
-CREATE INDEX IF NOT EXISTS notifications_user ON notifications(user_id, created);`;
-/* receipt_checks and coverage: same tables as db/postgres/002_receipt_checks_coverage.sql; orgs to notifications: 003_hospitals.sql */
+CREATE INDEX IF NOT EXISTS notifications_user ON notifications(user_id, created);
+CREATE TABLE IF NOT EXISTS submissions(id TEXT PRIMARY KEY, json TEXT NOT NULL, contact_email TEXT NOT NULL CHECK (length(contact_email) BETWEEN 3 AND 254), user_id INTEGER REFERENCES users(id) ON DELETE SET NULL, ip_hash TEXT, status TEXT NOT NULL DEFAULT 'pending' CHECK (status IN ('pending','approved','rejected')), conf_id TEXT, note TEXT, created INTEGER NOT NULL, decided INTEGER, decided_by TEXT);
+CREATE INDEX IF NOT EXISTS submissions_status_created ON submissions(status, created);
+CREATE TABLE IF NOT EXISTS listing_reports(id INTEGER PRIMARY KEY, kind TEXT NOT NULL CHECK (kind IN ('conference','course')), ref_id TEXT NOT NULL, reason TEXT NOT NULL CHECK (reason IN ('wrong-date','wrong-city','duplicate','not-relevant','other')), note TEXT, user_id INTEGER REFERENCES users(id) ON DELETE SET NULL, status TEXT NOT NULL DEFAULT 'open' CHECK (status IN ('open','resolved','dismissed')), created INTEGER NOT NULL, decided INTEGER, decided_by TEXT);
+CREATE INDEX IF NOT EXISTS listing_reports_status_created ON listing_reports(status, created);`;
+/* receipt_checks and coverage: same tables as db/postgres/002_receipt_checks_coverage.sql; orgs to notifications: 003_hospitals.sql;
+   submissions and listing_reports: 004_submissions_reports.sql */
 /* legacy (before B36): rows were tied to client-synced trips, so they no longer verify anything; kept only so old SQLite databases open */
 const SQLITE_LEGACY = 'CREATE TABLE IF NOT EXISTS proofs(user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE, conf_id TEXT NOT NULL, receipt_date TEXT, created INTEGER NOT NULL, PRIMARY KEY(user_id, conf_id))';
 
@@ -226,6 +235,18 @@ function courseBody(cc, id, all) {
   if (!cc.packed.has(id)) { if (cc.packed.size > 400) cc.packed.clear(); cc.packed.set(id, cc.pack({ course: id, sessions: cc.byCourse.get(id) || [] })); }
   return cc.packed.get(id);
 }
+/* The conference list bundled with the deploy (data/conferences.js): served when the database cannot answer, so the app's
+   public pages keep working. Organiser listings approved at the admin desk live only in the database and are missing then. */
+function bundledConfs(res) { return json(res, 200, { updated: 0, fallback: 'bundled', conferences: PAGES.bundledConfs() }, { 'X-Hoggy-Fallback': 'bundled' }); }
+/* country code -> { name, region }, from the bundled list (one spelling per country) */
+let COUNTRIES = null;
+const countries = () => COUNTRIES || (COUNTRIES = LST.countryMap(PAGES.bundledConfs()));
+/* a listing's name for reports: a conference row (bundled or in the database) or a course in the catalogue */
+async function listingName(kind, id) {
+  if (kind === 'course') { const c = PAGES.bundle().courseById.get(id); return c ? c.name : null; }
+  const c = PAGES.bundle().byId.get(id); if (c) return c.name;
+  try { const r = await db.get("SELECT json FROM conferences WHERE id=? AND status IN ('published','flagged')", id); return r ? JSON.parse(r.json).name : null; } catch (e) { return null; }
+}
 /* series index, rebuilt with the conference cache: key -> editions [{id, year, city, start, end, name}], conference id -> key */
 async function seriesIdx() {
   const cc = await getConfs(); if (cc.series) return cc.series;
@@ -366,7 +387,7 @@ async function api(req, res, url) {
   if (p === '/api/logout' && m === 'POST') { const sid = cookies(req).hoggy_sid; if (sid) await db.run('DELETE FROM sessions WHERE sid=?', sha(sid)); res.setHeader('Set-Cookie', 'hoggy_sid=; HttpOnly; SameSite=Lax; Path=/; Max-Age=0'); return json(res, 200, { ok: true }); }
 
   if (p === '/api/conferences' && m === 'GET') {
-    const cc = await getConfs();
+    let cc; try { cc = await getConfs(); } catch (e) { console.error('conference list from the database failed, serving the bundled list:', e.message); return bundledConfs(res); }
     if (req.headers['if-none-match'] === cc.etag) { res.writeHead(304, { ETag: cc.etag }); return res.end(); }
     return json(res, 200, { updated: cc.updated, conferences: cc.list }, { ETag: cc.etag });
   }
@@ -398,6 +419,33 @@ async function api(req, res, url) {
     const me = await userOf(req), key = url.searchParams.has('series') ? clean(url.searchParams.get('series'), 80) : (await seriesIdx()).ofConf.get(clean(url.searchParams.get('conf'), 80));
     if (!key) return json(res, 200, []);
     return json(res, 200, (await db.all(`SELECT r.*, (SELECT status FROM review_proofs p WHERE p.review_id=r.id ORDER BY p.created DESC LIMIT 1) proof FROM reviews r WHERE r.series_key=? AND ${VISIBLE.replace(/reviews\.id/g, 'r.id')} ORDER BY r.edition_year DESC, (r.verify='verified') DESC, r.created DESC LIMIT 200`, key)).map(r => pubReview(r, me)));
+  }
+
+  /* "List your event": public (no account needed; signed-in organisers are linked), rate-limited, with a honeypot field.
+     Everything lands in a pending queue; nothing is listed until an admin checks the official page and approves it. */
+  if (p === '/api/submissions' && m === 'POST') {
+    const b = await readJson(req, 8e3);
+    if (b.website) return json(res, 201, { ok: true, status: 'pending' }); /* honeypot filled: looks accepted, nothing is stored */
+    const v = LST.validateSubmission(b, { countries: countries(), today: new Date().toISOString().slice(0, 10) });
+    if (!v.ok) return json(res, 400, { error: v.error, field: v.field });
+    const ct = LST.validateContact(b); if (!ct.ok) return json(res, 400, { error: ct.error, field: ct.field });
+    const words = lint(v.value.name + '\n' + v.value.blurb + '\n' + v.value.organiser);
+    if (words.length) return json(res, 400, { error: `Describe the event without words like "${words[0].word}": Hoggy lists events without rankings or claims.`, field: 'blurb' });
+    if ((await limited('sub:' + ip, 5, 3600e3)) || (await limited('subE:' + ct.email, 5, 3600e3))) return err(res, 429, 'Too many listings sent from here in the last hour. Try again later.');
+    const me = await userOf(req);
+    await db.run("INSERT INTO submissions(id,json,contact_email,user_id,ip_hash,status,created) VALUES(?,?,?,?,?,'pending',?)", rid(16), JSON.stringify(v.value), ct.email, me ? me.id : null, sha('ip:' + ip).slice(0, 16), now());
+    return json(res, 201, { ok: true, status: 'pending' });
+  }
+  /* "Report a problem with this listing": public, rate-limited, honeypot; goes to the admin desk */
+  if (p === '/api/reports' && m === 'POST') {
+    const b = await readJson(req, 4e3);
+    if (b.website) return json(res, 201, { ok: true });
+    const v = LST.validateReport(b); if (!v.ok) return err(res, 400, v.error);
+    if (!(await listingName(v.value.kind, v.value.id))) return err(res, 404, 'That listing is not on Hoggy.');
+    if (await limited('lr:' + ip, 20, 3600e3)) return err(res, 429, 'Too many reports sent from here in the last hour. Try again later.');
+    const me = await userOf(req);
+    await db.run("INSERT INTO listing_reports(kind,ref_id,reason,note,user_id,status,created) VALUES(?,?,?,?,?,'open',?)", v.value.kind, v.value.id, v.value.reason, v.value.note || null, me ? me.id : null, now());
+    return json(res, 201, { ok: true });
   }
 
   let mm0;
@@ -495,6 +543,45 @@ async function api(req, res, url) {
       if (!r.changes) return err(res, 404, 'not found'); return json(res, 200, { ok: true });
     }
     if ((am = p.match(/^\/api\/admin\/reviews\/(\d{1,12})$/)) && m === 'POST') { const b = await readJson(req, 1e3); if (b.action === 'delete') await db.run('DELETE FROM reviews WHERE id=?', +am[1]); else if (b.action === 'restore') await db.run('DELETE FROM review_reports WHERE review_id=?', +am[1]); else return err(res, 400, 'delete|restore'); ratingsCache = null; return json(res, 200, { ok: true }); }
+    /* organiser submissions: approve only after checking the official page and pasting its date line (the evidence rule) */
+    if (p === '/api/admin/submissions' && m === 'GET') {
+      return json(res, 200, (await db.all("SELECT s.id, s.json, s.contact_email \"contactEmail\", s.user_id \"userId\", s.created FROM submissions s WHERE s.status='pending' ORDER BY s.created LIMIT 200")).map(r => {
+        const v = JSON.parse(r.json); return { id: r.id, created: r.created, contactEmail: r.contactEmail, signedIn: r.userId != null, listing: v, country: (countries()[v.countryCode] || {}).name || v.countryCode, siteRoot: isSiteRoot(v.url) };
+      }));
+    }
+    if ((am = p.match(/^\/api\/admin\/submissions\/([a-f0-9]{32})$/)) && m === 'POST') {
+      const b = await readJson(req, 12e3), row = await db.get("SELECT id, json, created FROM submissions WHERE id=? AND status='pending'", am[1]); if (!row) return err(res, 404, 'not found');
+      if (!['edit', 'approve', 'reject'].includes(b.action)) return err(res, 400, 'edit|approve|reject');
+      if (b.action === 'reject') { await db.run("UPDATE submissions SET status='rejected', note=?, decided=?, decided_by=? WHERE id=?", clean(b.note, 300) || null, now(), u.email, row.id); return json(res, 200, { ok: true }); }
+      const day = new Date().toISOString().slice(0, 10);
+      let v = JSON.parse(row.json);
+      if (b.listing && typeof b.listing === 'object') { const e = LST.validateSubmission({ ...v, ...b.listing }, { countries: countries(), today: day }); if (!e.ok) return json(res, 400, { error: e.error, field: e.field }); v = e.value; }
+      if (b.action === 'edit') { await db.run('UPDATE submissions SET json=? WHERE id=?', JSON.stringify(v), row.id); return json(res, 200, { ok: true, listing: v }); }
+      const quote = clean(b.datesQuote, 200);
+      if (quote.length < 6) return json(res, 400, { error: 'Open the official page and paste the line that gives the dates before approving.', field: 'datesQuote' });
+      let id = LST.idFor(v); for (let i = 2; await db.get('SELECT 1 FROM conferences WHERE id=?', id); i++) id = LST.idFor(v).slice(0, 76) + '-' + i;
+      const c = LST.listingRow(v, { countries: countries(), quote, today: day, submittedOn: new Date(row.created).toISOString().slice(0, 10), cpdConfirmed: b.cpdConfirmed === true, id });
+      const why = evidenceProblem(c, { today: day }) || validateConf(c);
+      if (why) return json(res, 400, { error: 'Not approved: ' + why + '. Edit the listing (for example the event page link) or the pasted line, then approve again.', field: /quote/.test(why) ? 'datesQuote' : 'url' });
+      const words = Object.entries(c).filter(([k, x]) => typeof x === 'string' && !/url$/i.test(k) && k !== 'datesQuote' && lint(x).length);
+      if (words.length) return json(res, 400, { error: `Edit the ${words[0][0]}: it has a word Hoggy's copy rules do not allow (${lint(words[0][1])[0].word}).`, field: words[0][0] });
+      await db.tx(async t => {
+        await t.run("INSERT INTO conferences(id,json,status,source,updated,checked) VALUES(?,?,'published','organiser-submitted',?,0)", c.id, JSON.stringify(c), now());
+        await t.run("UPDATE submissions SET status='approved', json=?, conf_id=?, decided=?, decided_by=? WHERE id=?", JSON.stringify(v), c.id, now(), u.email, row.id);
+      });
+      confCache = null; return json(res, 200, { ok: true, id: c.id });
+    }
+    /* problem reports on listings */
+    if (p === '/api/admin/reports' && m === 'GET') {
+      const rows = await db.all("SELECT id, kind, ref_id \"refId\", reason, note, user_id \"userId\", created FROM listing_reports WHERE status='open' ORDER BY created LIMIT 300");
+      const out = []; for (const r of rows) out.push({ ...r, signedIn: r.userId != null, userId: undefined, reasonLabel: LST.REASONS[r.reason] || r.reason, name: (await listingName(r.kind, r.refId)) || r.refId });
+      return json(res, 200, out);
+    }
+    if ((am = p.match(/^\/api\/admin\/reports\/(\d{1,12})$/)) && m === 'POST') {
+      const b = await readJson(req, 2e3); if (b.action !== 'resolve' && b.action !== 'dismiss') return err(res, 400, 'resolve|dismiss');
+      const r = await db.run("UPDATE listing_reports SET status=?, decided=?, decided_by=? WHERE id=? AND status='open'", b.action === 'resolve' ? 'resolved' : 'dismissed', now(), u.email, +am[1]);
+      if (!r.changes) return err(res, 404, 'not found'); return json(res, 200, { ok: true });
+    }
     if (p === '/api/admin/ingest' && m === 'POST') { runIngest(60); return json(res, 202, { started: true }); }
     if (p === '/api/admin/runs' && m === 'GET') return json(res, 200, (await db.all('SELECT id, started, finished, summary FROM ingest_runs ORDER BY id DESC LIMIT 20')).map(r => ({ ...r, summary: JSON.parse(r.summary) })));
     return err(res, 404, 'not found');
@@ -730,33 +817,75 @@ async function backup() {
 }
 /* ---------- static ---------- */
 const MIME = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.ico': 'image/x-icon' };
-const PUBLIC = new Set(['index.html', 'app.js', 'parse.js', 'pack.js', 'stats.js', 'courses.js', 'data/courses/catalogue.json', 'data/courses/sessions.json', 'styles.css', 'lib/series.js', 'lib/coverage.js', 'lib/specialties.js', 'data/conferences.js', 'data/holidays.js', 'data/cpd-nz.js', 'admin.html', 'admin.js']);
+const ICONS = new Set(['icons/icon.svg', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/icon-maskable-512.png', 'icons/apple-touch-icon.png', 'icons/og.png']);
+const PUBLIC = new Set(['index.html', 'app.js', 'parse.js', 'pack.js', 'stats.js', 'courses.js', 'data/courses/catalogue.json', 'data/courses/sessions.json', 'styles.css', 'lib/series.js', 'lib/coverage.js', 'lib/specialties.js', 'lib/listings.js', 'data/conferences.js', 'data/holidays.js', 'data/cpd-nz.js', 'admin.html', 'admin.js']);
 const DEMO_NOTE = '<div class="demo-note" role="note">Preview — accounts and receipts reset from time to time.</div>';
 function serveStatic(req, res, url) {
-  let rel; try { rel = decodeURIComponent(url.pathname).replace(/^\/+/, '') || 'index.html'; } catch (e) { res.writeHead(400); return res.end('Bad request'); }
-  if (!PUBLIC.has(rel)) { res.writeHead(404); return res.end('Not found'); }
+  let rel; try { rel = decodeURIComponent(url.pathname).replace(/^\/+/, '') || 'index.html'; } catch (e) { return html(req, res, 400, PAGES.notFound(req)); }
+  if (rel === 'favicon.ico') rel = 'icons/icon-192.png';
+  /* anything else is the friendly 404 page (the API answers JSON 404s itself) */
+  if (!PUBLIC.has(rel) && !ICONS.has(rel)) return html(req, res, 404, PAGES.notFound(req));
   const f = path.join(__dirname, rel);
-  fs.readFile(f, (e, d) => { if (e) { res.writeHead(404); return res.end('Not found'); } if (DEMO && rel === 'index.html') d = Buffer.from(String(d).replace('<body>', '<body>\n' + DEMO_NOTE)); res.writeHead(200, { 'Content-Type': MIME[path.extname(f)] || 'application/octet-stream', 'Cache-Control': 'no-cache' }); res.end(req.method === 'HEAD' ? undefined : d); });
+  fs.readFile(f, (e, d) => { if (e) return html(req, res, 404, PAGES.notFound(req)); if (rel === 'index.html') { let t = String(d).replace(/%ORIGIN%/g, PAGES.originOf(req)); if (DEMO) t = t.replace('<body>', '<body>\n' + DEMO_NOTE); d = Buffer.from(t); } res.writeHead(200, { 'Content-Type': MIME[path.extname(f)] || 'application/octet-stream', 'Cache-Control': ICONS.has(rel) ? 'public, max-age=86400' : 'no-cache' }); res.end(req.method === 'HEAD' ? undefined : d); });
 }
 
+function html(req, res, code, body, extra = {}) { res.writeHead(code, { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-cache', ...extra }); res.end(req.method === 'HEAD' ? undefined : body); }
+const send = (req, res, type, body, cache = 'no-cache') => { res.writeHead(200, { 'Content-Type': type, 'Cache-Control': cache }); res.end(req.method === 'HEAD' ? undefined : body); };
+/* the database, but never for longer than `ms` (crawl files and listing pages should not hang on a slow database) */
+const readyWithin = ms => Promise.race([whenReady(), new Promise((_, rej) => setTimeout(() => rej(new Error('database slow')), ms).unref())]);
+/* Public HTML pages rendered on the server from the bundled data (lib/pages.js). true when this request was answered. */
+async function pages(req, res, url) {
+  const p = url.pathname.replace(/\/+$/, '') || '/';
+  if (p === '/privacy') return html(req, res, 200, PAGES.privacy(req)), true;
+  if (p === '/terms') return html(req, res, 200, PAGES.terms(req)), true;
+  if (p === '/about') return html(req, res, 200, PAGES.about(req)), true;
+  if (p === '/robots.txt') return send(req, res, 'text/plain; charset=utf-8', PAGES.robots(req)), true;
+  if (p === '/manifest.webmanifest') return send(req, res, 'application/manifest+json; charset=utf-8', PAGES.manifest(), 'public, max-age=3600'), true;
+  if (p === '/sitemap.xml') {
+    let extra = []; /* organiser listings approved at the admin desk, when the database answers quickly */
+    try { await readyWithin(1500); extra = (await db.all("SELECT json FROM conferences WHERE source='organiser-submitted' AND status='published'")).map(r => JSON.parse(r.json)); } catch (e) { }
+    return send(req, res, 'application/xml; charset=utf-8', PAGES.sitemap(req, extra)), true;
+  }
+  let m;
+  if ((m = p.match(/^\/conferences\/([a-z0-9-]{1,80})$/))) {
+    let c = PAGES.bundle().byId.get(m[1]);
+    if (!c) { /* an organiser listing lives only in the database */
+      try { await readyWithin(8000); const r = await db.get("SELECT json, status FROM conferences WHERE id=? AND status IN ('published','flagged')", m[1]); c = r ? JSON.parse(r.json) : null; }
+      catch (e) { console.error('listing lookup failed', e.message); return html(req, res, 503, PAGES.trouble(req), { 'Retry-After': '60' }), true; }
+    }
+    return c ? html(req, res, 200, PAGES.conferencePage(req, c)) : html(req, res, 404, PAGES.notFound(req, 'That listing is not on Hoggy')), true;
+  }
+  if ((m = p.match(/^\/courses\/([a-z0-9-]{1,60})$/))) { const body = PAGES.coursePage(req, m[1]); return body ? html(req, res, 200, body) : html(req, res, 404, PAGES.notFound(req, 'That course is not on Hoggy')), true; }
+  return false;
+}
 async function handler(req, res) {
   secHeaders(res);
+  let url = null;
   try {
-    const url = new URL(req.url, 'http://x');
-    /* /api/courses serves bundled files only, so it never waits for (or fails on) the database. */
-    const dynamic = url.pathname === '/healthz' || (url.pathname.startsWith('/api/') && url.pathname !== '/api/courses');
-    if (dynamic) {
-      try { await whenReady(); } catch (e) { console.error('startup failed', e.message); return err(res, 503, 'database unavailable, try again shortly'); }
+    url = new URL(req.url, 'http://x');
+    const p = url.pathname, dynamic = p === '/healthz' || p.startsWith('/api/');
+    /* /api/courses serves bundled files only, so it never waits for (or fails on) the database (hotfix 39ee6e2) */
+    if (dynamic && p !== '/api/courses') {
+      try { await whenReady(); } catch (e) {
+        console.error('startup failed', e.message);
+        if (p === '/api/conferences' && req.method === 'GET') return bundledConfs(res); /* the public list still works */
+        return err(res, 503, 'database unavailable, try again shortly');
+      }
       if (now() - lastHk > 600e3) housekeep();
     }
-    if (url.pathname === '/healthz') { const n = (await db.get("SELECT COUNT(*) n FROM conferences WHERE status='published'")).n; return json(res, 200, { ok: true, db: db.kind, conferences: n }); }
-    if (url.pathname.startsWith('/api/')) return await api(req, res, url);
+    if (p === '/healthz') { const n = (await db.get("SELECT COUNT(*) n FROM conferences WHERE status='published'")).n; return json(res, 200, { ok: true, db: db.kind, conferences: n }); }
+    if (p.startsWith('/api/')) return await api(req, res, url);
     if (req.method !== 'GET' && req.method !== 'HEAD') { res.writeHead(405); return res.end(); }
+    if (await pages(req, res, url)) return;
     serveStatic(req, res, url);
   } catch (e) {
     if (e && e.code === 413) return err(res, 413, 'payload too large');
     if (e && e.code === 400) return err(res, 400, e.message);
-    console.error(e); if (!res.headersSent) err(res, 500, 'server error'); else res.end();
+    console.error(e);
+    if (res.headersSent) return res.end();
+    /* a page request gets the friendly page; the API keeps JSON */
+    if (url && !url.pathname.startsWith('/api/') && url.pathname !== '/healthz') return html(req, res, 500, PAGES.trouble(req));
+    err(res, 500, 'server error');
   }
 }
 /* Startup begins at module load, i.e. once per process or serverless cold start.
