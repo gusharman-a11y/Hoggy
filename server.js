@@ -743,7 +743,8 @@ async function handler(req, res) {
   secHeaders(res);
   try {
     const url = new URL(req.url, 'http://x');
-    const dynamic = url.pathname === '/healthz' || url.pathname.startsWith('/api/');
+    /* /api/courses serves bundled files only, so it never waits for (or fails on) the database. */
+    const dynamic = url.pathname === '/healthz' || (url.pathname.startsWith('/api/') && url.pathname !== '/api/courses');
     if (dynamic) {
       try { await whenReady(); } catch (e) { console.error('startup failed', e.message); return err(res, 503, 'database unavailable, try again shortly'); }
       if (now() - lastHk > 600e3) housekeep();
