@@ -7,12 +7,13 @@
    fixing, including shard rows the merge step will reject, fix or downgrade on its own.
    Rules: required fields, ISO dates, end >= start, https URLs, canonical specialty (tools/specialties.js), real ISO country
    codes with one spelling per country, lat/lng in range, unique ids, no two rows with the same series key (lib/series.js)
-   and start, the evidence rule (tools/evidence.js), and the copy lint word list (tools/copy-lint.js). */
+   and start, the evidence rule (tools/evidence.js), the copy lint word list (tools/copy-lint.js), and the optional destination fields (tools/destination-fields.js). */
 const fs = require('node:fs'), path = require('node:path'), vm = require('node:vm');
 const { CANON } = require('./specialties');
 const { lint } = require('./copy-lint');
 const { seriesKey } = require('../lib/series.js');
 const E = require('./evidence');
+const D = require('./destination-fields');
 
 const REQ = ['id', 'name', 'organiser', 'specialty', 'city', 'country', 'countryCode', 'region', 'start', 'end', 'format', 'cpdHours', 'url', 'blurb'];
 const REGIONS = new Set(['Europe', 'North America', 'Asia-Pacific', 'Middle East', 'Africa', 'Latin America']);
@@ -64,6 +65,10 @@ function rowProblems(c, today) {
     if (c.verifiedOn && c.lastVerified) warn('estimated row still carries lastVerified');
   }
   for (const [k, v] of Object.entries(c)) if (typeof v === 'string' && !NOT_COPY(k)) for (const h of lint(v)) err(`copy lint: "${h.word}" in ${k}`);
+  /* optional destination fields: fixed tag vocabulary; schedule and accreditation need the organiser's words and an https source.
+     schedule.pattern is Hoggy's own summary, so it is linted; the quotes are the organiser's and are not. */
+  for (const m of D.destinationProblems(c)) err(m);
+  if (c.schedule && typeof c.schedule.pattern === 'string') for (const h of lint(c.schedule.pattern)) err(`copy lint: "${h.word}" in schedule.pattern`);
   return P;
 }
 
@@ -116,6 +121,7 @@ function validate({ root = path.join(__dirname, '..'), today = new Date().toISOS
       if (f.startsWith('provenance-')) {
         if (!e.id) { E_(where, 'provenance entry without id'); continue; }
         const row = ids.get(e.id); if (!row) W(where, 'id not in conferences.js (entry ignored by the merge)');
+        for (const m of D.destinationProblems(e)) E_(where, m); /* the merge would leave the field out */
         if (e.verified === true) {
           if (!E.isIso(e.start) || !E.isIso(e.end) || e.end < e.start) W(where, 'verified entry with bad start/end (ignored by the merge)');
           if (e.sourceUrl && !isHttps(e.sourceUrl)) W(where, 'sourceUrl is not https (ignored by the merge)');
@@ -149,6 +155,7 @@ function validate({ root = path.join(__dirname, '..'), today = new Date().toISOS
     downgradedByRule: rows.filter(c => c.datesConfirmed === false && c.estimateReason).length,
     confirmedSiteRootSource: rows.filter(c => c.datesConfirmed === true && E.isSiteRoot(c.sourceUrl || c.url)).length,
     upcomingConfirmedWithEvidence: count(up, 'evidence'), upcomingLegacy: count(up, 'legacy'), upcomingEstimated: count(up, 'estimated'),
+    withTags: rows.filter(c => Array.isArray(c.tags) && c.tags.length).length, withSchedule: rows.filter(c => c.schedule).length,
     countries: new Set(rows.map(c => c.countryCode)).size, specialties: new Set(rows.map(c => c.specialty)).size,
     shardFiles: shardStats.files, shardRows: shardStats.rows, shardRowsNotMerged: shardStats.pending, shardEvidenceEntries: shardStats.evidenceEntries,
     errors: errors.length, warnings: warnings.length
@@ -163,6 +170,7 @@ function printSummary(s, out = console.log) {
   out(`  confirmed rows whose source is a site root: ${s.confirmedSiteRootSource}`);
   out(`  upcoming: ${s.upcomingConfirmedWithEvidence} with evidence, ${s.upcomingLegacy} legacy, ${s.upcomingEstimated} estimated`);
   out(`  shards: ${s.shardFiles} files, ${s.shardRows} rows (${s.shardRowsNotMerged} conference rows not in conferences.js), ${s.shardEvidenceEntries} evidence entries`);
+  if (s.withTags || s.withSchedule) out(`  destination fields: ${s.withTags} rows tagged, ${s.withSchedule} with a stated session pattern`);
   out(`  errors: ${s.errors}, warnings: ${s.warnings}`);
 }
 
