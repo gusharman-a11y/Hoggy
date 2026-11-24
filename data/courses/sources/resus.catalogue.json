@@ -1,0 +1,1103 @@
+{
+ "generated": "2026-11-18",
+ "note": "x10 resus desk: new course types only (existing ids als1/als2/nzrc-core-advanced/nzrc-core-immediate get sessions in resus.sessions.json). Facts only from provider/course-owner pages read on lastVerified, each with source + verbatim quote (whitespace collapsed). null = not published or not read.",
+ "courses": [
+  {
+   "id": "nz-prime",
+   "name": "PRIME (Primary Response in Medical Emergencies, NZ)",
+   "providers": [
+    {
+     "name": "St John New Zealand (PRIME programme)",
+     "url": "https://prime.stjohn.org.nz/",
+     "verified": true,
+     "calendar": "https://prime.stjohn.org.nz/calendar/"
+    }
+   ],
+   "countries": [
+    "NZ"
+   ],
+   "audience": "Rural health practitioners joining the PRIME emergency response team; NZ medical registration and IV certification required.",
+   "audienceEvidence": {
+    "sourceUrl": "https://prime.stjohn.org.nz/calendar",
+    "quote": "You must hold a NZ Medical Registration (HPCA 2003) to attend this course and it is recommended that you also hold at least a resuscitation certificate to Level 6, and have had some other experience in emergency medicine. IV certification is required for attending this course.",
+    "lastVerified": "2026-11-18"
+   },
+   "format": "Initial course: five days (Mon-Fri, 40 hours), mainly practical (CPR, trauma, acute medical emergencies, triage, major incidents, extrication). Refresher (variant \"refresher\"): one day, 8 hours.",
+   "formatEvidence": {
+    "sourceUrl": "https://prime.stjohn.org.nz/calendar",
+    "quote": "The initial course is five days, Mon – Fri (40 hours), the refresher is one day (Sat or Sun) 8 hours.",
+    "lastVerified": "2026-11-18"
+   },
+   "typicalLength": "5 days (initial) / 1 day (refresher)",
+   "certificateValidityYears": null,
+   "validitySource": null,
+   "recertification": null,
+   "feeRange": null,
+   "feeSource": null,
+   "cpdHours": 0,
+   "cpdNote": "check provider",
+   "verified": true,
+   "lastVerified": "2026-11-18",
+   "sessionNote": "Bookings prioritise practices holding a PRIME contract; others may be wait-listed.",
+   "otherEvidence": [
+    {
+     "sourceUrl": "https://prime.stjohn.org.nz/calendar",
+     "quote": "The PRIME course booking system will prioritise those who are employed by a medical practice that holds a PRIME contract",
+     "lastVerified": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "id": "nz-acls",
+   "name": "Advanced Cardiac Life Support (NZ, RNZCGP-recognised)",
+   "providers": [
+    {
+     "name": "Emcare Services Limited (ACLS6)",
+     "url": "https://www.emcare.co.nz/acls.html",
+     "verified": true,
+     "bookingPlatform": "Arlo (emcareservicesltd.arlo.co)",
+     "feed": "https://emcareservicesltd.arlo.co/api/2012-02-01/pub/resources/eventsearch/?fields=EventID,EventTemplateID,Name,Code,StartDateTime,EndDateTime,Location,IsFull,PlacesRemaining,AdvertisedOffers,RegistrationInfo,ViewUri,Summary&top=200"
+    },
+    {
+     "name": "Resuscitation Matters Ltd",
+     "url": "https://resuscitationmatters.arlo.co/courses/13-advanced-cardiac-life-support",
+     "verified": true,
+     "bookingPlatform": "Arlo (resuscitationmatters.arlo.co)",
+     "feed": "https://resuscitationmatters.arlo.co/api/2012-02-01/pub/resources/eventsearch/?fields=EventID,EventTemplateID,Name,Code,StartDateTime,EndDateTime,Location,IsFull,PlacesRemaining,AdvertisedOffers,RegistrationInfo,ViewUri,Summary&top=200"
+    }
+   ],
+   "countries": [
+    "NZ"
+   ],
+   "audience": "GP fellows and registrars needing an RNZCGP-endorsed assessed resuscitation course; other health professionals.",
+   "audienceEvidence": {
+    "sourceUrl": "https://www.emcare.co.nz/acls.html",
+    "quote": "GP fellows and registrars will be required to complete a RNZCGP endorsed resuscitation course with the following criteria:",
+    "lastVerified": "2026-11-18"
+   },
+   "format": "Assessed course of about 6 hours: pre-reading and online tests, then face-to-face skills (BLS, airway to LMA level, rhythm recognition, scenarios). Variant \"acls6\" = Emcare ACLS6 (1 h online + 5 h practical).",
+   "formatEvidence": {
+    "sourceUrl": "https://resuscitationmatters.arlo.co/courses/13-advanced-cardiac-life-support",
+    "quote": "A 6 hour assessed course covering all aspects of advanced cardiac life support. This course meets requirements for the Royal New Zealand College of General Practitioners continued professional development",
+    "lastVerified": "2026-11-18"
+   },
+   "typicalLength": "6 hours (one day)",
+   "certificateValidityYears": null,
+   "validitySource": null,
+   "recertification": null,
+   "feeRange": null,
+   "feeSource": null,
+   "cpdHours": 0,
+   "cpdNote": "RNZCGP resuscitation requirement (provider statements); hours: check provider",
+   "verified": true,
+   "lastVerified": "2026-11-18",
+   "otherEvidence": [
+    {
+     "sourceUrl": "https://emcareservicesltd.arlo.co/api/2012-02-01/pub/resources/eventsearch/?fields=EventID,EventTemplateID,Name,Code,StartDateTime,EndDateTime,Location,IsFull,PlacesRemaining,AdvertisedOffers,RegistrationInfo,ViewUri,Summary&top=200",
+     "quote": "ACLS6 for RNZCP 1hr online 5 hrs practical",
+     "lastVerified": "2026-11-18"
+    },
+    {
+     "sourceUrl": "https://www.emcare.co.nz/acls.html",
+     "quote": "The ACLS6 course is now one of the courses accepted by the RNZCGP",
+     "lastVerified": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "id": "pacls",
+   "name": "Principles of Advanced Cardiac Life Support (PACLS, NZ)",
+   "providers": [
+    {
+     "name": "Emcare Services Limited",
+     "url": "https://www.emcare.co.nz/principles-of-advanced-cardiac-life-support-pacls.html",
+     "verified": true,
+     "bookingPlatform": "Arlo (emcareservicesltd.arlo.co)",
+     "feed": "https://emcareservicesltd.arlo.co/api/2012-02-01/pub/resources/eventsearch/?fields=EventID,EventTemplateID,Name,Code,StartDateTime,EndDateTime,Location,IsFull,PlacesRemaining,AdvertisedOffers,RegistrationInfo,ViewUri,Summary&top=200"
+    }
+   ],
+   "countries": [
+    "NZ"
+   ],
+   "audience": "Community- and hospital-based health professionals (urgent care doctors and nurses; dental teams). Does not meet RNZCGP requirements; meets RNZCUC requirements.",
+   "audienceEvidence": {
+    "sourceUrl": "https://www.emcare.co.nz/principles-of-advanced-cardiac-life-support-pacls.html",
+    "quote": "Please note this course does not meet the RNZCGP requirements. However, it does meet the RNZCUC requirements.",
+    "lastVerified": "2026-11-18"
+   },
+   "format": "4-hour non-assessed ACLS refresher (Level 5): BLS, airway to LMA level, scene management and algorithms, rhythm recognition.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.emcare.co.nz/principles-of-advanced-cardiac-life-support-pacls.html",
+    "quote": "This course is intended as a 4 hour refresher covering the basics of Advanced Cardiac Life Support.",
+    "lastVerified": "2026-11-18"
+   },
+   "typicalLength": "4 hours",
+   "certificateValidityYears": null,
+   "validitySource": null,
+   "recertification": null,
+   "feeRange": null,
+   "feeSource": null,
+   "cpdHours": 0,
+   "cpdNote": "check provider",
+   "verified": true,
+   "lastVerified": "2026-11-18"
+  },
+  {
+   "id": "acccn-adult-als",
+   "name": "ACCCN Adult Advanced Life Support (ALS)",
+   "providers": [
+    {
+     "name": "ACCCN (Australian College of Critical Care Nurses)",
+     "url": "https://acccn.com.au/als/als-courses/",
+     "verified": true,
+     "calendar": "https://acccn.com.au/events/courses/"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "audience": "Healthcare professionals already familiar with ALS practice who need certification at team-leader level in a critical care setting.",
+   "audienceEvidence": {
+    "sourceUrl": "https://acccn.com.au/als/adult/",
+    "quote": "The course assumes a level of familiarity with ALS practices and builds on these to train and assess the candidate at the level of an effective ALS team leader.",
+    "lastVerified": "2026-11-18"
+   },
+   "format": "Two-day certification (BLS and ALS assessment on day 2) based on ARC statements and ANZCOR guidelines; one-day recertification (variant \"recertification\").",
+   "formatEvidence": {
+    "sourceUrl": "https://acccn.com.au/als/adult/",
+    "quote": "The program content runs over two days with assessment for certification for both BLS and ALS on the second day.",
+    "lastVerified": "2026-11-18"
+   },
+   "typicalLength": "2 days (certification) / 1 day (recertification)",
+   "certificateValidityYears": null,
+   "validitySource": null,
+   "recertification": "ACCCN recommends annual recertification (one-day recertification course).",
+   "feeRange": {
+    "currency": "AUD",
+    "min": 320,
+    "max": 710,
+    "text": "Certification $475 member / $645-$710 non-member; recertification $320 / $490-$540"
+   },
+   "feeSource": "https://acccn.com.au/als/als-courses/",
+   "cpdHours": 0,
+   "cpdNote": "ACCCN: CPD hours for nurses; medical officers may claim through ACRRM, ACEM, ANZCA, CICM, RACGP, RACP (hours: check provider)",
+   "verified": true,
+   "lastVerified": "2026-11-18",
+   "feeQuote": "Adult 2 Day Certification $475 $645 $710 Adult 1 Day Recertification $320 $490 $540",
+   "feeNote": "Rate card columns: Member Rate | Non-Member Rate \"Before 31/12/2027\" | Non-Member Rate \"After 1/1/2027\" (dates as printed; the first is probably 31/12/2026).",
+   "recertificationEvidence": {
+    "sourceUrl": "https://acccn.com.au/als/als-courses/",
+    "quote": "Annual recertification for Adult and Paediatric ALS programs",
+    "lastVerified": "2026-11-18"
+   },
+   "accreditationEvidence": {
+    "sourceUrl": "https://acccn.com.au/als/als-courses/",
+    "quote": "ALS Courses are accredited by the Australian College of Critical Care Nurses, who are a member organisation of the Australian Resuscitation Council (ARC)",
+    "lastVerified": "2026-11-18"
+   }
+  },
+  {
+   "id": "acccn-paediatric-als",
+   "name": "ACCCN Paediatric Advanced Life Support (PALS)",
+   "providers": [
+    {
+     "name": "ACCCN (Australian College of Critical Care Nurses)",
+     "url": "https://acccn.com.au/als/als-courses/",
+     "verified": true,
+     "calendar": "https://acccn.com.au/events/courses/"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "audience": "Healthcare professionals familiar with ALS practice (including experienced adult-ALS clinicians) who need paediatric ALS certification at team-leader level.",
+   "audienceEvidence": {
+    "sourceUrl": "https://acccn.com.au/als/paediatric/",
+    "quote": "It is also suitable for experienced Adult ALS trained healthcare professionals requiring paediatric ALS Certification",
+    "lastVerified": "2026-11-18"
+   },
+   "format": "Two-day certification (paediatric BLS and ALS assessment on day 2); one-day recertification (variant \"recertification\").",
+   "formatEvidence": {
+    "sourceUrl": "https://acccn.com.au/als/paediatric/",
+    "quote": "ACCCN offers a two-day Paediatric Advanced Life Support program to healthcare professionals in the provision of Paediatric Basic and Advanced Life Support in a critical care clinical setting.",
+    "lastVerified": "2026-11-18"
+   },
+   "typicalLength": "2 days (certification) / 1 day (recertification)",
+   "certificateValidityYears": null,
+   "validitySource": null,
+   "recertification": "ACCCN recommends annual recertification.",
+   "feeRange": {
+    "currency": "AUD",
+    "min": 320,
+    "max": 710,
+    "text": "Certification $475 member / $645-$710 non-member; recertification $320 / $490-$540"
+   },
+   "feeSource": "https://acccn.com.au/als/als-courses/",
+   "cpdHours": 0,
+   "cpdNote": "ACCCN: CPD hours for nurses; medical officers may claim through ACRRM, ACEM, ANZCA, CICM, RACGP, RACP (hours: check provider)",
+   "verified": true,
+   "lastVerified": "2026-11-18",
+   "feeQuote": "PALS 2 Day Certification $475 $645 $710 PALS 1 Day Recertification $320 $490 $540",
+   "recertificationEvidence": {
+    "sourceUrl": "https://acccn.com.au/als/als-courses/",
+    "quote": "Annual recertification for Adult and Paediatric ALS programs",
+    "lastVerified": "2026-11-18"
+   },
+   "qualificationNote": "ACCCN programme, not AHA PALS (course id pals) and not APLS."
+  },
+  {
+   "id": "acccn-als-instructor",
+   "name": "ACCCN ALS Instructor",
+   "providers": [
+    {
+     "name": "ACCCN (Australian College of Critical Care Nurses)",
+     "url": "https://acccn.com.au/als/als-courses/",
+     "verified": true,
+     "calendar": "https://acccn.com.au/events/courses/"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "audience": "Nursing, medical and defence staff who teach ALS and hold current adult or paediatric ALS certification.",
+   "audienceEvidence": {
+    "sourceUrl": "https://acccn.com.au/als/instructor/",
+    "quote": "ACCCN offers this two-day Instructor Program for healthcare professionals (nursing, medical and defence) who teach Advanced Life Support (ALS) and have existing current Adult or Paediatric ALS certification.",
+    "lastVerified": "2026-11-18"
+   },
+   "format": "Two-day instructor certification including an ALS team-leader recertification; one-day instructor recertification. Variants note adult/paediatric where the listing says so.",
+   "formatEvidence": {
+    "sourceUrl": "https://acccn.com.au/als/instructor/",
+    "quote": "This course also includes an ALS team leader recertification in either adults or paediatrics, based on the current ANZCOR guidelines.",
+    "lastVerified": "2026-11-18"
+   },
+   "typicalLength": "2 days (certification) / 1 day (recertification)",
+   "certificateValidityYears": null,
+   "validitySource": null,
+   "recertification": "ACCCN recommends bi-annual recertification for instructors.",
+   "feeRange": {
+    "currency": "AUD",
+    "min": 375,
+    "max": 760,
+    "text": "Certification $520 member / $690-$760 non-member; recertification $375 / $545-$600"
+   },
+   "feeSource": "https://acccn.com.au/als/als-courses/",
+   "cpdHours": 0,
+   "cpdNote": "ACCCN: CPD hours for nurses; medical officers may claim through ACRRM, ACEM, ANZCA, CICM, RACGP, RACP (hours: check provider)",
+   "verified": true,
+   "lastVerified": "2026-11-18",
+   "feeQuote": "Instructor 2 Day Certification $520 $690 $760 Instructor 1 Day Recertification $375 $545 $600",
+   "recertificationEvidence": {
+    "sourceUrl": "https://acccn.com.au/als/als-courses/",
+    "quote": "Bi-annual recertification for Instructor ALS programs",
+    "lastVerified": "2026-11-18"
+   }
+  },
+  {
+   "id": "paediatric-als",
+   "name": "Paediatric Advanced Life Support (provider one-day course)",
+   "providers": [
+    {
+     "name": "Medical Training Solutions, WA",
+     "url": "https://www.medicaltrainingsolutions.com.au/course/?eventtemplate=49-paediatric-advanced-life-support",
+     "verified": true,
+     "bookingPlatform": "Arlo (medicaltrainingsolutions.arlo.co)",
+     "feed": "https://medicaltrainingsolutions.arlo.co/api/2012-02-01/pub/resources/eventsearch/?fields=EventID,EventTemplateID,Name,Code,StartDateTime,EndDateTime,Location,IsFull,PlacesRemaining,AdvertisedOffers,RegistrationInfo,ViewUri,Summary&top=200"
+    },
+    {
+     "name": "Advanced Resuscitation Training",
+     "url": "https://alstraining.com.au/",
+     "verified": true,
+     "note": "website not readable this run (HTTP/2 protocol error); facts and sessions from its Arlo feed",
+     "bookingPlatform": "Arlo (advancedresuscitationtraining.arlo.co)",
+     "feed": "https://advancedresuscitationtraining.arlo.co/api/2012-02-01/pub/resources/eventsearch/?fields=EventID,EventTemplateID,Name,Code,StartDateTime,EndDateTime,Location,IsFull,PlacesRemaining,AdvertisedOffers,RegistrationInfo,ViewUri,Summary&top=200"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "audience": "Health professionals outside paediatrics who occasionally attend a sick child (pre-hospital or clinical).",
+   "audienceEvidence": {
+    "sourceUrl": "https://medicaltrainingsolutions.arlo.co/api/2012-02-01/pub/resources/eventsearch/?fields=EventID,EventTemplateID,Name,Code,StartDateTime,EndDateTime,Location,IsFull,PlacesRemaining,AdvertisedOffers,RegistrationInfo,ViewUri,Summary&top=200",
+    "quote": "The one-day Paediatric Advanced Life Support course aims to provide healthcare professionals who have expertise in fields other than paediatrics but are occasionally tasked with attending to a sick child in a pre-hospital or clinical setting.",
+    "lastVerified": "2026-11-18"
+   },
+   "format": "One-day face-to-face course. MTS states it is not the nationally accredited APLS course.",
+   "formatEvidence": {
+    "sourceUrl": "https://medicaltrainingsolutions.arlo.co/api/2012-02-01/pub/resources/eventsearch/?fields=EventID,EventTemplateID,Name,Code,StartDateTime,EndDateTime,Location,IsFull,PlacesRemaining,AdvertisedOffers,RegistrationInfo,ViewUri,Summary&top=200",
+    "quote": "**This is not the nationally accredited APLS course.**",
+    "lastVerified": "2026-11-18"
+   },
+   "typicalLength": "1 day",
+   "certificateValidityYears": null,
+   "validitySource": null,
+   "recertification": null,
+   "feeRange": null,
+   "feeSource": null,
+   "cpdHours": 0,
+   "cpdNote": "check provider",
+   "verified": true,
+   "lastVerified": "2026-11-18",
+   "qualificationNote": "Provider courses (MTS \"Paediatric Advanced Life Support\", ART \"Paediatric ALS 1\"); not APLS, not AHA PALS, not ACCCN PALS. ART event summary reads only \"Paediatric ALS 1 course\"."
+  },
+  {
+   "id": "bls-instructor",
+   "name": "BLS Instructor Course for Health Professionals",
+   "providers": [
+    {
+     "name": "Advanced Resuscitation Training",
+     "url": "https://alstraining.com.au/",
+     "verified": true,
+     "note": "website not readable this run (HTTP/2 protocol error); facts and sessions from its Arlo feed",
+     "bookingPlatform": "Arlo (advancedresuscitationtraining.arlo.co)",
+     "feed": "https://advancedresuscitationtraining.arlo.co/api/2012-02-01/pub/resources/eventsearch/?fields=EventID,EventTemplateID,Name,Code,StartDateTime,EndDateTime,Location,IsFull,PlacesRemaining,AdvertisedOffers,RegistrationInfo,ViewUri,Summary&top=200"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "audience": "AHPRA-registered health professionals who will teach and assess BLS.",
+   "audienceEvidence": {
+    "sourceUrl": "https://advancedresuscitationtraining.arlo.co/api/2012-02-01/pub/resources/eventsearch/?fields=EventID,EventTemplateID,Name,Code,StartDateTime,EndDateTime,Location,IsFull,PlacesRemaining,AdvertisedOffers,RegistrationInfo,ViewUri,Summary&top=200",
+    "quote": "This course is designed for Health Professionals who has APHRA registration",
+    "lastVerified": "2026-11-18"
+   },
+   "format": "Course on teaching and assessing BLS in the healthcare environment (length per event times).",
+   "formatEvidence": {
+    "sourceUrl": "https://advancedresuscitationtraining.arlo.co/api/2012-02-01/pub/resources/eventsearch/?fields=EventID,EventTemplateID,Name,Code,StartDateTime,EndDateTime,Location,IsFull,PlacesRemaining,AdvertisedOffers,RegistrationInfo,ViewUri,Summary&top=200",
+    "quote": "Learn how to teach and assess BLS in the healthcare environment",
+    "lastVerified": "2026-11-18"
+   },
+   "typicalLength": "see session times",
+   "certificateValidityYears": null,
+   "validitySource": null,
+   "recertification": null,
+   "feeRange": null,
+   "feeSource": null,
+   "cpdHours": 0,
+   "cpdNote": "check provider",
+   "verified": true,
+   "lastVerified": "2026-11-18"
+  },
+  {
+   "id": "ecg-12-lead",
+   "name": "12-Lead ECG Course (workshop)",
+   "providers": [
+    {
+     "name": "Medical Training Solutions, WA",
+     "url": "https://www.medicaltrainingsolutions.com.au/course/?eventtemplate=6-12lead-ecg-course",
+     "verified": true,
+     "bookingPlatform": "Arlo (medicaltrainingsolutions.arlo.co)",
+     "feed": "https://medicaltrainingsolutions.arlo.co/api/2012-02-01/pub/resources/eventsearch/?fields=EventID,EventTemplateID,Name,Code,StartDateTime,EndDateTime,Location,IsFull,PlacesRemaining,AdvertisedOffers,RegistrationInfo,ViewUri,Summary&top=200"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "audience": null,
+   "format": "Half-day hands-on workshop.",
+   "formatEvidence": {
+    "sourceUrl": "https://medicaltrainingsolutions.arlo.co/api/2012-02-01/pub/resources/eventsearch/?fields=EventID,EventTemplateID,Name,Code,StartDateTime,EndDateTime,Location,IsFull,PlacesRemaining,AdvertisedOffers,RegistrationInfo,ViewUri,Summary&top=200",
+    "quote": "The 12-Lead ECG course is a half-day hands-on workshop.",
+    "lastVerified": "2026-11-18"
+   },
+   "typicalLength": "half day",
+   "certificateValidityYears": null,
+   "validitySource": null,
+   "recertification": null,
+   "feeRange": null,
+   "feeSource": null,
+   "cpdHours": 0,
+   "cpdNote": "check provider",
+   "verified": true,
+   "lastVerified": "2026-11-18"
+  },
+  {
+   "id": "acrrm-advanced-airway",
+   "name": "Advanced Airway Skills for Rural Clinicians (ACRRM Advanced Airway)",
+   "providers": [
+    {
+     "name": "ACRRM (Australian College of Rural and Remote Medicine)",
+     "url": "https://www.acrrm.org.au/courses/face-to-face/advanced-airway",
+     "verified": true,
+     "calendar": "https://www.acrrm.org.au/courses/face-to-face/upcoming-face-to-face-courses"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "audience": "ACRRM fellows, registrars, rural generalists and other clinicians wanting advanced airway skills in the rural context.",
+   "audienceEvidence": {
+    "sourceUrl": "https://www.acrrm.org.au/courses/face-to-face/advanced-airway",
+    "quote": "Appropriate for: ACRRM Fellows, Registrars, Rural Generalists and any healthcare professional interested in improving advanced airway skills in the rural context.",
+    "lastVerified": "2026-11-18"
+   },
+   "format": "8 hours of self-paced online learning, then one full face-to-face day (intubation with/without video laryngoscopy, cricothyroidotomy, ventilator management, airway crisis teamwork).",
+   "formatEvidence": {
+    "sourceUrl": "https://www.acrrm.org.au/courses/face-to-face/advanced-airway",
+    "quote": "the course includes 8 hours of interactive, self-paced online learning followed by one full day of practical, face-to-face skills training",
+    "lastVerified": "2026-11-18"
+   },
+   "typicalLength": "8 h online + 1 day face-to-face",
+   "certificateValidityYears": null,
+   "validitySource": null,
+   "recertification": null,
+   "feeRange": {
+    "currency": "AUD",
+    "min": 2126.05,
+    "max": 2338.66,
+    "text": "ACRRM member $2,126.05, non-member $2,338.66"
+   },
+   "feeSource": "https://www.acrrm.org.au/courses/face-to-face/advanced-airway",
+   "cpdHours": 0,
+   "cpdNote": "ACRRM CPD 16 hours per session row; MOPS points listed on the page (other colleges: check provider). See cpdByCollege.",
+   "verified": true,
+   "lastVerified": "2026-11-18",
+   "feeQuote": "Member: 2126.05 Non Member: 2338.66",
+   "feeNote": "Same fee on every session row listed on 2026-11-18; currency not printed (Australian college).",
+   "cpdByCollege": [
+    {
+     "college": "ACRRM",
+     "hours": 16,
+     "appliesTo": "each session (CPD Hours column)",
+     "quote": "Educational Activity: 6 hours | Performance Review: 9.5 hours | Anaesthetics Emergency Response MOPS: 3 hours | Emergency Medicine MOPS: 3 hours",
+     "sourceUrl": "https://www.acrrm.org.au/courses/face-to-face/advanced-airway"
+    }
+   ]
+  },
+  {
+   "id": "acrrm-racm",
+   "name": "Rural Anaesthetic Crisis Management (RACM)",
+   "providers": [
+    {
+     "name": "ACRRM (Australian College of Rural and Remote Medicine)",
+     "url": "https://www.acrrm.org.au/courses/face-to-face/racm",
+     "verified": true,
+     "calendar": "https://www.acrrm.org.au/courses/face-to-face/upcoming-face-to-face-courses"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "audience": "Rural generalists; also ANZCA and ACEM trainees/fellows and others who already have airway skills (prior airway competence required).",
+   "audienceEvidence": {
+    "sourceUrl": "https://www.acrrm.org.au/courses/face-to-face/racm",
+    "quote": "Appropriate for: This is a course for Rural Generalists. As this course encompasses the ANZCA Emergency Response Activities, it is also suitable for trainees and Fellows of the Australian and New Zealand College of Anaesthetists",
+    "lastVerified": "2026-11-18"
+   },
+   "format": "Online modules (released 4 weeks before), then a hands-on workshop day on emergency anaesthetic crisis management.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.acrrm.org.au/courses/face-to-face/racm",
+    "quote": "It is recommended that participants register for the course at least 6 weeks prior to the hands-on workshop day. Online modules will be released 4 weeks prior to the course.",
+    "lastVerified": "2026-11-18"
+   },
+   "typicalLength": "online modules + 1 workshop day",
+   "certificateValidityYears": null,
+   "validitySource": null,
+   "recertification": null,
+   "feeRange": {
+    "currency": "AUD",
+    "min": 1635,
+    "max": 1850,
+    "text": "ACRRM member $1,635, non-member $1,850"
+   },
+   "feeSource": "https://www.acrrm.org.au/courses/face-to-face/racm",
+   "cpdHours": 0,
+   "cpdNote": "ACRRM CPD 16 hours per session row; ANZCA Emergency Response Activities covered per page (hours: check provider). See cpdByCollege.",
+   "verified": true,
+   "lastVerified": "2026-11-18",
+   "feeQuote": "Member: 1635.00 Non Member: 1850.00",
+   "feeNote": "Same fee on every session row listed on 2026-11-18; currency not printed.",
+   "cpdByCollege": [
+    {
+     "college": "ACRRM",
+     "hours": 16,
+     "appliesTo": "each session (CPD Hours column)",
+     "quote": "Educational Activity : 9 hours | Performance Review : 6 hours | Emergency Medicine MOPS: 6 | Anaesthetics (Emergency Response) MOPS: 4 | Anaesthetics (Practice Evaluation) MOPS: 1",
+     "sourceUrl": "https://www.acrrm.org.au/courses/face-to-face/racm"
+    }
+   ]
+  },
+  {
+   "id": "acrrm-phec",
+   "name": "Pre-Hospital Emergency Care (PHEC, ACRRM)",
+   "providers": [
+    {
+     "name": "ACRRM (Australian College of Rural and Remote Medicine)",
+     "url": "https://www.acrrm.org.au/courses/face-to-face/pre-hospital-emergency-care-phec",
+     "verified": true,
+     "calendar": "https://www.acrrm.org.au/courses/face-to-face/upcoming-face-to-face-courses"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "audience": "Rural generalists, registrars and other doctors supporting pre-hospital emergency response.",
+   "audienceEvidence": {
+    "sourceUrl": "https://www.acrrm.org.au/courses/face-to-face/pre-hospital-emergency-care-phec",
+    "quote": "Appropriate for: Rural Generalists, registrars and other medical professionals who are interested in supporting the response to pre-hospital emergencies in their communities.",
+    "lastVerified": "2026-11-18"
+   },
+   "format": "Outdoor, scenario-based face-to-face workshop (first response, retrieval principles, extrication, IV/IO access in difficult environments). Previously named PHaRM.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.acrrm.org.au/courses/face-to-face/pre-hospital-emergency-care-phec",
+    "quote": "Previously named: Pre-Hospital and Retrieval Medicine (PHaRM)",
+    "lastVerified": "2026-11-18"
+   },
+   "typicalLength": "1 workshop (length not printed)",
+   "certificateValidityYears": null,
+   "validitySource": null,
+   "recertification": null,
+   "feeRange": {
+    "currency": "AUD",
+    "min": 1620,
+    "max": 1745,
+    "text": "ACRRM member $1,620, non-member $1,745"
+   },
+   "feeSource": "https://www.acrrm.org.au/courses/face-to-face/pre-hospital-emergency-care-phec",
+   "cpdHours": 0,
+   "cpdNote": "ACRRM CPD 15 hours per session row (other colleges: check provider). See cpdByCollege.",
+   "verified": true,
+   "lastVerified": "2026-11-18",
+   "feeQuote": "Member: 1620.00 Non Member: 1745.00",
+   "feeNote": "Same fee on every session row listed on 2026-11-18; currency not printed.",
+   "cpdByCollege": [
+    {
+     "college": "ACRRM",
+     "hours": 15,
+     "appliesTo": "each session (CPD Hours column)",
+     "quote": "Performance Review: 7 hours | Educational Activity: 1 hour | Anaesthetics (Emergency Response) MOPS: 1",
+     "sourceUrl": "https://www.acrrm.org.au/courses/face-to-face/pre-hospital-emergency-care-phec"
+    }
+   ]
+  },
+  {
+   "id": "acrrm-pocus-rg",
+   "name": "Point of Care Ultrasound for Rural Generalists (POCUS-RG)",
+   "providers": [
+    {
+     "name": "ACRRM (Australian College of Rural and Remote Medicine)",
+     "url": "https://www.acrrm.org.au/courses/face-to-face/point-of-care-ultrasound-for-rural-generalists",
+     "verified": true,
+     "calendar": "https://www.acrrm.org.au/courses/face-to-face/upcoming-face-to-face-courses"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "audience": "ACRRM members: rural generalists, GPs, registrars and other rural and remote clinicians.",
+   "audienceEvidence": {
+    "sourceUrl": "https://www.acrrm.org.au/courses/face-to-face/point-of-care-ultrasound-for-rural-generalists",
+    "quote": "Appropriate for: ACRRM members including Rural Generalists, General Practitioners, registrars, and other clinicians working in rural and remote settings.",
+    "lastVerified": "2026-11-18"
+   },
+   "format": "One day of self-directed online learning, then a one-day face-to-face workshop (eFAST, AAA, cardiac, lung, renal, obstetric, MSK, guided procedures) on handheld devices.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.acrrm.org.au/courses/face-to-face/point-of-care-ultrasound-for-rural-generalists",
+    "quote": "This blended learning program includes one day of interactive, self-directed online learning , followed by a one-day, face-to-face workshop",
+    "lastVerified": "2026-11-18"
+   },
+   "typicalLength": "1 day online + 1 day face-to-face",
+   "certificateValidityYears": null,
+   "validitySource": null,
+   "recertification": null,
+   "feeRange": {
+    "currency": "AUD",
+    "min": 1695,
+    "max": 1875,
+    "text": "ACRRM member $1,695, non-member $1,875"
+   },
+   "feeSource": "https://www.acrrm.org.au/courses/face-to-face/point-of-care-ultrasound-for-rural-generalists",
+   "cpdHours": 0,
+   "cpdNote": "ACRRM CPD 16 hours per session row (other colleges: check provider). See cpdByCollege.",
+   "verified": true,
+   "lastVerified": "2026-11-18",
+   "feeQuote": "Member: 1695.00 Non Member: 1875.00",
+   "feeNote": "Same fee on every session row listed on 2026-11-18; currency not printed.",
+   "cpdByCollege": [
+    {
+     "college": "ACRRM",
+     "hours": 16,
+     "appliesTo": "each session (CPD Hours column)",
+     "quote": "Educational Activity: 6 hours | Performance Review: 8 hours",
+     "sourceUrl": "https://www.acrrm.org.au/courses/face-to-face/point-of-care-ultrasound-for-rural-generalists"
+    }
+   ]
+  },
+  {
+   "id": "ctec-jdocs-emergency-airways",
+   "name": "JDocs: Emergency Airways (CTEC, front-of-neck access)",
+   "providers": [
+    {
+     "name": "UWA CTEC (Clinical Training & Evaluation Centre)",
+     "url": "https://www.ctec.uwa.edu.au/workshops/jdocs-emergency-airways",
+     "verified": true,
+     "calendar": "https://www.ctec.uwa.edu.au/workshops/emergency-critical-care-doctors"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "audience": "Interns, resident medical officers and unaccredited registrars (relevant for anaesthetics, ED, ICU and surgical applicants).",
+   "audienceEvidence": {
+    "sourceUrl": "https://www.ctec.uwa.edu.au/workshops/jdocs-emergency-airways",
+    "quote": "Interns Resident Medical Officers Unaccredited Registrars",
+    "lastVerified": "2026-11-18"
+   },
+   "format": "One-day hands-on workshop: anatomical landmarks, didactic sessions, cases; focus on front-of-neck surgical access techniques.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.ctec.uwa.edu.au/workshops/jdocs-emergency-airways",
+    "quote": "This one-day hands-on workshop features practical stations including anatomical landmarks, didactic sessions and case studies and discussions.",
+    "lastVerified": "2026-11-18"
+   },
+   "typicalLength": "1 day",
+   "certificateValidityYears": null,
+   "validitySource": null,
+   "recertification": null,
+   "feeRange": {
+    "currency": "AUD",
+    "min": 890,
+    "max": 1000,
+    "text": "2027: WA Participant: $890; Non-WA Participant: $1000"
+   },
+   "feeSource": "https://www.ctec.uwa.edu.au/workshops/jdocs-emergency-airways",
+   "cpdHours": 0,
+   "cpdNote": "AMA CPD Home 2026: General Learning 7.5 hours; reapproval sought for 2027 (check provider).",
+   "verified": true,
+   "lastVerified": "2026-11-18",
+   "feeQuote": "2027 WA Participant: $890 Non-WA Participant: $1000",
+   "feeNote": "2027 fees as printed (currency not printed; Australian provider).",
+   "cpdEvidence": {
+    "sourceUrl": "https://www.ctec.uwa.edu.au/workshops/jdocs-emergency-airways",
+    "quote": "Accepted by the AMA's CPD Home as an Educational Activity for 2026: General Learning - 7.5 hours. Reapproval will be sought for 2027.",
+    "lastVerified": "2026-11-18"
+   }
+  },
+  {
+   "id": "ctec-jdocs-emergency-procedures",
+   "name": "JDocs: Emergency Procedures (CTEC)",
+   "providers": [
+    {
+     "name": "UWA CTEC (Clinical Training & Evaluation Centre)",
+     "url": "https://www.ctec.uwa.edu.au/workshops/jdocs-emergency-procedures",
+     "verified": true,
+     "calendar": "https://www.ctec.uwa.edu.au/workshops/emergency-critical-care-doctors"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "audience": "Interns, resident medical officers and unaccredited registrars.",
+   "audienceEvidence": {
+    "sourceUrl": "https://www.ctec.uwa.edu.au/workshops/jdocs-emergency-procedures",
+    "quote": "Interns Resident Medical Officers Unaccredited Registrars",
+    "lastVerified": "2026-11-18"
+   },
+   "format": "One-day hands-on workshop on animal tissue and synthetic models: basic ultrasound, lumbar puncture, rigid sigmoidoscopy, suprapubic and central venous catheter basics.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.ctec.uwa.edu.au/workshops/jdocs-emergency-procedures",
+    "quote": "This one-day hands-on workshop features animal tissue and synthetic models",
+    "lastVerified": "2026-11-18"
+   },
+   "typicalLength": "1 day",
+   "certificateValidityYears": null,
+   "validitySource": null,
+   "recertification": null,
+   "feeRange": {
+    "currency": "AUD",
+    "min": 890,
+    "max": 1000,
+    "text": "2027: WA Participant: $890; Non-WA Participant: $1000"
+   },
+   "feeSource": "https://www.ctec.uwa.edu.au/workshops/jdocs-emergency-procedures",
+   "cpdHours": 0,
+   "cpdNote": "AMA CPD Home 2026: General Learning 8.5 hours; reapproval sought for 2027 (check provider).",
+   "verified": true,
+   "lastVerified": "2026-11-18",
+   "feeQuote": "2027 WA Participant: $890 Non-WA Participant: $1000",
+   "feeNote": "2027 fees as printed (currency not printed; Australian provider).",
+   "cpdEvidence": {
+    "sourceUrl": "https://www.ctec.uwa.edu.au/workshops/jdocs-emergency-procedures",
+    "quote": "Accepted by the AMA's CPD Home as an Educational Activity for 2026: General Learning - 8.5 hours. Reapproval will be sought for 2027.",
+    "lastVerified": "2026-11-18"
+   }
+  },
+  {
+   "id": "ctec-critical-care-procedures",
+   "name": "Critical Care Procedures Workshop (CTEC, cadaveric)",
+   "providers": [
+    {
+     "name": "UWA CTEC (Clinical Training & Evaluation Centre)",
+     "url": "https://www.ctec.uwa.edu.au/workshops/critical-care-procedures-workshop",
+     "verified": true,
+     "calendar": "https://www.ctec.uwa.edu.au/workshops/emergency-critical-care-doctors"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "audience": "FACEM consultants; rural and remote GPs and FACRRM rural generalists considered.",
+   "audienceEvidence": {
+    "sourceUrl": "https://www.ctec.uwa.edu.au/workshops/critical-care-procedures-workshop",
+    "quote": "FACEM qualified Consultants Rural and Remote General Practitioners will be considered FACRRM Rural Generalists will be considered",
+    "lastVerified": "2026-11-18"
+   },
+   "format": "Cadaveric workshop on rarely performed life-saving procedures for critical care practitioners, with emergency medicine and surgical faculty.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.ctec.uwa.edu.au/workshops/critical-care-procedures-workshop",
+    "quote": "CTEC's Critical Care Procedures workshop aims to increase the knowledge and confidence of participants to perform procedures which are not routinely performed, but may be required in a life-saving emergency by critical care practitioners.",
+    "lastVerified": "2026-11-18"
+   },
+   "typicalLength": "1 day",
+   "certificateValidityYears": null,
+   "validitySource": null,
+   "recertification": null,
+   "feeRange": {
+    "currency": "AUD",
+    "min": 1970,
+    "max": 2260,
+    "text": "2027: WA Participant: $1970; Non-WA Participant: $2260"
+   },
+   "feeSource": "https://www.ctec.uwa.edu.au/workshops/critical-care-procedures-workshop",
+   "cpdHours": 0,
+   "cpdNote": "ACEM CPD 2026: 8 hours Educational Activities; reapproval sought for 2027 (check provider).",
+   "verified": true,
+   "lastVerified": "2026-11-18",
+   "feeQuote": "2027 WA Participant: $1970 Non-WA Participant: $2260",
+   "feeNote": "2027 fees as printed (currency not printed; Australian provider).",
+   "cpdEvidence": {
+    "sourceUrl": "https://www.ctec.uwa.edu.au/workshops/critical-care-procedures-workshop",
+    "quote": "Approved in the 2026 ACEM CPD Program for 8 hours in Educational Activities.",
+    "lastVerified": "2026-11-18"
+   }
+  },
+  {
+   "id": "ctec-emergency-department-procedures",
+   "name": "Emergency Department Procedures Workshop (CTEC)",
+   "providers": [
+    {
+     "name": "UWA CTEC (Clinical Training & Evaluation Centre)",
+     "url": "https://www.ctec.uwa.edu.au/workshops/emergency-department-procedures-workshop",
+     "verified": true,
+     "calendar": "https://www.ctec.uwa.edu.au/workshops/emergency-critical-care-doctors"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "audience": "ACEM late-phase advanced trainees, peri-fellowship registrars, fellows and junior consultants; limited places for rural generalists and rural GP proceduralists.",
+   "audienceEvidence": {
+    "sourceUrl": "https://www.ctec.uwa.edu.au/workshops/emergency-department-procedures-workshop",
+    "quote": "ACEM Late Phase Advanced Trainees Peri-Fellowship Registrars Fellows and Junior Consultants",
+    "lastVerified": "2026-11-18"
+   },
+   "format": "Hands-on skills workshop: ICC insertion, difficult airway management, suprapubic insertion, nerve blocks, ultrasound-guided CVC insertion.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.ctec.uwa.edu.au/workshops/emergency-department-procedures-workshop",
+    "quote": "Key procedures covered in this workshop include ICC insertion, difficult airway management, suprapubic insertion, nerve blocks and CVC line insertion utilising ultrasound.",
+    "lastVerified": "2026-11-18"
+   },
+   "typicalLength": "1 day",
+   "certificateValidityYears": null,
+   "validitySource": null,
+   "recertification": null,
+   "feeRange": {
+    "currency": "AUD",
+    "min": 1030,
+    "max": 1200,
+    "text": "2027: WA Participant: $1030; Non-WA Participant: $1200"
+   },
+   "feeSource": "https://www.ctec.uwa.edu.au/workshops/emergency-department-procedures-workshop",
+   "cpdHours": 0,
+   "cpdNote": "ACEM CPD 2026: 8.25 hours; RACGP 2026: 3 h EA + 4.5 h RP; reapproval sought for 2027 (check provider).",
+   "verified": true,
+   "lastVerified": "2026-11-18",
+   "feeQuote": "2027 WA Participant: $1030 Non-WA Participant: $1200",
+   "feeNote": "2027 fees as printed (currency not printed; Australian provider).",
+   "cpdEvidence": {
+    "sourceUrl": "https://www.ctec.uwa.edu.au/workshops/emergency-department-procedures-workshop",
+    "quote": "Approved in the 2026 ACEM CPD Program for 8.25 hours in Educational Activities.",
+    "lastVerified": "2026-11-18"
+   }
+  },
+  {
+   "id": "ctec-cutting-edge-emergency-procedures",
+   "name": "The Cutting Edge: Emergency Procedures (CTEC, cadaveric, for GPs)",
+   "providers": [
+    {
+     "name": "UWA CTEC (Clinical Training & Evaluation Centre)",
+     "url": "https://www.ctec.uwa.edu.au/workshops/cutting-edge-emergency-procedures",
+     "verified": true,
+     "calendar": "https://www.ctec.uwa.edu.au/workshops/emergency-critical-care-doctors"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "audience": "General practitioners, rural generalists and GP/RG registrars; limited places for nurse practitioners, theatre nurses and observers.",
+   "audienceEvidence": {
+    "sourceUrl": "https://www.ctec.uwa.edu.au/workshops/cutting-edge-emergency-procedures",
+    "quote": "General Practitioners Rural Generalists GP and RG Registrars",
+    "lastVerified": "2026-11-18"
+   },
+   "format": "Two-day cadaveric workshop on medical emergencies and improvising with everyday equipment in rural and remote settings.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.ctec.uwa.edu.au/workshops/cutting-edge-emergency-procedures",
+    "quote": "The two day Cutting Edge: Emergency Procedures cadaveric workshop for General Practitioners focuses on medical emergencies",
+    "lastVerified": "2026-11-18"
+   },
+   "typicalLength": "2 days",
+   "certificateValidityYears": null,
+   "validitySource": null,
+   "recertification": null,
+   "feeRange": {
+    "currency": "AUD",
+    "min": 210,
+    "max": 3620,
+    "text": "2027: WA GP, GP Registrar: $3200; Non-WA GP, GP Registrar: $3620; WA Nurse Practitioner: $1650; Non-WA Nurse Practitioner: $1900; Observer: $210"
+   },
+   "feeSource": "https://www.ctec.uwa.edu.au/workshops/cutting-edge-emergency-procedures",
+   "cpdHours": 0,
+   "cpdNote": "Reapproval sought in the RACGP and ACRRM CPD programs for 2027 (check provider).",
+   "verified": true,
+   "lastVerified": "2026-11-18",
+   "feeQuote": "2027 WA GP, GP Registrar: $3200 Non-WA GP, GP Registrar: $3620 WA Nurse Practitioner: $1650 Non-WA Nurse Practitioner: $1900 Observer: $210",
+   "feeNote": "2027 fees as printed (currency not printed; Australian provider).",
+   "cpdEvidence": {
+    "sourceUrl": "https://www.ctec.uwa.edu.au/workshops/cutting-edge-emergency-procedures",
+    "quote": "Reapproval will be sought in the RACGP and ACRRM CPD Programs for 2027.",
+    "lastVerified": "2026-11-18"
+   }
+  },
+  {
+   "id": "ctec-cutting-edge-practical-ed-skills",
+   "name": "The Cutting Edge: Practical ED Skills (CTEC)",
+   "providers": [
+    {
+     "name": "UWA CTEC (Clinical Training & Evaluation Centre)",
+     "url": "https://www.ctec.uwa.edu.au/workshops/cutting-edge-practical-ed-skills",
+     "verified": true,
+     "calendar": "https://www.ctec.uwa.edu.au/workshops/emergency-critical-care-doctors"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "audience": "Rural generalists, rural GPs, GP/RG trainees and advanced-scope nurse practitioners.",
+   "audienceEvidence": {
+    "sourceUrl": "https://www.ctec.uwa.edu.au/workshops/cutting-edge-practical-ed-skills",
+    "quote": "Rural Generalists Rural GPs GP and Rural Generalist Trainees Advanced Scope Nurse Practitioners",
+    "lastVerified": "2026-11-18"
+   },
+   "format": "One-day workshop on rural emergency procedures: emergency ultrasonography basics on live models, emergency access techniques, chest drainage.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.ctec.uwa.edu.au/workshops/cutting-edge-practical-ed-skills",
+    "quote": "The workshop focuses on a range of procedures encountered in rural emergency settings.",
+    "lastVerified": "2026-11-18"
+   },
+   "typicalLength": "1 day",
+   "certificateValidityYears": null,
+   "validitySource": null,
+   "recertification": null,
+   "feeRange": {
+    "currency": "AUD",
+    "min": 1190,
+    "max": 1375,
+    "text": "2027: WA GPs, RGs and Nurse Practitioners (Advanced Scope): $1190; Non-WA GPs, RGs and Nurse Practitioners (Advanced Scope): $1375"
+   },
+   "feeSource": "https://www.ctec.uwa.edu.au/workshops/cutting-edge-practical-ed-skills",
+   "cpdHours": 0,
+   "cpdNote": "ACRRM CPD 2026-2028: 1 h EA + 6.25 h PR; RACGP reapproval sought for 2027 (check provider).",
+   "verified": true,
+   "lastVerified": "2026-11-18",
+   "feeQuote": "2027 WA GPs, RGs and Nurse Practitioners (Advanced Scope): $1190 Non-WA GPs, RGs and Nurse Practitioners (Advanced Scope): $1375",
+   "feeNote": "2027 fees as printed (currency not printed; Australian provider).",
+   "cpdEvidence": {
+    "sourceUrl": "https://www.ctec.uwa.edu.au/workshops/cutting-edge-practical-ed-skills",
+    "quote": "Accredited in the 2026-2028 ACRRM CPD Program for 1 hour in Educational Activities and 6.25 hours in Performance Review.",
+    "lastVerified": "2026-11-18"
+   }
+  },
+  {
+   "id": "wilderness-rescue-medicine",
+   "name": "Wilderness Rescue Medicine (RescueMED)",
+   "providers": [
+    {
+     "name": "RescueMED",
+     "url": "https://rescuemed.com.au/courses/",
+     "verified": true,
+     "calendar": "https://rescuemed.com.au/courses/"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "audience": "Doctors, nurses, paramedics and other experienced medical professionals working (or wanting to work) in remote and austere settings.",
+   "audienceEvidence": {
+    "sourceUrl": "https://rescuemed.com.au/courses/wilderness-rescue-medicine/",
+    "quote": "The course is designed for doctors, nurses, paramedics and other experienced medical professionals who want to get better at managing patients when things don't go to plan",
+    "lastVerified": "2026-11-18"
+   },
+   "format": "Multi-day immersive scenario course in the field. Variants: \"bay-of-fires\" (Bay of Fires Lodge, Tasmania, 6 days) and \"canyon\" (Blue Mountains canyons with Roam Adventures, 5 days).",
+   "formatEvidence": {
+    "sourceUrl": "https://rescuemed.com.au/courses/canyon-rescue-medicine/",
+    "quote": "RescueMED delivers a dynamic five-day wilderness medicine programme designed for medical professionals seeking to sharpen their skills in remote and austere environments.",
+    "lastVerified": "2026-11-18"
+   },
+   "typicalLength": "5-6 days",
+   "certificateValidityYears": null,
+   "validitySource": null,
+   "recertification": null,
+   "feeRange": {
+    "currency": "AUD",
+    "min": 3995,
+    "max": 5850,
+    "text": "Canyon $3,995 AUD; Bay of Fires $5,695-$5,850"
+   },
+   "feeSource": "https://rescuemed.com.au/courses/wilderness-rescue-medicine/",
+   "cpdHours": 0,
+   "cpdNote": "2026 accreditation per provider: 31.75 ACRRM, 34.25 ACEM, 31 RACGP hours, 62 RNZCGP points (2027 not stated; check provider)",
+   "verified": true,
+   "lastVerified": "2026-11-18",
+   "feeQuote": "Investment: $5,695 - $5,850",
+   "feeNote": "Canyon price \"$3,995 AUD\" on https://rescuemed.com.au/courses/canyon-rescue-medicine/.",
+   "cpdEvidence": {
+    "sourceUrl": "https://rescuemed.com.au/courses/wilderness-rescue-medicine/",
+    "quote": "Wilderness Rescue Medicine course's provide 31.75 ACRRM CPD hours, 34.25 ACEM CPD hours, 62 RNZCGP CPD points and 31 RACGP CPD hours in 2026",
+    "lastVerified": "2026-11-18"
+   },
+   "otherEvidence": [
+    {
+     "sourceUrl": "https://rescuemed.com.au/courses/canyon-rescue-medicine/",
+     "quote": "Investment: $3,995 AUD",
+     "lastVerified": "2026-11-18"
+    }
+   ]
+  },
+  {
+   "id": "awls",
+   "name": "Advanced Wilderness Life Support (AWLS, RescueMED)",
+   "providers": [
+    {
+     "name": "RescueMED",
+     "url": "https://rescuemed.com.au/courses/",
+     "verified": true,
+     "calendar": "https://rescuemed.com.au/courses/"
+    }
+   ],
+   "countries": [
+    "AU",
+    "NZ"
+   ],
+   "audience": "Medical professionals providing care well outside the usual workplace (wilderness and remote settings).",
+   "audienceEvidence": {
+    "sourceUrl": "https://rescuemed.com.au/courses/wilderness-rescue-medicine-awls-fundamentals/",
+    "quote": "spend the week getting stuck into what it actually means to provide medical care when you’re well outside the usual workplace",
+    "lastVerified": "2026-11-18"
+   },
+   "format": "Residential multi-day course: trauma, assessment, airway and spinal management, bleeding, fractures, environmental illness, toxicology, triage with a wilderness focus.",
+   "formatEvidence": {
+    "sourceUrl": "https://rescuemed.com.au/courses/wilderness-rescue-medicine-awls-fundamentals/",
+    "quote": "Think trauma, patient assessment, airway and spinal management, bleeding, fractures and dislocations, wounds, environmental illness, pharmacology, toxicology, patient movement, triage and medical emergencies - but with a wilderness twist.",
+    "lastVerified": "2026-11-18"
+   },
+   "typicalLength": "4-5 days",
+   "certificateValidityYears": null,
+   "validitySource": null,
+   "recertification": null,
+   "feeRange": null,
+   "feeSource": null,
+   "cpdHours": 0,
+   "cpdNote": "check provider",
+   "verified": true,
+   "lastVerified": "2026-11-18",
+   "feeNote": "NZ course \"From $3,399 +\"; AU course \"See registration for pricing options\" (no range recorded)."
+  },
+  {
+   "id": "diving-hyperbaric-intro",
+   "name": "Introductory Course in Diving and Hyperbaric Medicine (ANZHMG, SPUMS-approved)",
+   "providers": [
+    {
+     "name": "Australian and New Zealand Hyperbaric Medicine Group (ANZHMG); listed by SPUMS",
+     "url": "https://spums.au/index.php/education/spums-approved-courses-for-doctors",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "audience": "Doctors who want to perform recreational and occupational diving medicals (AS/NZS 2299.1) and be listed on the SPUMS Diving Doctors List.",
+   "audienceEvidence": {
+    "sourceUrl": "https://spums.au/index.php/education/spums-approved-courses-for-doctors",
+    "quote": "Successful completion of this course will allow the doctor to perform Recreational and Occupational (as per AS/ NZS 2299.1) fitness for diving medicals and be listed for such on the SPUMS Diving Doctors List",
+    "lastVerified": "2026-11-18"
+   },
+   "format": "Two-week course (diving physics/physiology, diving injuries, fitness to dive).",
+   "formatEvidence": {
+    "sourceUrl": "https://spums.au/index.php/education/spums-approved-courses-for-doctors",
+    "quote": "Cost: AUD$3,500.00 (inclusive of GST) for two weeks.",
+    "lastVerified": "2026-11-18"
+   },
+   "typicalLength": "2 weeks",
+   "certificateValidityYears": null,
+   "validitySource": null,
+   "recertification": null,
+   "feeRange": {
+    "currency": "AUD",
+    "min": 3500,
+    "max": 3500,
+    "text": "AUD $3,500 incl. GST"
+   },
+   "feeSource": "https://spums.au/index.php/education/spums-approved-courses-for-doctors",
+   "cpdHours": 0,
+   "cpdNote": "check provider",
+   "verified": true,
+   "lastVerified": "2026-11-18",
+   "feeQuote": "Cost: AUD$3,500.00 (inclusive of GST) for two weeks.",
+   "verifiedScope": "facts from the SPUMS approved-courses page (course approver); ANZHMG/Fiona Stanley pages not read"
+  },
+  {
+   "id": "ran-moum",
+   "name": "Royal Australian Navy Medical Officers’ Underwater Medicine Course (MOUM, SPUMS-approved)",
+   "providers": [
+    {
+     "name": "Royal Australian Navy, Submarine and Underwater Medicine Unit (HMAS Penguin); listed by SPUMS",
+     "url": "https://spums.au/index.php/education/spums-approved-courses-for-doctors",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "audience": "Medical practitioners; completion allows recreational and occupational diving medicals and listing on the SPUMS Diving Doctors List.",
+   "audienceEvidence": {
+    "sourceUrl": "https://spums.au/index.php/education/spums-approved-courses-for-doctors",
+    "quote": "The MOUM course seeks to provide the medical practitioner with an understanding of the range of potential medical problems faced by divers.",
+    "lastVerified": "2026-11-18"
+   },
+   "format": "Two-week course including scenario-based simulation of diving emergencies and diving-medical workshops.",
+   "formatEvidence": {
+    "sourceUrl": "https://spums.au/index.php/education/spums-approved-courses-for-doctors",
+    "quote": "The course includes scenario­-based simulation focusing on the management of diving emergencies and workshops covering the key components of the diving medical.",
+    "lastVerified": "2026-11-18"
+   },
+   "typicalLength": "2 weeks",
+   "certificateValidityYears": null,
+   "validitySource": null,
+   "recertification": null,
+   "feeRange": {
+    "currency": "AUD",
+    "min": 2907.55,
+    "max": 2907.55,
+    "text": "AUD $2,907.55 excl. GST (subject to change)"
+   },
+   "feeSource": "https://spums.au/index.php/education/spums-approved-courses-for-doctors",
+   "cpdHours": 0,
+   "cpdNote": "check provider",
+   "verified": true,
+   "lastVerified": "2026-11-18",
+   "feeQuote": "Cost: The course cost is AUD$2,907.55 (excl GST) but is subject to change.",
+   "verifiedScope": "facts from the SPUMS approved-courses page; Navy pages not read"
+  }
+ ]
+}

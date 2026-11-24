@@ -1,0 +1,62 @@
+{
+ "events": [
+  {
+   "id": 4169,
+   "title": "Adelaide Women&#8217;s and Children&#8217;s Hospital",
+   "description": "<p><strong>For internal staff only.</strong></p>\n<p>Please contact the educator, Midwifery Educator Manager at the hospital to enquire/register for the session.</p>\n<p>E: <a href=\"mailto:educator@example.org\">educator@example.org</a></p>\n<p>&nbsp;</p>",
+   "url": "https://fsep.ranzcog.edu.au/event/adelaide-womens-and-childrens-hospital-7/",
+   "start_date": "2026-11-20 08:00:00",
+   "end_date": "2026-11-20 15:00:00",
+   "venue": [],
+   "custom_fields": {
+    "_ecp_custom_3": {
+     "label": "Location",
+     "value": "SA"
+    },
+    "_ecp_custom_6": {
+     "label": "Event Type",
+     "value": "Full Day"
+    }
+   }
+  },
+  {
+   "id": 4439,
+   "title": "Bendigo Health Care Group",
+   "description": "<p>Please contact the educator, CME at the hospital to enquire/register for the session.</p>\n<p>E: <a href=\"mailto:educator@example.org\">educator@example.org</a></p>\n<p>M: 0484 562 489</p>",
+   "url": "https://fsep.ranzcog.edu.au/event/bendigo-health-care-group-5/",
+   "start_date": "2026-11-20 08:00:00",
+   "end_date": "2026-11-20 15:00:00",
+   "venue": [],
+   "custom_fields": {
+    "_ecp_custom_3": {
+     "label": "Location",
+     "value": "VIC"
+    },
+    "_ecp_custom_6": {
+     "label": "Event Type",
+     "value": "Full Day"
+    }
+   }
+  },
+  {
+   "id": 4675,
+   "title": "Tauranga Hospital",
+   "description": "<p>Please contact the educator, Midwifery Educator at the hospital to enquire/register for the session.</p>\n<p>E: <a href=\"mailto:educator@example.org\">educator@example.org</a></p>",
+   "url": "https://fsep.ranzcog.edu.au/event/tauranga-hospital/",
+   "start_date": "2026-11-20 09:00:00",
+   "end_date": "2026-11-20 16:00:00",
+   "venue": [],
+   "custom_fields": {
+    "_ecp_custom_3": {
+     "label": "Location",
+     "value": "NZ"
+    },
+    "_ecp_custom_6": {
+     "label": "Event Type",
+     "value": "Full Day"
+    }
+   }
+  }
+ ],
+ "total": 3
+}

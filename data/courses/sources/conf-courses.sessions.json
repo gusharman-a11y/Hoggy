@@ -1,0 +1,52 @@
+{
+ "generated": "2026-11-18",
+ "note": "See conf-courses.catalogue.json. Dates as read by the x10-aunz-conf desk on 18 Nov 2026 (datesQuote copied from the page).",
+ "sessions": [
+  {
+   "id": "rcpa-aacb-chemical-pathology-course-qld-brisbane-2027-02-08",
+   "courseId": "rcpa-aacb-chemical-pathology-course",
+   "variant": "full",
+   "provider": "AACB with the RCPA",
+   "city": "Brisbane",
+   "region": "QLD",
+   "country": "AU",
+   "venue": "Rydges South Bank, Brisbane",
+   "start": "2027-02-08",
+   "end": "2027-02-12",
+   "endInferred": false,
+   "priceFrom": null,
+   "currency": null,
+   "seatsStatus": null,
+   "bookingUrl": "https://www.aacb.asn.au/AACB/Events/Event_Display.aspx?EventKey=CPC2027&WebsiteKey=d4c31fa4-467a-4959-b48b-cae3ea93e516",
+   "sourceUrl": "https://www.aacb.asn.au/AACB/Events/Event_Display.aspx?EventKey=CPC2027&WebsiteKey=d4c31fa4-467a-4959-b48b-cae3ea93e516",
+   "datesQuote": "8-12 February 2027, Rydges South Bank, Brisbane, QLD.",
+   "lastVerified": "2026-11-18",
+   "datesConfirmed": true,
+   "sourceKind": "AACB event page (organiser's own site)",
+   "sourceRef": "aacb:CPC2027"
+  },
+  {
+   "id": "anzan-eeg-esa-epilepsy-courses-nsw-sydney-2027-02-26",
+   "courseId": "anzan-eeg-esa-epilepsy-courses",
+   "variant": "full",
+   "provider": "ANZAN with the Epilepsy Society of Australia",
+   "city": "Sydney",
+   "region": "NSW",
+   "country": "AU",
+   "venue": "Westmead Hospital, Sydney",
+   "start": "2027-02-26",
+   "end": "2027-02-28",
+   "endInferred": false,
+   "priceFrom": null,
+   "currency": null,
+   "seatsStatus": null,
+   "bookingUrl": "https://www.ivvy.com.au/event/EEG2027/",
+   "sourceUrl": "https://www.ivvy.com.au/event/EEG2027/",
+   "datesQuote": "and ESA Clinical Epilepsy course will be held at Westmead Hospital, Sydney between February 26 and 28, 2027. These courses are intended for neurology trainees but practising neurologists are",
+   "lastVerified": "2026-11-18",
+   "datesConfirmed": true,
+   "sourceKind": "Registration page linked from anzan.org.au (iVvy)",
+   "sessionNote": "ESA clinical epilepsy course 26 Feb; ANZAN EEG course 27-28 Feb (as described in the conference row)"
+  }
+ ]
+}
