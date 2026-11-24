@@ -39,7 +39,7 @@ async function run(browser, B, vp, tag) {
   await noScroll('home'); if (tag === 'phone') { await p.locator('.live').scrollIntoViewIfNeeded(); await shot('x10-home-phone'); }
 
   /* Courses list: fast (catalogue and counts, no sessions), defaults to the profile's country (Australia) and English */
-  const t0 = Date.now(); await go('#/courses'); await p.waitForSelector('#cPlace'); const ms = Date.now() - t0;
+  const t0 = Date.now(); await go('#/courses'); await p.waitForSelector('#cPlace', { state: 'attached' }); const ms = Date.now() - t0;
   assert.ok(ms < 3000, `${tag}: course list took ${ms} ms`);
   assert.ok(!apiHits.some(u => /course=|all=1/.test(u)), 'the list loads no sessions: ' + apiHits.join(' '));
   assert.equal(await p.inputValue('#cPlace'), 'AU'); assert.equal(await p.inputValue('#cListLang'), 'en');
@@ -52,6 +52,8 @@ async function run(browser, B, vp, tag) {
   await noScroll('courses AU'); await shot(`x10-courses-${tag === 'phone' ? 'phone' : 'desktop'}`);
 
   /* United Kingdom: the RCUK ALS row has sessions, ANZCOR has none */
+  /* phones: country and language live in the filter sheet, which stays open while they change */
+  if (tag === 'phone') { await p.click('[data-act="filters"]'); await p.waitForSelector('#cPlace'); await shot('x10-courses-filters-phone'); }
   await p.selectOption('#cPlace', 'GB'); await p.waitForTimeout(200);
   assert.match(await rowText('Resuscitation Council UK'), /\d+ sessions? in United Kingdom/);
   assert.match(await rowText('ALS2'), /None in United Kingdom/);
@@ -102,7 +104,7 @@ async function staticFallback(browser, B) {
   const errors = [], ctx = await browser.newContext({ viewport: { width: 390, height: 844 } }), p = await ctx.newPage();
   p.on('pageerror', e => errors.push('pageerror ' + e.message));
   await p.route('**/api/courses**', r => r.fulfill({ status: 503, contentType: 'application/json', body: '{"error":"down"}' }));
-  await p.goto(B + '/#/courses'); await p.waitForSelector('#cPlace');
+  await p.goto(B + '/#/courses'); await p.waitForSelector('#cPlace', { state: 'attached' });
   assert.match(await p.textContent('.panel.family'), /session/);
   await p.evaluate(() => { location.hash = '#/courses/als2'; }); await p.waitForSelector('#sessList .sess');
   await ctx.close();

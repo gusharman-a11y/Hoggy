@@ -1,5 +1,6 @@
 'use strict';
-/* Accessibility audit: axe-core (devDependency, pinned) on every route at 390x844 and 1280x900, plus the main dialogs.
+/* Accessibility audit: axe-core (devDependency, pinned) on every route at 390x844 and 1280x900, in light and dark, plus the
+   main dialogs and the phone filter sheet.
    Prints violations by impact and exits 1 on any serious or critical one. Not part of npm test:
      NODE_PATH=/opt/node-tools/node_modules node tests/e2e/a11y.js [json report path]
    It starts its own server on a throwaway SQLite folder (with a signed-in run for the account pages). */
@@ -17,7 +18,7 @@ async function startServer(extra = {}) {
   throw new Error('server did not start: ' + log);
 }
 
-const HASH_ROUTES = ['#/home', '#/discover', '#/courses', '#/courses/als2', '#/trips', '#/receipts', '#/claims', '#/cpd', '#/settings', '#/certs', '#/list-event'];
+const HASH_ROUTES = ['#/home', '#/discover', '#/courses', '#/courses/als2', '#/trips', '#/wallet', '#/receipts', '#/claims', '#/cpd', '#/settings', '#/certs', '#/list-event'];
 const PAGES = ['/privacy', '/terms', '/about', '/nope-404'];
 
 async function axe(p) {
@@ -30,8 +31,8 @@ async function axe(p) {
   const browser = await chromium.launch();
   const all = [];
   try {
-    for (const [tag, vp] of [['phone', { width: 390, height: 844 }], ['desktop', { width: 1280, height: 900 }]]) {
-      const ctx = await browser.newContext({ viewport: vp, bypassCSP: true }), p = await ctx.newPage();
+    for (const [tag, vp, scheme] of [['phone', { width: 390, height: 844 }, 'light'], ['desktop', { width: 1280, height: 900 }, 'light'], ['phone-dark', { width: 390, height: 844 }, 'dark'], ['desktop-dark', { width: 1280, height: 900 }, 'dark']]) {
+      const ctx = await browser.newContext({ viewport: vp, bypassCSP: true, colorScheme: scheme }), p = await ctx.newPage();
       const check = async (where) => { await p.waitForTimeout(350); for (const v of await axe(p)) all.push({ tag, where, ...v }); };
       await p.goto(B + '/'); await p.waitForSelector('#main h1');
       for (const h of HASH_ROUTES) { await p.evaluate(x => { location.hash = x; }, h); await p.waitForTimeout(400); await check(h); }
@@ -39,6 +40,7 @@ async function axe(p) {
       await p.evaluate(() => { location.hash = '#/discover'; }); await p.waitForSelector('#results .card');
       await p.click('#results .card'); await p.waitForSelector('#overlay .sheet'); await check('conference dialog');
       await p.keyboard.press('Escape');
+      if (vp.width < 900) { await p.click('[data-act="filters"]'); await p.waitForSelector('#fRegion'); await check('filter sheet'); await p.keyboard.press('Escape'); }
       const signin = p.locator('[data-act=signin]:visible').first();
       if (!(await signin.count())) await p.evaluate(() => { location.hash = '#/settings'; }); if (await signin.count()) { await signin.click(); await p.waitForSelector('#af'); await check('sign-in dialog'); await p.keyboard.press('Escape'); }
       for (const u of PAGES) { const r = await p.goto(B + u); if (r && r.status() < 500) await check(u); }

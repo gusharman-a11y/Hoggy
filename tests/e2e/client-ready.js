@@ -128,7 +128,7 @@ async function run(browser, B, vp, tag) {
   await S.go('#/discover'); await p.waitForSelector('#results .card');
   await p.click('#results .card .save'); await p.click('#results .card-link'); await p.click('#overlay [data-act="plan"]'); await p.waitForSelector('#main h1:text("Trips")');
   await S.go('#/home'); assert.match(await p.textContent('.getstarted'), /3 of 4 done/);
-  await S.go('#/courses'); await p.waitForSelector('#cPlace'); assert.equal(await p.inputValue('#cPlace'), 'AU', 'Courses default to the sign-up country');
+  await S.go('#/courses'); await p.waitForSelector('#cPlace', { state: 'attached' }); /* on phones the selects sit in the filter sheet */ assert.equal(await p.inputValue('#cPlace'), 'AU', 'Courses default to the sign-up country');
   await S.go('#/settings'); assert.equal(await p.inputValue('#prg'), 'QLD', 'state from sign-up'); assert.equal(await p.inputValue('#ps'), 'Emergency Medicine');
   for (const h of ['#/trips', '#/receipts', '#/claims', '#/cpd', '#/settings', '#/certs', '#/courses/als2']) { await S.go(h); await p.waitForSelector('#main h1'); await S.check(h); }
   assert.ok(await p.locator('[data-act="report"][data-kind="course"]').count(), 'course page: report a problem');
@@ -184,7 +184,7 @@ async function dbDown(browser, B, vp, tag) {
   assert.doesNotMatch(await p.textContent('body'), /database unavailable|\{"error"/, 'no raw JSON');
   await S.check('home, database down'); if (tag === 'phone') await S.shot('cr-db-down-phone.png');
   await S.go('#/discover'); await p.waitForSelector('#results .card'); assert.ok(await p.locator('#results .card').count() > 10, 'conferences from the bundled list');
-  await S.go('#/courses'); await p.waitForSelector('#cPlace'); assert.ok(await p.locator('.course-card').count() > 3, 'courses still load');
+  await S.go('#/courses'); await p.waitForSelector('#cPlace', { state: 'attached' }); assert.ok(await p.locator('.course-card').count() > 3, 'courses still load');
   await S.go('#/settings'); await p.click('.acct-panel [data-act="retry"]'); await p.waitForSelector('.toast');
   await S.go('#/list-event'); await p.waitForSelector('#lef'); await S.check('list your event, database down');
   await p.goto(B + '/privacy'); await p.waitForSelector('h1'); await S.check('privacy, database down');

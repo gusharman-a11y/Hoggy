@@ -51,7 +51,7 @@ async function run(browser, B, vp, tag) {
 
   /* sign up, plan a conference trip (no estimate: the checklist is Registration, Flights, Accommodation) */
   await p.goto(B + '/#/settings'); await p.click('.acct-panel [data-act="signin"]'); await p.click('#amode');
-  await p.fill('#au1', 'Dr Sam Snap'); await p.fill('#au2', `sam.${tag}.${Date.now()}@example.com`); await p.fill('#au3', PW); await p.click('#asub'); await p.waitForSelector('#af', { state: 'detached' });
+  await p.fill('#au1', 'Dr Sam Snap'); await p.fill('#au2', `sam.${tag}.${Date.now()}@example.com`); await p.fill('#au3', PW); await p.click('#asub'); await p.waitForSelector('#af', { state: 'detached' }); await p.waitForSelector('.getstarted'); /* sign-up lands on Home's Get started */
   await go('#/discover'); await p.fill('#q', CONF.name); await p.click(`.card[data-id="${CONF.id}"]`); await p.click(`.sheet [data-act="plan"][data-id="${CONF.id}"]`);
   await p.waitForSelector('#overlay', { state: 'hidden' }).catch(() => { }); await go('#/trips');
   const list = p.locator('[data-testid="checklist"]'); await list.waitFor();
