@@ -1,0 +1,6 @@
+[
+ {"id":"anzscts-asm-2027","set":{"blurb":"The annual scientific meeting of the Australian and New Zealand Society of Cardiac and Thoracic Surgeons, at QT Queenstown in 2027."},"note":"wave3 2026-11-25: blurb said dates not announced and named the Gold Coast; ANZSCTS's page gives 3-6 Nov 2027, Queenstown"},
+ {"id":"ascept-asm-2027","set":{"name":"APSA-ASCEPT Joint Scientific Meeting 2027","blurb":"ASCEPT's 2027 meeting, held jointly with APSA on the Gold Coast, for clinical pharmacology, toxicology and pharmaceutical science."},"note":"wave3 2026-11-25: 2027 is the joint APSA-ASCEPT meeting (ascept.org/future-meetings)"},
+ {"id":"asgct-annual-meeting-2028","set":{"blurb":"Annual meeting of the American Society of Gene and Cell Therapy, in New Orleans in 2028."},"note":"wave3 2026-11-25: blurb said dates not announced and named Boston; ASGCT's future-meetings page gives 1-5 May 2028, New Orleans"},
+ {"id":"sabcs-2028","set":{"blurb":"The San Antonio Breast Cancer Symposium, the yearly December meeting on breast cancer research and care in San Antonio."},"note":"wave3 2026-11-25: blurb said dates not announced; SABCS future-symposia page gives 5-8 Dec 2028"}
+]

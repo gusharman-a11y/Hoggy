@@ -1,5 +1,30 @@
 window.HOGGY_CONFERENCES = [
  {
+  "id": "jastro-39th-2026",
+  "name": "39th Annual Meeting of the Japanese Society for Radiation Oncology",
+  "organiser": "Japanese Society for Radiation Oncology",
+  "specialty": "Radiation Oncology",
+  "city": "Chiba",
+  "country": "Japan",
+  "countryCode": "JP",
+  "region": "Asia-Pacific",
+  "lat": 35.65,
+  "lng": 140.04,
+  "start": "2026-11-12",
+  "end": "2026-11-14",
+  "format": "In-person",
+  "cpdHours": 0,
+  "cpdBody": "",
+  "priceFrom": 0,
+  "attendees": 0,
+  "url": "https://www.congre.co.jp/jastro2026/en/index.html",
+  "blurb": "JASTRO annual meeting held at Makuhari Messe, Chiba.",
+  "datesConfirmed": false,
+  "dateStatus": "estimated",
+  "sourceUrl": "https://www.congre.co.jp/jastro2026/en/index.html",
+  "estimateReason": "Dates not confirmed: missing datesSourceUrl, datesQuote, verifiedOn"
+ },
+ {
   "dateStatus": "confirmed",
   "sourceUrl": "https://www.congre.co.jp/jsca2026/en/index.html",
   "id": "jsca-46th-2026",
@@ -1364,7 +1389,7 @@ window.HOGGY_CONFERENCES = [
  },
  {
   "dateStatus": "confirmed",
-  "sourceUrl": "https://sabcs.org/",
+  "sourceUrl": "https://sabcs.org/media/future-symposia/",
   "id": "sabcs-2026",
   "name": "San Antonio Breast Cancer Symposium 2026",
   "organiser": "AACR, Baylor College of Medicine and Dan L Duncan Comprehensive Cancer Center",
@@ -1385,9 +1410,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.sabcs.org",
   "blurb": "Major breast cancer research symposium at the Henry B. Gonzalez Convention Center.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://sabcs.org/media/future-symposia/",
+  "datesQuote": "San Antonio Breast Cancer Symposium: December 8-11, 2026 December 7-10, 2027 December 5-8, 2028",
+  "verifiedOn": "2026-11-25"
  },
  {
   "id": "attd-asia-2026",
@@ -4178,7 +4205,7 @@ window.HOGGY_CONFERENCES = [
  },
  {
   "dateStatus": "confirmed",
-  "sourceUrl": "https://alcc.lungfoundation.com.au/",
+  "sourceUrl": "https://alcc.lungfoundation.com.au/venue",
   "id": "australian-lung-cancer-conference-2027",
   "name": "Australian Lung Cancer Conference 2027",
   "organiser": "Lung Foundation Australia",
@@ -4199,8 +4226,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://alcc.lungfoundation.com.au/",
   "blurb": "The 11th Australian Lung Cancer Conference, held at the Brisbane Convention & Exhibition Centre.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://alcc.lungfoundation.com.au/venue",
+  "datesQuote": "Australian Lung Cancer Conference 2027 17 - 19 February 2027| Brisbane Convention & Exhibition Centre",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "confirmed",
@@ -4434,34 +4464,6 @@ window.HOGGY_CONFERENCES = [
   "datesConfirmed": true,
   "lastVerified": "2026-11-07",
   "legacyConfirmed": true
- },
- {
-  "id": "aoa-wa-branch-scientific-papers-day-2027",
-  "name": "AOA WA Branch Scientific Papers Day 2027",
-  "organiser": "Australian Orthopaedic Association",
-  "specialty": "Orthopaedics",
-  "city": "Perth",
-  "country": "Australia",
-  "countryCode": "AU",
-  "region": "Asia-Pacific",
-  "lat": -31.9523,
-  "lng": 115.8613,
-  "start": "2027-02-20",
-  "end": "2027-02-20",
-  "format": "In-person",
-  "cpdHours": 0,
-  "cpdBody": "",
-  "priceFrom": 0,
-  "attendees": 0,
-  "url": "https://aoa.org.au/events/key-aoa-events/detail/10efb19b-3e96-4cef-9fe2-20f92a7af0ca",
-  "blurb": "AOA Western Australian branch papers day in Perth.",
-  "datesConfirmed": true,
-  "dateStatus": "confirmed",
-  "sourceUrl": "https://aoa.org.au/events/key-aoa-events/detail/10efb19b-3e96-4cef-9fe2-20f92a7af0ca",
-  "datesSourceUrl": "https://aoa.org.au/events/key-aoa-events/detail/10efb19b-3e96-4cef-9fe2-20f92a7af0ca",
-  "datesQuote": "20 February 2027",
-  "verifiedOn": "2026-11-18",
-  "lastVerified": "2026-11-18"
  },
  {
   "dateStatus": "confirmed",
@@ -4751,7 +4753,7 @@ window.HOGGY_CONFERENCES = [
  },
  {
   "dateStatus": "confirmed",
-  "sourceUrl": "https://www.antimicrobials.com.au/",
+  "sourceUrl": "https://www.antimicrobials.com.au/registration",
   "id": "antimicrobials-2027",
   "name": "Antimicrobials 2027 (26th Annual Scientific Meeting)",
   "organiser": "Australian Society for Antimicrobials",
@@ -4772,8 +4774,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.antimicrobials.com.au/",
   "blurb": "Annual scientific meeting of the Australian Society for Antimicrobials, held at the Brisbane Convention and Exhibition Centre.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.antimicrobials.com.au/registration",
+  "datesQuote": "Brisbane Convention & Exhibition Centre, Brisbane, Queensland, from Thursday 25 to Saturday 27 February 2027",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "confirmed",
@@ -4856,6 +4861,35 @@ window.HOGGY_CONFERENCES = [
   "datesSourceUrl": "https://www.esgo.org/esgo-2027-abstract-submission-deadline-extended/",
   "datesQuote": "February 25-27, 2027, London, United Kingdom",
   "verifiedOn": "2026-11-18"
+ },
+ {
+  "id": "aoa-sant-branch-papers-day-2027",
+  "name": "AOA SA/NT Branch Scientific Papers Day 2027",
+  "organiser": "Australian Orthopaedic Association",
+  "specialty": "Orthopaedics",
+  "city": "Adelaide",
+  "country": "Australia",
+  "countryCode": "AU",
+  "region": "Asia-Pacific",
+  "lat": -34.9275,
+  "lng": 138.6,
+  "start": "2027-02-26",
+  "end": "2027-02-26",
+  "format": "In-person",
+  "cpdHours": 0,
+  "cpdBody": "",
+  "priceFrom": 0,
+  "attendees": 0,
+  "url": "https://aoa.org.au/events/key-aoa-events/detail/9039c0f1-7100-4bbe-b681-cca2af88f8b9",
+  "blurb": "One-day scientific papers day of the AOA South Australia and Northern Territory branch at the SAHMRI Auditorium, Adelaide.",
+  "datesConfirmed": true,
+  "dateStatus": "confirmed",
+  "sourceUrl": "https://aoa.org.au/events/key-aoa-events/detail/9039c0f1-7100-4bbe-b681-cca2af88f8b9",
+  "datesSourceUrl": "https://aoa.org.au/events/key-aoa-events/detail/9039c0f1-7100-4bbe-b681-cca2af88f8b9",
+  "datesQuote": "When: 26 February 2027 Where: SAHMRI Auditorium, Adelaide, SA",
+  "verifiedOn": "2026-11-25",
+  "organiserUrl": "https://aoa.org.au/",
+  "lastVerified": "2026-11-25"
  },
  {
   "dateStatus": "confirmed",
@@ -5424,7 +5458,7 @@ window.HOGGY_CONFERENCES = [
  },
  {
   "dateStatus": "confirmed",
-  "sourceUrl": "https://ranzco.edu/events/2027-anzcs",
+  "sourceUrl": "https://ranzco.edu/events/2027-anzcs/",
   "id": "anzcs-meeting-2027",
   "name": "ANZCS Meeting 2027",
   "organiser": "RANZCO",
@@ -5445,8 +5479,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://ranzco.edu/events/2027-anzcs",
   "blurb": "Ophthalmology meeting hosted by RANZCO at the Crowne Plaza Adelaide.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://ranzco.edu/events/2027-anzcs/",
+  "datesQuote": "Date(s) - 04/03/2027 - 05/03/2027 All Day Location Crowne Plaza Adelaide, Adelaide SA",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "confirmed",
@@ -5668,6 +5705,35 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.rcpa.edu.au",
   "blurb": "The annual pathology update meeting for pathologists and scientists, usually hosted in Melbourne though the host city rotates. Dates expected; not yet announced.",
   "datesConfirmed": false
+ },
+ {
+  "id": "aoa-wa-branch-scientific-papers-day-2027",
+  "name": "AOA WA Branch Scientific Papers Day 2027",
+  "organiser": "Australian Orthopaedic Association",
+  "specialty": "Orthopaedics",
+  "city": "Perth",
+  "country": "Australia",
+  "countryCode": "AU",
+  "region": "Asia-Pacific",
+  "lat": -31.9523,
+  "lng": 115.8613,
+  "start": "2027-03-06",
+  "end": "2027-03-06",
+  "format": "In-person",
+  "cpdHours": 0,
+  "cpdBody": "",
+  "priceFrom": 0,
+  "attendees": 0,
+  "url": "https://aoa.org.au/events/key-aoa-events/detail/10efb19b-3e96-4cef-9fe2-20f92a7af0ca",
+  "blurb": "AOA Western Australian branch papers day in Perth.",
+  "datesConfirmed": true,
+  "dateStatus": "confirmed",
+  "sourceUrl": "https://aoa.org.au/events/key-aoa-events/detail/10efb19b-3e96-4cef-9fe2-20f92a7af0ca",
+  "datesSourceUrl": "https://aoa.org.au/events/key-aoa-events/detail/10efb19b-3e96-4cef-9fe2-20f92a7af0ca",
+  "datesQuote": "When: 06 March 2027 Where: Perth",
+  "verifiedOn": "2026-11-25",
+  "lastVerified": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "id": "jafa-auckland-city-symposium-2027",
@@ -6141,30 +6207,6 @@ window.HOGGY_CONFERENCES = [
   "datesConfirmed": false
  },
  {
-  "dateStatus": "estimated",
-  "sourceUrl": "https://www.anzscts.org",
-  "id": "anzscts-asm-2027",
-  "name": "ANZSCTS Annual Scientific Meeting 2027",
-  "organiser": "Australian and New Zealand Society of Cardiac and Thoracic Surgeons",
-  "specialty": "Cardiothoracic Surgery",
-  "city": "Gold Coast",
-  "country": "Australia",
-  "countryCode": "AU",
-  "region": "Asia-Pacific",
-  "lat": -28.02,
-  "lng": 153.4,
-  "start": "2027-03-12",
-  "end": "2027-03-14",
-  "format": "In-person",
-  "cpdHours": 0,
-  "cpdBody": "",
-  "priceFrom": 0,
-  "attendees": 0,
-  "url": "https://www.anzscts.org",
-  "blurb": "The annual scientific meeting of cardiac and thoracic surgeons, usually hosted in Gold Coast though the host city rotates. Dates expected; not yet announced.",
-  "datesConfirmed": false
- },
- {
   "dateStatus": "confirmed",
   "sourceUrl": "https://www.dgho.de",
   "id": "dgho-fruehjahrstagung-2027",
@@ -6270,7 +6312,7 @@ window.HOGGY_CONFERENCES = [
  },
  {
   "dateStatus": "confirmed",
-  "sourceUrl": "https://www.nzps27.nz/",
+  "sourceUrl": "https://www.nzps27.nz/registration.html",
   "id": "nzps-asm-2027",
   "name": "New Zealand Pain Society Annual Scientific Meeting 2027",
   "organiser": "New Zealand Pain Society",
@@ -6291,8 +6333,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.nzps27.nz/",
   "blurb": "Annual scientific meeting of the NZ Pain Society at Novotel Tainui Hamilton, with pre-conference workshops on 11 March.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.nzps27.nz/registration.html",
+  "datesQuote": "Admission to all Conference Sessions on Friday 12 - Saturday 13 March 2027",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "confirmed",
@@ -8033,9 +8078,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.j-circ.or.jp/english/",
   "blurb": "Annual meeting of the Japanese Circulation Society; the society site promotes the JCS2027 congress.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.j-circ.or.jp/english/congress/",
+  "datesQuote": "Date March 26th (Fri.) -28th (Sun.), 2027 Venue Yokohama,Japan",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "estimated",
@@ -8223,7 +8270,7 @@ window.HOGGY_CONFERENCES = [
  },
  {
   "dateStatus": "confirmed",
-  "sourceUrl": "https://www.apasl.info/",
+  "sourceUrl": "https://www.apasl2027.org/venue",
   "id": "apasl-2027",
   "name": "APASL Annual Conference 2027",
   "organiser": "Asian Pacific Association for the Study of the Liver",
@@ -8244,9 +8291,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.apasl.info",
   "blurb": "Asian Pacific liver disease conference at the Sydney ICC.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.apasl2027.org/venue",
+  "datesQuote": "1 - 4 April 2027 International Convention Centre, Sydney, Australia",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "estimated",
@@ -8559,7 +8608,7 @@ window.HOGGY_CONFERENCES = [
  },
  {
   "dateStatus": "confirmed",
-  "sourceUrl": "https://www.nzasm.org.nz/",
+  "sourceUrl": "https://www.nzasm.org.nz/programme",
   "id": "ranzcog-aotearoa-nz-asm-2027",
   "name": "RANZCOG Aotearoa New Zealand 2027 Annual Scientific Meeting",
   "organiser": "RANZCOG Aotearoa New Zealand",
@@ -8580,8 +8629,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.nzasm.org.nz/",
   "blurb": "RANZCOG Aotearoa New Zealand annual scientific meeting at Napier, with post-meeting workshops on 5 April 2027.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.nzasm.org.nz/programme",
+  "datesQuote": "Aotearoa ASM 2027 Friday 2 April to Sunday 4 April, 2027",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "confirmed",
@@ -9007,9 +9059,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.jssoc.or.jp",
   "blurb": "Annual congress of the Japan Surgical Society.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.jssoc.or.jp/jss127/outline.html",
+  "datesQuote": "会期 2027年4月8日（木）～10日（土） 会頭 池田 徳彦（東京医科大学名誉教授、国際医療福祉大学副学長・副大学院長） 会場 東京国際フォーラム",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "estimated",
@@ -12903,7 +12957,7 @@ window.HOGGY_CONFERENCES = [
  },
  {
   "dateStatus": "confirmed",
-  "sourceUrl": "https://annualmeeting.asgct.org/",
+  "sourceUrl": "https://annualmeeting.asgct.org/about/future-annual-meetings",
   "id": "asgct-annual-meeting",
   "name": "ASGCT Annual Meeting",
   "organiser": "American Society of Gene & Cell Therapy",
@@ -12924,9 +12978,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://annualmeeting.asgct.org",
   "blurb": "A major annual meeting for gene and cell therapy research and clinical development.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://annualmeeting.asgct.org/about/future-annual-meetings",
+  "datesQuote": "2027 May 3-7, 2027 | Philadelphia, PA",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "confirmed",
@@ -14622,9 +14678,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.joa.or.jp",
   "blurb": "Annual meeting of the Japanese Orthopaedic Association.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.congre.co.jp/joa2027/outline/index.html",
+  "datesQuote": "会期 2027年5月13日（木）～ 5月16日（日）",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "estimated",
@@ -18420,7 +18478,7 @@ window.HOGGY_CONFERENCES = [
  },
  {
   "dateStatus": "confirmed",
-  "sourceUrl": "https://congress.eular.org/",
+  "sourceUrl": "https://congress.eular.org/general-information",
   "id": "eular-congress",
   "name": "EULAR Congress",
   "organiser": "European Alliance of Associations for Rheumatology",
@@ -18441,9 +18499,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.eular.org",
   "blurb": "A major congress on rheumatology and musculoskeletal disease.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://congress.eular.org/general-information",
+  "datesQuote": "The EULAR 2027 Congress will take place at Messe Berlin, Germany on the 9 - 12 June 2027",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "confirmed",
@@ -19506,7 +19566,7 @@ window.HOGGY_CONFERENCES = [
  },
  {
   "dateStatus": "confirmed",
-  "sourceUrl": "https://audiologyconference.org",
+  "sourceUrl": "https://www.audiologyconference.org/speakers",
   "id": "nzas-audiology-conference-2027",
   "name": "NZAS Conference 2027",
   "organiser": "New Zealand Audiological Society",
@@ -19527,8 +19587,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://audiologyconference.org",
   "blurb": "New Zealand Audiological Society conference marking 50 years of the society, at the NZICC in Auckland.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.audiologyconference.org/speakers",
+  "datesQuote": "New Zealand Audiological Society 2027 Conference 16 – 18 June 2027 New Zealand International Convention Centre",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "estimated",
@@ -22102,7 +22165,7 @@ window.HOGGY_CONFERENCES = [
  },
  {
   "dateStatus": "confirmed",
-  "sourceUrl": "https://www.midwife-conference.org.nz",
+  "sourceUrl": "https://www.midwife-conference.org.nz/registration",
   "id": "nzcom-biennial-conference-2027",
   "name": "New Zealand College of Midwives Biennial Conference 2027",
   "organiser": "New Zealand College of Midwives",
@@ -22123,8 +22186,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.midwife-conference.org.nz",
   "blurb": "Biennial conference of the NZ College of Midwives at Takina Wellington, with masterclasses on 21 July.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.midwife-conference.org.nz/registration",
+  "datesQuote": "Register now 22 - 23 July 2027 Te Whanganui-a-Tara Wellington Conference Registration",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "estimated",
@@ -22466,7 +22532,7 @@ window.HOGGY_CONFERENCES = [
  },
  {
   "dateStatus": "confirmed",
-  "sourceUrl": "https://festivalofnursing.com",
+  "sourceUrl": "https://www.festivalofnursing.com/adelaide-venue",
   "id": "international-festival-of-nursing-2027",
   "name": "International Festival of Nursing 2027",
   "organiser": "Australian Primary Health Care Nurses Association (APNA)",
@@ -22487,8 +22553,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://festivalofnursing.com",
   "blurb": "Nursing festival at the Adelaide Convention Centre with a Care Systems Forum, Nurse Employers Forum and Future Nurses Expo.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.festivalofnursing.com/adelaide-venue",
+  "datesQuote": "will be held in Adelaide, South Australia, from 29–31 July 2027",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "id": "acm-wa-state-conference-2027",
@@ -22819,6 +22888,35 @@ window.HOGGY_CONFERENCES = [
   "provenance": "organiser-page"
  },
  {
+  "id": "nz-pelvic-trauma-meeting-2027",
+  "name": "NZ Pelvic Trauma Meeting 2027",
+  "organiser": "New Zealand Orthopaedic Association",
+  "specialty": "Orthopaedics",
+  "city": "Queenstown",
+  "country": "New Zealand",
+  "countryCode": "NZ",
+  "region": "Asia-Pacific",
+  "lat": -45.0312,
+  "lng": 168.6626,
+  "start": "2027-08-07",
+  "end": "2027-08-08",
+  "format": "In-person",
+  "cpdHours": 0,
+  "cpdBody": "",
+  "priceFrom": 0,
+  "attendees": 0,
+  "url": "https://www.nzoa.org.nz/nzoa-meetings-2026",
+  "blurb": "Pelvic trauma meeting listed among the NZOA's 2027 orthopaedic events, at Millbrook, Queenstown.",
+  "datesConfirmed": true,
+  "dateStatus": "confirmed",
+  "sourceUrl": "https://www.nzoa.org.nz/nzoa-meetings-2026",
+  "datesSourceUrl": "https://www.nzoa.org.nz/nzoa-meetings-2026",
+  "datesQuote": "Pelvic Trauma Meeting , 7 - 8 August 2027, Millbrook Queenstown",
+  "verifiedOn": "2026-11-25",
+  "organiserUrl": "https://www.nzoa.org.nz/",
+  "lastVerified": "2026-11-25"
+ },
+ {
   "dateStatus": "estimated",
   "sourceUrl": "https://www.hgsa.org.au",
   "id": "hgsa-asm",
@@ -22992,6 +23090,35 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.sbmn.org.br",
   "blurb": "National nuclear medicine and molecular imaging congress, listed for 13-15 August 2027 in Aracaju.",
   "datesConfirmed": false
+ },
+ {
+  "id": "aoa-sant-branch-asm-2027",
+  "name": "AOA SA/NT Branch Annual Scientific Meeting 2027",
+  "organiser": "Australian Orthopaedic Association",
+  "specialty": "Orthopaedics",
+  "city": "Adelaide",
+  "country": "Australia",
+  "countryCode": "AU",
+  "region": "Asia-Pacific",
+  "lat": -34.9275,
+  "lng": 138.6,
+  "start": "2027-08-13",
+  "end": "2027-08-13",
+  "format": "In-person",
+  "cpdHours": 0,
+  "cpdBody": "",
+  "priceFrom": 0,
+  "attendees": 0,
+  "url": "https://aoa.org.au/events/key-aoa-events/detail/8cf83b06-658f-4f81-be67-c6666df38263",
+  "blurb": "One-day annual scientific meeting of the AOA South Australia and Northern Territory branch at Kooyonga Golf Club, Adelaide.",
+  "datesConfirmed": true,
+  "dateStatus": "confirmed",
+  "sourceUrl": "https://aoa.org.au/events/key-aoa-events/detail/8cf83b06-658f-4f81-be67-c6666df38263",
+  "datesSourceUrl": "https://aoa.org.au/events/key-aoa-events/detail/8cf83b06-658f-4f81-be67-c6666df38263",
+  "datesQuote": "When: 13 August 2027 Where: Kooyonga Golf Club, Adelaide",
+  "verifiedOn": "2026-11-25",
+  "organiserUrl": "https://aoa.org.au/",
+  "lastVerified": "2026-11-25"
  },
  {
   "dateStatus": "confirmed",
@@ -23392,6 +23519,35 @@ window.HOGGY_CONFERENCES = [
   "lastVerified": "2026-11-09",
   "provenance": "organiser-page",
   "legacyConfirmed": true
+ },
+ {
+  "id": "nz-orthopaedic-spine-society-meeting-2027",
+  "name": "NZ Orthopaedic Spine Society Meeting 2027",
+  "organiser": "New Zealand Orthopaedic Spine Society (NZOA)",
+  "specialty": "Orthopaedics",
+  "city": "Queenstown",
+  "country": "New Zealand",
+  "countryCode": "NZ",
+  "region": "Asia-Pacific",
+  "lat": -45.0312,
+  "lng": 168.6626,
+  "start": "2027-08-19",
+  "end": "2027-08-22",
+  "format": "In-person",
+  "cpdHours": 0,
+  "cpdBody": "",
+  "priceFrom": 0,
+  "attendees": 0,
+  "url": "https://www.nzoa.org.nz/nzoa-meetings-2026",
+  "blurb": "Meeting of the New Zealand Orthopaedic Spine Society, a subspecialty society of the NZOA, at Millbrook, Queenstown.",
+  "datesConfirmed": true,
+  "dateStatus": "confirmed",
+  "sourceUrl": "https://www.nzoa.org.nz/nzoa-meetings-2026",
+  "datesSourceUrl": "https://www.nzoa.org.nz/nzoa-meetings-2026",
+  "datesQuote": "NZ Orthopaedic Spine Society Meeting , 19 - 22 August 2027, Millbrook Queenstown",
+  "verifiedOn": "2026-11-25",
+  "organiserUrl": "https://www.nzoa.org.nz/",
+  "lastVerified": "2026-11-25"
  },
  {
   "dateStatus": "confirmed",
@@ -24920,8 +25076,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://allergy.org.au/conferences/ascia-annual-conference",
   "blurb": "ASCIA annual conference at the National Convention Centre Canberra.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://allergy.org.au/conferences/ascia-annual-conference/schedule-for-ascia-acs",
+  "datesQuote": "ASCIA 2027 Conference Tuesday 7th to Friday 10th September 2027 National Convention Centre Canberra, ACT",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "estimated",
@@ -25583,9 +25742,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.ersnet.org",
   "blurb": "A major respiratory medicine congress held each September.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.ersnet.org/congress-and-events/congress/",
+  "datesQuote": "The ERS Congress 2027 will be held from 11–14 September in Milan, Italy",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "estimated",
@@ -30595,7 +30756,7 @@ window.HOGGY_CONFERENCES = [
  },
  {
   "dateStatus": "confirmed",
-  "sourceUrl": "https://www.ranzcr.com/whats-on/annual-scientific-meetings",
+  "sourceUrl": "https://www.ranzcr.com/events/annual-scientific-meetings/",
   "id": "ranzcr-asm",
   "name": "RANZCR Annual Scientific Meeting",
   "organiser": "Royal Australian and New Zealand College of Radiologists",
@@ -30616,9 +30777,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.ranzcr.com",
   "blurb": "The ANZ radiology and radiation oncology annual meeting.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.ranzcr.com/events/annual-scientific-meetings/",
+  "datesQuote": "RANZCR ASM 2027 14-16 October, Gold Coast Convention & Exhibition Centre, Gold Coast, QLD",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "estimated",
@@ -31130,9 +31293,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.nzoa.org.nz",
   "blurb": "Annual scientific meeting of New Zealand orthopaedic surgeons.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.nzoa.org.nz/nzoa-meetings-2026",
+  "datesQuote": "NZOA Annual Scientific Meeting 2027 , 18-19 October, The Pullman Hotel, Auckland",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "confirmed",
@@ -32570,9 +32735,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.sfn.org",
   "blurb": "A major neuroscience research meeting.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.sfn.org/meetings",
+  "datesQuote": "2027: October 23–27, Chicago",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "confirmed",
@@ -33677,6 +33844,35 @@ window.HOGGY_CONFERENCES = [
   "lastVerified": "2026-11-24"
  },
  {
+  "dateStatus": "confirmed",
+  "sourceUrl": "https://anzscts.org/events/anzscts-asm-2027/",
+  "id": "anzscts-asm-2027",
+  "name": "ANZSCTS Annual Scientific Meeting 2027",
+  "organiser": "Australian and New Zealand Society of Cardiac and Thoracic Surgeons",
+  "specialty": "Cardiothoracic Surgery",
+  "city": "Queenstown",
+  "country": "New Zealand",
+  "countryCode": "NZ",
+  "region": "Asia-Pacific",
+  "lat": -45.0312,
+  "lng": 168.6626,
+  "start": "2027-11-03",
+  "end": "2027-11-06",
+  "format": "In-person",
+  "cpdHours": 0,
+  "cpdBody": "",
+  "priceFrom": 0,
+  "attendees": 0,
+  "url": "https://www.anzscts.org",
+  "blurb": "The annual scientific meeting of the Australian and New Zealand Society of Cardiac and Thoracic Surgeons, at QT Queenstown in 2027.",
+  "datesConfirmed": true,
+  "datesSourceUrl": "https://anzscts.org/events/anzscts-asm-2027/",
+  "datesQuote": "ANZSCTS Annual Scientific Meeting 2027 3–6 Nov 2027 Save the date. Event details When 3–6 Nov 2027 Where QT Queenstown Queenstown, New Zealand",
+  "verifiedOn": "2026-11-25",
+  "lastVerified": "2026-11-25",
+  "provenance": "organiser-page"
+ },
+ {
   "dateStatus": "estimated",
   "sourceUrl": "https://aorticconference.org",
   "id": "aortic-conference-2027",
@@ -34266,7 +34462,7 @@ window.HOGGY_CONFERENCES = [
  },
  {
   "dateStatus": "confirmed",
-  "sourceUrl": "https://www.apha.org/events-and-meetings/annual/past-and-future-annual-meetings",
+  "sourceUrl": "https://www.apha.org/events-and-meetings/annual/about/past-and-future-annual-meetings",
   "id": "apha-annual-meeting",
   "name": "APHA Annual Meeting & Expo",
   "organiser": "American Public Health Association",
@@ -34287,9 +34483,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.apha.org/events-and-meetings/annual",
   "blurb": "A major annual gathering of US public health professionals.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.apha.org/events-and-meetings/annual/about/past-and-future-annual-meetings",
+  "datesQuote": "2027: Nov. 7-10, Philadelphia",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "confirmed",
@@ -35387,9 +35585,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.aao.org",
   "blurb": "A major ophthalmology meeting.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.aao.org/annual-meeting/past-and-future-meetings",
+  "datesQuote": "AAO 2027 Las Vegas, Venetian Expo & Hotel Nov. 12-15: AAO 2027",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "estimated",
@@ -36321,6 +36521,35 @@ window.HOGGY_CONFERENCES = [
   "datesConfirmed": false
  },
  {
+  "id": "nz-orthopaedic-foot-ankle-society-meeting-2027",
+  "name": "NZ Orthopaedic Foot & Ankle Society Meeting 2027",
+  "organiser": "New Zealand Orthopaedic Foot & Ankle Society (NZOA)",
+  "specialty": "Orthopaedics",
+  "city": "Auckland",
+  "country": "New Zealand",
+  "countryCode": "NZ",
+  "region": "Asia-Pacific",
+  "lat": -36.8492,
+  "lng": 174.7653,
+  "start": "2027-11-20",
+  "end": "2027-11-21",
+  "format": "In-person",
+  "cpdHours": 0,
+  "cpdBody": "",
+  "priceFrom": 0,
+  "attendees": 0,
+  "url": "https://www.nzoa.org.nz/nzoa-meetings-2026",
+  "blurb": "Meeting of the New Zealand Orthopaedic Foot & Ankle Society, a subspecialty society of the NZOA, at the Park Hyatt Auckland.",
+  "datesConfirmed": true,
+  "dateStatus": "confirmed",
+  "sourceUrl": "https://www.nzoa.org.nz/nzoa-meetings-2026",
+  "datesSourceUrl": "https://www.nzoa.org.nz/nzoa-meetings-2026",
+  "datesQuote": "NZ Orthopaedic Foot & Ankle Society Meeting , 20 - 21 November 2027, Park Hyatt Auckland",
+  "verifiedOn": "2026-11-25",
+  "organiserUrl": "https://www.nzoa.org.nz/",
+  "lastVerified": "2026-11-25"
+ },
+ {
   "dateStatus": "estimated",
   "sourceUrl": "https://www.surgery.org.tw/",
   "id": "tsa-taipei-2027-expected",
@@ -36342,30 +36571,6 @@ window.HOGGY_CONFERENCES = [
   "attendees": 0,
   "url": "https://www.surgery.org.tw/",
   "blurb": "Taiwan Surgical Association Annual Meeting organised by Taiwan Surgical Association, expected in Taipei (host city is the usual venue and may rotate). Dates expected; not yet announced.",
-  "datesConfirmed": false
- },
- {
-  "dateStatus": "estimated",
-  "sourceUrl": "https://www.ascept.org",
-  "id": "ascept-asm-2027",
-  "name": "ASCEPT Annual Scientific Meeting 2027",
-  "organiser": "Australasian Society of Clinical and Experimental Pharmacologists and Toxicologists",
-  "specialty": "Clinical Pharmacology & Toxicology",
-  "city": "Melbourne",
-  "country": "Australia",
-  "countryCode": "AU",
-  "region": "Asia-Pacific",
-  "lat": -37.81,
-  "lng": 144.96,
-  "start": "2027-11-23",
-  "end": "2027-11-25",
-  "format": "In-person",
-  "cpdHours": 0,
-  "cpdBody": "",
-  "priceFrom": 0,
-  "attendees": 0,
-  "url": "https://www.ascept.org",
-  "blurb": "The annual meeting on clinical pharmacology and toxicology, usually hosted in Melbourne though the host city rotates. Dates expected; not yet announced.",
   "datesConfirmed": false
  },
  {
@@ -36566,6 +36771,35 @@ window.HOGGY_CONFERENCES = [
   "lastVerified": "2026-11-09",
   "provenance": "organiser-page",
   "legacyConfirmed": true
+ },
+ {
+  "dateStatus": "confirmed",
+  "sourceUrl": "https://www.ascept.org/future-meetings/",
+  "id": "ascept-asm-2027",
+  "name": "APSA-ASCEPT Joint Scientific Meeting 2027",
+  "organiser": "Australasian Society of Clinical and Experimental Pharmacologists and Toxicologists",
+  "specialty": "Clinical Pharmacology & Toxicology",
+  "city": "Gold Coast",
+  "country": "Australia",
+  "countryCode": "AU",
+  "region": "Asia-Pacific",
+  "lat": -28.0167,
+  "lng": 153.4,
+  "start": "2027-11-30",
+  "end": "2027-12-03",
+  "format": "In-person",
+  "cpdHours": 0,
+  "cpdBody": "",
+  "priceFrom": 0,
+  "attendees": 0,
+  "url": "https://www.ascept.org",
+  "blurb": "ASCEPT's 2027 meeting, held jointly with APSA on the Gold Coast, for clinical pharmacology, toxicology and pharmaceutical science.",
+  "datesConfirmed": true,
+  "datesSourceUrl": "https://www.ascept.org/future-meetings/",
+  "datesQuote": "Gold Coast 30 November-3 December, 2027 APSA-ASCEPT Joint Scientific Meeting 2027",
+  "verifiedOn": "2026-11-25",
+  "lastVerified": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "estimated",
@@ -39118,9 +39352,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.aaos.org/annual-meeting/",
   "blurb": "A major orthopaedic meeting, at the San Diego Convention Center.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.aaos.org/annual/attend/future-meetings/",
+  "datesQuote": "San Diego, California—2028 Wednesday, March 15 – Saturday, March 18 | San Diego Convention Center",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "estimated",
@@ -41927,28 +42163,33 @@ window.HOGGY_CONFERENCES = [
   "lastVerified": "2026-11-18"
  },
  {
-  "dateStatus": "estimated",
-  "sourceUrl": "https://www.asgct.org/",
+  "dateStatus": "confirmed",
+  "sourceUrl": "https://annualmeeting.asgct.org/about/future-annual-meetings",
   "id": "asgct-annual-meeting-2028",
   "name": "ASGCT Annual Meeting 2028",
   "organiser": "American Society of Gene and Cell Therapy",
   "specialty": "Genetics",
-  "city": "Boston",
+  "city": "New Orleans",
   "country": "United States",
   "countryCode": "US",
   "region": "North America",
-  "lat": 42.36,
-  "lng": -71.06,
+  "lat": 29.95,
+  "lng": -90.07,
   "start": "2028-05-01",
-  "end": "2028-05-04",
+  "end": "2028-05-05",
   "format": "In-person",
   "cpdHours": 0,
   "cpdBody": "",
   "priceFrom": 0,
   "attendees": 0,
   "url": "https://www.asgct.org/",
-  "blurb": "ASGCT Annual Meeting is the annual meeting of the American Society of Gene and Cell Therapy; the host city rotates and Boston is an estimate. Dates expected; not yet announced.",
-  "datesConfirmed": false
+  "blurb": "Annual meeting of the American Society of Gene and Cell Therapy, in New Orleans in 2028.",
+  "datesConfirmed": true,
+  "datesSourceUrl": "https://annualmeeting.asgct.org/about/future-annual-meetings",
+  "datesQuote": "2028 May 1–5, 2028 | New Orleans, LA",
+  "verifiedOn": "2026-11-25",
+  "lastVerified": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "estimated",
@@ -47404,9 +47645,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.alz.org/aaic",
   "blurb": "A major dementia research conference.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.alz.org/research/for_researchers/scientific-conferences",
+  "datesQuote": "AAIC 2028 July 30 – Aug. 3, 2028 San Francisco, United States, and online",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "estimated",
@@ -47992,8 +48235,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://allergy.org.au/conferences/ascia-annual-conference",
   "blurb": "ASCIA annual conference at the Perth Convention Exhibition Centre.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://allergy.org.au/conferences/ascia-annual-conference/schedule-for-ascia-acs",
+  "datesQuote": "ASCIA 2028 Conference 29th August to 1st September 2028 Perth Convention Exhibition Centre WA",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "estimated",
@@ -51793,9 +52039,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.aao.org/annual-meeting",
   "blurb": "A major ophthalmology meeting at McCormick Place.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.aao.org/annual-meeting/past-and-future-meetings",
+  "datesQuote": "AAO 2028 Chicago, McCormick Place Oct. 13-16: AAO 2028",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "estimated",
@@ -53054,7 +53302,7 @@ window.HOGGY_CONFERENCES = [
  },
  {
   "dateStatus": "confirmed",
-  "sourceUrl": "https://www.ranzcr.com/whats-on/annual-scientific-meetings",
+  "sourceUrl": "https://www.ranzcr.com/events/annual-scientific-meetings/",
   "id": "ranzcr-asm-2028",
   "name": "RANZCR Annual Scientific Meeting 2028",
   "organiser": "Royal Australian and New Zealand College of Radiologists",
@@ -53075,8 +53323,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.ranzcr.com/whats-on/annual-scientific-meetings",
   "blurb": "RANZCR annual scientific meeting for radiologists and radiation oncologists, listed for the International Convention Centre Sydney.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.ranzcr.com/events/annual-scientific-meetings/",
+  "datesQuote": "RANZCR ASM 2028 19-21 October, International Convention Centre Sydney, Sydney, NSW",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "confirmed",
@@ -53175,9 +53426,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.asahq.org/annualmeeting",
   "blurb": "ASA's annual anaesthesiology meeting in Chicago.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.asahq.org/annualmeeting/attend/futuredates",
+  "datesQuote": "2028 October 20 - 24 | Chicago, IL",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "estimated",
@@ -53226,9 +53479,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.facs.org/for-medical-professionals/conferences-and-meetings/",
   "blurb": "ACS annual surgical congress in Boston.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.facs.org/for-medical-professionals/conferences-and-meetings/future-clinical-congress/",
+  "datesQuote": "Clinical Congress 2028 Saturday, October 21–Tuesday, October 24 | Boston, MA",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "estimated",
@@ -55442,9 +55697,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.sfn.org/meetings",
   "blurb": "SfN's annual neuroscience meeting.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.sfn.org/meetings",
+  "datesQuote": "2028: November 11–15, San Diego",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "estimated",
@@ -56175,9 +56432,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.rsna.org/annual-meeting",
   "blurb": "RSNA's annual radiology meeting, held after Thanksgiving in even years.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.rsna.org/annual-meeting/future-and-past-meetings",
+  "datesQuote": "2028: Nov. 26 to 30 Technical Exhibits close Nov. 29",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "estimated",
@@ -56372,8 +56631,8 @@ window.HOGGY_CONFERENCES = [
   "datesConfirmed": false
  },
  {
-  "dateStatus": "estimated",
-  "sourceUrl": "https://www.sabcs.org/",
+  "dateStatus": "confirmed",
+  "sourceUrl": "https://sabcs.org/media/future-symposia/",
   "id": "sabcs-2028",
   "name": "San Antonio Breast Cancer Symposium 2028",
   "organiser": "San Antonio Breast Cancer Symposium",
@@ -56392,8 +56651,13 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 0,
   "attendees": 0,
   "url": "https://www.sabcs.org/",
-  "blurb": "San Antonio Breast Cancer Symposium is the annual meeting of the San Antonio Breast Cancer Symposium; San Antonio is the usual or expected host city. Dates expected; not yet announced.",
-  "datesConfirmed": false
+  "blurb": "The San Antonio Breast Cancer Symposium, the yearly December meeting on breast cancer research and care in San Antonio.",
+  "datesConfirmed": true,
+  "datesSourceUrl": "https://sabcs.org/media/future-symposia/",
+  "datesQuote": "San Antonio Breast Cancer Symposium: December 8-11, 2026 December 7-10, 2027 December 5-8, 2028",
+  "verifiedOn": "2026-11-25",
+  "lastVerified": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "estimated",
