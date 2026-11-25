@@ -495,7 +495,7 @@ const VIEWS = {
     /* ----- first visit, signed out: a large title, the search pill, then shelves ----- */
     const hero = `<section class="hero hero-intro"><div class="hero-copy"><h1>Conference travel, sorted.</h1>${search}
       <p class="hero-sub">No sign-up needed · <a class="u" href="#/discover">All conferences</a> · <a class="u" href="#/courses">Courses</a></p>
-      <div class="row hero-acts">${NET.online ? '<button type="button" class="btn sm ghost" data-act="register">Create account</button>' : ''}<button type="button" class="btn sm ghost" data-act="howto">How it works</button></div>
+      <p class="hero-acts">${NET.online ? '<button type="button" class="linkbtn" data-act="register">Create account</button><span aria-hidden="true"> · </span>' : ''}<button type="button" class="linkbtn" data-act="howto">How it works</button></p>
       ${HT ? `<nav class="irow hero-trip" aria-label="Make a trip of it">${interestRow('', true)}</nav>` : ''}</div></section>`;
     const ex0 = examples[0];
     const vis = [
@@ -953,13 +953,13 @@ function syncFilters() {
   document.querySelectorAll('input[data-fk]').forEach(i => { i.checked = !!UI[i.dataset.fk]; });
   document.querySelectorAll('select[data-fsel]').forEach(s => { s.value = String(UI[s.dataset.fsel]); });
   document.querySelectorAll('[data-do]').forEach(x => x.setAttribute('aria-pressed', String(x.dataset.do === UI.do)));
-  const sl = $('#spillSub'); if (sl) sl.textContent = subLine();
+  const sl = $('#spillSub'); if (sl) sl.textContent = subLine(); const sw = $('#sWhenV'), sp = $('#sSpecV'); if (sw) sw.textContent = UI.month !== '' ? MONTHS[+UI.month] : 'Any month'; if (sp) sp.textContent = UI.spec !== 'All' ? UI.spec : 'Any specialty';
 }
 /* the pill's second line opens Where, When and Specialty in one sheet (Airbnb) */
 function whereList(q) {
   q = String(q || '').trim().toLowerCase();
   const U = upcoming(), cities = [...new Set(U.map(c => c.city + '|' + c.country))], countries = [...new Set(U.map(c => c.country))];
-  const items = !q ? [['', 'Anywhere', 'All regions', 'globe']].concat(REGIONS.map(([v, l]) => ['region:' + v, l, 'Region', 'globe']))
+  const items = !q ? [['', 'Anywhere', 'All regions', 'globe']].concat(REGIONS.slice(0, 4).map(([v, l]) => ['region:' + v, l, 'Region', 'globe']))
     : REGIONS.filter(r => r[1].toLowerCase().includes(q)).map(([v, l]) => ['region:' + v, l, 'Region', 'globe'])
       .concat(countries.filter(c => c.toLowerCase().includes(q)).sort().map(c => ['country:' + c, c, 'Country', 'globe']))
       .concat(cities.filter(x => x.toLowerCase().includes(q)).sort().map(x => { const [c, k] = x.split('|'); return ['city:' + c, c, k, 'pin']; })).slice(0, 8);
@@ -968,8 +968,8 @@ function whereList(q) {
 function searchSheet() {
   openOverlay(`<div class="sheet center ssheet" role="dialog" aria-modal="true" aria-label="Search"><button type="button" class="icon-btn close" data-act="close" aria-label="Close">${icon('x')}</button><div class="sbody">
     <section class="sstep" aria-labelledby="sWhereH"><h3 id="sWhereH">Where?</h3><label class="search">${icon('search')}<span class="sr-only">Search destinations</span><input type="search" id="sWhere" placeholder="City, country or region" autocomplete="off" autofocus></label><ul class="sugg" id="sWhereL">${whereList('')}</ul></section>
-    <section class="sstep" aria-labelledby="sWhenH"><h3 id="sWhenH">When?</h3>${monthChips('sWhenH')}${HOL.length ? '<label class="switch" style="margin-top:12px"><span>In AU or NZ school holidays</span><input type="checkbox" role="switch" data-fk="hol"></label>' : ''}</section>
-    <section class="sstep" aria-labelledby="sSpecH"><h3 id="sSpecH">Specialty?</h3>${specPicker()}</section>
+    <details class="sstep"><summary><h3 id="sWhenH">When</h3><span id="sWhenV">${UI.month !== '' ? esc(MONTHS[+UI.month]) : 'Any month'}</span></summary>${monthChips('sWhenH')}${HOL.length ? '<label class="switch"><span>In AU or NZ school holidays</span><input type="checkbox" role="switch" data-fk="hol"></label>' : ''}</details>
+    <details class="sstep"><summary><h3 id="sSpecH">Specialty</h3><span id="sSpecV">${UI.spec !== 'All' ? esc(UI.spec) : 'Any specialty'}</span></summary>${specPicker()}</details>
     <div class="sfoot"><button type="button" class="linkbtn" data-act="clearfilters">Clear all</button><button type="button" class="btn dark" data-act="sshow" id="sShow">Show results</button></div></div></div>`, true);
   syncFilters(); results();
 }
