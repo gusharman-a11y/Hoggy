@@ -818,15 +818,15 @@ async function backup() {
 /* ---------- static ---------- */
 const MIME = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.ico': 'image/x-icon', '.woff2': 'font/woff2' };
 const ICONS = new Set(['icons/icon.svg', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/icon-maskable-512.png', 'icons/apple-touch-icon.png', 'icons/og.png']);
-const PUBLIC = new Set(['index.html', 'app.js', 'parse.js', 'pack.js', 'stats.js', 'courses.js', 'data/courses/catalogue.json', 'data/courses/sessions.json', 'styles.css', 'lib/series.js', 'lib/coverage.js', 'lib/specialties.js', 'lib/listings.js', 'lib/art.js', 'lib/experiences.js', 'lib/trip.js', 'data/experiences/experiences.json', 'motion.js', 'fonts/plex-sans-400.woff2', 'fonts/plex-sans-600.woff2', 'fonts/plex-sans-condensed-700.woff2', 'data/conferences.js', 'data/holidays.js', 'data/cpd-nz.js', 'admin.html', 'admin.js']);
-const DEMO_NOTE = '<div class="demo-note" role="note">Preview · accounts and receipts reset sometimes.</div>';
+const PUBLIC = new Set(['index.html', 'app.js', 'parse.js', 'pack.js', 'stats.js', 'courses.js', 'data/courses/catalogue.json', 'data/courses/sessions.json', 'styles.css', 'lib/series.js', 'lib/coverage.js', 'lib/specialties.js', 'lib/listings.js', 'lib/art.js', 'lib/experiences.js', 'lib/trip.js', 'data/experiences/experiences.json', 'motion.js', 'fonts/plex-sans-condensed-700.woff2', 'data/conferences.js', 'data/holidays.js', 'data/cpd-nz.js', 'admin.html', 'admin.js']);
+const DEMO_BODY = '<body data-demo="1">'; /* the app shows the "Preview" line under You, not over the page */
 function serveStatic(req, res, url) {
   let rel; try { rel = decodeURIComponent(url.pathname).replace(/^\/+/, '') || 'index.html'; } catch (e) { return html(req, res, 400, PAGES.notFound(req)); }
   if (rel === 'favicon.ico') rel = 'icons/icon-192.png';
   /* anything else is the friendly 404 page (the API answers JSON 404s itself) */
   if (!PUBLIC.has(rel) && !ICONS.has(rel)) return html(req, res, 404, PAGES.notFound(req));
   const f = path.join(__dirname, rel);
-  fs.readFile(f, (e, d) => { if (e) return html(req, res, 404, PAGES.notFound(req)); if (rel === 'index.html') { let t = String(d).replace(/%ORIGIN%/g, PAGES.originOf(req)); if (DEMO) t = t.replace('<body>', '<body>\n' + DEMO_NOTE); d = Buffer.from(t); } res.writeHead(200, { 'Content-Type': MIME[path.extname(f)] || 'application/octet-stream', 'Cache-Control': rel.startsWith('fonts/') ? 'public, max-age=31536000, immutable' : ICONS.has(rel) ? 'public, max-age=86400' : 'no-cache' }); res.end(req.method === 'HEAD' ? undefined : d); });
+  fs.readFile(f, (e, d) => { if (e) return html(req, res, 404, PAGES.notFound(req)); if (rel === 'index.html') { let t = String(d).replace(/%ORIGIN%/g, PAGES.originOf(req)); if (DEMO) t = t.replace('<body>', DEMO_BODY); d = Buffer.from(t); } res.writeHead(200, { 'Content-Type': MIME[path.extname(f)] || 'application/octet-stream', 'Cache-Control': rel.startsWith('fonts/') ? 'public, max-age=31536000, immutable' : ICONS.has(rel) ? 'public, max-age=86400' : 'no-cache' }); res.end(req.method === 'HEAD' ? undefined : d); });
 }
 
 function html(req, res, code, body, extra = {}) { res.writeHead(code, { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-cache', ...extra }); res.end(req.method === 'HEAD' ? undefined : body); }
