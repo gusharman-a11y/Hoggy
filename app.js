@@ -46,7 +46,13 @@ const I = {
   peak: '<path d="M2.5 20l7-12 4 6.5 2.5-3.5 5.5 9z"/><path d="M8 10.5l1.5 1.5 1.5-1.5"/>',
   col: '<path d="M3.5 9.5L12 4l8.5 5.5zM5.5 20.5h13M7 12v6M12 12v6M17 12v6"/>',
   flag: '<path d="M5.5 21V4M5.5 4.5h12l-2.5 4 2.5 4h-12"/>',
-  ball: '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5l4 3-1.5 4.5h-5L8 10.5zM12 3.5v4M20 10.5l-4 0M16.5 19l-2-4M7.5 19l2-4M4 10.5h4"/>'
+  ball: '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5l4 3-1.5 4.5h-5L8 10.5zM12 3.5v4M20 10.5l-4 0M16.5 19l-2-4M7.5 19l2-4M4 10.5h4"/>',
+  /* the interest row and the detail header */
+  all: '<rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/>',
+  back: '<path d="M19 12H5M11 6l-6 6 6 6"/>',
+  share: '<path d="M12 15V3.5M7.5 8L12 3.5 16.5 8"/><path d="M5 12.5V19a1.5 1.5 0 0 0 1.5 1.5h11A1.5 1.5 0 0 0 19 19v-6.5"/>',
+  pin: '<path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/>',
+  globe: '<circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.5 2.6 3.6 5.5 3.6 8.5s-1.1 5.9-3.6 8.5c-2.5-2.6-3.6-5.5-3.6-8.5S9.5 6.1 12 3.5z"/>'
 };
 const icon = (n, c = 'ico') => `<svg class="${c}" viewBox="0 0 24 24" aria-hidden="true">${I[n]}</svg>`;
 
@@ -254,7 +260,10 @@ function bgRender() {
   const y = window.scrollY; render(); if (window.scrollY !== y) window.scrollTo(0, y);
 }
 const MOTION = window.HoggyMotion || null;
-function render() { applyTheme(); renderNav(); const r = route(); document.body.dataset.route = r; { const k = hashParts().parts.join('/'); if (FS.route !== k) { FS.open = false; FS.route = k; } } document.body.classList.toggle('filters-open', FS.open); $('#main').innerHTML = netBanner() + VIEWS[r]() + appFooter(); (AFTER[r] || (() => { }))(); document.title = r === 'home' ? 'Hoggy · Medical conferences and courses' : `${r === 'settings' ? 'Settings' : ROUTES[r][0]} · Hoggy`; if (MOTION) MOTION.scan($('#main')); }
+function render() { applyTheme(); renderNav(); const r = route(); document.body.dataset.route = r; { const k = hashParts().parts.join('/'); if (FS.route !== k) { FS.open = false; FS.route = k; } } document.body.classList.toggle('filters-open', FS.open); $('#main').innerHTML = netBanner() + VIEWS[r]() + appFooter(); (AFTER[r] || (() => { }))(); document.title = r === 'home' ? 'Hoggy · Medical conferences and courses' : `${r === 'settings' ? 'Settings' : ROUTES[r][0]} · Hoggy`; const h1 = $('#main h1'), st = $('#sideTitle'); if (st) st.textContent = r === 'home' || !h1 ? '' : h1.textContent; onScroll(); if (MOTION) MOTION.scan($('#main')); }
+/* phones: the large title scrolls away and its name settles, small and centred, in the translucent bar (Apple) */
+function onScroll() { const h = $('#main h1'), y = h ? h.getBoundingClientRect().bottom : 0; document.body.classList.toggle('scrolled', window.scrollY > 4 && y < 44); }
+{ let raf = 0; window.addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(() => { raf = 0; onScroll(); }); }, { passive: true }); }
 /* the filter sheet (phones): open state survives the re-render a changed filter causes, and resets on a new page */
 const FS = { open: false, route: '' };
 function filterSheet(on, focus) {
@@ -279,23 +288,22 @@ const dialLabel = s => { s = String(s || ''); if (s.length <= 9) return s; const
 const coursePlate = (c, size) => ART ? ART.dial(c.id, dialLabel(HC.shortName(c)), { size, sub: (c.countries || []).slice(0, 5).join(' · ') + ((c.countries || []).length > 5 ? ' +' + ((c.countries || []).length - 5) : '') }) : '';
 const hostOf = u => { try { return new URL(u).hostname.replace(/^www\./, ''); } catch (e) { return ''; } };
 /* the one status line a card carries: what Hoggy knows about the dates, and from where */
-const evLine = c => { const st = dateEv(c), h = st === 'confirmed' ? hostOf(c.datesSourceUrl) : ''; return st === 'confirmed' ? `<span class="pill g" title="From the organiser's page">Confirmed${h ? ' · ' + esc(h) : ''}</span>` : st === 'estimated' ? '<span class="pill w" title="Dates not yet published">Estimate</span>' : '<span class="pill" title="Confirmed earlier; source not yet re-checked">Re-checking</span>'; };
+const evLine = c => { const st = dateEv(c); return st === 'confirmed' ? `<span class="pill g" title="From the organiser's page">Confirmed</span>` : st === 'estimated' ? '<span class="pill w" title="Dates not yet published">Estimate</span>' : '<span class="pill" title="Confirmed earlier; source not yet re-checked">Re-checking</span>'; };
 const CHEV = '<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>';
 /* a ring that fills to pct (0 to 100); the number sits beside it in text */
 const dialSvg = (pct, cls = '') => `<svg class="dial ${cls}" viewBox="0 0 120 120" aria-hidden="true"><circle class="dial-k" cx="60" cy="60" r="56"/><circle class="dial-t" cx="60" cy="60" r="46"/><circle class="dial-v" cx="60" cy="60" r="46" pathLength="100" style="--p:${Math.max(0, Math.min(100, pct))}"/></svg>`;
 const count = (n, text) => `<span data-count="${Number(n) || 0}">${text == null ? Number(n).toLocaleString('en-AU') : text}</span>`;
 /* a swipeable shelf of cards with a ruled heading; nothing at all when it would be empty */
-const shelf = (title, items, more = '', id = '') => items ? `<section class="shelf-sec"${id ? ` aria-labelledby="${id}"` : ''}><div class="section"><h2${id ? ` id="${id}"` : ''}>${title}</h2>${more}</div><div class="grid ex shelf">${items}</div></section>` : '';
+const shelf = (title, items, more = '', id = '', cls = '') => items ? `<section class="shelf-sec${cls ? ' ' + cls : ''}"${id ? ` aria-labelledby="${id}"` : ''}><div class="section"><h2${id ? ` id="${id}"` : ''}>${title}</h2>${more}</div><div class="grid ex shelf">${items}</div></section>` : '';
 
 /* ---------- cards ---------- */
 const holPill = c => { if (typeof holHits !== 'function') return ''; const h = holHits(c, 'ANZ'); return h.length ? `<span class="tag" title="${esc(h.map(r => r.name).join(', '))}">School hols: ${esc(h.map(r => r.code).join(' '))}</span>` : ''; };
-function card(c, trip) {
+function card(c, trip, size = 'card') {
   const on = S.saved.includes(c.id), sc = scoreShown(c), n = reviewCount(c);
   return `<article class="card" data-act="open" data-id="${esc(c.id)}">
-    <div class="art">${plate(c, 'tall')}<button class="save ${on ? 'on' : ''}" data-act="save" data-id="${esc(c.id)}" aria-label="Save ${esc(c.name)}" aria-pressed="${on}">${icon('heart')}</button></div>
-    <div class="card-body"><p class="card-when">${esc(range(c))}</p><h3><a class="card-link" href="/conferences/${esc(encodeURIComponent(c.id))}" data-act="open" data-id="${esc(c.id)}">${esc(c.name)}</a></h3>
-    <p class="card-where">${esc(c.city)}, ${esc(c.country)} · ${esc(c.specialty)}</p>${c.schedule ? `<p class="card-sched">${icon('clock', 'ico xs')}<span>${esc(c.schedule.pattern)}</span></p>` : ''}${trip ? tripLine(trip) : ''}
-    <div class="card-meta">${evLine(c)}${c.organiserType === 'commercial' ? '<span class="tag" title="Not a college or society">Commercial</span>' : ''}${c.cpdVerified && c.cpdHours ? `<span class="tag" title="Stated by the organiser">${esc(cpdLabel(c))}</span>` : ''}${holPill(c)}${sc != null ? `<span class="tag"><span class="stars" aria-hidden="true">★</span> ${sc.toFixed(1)}<span class="sr-only"> out of 5</span></span>` : n ? `<span class="tag">${n} early review${n > 1 ? 's' : ''}</span>` : ''}</div></div></article>`;
+    <div class="art">${plate(c, size)}<button class="save ${on ? 'on' : ''}" data-act="save" data-id="${esc(c.id)}" aria-label="Save ${esc(c.name)}" aria-pressed="${on}">${icon('heart')}</button></div>
+    <div class="card-body"><p class="card-when"><b>${esc(range(c))}</b> · ${esc(c.city)}</p><h3><a class="card-link" href="/conferences/${esc(encodeURIComponent(c.id))}" data-act="open" data-id="${esc(c.id)}">${esc(c.name)}</a></h3>${trip ? tripLine(trip) : ''}
+    <div class="card-meta">${evLine(c)}${c.organiserType === 'commercial' ? '<span class="tag" title="Not a college or society">Commercial</span>' : ''}${c.cpdVerified && c.cpdHours ? `<span class="tag" title="Stated by the organiser">${esc(cpdLabel(c))}</span>` : ''}${sc != null ? `<span class="tag"><span class="stars" aria-hidden="true">★</span> ${sc.toFixed(1)}<span class="sr-only"> out of 5</span></span>` : n ? `<span class="tag">${n} early review${n > 1 ? 's' : ''}</span>` : ''}</div></div></article>`;
 }
 
 /* ---------- make a trip of it: what is on around a conference, the day plan, the work and personal split ----------
@@ -427,20 +435,23 @@ function tripPackHtml(t) {
   return `<h2>Trip plan</h2><p>${esc(L[0])}</p><table><tr><th>Date</th><th>Day</th><th>In this claim</th></tr>${sp.days.map(d => `<tr><td>${esc(fmtD(d.date, { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' }))}</td><td>${d.confDay ? 'Conference day ' + d.confDay : DAY_KIND[d.kind]}</td><td>${d.kind === 'personal' ? 'Excluded (personal day)' : d.kind === 'travel' ? 'Included (travel day)' : 'Included'}</td></tr>`).join('')}</table><p>${esc(L[1])}</p><p style="color:#555">${esc(DISCLAIM)}</p>`;
 }
 /* Home and Discover: browse by what you want to do; results are still conferences */
-const doChips = (cur, asLinks) => HT ? `<div class="chips do-chips" role="group" aria-label="Things to do">${HT.INTERESTS.map(i => asLinks ? `<a class="chip" href="#/discover?do=${esc(i.key)}">${esc(i.label)}</a>` : `<button type="button" class="chip" aria-pressed="${cur === i.key}" data-do="${esc(i.key)}">${esc(i.label)}</button>`).join('')}</div>` : '';
-/* the "Make a trip of it" shelf: one card per experience, conferences in your field first */
-function tripShelf(spec) {
+/* the interest row (Airbnb's category bar): a line glyph over a short label; links on Home, toggles on Discover */
+const INT_ICON = { ski: 'snow', food: 'glass', festivals: 'flag', sport: 'ball', nature: 'leaf', beach: 'wave', family: 'users' };
+const interestRow = (cur, asLinks) => HT ? [{ key: '', label: 'All' }].concat(HT.INTERESTS).map(i => { const ic = `<svg viewBox="0 0 24 24" aria-hidden="true">${I[INT_ICON[i.key] || 'all']}</svg>`;
+  return asLinks ? `<a href="#/discover${i.key ? '?do=' + esc(i.key) : ''}">${ic}<span>${esc(i.label)}</span></a>` : `<button type="button" aria-pressed="${cur === i.key}" data-do="${esc(i.key)}">${ic}<span>${esc(i.label)}</span></button>`; }).join('') : '';
+/* the "Make a trip of it" shelf: one card per experience, conferences in your field first; narrowed to one interest when given */
+function tripShelf(spec, interest) {
   if (!EXP.list) return '';
-  let r = tripSuggest(spec ? { specialty: spec } : {}); if (r.length < 4 && spec) r = r.concat(tripSuggest({}));
+  const q = interest ? { interests: [interest] } : {};
+  let r = tripSuggest(spec ? { ...q, specialty: spec } : q); if (r.length < 4 && spec) r = r.concat(tripSuggest(q));
   const seen = new Set(), seenC = new Set(), picks = [];
   r = r.filter(x => x.conference.datesConfirmed !== false); /* only meetings with dates the organiser has published */
   for (const x of r) { const k = x.matches[0] && x.matches[0].id; if (!k || seen.has(k) || seenC.has(x.conference.id)) continue; seen.add(k); seenC.add(x.conference.id); picks.push(x); if (picks.length >= 10) break; }
-  if (!picks.length) return '';
-  return `<section class="shelf-sec trip-shelf" aria-labelledby="tripH"><div class="section"><h2 id="tripH">Make a trip of it</h2></div>
-    ${doChips('', true)}
-    <div class="grid ex shelf">${picks.map(x => card(x.conference, x.matches)).join('')}</div></section>`;
+  if (!picks.length) return interest ? tripShelf(spec, '') : '';
+  const it = interest && HT.interestOf(interest);
+  return shelf('Make a trip of it' + (it ? ': ' + esc(it.label) : ''), picks.map(x => card(x.conference, x.matches, 'tall')).join(''), `<a href="#/discover${it ? '?do=' + esc(it.key) : ''}">Show all</a>`, 'tripH', 'trip-shelf');
 }
-function fillTripShelf() { const h = $('#tripShelf'); if (!h) return; const spec = h.dataset.spec || ''; const html = tripShelf(spec); if (html) { h.outerHTML = html; if (MOTION) MOTION.scan($('#main')); } }
+function fillTripShelf() { const h = $('#tripShelf'); if (!h) return; const spec = h.dataset.spec || ''; const html = tripShelf(spec, 'food'); if (html) { h.outerHTML = html; if (MOTION) MOTION.scan($('#main')); } }
 
 /* ---------- views ---------- */
 const upcoming = () => CONFS.filter(c => new Date(c.end + 'T23:59:59') >= new Date()).sort((a, b) => a.start.localeCompare(b.start));
@@ -455,6 +466,11 @@ const VIEWS = {
     const crs = certRows(), nextCert = crs.find(x => x.expires && x.st !== 'expired') || crs[0];
     const HS = window.HoggyStats, st = HS ? HS.homeStats(CONFS, today()) : null, examples = HS ? HS.exampleConfs(CONFS, today(), 12) : upcoming().slice(0, 12), n = v => Number(v).toLocaleString('en-AU');
     const ct = COURSES.loaded ? HC.courseTotals(COURSES.summary, COURSES.cat) : null;
+    const search = `<form class="hero-search" id="heroSearch" role="search"><label class="search">${icon('search')}<span class="sr-only">Search conferences and courses</span><input id="hq" type="search" name="q" placeholder="Specialty, city or name" autocomplete="off"></label><button class="btn primary" type="submit">Search</button></form>`;
+    /* shelves (Spotify): one row each, swipe sideways, nothing at all when a row would be empty */
+    const hols = HOL.length ? upcoming().filter(c => dateEv(c) !== 'estimated' && holHits(c, 'ANZ').length).slice(0, 10) : [];
+    const holShelf = shelf('Near school holidays', hols.map(c => card(c, null, 'tall')).join(''), '<a href="#/discover?hol=ANZ">Show all</a>', 'holH');
+    const tripsH = spec => EXP.list ? tripShelf(spec, 'food') : `<div id="tripShelf" data-spec="${esc(spec)}"></div>`;
     /* ----- signed in, or already using it: the dashboard ----- */
     const nc = next ? ofTrip(next) : null, days = nc ? HC.daysBetween(today(), nc.start) : 0, left = Math.max(0, p.cpdTarget - tot);
     const nextBox = nc ? `<a class="dash-next" href="#/trips"><div class="dash-plate">${plate(nc, 'tall')}</div><div class="dash-next-b"><span class="lbl">Next trip</span>
@@ -464,30 +480,23 @@ const VIEWS = {
       : `<a class="dash-next none" href="#/discover"><div class="dash-next-b"><span class="lbl">Next trip</span><b class="fig"><small>None planned</small></b><span class="btn sm primary">Find one</span></div></a>`;
     const spec = p.specialty && CONFS.some(c => c.specialty === p.specialty) ? upcoming().filter(c => c.specialty === p.specialty).sort((a, b) => (b.country === p.country) - (a.country === p.country) || (dateEv(a) === 'estimated') - (dateEv(b) === 'estimated') || a.start.localeCompare(b.start)).slice(0, 10) : [];
     const hp = homePlace(), near = COURSES.loaded ? COURSES.cat.courses.filter(c => HC.countFor(COURSES.summary[c.id], hp, 'en').n > 0).sort((a, b) => HC.relevanceOf(b) - HC.relevanceOf(a) || HC.countFor(COURSES.summary[a.id], hp, 'en').next.localeCompare(HC.countFor(COURSES.summary[b.id], hp, 'en').next)).slice(0, 8) : [];
+    const due = COURSES.loaded ? crs.filter(x => HC.needsAttention(x.st)).map(x => courseOf(x.courseId)).filter(Boolean) : [];
     const savedL = S.saved.map(byId).filter(Boolean).slice(0, 12);
-    const dash = `<section class="hero hero-dash"><p class="kicker">${esc(new Date().toLocaleDateString('en-AU', { weekday: 'long', day: 'numeric', month: 'long' }))}</p><h1>${fresh ? 'Welcome' : 'Welcome back'}${p.name ? ', ' + esc(firstName(p.name)) : ''}.</h1>
-      <div class="row"><a class="btn primary" href="#/discover">Find conferences</a><a class="btn ghost" href="#/receipts">Add receipt</a></div></section>
+    const dash = `<section class="hero hero-dash"><p class="kicker">${esc(new Date().toLocaleDateString('en-AU', { weekday: 'long', day: 'numeric', month: 'long' }))}</p><h1>${fresh ? 'Welcome' : 'Welcome back'}${p.name ? ', ' + esc(firstName(p.name)) : ''}.</h1>${search}</section>
     ${getStarted()}${remindCard()}${hospHome()}<div class="dash">${nextBox}
       <a class="dash-tile dash-cpd" href="#/cpd">${dialSvg(pct)}<div><span class="lbl">CPD ${esc(p.cpdYear)}${p.cpdBody ? ' · ' + esc(p.cpdBody) : ''}</span><b class="fig">${count(tot, String(tot))}<small>of ${esc(p.cpdTarget)} h</small></b><span class="dash-s">${left ? esc(left) + ' hours to go' : 'Target reached'}</span></div></a>
       <a class="dash-tile" href="#/certs"><span class="lbl">Certificates</span><b class="fig">${count(crs.length)}</b><span class="dash-s">${nextCert && nextCert.expires ? esc(nextCert.short) + (nextCert.st === 'expired' ? ' expired ' : ' due ') + esc(fmtD(nextCert.expires)) : 'Add certificate'}</span></a>
       <a class="dash-tile" href="#/claims"><span class="lbl">Not yet claimed</span><b class="fig sm">${money(unclaimed)}</b><span class="dash-s">${plural(cap.length, 'receipt')} waiting</span></a>
       <a class="dash-tile" href="#/claims"><span class="lbl">Awaiting reimbursement</span><b class="fig sm">${money(pending)}</b><span class="dash-s">Submitted</span></a></div>
-    ${shelf('For ' + esc(p.specialty), spec.map(c => card(c)).join(''), '<a href="#/discover">Browse all</a>', 'forH')}
-    ${EXP.list ? tripShelf(p.specialty) : `<div id="tripShelf" data-spec="${esc(p.specialty)}"></div>`}
-    ${shelf('Courses in ' + esc(HC.placeLabel(hp)), near.map(c => courseCard(c, hp, 'en')).join(''), '<a href="#/courses">All courses</a>', 'nearH')}
-    ${shelf('Saved', savedL.map(c => card(c)).join(''), '', 'savedH')}`;
-    /* ----- first visit, signed out: one scroll that explains the product ----- */
-    const fan = examples.slice(0, 3);
-    const hero = `<section class="hero hero-intro"><div class="hero-copy"><p class="kicker">For doctors</p>
-      <h1>Conference travel, <em>sorted.</em></h1>
-      <p class="hero-lede">Find it. Plan it. Claim it.</p>
-      <form class="hero-search" id="heroSearch" role="search"><label class="search">${icon('search')}<span class="sr-only">Search conferences and courses</span><input id="hq" type="search" name="q" placeholder="Specialty, city or name" autocomplete="off"></label><button class="btn primary lg" type="submit">Search</button></form>
+    ${shelf('Coming up in ' + esc(p.specialty), spec.map(c => card(c, null, 'tall')).join(''), `<a href="#/discover?spec=${esc(encodeURIComponent(p.specialty))}">Show all</a>`, 'forH')}
+    ${tripsH(p.specialty)}${holShelf}
+    ${due.length ? shelf('Courses due', due.map(c => courseCard(c, hp, 'en', 'tall')).join(''), '<a href="#/certs">Certificates</a>', 'dueH') : shelf('Courses in ' + esc(HC.placeLabel(hp)), near.map(c => courseCard(c, hp, 'en', 'tall')).join(''), '<a href="#/courses">Show all</a>', 'nearH')}
+    ${shelf('Saved', savedL.map(c => card(c, null, 'tall')).join(''), '', 'savedH')}`;
+    /* ----- first visit, signed out: a large title, the search pill, then shelves ----- */
+    const hero = `<section class="hero hero-intro"><div class="hero-copy"><h1>Conference travel, sorted.</h1>${search}
       <p class="hero-sub">No sign-up needed · <a class="u" href="#/discover">All conferences</a> · <a class="u" href="#/courses">Courses</a></p>
-      <div class="row hero-acts">${NET.online ? '<button type="button" class="btn ghost" data-act="register">Create account</button>' : ''}<button type="button" class="btn ghost" data-act="howto">How it works</button></div>
-      ${HT ? `<div class="hero-trip"><p id="heroTripL">Make a trip of it</p>${doChips('', true).replace('aria-label="Things to do"', 'aria-labelledby="heroTripL"')}</div>` : ''}</div>
-      <div class="hero-fan" aria-hidden="true">${fan.map((c, i) => `<div class="fan-card f${i}">${plate(c, 'tall')}<span class="fan-cap">${esc(c.city)}</span></div>`).join('')}</div></section>`;
-    const tick = (c, dup) => `<button type="button" class="tick-item" data-act="open" data-id="${esc(c.id)}"${dup ? ' tabindex="-1"' : ''}><b>${esc(fmtD(c.start, { day: 'numeric', month: 'short' }))}</b><span>${esc(c.name)}</span><i>${esc(c.city)}</i></button>`;
-    const ticker = examples.length > 3 ? `<section class="ticker" aria-label="${examples.every(c => dateEv(c) === 'confirmed') ? 'Coming up, dates confirmed' : 'Coming up'}: moving list"><button type="button" class="tick-pause" data-act="tickpause" aria-pressed="false" aria-label="Pause">${icon('pause')}</button><div class="tick-view"><div class="tick-track"><div class="tick-set">${examples.map(c => tick(c)).join('')}</div><div class="tick-set" aria-hidden="true">${examples.map(c => tick(c, true)).join('')}</div></div></div></section>` : '';
+      <div class="row hero-acts">${NET.online ? '<button type="button" class="btn sm ghost" data-act="register">Create account</button>' : ''}<button type="button" class="btn sm ghost" data-act="howto">How it works</button></div>
+      ${HT ? `<nav class="irow hero-trip" aria-label="Make a trip of it">${interestRow('', true)}</nav>` : ''}</div></section>`;
     const ex0 = examples[0];
     const vis = [
       ex0 ? `<div class="vis vis-find">${plate(ex0, 'square')}<span class="pill g">Confirmed</span></div>` : '',
@@ -504,38 +513,33 @@ const VIEWS = {
     const live = st && st.conferences ? `<section class="live" aria-labelledby="liveH"><div class="live-head"><h2 id="liveH">By the numbers</h2></div>
       <dl class="live-grid"><div><dt>Upcoming conferences</dt><dd>${count(st.conferences)}</dd></div><div><dt>Countries</dt><dd>${count(st.countries)}</dd></div><div><dt>Specialties</dt><dd>${count(st.specialties)}</dd></div>${ct && ct.sessions ? `<div><dt>Course sessions</dt><dd>${count(ct.sessions)}<span class="live-sub">${n(ct.types)} course types · ${n(ct.countries)} countries</span></dd></div>` : ''}
       <div class="live-dates"><dt>Conference dates</dt><dd class="split-bar" aria-hidden="true"><i class="ok" style="flex:${st.confirmed}"></i><i class="mid" style="flex:${st.unchecked}"></i><i class="est" style="flex:${st.estimated}"></i></dd><dd class="split"><span class="ok"><b>${n(st.confirmed)}</b> confirmed</span><span class="mid"><b>${n(st.unchecked)}</b> re-checking</span><span class="est"><b>${n(st.estimated)}</b> estimates</span></dd></div></dl></section>` : '';
-    const ex = shelf(examples.every(c => dateEv(c) === 'confirmed') ? 'Coming up, dates confirmed' : 'Coming up', examples.slice(0, 8).map(c => card(c)).join(''), '<a href="#/discover">Browse all</a>', 'exH');
-    const close = `<section class="hero hero-close"><h2>Find your next conference</h2>
-      <div class="row"><a class="btn primary lg" href="#/discover">Find conferences</a>${NET.online && !NET.user ? '<button type="button" class="btn ghost lg" data-act="register">Create account</button><button type="button" class="btn ghost lg" data-act="signin">Sign in</button>' : ''}</div></section>`;
+    const ex = shelf(examples.every(c => dateEv(c) === 'confirmed') ? 'Coming up, dates confirmed' : 'Coming up', examples.slice(0, 10).map(c => card(c, null, 'tall')).join(''), '<a href="#/discover">Show all</a>', 'exH');
     const top = topSection(); /* nothing at all until a series has 3 reviews */
-    const tripsH = EXP.list ? tripShelf('') : '<div id="tripShelf"></div>';
-    return active ? dash + top + live : hero + ticker + tripsH + how + top + ex + live + close;
+    return active ? dash + top + live : hero + ex + tripsH('') + holShelf + top + how + live;
   },
   discover() {
-    { const d = hashParts().q.get('do'); if (d != null) UI.do = HT && HT.INTERESTS.some(i => i.key === d) ? d : ''; }
-    const specs = [...new Set(CONFS.map(c => c.specialty))].sort(), regs = [...new Set(CONFS.map(c => c.region))].sort(), ctry = [...new Set(CONFS.map(c => c.country))].sort();
-    const HS = window.HoggyStats, ds = HS && HS.discoverSummary ? HS.discoverSummary(CONFS, today()) : null, n = v => Number(v).toLocaleString('en-AU'), mon = iso => fmtD(iso, { month: 'short', year: 'numeric' });
-    const ct = COURSES.loaded ? HC.courseTotals(COURSES.summary, COURSES.cat) : null;
+    { const hq = hashParts().q, d = hq.get('do'), sp = hq.get('spec'), ho = hq.get('hol'); if (d != null) UI.do = HT && HT.INTERESTS.some(i => i.key === d) ? d : ''; if (sp) UI.spec = CONFS.some(c => c.specialty === sp) ? sp : 'All'; if (ho) UI.hol = HOL.length ? ho : ''; }
+    const ctry = [...new Set(CONFS.map(c => c.country))].sort();
+    const HS = window.HoggyStats, ds = HS && HS.discoverSummary ? HS.discoverSummary(CONFS, today()) : null, n = v => Number(v).toLocaleString('en-AU');
     const sub = ds && ds.conferences ? `${n(ds.conferences)} conferences · ${n(ds.countries)} countries` : `${n(upcoming().length)} conferences`;
-    const sel = (id, label, opts) => `<label class="sel"><span class="sel-l">${label}</span><select id="${id}" aria-label="${label}">${opts}</select></label>`;
     return `<div class="page-head"><div><h1>Discover</h1><p class="note">${sub}</p></div><a class="btn sm ghost" href="#/list-event">List your event</a></div>${segToggle('discover')}
-    <div class="filters"><div class="filter-top"><label class="search">${icon('search')}<input id="q" type="search" placeholder="Search" aria-label="Search conferences and courses" autocomplete="off"></label>
-      <button type="button" class="btn filt-btn" data-act="filters" aria-expanded="${FS.open}" aria-controls="fsheet">${icon('sliders')} Filters<span class="badge" id="fN" hidden></span></button></div>
-      ${HT ? `<div class="do-row"><span class="do-l" id="doL">Make a trip of it</span>${doChips(UI.do).replace('class="chips do-chips" role="group" aria-label="Things to do"', 'class="chips do-chips" id="doChips" role="group" aria-labelledby="doL"')}</div>` : ''}
-      <div class="chips" id="specChips" role="group" aria-label="Specialty"><button class="chip" aria-pressed="true" data-spec="All">All</button>${specs.map(s => `<button class="chip" aria-pressed="false" data-spec="${esc(s)}">${esc(s)}</button>`).join('')}</div>
-      <div class="fsheet" id="fsheet" role="group" aria-label="Filters"><div class="fsheet-head"><span class="grab" aria-hidden="true"></span><h2>Filters</h2><button type="button" class="icon-btn" data-act="filtersclose" aria-label="Close filters">${icon('x')}</button></div>
-      <div class="selects">${sel('fRegion', 'Region', `<option value="">All regions</option>${regs.map(r => `<option>${esc(r)}</option>`).join('')}`)}
-        ${sel('fCountry', 'Country', `<option value="">All countries</option>${ctry.map(r => `<option>${esc(r)}</option>`).join('')}`)}
-        ${sel('fMonth', 'Month', `<option value="">Any month</option>${Array.from({ length: 12 }, (_, i) => `<option value="${i}">${new Date(2027, i, 1).toLocaleDateString('en-AU', { month: 'long' })}</option>`).join('')}`)}
-        ${HOL.length ? sel('fHol', 'School holidays', `<option value="">Any time of year</option><option value="ANZ">In any AU or NZ school holidays</option><option value="AU">In any Australian school holidays</option>${HOL.map(r => `<option value="${esc(r.code)}">In ${esc(r.name)} school holidays</option>`).join('')}`) : ''}
-        ${sel('fCpd', 'CPD credits', '<option value="0">Any CPD</option><option value="1">CPD credits published</option>')}
-        ${sel('fConf', 'Date status', '<option value="">Any dates</option><option value="1">Confirmed dates only</option><option value="2">Confirmed, source re-checked</option>')}
-        ${sel('fSort', 'Sort', `<option value="date">Soonest</option><option value="rating">Highest rated by attendees</option><option value="cpd">Most CPD</option>${CONFS.some(figPrice) ? '<option value="price">Lowest price</option>' : ''}<option value="match">Closest match</option>`)}</div>
-      <div class="fsheet-foot"><button type="button" class="btn ghost" data-act="clearfilters">Clear all</button><button type="button" class="btn primary" data-act="filtersclose" id="fShow">Show results</button></div></div>
-      <span class="count" id="count" role="status"></span></div>
-    <div class="scrim" data-act="filtersclose"></div>
+    <div class="filters"><div class="spill" role="search">${icon('search')}<div class="spill-t"><label class="search"><span class="sr-only">Search conferences and courses</span><input id="q" type="search" placeholder="Where to?" autocomplete="off"></label><button type="button" class="spill-sub" id="spillSub" data-act="searchsheet" aria-haspopup="dialog">${esc(subLine())}</button></div>
+      <button type="button" class="spill-f" data-act="filters" aria-expanded="${FS.open}" aria-controls="fsheet" aria-label="Filters">${icon('sliders')}<span class="badge" id="fN" hidden></span></button></div>
+      ${HT ? `<div class="irow" id="doChips" role="group" aria-label="Make a trip of it">${interestRow(UI.do)}</div>` : ''}
+      <div class="fsheet modal" id="fsheet" role="group" aria-label="Filters"><div class="fsheet-head"><span class="grab" aria-hidden="true"></span><h2>Filters</h2><button type="button" class="icon-btn" data-act="filtersclose" aria-label="Close filters">${icon('x')}</button></div>
+        <div class="fgroup"><h3 id="fRegionL">Region</h3><div class="segc" id="fRegion" role="group" aria-labelledby="fRegionL">${[['AU', 'AU', 'Australia'], ['NZ', 'NZ', 'New Zealand'], ['Asia', 'Asia', 'Asia'], ['Europe', 'Europe', 'Europe'], ['', 'Anywhere', 'Anywhere']].map(([v, l, t]) => `<button type="button" data-act="fset" data-k="region" data-v="${v}" title="${t}" aria-pressed="false">${l}</button>`).join('')}</div></div>
+        <div class="fgroup"><h3 id="fMonthL">Month</h3>${monthChips('fMonthL')}</div>
+        <div class="fgroup"><label class="switch"><span>CPD hours published</span><input type="checkbox" role="switch" id="fCpd" data-fk="cpd"></label>${HOL.length ? '<label class="switch"><span>In AU or NZ school holidays</span><input type="checkbox" role="switch" id="fHolT" data-fk="hol"></label>' : ''}</div>
+        <div class="fgroup"><h3 id="fSpecL">Specialty</h3>${specPicker()}</div>
+        <div class="fgroup"><h3>More</h3><div class="more-sel">${moreSel('fCountry', 'Country', 'country', `<option value="">All countries</option>${ctry.map(r => `<option>${esc(r)}</option>`).join('')}`)}
+          ${HOL.length ? moreSel('fHol', 'School holidays', 'hol', `<option value="">Any time of year</option><option value="ANZ">In any AU or NZ school holidays</option><option value="AU">In any Australian school holidays</option>${HOL.map(r => `<option value="${esc(r.code)}">In ${esc(r.name)} school holidays</option>`).join('')}`) : ''}
+          ${moreSel('fConf', 'Date status', 'confirmed', '<option value="">Any dates</option><option value="1">Confirmed dates only</option><option value="2">Confirmed, source re-checked</option>')}
+          ${moreSel('fSort', 'Sort', 'sort', `<option value="date">Soonest</option><option value="rating">Highest rated by attendees</option><option value="cpd">Most CPD</option>${CONFS.some(figPrice) ? '<option value="price">Lowest price</option>' : ''}<option value="match">Closest match</option>`)}</div></div>
+        <div class="sfoot"><button type="button" class="linkbtn" data-act="clearfilters">Clear all</button><button type="button" class="btn dark" data-act="filtersclose" id="fShow">Show results</button></div></div></div>
+    <div class="scrim m" data-act="filtersclose"></div>
+    <section id="browse" aria-labelledby="brH"><div class="section"><h2 id="brH">Browse by specialty</h2><button type="button" class="linkbtn tile-more" data-act="browseall" aria-expanded="${UI.browseAll}">${UI.browseAll ? 'Show fewer' : 'Show all'}</button></div><div class="tiles">${browseTiles()}</div></section>
     <section id="topList" class="toplist" aria-labelledby="topH" hidden></section>
-    <h2 class="sr-only" id="resH">Results</h2><div class="grid" id="results" aria-labelledby="resH"></div>`;
+    <div class="section"><h2 id="resH">Conferences</h2><span class="count" id="count" role="status"></span></div><div class="grid" id="results" aria-labelledby="resH"></div>`;
   },
   wallet() {
     const p = S.profile, cap = S.receipts.filter(r => r.status === 'captured'), unclaimed = cap.reduce((a, r) => a + homeAmt(r), 0), pending = S.receipts.filter(r => r.status === 'claimed').reduce((a, r) => a + homeAmt(r), 0);
@@ -639,7 +643,7 @@ const VIEWS = {
       <div class="field"><label for="pcy">CPD year</label><input id="pcy" type="number" name="cpdYear" value="${esc(p.cpdYear)}"></div></div>
       <h2 class="sub-h">Your employer</h2><p class="note sub-note">Stays on this device.</p><div class="two">${[['name','Employer / health service','text'],['adminEmail',"Claims admin's email",'email'],['approverName',"Approver's name",'text'],['approverEmail',"Approver's email",'email'],['employeeId','Employee ID','text'],['costCentre','Cost centre','text'],['claimDays','Claim within (days)','number'],['hotelPerNight','Hotel limit per night (' + S.profile.currency + ')','number'],['mealsPerDay','Meals limit per day (' + S.profile.currency + ')','number'],['clause','Policy clause','text']].map(([k, l, ty]) => `<div class="field"><label for="emp-${k}">${l}</label><input id="emp-${k}" type="${ty}" data-emp="${k}" ${ty === 'number' ? 'min="0" step="any"' : 'maxlength="120"'} value="${esc((p.employer || {})[k] || '')}"${k === 'adminEmail' && inHosp() && HOSP.org.claimsEmail ? ` placeholder="${esc(HOSP.org.claimsEmail)} (your hospital)"` : ''}></div>`).join('')}</div><h2 class="sub-h">Caps per receipt (optional)</h2><div class="two">${CATS.map(k => `<div class="field"><label for="cap-${esc(k)}">${esc(k)}</label><input id="cap-${esc(k)}" type="number" min="0" data-cap="${esc(k)}" value="${esc(p.caps[k] || '')}"></div>`).join('')}</div>
       <button class="btn primary" type="submit">Save</button></form></div>
-    <div>${hospPanel()}${NET.trouble ? `<div class="panel acct-panel"><h2>Account</h2><p style="color:var(--muted)">${TROUBLE}</p><p style="margin-top:12px"><button class="btn" data-act="retry">Try again</button></p></div>` : ''}${NET.online ? `<div class="panel acct-panel"><h2>Account</h2>${NET.user ? `<p style="color:var(--muted);margin-bottom:12px">Signed in as ${esc(NET.user.email || NET.user.name)}</p><button class="btn" data-act="signout">Sign out</button>` : '<p style="color:var(--muted);margin-bottom:12px">Sync across devices.</p><button class="btn primary" data-act="signin">Sign in</button>'}</div>` : ''}<div class="panel"><h2>Your data</h2><div class="row"><button class="btn" data-act="backup">Download backup</button><button class="btn danger" data-act="wipe">Erase this device</button>${NET.user ? '<button class="btn danger" data-act="delaccount">Delete account</button>' : ''}</div></div></div></div>`;
+    <div>${document.body.dataset.demo ? '<p class="demo-line">Preview · accounts and receipts reset sometimes.</p>' : ''}${hospPanel()}${NET.trouble ? `<div class="panel acct-panel"><h2>Account</h2><p style="color:var(--muted)">${TROUBLE}</p><p style="margin-top:12px"><button class="btn" data-act="retry">Try again</button></p></div>` : ''}${NET.online ? `<div class="panel acct-panel"><h2>Account</h2>${NET.user ? `<p style="color:var(--muted);margin-bottom:12px">Signed in as ${esc(NET.user.email || NET.user.name)}</p><button class="btn" data-act="signout">Sign out</button>` : '<p style="color:var(--muted);margin-bottom:12px">Sync across devices.</p><button class="btn primary" data-act="signin">Sign in</button>'}</div>` : ''}<div class="panel"><h2>Your data</h2><div class="row"><button class="btn" data-act="backup">Download backup</button><button class="btn danger" data-act="wipe">Erase this device</button>${NET.user ? '<button class="btn danger" data-act="delaccount">Delete account</button>' : ''}</div></div></div></div>`;
   }
 };
 
@@ -669,13 +673,13 @@ const commercialPill = x => x && x.providerType === 'commercial' ? '<span class=
 /* "Box Hill, VIC" in Australia and New Zealand; "Leiden, Netherlands" elsewhere */
 const placeOf = s => ['AU', 'NZ'].includes(s.country) ? `${s.city}, ${s.region}` : `${s.city}, ${HC.countryName(s.country)}`;
 /* place = where the list is looking; '' and 'any' mean everywhere / any language */
-function courseCard(c, place = listPlace(), lang = CUI.listLang) {
+function courseCard(c, place = listPlace(), lang = CUI.listLang, size = 'card') {
   const sum = COURSES.summary[c.id], k = HC.countFor(sum, place, lang), all = HC.countFor(sum, '', 'any'), v = HC.validityOf(c), eq = HC.equivalentLabel(COURSES.cat, c), body = HC.bodyLabel(c.id);
   const where = place ? HC.placeLabel(place) : '';
   const line = k.n ? `${plural(k.n, 'upcoming session')}${where ? ' in ' + esc(where) : ''}` : all.n ? `${plural(all.n, 'upcoming session')} elsewhere` : 'Dates: check provider';
   return `<article class="card course-card" data-act="opencourse" data-id="${esc(c.id)}">
-    <div class="art">${coursePlate(c, 'tall')}</div>
-    <div class="card-body"><p class="card-when">${k.n ? 'Next ' + esc(fmtD(k.next)) + (k.city ? ' · ' + esc(k.city) : '') : all.n ? 'Next ' + esc(fmtD(all.next)) + (all.city ? ' · ' + esc(all.city) : '') : 'Check provider'}</p><h3><a class="card-link" href="#/courses/${esc(c.id)}">${esc(c.name)}</a></h3>
+    <div class="art">${coursePlate(c, size)}</div>
+    <div class="card-body"><p class="card-when">${k.n ? '<b>Next ' + esc(fmtD(k.next)) + '</b>' + (k.city ? ' · ' + esc(k.city) : '') : all.n ? '<b>Next ' + esc(fmtD(all.next)) + '</b>' + (all.city ? ' · ' + esc(all.city) : '') : 'Check provider'}</p><h3><a class="card-link" href="#/courses/${esc(c.id)}">${esc(c.name)}</a></h3>
     <p class="card-where">${body ? esc(body) + ' · ' : eq ? esc(eq) + ' · ' : ''}${line}</p>
     <div class="card-meta"><span class="tag">Course</span>${v ? `<span class="tag">Certificate ${esc(v.years)} years</span>` : ''}${commercialPill(c)}</div></div></article>`;
 }
@@ -779,16 +783,18 @@ function sessionSheet(sid, fallback) {
   const opts = s && Array.isArray(s.durationOptions) ? `<div class="section"><h3>Lengths</h3></div><div class="list">${s.durationOptions.map(o => `<div class="li"><div class="grow"><div class="t">${esc(o.days)} day${o.days === 1 ? '' : 's'} · ends ${esc(fmtD(o.end))}</div><div class="s">${o.priceFrom ? esc(money(o.priceFrom, o.currency)) : 'Price: check provider'}${o.seatsStatus === 'closed' ? ' · Booking closed' : ''}</div></div>${extA(o.bookingUrl || o.sourceUrl, 'Book')}</div>`).join('')}</div>` : '';
   const pe = s && s.providerEvidence ? `<p class="note">Price${s.providerEvidence.lastVerified ? ' checked ' + esc(fmtD(s.providerEvidence.lastVerified)) : ''} · ${srcLink(s.providerEvidence.sourceUrl)}</p>` : '';
   const where = s ? placeOf(s) : e.city + ', ' + (e.region || e.country);
-  openOverlay(`<div class="sheet detail" role="dialog" aria-modal="true" aria-label="${esc(name)} session"><div class="sheet-wrap"><span class="grab" aria-hidden="true"></span><button class="icon-btn close" data-act="close" aria-label="Close">${icon('x')}</button><div class="art">${ART ? ART.dial(c ? c.id : e.id, dialLabel(e.short || name), { size: 'wide', sub: range(e) + ' · ' + where }) : ''}</div></div>
-  <div class="body"><span class="eyebrow">Course session${c && HC.bodyLabel(c.id) ? ' · ' + esc(HC.bodyLabel(c.id)) : ''}</span><h2>${esc(name)}</h2><p class="lede">${esc(e.organiser)} · ${esc(where)}</p>
+  const key = c ? c.id : e.id, lab = dialLabel(e.short || name), sub = range(e) + ' · ' + where;
+  const main = `<span class="eyebrow">Course session${c && HC.bodyLabel(c.id) ? ' · ' + esc(HC.bodyLabel(c.id)) : ''}</span><h2>${esc(name)}</h2><p class="dt-line">${esc(e.organiser)} · ${esc(where)}</p>
+  <div class="honest"><span class="pill g">Confirmed</span><span>${e.lastVerified ? 'Checked ' + esc(fmtD(e.lastVerified)) : ''}${srcLink(e.sourceUrl) ? ' · ' + srcLink(e.sourceUrl) : ''}</span>${s && s.providerType === 'commercial' ? '<span class="pill w">Commercial</span>' : ''}</div>
   ${s ? '' : '<p class="check warn">! No longer listed by the provider</p>'}${lang ? `<p class="check warn">${esc(lang)}</p>` : ''}
   <div class="facts">${fact('When', esc(range(e)), esc(s ? HC.lengthLabel(s) : HC.lengthLabel(e)) + (e.endInferred ? ' · end date inferred' : ''))}${fact('Where', esc(where), e.venue ? esc(e.venue) : 'Venue: check provider')}
     ${fact('Price', m ? esc(m.price) : CHECK, s && s.priceFrom && s.currency && s.currency !== S.profile.currency ? `In ${esc(s.currency)}${s.priceNote ? ' · ' + esc(s.priceNote) : ''}` : s && s.priceNote ? esc(s.priceNote) : '')}${fact('Places', m && m.seats ? esc(m.seats) : 'Check provider')}${fact('Provider', esc(e.organiser) + (s && s.providerType === 'commercial' ? ' <span class="tag">Commercial</span>' : ''))}${fact('Type', esc(HC.VARIANT_LABEL[e.variant] || 'Full course'), e.cpdVerified ? esc(e.cpdHours) + ' CPD hours' : '')}</div>
-  ${opts}${s && (s.accessNote || s.bookingNote || s.sessionNote) ? `<p class="note">${esc([s.accessNote, s.bookingNote, s.sessionNote].filter(Boolean).join(' · '))}</p>` : ''}
-  <p class="note source"><span class="pill g">Confirmed</span>${e.lastVerified ? ' Checked ' + esc(fmtD(e.lastVerified)) : ''}${srcLink(e.sourceUrl) ? ' · ' + srcLink(e.sourceUrl) : ''}</p>${pe}
+  ${opts}${s && (s.accessNote || s.bookingNote || s.sessionNote) ? `<p class="note">${esc([s.accessNote, s.bookingNote, s.sessionNote].filter(Boolean).join(' · '))}</p>` : ''}${pe}
   ${tripSection(e)}
-  <div class="row travel"><a class="btn sm" target="_blank" rel="noopener noreferrer" href="${esc(L.flights)}">${icon('plane')} Flights ${icon('ext')}</a><a class="btn sm" target="_blank" rel="noopener noreferrer" href="${esc(L.hotels)}">${icon('bed')} Hotels ${icon('ext')}</a><button class="btn sm" data-act="ics" data-id="${esc(e.id)}">${icon('cal')} Calendar</button>${c ? `<a class="btn sm ghost" href="#/courses/${esc(c.id)}">About course</a>` : ''}</div></div>
-  ${s ? `<div class="actbar"><button class="btn primary lg" data-act="plancourse" data-id="${esc(s.id)}" ${trip ? 'disabled' : ''}>${trip ? 'In trips' : 'Plan trip'}</button>${extA(s.bookingUrl, esc(bookLabel(s)), 'btn lg')}</div>` : ''}</div>`);
+  <div class="row travel"><a class="btn sm" target="_blank" rel="noopener noreferrer" href="${esc(L.flights)}">${icon('plane')} Flights ${icon('ext')}</a><a class="btn sm" target="_blank" rel="noopener noreferrer" href="${esc(L.hotels)}">${icon('bed')} Hotels ${icon('ext')}</a><button class="btn sm" data-act="ics" data-id="${esc(e.id)}">${icon('cal')} Calendar</button>${c ? `<a class="btn sm ghost" href="#/courses/${esc(c.id)}">About course</a>` : ''}</div>`;
+  openOverlay(dtFrame({ label: name + ' session', main, bar: '',
+    posters: ART ? [ART.dial(key, lab, { size: 'hero', sub })].concat([1, 2, 3, 4].map(v => ART.dial(key + '|' + v, lab, { size: 'square' }))) : [],
+    book: s ? dtBook(e, `<button class="btn primary lg" data-act="plancourse" data-id="${esc(s.id)}" ${trip ? 'disabled' : ''}>${trip ? 'In trips' : 'Plan trip'}</button>`, extA(s.bookingUrl, esc(bookLabel(s)), 'btn alt')) : '' }));
 }
 /* the Courses list: country or region (default: the profile's country), language (default English or not stated), search;
    certificate families grouped with the certifying body named; the rest as cards, most relevant first, paged */
@@ -883,10 +889,10 @@ async function loadTop(spec = '') {
   if (r.error || !Array.isArray(r.series)) return false;
   NET.top[spec] = r.series; return true;
 }
-function topCard(x) {
+function topCard(x, size = 'tall') {
   const c = byId(x.confId); if (!c) return '';
   return `<article class="card topcard" data-act="open" data-id="${esc(c.id)}">
-    <div class="art">${plate(c, 'tall')}</div>
+    <div class="art">${plate(c, size)}</div>
     <div class="card-body"><p class="card-when top-score"><span class="stars" aria-hidden="true">${stars(x.avg)}</span> <b>${x.avg.toFixed(1)}</b></p><h3><a class="card-link" href="/conferences/${esc(encodeURIComponent(c.id))}" data-act="open" data-id="${esc(c.id)}" aria-label="${esc(x.title)}: ${esc(x.avg.toFixed(1))} out of 5 from ${esc(plural(x.n, 'review'))}, ${esc(x.verified)} verified">${esc(x.title)}</a></h3>
     <p class="card-where">${esc(c.specialty)} · ${x.upcoming ? 'Next: ' + esc(c.city) + ' · ' + esc(range(c)) : 'Last held ' + esc(c.start.slice(0, 4))}</p>
     <div class="card-meta"><span class="tag top-n">${plural(x.n, 'review')} · ${x.verified} verified</span></div></div></article>`;
@@ -907,16 +913,73 @@ function drawTopList() {
   const L = NET.top[spec];
   if (!L) { el.innerHTML = head + '<p class="note">Loading scores…</p>'; loadTop(spec).then(ok => { if (ok && route() === 'discover' && UI.sort === 'rating') drawTopList(); }); return; }
   const shown = L.filter(x => byId(x.confId)).slice(0, TOP_N.discover);
-  el.innerHTML = head + (shown.length ? `<ol class="toprank">${shown.map((x, i) => `<li><span class="rank" aria-hidden="true">${i + 1}</span>${topCard(x)}</li>`).join('')}</ol>`
+  el.innerHTML = head + (shown.length ? `<ol class="toprank">${shown.map((x, i) => `<li><span class="rank" aria-hidden="true">${i + 1}</span>${topCard(x, 'card')}</li>`).join('')}</ol>`
     : `<p class="note top-empty">None with 3 reviews yet · <button type="button" class="linkbtn" data-act="topfind">Review one</button></p>`);
 }
-const UI = { hol: '', confirmed: '', limit: 48, q: '', spec: 'All', region: '', country: '', month: '', cpd: 0, sort: 'date', do: '' };
+const UI = { hol: '', confirmed: '', limit: 48, q: '', spec: 'All', region: '', country: '', city: '', month: '', cpd: 0, sort: 'date', do: '', browseAll: false };
+/* ---------- Discover: the search pill, the Where/When/Specialty sheet, the filter sheet, specialty tiles ----------
+   One state (UI) behind every control; buttons carry data-act="fset" with a key and value, and syncFilters() redraws them. */
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const REGIONS = [['AU', 'Australia'], ['NZ', 'New Zealand'], ['Asia', 'Asia'], ['Europe', 'Europe'], ['North America', 'North America'], ['Latin America', 'Latin America'], ['Middle East', 'Middle East'], ['Africa', 'Africa']];
+const whereKey = () => UI.city ? 'city:' + UI.city : UI.country ? 'country:' + UI.country : UI.region ? 'region:' + UI.region : '';
+const whereLabel = () => UI.city || UI.country || (REGIONS.find(r => r[0] === UI.region) || [, ''])[1];
+const subLine = () => [whereLabel(), UI.month !== '' ? new Date(2027, +UI.month, 1).toLocaleDateString('en-AU', { month: 'long' }) : 'Any month', UI.spec !== 'All' ? UI.spec : 'Any specialty'].filter(Boolean).join(' · ');
+const inRegion = (c, r) => r === 'AU' || r === 'NZ' ? c.countryCode === r : r === 'Asia' ? c.region === 'Asia-Pacific' && c.countryCode !== 'AU' && c.countryCode !== 'NZ' : c.region === r;
+const specCounts = () => { const m = new Map(); for (const c of upcoming()) m.set(c.specialty, (m.get(c.specialty) || 0) + 1); return m; };
+const monthChips = lab => `<div class="mchips" role="group" aria-labelledby="${lab}">${MONTHS.map((m, i) => `<button type="button" class="chip" data-act="fset" data-k="month" data-v="${i}" aria-pressed="false">${esc(m)}</button>`).join('')}</div>`;
+const specPicker = () => { const m = specCounts(), specs = [...m.keys()].sort();
+  return `<label class="search fsearch">${icon('search')}<span class="sr-only">Find a specialty</span><input type="search" data-specq placeholder="Search specialties" autocomplete="off"></label>
+  <ul class="slist">${['All', ...specs].map(s => `<li><button type="button" data-act="fset" data-k="spec" data-v="${esc(s)}" aria-pressed="false">${s === 'All' ? 'All specialties' : esc(s)}<small>${(s === 'All' ? upcoming().length : m.get(s)).toLocaleString('en-AU')}</small></button></li>`).join('')}</ul>`; };
+const moreSel = (id, label, k, opts) => `<label class="sel"><span class="sel-l">${label}</span><select id="${id}" data-fsel="${k}">${opts}</select></label>`;
+/* Spotify's "Browse all": a tile per specialty in its poster colour, a small poster tilted off the corner */
+function browseTiles() {
+  const m = specCounts(), top = [...m.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).map(x => x[0]);
+  return (UI.browseAll ? top : top.slice(0, 8)).map(s => { const pal = ART ? ART.palette(s) : ['', '#EAE3D5', '#15130F'], ex = upcoming().find(c => c.specialty === s && dateEv(c) !== 'estimated') || upcoming().find(c => c.specialty === s);
+    return `<button type="button" class="tile" data-act="fset" data-k="spec" data-v="${esc(s)}" style="--tg:${pal[1]};--ti:${pal[2]}"><span>${esc(s)}</span>${ex ? `<div class="tile-art" aria-hidden="true">${plate(ex, 'tall')}</div>` : ''}</button>`; }).join('');
+}
+const filtersOn = () => !!(UI.q.trim() || UI.spec !== 'All' || UI.do || UI.region || UI.country || UI.city || UI.month !== '' || UI.hol || UI.cpd || UI.confirmed);
+function setFilter(k, v) {
+  if (k === 'spec') UI.spec = UI.spec === v && v !== 'All' ? 'All' : v;
+  else if (k === 'month') UI.month = String(UI.month) === v ? '' : v;
+  else if (k === 'region') Object.assign(UI, { region: v, country: '', city: '' });
+  else if (k === 'where') { const [t, ...r] = v.split(':'), x = r.join(':'); Object.assign(UI, { region: '', country: '', city: '' }); if (v && whereKey() !== v) UI[t] = x; }
+  UI.limit = 48; syncFilters(); results();
+}
+function syncFilters() {
+  const wk = whereKey();
+  document.querySelectorAll('[data-act=fset]').forEach(b => { const k = b.dataset.k, v = b.dataset.v;
+    const on = k === 'spec' ? UI.spec === v : k === 'month' ? String(UI.month) === v : k === 'region' ? (v ? wk === 'region:' + v : !wk) : k === 'where' ? wk === v : false;
+    b.setAttribute('aria-pressed', String(on)); });
+  document.querySelectorAll('input[data-fk]').forEach(i => { i.checked = !!UI[i.dataset.fk]; });
+  document.querySelectorAll('select[data-fsel]').forEach(s => { s.value = String(UI[s.dataset.fsel]); });
+  document.querySelectorAll('[data-do]').forEach(x => x.setAttribute('aria-pressed', String(x.dataset.do === UI.do)));
+  const sl = $('#spillSub'); if (sl) sl.textContent = subLine();
+}
+/* the pill's second line opens Where, When and Specialty in one sheet (Airbnb) */
+function whereList(q) {
+  q = String(q || '').trim().toLowerCase();
+  const U = upcoming(), cities = [...new Set(U.map(c => c.city + '|' + c.country))], countries = [...new Set(U.map(c => c.country))];
+  const items = !q ? [['', 'Anywhere', 'All regions', 'globe']].concat(REGIONS.map(([v, l]) => ['region:' + v, l, 'Region', 'globe']))
+    : REGIONS.filter(r => r[1].toLowerCase().includes(q)).map(([v, l]) => ['region:' + v, l, 'Region', 'globe'])
+      .concat(countries.filter(c => c.toLowerCase().includes(q)).sort().map(c => ['country:' + c, c, 'Country', 'globe']))
+      .concat(cities.filter(x => x.toLowerCase().includes(q)).sort().map(x => { const [c, k] = x.split('|'); return ['city:' + c, c, k, 'pin']; })).slice(0, 8);
+  return items.length ? items.map(([v, l, s, ic]) => `<li><button type="button" data-act="fset" data-k="where" data-v="${esc(v)}" aria-pressed="${whereKey() === v}"><span class="sic" aria-hidden="true">${icon(ic)}</span><span><b>${esc(l)}</b><small>${esc(s)}</small></span></button></li>`).join('') : '<li class="note">No match</li>';
+}
+function searchSheet() {
+  openOverlay(`<div class="sheet center ssheet" role="dialog" aria-modal="true" aria-label="Search"><button type="button" class="icon-btn close" data-act="close" aria-label="Close">${icon('x')}</button><div class="sbody">
+    <section class="sstep" aria-labelledby="sWhereH"><h3 id="sWhereH">Where?</h3><label class="search">${icon('search')}<span class="sr-only">Search destinations</span><input type="search" id="sWhere" placeholder="City, country or region" autocomplete="off" autofocus></label><ul class="sugg" id="sWhereL">${whereList('')}</ul></section>
+    <section class="sstep" aria-labelledby="sWhenH"><h3 id="sWhenH">When?</h3>${monthChips('sWhenH')}${HOL.length ? '<label class="switch" style="margin-top:12px"><span>In AU or NZ school holidays</span><input type="checkbox" role="switch" data-fk="hol"></label>' : ''}</section>
+    <section class="sstep" aria-labelledby="sSpecH"><h3 id="sSpecH">Specialty?</h3>${specPicker()}</section>
+    <div class="sfoot"><button type="button" class="linkbtn" data-act="clearfilters">Clear all</button><button type="button" class="btn dark" data-act="sshow" id="sShow">Show results</button></div></div></div>`, true);
+  syncFilters(); results();
+}
 function results() {
   let L = upcoming();
   const q = UI.q.trim().toLowerCase();
   if (q) L = L.filter(c => [c.name, c.city, c.country, c.organiser, c.specialty, c.blurb].join(' ').toLowerCase().includes(q));
   if (UI.spec !== 'All') L = L.filter(c => c.specialty === UI.spec);
-  if (UI.region) L = L.filter(c => c.region === UI.region);
+  if (UI.region) L = L.filter(c => inRegion(c, UI.region));
+  if (UI.city) L = L.filter(c => c.city === UI.city);
   if (UI.country) L = L.filter(c => c.country === UI.country);
   if (UI.month !== '') L = L.filter(c => new Date(c.start + 'T00:00:00').getMonth() === +UI.month || new Date(c.end + 'T00:00:00').getMonth() === +UI.month);
   if (UI.hol) L = L.filter(c => holHits(c, UI.hol).length);
@@ -925,7 +988,7 @@ function results() {
   /* "what do you want to do": still a list of conferences, narrowed to those with something on within 3 days */
   let TM = null;
   if (UI.do && HT) {
-    if (!EXP.list) { $('#count').textContent = 'Loading…'; $('#results').setAttribute('aria-busy', 'true'); loadExp().then(ok => { $('#results') && $('#results').removeAttribute('aria-busy'); if (ok && route() === 'discover') results(); }); return; }
+    if (!EXP.list) { if ($('#count')) $('#count').textContent = 'Loading…'; $('#results').setAttribute('aria-busy', 'true'); loadExp().then(ok => { $('#results') && $('#results').removeAttribute('aria-busy'); if (ok && route() === 'discover') results(); }); return; }
     TM = new Map(tripSuggest({ interests: [UI.do] }).map(x => [x.conference.id, x])); L = L.filter(c => TM.has(c.id));
   }
   const cardOf = c => { const x = TM && TM.get(c.id); return card(c, x ? (x.matches.length ? x.matches : UI.do === 'ski' ? 'Ski resort' : UI.do === 'beach' ? 'Beach resort' : 'Family-friendly venue') : null); };
@@ -933,10 +996,12 @@ function results() {
   L.sort(srt[UI.sort]);
   drawTopList();
   const cm = q && COURSES.cat ? HC.searchCourses(COURSES.cat, q) : [];
+  if (!$('#results')) return;
   $('#count').textContent = `${L.length.toLocaleString('en-AU')} result${L.length === 1 ? '' : 's'}${cm.length ? ' · ' + plural(cm.length, 'course') : ''}${TM ? ` · ${HT.interestOf(UI.do).label.toLowerCase()} within 3 days` : ''}`;
-  const nf = [UI.region, UI.country, UI.month, UI.hol, UI.cpd, UI.confirmed, UI.sort !== 'date'].filter(Boolean).length, fn = $('#fN'), fs = $('#fShow'); if (fn) { fn.hidden = !nf; fn.textContent = nf; } if (fs) fs.textContent = `Show ${L.length.toLocaleString('en-AU')} result${L.length === 1 ? '' : 's'}`;
+  const nf = [UI.region || UI.country || UI.city, UI.month !== '', UI.hol, UI.cpd, UI.confirmed, UI.sort !== 'date', UI.spec !== 'All'].filter(Boolean).length, fn = $('#fN'), show = `Show ${L.length.toLocaleString('en-AU')} result${L.length === 1 ? '' : 's'}`; if (fn) { fn.hidden = !nf; fn.textContent = nf; } for (const b of [$('#fShow'), $('#sShow')]) if (b) b.textContent = show;
+  const br = $('#browse'); if (br) br.hidden = filtersOn() || UI.sort !== 'date';
   if (MOTION) MOTION.scan($('#results'));
-  $('#results').innerHTML = cm.map(courseCard).join('') + L.slice(0, UI.limit).map(cardOf).join('') + (L.length > UI.limit ? `<div class="more-row"><button class="btn" data-act="more">Show ${L.length - UI.limit} more</button></div>` : '') || (cm.length ? '' : `<div class="empty wide"><h2>No conferences match</h2><p style="margin-top:16px"><button class="btn primary" data-act="clearfilters">Clear filters</button></p></div>`);
+  $('#results').innerHTML = cm.map(c => courseCard(c)).join('') + L.slice(0, UI.limit).map(cardOf).join('') + (L.length > UI.limit ? `<div class="more-row"><button class="btn" data-act="more">Show ${L.length - UI.limit} more</button></div>` : '') || (cm.length ? '' : `<div class="empty wide"><h2>No conferences match</h2><p style="margin-top:16px"><button class="btn primary" data-act="clearfilters">Clear filters</button></p></div>`);
 }
 const AFTER = {
   home() { if ($('#tripShelf')) loadExp().then(ok => { if (ok && route() === 'home') fillTripShelf(); }); },
@@ -963,12 +1028,9 @@ const AFTER = {
   },
   certs() { needSessions((S.certs || []).map(c => c.courseId)); },
   discover() {
-    const sync = () => { $('#q').value = UI.q; $('#fRegion').value = UI.region; $('#fCountry').value = UI.country; $('#fMonth').value = UI.month; $('#fCpd').value = UI.cpd; $('#fConf').value = UI.confirmed; if ($('#fHol')) $('#fHol').value = UI.hol; $('#fSort').value = UI.sort; document.querySelectorAll('[data-spec]').forEach(b => b.setAttribute('aria-pressed', b.dataset.spec === UI.spec)); };
-    sync(); results();
+    $('#q').value = UI.q; syncFilters(); results();
     $('#q').addEventListener('input', e => { UI.q = e.target.value; UI.limit = 48; results(); });
-    [['fRegion', 'region'], ['fCountry', 'country'], ['fMonth', 'month'], ['fCpd', 'cpd'], ['fConf', 'confirmed'], ['fSort', 'sort'], ['fHol', 'hol']].forEach(([id, k]) => $('#' + id) &&  $('#' + id).addEventListener('change', e => { UI[k] = k === 'cpd' ? +e.target.value : e.target.value; UI.limit = 48; results(); }));
-    if ($('#doChips')) $('#doChips').addEventListener('click', e => { const b = e.target.closest('[data-do]'); if (!b) return; UI.do = UI.do === b.dataset.do ? '' : b.dataset.do; UI.limit = 48; history.replaceState(null, '', '#/discover' + (UI.do ? '?do=' + UI.do : '')); document.querySelectorAll('[data-do]').forEach(x => x.setAttribute('aria-pressed', x.dataset.do === UI.do)); results(); });
-    $('#specChips').addEventListener('click', e => { const b = e.target.closest('[data-spec]'); if (!b) return; UI.spec = b.dataset.spec; UI.limit = 48; sync(); results(); });
+    if ($('#doChips')) $('#doChips').addEventListener('click', e => { const b = e.target.closest('[data-do]'); if (!b) return; UI.do = UI.do === b.dataset.do ? '' : b.dataset.do; UI.limit = 48; history.replaceState(null, '', '#/discover' + (UI.do ? '?do=' + UI.do : '')); syncFilters(); results(); });
   },
   receipts() {
     const dz = $('#drop'); if (!dz) return;
@@ -1211,21 +1273,36 @@ function dateNote(c) {
   if (st === 'confirmed') return `Checked ${esc(fmtD(c.verifiedOn))}${link(c.datesSourceUrl, esc(hostOf(c.datesSourceUrl)) + ' ↗')}<span class="quote">“${esc(c.datesQuote)}”</span>`;
   return `Confirmed earlier · source not yet re-checked${link(c.sourceUrl, esc(hostOf(c.sourceUrl)) + ' ↗')}`;
 }
+/* the detail page's frame (Airbnb): round buttons over a poster header (a 1+4 mosaic on desktop), the sheet overlapping
+   it, and a booking bar (phones) or sticky card (desktop) with the dates, the trip window and the main action */
+const dtFrame = ({ label, posters, bar, main, book }) => `<div class="sheet detail dt" role="dialog" aria-modal="true" aria-label="${esc(label)}">
+  <div class="dt-bar"><button class="rbtn close" data-act="close" aria-label="Close">${icon('back')}</button><div>${bar}</div></div>
+  <div class="sheet-wrap dt-hero"><span class="grab" aria-hidden="true"></span>${posters.map(x => `<div>${x}</div>`).join('')}</div>
+  <div class="dt-body"><div class="dt-main">${main}</div>${book}</div></div>`;
+const dtSec = (title, body) => `<section class="dt-sec"><h3>${title}</h3>${body}</section>`;
+const tripWin = c => { if (!HT || c.datesConfirmed === false) return ''; const w = HT.span(c, { before: TUI.id === c.id ? TUI.days : 2, after: TUI.id === c.id ? TUI.days : 2 }); return w.from === c.start && w.to === c.end ? '' : 'Trip window ' + HT.shortRange(w.from, w.to); };
+const dtBook = (c, action, extra = '') => `<aside class="dt-book" aria-label="Plan"><span class="dt-book-h">${c.datesConfirmed === false ? 'Estimate' : 'Dates'}</span><div class="dt-when"><button type="button" class="dt-dates" data-act="tripwin">${esc(range(c))}</button><span class="dt-win">${esc(tripWin(c) || (c.datesConfirmed === false ? 'Check organiser' : c.city))}</span></div>${action}${extra}</aside>`;
 function detail(id, fetchReviews = true) {
   const c = byId(id); if (!c) return;
   if (c.kind === 'course') return sessionSheet(c.sessionId, c);
-  const on = S.saved.includes(id), trip = S.trips.find(t => t.confId === id), L = links(c), R = reviewsFor(c), sc = scoreOf(c);
-  openOverlay(`<div class="sheet detail" role="dialog" aria-modal="true" aria-label="${esc(c.name)}"><div class="sheet-wrap"><span class="grab" aria-hidden="true"></span><button class="icon-btn close" data-act="close" aria-label="Close">${icon('x')}</button><div class="art">${plate(c, 'wide')}</div></div>
-  <div class="body"><p class="card-when">${esc(range(c))} · ${esc(c.city)}, ${esc(c.country)}</p><h2>${esc(c.name)}</h2><p class="lede">${esc(c.blurb)}</p>
-  <div class="card-meta quality" aria-label="Quality signals">${{ confirmed: '<span class="pill g">Confirmed</span>', unchecked: '<span class="pill">Re-checking</span>', estimated: '<span class="pill w">Estimate</span>' }[dateEv(c)]}${c.cpdBody && c.cpdVerified ? `<span class="pill g">Accreditation: ${esc(c.cpdBody)}</span>` : '<span class="pill w">Accreditation: check organiser</span>'}${orgPill(c)}${destTags(c)}${sc && sc.avg != null ? `<button type="button" class="tag" data-act="toreviews"><span class="stars" aria-hidden="true">★</span> ${sc.avg.toFixed(1)} · ${plural(sc.n, 'review')}</button>` : ''}</div>
-  ${schedLine(c, true)}${c.flagged ? '<p class="check warn">! Organiser site changed. Check before booking.</p>' : ''}
-  <div class="facts"><div class="fact wide"><div class="k">When</div><div class="v">${esc(range(c))}</div><div class="note">${dateNote(c)}</div></div><div class="fact"><div class="k">Where</div><div class="v">${esc(c.city)}, ${esc(c.country)}</div>${c.datesConfirmed === false ? '<div class="note">City estimated</div>' : ''}</div><div class="fact${c.accreditation ? ' wide' : ''}"><div class="k">CPD</div><div class="v">${c.cpdVerified && c.cpdHours ? esc(c.cpdHours) + ' hrs' + (c.cpdBody ? ' · ' + esc(c.cpdBody) : '') : 'Not confirmed'}</div>${c.accreditation ? `<div class="note">“${esc(c.accreditation.text)}” · ${srcLink(c.accreditation.sourceUrl)} · check your college</div>` : c.cpdVerified && c.cpdHours ? '' : '<div class="note">Check organiser</div>'}</div><div class="fact"><div class="k">Registration (indicative)</div><div class="v">${figPrice(c) ? 'about US$' + esc(Number(figPrice(c)).toLocaleString()) : 'Check organiser'}</div></div><div class="fact"><div class="k">Specialty</div><div class="v">${esc(c.specialty)}</div></div><div class="fact"><div class="k">${figAtt(c) ? 'Size · format' : 'Format'}</div><div class="v">${figAtt(c) ? '~' + esc(Number(figAtt(c)).toLocaleString()) + ' · ' : ''}${esc(c.format)}</div>${figAtt(c) >= 3000 ? '<div class="note">Large (3,000+)</div>' : ''}</div><div class="fact wide"><div class="k">Run by</div><div class="v">${esc(c.organiser)}</div>${c.organiserType === 'commercial' ? '<div class="note">Commercial, not a college or society</div>' : ''}</div>${c.audience ? `<div class="fact wide"><div class="k">For</div><div class="v sm">${esc(c.audience)}</div></div>` : ''}</div>
+  const on = S.saved.includes(id), trip = S.trips.find(t => t.confId === id), L = links(c), R = reviewsFor(c), sc = scoreOf(c), ev = dateEv(c), hol = holHits(c, 'ANZ');
+  const src = ev === 'confirmed' && safeUrl(c.datesSourceUrl) !== '#' ? ` · <a class="u" target="_blank" rel="noopener noreferrer" href="${esc(safeUrl(c.datesSourceUrl))}">${esc(hostOf(c.datesSourceUrl))} ↗</a>` : '';
+  const honest = `<div class="honest card-meta quality" aria-label="Quality signals">${{ confirmed: '<span class="pill g">Confirmed</span>', unchecked: '<span class="pill">Re-checking</span>', estimated: '<span class="pill w">Estimate</span>' }[ev]}<span>${ev === 'confirmed' ? 'Checked ' + esc(fmtD(c.verifiedOn)) + src : ev === 'estimated' ? 'Check organiser' : 'Source not yet re-checked'}</span>${c.cpdBody && c.cpdVerified ? `<span class="pill g">Accreditation: ${esc(c.cpdBody)}</span>` : '<span class="pill w">Accreditation: check organiser</span>'}${orgPill(c)}${destTags(c)}${sc && sc.avg != null ? `<button type="button" class="tag" data-act="toreviews"><span class="stars" aria-hidden="true">★</span> ${sc.avg.toFixed(1)} · ${plural(sc.n, 'review')}</button>` : ''}</div>`;
+  const when = `<p class="v">${esc(range(c))}</p><p class="note">${dateNote(c)}</p>${hol.length ? `<p class="note">School holidays: ${esc(hol.map(r => r.name).join(', '))}</p>` : ''}`;
+  const where = `<p class="v">${esc(c.city)}, ${esc(c.country)}</p>${c.datesConfirmed === false ? '<p class="note">City estimated</p>' : ''}<dl class="dl"><div><dt>${figAtt(c) ? 'Size · format' : 'Format'}</dt><dd>${figAtt(c) ? '~' + esc(Number(figAtt(c)).toLocaleString()) + ' · ' : ''}${esc(c.format)}${figAtt(c) >= 3000 ? ' · large (3,000+)' : ''}</dd></div><div><dt>Run by</dt><dd>${esc(c.organiser)}${c.organiserType === 'commercial' ? '<span class="note"> · Commercial, not a college or society</span>' : ''}</dd></div>${c.audience ? `<div><dt>For</dt><dd>${esc(c.audience)}</dd></div>` : ''}</dl>`;
+  const cpd = `<p class="v">${c.cpdVerified && c.cpdHours ? esc(c.cpdHours) + ' hrs' + (c.cpdBody ? ' · ' + esc(c.cpdBody) : '') : 'Not confirmed'}</p>${c.accreditation ? `<p class="note">“${esc(c.accreditation.text)}” · ${srcLink(c.accreditation.sourceUrl)} · check your college</p>` : c.cpdVerified && c.cpdHours ? '' : '<p class="note">Check organiser</p>'}<dl class="dl"><div><dt>Registration (indicative)</dt><dd>${figPrice(c) ? 'about US$' + esc(Number(figPrice(c)).toLocaleString()) : 'Check organiser'}</dd></div></dl>`;
+  const main = `<h2>${esc(c.name)}</h2><p class="dt-line">${esc(c.city)} · ${esc(c.specialty)} · ${esc(c.format)}</p>${honest}
+  ${c.blurb ? `<p class="lede">${esc(c.blurb)}</p>` : ''}${schedLine(c, true)}${c.flagged ? '<p class="check warn">! Organiser site changed. Check before booking.</p>' : ''}
+  ${dtSec('When', when)}${dtSec('Where', where)}${dtSec('CPD', cpd)}
   ${tripSection(c)}
   <div class="row travel"><a class="btn sm ghost" target="_blank" rel="noopener noreferrer" href="${esc(safeUrl(c.url))}">Official site ${icon('ext')}</a><a class="btn sm" target="_blank" rel="noopener noreferrer" href="${esc(L.flights)}">${icon('plane')} Flights ${icon('ext')}</a><a class="btn sm" target="_blank" rel="noopener noreferrer" href="${esc(L.hotels)}">${icon('bed')} Hotels ${icon('ext')}</a><button class="btn sm" data-act="ics" data-id="${esc(id)}">${icon('cal')} Calendar</button><button class="btn sm" data-act="leave" data-id="${esc(id)}">Request leave</button></div>
   <p class="note"><a class="u" target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=${encodeURIComponent(c.name + ' ' + c.start.slice(0, 4) + ' review')}">Web reviews ↗</a> · not in Hoggy’s score</p>
   ${c.listingType === 'course' ? '<p class="note">Listed by organiser</p>' : ''}<p class="note report-line"><button type="button" class="linkbtn" data-act="report" data-kind="conference" data-id="${esc(id)}">Report a problem</button> · <a class="u" href="/conferences/${esc(encodeURIComponent(id))}">Link</a></p>
-  ${reviewsSection(c, R)}${coverageSection(c)}</div>
-  <div class="actbar"><button class="btn primary lg" data-act="plan" data-id="${esc(id)}" ${trip ? 'disabled' : ''}>${trip ? 'In trips' : 'Plan trip'}</button><button class="btn lg save-btn ${on ? 'on' : ''}" data-act="save" data-id="${esc(id)}" aria-pressed="${on}">${icon('heart')} ${on ? 'Saved' : 'Save'}</button></div></div>`);
+  ${reviewsSection(c, R)}${coverageSection(c)}`;
+  openOverlay(dtFrame({ label: c.name, main,
+    posters: [plate(c, 'hero')].concat(ART ? [1, 2, 3, 4].map(v => ART.plate(c, { size: 'square', ev, variant: v, bare: true })) : []),
+    bar: `<button class="rbtn" data-act="share" data-id="${esc(id)}" aria-label="Share">${icon('share')}</button><button class="rbtn save-btn ${on ? 'on' : ''}" data-act="save" data-id="${esc(id)}" aria-pressed="${on}" aria-label="Save">${icon('heart')}</button>`,
+    book: dtBook(c, `<button class="btn primary lg" data-act="plan" data-id="${esc(id)}" ${trip ? 'disabled' : ''}>${trip ? 'In trips' : 'Plan trip'}</button>`) }));
   if (NET.online && fetchReviews) loadCoverage(skey(c)).then(ok => { if (ok && !$('#overlay').hidden && $('#covsec') && $('#covsec').dataset.id === id) $('#covsec').outerHTML = coverageSection(c); });
   if (NET.online && fetchReviews) loadReviews(id).then(ok => { if (ok && !$('#overlay').hidden && $('#rvsec') && $('#rvsec').dataset.id === id) detail(id, false); }); /* fetch once per open; re-rendering with fetch again looped forever */
 }
@@ -1261,9 +1338,9 @@ function coverageSection(c) {
   const key = skey(c), L = NET.cov[key] || [];
   const items = window.HoggyCoverage ? L.map(l => window.HoggyCoverage.itemHtml(l, esc)).join('') : '';
   const suggest = `<button class="btn sm ghost" data-act="covsuggest" data-id="${esc(c.id)}">Suggest a link</button>`;
-  return `<section id="covsec" class="cov" data-id="${esc(c.id)}" aria-labelledby="covh"><div class="section" style="margin-top:28px"><h2 id="covh" style="font-size:20px">Covered in</h2></div>
+  return `<section id="covsec" class="cov" data-id="${esc(c.id)}" aria-labelledby="covh"><div class="section"><h2 id="covh">Covered in</h2></div>
   ${items ? `<ul class="cov-list">${items}</ul>` : '<p class="note">None yet</p>'}
-  <div class="row" style="margin:8px 0 0">${suggest}</div></section>`;
+  <div class="row">${suggest}</div></section>`;
 }
 function coverageDialog(c) {
   const T = window.HoggyCoverage.TYPES, Y = new Date().getFullYear();
@@ -1817,6 +1894,17 @@ document.addEventListener('change', e => {
   t.plan = p; OPEN_PLAN.set(t.id, true); save(); render();
   const back = document.getElementById(f.id) || document.querySelector(f.dataset.fares ? `[data-fares="${CSS.escape(t.id)}"]` : `[data-pinmove="${CSS.escape(t.id)}"][data-v="${CSS.escape(f.dataset.v)}"]`); if (back) back.focus({ preventScroll: true });
 });
+/* Discover filters: toggles, selects, and the type-to-narrow lists in the sheets */
+document.addEventListener('change', e => {
+  const t = e.target; if (!t || !t.matches) return;
+  if (t.matches('input[data-fk]')) { const k = t.dataset.fk; UI[k] = k === 'cpd' ? (t.checked ? 1 : 0) : t.checked ? 'ANZ' : ''; UI.limit = 48; syncFilters(); results(); }
+  else if (t.matches('select[data-fsel]')) { const k = t.dataset.fsel; UI[k] = t.value; if (k === 'country') Object.assign(UI, { region: '', city: '' }); UI.limit = 48; syncFilters(); results(); }
+});
+document.addEventListener('input', e => {
+  const t = e.target; if (!t || !t.matches) return;
+  if (t.matches('[data-specq]')) { const q = t.value.trim().toLowerCase(), list = t.closest('.fgroup, .sstep').querySelector('.slist'); list.querySelectorAll('li').forEach(li => { li.hidden = !!q && !li.textContent.toLowerCase().includes(q); }); }
+  else if (t.id === 'sWhere') { $('#sWhereL').innerHTML = whereList(t.value); }
+});
 document.addEventListener('toggle', e => { const d = e.target; if (d && d.matches && d.matches('details.tplan')) { OPEN_PLAN.set(d.dataset.trip, d.open); } }, true);
 document.addEventListener('click', async e => {
   const el = e.target.closest('[data-act]'); const ov = $('#overlay');
@@ -1833,7 +1921,13 @@ document.addEventListener('click', async e => {
   if (a === 'rpback') { if (byId(id)) return detail(id, false); return closeOverlay(); }
   if (a === 'dismissonboard') { S.onboard = { ...(S.onboard || {}), dismissed: true }; save(); render(); toast('Checklist hidden'); return; }
   if (a === 'leagain') { LE.sent = false; render(); const n = $('#le-kind'); if (n) n.focus(); return; }
-  if (a === 'clearfilters') { Object.assign(UI, { q: '', spec: 'All', region: '', country: '', month: '', cpd: 0, confirmed: '', hol: '', limit: 48, do: '' }); history.replaceState(null, '', '#/discover'); render(); const q = $('#q'); if (q) q.focus(); return; } /* don't put #main in the hash: the router would read it as a route */
+  if (a === 'clearfilters') { Object.assign(UI, { q: '', spec: 'All', region: '', country: '', city: '', month: '', cpd: 0, confirmed: '', hol: '', limit: 48, do: '', sort: 'date' }); history.replaceState(null, '', '#/discover'); if (!$('#overlay').hidden || FS.open) { const q = $('#q'); if (q) q.value = ''; syncFilters(); results(); return; } render(); const q = $('#q'); if (q) q.focus(); return; } /* don't put #main in the hash: the router would read it as a route */
+  if (a === 'fset') { setFilter(el.dataset.k, el.dataset.v); if (el.classList.contains('tile')) { const h = $('#resH'); if (h) { h.setAttribute('tabindex', '-1'); h.focus(); } } return; }
+  if (a === 'searchsheet') return searchSheet();
+  if (a === 'sshow') { closeOverlay(); return results(); }
+  if (a === 'browseall') { UI.browseAll = !UI.browseAll; const t = $('#browse .tiles'); if (t) t.innerHTML = browseTiles(); el.textContent = UI.browseAll ? 'Show fewer' : 'Show all'; el.setAttribute('aria-expanded', String(UI.browseAll)); syncFilters(); return; }
+  if (a === 'tripwin') { const m = $('#mtrip'); if (m) { m.scrollIntoView({ block: 'start', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); const f = m.querySelector('[aria-pressed=true]') || m.querySelector('button'); if (f) f.focus({ preventScroll: true }); } return; }
+  if (a === 'share') { const c = byId(id); if (!c) return; const url = location.origin + '/conferences/' + encodeURIComponent(c.id); try { if (navigator.share) await navigator.share({ title: c.name, url }); else { await navigator.clipboard.writeText(url); toast('Link copied'); } } catch (er) { } return; }
   if (a === 'howto') { const h = $('#how'); if (h) { h.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' }); h.focus({ preventScroll: true }); } return; }
   if (a === 'close') return closeOverlay();
   if (a === 'filters') return filterSheet(!FS.open, true);
