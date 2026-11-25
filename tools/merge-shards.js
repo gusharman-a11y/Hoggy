@@ -1,5 +1,7 @@
 'use strict';
 /* Merge data/shards/*.json into data/conferences.js with validation and de-duplication.
+   Optional destination fields (tools/destination-fields.js: tags, schedule, organiserType, accreditation, audience) are carried from
+   conference shards and from provenance entries when valid; an invalid one is left out and listed, the row still merges.
    Usage: node tools/merge-shards.js [--dry] [--root DIR] [--today YYYY-MM-DD] [--migrate-legacy]
    Evidence rule (B30, tools/evidence.js): a row stays datesConfirmed only with datesSourceUrl + datesQuote + verifiedOn on the
    organiser's domain, or with legacyConfirmed (confirmed before the rule, quote not stored yet). Any other confirmed row is
@@ -10,6 +12,7 @@ const fs = require('node:fs'), path = require('node:path'), vm = require('node:v
 const argv = process.argv.slice(2), opt = k => { const i = argv.indexOf(k); return i >= 0 ? argv[i + 1] : null; };
 const root = path.resolve(opt('--root') || path.join(__dirname, '..')), dry = argv.includes('--dry'), MIGRATE = argv.includes('--migrate-legacy');
 const { evidenceProblem, hasAnyEvidence } = require('./evidence');
+const { pickDestination, hasDestinationFields } = require('./destination-fields'); // optional tags / schedule / organiserType / accreditation / audience
 const mainFile = path.join(root, 'data', 'conferences.js'), shardDir = path.join(root, 'data', 'shards');
 const { CANON, canon } = require('./specialties');
 const { demangle } = require('./demangle'); // tools/specialties.json: one name per specialty
@@ -42,6 +45,7 @@ if (MIGRATE) for (const c of base) if (c.datesConfirmed !== false && !hasAnyEvid
 const wasLegacy = new Set(base.filter(c => c.legacyConfirmed).map(c => c.id));
 const out = base.map(c => { const r = { ...c, dateStatus: c.dateStatus || (c.datesConfirmed === false ? 'estimated' : 'confirmed'), sourceUrl: c.sourceUrl || c.url }; if (r.lastVerified === '2026-11-06' && !r.provenance) delete r.lastVerified; return r; }), seenId = new Set(out.map(c => c.id)), seenKey = new Set(out.map(c => norm(c.name) + c.start.slice(0, 4))), seenUrlDate = new Set(out.map(c => host(c.url) + c.start));
 const stats = { added: 0, dupId: 0, dupName: 0, invalid: 0 }, rejects = [];
+const dest = { rows: 0, provenance: 0, dropped: [] }; /* destination fields: carried when valid, left out (and listed) when not; never a reason to reject a row */
 const shardFiles = fs.existsSync(shardDir) ? fs.readdirSync(shardDir).filter(x => x.endsWith('.json') && x !== 'holidays.json') : [];
 for (const f of shardFiles.filter(x => !x.startsWith('provenance-') && !x.startsWith('cpd-') && !x.startsWith('fix-'))) {
   let arr; try { arr = JSON.parse(fs.readFileSync(path.join(shardDir, f), 'utf8')); } catch (e) { console.error(f, 'unparseable:', e.message); continue; }
@@ -55,7 +59,8 @@ for (const f of shardFiles.filter(x => !x.startsWith('provenance-') && !x.starts
     if (seenId.has(c.id)) { stats.dupId++; continue; }
     if (seenKey.has(key) || seenUrlDate.has(host(c.url) + c.start)) { stats.dupName++; continue; }
     seenId.add(c.id); seenKey.add(key); seenUrlDate.add(host(c.url) + c.start);
-    out.push({ id: c.id, name: c.name, organiser: c.organiser, specialty: c.specialty, city: c.city, country: c.country, countryCode: c.countryCode, region: c.region, lat: +c.lat || 0, lng: +c.lng || 0, start: c.start, end: c.end, format: c.format, cpdHours: c.cpdHours, cpdBody: c.cpdBody || '', priceFrom: +c.priceFrom || 0, attendees: +c.attendees || 0, url: c.url, blurb: String(c.blurb).slice(0, 240), datesConfirmed: c.datesConfirmed === true, dateStatus: c.datesConfirmed === true ? 'confirmed' : 'estimated', sourceUrl: c.sourceUrl || c.url, ...pick(c, EVIDENCE_KEYS), ...(c.lastVerified || (c.datesConfirmed === true && c.sourceUrl && c.sourceUrl !== c.url) ? { lastVerified: c.lastVerified || TODAY } : {}) });
+    out.push({ id: c.id, name: c.name, organiser: c.organiser, specialty: c.specialty, city: c.city, country: c.country, countryCode: c.countryCode, region: c.region, lat: +c.lat || 0, lng: +c.lng || 0, start: c.start, end: c.end, format: c.format, cpdHours: c.cpdHours, cpdBody: c.cpdBody || '', priceFrom: +c.priceFrom || 0, attendees: +c.attendees || 0, url: c.url, blurb: String(c.blurb).slice(0, 240), datesConfirmed: c.datesConfirmed === true, dateStatus: c.datesConfirmed === true ? 'confirmed' : 'estimated', sourceUrl: c.sourceUrl || c.url, ...pick(c, EVIDENCE_KEYS), ...pickDestination(c, dest.dropped), ...(c.lastVerified || (c.datesConfirmed === true && c.sourceUrl && c.sourceUrl !== c.url) ? { lastVerified: c.lastVerified || TODAY } : {}) });
+    if (hasDestinationFields(c)) dest.rows++;
     stats.added++;
   }
 }
@@ -82,6 +87,8 @@ for (const f of shardFiles.filter(x => x.startsWith('provenance-'))) {
   let arr; try { arr = JSON.parse(fs.readFileSync(path.join(shardDir, f), 'utf8')); } catch (e) { console.error(f, 'unparseable'); continue; }
   for (const e of arr) {
     const row = out.find(c => c.id === e.id); if (!row) continue;
+    /* destination fields ride on any provenance entry (a tags-only entry needs no `verified`): they describe the meeting, not its dates */
+    if (hasDestinationFields(e)) { const d = pickDestination(e, dest.dropped); if (Object.keys(d).length) { Object.assign(row, d); dest.provenance++; } }
     const weak = /third[- ]party|aggregator|docthub|(?:^|[^a-z])ilds(?:[^a-z]|$)|tourism|santetropicale|listing site|js bundle|script bundle/i.test((e.note || '') + ' ' + (e.sourceUrl || '')) || /phaa|population-health/i.test(e.id) || !e.end;
     if (e.verified === true && weak) { if (row.datesConfirmed === true && !row.provenance) { row.datesConfirmed = false; row.dateStatus = 'estimated'; delete row.lastVerified; delete row.legacyConfirmed; prov.weak = (prov.weak || 0) + 1; } continue; }
     if (e.verified === true && /^https:\/\//.test(e.sourceUrl || e.datesSourceUrl || '') && /^\d{4}-\d{2}-\d{2}$/.test(e.start) && e.end >= e.start) {
@@ -151,6 +158,8 @@ for (const c of out) {
 console.log('evidence', JSON.stringify(ev));
 if (downgrades.length) console.log('downgraded to estimate (evidence rule):\n  ' + downgrades.slice(0, 40).join('\n  '));
 if (noEvidence.length) console.log('provenance entries ignored (verified without datesQuote, row not legacy):\n  ' + noEvidence.slice(0, 40).join('\n  '));
+if (dest.rows || dest.provenance || dest.dropped.length) console.log('destination fields', JSON.stringify({ newRows: dest.rows, fromProvenance: dest.provenance, dropped: dest.dropped.length }));
+if (dest.dropped.length) console.log('destination fields left out (invalid):\n  ' + dest.dropped.slice(0, 40).join('\n  '));
 console.log('cpd', JSON.stringify(cpdStats));
 console.log('provenance', JSON.stringify(prov));
 out.sort((a, b) => a.start.localeCompare(b.start) || a.name.localeCompare(b.name));

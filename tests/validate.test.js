@@ -101,3 +101,49 @@ test('merge: confirmed rows without valid evidence become estimates with a reaso
   assert.equal(fs.readFileSync(path.join(dir, 'data', 'conferences.js'), 'utf8'), before, 'merging again (another day) changes nothing');
   assert.equal(node('tools/validate-data.js', '--root', dir, '--today', DAY).status, 0);
 });
+
+/* destination CPD fields (tools/destination-fields.js): optional, additive, validated when present */
+const D = require('../tools/destination-fields');
+const DEST = { tags: ['ski', 'destination'], schedule: { pattern: 'Sessions 7:15–10:30 and 15:15–18:30', quote: '07:15 am - 08:15 am … 17:30 pm - 18:30 pm', sourceUrl: 'https://congress.abc.example/2027/program.pdf' }, organiserType: 'hospital', accreditation: { text: 'RACGP CPD approved 12 hours', sourceUrl: 'https://congress.abc.example/2027' }, audience: 'Anaesthetists and general practitioners' };
+
+test('destination fields: a row without them is unchanged; valid ones pass; each broken one is an error', () => {
+  assert.deepEqual(D.destinationProblems(GOOD), []); assert.equal(D.hasDestinationFields(GOOD), false); assert.deepEqual(D.pickDestination(GOOD), {});
+  assert.deepEqual(errs({ ...GOOD, ...DEST }), []);
+  const cases = [
+    [{ tags: ['ski', 'apres'] }, /tag "apres" is not in the vocabulary/], [{ tags: [] }, /non-empty array/], [{ tags: 'ski' }, /non-empty array/], [{ tags: ['ski', 'ski'] }, /repeated/],
+    [{ schedule: { pattern: 'Mornings only', sourceUrl: DEST.schedule.sourceUrl } }, /schedule\.quote is missing/],
+    [{ schedule: { ...DEST.schedule, sourceUrl: 'http://congress.abc.example/p.pdf' } }, /schedule\.sourceUrl is missing or not https/],
+    [{ schedule: { ...DEST.schedule, sourceUrl: undefined } }, /schedule\.sourceUrl/], [{ schedule: { ...DEST.schedule, pattern: '' } }, /schedule\.pattern/],
+    [{ schedule: { ...DEST.schedule, quote: 'A wonderful week away' } }, /says nothing about session times/], [{ schedule: 'Mornings' }, /schedule must be an object/],
+    [{ schedule: { ...DEST.schedule, pattern: 'The best mornings: 7:00–10:00' } }, /copy lint: "best" in schedule\.pattern/],
+    [{ organiserType: 'charity' }, /organiserType "charity"/],
+    [{ accreditation: { text: 'RACGP CPD approved 12 hours' } }, /accreditation\.sourceUrl/], [{ accreditation: { sourceUrl: DEST.accreditation.sourceUrl } }, /accreditation\.text is missing/],
+    [{ accreditation: { text: 'x'.repeat(301), sourceUrl: DEST.accreditation.sourceUrl } }, /accreditation\.text/], [{ audience: 'y'.repeat(201) }, /audience/]];
+  for (const [ch, re] of cases) assert.ok(errs({ ...GOOD, ...DEST, ...ch }).some(m => re.test(m)), `${JSON.stringify(ch)} -> ${errs({ ...GOOD, ...DEST, ...ch }).join('; ')}`);
+  assert.deepEqual(errs({ ...GOOD, ...DEST, schedule: { ...DEST.schedule, quote: 'Mornings of world-class CME. Afternoons in paradise.' } }), [], 'the organiser\'s quote is not linted, and words like "mornings" count as session times');
+  assert.deepEqual(D.pickDestination({ ...DEST, tags: ['destination', 'ski'] }).tags, ['ski', 'destination'], 'tags come out in vocabulary order');
+  const dropped = []; assert.deepEqual(D.pickDestination({ id: 'x', tags: ['ski'], organiserType: 'charity' }, dropped), { tags: ['ski'] }); assert.equal(dropped.length, 1);
+});
+
+test('merge and validator CLI: destination fields are carried from shards and provenance entries, invalid ones are left out', () => {
+  const NEW = { ...GOOD, id: 'ski-meeting-2027', name: 'SKI Meeting 2027', organiser: 'SKI Society', start: '2027-01-10', end: '2027-01-15', datesQuote: '10 to 15 January 2027', datesSourceUrl: 'https://www.abc.example/ski-2027', ...DEST };
+  const BAD = { ...GOOD, id: 'sun-meeting-2027', name: 'SUN Meeting 2027', organiser: 'SUN Society', start: '2027-06-22', end: '2027-06-24', datesQuote: '22-24 June 2027', datesSourceUrl: 'https://www.abc.example/sun-2027', tags: ['beach', 'yacht'], organiserType: 'society', schedule: { pattern: 'Mornings', quote: 'Sessions end by 12:15 PM' } };
+  const dir = tmpRoot([JSON.parse(JSON.stringify(GOOD))], { 'destinations-2026-11.json': [NEW, BAD], 'provenance-destinations-2026-11.json': [{ id: GOOD.id, tags: ['destination'], organiserType: 'society', note: 'tags only' }] });
+  const before = load(dir)[0];
+  const m = node('tools/merge-shards.js', '--root', dir, '--today', DAY); assert.equal(m.status, 0, m.stdout + m.stderr);
+  assert.match(m.stdout, /destination fields \{"newRows":2,"fromProvenance":1,"dropped":2\}/); assert.match(m.stdout, /sun-meeting-2027: tag "yacht"/);
+  const L = load(dir), by = id => L.find(c => c.id === id);
+  assert.deepEqual(JSON.parse(JSON.stringify(by('ski-meeting-2027').schedule)), DEST.schedule); assert.deepEqual([...by('ski-meeting-2027').tags], ['ski', 'destination']);
+  assert.equal(by('ski-meeting-2027').organiserType, 'hospital'); assert.equal(by('ski-meeting-2027').accreditation.text, 'RACGP CPD approved 12 hours'); assert.equal(by('ski-meeting-2027').datesConfirmed, true);
+  assert.equal(by('sun-meeting-2027').tags, undefined, 'a tag outside the vocabulary drops the field, not the row'); assert.equal(by('sun-meeting-2027').schedule, undefined);
+  assert.equal(by('sun-meeting-2027').organiserType, 'society'); assert.equal(by('sun-meeting-2027').datesConfirmed, true);
+  const g = by(GOOD.id); assert.deepEqual([...g.tags], ['destination'], 'a tags-only provenance entry tags an existing row');
+  for (const k of ['start', 'end', 'datesConfirmed', 'datesQuote', 'datesSourceUrl', 'verifiedOn', 'blurb']) assert.equal(g[k], before[k], k + ' untouched by a tags-only entry');
+  const ok = node('tools/validate-data.js', '--root', dir, '--today', DAY); assert.equal(ok.status, 0, ok.stdout); assert.match(ok.stdout, /destination fields: 2 rows tagged, 1 with a stated session pattern/);
+  const again = fs.readFileSync(path.join(dir, 'data', 'conferences.js'), 'utf8'); node('tools/merge-shards.js', '--root', dir, '--today', DAY);
+  assert.equal(fs.readFileSync(path.join(dir, 'data', 'conferences.js'), 'utf8'), again, 'merging again changes nothing');
+  /* what the app serves and what a provenance shard carries must be valid: both are errors */
+  fs.writeFileSync(path.join(dir, 'data', 'shards', 'provenance-destinations-2026-12.json'), JSON.stringify([{ id: GOOD.id, tags: ['yacht'], note: 'bad tag' }]));
+  const r1 = node('tools/validate-data.js', '--root', dir, '--today', DAY); assert.equal(r1.status, 1); assert.match(r1.stdout, /provenance-destinations-2026-12\.json abc-congress-2027: tag "yacht"/);
+  const r2 = node('tools/validate-data.js', '--root', tmpRoot([{ ...GOOD, accreditation: { text: 'RACGP CPD approved 12 hours' } }]), '--today', DAY); assert.equal(r2.status, 1); assert.match(r2.stdout, /accreditation\.sourceUrl is missing or not https/);
+});
