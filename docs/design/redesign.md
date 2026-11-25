@@ -15,24 +15,32 @@ and an outlined month mean "estimate". You can read the data quality before you 
 
 - **Mark**: a hedgehog reduced to a dome with five quills, which also reads as a sun on a horizon (the trip) and as
   radiating contour ticks (the plates). One colour, works at 16 px. `icons/icon.svg`, inlined in the header.
-- **Wordmark**: "hoggy", lower case, Bricolage Grotesque 800 condensed, tight tracking. The double g is the personality.
+- **Wordmark**: "hoggy", lower case, IBM Plex Sans Condensed Bold, tight tracking (-.03em). The double g is the personality.
 - **Voice in type**: sentence case everywhere. No uppercase eyebrows; kickers are small, sentence case, with a rule.
 - **Motif**: the plate (see below), the perforated edge (ticket stubs on trips and receipts) and the quill tick (list
   bullets, the CPD dial marks, loading state).
 
 ## Type
 
-Two families, self-hosted woff2 (OFL), preloaded, `font-display: swap`.
+IBM Plex (OFL), November 2026: the owner found the earlier text face too generic, and Plex was chosen from five tuned
+options (`fonts-explore`, option C). Three self-hosted woff2 files, Latin subset, no hinting, kern and liga only:
+**37 KB in all** (the pair it replaced was 69 KB). The two used on every screen (Plex Sans 400 and Plex Sans Condensed
+700) are preloaded; SemiBold loads on first use. `font-display: swap`. Plex figures are tabular by default, so no mono
+face is needed for numbers.
 
 | Role | Face | Size | Notes |
 |---|---|---|---|
-| Display / hero | Bricolage Grotesque 800, width 75, opsz 96 | `clamp(3.25rem, 13vw, 9.5rem)` | line-height .86, tracking -.035em |
-| Page title (h1) | Bricolage 800 | `clamp(2.6rem, 8vw, 5.5rem)` | |
-| Section title (h2) | Bricolage 700 | `clamp(1.6rem, 3.4vw, 2.5rem)` | |
-| Numerals | Bricolage 800 | up to 10rem | lining, tabular where they change |
-| Card / row title | Bricolage 700 | 1.2–1.45rem | |
-| Body | Instrument Sans 400–600 | 1rem / 1.5 (16 px on phones) | |
-| Meta / notes | Instrument Sans 500 | .8125–.875rem | never below 13 px |
+| Display / hero | Plex Sans Condensed 700 | `clamp(2.9rem, 7.3vw, 7.7rem)` | line-height .9, tracking -.03em |
+| Page title (h1) | Plex Condensed 700 | `clamp(2.42rem, 7vw, 4.84rem)` | line-height .9, tracking -.03em |
+| Section title (h2) | Plex Condensed 700 | `clamp(1.4rem, 3vw, 2.2rem)` | tracking -.012em |
+| Numerals | Plex Condensed 700 | up to 7.9rem | tabular by default |
+| Card / row title | Plex Condensed 700 | 1.1–1.25rem | |
+| Body | Plex Sans 400, 600 | 1rem / 1.5 (16 px on phones) | 500 in the CSS renders as 400 |
+| Meta / notes | Plex Sans 400 | .8125–.875rem | never below 13 px |
+
+Display sizes are set for Plex Condensed directly (about 12% below the sizes drawn for the face it replaced), not with
+`size-adjust`, so Safari before 17 gets the same layout. On the plates (`lib/art.js`) the date numerals are drawn at 76%
+and the month at 88% of the grid's nominal sizes, so a two-digit day still clears the month.
 
 Fallback stack is `"Arial Narrow", "Helvetica Neue", Arial, sans-serif` for display and `system-ui` for text.
 

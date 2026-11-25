@@ -1,10 +1,14 @@
-The font files in this folder are subsets of two typefaces published under the SIL Open Font License, Version 1.1
-(https://openfontlicense.org). They are served unmodified as downloaded from Google Fonts (Latin subset).
+The font files in this folder are subsets of IBM Plex, published by IBM under the SIL Open Font License, Version 1.1
+(https://openfontlicense.org). Copyright 2017 IBM Corp. (https://github.com/IBM/plex), with Reserved Font Name "Plex".
 
-- bricolage-grotesque-display.woff2: Bricolage Grotesque (weights 400-800, width 75, optical size 96).
-  Copyright 2022 The Bricolage Grotesque Project Authors (https://github.com/ateliertriay/bricolage).
-- instrument-sans.woff2: Instrument Sans (weights 400-700).
-  Copyright 2022 The Instrument Sans Project Authors (https://github.com/Instrument/instrument-sans).
+- plex-sans-400.woff2: IBM Plex Sans Regular (text).
+- plex-sans-600.woff2: IBM Plex Sans SemiBold (text: buttons, labels, bold).
+- plex-sans-condensed-700.woff2: IBM Plex Sans Condensed Bold (display: headings, numerals, the wordmark).
 
-Both are licensed under the SIL Open Font License, Version 1.1. The licence permits use, embedding and redistribution,
-provided the fonts are not sold by themselves and this notice travels with them. The full licence text is at the link above.
+How they were made: the Latin files from the Fontsource npm packages (v5.3), cut down with fontTools
+(pyftsubset) to Basic Latin, Latin-1 and the punctuation the app uses (dashes, quotes, ellipsis, bullet, euro, arrows),
+with only the kern and liga features and no hinting, so all three together weigh about 37 KB. The font names are kept
+as published; the copyright and licence entries travel inside each file.
+
+The licence permits use, embedding and redistribution, provided the fonts are not sold by themselves and this notice
+travels with them. The full licence text is at the link above.
