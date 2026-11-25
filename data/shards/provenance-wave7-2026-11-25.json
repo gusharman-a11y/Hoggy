@@ -1,0 +1,16 @@
+[
+ {
+  "id": "ama-national-conference",
+  "verified": true,
+  "start": "2027-08-27",
+  "end": "2027-08-28",
+  "city": "Melbourne",
+  "lat": -37.8142,
+  "lng": 144.9631,
+  "sourceUrl": "https://www.ama.com.au/EventDetail?EventKey=AMA27",
+  "datesSourceUrl": "https://www.ama.com.au/EventDetail?EventKey=AMA27",
+  "datesQuote": "Held on the 27 & 28 August 2027 in Melbourne, AMA27 offers CPD-accredited workshops, debate and panel discussions",
+  "verifiedOn": "2026-11-25",
+  "note": "wave7 2026-11-25: the AMA's own event page gives AMA27 National Conference, 27-28 August 2027, Melbourne; the row was an estimate for Canberra, 28-30 May 2027 (sourced to the site root)."
+ }
+]

@@ -1,0 +1,546 @@
+{
+ "generated": "2026-11-25",
+ "note": "Data wave 7 (25 Nov 2026): AU/NZ course sessions read by hand from providers' own pages (tools/courses/x10/aunz7-build.js).",
+ "courses": [
+  {
+   "cpdHours": 0,
+   "verified": true,
+   "cpdNote": "check provider",
+   "id": "ranzcr-smart-workshop",
+   "name": "RANZCR Trainee SMART Workshop (research and evidence appraisal, one day)",
+   "providers": [
+    {
+     "name": "RANZCR",
+     "url": "https://www.ranzcr.com/event/smart-workshop-2027/",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "typicalLength": "1 day",
+   "notes": "One-day interactive workshop for radiology trainees on critical appraisal of clinical research and evidence-based medicine.",
+   "lastVerified": "2026-11-25"
+  },
+  {
+   "cpdHours": 0,
+   "verified": true,
+   "cpdNote": "check provider",
+   "id": "ranzcr-fliro",
+   "name": "Foundations of Leadership in Radiation Oncology (FLiRO)",
+   "providers": [
+    {
+     "name": "RANZCR",
+     "url": "https://www.ranzcr.com/event/foundations-of-leadership-in-radiation-oncology-fliro/",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "typicalLength": "online session, then 1.5 days in person",
+   "notes": "Interdisciplinary leadership course for the radiation oncology professions: an online session and modules, then an in-person program in Melbourne.",
+   "lastVerified": "2026-11-25"
+  },
+  {
+   "cpdHours": 0,
+   "verified": true,
+   "cpdNote": "check provider",
+   "id": "shine-iud-insertion-workshop",
+   "name": "SHINE SA IUD Insertion Training: practical workshop (2.5 hours)",
+   "providers": [
+    {
+     "name": "SHINE SA",
+     "url": "https://shinesa.org.au/activity/iud-insertion-training/",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "typicalLength": "2.5 hours (then supervised clinical sessions)",
+   "formatEvidence": {
+    "sourceUrl": "https://shinesa.org.au/activity/iud-insertion-training/",
+    "quote": "Part two: Practical workshop (2. 5 hours)",
+    "lastVerified": "2026-11-25"
+   },
+   "notes": "The practical workshop of SHINE SA's three-part IUD insertion training for doctors (online module, workshop with pelvic models, then three supervised clinical sessions). The general IUD training type is held by the womens-gp source.",
+   "lastVerified": "2026-11-25"
+  },
+  {
+   "cpdHours": 0,
+   "verified": true,
+   "cpdNote": "check provider",
+   "id": "csa-focussed-cardiac-ultrasound",
+   "name": "Focussed Cardiac Ultrasound 2-Day Workshop (Cardiac Skills Australia)",
+   "providers": [
+    {
+     "name": "Cardiac Skills Australia",
+     "url": "https://www.cardiacskillsaustralia.com.au/workshops",
+     "verified": true,
+     "calendar": "https://www.cardiacskillsaustralia.com.au/workshop-booking"
+    }
+   ],
+   "countries": [
+    "AU",
+    "NZ"
+   ],
+   "typicalLength": "2 days",
+   "providerType": "commercial",
+   "formatEvidence": {
+    "sourceUrl": "https://www.cardiacskillsaustralia.com.au/workshops",
+    "quote": "Our accredited 2‑day Focussed Cardiac Ultrasound workshop is designed for medical professionals seeking practical, clinically relevant cardiac ultrasound skills.",
+    "lastVerified": "2026-11-25"
+   },
+   "notes": "Two-day hands-on point-of-care cardiac ultrasound workshop in small groups (junior doctors to consultants, rural GPs); scanning real people.",
+   "lastVerified": "2026-11-25"
+  },
+  {
+   "cpdHours": 0,
+   "verified": true,
+   "cpdNote": "check provider",
+   "id": "csa-advanced-diastolic-function",
+   "name": "Diastolic Dysfunction & Measurements Made Easy! one-day workshop (Cardiac Skills Australia)",
+   "providers": [
+    {
+     "name": "Cardiac Skills Australia",
+     "url": "https://www.cardiacskillsaustralia.com.au/workshops",
+     "verified": true,
+     "calendar": "https://www.cardiacskillsaustralia.com.au/workshop-booking"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "typicalLength": "1 day",
+   "providerType": "commercial",
+   "formatEvidence": {
+    "sourceUrl": "https://www.cardiacskillsaustralia.com.au/workshops",
+    "quote": "Our one-day workshop provides a focused, clinically relevant deep dive into left ventricular diastolic function, tailored for point-of-care ultrasound users.",
+    "lastVerified": "2026-11-25"
+   },
+   "notes": "One-day workshop on left ventricular diastolic function for point-of-care ultrasound users.",
+   "lastVerified": "2026-11-25"
+  },
+  {
+   "cpdHours": 0,
+   "verified": true,
+   "cpdNote": "check provider",
+   "id": "swsphn-resuscitation-skills-general-practice",
+   "name": "Resuscitation skills for general practice (SWSPHN evening workshop)",
+   "providers": [
+    {
+     "name": "South Western Sydney PHN",
+     "url": "https://swsphn.com.au/events/",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "typicalLength": "3 hours",
+   "notes": "Face-to-face CPR refresher for GPs and practice teams using ARC guidelines, presented by Medics for Life.",
+   "lastVerified": "2026-11-25"
+  },
+  {
+   "cpdHours": 0,
+   "verified": true,
+   "cpdNote": "check provider",
+   "id": "ace-the-osce-acem",
+   "name": "Ace the OSCE: ACEM OSCE preparation course (Westmead, one day)",
+   "providers": [
+    {
+     "name": "Ace the OSCE (FACEM faculty, Westmead Simulation Centre)",
+     "url": "https://events.humanitix.com/osce2027",
+     "verified": true
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "typicalLength": "1 day",
+   "notes": "Whole-day coached OSCE practice for ACEM Fellowship OSCE candidates at the Westmead simulation centre (SiLECT), with free online materials beforehand.",
+   "lastVerified": "2026-11-25"
+  },
+  {
+   "cpdHours": 0,
+   "verified": true,
+   "cpdNote": "check provider",
+   "id": "ctec-advanced-gi-endoscopy",
+   "name": "Advanced GI Endoscopy Workshop (UWA CTEC, Perth)",
+   "providers": [
+    {
+     "name": "UWA CTEC (Clinical Training & Evaluation Centre)",
+     "url": "https://www.ctec.uwa.edu.au/workshops/advanced-gi-endoscopy-workshop",
+     "verified": true,
+     "calendar": "https://www.ctec.uwa.edu.au/workshops/"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "notes": "Hands-on workshop at the UWA Clinical Training & Evaluation Centre, Perth. Suitable for (workshop list): Trainees and Consultants in Gastroenterology and Endoscopy; General Surgeons with Conjoint Committee Certification for endoscopic procedures.",
+   "lastVerified": "2026-11-25"
+  },
+  {
+   "cpdHours": 0,
+   "verified": true,
+   "cpdNote": "check provider",
+   "id": "ctec-core-skills-ent-facial-plastic-surgery",
+   "name": "Core Skills: ENT Facial Plastic Surgery Workshop (UWA CTEC, Perth)",
+   "providers": [
+    {
+     "name": "UWA CTEC (Clinical Training & Evaluation Centre)",
+     "url": "https://www.ctec.uwa.edu.au/workshops/core-skills-ent-facial-plastic-surgery-workshop",
+     "verified": true,
+     "calendar": "https://www.ctec.uwa.edu.au/workshops/"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "notes": "Hands-on workshop at the UWA Clinical Training & Evaluation Centre, Perth. Suitable for (workshop list): RACS Surgical Trainees in ENT and Plastic Surgery; Fellows and Junior Consultants in ENT and Plastic Surgery; Limited Observer positions; Limited assistant Theatre Nurse positions.",
+   "lastVerified": "2026-11-25"
+  },
+  {
+   "cpdHours": 0,
+   "verified": true,
+   "cpdNote": "check provider",
+   "id": "ctec-core-skills-ent-sinus-surgery",
+   "name": "Core Skills: ENT Sinus Surgery Workshop (UWA CTEC, Perth)",
+   "providers": [
+    {
+     "name": "UWA CTEC (Clinical Training & Evaluation Centre)",
+     "url": "https://www.ctec.uwa.edu.au/workshops/core-skills-ent-sinus-surgery-workshop",
+     "verified": true,
+     "calendar": "https://www.ctec.uwa.edu.au/workshops/"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "notes": "Hands-on workshop at the UWA Clinical Training & Evaluation Centre, Perth. Suitable for (workshop list): Trainees, Fellows & Junior Consultants in ENT Surgery; Limited positions for Observers; Limited assistant Theatre Nurses positions.",
+   "lastVerified": "2026-11-25"
+  },
+  {
+   "cpdHours": 0,
+   "verified": true,
+   "cpdNote": "check provider",
+   "id": "ctec-core-skills-gynaecological-hysteroscopy-laparoscopy-and-open-surgery",
+   "name": "Core Skills: Gynaecological Hysteroscopy, Laparoscopy and Open Surgery (UWA CTEC, Perth)",
+   "providers": [
+    {
+     "name": "UWA CTEC (Clinical Training & Evaluation Centre)",
+     "url": "https://www.ctec.uwa.edu.au/workshops/core-skills-gynaecological-hysteroscopy-laparoscopy-and-open-surgery",
+     "verified": true,
+     "calendar": "https://www.ctec.uwa.edu.au/workshops/"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "notes": "Hands-on workshop at the UWA Clinical Training & Evaluation Centre, Perth. Suitable for (workshop list): CORE 1-4 RANZCOG Trainees; Advanced RANZCOG Trainees; Limited assistant Theatre Nurse positions.",
+   "lastVerified": "2026-11-25"
+  },
+  {
+   "cpdHours": 0,
+   "verified": true,
+   "cpdNote": "check provider",
+   "id": "ctec-core-skills-intermediate-laparoscopic-skills",
+   "name": "Core Skills: Intermediate Laparoscopic Skills Workshop (UWA CTEC, Perth)",
+   "providers": [
+    {
+     "name": "UWA CTEC (Clinical Training & Evaluation Centre)",
+     "url": "https://www.ctec.uwa.edu.au/workshops/core-skills-intermediate-laparoscopic-skills-workshop",
+     "verified": true,
+     "calendar": "https://www.ctec.uwa.edu.au/workshops/"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "notes": "Hands-on workshop at the UWA Clinical Training & Evaluation Centre, Perth. Suitable for (workshop list): Unaccredited Registrars; Junior SET Trainees; Core Training GSET Trainees Levels 1-3; Doctors at RMO level and above who have completed CTEC’s Core Skills or JDocs: Foundations of Minimal Access Surgery are welcome.",
+   "lastVerified": "2026-11-25"
+  },
+  {
+   "cpdHours": 0,
+   "verified": true,
+   "cpdNote": "check provider",
+   "id": "ctec-core-skills-microsurgical-skills-and-anastomotic-techniques",
+   "name": "Core Skills: Microsurgical Skills and Anastomotic Techniques (UWA CTEC, Perth)",
+   "providers": [
+    {
+     "name": "UWA CTEC (Clinical Training & Evaluation Centre)",
+     "url": "https://www.ctec.uwa.edu.au/workshops/core-skills-microsurgical-skills-and-anastomotic-techniques",
+     "verified": true,
+     "calendar": "https://www.ctec.uwa.edu.au/workshops/"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "notes": "Hands-on workshop at the UWA Clinical Training & Evaluation Centre, Perth. Suitable for (workshop list): Junior and Senior Trainees in Neurosurgery, ENT, Plastic Surgery and Orthopaedics; Other doctors training in microsurgery; Limited places for Unaccredited Registrars with an interest in microsurgery.",
+   "lastVerified": "2026-11-25"
+  },
+  {
+   "cpdHours": 0,
+   "verified": true,
+   "cpdNote": "check provider",
+   "id": "ctec-core-skills-plastic-surgery-head-neck-and-flaps",
+   "name": "Core Skills: Plastic Surgery Head, Neck and Flaps (UWA CTEC, Perth)",
+   "providers": [
+    {
+     "name": "UWA CTEC (Clinical Training & Evaluation Centre)",
+     "url": "https://www.ctec.uwa.edu.au/workshops/core-skills-plastic-surgery-head-neck-and-flaps",
+     "verified": true,
+     "calendar": "https://www.ctec.uwa.edu.au/workshops/"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "notes": "Hands-on workshop at the UWA Clinical Training & Evaluation Centre, Perth. Suitable for (workshop list): Junior and Senior Trainees in Plastic Surgery; Limited places for Unaccredited Registrars; IMGs under supervision or progressing towards an alternative pathway to FRACS; Observers; Assistant Theatre Nurses.",
+   "lastVerified": "2026-11-25"
+  },
+  {
+   "cpdHours": 0,
+   "verified": true,
+   "cpdNote": "check provider",
+   "id": "ctec-core-skills-plastic-surgery-lower-limb",
+   "name": "Core Skills: Plastic Surgery Lower Limb Workshop (UWA CTEC, Perth)",
+   "providers": [
+    {
+     "name": "UWA CTEC (Clinical Training & Evaluation Centre)",
+     "url": "https://www.ctec.uwa.edu.au/workshops/core-skills-plastic-surgery-lower-limb-workshop",
+     "verified": true,
+     "calendar": "https://www.ctec.uwa.edu.au/workshops/"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "notes": "Hands-on workshop at the UWA Clinical Training & Evaluation Centre, Perth. Suitable for (workshop list): This workshop is designed as two concurrent full day Trainee Sessions; Senior Trainee Session: For Senior SET Trainees and Fellows; Junior Trainee Session: Unaccredited Registrars with an interest in Plastic Surgery & Junior SET Trainees in Plastic Surgery; Limited Observer positions; Limited assistant Theatre Nurse positions.",
+   "lastVerified": "2026-11-25"
+  },
+  {
+   "cpdHours": 0,
+   "verified": true,
+   "cpdNote": "check provider",
+   "id": "ctec-core-skills-vascular-surgery",
+   "name": "Core Skills: Vascular Surgery Workshop (UWA CTEC, Perth)",
+   "providers": [
+    {
+     "name": "UWA CTEC (Clinical Training & Evaluation Centre)",
+     "url": "https://www.ctec.uwa.edu.au/workshops/core-skills-vascular-surgery-workshop",
+     "verified": true,
+     "calendar": "https://www.ctec.uwa.edu.au/workshops/"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "notes": "Hands-on workshop at the UWA Clinical Training & Evaluation Centre, Perth. Suitable for (workshop list): Vascular and General Surgery SET Trainees; GSET Trainees at Level 1 and above; Suitably credentialled rural surgical practitioners; Unaccredited Registrars with strong surgical experience (limited places); Limited Observer positions; Limited assistant Theatre Nurse positions.",
+   "lastVerified": "2026-11-25"
+  },
+  {
+   "cpdHours": 0,
+   "verified": true,
+   "cpdNote": "check provider",
+   "id": "ctec-core-skills-workshop-neck-dissection-thyroid-carcinoma",
+   "name": "Core Skills: Workshop in Neck Dissection for Thyroid Carcinoma (UWA CTEC, Perth)",
+   "providers": [
+    {
+     "name": "UWA CTEC (Clinical Training & Evaluation Centre)",
+     "url": "https://www.ctec.uwa.edu.au/workshops/core-skills-workshop-neck-dissection-thyroid-carcinoma",
+     "verified": true,
+     "calendar": "https://www.ctec.uwa.edu.au/workshops/"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "notes": "Hands-on workshop at the UWA Clinical Training & Evaluation Centre, Perth. Suitable for (workshop list): Consultants, Fellows, RMOs, Unaccredited Registrars & SET Trainees in Endocrine, General and Head & Neck Surgery; IMGs under supervision or progressing towards an alternative pathway to FRACS; Limited assistant Theatre Nurse positions available.",
+   "lastVerified": "2026-11-25"
+  },
+  {
+   "cpdHours": 0,
+   "verified": true,
+   "cpdNote": "check provider",
+   "id": "ctec-cutting-edge-advanced-plastering-techniques",
+   "name": "The Cutting Edge: Advanced Plastering Techniques (UWA CTEC, Perth)",
+   "providers": [
+    {
+     "name": "UWA CTEC (Clinical Training & Evaluation Centre)",
+     "url": "https://www.ctec.uwa.edu.au/workshops/cutting-edge-advanced-plastering-techniques",
+     "verified": true,
+     "calendar": "https://www.ctec.uwa.edu.au/workshops/"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "notes": "Hands-on workshop at the UWA Clinical Training & Evaluation Centre, Perth. Suitable for (workshop list): General Practitioners; Orthopaedic Plaster/Cast Technicians; Orthopaedic Nurses; Junior Doctors; Physiotherapists (Advanced Scope); Urgent Care Nurses.",
+   "lastVerified": "2026-11-25"
+  },
+  {
+   "cpdHours": 0,
+   "verified": true,
+   "cpdNote": "check provider",
+   "id": "ctec-cutting-edge-advanced-skin-procedures",
+   "name": "The Cutting Edge: Advanced Skin Procedures (UWA CTEC, Perth)",
+   "providers": [
+    {
+     "name": "UWA CTEC (Clinical Training & Evaluation Centre)",
+     "url": "https://www.ctec.uwa.edu.au/workshops/cutting-edge-advanced-skin-procedures",
+     "verified": true,
+     "calendar": "https://www.ctec.uwa.edu.au/workshops/"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "notes": "Hands-on workshop at the UWA Clinical Training & Evaluation Centre, Perth. Suitable for (workshop list): GPs, Rural Generalists and GP Proceduralists skilled in surgery with access to appropriate levels of equipment and operating facilities; Limited positions for Observers; Limited assistant Theatre Nurse positions.",
+   "lastVerified": "2026-11-25"
+  },
+  {
+   "cpdHours": 0,
+   "verified": true,
+   "cpdNote": "check provider",
+   "id": "ctec-cutting-edge-advanced-surgical-procedures-rural-generalists",
+   "name": "The Cutting Edge: Advanced Surgical Procedures for Rural Generalists (UWA CTEC, Perth)",
+   "providers": [
+    {
+     "name": "UWA CTEC (Clinical Training & Evaluation Centre)",
+     "url": "https://www.ctec.uwa.edu.au/workshops/cutting-edge-advanced-surgical-procedures-rural-generalists",
+     "verified": true,
+     "calendar": "https://www.ctec.uwa.edu.au/workshops/"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "notes": "Hands-on workshop at the UWA Clinical Training & Evaluation Centre, Perth. Suitable for (workshop list): Rural Generalists with surgical credentialling; Rural Generalist Surgical Trainees; It is expected practitioners have access to appropriate levels of equipment and operating facilities; Limited Observer positions; Limited assistant Theatre Nurse positions.",
+   "lastVerified": "2026-11-25"
+  },
+  {
+   "cpdHours": 0,
+   "verified": true,
+   "cpdNote": "check provider",
+   "id": "ctec-cutting-edge-introductory-wound-suturing",
+   "name": "The Cutting Edge: Introductory Wound Suturing (UWA CTEC, Perth)",
+   "providers": [
+    {
+     "name": "UWA CTEC (Clinical Training & Evaluation Centre)",
+     "url": "https://www.ctec.uwa.edu.au/workshops/cutting-edge-introductory-wound-suturing",
+     "verified": true,
+     "calendar": "https://www.ctec.uwa.edu.au/workshops/"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "notes": "Hands-on workshop at the UWA Clinical Training & Evaluation Centre, Perth. Suitable for (workshop list): GP and Rural Generalist Registrars; General Practitioners; Nurse Practitioners; Emergency Department Nurses; Paramedics.",
+   "lastVerified": "2026-11-25"
+  },
+  {
+   "cpdHours": 0,
+   "verified": true,
+   "cpdNote": "check provider",
+   "id": "ctec-cutting-edge-managing-skin-soft-tissue-injuries",
+   "name": "The Cutting Edge: Managing Skin & Soft Tissue Injuries (UWA CTEC, Perth)",
+   "providers": [
+    {
+     "name": "UWA CTEC (Clinical Training & Evaluation Centre)",
+     "url": "https://www.ctec.uwa.edu.au/workshops/cutting-edge-managing-skin-soft-tissue-injuries",
+     "verified": true,
+     "calendar": "https://www.ctec.uwa.edu.au/workshops/"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "notes": "Hands-on workshop at the UWA Clinical Training & Evaluation Centre, Perth. Suitable for (workshop list): General Practitioners; Rural Generalists; GP Trainees; Rural Generalist Trainees; GP Proceduralists.",
+   "lastVerified": "2026-11-25"
+  },
+  {
+   "cpdHours": 0,
+   "verified": true,
+   "cpdNote": "check provider",
+   "id": "ctec-cutting-edge-proceduralist-obstetrics-and-gynaecological-skills",
+   "name": "The Cutting Edge: Proceduralist Obstetrics and Gynaecological Skills (UWA CTEC, Perth)",
+   "providers": [
+    {
+     "name": "UWA CTEC (Clinical Training & Evaluation Centre)",
+     "url": "https://www.ctec.uwa.edu.au/workshops/cutting-edge-proceduralist-obstetrics-and-gynaecological-skills",
+     "verified": true,
+     "calendar": "https://www.ctec.uwa.edu.au/workshops/"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "notes": "Hands-on workshop at the UWA Clinical Training & Evaluation Centre, Perth. Suitable for (workshop list): GP Proceduralists; GP Obstetricians; Rural Generalists with credentialing in Obstetrics and Gynaecology; Limited places are available for King Edward Memorial Hospital Registrars in Gynaecological Surgery.",
+   "lastVerified": "2026-11-25"
+  },
+  {
+   "cpdHours": 0,
+   "verified": true,
+   "cpdNote": "check provider",
+   "id": "ctec-introductory-gastrointestinal-endoscopy",
+   "name": "Introductory Gastrointestinal Endoscopy (UWA CTEC, Perth)",
+   "providers": [
+    {
+     "name": "UWA CTEC (Clinical Training & Evaluation Centre)",
+     "url": "https://www.ctec.uwa.edu.au/workshops/introductory-gastrointestinal-endoscopy",
+     "verified": true,
+     "calendar": "https://www.ctec.uwa.edu.au/workshops/"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "notes": "Hands-on workshop at the UWA Clinical Training & Evaluation Centre, Perth. Suitable for (workshop list): Gastroenterology Trainees; GSET/SET 4-5 Trainees in General Surgery.",
+   "lastVerified": "2026-11-25"
+  },
+  {
+   "cpdHours": 0,
+   "verified": true,
+   "cpdNote": "check provider",
+   "id": "ctec-jdocs-foundations-minimal-access-surgery",
+   "name": "JDocs: Foundations of Minimal Access Surgery (UWA CTEC, Perth)",
+   "providers": [
+    {
+     "name": "UWA CTEC (Clinical Training & Evaluation Centre)",
+     "url": "https://www.ctec.uwa.edu.au/workshops/jdocs-foundations-minimal-access-surgery",
+     "verified": true,
+     "calendar": "https://www.ctec.uwa.edu.au/workshops/"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "notes": "Hands-on workshop at the UWA Clinical Training & Evaluation Centre, Perth. Suitable for (workshop list): Interns; Resident Medical Officers and Unaccredited Registrars; Limited places available for Rural Generalists and GP Proceduralists who may be required to assist on laparoscopic surgeries at rural and remote hospitals.",
+   "lastVerified": "2026-11-25"
+  },
+  {
+   "cpdHours": 0,
+   "verified": true,
+   "cpdNote": "check provider",
+   "id": "ctec-jdocs-introduction-surgical-skills",
+   "name": "JDocs: Introduction to Surgical Skills (UWA CTEC, Perth)",
+   "providers": [
+    {
+     "name": "UWA CTEC (Clinical Training & Evaluation Centre)",
+     "url": "https://www.ctec.uwa.edu.au/workshops/jdocs-introduction-surgical-skills",
+     "verified": true,
+     "calendar": "https://www.ctec.uwa.edu.au/workshops/"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "notes": "Hands-on workshop at the UWA Clinical Training & Evaluation Centre, Perth. Suitable for (workshop list): Junior Doctors; Interns; Resident Medical Officers; Unaccredited Registrars.",
+   "lastVerified": "2026-11-25"
+  }
+ ]
+}
