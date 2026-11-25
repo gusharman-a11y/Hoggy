@@ -661,8 +661,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.socich.cl/xcviii-congreso-chileno-e-internacional-de-cirugia/",
   "blurb": "Annual congress of the Chilean surgeons society, held in La Serena.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.socich.cl/xcviii-congreso-chileno-e-internacional-de-cirugia/",
+  "datesQuote": "24 al 27 de noviembre de 2026 - La Serena",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "confirmed",
@@ -713,8 +716,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.brit-thoracic.org.uk/education-and-events/winter-meeting-2026/",
   "blurb": "The British Thoracic Society Winter Meeting is held at the QEII Centre in London.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.brit-thoracic.org.uk/education-and-events/winter-meeting-2026/",
+  "datesQuote": "25-27 November 2026",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "confirmed",
@@ -765,8 +771,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.sfcardio.fr/congres-detail/",
   "blurb": "Sleep medicine congress listed in the Societe Francaise de Cardiologie calendar, held in Lyon.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.sfcardio.fr/congres-detail/",
+  "datesQuote": "La prochaine édition du Congrès du Sommeil vous accueillera du 25 au 27 novembre 2026 au Centre de Congrès de Lyon (69).",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "id": "vascular-society-asm-2026",
@@ -928,8 +937,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.sfcardio.fr/congres-detail/",
   "blurb": "Cardiology digital innovation meeting listed in the Societe Francaise de Cardiologie calendar, held in Paris in hybrid format.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.sfcardio.fr/congres-detail/",
+  "datesQuote": "La 9e édition de Cardio e-Novation vous accueillera le 27 et 28 novembre 2026 au format hybride.",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "confirmed",
@@ -980,8 +992,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.sfcardio.fr/congres-detail/",
   "blurb": "One-day practical cardiac rhythm meeting listed in the Societe Francaise de Cardiologie calendar, held in Lyon.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.sfcardio.fr/congres-detail/",
+  "datesQuote": "La 8e édition de Pratico Rythmo vous accueillera le 28 novembre 2026 au Pullman Lyon (69).",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "confirmed",
@@ -1199,8 +1214,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.sfcardio.fr/congres-detail/",
   "blurb": "Advanced course for cardiac intensive care units listed in the Societe Francaise de Cardiologie calendar, held in Issy-les-Moulineaux.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.sfcardio.fr/congres-detail/",
+  "datesQuote": "La 14e édition du Cours Avancé USIC vous accueillera les 03 et 04 décembre 2026 au Palais des Congrès d'Issy-les-Moulineaux (92).",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "confirmed",
@@ -1503,8 +1521,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.sfcardio.fr/congres-detail/",
   "blurb": "One-day francophone cardiology meeting listed in the Societe Francaise de Cardiologie calendar, held in Paris.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.sfcardio.fr/congres-detail/",
+  "datesQuote": "La prochaine édition de la Journée de la Cardiologie francophone vous accueillera le 12 décembre 2026 au Cercle National des Armées à Paris (8e).",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "confirmed",
@@ -1555,8 +1576,11 @@ window.HOGGY_CONFERENCES = [
   "datesConfirmed": true,
   "dateStatus": "confirmed",
   "sourceUrl": "https://spnsociety.org.sa/11th-saudi-pediatric-neurologysociety-conference-and-workshops/",
-  "lastVerified": "2026-11-10",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://spnsociety.org.sa/11th-saudi-pediatric-neurologysociety-conference-and-workshops/",
+  "datesQuote": "us for the 11th Saudi Pediatric Neurology Society Conference in Voco gate Jeddah from December 16–19, 2026. The conference will feature a comprehensive scientific program covering key topics",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "confirmed",
@@ -1581,8 +1605,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.snfmi.org/congres/93eme-congres-de-medecine-interne",
   "blurb": "93rd national congress of the French Society of Internal Medicine, held in Paris.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.snfmi.org/congres/93eme-congres-de-medecine-interne",
+  "datesQuote": "Du 16 au 18 décembre 2026 à Paris",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "id": "asicon-ahmedabad-2026",
@@ -1633,8 +1660,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.sfcardio.fr/congres-detail/",
   "blurb": "Hypertension days listed in the Societe Francaise de Cardiologie calendar, held in Puteaux (La Defense).",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.sfcardio.fr/congres-detail/",
+  "datesQuote": "Les 46es JHTA vous accueilleront les 17 et 18 décembre 2026 au CNIT Forest à La Défense (92).",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "id": "amped-rusutsu-integrated-medical-conference-jan-2027",
@@ -1728,13 +1758,15 @@ window.HOGGY_CONFERENCES = [
   "url": "https://indianpsychiatricsociety.org",
   "blurb": "Annual National Conference of the Indian Psychiatric Society, listed on the society site as ANCIPS 2027.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://indianpsychiatricsociety.org/ancips-2027/",
+  "datesQuote": "A nnual National Conference of the Indian Psychiatric Society – ANCIPS 2027, scheduled to be held from 7th to 10th January 2027 in the historic and culturally vibrant city of Madurai.",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "confirmed",
-  "sourceUrl": "https://conference.ssdds.org/",
+  "sourceUrl": "https://conference.ssdds.org/about-ssdds-isd/",
   "id": "ssdds-riyadh",
   "name": "17th SSDDS & 8th CCD Congress - United for Skin Health",
   "organiser": "Saudi Society of Dermatology and Dermatologic Surgery",
@@ -1755,9 +1787,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://conference.ssdds.org/",
   "blurb": "National dermatology and dermatologic surgery congress at Crowne Plaza RDC, Riyadh.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://conference.ssdds.org/about-ssdds-isd/",
+  "datesQuote": "08 - 10 January, 2027 | Riyadh, Saudi Arabia",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "confirmed",
@@ -1782,9 +1816,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.memachematology.com/",
   "blurb": "Haematology master class held at Raffles Dubai.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.memachematology.com/event/6f54a709-5d54-48c8-86e2-63c62b23b694/Home",
+  "datesQuote": "with the International Academy for Clinical Hematology (IACH) . Mark your calendars for January 8-9, 2027 , and join us at the elegant Raffles Hotel in Dubai, UAE",
+  "verifiedOn": "2026-11-25"
  },
  {
   "id": "hokkaido-trauma-conference-2027",
@@ -1920,7 +1956,7 @@ window.HOGGY_CONFERENCES = [
  },
  {
   "dateStatus": "confirmed",
-  "sourceUrl": "https://www.eaaci.org/events",
+  "sourceUrl": "https://eaaci.org/events/",
   "id": "eaaci-immunology-winter-school-2027",
   "name": "EAACI Immunology Winter School 2027",
   "organiser": "European Academy of Allergy and Clinical Immunology",
@@ -1941,8 +1977,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.eaaci.org/events",
   "blurb": "EAACI allergy and winter school in immunology held in Chamonix.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://eaaci.org/events/",
+  "datesQuote": "12-15 January 2027",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "estimated",
@@ -2017,8 +2056,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.sfcardio.fr/congres-detail/jesfc-2027/",
   "blurb": "Annual cardiology days of the Societe Francaise de Cardiologie at the Palais des Congres de Paris.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.sfcardio.fr/congres-detail/",
+  "datesQuote": "Les 37es Journées Européennes de la SFC vous accueilleront du 13 au 15 janvier 2027 au Palais des Congrès de Paris.",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "id": "eroc-global-forum-2027",
@@ -2290,7 +2332,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 0,
   "attendees": 0,
   "url": "https://www.asco.org/",
-  "blurb": "ASCO Gastrointestinal Cancers Symposium is the annual meeting of the American Society of Clinical Oncology; San Francisco is the usual or expected host city. Dates expected; not yet announced.",
+  "blurb": "ASCO Gastrointestinal Cancers Symposium is the annual meeting of the American Society of Clinical Oncology.",
   "datesConfirmed": true,
   "datesSourceUrl": "https://www.asco.org/gi",
   "datesQuote": "January 21 - 23, 2027",
@@ -2371,8 +2413,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.ebmt.org/events",
   "blurb": "EBMT meeting on transplantation and cellular therapy in myeloid malignancies, Paris.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.ebmt.org/events",
+  "datesQuote": "Jan 21, 2027 - Jan 22, 2027",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "confirmed",
@@ -2397,9 +2442,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://rm-events.org/kasr-al-ainy/",
   "blurb": "Annual ophthalmology meeting of Kasr El-Ainy Hospital at the Grand Nile Tower Hotel.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.rm-events.org/kasr-al-ainy/",
+  "datesQuote": "meeting will be held on 21–22 January 2027 at the Grand Nile Tower Hotel, overlooking the majestic Nile River in the heart of Cairo. This annual conference has long been a cornerstone of knowledge",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "confirmed",
@@ -2448,7 +2495,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 0,
   "attendees": 0,
   "url": "https://www.usi.org.in/",
-  "blurb": "USICON Annual Conference of the Urological Society of India organised by Urological Society of India, expected in Chennai (host city is the usual venue and may rotate). Dates expected; not yet announced.",
+  "blurb": "Annual conference of the Urological Society of India (USICON).",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
   "provenance": "organiser-page",
@@ -2569,8 +2616,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.sls.se/sls/aktuellt/kalendarium",
   "blurb": "Swedish Society of Medicine symposium on the overlap of cancer treatment and heart disease, at SLS hus and online.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.sls.se/sls/aktuellt/kalendarium",
+  "datesQuote": "2027-01-25",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "confirmed",
@@ -2896,9 +2946,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.qmul.ac.uk/wiph/centres/centre-for-primary-care/sapc-south-east-2027-conference/",
   "blurb": "A regional academic primary care research conference on the theme 'Transforming Primary Care', held at Madingley Hall, Cambridge.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.qmul.ac.uk/wiph/centres/centre-for-primary-care/sapc-south-east-2027-conference/",
+  "datesQuote": "On 28–29 January 2027, the Centre for Primary Care at Queen Mary University of London will host the Society for Academic Primary Care (SAPC) South East Conference 2027.",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "confirmed",
@@ -2984,7 +3036,7 @@ window.HOGGY_CONFERENCES = [
  },
  {
   "dateStatus": "confirmed",
-  "sourceUrl": "https://www.philheart.org/",
+  "sourceUrl": "https://www.philheart.org/pha2025/index.php?option=com_easygcalendar&view=event&calendarId=1&eventId=03mnj9eaf0afeui8fmiv5mv04o&refType=mod_upcomming&refID=191&4e1f37607d7fbe5edf5b7e7073dd5845=1",
   "id": "pha-midyear-convention",
   "name": "PHA Midyear Convention 2027",
   "organiser": "Philippine Heart Association",
@@ -3005,9 +3057,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.philheart.org",
   "blurb": "Midyear convention of the Philippine Heart Association at the John Hay Convention Center, Baguio.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.philheart.org/pha2025/index.php?option=com_easygcalendar&view=event&calendarId=1&eventId=03mnj9eaf0afeui8fmiv5mv04o&refType=mod_upcomming&refID=191&4e1f37607d7fbe5edf5b7e7073dd5845=1",
+  "datesQuote": "<b>PHA Midyear 2027 Convention<br></b>Healing Hearts in the Highlands<br><b>January 29-30, 2027<br></b>John Hay Convention Center, Baguio City",
+  "verifiedOn": "2026-11-25"
  },
  {
   "id": "jefferson-anesthesia-conference-2027",
@@ -3153,7 +3207,7 @@ window.HOGGY_CONFERENCES = [
  },
  {
   "dateStatus": "confirmed",
-  "sourceUrl": "https://eahadcongress.com/",
+  "sourceUrl": "https://eahadcongress.com/about-eahad/",
   "id": "eahad-congress",
   "name": "EAHAD Annual Congress",
   "organiser": "European Association for Haemophilia and Allied Disorders (EAHAD)",
@@ -3174,9 +3228,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://eahadcongress.com/",
   "blurb": "Annual congress on haemophilia and other inherited bleeding disorders.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://eahadcongress.com/about-eahad/",
+  "datesQuote": "2-5 February 2027",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "estimated",
@@ -3276,8 +3332,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.ebmt.org/events",
   "blurb": "Ninth joint EHA-EBMT European CAR T-cell meeting in Lisbon.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.ebmt.org/events",
+  "datesQuote": "Feb 04, 2027 - Feb 06, 2027",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "id": "esicm-intensive-care-innovation-2027",
@@ -3483,7 +3542,7 @@ window.HOGGY_CONFERENCES = [
  },
  {
   "dateStatus": "confirmed",
-  "sourceUrl": "https://www.aanp.org/",
+  "sourceUrl": "https://www.aanp.org/events/2027-hpc",
   "id": "aanp-health-policy-conference",
   "name": "AANP Health Policy Conference",
   "organiser": "American Association of Nurse Practitioners",
@@ -3504,9 +3563,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.aanp.org",
   "blurb": "The AANP's annual health policy conference for nurse practitioners.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.aanp.org/events/2027-hpc",
+  "datesQuote": "February 7, 2027 – February 9, 2027",
+  "verifiedOn": "2026-11-25"
  },
  {
   "id": "mmnd-itro-2027",
@@ -3615,7 +3676,7 @@ window.HOGGY_CONFERENCES = [
  },
  {
   "dateStatus": "confirmed",
-  "sourceUrl": "https://pcne.org/",
+  "sourceUrl": "https://pcne.org/pcne-conferences/15th-pcne-working-conference-2027/",
   "id": "pcne-working-conference",
   "name": "PCNE Working Conference (15th)",
   "organiser": "Pharmaceutical Care Network Europe",
@@ -3636,9 +3697,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.pcne.org",
   "blurb": "The 15th working conference of Pharmaceutical Care Network Europe on pharmaceutical care research and practice.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://pcne.org/pcne-conferences/15th-pcne-working-conference-2027/",
+  "datesQuote": "The registration for the 15th PCNE Working Conference 2027 in Hamburg, Germany (10th to 13th February 2027) and abstract submission will open on 1.October 2026",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "estimated",
@@ -3738,7 +3801,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 0,
   "attendees": 0,
   "url": "https://www.asco.org/",
-  "blurb": "ASCO Genitourinary Cancers Symposium is the annual meeting of the American Society of Clinical Oncology; San Francisco is the usual or expected host city. Dates expected; not yet announced.",
+  "blurb": "ASCO Genitourinary Cancers Symposium is the annual meeting of the American Society of Clinical Oncology.",
   "datesConfirmed": true,
   "datesSourceUrl": "https://www.asco.org/gu",
   "datesQuote": "February 11 - 13, 2027",
@@ -4053,7 +4116,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 0,
   "attendees": 0,
   "url": "https://www.aafs.org/",
-  "blurb": "AAFS Annual Scientific Conference is the annual meeting of the American Academy of Forensic Sciences; the host city rotates and Orlando is an estimate. Dates expected; not yet announced.",
+  "blurb": "AAFS Annual Scientific Conference is the annual meeting of the American Academy of Forensic Sciences, in Orlando.",
   "datesConfirmed": true,
   "datesSourceUrl": "https://www.aafs.org/article/your-forensic-science-career-starts-connections-aafs",
   "datesQuote": "February 15-20, 2027: AAFS 2027, Orlando",
@@ -4825,7 +4888,7 @@ window.HOGGY_CONFERENCES = [
  },
  {
   "dateStatus": "confirmed",
-  "sourceUrl": "https://www.cag-acg.org/",
+  "sourceUrl": "https://www.cag-acg.org/cddw.html",
   "id": "cddw",
   "name": "Canadian Digestive Diseases Week (CDDW)",
   "organiser": "Canadian Association of Gastroenterology",
@@ -4846,9 +4909,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.cag-acg.org",
   "blurb": "Canada's main annual gastroenterology and hepatology meeting.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.cag-acg.org/cddw.html",
+  "datesQuote": "We invite you to join us in beautiful Vancouver, British Columbia, from February 26-28, 2027, for world-class collaboration and scientific exchange.",
+  "verifiedOn": "2026-11-25"
  },
  {
   "id": "racp-amd-leadership-workshop-2027",
@@ -4889,8 +4954,8 @@ window.HOGGY_CONFERENCES = [
   "country": "Australia",
   "countryCode": "AU",
   "region": "Asia-Pacific",
-  "lat": -37.81,
-  "lng": 144.96,
+  "lat": -27.4678,
+  "lng": 153.0278,
   "start": "2027-02-27",
   "end": "2027-03-02",
   "format": "In-person",
@@ -4979,7 +5044,7 @@ window.HOGGY_CONFERENCES = [
  },
  {
   "dateStatus": "confirmed",
-  "sourceUrl": "https://www.wabip.com/events/apcb2027",
+  "sourceUrl": "https://www.wabip.com/events/apcb2027/",
   "id": "apcb-manila-2027",
   "name": "11th Asian Pacific Congress on Bronchology and Interventional Pulmonology (APCB 2027)",
   "organiser": "World Association for Bronchology and Interventional Pulmonology with the Philippine College of Chest Physicians",
@@ -5000,8 +5065,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.wabip.com/events/apcb2027",
   "blurb": "Meeting organised by World Association for Bronchology and Interventional Pulmonology with the Philippine College of Chest Physicians in Manila, Philippines.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.wabip.com/events/apcb2027/",
+  "datesQuote": "Save the date! APCB 2027 — 11th Asian Pacific Congress on Bronchology & Interventional Pulmonology, March 2–4, 2027 at Edsa Shangri-La, Manila. The Role of IP in the Asia-Pacifi...",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "id": "sahm-annual-meeting-2027",
@@ -5188,7 +5256,7 @@ window.HOGGY_CONFERENCES = [
  },
  {
   "dateStatus": "confirmed",
-  "sourceUrl": "https://ecco-ibd.eu/",
+  "sourceUrl": "https://ecco-ibd.eu/ecco27/our-congress/congress-reloaded-science-expanded",
   "id": "ecco-congress",
   "name": "ECCO Congress",
   "organiser": "European Crohn's and Colitis Organisation",
@@ -5209,9 +5277,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.ecco-ibd.eu",
   "blurb": "The 22nd congress of ECCO on inflammatory bowel disease.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://ecco-ibd.eu/ecco27/our-congress/congress-reloaded-science-expanded",
+  "datesQuote": "ECCO Congress, taking place March 3-6, 2027 in Copenhagen, is evolving with an expanded scientific programme designed to offer even more opportunities to learn, exchange ideas and connect with the",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "confirmed",
@@ -5241,6 +5311,35 @@ window.HOGGY_CONFERENCES = [
   "datesSourceUrl": "https://www.myesr.org/congress/about-ecr/",
   "datesQuote": "The next ECR will take place onsite & online in Vienna on March 3–7, 2027.",
   "verifiedOn": "2026-11-18"
+ },
+ {
+  "id": "imsanz-nz-conference-2027",
+  "name": "IMSANZ NZ Conference 2027",
+  "organiser": "Internal Medicine Society of Australia and New Zealand",
+  "specialty": "Internal Medicine",
+  "city": "Auckland",
+  "country": "New Zealand",
+  "countryCode": "NZ",
+  "region": "Asia-Pacific",
+  "lat": -36.8492,
+  "lng": 174.7653,
+  "start": "2027-03-03",
+  "end": "2027-03-06",
+  "format": "Hybrid",
+  "cpdHours": 0,
+  "cpdBody": "",
+  "priceFrom": 0,
+  "attendees": 0,
+  "url": "https://www.imsanzconference.co.nz/",
+  "blurb": "IMSANZ's New Zealand conference for general and internal physicians at the Grand Millennium Hotel, Auckland. Talks in person, also streamed.",
+  "datesConfirmed": true,
+  "dateStatus": "confirmed",
+  "sourceUrl": "https://www.imsanz.org.au/Web/Conferences/Upcoming-IMSANZ-Events/Upcoming-IMSANZ-Events.aspx",
+  "datesSourceUrl": "https://www.imsanz.org.au/Web/Conferences/Upcoming-IMSANZ-Events/Upcoming-IMSANZ-Events.aspx",
+  "datesQuote": "When: March 3–6, 2027",
+  "verifiedOn": "2026-11-25",
+  "organiserUrl": "https://www.imsanz.org.au/",
+  "lastVerified": "2026-11-25"
  },
  {
   "dateStatus": "confirmed",
@@ -5315,7 +5414,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 0,
   "attendees": 0,
   "url": "https://www.ages.com.au",
-  "blurb": "The annual scientific meeting on gynaecological endoscopy and surgery, usually hosted in Sydney though the host city rotates. Dates expected; not yet announced.",
+  "blurb": "Annual scientific meeting of the Australasian Gynaecological Endoscopy and Surgery Society at the Brisbane Convention & Exhibition Centre.",
   "datesConfirmed": true,
   "datesSourceUrl": "https://events.ages.com.au/asm2027/",
   "datesQuote": "welcome you to the AGES Annual Scientific Meeting 2027, being held from Thursday, 4 March to Saturday, 6 March 2027 at the Brisbane Convention & Exhibition Centre (BCEC) in Brisbane,",
@@ -5571,6 +5670,35 @@ window.HOGGY_CONFERENCES = [
   "datesConfirmed": false
  },
  {
+  "id": "jafa-auckland-city-symposium-2027",
+  "name": "Auckland City Symposium 2027",
+  "organiser": "Joint Anaesthesia Faculty Auckland (JAFA)",
+  "specialty": "Anaesthesia",
+  "city": "Auckland",
+  "country": "New Zealand",
+  "countryCode": "NZ",
+  "region": "Asia-Pacific",
+  "lat": -36.8492,
+  "lng": 174.7653,
+  "start": "2027-03-06",
+  "end": "2027-03-06",
+  "format": "In-person",
+  "cpdHours": 0,
+  "cpdBody": "",
+  "priceFrom": 0,
+  "attendees": 0,
+  "url": "https://events.jafa.co.nz/acs-2027",
+  "blurb": "One-day, single-theme meeting for anaesthetists, intensivists and perioperative physicians at the University of Auckland. 2027 theme: cancer surgery.",
+  "datesConfirmed": true,
+  "dateStatus": "confirmed",
+  "sourceUrl": "https://events.jafa.co.nz/acs-2027",
+  "datesSourceUrl": "https://events.jafa.co.nz/acs-2027",
+  "datesQuote": "Saturday, March 06 2027",
+  "verifiedOn": "2026-11-25",
+  "societyUrl": "https://anaesthesia.nz/events/auckland-city-symposium-2027/",
+  "lastVerified": "2026-11-25"
+ },
+ {
   "dateStatus": "estimated",
   "sourceUrl": "https://www.himss.org/",
   "id": "himss-global-health-conference-2027",
@@ -5701,8 +5829,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.aanem.org/meetings/future-annual-meetings",
   "blurb": "Hands-on neuromuscular ultrasound and EMG course held in Fort Lauderdale.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.aanem.org/meetings/future-annual-meetings",
+  "datesQuote": "March 10 to 13, 2027",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "estimated",
@@ -6186,8 +6317,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.sls.se/sls/aktuellt/kalendarium",
   "blurb": "Swedish Society of Medicine prevention day held at Klara Östra Kyrkogata in Stockholm.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.sls.se/sls/aktuellt/kalendarium",
+  "datesQuote": "2027-03-12 10:00 - 15:00",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "estimated",
@@ -6286,9 +6420,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.cirse.org/onsite/event-calendar/",
   "blurb": "CIRSE-organised conference on image-guided interventions for pain management.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.cirse.org/onsite/event-calendar/",
+  "datesQuote": "Mar 13 2027 - Mar 15 2027",
+  "verifiedOn": "2026-11-25"
  },
  {
   "id": "ranzcp-sa-branch-conference-2027",
@@ -6317,6 +6453,34 @@ window.HOGGY_CONFERENCES = [
   "datesQuote": "Date: Saturday 13 March 2027",
   "verifiedOn": "2026-11-18",
   "lastVerified": "2026-11-18"
+ },
+ {
+  "id": "spanza-update-meeting-2027",
+  "name": "SPANZA Update Meeting 2027",
+  "organiser": "Society for Paediatric Anaesthesia in New Zealand and Australia",
+  "specialty": "Anaesthesia",
+  "city": "Launceston",
+  "country": "Australia",
+  "countryCode": "AU",
+  "region": "Asia-Pacific",
+  "lat": -41.4444,
+  "lng": 147.1378,
+  "start": "2027-03-13",
+  "end": "2027-03-13",
+  "format": "In-person",
+  "cpdHours": 0,
+  "cpdBody": "",
+  "priceFrom": 0,
+  "attendees": 0,
+  "url": "https://www.spanza.org.au/Web/Events/2027-EVENTS/2027-SPANZA-Update.aspx",
+  "blurb": "One-day paediatric anaesthesia update in Launceston for occasional paediatric anaesthetists, nurses and technicians.",
+  "datesConfirmed": true,
+  "dateStatus": "confirmed",
+  "sourceUrl": "https://www.spanza.org.au/Web/Events/2027-EVENTS/2027-SPANZA-Update.aspx",
+  "datesSourceUrl": "https://www.spanza.org.au/Web/Events/2027-EVENTS/2027-SPANZA-Update.aspx",
+  "datesQuote": "SPANZA Update Meeting will take place on Saturday the 13 March 2027 in Launceston, Tasmania.",
+  "verifiedOn": "2026-11-25",
+  "lastVerified": "2026-11-25"
  },
  {
   "dateStatus": "confirmed",
@@ -6505,7 +6669,7 @@ window.HOGGY_CONFERENCES = [
  },
  {
   "dateStatus": "confirmed",
-  "sourceUrl": "https://esshm.org/",
+  "sourceUrl": "https://esshm.org/annual-congress/abstracts/",
   "id": "esshm-2027-cairo",
   "name": "20th International Conference of the Egyptian Society for Surgery of the Hand and Microsurgery (ESSHM 2027)",
   "organiser": "Egyptian Society for Surgery of the Hand and Microsurgery",
@@ -6526,9 +6690,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://esshm.org/",
   "blurb": "Hand surgery and microsurgery conference at the Hilton Cairo Grand Nile.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://esshm.org/annual-congress/abstracts/",
+  "datesQuote": "Submit original research, case series, surgical techniques and video for the 20th International Conference of the Egyptian Society for Surgery of the Hand and Microsurgery — Cairo, 17–18 March 2027.",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "confirmed",
@@ -6553,8 +6719,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://paao.org/",
   "blurb": "The PAAO 2027 Congress takes place in Lima, with abstract submission open on the association site.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://paao.org/paao-presidents-message-5-2026/",
+  "datesQuote": "I sincerely hope you will join us in Lima, Peru, March 17–20, 2027, for what promises to be an extraordinary Congress. Please plan to attend — and consider submitting your work today!",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "confirmed",
@@ -6630,7 +6799,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 0,
   "attendees": 0,
   "url": "https://spsp.org.br/",
-  "blurb": "Annual congress of the Sociedade de Pediatria de São Paulo, usually held in São Paulo around March. Dates expected; not yet announced.",
+  "blurb": "Annual congress of the Sociedade de Pediatria de São Paulo.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-09",
   "provenance": "organiser-page",
@@ -6943,9 +7112,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.jsmo.or.jp/en/",
   "blurb": "Annual meeting of Japanese medical oncologists.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.jsmo.or.jp/eng/meetings/annual-meeting/",
+  "datesQuote": "March 18 – 20, 2027",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "confirmed",
@@ -7174,7 +7345,7 @@ window.HOGGY_CONFERENCES = [
  },
  {
   "dateStatus": "confirmed",
-  "sourceUrl": "https://www.edec-uae.com/",
+  "sourceUrl": "https://www.edec-uae.com/gallery-2026.php",
   "id": "edec-dubai",
   "name": "EDEC 2027 - 17th Emirates Diabetes & Endocrine Congress",
   "organiser": "Emirates Diabetes & Endocrine Society",
@@ -7195,9 +7366,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.edec-uae.com/",
   "blurb": "Diabetes and endocrinology congress at InterContinental Dubai Festival City.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.edec-uae.com/gallery-2026.php",
+  "datesQuote": "19 – 21 March 2027 InterContinental Hotel, DFC – Dubai",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "confirmed",
@@ -7299,9 +7472,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://nurses.uroweb.org/education-events/27th-international-eaun-meeting",
   "blurb": "The 27th annual international meeting of urology nurses, held at RAI Amsterdam alongside the EAU Congress.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://nurses.uroweb.org/education-events/27th-international-eaun-meeting",
+  "datesQuote": "Sat, 20 Mar - Mon, 22 Mar 2027",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "confirmed",
@@ -7518,9 +7693,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://asou.or.ug/?p=6033",
   "blurb": "Surgical congress and exhibition in Kampala.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://asou.or.ug/download/conference-abstract-submission-guidelines/",
+  "datesQuote": "along with the 21st ASOU Annual Scientific conference and Surgical Landscape Exhibition on 23-25 March 2027 in Kampala,",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "estimated",
@@ -7593,9 +7770,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.eortc.org/event/eortc-summit-on-clinical-cancer-research/",
   "blurb": "EORTC summit on clinical cancer research held in Brussels.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.eortc.org/event/eortc-summit-on-clinical-cancer-research/",
+  "datesQuote": "23 March 2027 - 24 March 2027",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "confirmed",
@@ -7727,7 +7906,7 @@ window.HOGGY_CONFERENCES = [
  },
  {
   "dateStatus": "confirmed",
-  "sourceUrl": "https://conference.saudi-heart.com/",
+  "sourceUrl": "https://conference.saudi-heart.com/sha-tracks-program/",
   "id": "sha-riyadh",
   "name": "37th Annual Conference of the Saudi Heart Association (SHA 2027)",
   "organiser": "Saudi Heart Association",
@@ -7748,9 +7927,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://conference.saudi-heart.com",
   "blurb": "Annual national cardiology conference at Crowne Plaza RDC, Riyadh.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://conference.saudi-heart.com/sha-tracks-program/",
+  "datesQuote": "IMPORTANT NOTICE! The Conference Postponed to 25 - 27 March 2027",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "confirmed",
@@ -7930,7 +8111,7 @@ window.HOGGY_CONFERENCES = [
  },
  {
   "dateStatus": "confirmed",
-  "sourceUrl": "https://duphat.ae/",
+  "sourceUrl": "https://duphat.ae/duphat-executive-office/",
   "id": "duphat-dubai",
   "name": "DUPHAT 2027 - Dubai International Pharmaceuticals & Technologies Conference",
   "organiser": "INDEX Conferences & Exhibitions",
@@ -7951,9 +8132,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.duphat.ae",
   "blurb": "Pharmacy conference and exhibition at Dubai World Trade Centre.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://duphat.ae/duphat-executive-office/",
+  "datesQuote": "30 March – 01 April 2027",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "confirmed",
@@ -8091,7 +8274,7 @@ window.HOGGY_CONFERENCES = [
  },
  {
   "dateStatus": "confirmed",
-  "sourceUrl": "https://car.ca/",
+  "sourceUrl": "https://car.ca/news/new-and-exciting-enhancements-for-car-2027/",
   "id": "car-annual-scientific-meeting",
   "name": "CAR Annual Scientific Meeting",
   "organiser": "Canadian Association of Radiologists",
@@ -8112,9 +8295,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://car.ca",
   "blurb": "The annual scientific meeting of Canadian radiologists.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://car.ca/news/new-and-exciting-enhancements-for-car-2027/",
+  "datesQuote": "better. There are some new initiatives in place for CAR 2027 , happening in Montréal from April 1-4, 2027.",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "confirmed",
@@ -8147,7 +8332,7 @@ window.HOGGY_CONFERENCES = [
  },
  {
   "dateStatus": "confirmed",
-  "sourceUrl": "https://possoncology.com/",
+  "sourceUrl": "https://possoncology.com/about-poss/",
   "id": "poss-madinah",
   "name": "POSS 2027 - 4th Precision Oncology Saudi Summit",
   "organiser": "Saudi Society for Blood Disorders / King Faisal Specialist Hospital & Research Centre",
@@ -8168,9 +8353,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://possoncology.com/",
   "blurb": "Precision oncology summit held at King Salman Congress Centre, Madinah.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://possoncology.com/about-poss/",
+  "datesQuote": "I welcome you to the Precision Oncology Saudi Summit (POSS 2027), which will be held from April 1-3, 2027, at the King Salman Congress Centre in the holy city of",
+  "verifiedOn": "2026-11-25"
  },
  {
   "id": "world-congress-of-nephrology-2027",
@@ -8202,7 +8389,7 @@ window.HOGGY_CONFERENCES = [
  },
  {
   "dateStatus": "confirmed",
-  "sourceUrl": "https://icjrmiddleeast.com/",
+  "sourceUrl": "https://icjrmiddleeast.com/welcom-message/",
   "id": "icjr-me-dubai",
   "name": "13th International Congress for Joint Reconstruction, Middle East (ICJR ME 2027)",
   "organiser": "ICJR Middle East / InfoPlus Events",
@@ -8223,9 +8410,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://icjrmiddleeast.com/",
   "blurb": "Joint reconstruction congress held at Jumeirah Emirates Towers, Dubai.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://icjrmiddleeast.com/welcom-message/",
+  "datesQuote": "Congress for Joint Reconstruction – Middle East” (ICJR ME), scheduled to take place from 2 – 4 April 2027, at the prestigious Jumeirah Emirates Towers in Dubai,",
+  "verifiedOn": "2026-11-25"
  },
  {
   "id": "wco6-sso-11th-saudi-optometry-conference-2027",
@@ -8405,8 +8594,8 @@ window.HOGGY_CONFERENCES = [
   "country": "Australia",
   "countryCode": "AU",
   "region": "Asia-Pacific",
-  "lat": -37.81,
-  "lng": 144.96,
+  "lat": -28.0167,
+  "lng": 153.4,
   "start": "2027-04-02",
   "end": "2027-04-06",
   "format": "Hybrid",
@@ -8425,7 +8614,7 @@ window.HOGGY_CONFERENCES = [
  },
  {
   "dateStatus": "confirmed",
-  "sourceUrl": "https://epa-congress.org/",
+  "sourceUrl": "https://epa-congress.org/epa27-welcome-message/",
   "id": "epa-congress",
   "name": "European Congress of Psychiatry (EPA)",
   "organiser": "European Psychiatric Association",
@@ -8446,9 +8635,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.epa-congress.org",
   "blurb": "The 35th European Congress of Psychiatry organised by the European Psychiatric Association.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://epa-congress.org/epa27-welcome-message/",
+  "datesQuote": "It is with great pleasure and anticipation that Prof. Volpe and I invite you to attend the 35th European Congress of Psychiatry, which will take place on 3–6 April 2027 in Florence, Italy.",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "confirmed",
@@ -8607,9 +8798,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://esnpnegypt.com/",
   "blurb": "Egyptian stroke conference listed for early April 2027 near Cairo.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://esnpnegypt.com/event/10th-international-egyptian-stroke-conference/",
+  "datesQuote": "in Conjunction with The 10th International Egyptian Stroke Conference which Held From 7th to 9th April 2027 in Triumph Hotel, New Cairo,",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "estimated",
@@ -8685,7 +8878,7 @@ window.HOGGY_CONFERENCES = [
  },
  {
   "dateStatus": "confirmed",
-  "sourceUrl": "https://www.eapd.eu/",
+  "sourceUrl": "https://www.eapd.eu/posts/item/the-15th-eapd-interim-seminar-april-8-10-2027-belgrade-serbia",
   "id": "eapd-seminar-belgrade-2027",
   "name": "15th EAPD Seminar 2027",
   "organiser": "European Academy of Paediatric Dentistry",
@@ -8706,8 +8899,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.eapd.eu/",
   "blurb": "15th EAPD Seminar held in Belgrade, Serbia.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.eapd.eu/posts/item/the-15th-eapd-interim-seminar-april-8-10-2027-belgrade-serbia",
+  "datesQuote": "The 15th EAPD Interim Seminar, April 8-10, 2027 Belgrade, Serbia",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "estimated",
@@ -8756,8 +8952,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://rheum.ca/event/2027-annual-scientific-meeting/",
   "blurb": "Annual Scientific Meeting of the Canadian Rheumatology Association at the Hyatt Regency Vancouver.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://rheum.ca/event/2027-annual-scientific-meeting/",
+  "datesQuote": "\"startDate\":\"2027-04-08T08:00:00-04:00\",\"endDate\":\"2027-04-11T17:00:00-04:00\"",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "confirmed",
@@ -8796,8 +8995,8 @@ window.HOGGY_CONFERENCES = [
   "country": "Japan",
   "countryCode": "JP",
   "region": "Asia-Pacific",
-  "lat": 34.69,
-  "lng": 135.5,
+  "lat": 35.6894,
+  "lng": 139.6917,
   "start": "2027-04-08",
   "end": "2027-04-10",
   "format": "In-person",
@@ -9053,6 +9252,35 @@ window.HOGGY_CONFERENCES = [
   "legacyConfirmed": true
  },
  {
+  "id": "pannz-educational-update-2027",
+  "name": "PANNZ Educational Update Meeting 2027",
+  "organiser": "Paediatric Anaesthesia Network New Zealand (SPANZA and NZSA)",
+  "specialty": "Anaesthesia",
+  "city": "Blenheim",
+  "country": "New Zealand",
+  "countryCode": "NZ",
+  "region": "Asia-Pacific",
+  "lat": -41.5167,
+  "lng": 173.95,
+  "start": "2027-04-10",
+  "end": "2027-04-11",
+  "format": "In-person",
+  "cpdHours": 0,
+  "cpdBody": "",
+  "priceFrom": 0,
+  "attendees": 0,
+  "url": "https://www.spanza.org.au/Web/Events/2027-EVENTS/2027-PANNZ.aspx?EventKey=27PANNZ&WebsiteKey=d4c31fa4-467a-4959-b48b-cae3ea93e516",
+  "blurb": "Paediatric anaesthesia update for occasional paediatric anaesthetists at the Marlborough Events Centre, Blenheim, with optional CICO, ALS and EPIC workshops.",
+  "datesConfirmed": true,
+  "dateStatus": "confirmed",
+  "sourceUrl": "https://www.spanza.org.au/Web/Events/2027-EVENTS/2027-PANNZ.aspx?EventKey=27PANNZ&WebsiteKey=d4c31fa4-467a-4959-b48b-cae3ea93e516",
+  "datesSourceUrl": "https://www.spanza.org.au/Web/Events/2027-EVENTS/2027-PANNZ.aspx?EventKey=27PANNZ&WebsiteKey=d4c31fa4-467a-4959-b48b-cae3ea93e516",
+  "datesQuote": "Saturday 10 & Sunday 11 April 2027",
+  "verifiedOn": "2026-11-25",
+  "societyUrl": "https://anaesthesia.nz/events/pannz-educational-update-meeting/",
+  "lastVerified": "2026-11-25"
+ },
+ {
   "dateStatus": "estimated",
   "sourceUrl": "https://australianpainsociety.org",
   "id": "australian-pain-society-asm",
@@ -9221,7 +9449,7 @@ window.HOGGY_CONFERENCES = [
  },
  {
   "dateStatus": "confirmed",
-  "sourceUrl": "https://www.amcpannual.org/",
+  "sourceUrl": "https://amcpannual.org/about-amcp-2027",
   "id": "amcp-annual-meeting-2027",
   "name": "AMCP Annual Meeting 2027",
   "organiser": "Academy of Managed Care Pharmacy",
@@ -9242,8 +9470,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.amcpannual.org/",
   "blurb": "Annual meeting of the Academy of Managed Care Pharmacy at Moscone West, San Francisco.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://amcpannual.org/about-amcp-2027",
+  "datesQuote": "AMCP 2027 is anticipated to attract more than 4,000 managed care decision-makers to San Francisco, CA, from April 13-16, 2027 .",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "confirmed",
@@ -9321,9 +9552,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.kenyapaediatric.org",
   "blurb": "Annual scientific conference of the Kenya Paediatric Association held at PrideInn Paradise Beach Resort, Shanzu.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://kenyapaediatric.org/annual-scientific-conference-2027/",
+  "datesQuote": "It is my pleasure to welcome you to the Kenya Paediatric Association’s Annual Scientific Conference 2027, taking place from 13th-16th April 2027 at PrideInn Paradise Beach Resort, Shanzu, Mombasa.",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "confirmed",
@@ -10046,9 +10279,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://eado.org/events-training/eado-congress/",
   "blurb": "The 23rd congress of the European Association of Dermato-Oncology, on-site at the Hofburg in Vienna.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://eado.org/events-training/eado-congress/",
+  "datesQuote": "April 15-17, 2027",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "confirmed",
@@ -10230,8 +10465,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.saha.org.ar/congresos/xxxiii-congreso-buenos-aires-2027",
   "blurb": "Held at the Marriott Buenos Aires Downtown.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.saha.org.ar/congresos/xxxiii-congreso-buenos-aires-2027",
+  "datesQuote": "Congreso Argentino de Hipertensión Arterial, que se llevará a cabo del 15 al 17 de abril de 2027 en el Marriott de Buenos Aires Downtown.",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "confirmed",
@@ -10336,8 +10574,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.rssa.co.za/news-and-events/rssa-ct-mr-cardiac-imaging-congress-16-18-april-2027",
   "blurb": "Hands-on cardiac CT and MR imaging course at The Westin Cape Town.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.rssa.co.za/news-and-events/rssa-ct-mr-cardiac-imaging-congress-16-18-april-2027",
+  "datesQuote": "16th - 18th April 2027",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "confirmed",
@@ -10394,7 +10635,7 @@ window.HOGGY_CONFERENCES = [
  },
  {
   "dateStatus": "confirmed",
-  "sourceUrl": "https://www.espo2027.com/",
+  "sourceUrl": "https://www.espo2027.com/abstracts/fellowship",
   "id": "espo-congress",
   "name": "ESPO Congress (European Society of Pediatric Otorhinolaryngology)",
   "organiser": "European Society of Pediatric Otorhinolaryngology (ESPO)",
@@ -10415,9 +10656,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://ceorlhns.org/events/all-events/487-espo-2027-18th-congress-of-the-european-society-of-pediatric-otorhinolaryngology",
   "blurb": "18th congress of the European Society of Pediatric Otorhinolaryngology (ENT) at Prague Congress Centre.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.espo2027.com/abstracts/fellowship",
+  "datesQuote": "to attend the ESPO International Congress being held in Prague, Czech Republic from 17th - 20th April 2027.",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "confirmed",
@@ -10677,8 +10920,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://pan-ng.org/panconf/about",
   "blurb": "Annual scientific conference of the Paediatric Association of Nigeria at the International Conference Centre, Umuahia, with pre-conference workshops on 19-20 April 2027.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://pan-ng.org/panconf/about",
+  "datesQuote": "April 21–23, 2027",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "confirmed",
@@ -10701,7 +10947,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 0,
   "attendees": 0,
   "url": "https://www.anzgog.org.au",
-  "blurb": "The annual scientific meeting on gynaecological cancer research, usually hosted in Melbourne though the host city rotates. Dates expected; not yet announced.",
+  "blurb": "Annual scientific meeting of ANZGOG on gynaecological cancer research, at the Amora Hotel, Adelaide.",
   "datesConfirmed": true,
   "datesSourceUrl": "https://www.anzgog.org.au/registrations-open-for-2027-annual-scientific-meeting/",
   "datesQuote": "Coming together to turn shared ambition into action, international and local experts will gather in Adelaide from 21–23 April 2027 to advance research and care for women with gynaecological cancers.",
@@ -10941,9 +11187,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.sbmfc.org.br",
   "blurb": "National family and community medicine congress, listed for 22-25 April 2027 (host city not stated on the homepage).",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://sbmfc.org.br/19cbmfc/",
+  "datesQuote": "DE 22 A 25 DE ABRIL DE 2027",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "estimated",
@@ -11014,11 +11262,13 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 0,
   "attendees": 0,
   "url": "https://sbrh.org.br/",
-  "blurb": "Annual congress of the Sociedade Brasileira de Reprodução Humana, usually held in São Paulo around May. Host city rotates; São Paulo is the most likely venue. Dates expected; not yet announced.",
+  "blurb": "Annual congress of the Sociedade Brasileira de Reprodução Humana.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://sbrh.org.br/cursos-eventos/congresso-brasileiro-de-reproducao-humana-2027/",
+  "datesQuote": "22 a 24 de Abril de 2027",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "estimated",
@@ -11143,8 +11393,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://admin.globalfamilydoctor.com/Conferences/APR2027.aspx",
   "blurb": "Meeting organised by WONCA Asia Pacific Region in Hong Kong, Hong Kong SAR.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://admin.globalfamilydoctor.com/Conferences/APR2027.aspx",
+  "datesQuote": "Dates: 22 - 25 April 2027 (Thursday - Sunday)",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "confirmed",
@@ -11221,8 +11474,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://eso-stroke.org/events/",
   "blurb": "ESO-listed Lisbon Stroke Summit 2027 held in Lisbon, Portugal.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://eso-stroke.org/events/",
+  "datesQuote": "Lisbon Stroke Summit 2027 takes place in Lisbon, Portugal (23 April 2027 – 24 April 2027). More information can be found here.",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "estimated",
@@ -11397,7 +11653,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 0,
   "attendees": 0,
   "url": "https://www.bhiva.org/",
-  "blurb": "BHIVA Annual Conference is the annual meeting of the British HIV Association, usually held in April; Manchester is the likely host city (host city may rotate). Dates expected; not yet announced.",
+  "blurb": "BHIVA Annual Conference is the annual meeting of the British HIV Association.",
   "datesConfirmed": true,
   "datesSourceUrl": "https://bhiva.org/event/bhiva-spring-conference-2027/",
   "datesQuote": "Mon 26th April - Wed 28th April 2027",
@@ -11416,8 +11672,8 @@ window.HOGGY_CONFERENCES = [
   "country": "Japan",
   "countryCode": "JP",
   "region": "Asia-Pacific",
-  "lat": 34.69,
-  "lng": 135.2,
+  "lat": 35.4503,
+  "lng": 139.6342,
   "start": "2027-04-26",
   "end": "2027-04-28",
   "format": "In-person",
@@ -11980,9 +12236,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.eurospe.org/event/the-65th-annual-espe-meeting-2027-29-april-01-may-2027/",
   "blurb": "The 65th annual ESPE meeting on paediatric endocrinology, held at Gothia Towers.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.eurospe.org/event/the-65th-annual-espe-meeting-2027-29-april-01-may-2027/",
+  "datesQuote": "It is our great pleasure to invite you to the 65th Annual Meeting of the ESPE, taking place in the innovative and sustainable city of Gothenburg, Sweden, from 29 April to 1 May 2027.",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "estimated",
@@ -12071,8 +12329,8 @@ window.HOGGY_CONFERENCES = [
   "country": "Australia",
   "countryCode": "AU",
   "region": "Asia-Pacific",
-  "lat": -27.47,
-  "lng": 153.03,
+  "lat": -37.8142,
+  "lng": 144.9631,
   "start": "2027-04-29",
   "end": "2027-05-02",
   "format": "In-person",
@@ -12125,8 +12383,8 @@ window.HOGGY_CONFERENCES = [
   "country": "Australia",
   "countryCode": "AU",
   "region": "Asia-Pacific",
-  "lat": -37.81,
-  "lng": 144.96,
+  "lat": -28.0167,
+  "lng": 153.4,
   "start": "2027-04-30",
   "end": "2027-05-02",
   "format": "In-person",
@@ -12412,9 +12670,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.cirse.org/onsite/event-calendar/",
   "blurb": "CIRSE-organised conference on image-guided interventional oncology.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.cirse.org/onsite/event-calendar/",
+  "datesQuote": "May 01 2027 - May 05 2027",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "confirmed",
@@ -12427,8 +12687,8 @@ window.HOGGY_CONFERENCES = [
   "country": "Australia",
   "countryCode": "AU",
   "region": "Asia-Pacific",
-  "lat": -33.87,
-  "lng": 151.21,
+  "lat": -38.5333,
+  "lng": 143.967,
   "start": "2027-05-01",
   "end": "2027-05-02",
   "format": "In-person",
@@ -12466,7 +12726,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 0,
   "attendees": 0,
   "url": "https://stfm.org/",
-  "blurb": "STFM Annual Spring Conference is the annual meeting of the Society of Teachers of Family Medicine; the host city rotates and Nashville is an estimate. Dates expected; not yet announced.",
+  "blurb": "STFM Annual Spring Conference is the annual meeting of the Society of Teachers of Family Medicine, in Chicago.",
   "datesConfirmed": true,
   "datesSourceUrl": "https://www.stfm.org/conferences/stfm-conferences/",
   "datesQuote": "May 1–5, 2027 | Sheraton Grand Chicago Riverwalk | Chicago, IL",
@@ -12522,7 +12782,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 0,
   "attendees": 0,
   "url": "https://acoem.org/",
-  "blurb": "American Occupational Health Conference is the annual meeting of the American College of Occupational and Environmental Medicine; the host city rotates and Denver is an estimate. Dates expected; not yet announced.",
+  "blurb": "American Occupational Health Conference is the annual meeting of the American College of Occupational and Environmental Medicine.",
   "datesConfirmed": true,
   "datesSourceUrl": "https://acoem.org/American-Occupational-Health-Conference-(AOHC)/Future-Conferences",
   "datesQuote": "May 2 - 5, 2027",
@@ -12606,12 +12866,15 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.istm.org/cistm20/",
   "blurb": "The 20th ISTM conference brings together clinicians, researchers and educators in travel and tropical medicine in Bangkok.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.istm.org/cistm20/",
+  "datesQuote": "2-5 May 2027",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "confirmed",
-  "sourceUrl": "https://www.scai.org/education-and-events/events-schedule/scai-2027-scientific-sessions",
+  "sourceUrl": "https://www.scai.org/education-and-events/events-schedule/scai-2027-scientific-sessions-avls-annual-congress/call",
   "id": "scai-scientific-sessions",
   "name": "SCAI Scientific Sessions",
   "organiser": "Society for Cardiovascular Angiography & Interventions",
@@ -12632,9 +12895,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://scai.org",
   "blurb": "The SCAI's annual meeting on interventional cardiology.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.scai.org/education-and-events/events-schedule/scai-2027-scientific-sessions-avls-annual-congress/call",
+  "datesQuote": "May 2 - 4, 2027",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "confirmed",
@@ -12686,8 +12951,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.ser.es/evento/congreso-nacional/",
   "blurb": "53rd national congress of the Spanish Society of Rheumatology at the Palacio de Congresos de Malaga.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.ser.es/evento/congreso-nacional/",
+  "datesQuote": "PROGRAMA CIENTÍFICO DEL 4 AL 7 DE MAYO DE 2027",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "estimated",
@@ -12751,8 +13019,8 @@ window.HOGGY_CONFERENCES = [
   "country": "Australia",
   "countryCode": "AU",
   "region": "Asia-Pacific",
-  "lat": -33.87,
-  "lng": 151.21,
+  "lat": -16.9256,
+  "lng": 145.7753,
   "start": "2027-05-05",
   "end": "2027-05-08",
   "format": "In-person",
@@ -13109,8 +13377,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.cshp.ca/Site/website/Content/Professional-Development/PPC-2027.aspx",
   "blurb": "Professional Practice Conference of the Canadian Society of Hospital Pharmacists in downtown Toronto.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.cshp.ca/Site/website/Content/Professional-Development/PPC-2027.aspx",
+  "datesQuote": "May 7-9, 2027",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "estimated",
@@ -13371,8 +13642,8 @@ window.HOGGY_CONFERENCES = [
   "country": "Australia",
   "countryCode": "AU",
   "region": "Asia-Pacific",
-  "lat": -33.87,
-  "lng": 151.21,
+  "lat": -37.8142,
+  "lng": 144.9631,
   "start": "2027-05-11",
   "end": "2027-05-14",
   "format": "In-person",
@@ -13784,9 +14055,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://ebcog.eu/event/30th-ebcog-congress/",
   "blurb": "The 30th European Congress of Obstetrics and Gynaecology, held jointly with the 102nd SIGO National Congress.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://ebcog.eu/event/30th-ebcog-congress/",
+  "datesQuote": "held in conjunction with 102nd SIGO National Congress, will take place in Rome from 12-15 May 2027, bringing together the international community in obstetrics, gynaecology, and women’s",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "confirmed",
@@ -13922,8 +14195,8 @@ window.HOGGY_CONFERENCES = [
   "country": "Japan",
   "countryCode": "JP",
   "region": "Asia-Pacific",
-  "lat": 35.68,
-  "lng": 139.69,
+  "lat": 35.0116,
+  "lng": 135.7681,
   "start": "2027-05-12",
   "end": "2027-05-14",
   "format": "In-person",
@@ -13961,8 +14234,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.kidney.org/spring-clinical",
   "blurb": "Spring Clinical Meetings of the National Kidney Foundation at Walt Disney World Swan and Dolphin, Orlando.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.kidney.org/spring-clinical",
+  "datesQuote": "Courses will take place on May 11, 2027, followed by the general conference from May 12-15, 2027.",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "estimated",
@@ -14112,7 +14388,7 @@ window.HOGGY_CONFERENCES = [
  },
  {
   "dateStatus": "confirmed",
-  "sourceUrl": "https://www.ids-wcd2027.com/",
+  "sourceUrl": "https://www.gl-lyonevents.com/en/lyon-convention-centre/7th-world-congress-dermoscopy",
   "id": "world-congress-of-dermoscopy",
   "name": "World Congress of Dermoscopy (7th)",
   "organiser": "International Dermoscopy Society",
@@ -14133,9 +14409,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.gl-lyonevents.com/en/lyon-convention-centre/7th-world-congress-dermoscopy",
   "blurb": "The 7th World Congress of Dermoscopy, hosted at the Lyon Convention Centre with Lyon University Hospital dermatology support.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.gl-lyonevents.com/en/lyon-convention-centre/7th-world-congress-dermoscopy",
+  "datesQuote": "to host the 7th World Congress of the International Dermoscopy Society, taking place from 12 to 15 May 2027. Nine years after the highly successful Thessaloniki meeting - gathering more than 3,000",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "confirmed",
@@ -14189,6 +14467,35 @@ window.HOGGY_CONFERENCES = [
   "datesConfirmed": false
  },
  {
+  "id": "anzaoms-asm-2027",
+  "name": "ANZAOMS Annual Scientific Meeting 2027",
+  "organiser": "Australian and New Zealand Association of Oral and Maxillofacial Surgeons",
+  "specialty": "Oral & Maxillofacial Surgery",
+  "city": "Perth",
+  "country": "Australia",
+  "countryCode": "AU",
+  "region": "Asia-Pacific",
+  "lat": -31.9558,
+  "lng": 115.8597,
+  "start": "2027-05-13",
+  "end": "2027-05-15",
+  "format": "In-person",
+  "cpdHours": 0,
+  "cpdBody": "",
+  "priceFrom": 0,
+  "attendees": 0,
+  "url": "https://www.anzaomsasm.com.au/",
+  "blurb": "Federal annual scientific meeting of ANZAOMS at Crown Perth, with pre-meeting workshops and a nurses' workshop.",
+  "datesConfirmed": true,
+  "dateStatus": "confirmed",
+  "sourceUrl": "https://www.anzaomsasm.com.au/keydates",
+  "datesSourceUrl": "https://www.anzaomsasm.com.au/keydates",
+  "datesQuote": "13-15 May 2027",
+  "verifiedOn": "2026-11-25",
+  "organiserUrl": "https://www.anzaoms.org/",
+  "lastVerified": "2026-11-25"
+ },
+ {
   "dateStatus": "estimated",
   "sourceUrl": "https://pedsurglibrary.com/",
   "id": "apsa-annual-meeting-2027",
@@ -14235,9 +14542,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.asra.com",
   "blurb": "The 52nd annual regional anaesthesia and acute pain meeting.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://asra.com/events-education/ra-acute-meeting",
+  "datesQuote": "field, and chart the course of regional anesthesiology and acute pain medicine forward, May 13-15, 2027.",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "estimated",
@@ -14301,8 +14610,8 @@ window.HOGGY_CONFERENCES = [
   "country": "Japan",
   "countryCode": "JP",
   "region": "Asia-Pacific",
-  "lat": 33.59,
-  "lng": 130.4,
+  "lat": 35.4503,
+  "lng": 139.6342,
   "start": "2027-05-13",
   "end": "2027-05-16",
   "format": "In-person",
@@ -14342,6 +14651,34 @@ window.HOGGY_CONFERENCES = [
   "datesConfirmed": false
  },
  {
+  "id": "anzsn-trainee-weekend-2027",
+  "name": "ANZSN Trainee Weekend 2027",
+  "organiser": "Australian and New Zealand Society of Nephrology",
+  "specialty": "Nephrology",
+  "city": "Melbourne",
+  "country": "Australia",
+  "countryCode": "AU",
+  "region": "Asia-Pacific",
+  "lat": -37.8142,
+  "lng": 144.9631,
+  "start": "2027-05-14",
+  "end": "2027-05-16",
+  "format": "In-person",
+  "cpdHours": 0,
+  "cpdBody": "",
+  "priceFrom": 0,
+  "attendees": 0,
+  "url": "https://nephrology.edu.au/?code=&action=printsnippet&snippet=contentboxcontainer&sid=pg_222&menuItem=Future+Events",
+  "blurb": "Weekend meeting for nephrology advanced trainees at the RACV City Club, Melbourne.",
+  "datesConfirmed": true,
+  "dateStatus": "confirmed",
+  "sourceUrl": "https://nephrology.edu.au/?code=&action=printsnippet&snippet=contentboxcontainer&sid=pg_222&menuItem=Future+Events",
+  "datesSourceUrl": "https://nephrology.edu.au/?code=&action=printsnippet&snippet=contentboxcontainer&sid=pg_222&menuItem=Future+Events",
+  "datesQuote": "ANZSN 2027 Trainee Weekend RACV City Club, Melbourne 14-16 May 2027",
+  "verifiedOn": "2026-11-25",
+  "lastVerified": "2026-11-25"
+ },
+ {
   "dateStatus": "confirmed",
   "sourceUrl": "https://www.asnr.org/ashnr-asnr-annual-meeting-2027/",
   "id": "asnr-annual-meeting-2027",
@@ -14362,7 +14699,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 0,
   "attendees": 0,
   "url": "https://www.asnr.org/",
-  "blurb": "ASNR Annual Meeting is the annual meeting of the American Society of Neuroradiology; the host city rotates and Boston is an estimate. Dates expected; not yet announced.",
+  "blurb": "ASNR Annual Meeting is the annual meeting of the American Society of Neuroradiology, in San Diego.",
   "datesConfirmed": true,
   "datesSourceUrl": "https://www.asnr.org/ashnr-asnr-annual-meeting-2027/",
   "datesQuote": "is my pleasure to invite you to join us for the ASHNR/ASNR 2027 Joint Annual Meeting, May 14–19, 2027, in gorgeous San Diego, CA . This year is a truly special occasion as we bring together the",
@@ -14475,9 +14812,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.eucornea.org/budapest-2027-general-information/",
   "blurb": "18th congress of the European society dedicated to cornea and ocular surface disease.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://eucornea.org/budapest-2027-congress-location/",
+  "datesQuote": "14–16 May 2027 .",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "estimated",
@@ -15094,8 +15433,8 @@ window.HOGGY_CONFERENCES = [
   "country": "Japan",
   "countryCode": "JP",
   "region": "Asia-Pacific",
-  "lat": 35.01,
-  "lng": 135.77,
+  "lat": 37.9162,
+  "lng": 139.0364,
   "start": "2027-05-19",
   "end": "2027-05-22",
   "format": "In-person",
@@ -15241,9 +15580,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.cps.ca",
   "blurb": "The annual conference of Canadian paediatricians.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://cps.ca/en/annual-conference",
+  "datesQuote": "May 20-22, 2027",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "confirmed",
@@ -15321,8 +15662,11 @@ window.HOGGY_CONFERENCES = [
   "datesConfirmed": true,
   "dateStatus": "confirmed",
   "sourceUrl": "https://www.imcas.com/en/imcas-americas-2027",
-  "lastVerified": "2026-11-10",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.imcas.com/en/imcas-americas-2027",
+  "datesQuote": "IMCAS Americas 2027 is coming! Meet us in May 20 to 22, 2027",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "estimated",
@@ -15446,9 +15790,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.ifpa-pso.com",
   "blurb": "The 8th World Psoriasis & Psoriatic Arthritis Conference; the organiser page shows 20 May 2027, while city and end date come from the EADV calendar.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.ifpa-pso.com/join-now/calendar",
+  "datesQuote": "May 20–22, 2027",
+  "verifiedOn": "2026-11-25"
  },
  {
   "id": "acm-qld-state-conference-2027",
@@ -15489,8 +15835,8 @@ window.HOGGY_CONFERENCES = [
   "country": "United States",
   "countryCode": "US",
   "region": "North America",
-  "lat": 38.91,
-  "lng": -77.04,
+  "lat": 34.0522,
+  "lng": -118.2437,
   "start": "2027-05-21",
   "end": "2027-05-23",
   "format": "Hybrid",
@@ -15501,9 +15847,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.acog.org",
   "blurb": "The ACOG annual meeting on women's health.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.acog.org/events/meetings/annual-clinical-and-scientific-meeting/",
+  "datesQuote": "May 21–23, 2027",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "confirmed",
@@ -15613,9 +15961,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://ectsoc.org/ects-congress/future-congress/",
   "blurb": "54th annual congress on bone and mineral research and clinical care.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://ectsoc.org/ects-congress/future-congress/",
+  "datesQuote": "21-24 May 2027,",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "estimated",
@@ -15688,9 +16038,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://safsa.co.za/safsa-2027/",
   "blurb": "Foot surgery congress at Droombos, Windhoek, with a pre-congress workshop on 20 May.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://safsa.co.za/safsa-2027/",
+  "datesQuote": "21–22 May 2027 · Droombos, Windhoek",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "confirmed",
@@ -15729,8 +16081,8 @@ window.HOGGY_CONFERENCES = [
   "country": "Australia",
   "countryCode": "AU",
   "region": "Asia-Pacific",
-  "lat": -27.47,
-  "lng": 153.03,
+  "lat": -12.4381,
+  "lng": 130.8411,
   "start": "2027-05-22",
   "end": "2027-05-26",
   "format": "In-person",
@@ -15797,7 +16149,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 0,
   "attendees": 0,
   "url": "https://www.ispor.org/",
-  "blurb": "ISPOR Annual International Meeting is the annual meeting of the ISPOR - The Professional Society for Health Economics and Outcomes Research; the host city rotates and Atlanta is an estimate. Dates expected; not yet announced.",
+  "blurb": "ISPOR Annual International Meeting is the annual meeting of ISPOR, the Professional Society for Health Economics and Outcomes Research.",
   "datesConfirmed": true,
   "datesSourceUrl": "https://www.ispor.org/conferences-education/conferences/upcoming-conferences",
   "datesQuote": "ISPOR 2027 May 23-26, 2027",
@@ -16127,7 +16479,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 0,
   "attendees": 0,
   "url": "https://ewma.org/",
-  "blurb": "EWMA Conference is the annual meeting of the European Wound Management Association, usually held in May; Rotterdam is the likely host city (host city may rotate). Dates expected; not yet announced.",
+  "blurb": "EWMA Conference is the annual meeting of the European Wound Management Association.",
   "datesConfirmed": true,
   "datesSourceUrl": "https://ewma.org/ewma2027/",
   "datesQuote": "26-28 MAY 2027",
@@ -16182,8 +16534,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.sap.org.ar/congresos",
   "blurb": "In-person SAP congress at the Centro de Docencia y Capacitación Dr. Carlos A. Gianantonio in Buenos Aires.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.sap.org.ar/congresos/detalle-congreso/295",
+  "datesQuote": "a ser parte de nuestro próximo Congreso de Pediatría Social que se realizará el 27 y 28 mayo de 2027 en la Ciudad Autónoma de Buenos",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "confirmed",
@@ -16234,8 +16589,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://congresosepar.com/SEPAR2027",
   "blurb": "60th national congress of the Spanish Society of Pulmonology and Thoracic Surgery, held in Palma de Mallorca.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://congresosepar.com/SEPAR2027",
+  "datesQuote": "27 AL 29 DE MAYO, 2027 • PALMA",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "confirmed",
@@ -16258,7 +16616,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 0,
   "attendees": 0,
   "url": "https://www.aapd.org/",
-  "blurb": "AAPD Annual Session is the annual meeting of the American Academy of Pediatric Dentistry; the host city rotates and Denver is an estimate. Dates expected; not yet announced.",
+  "blurb": "AAPD Annual Session is the annual meeting of the American Academy of Pediatric Dentistry.",
   "datesConfirmed": true,
   "datesSourceUrl": "https://www.aapd.org/education/aapd-2027/",
   "datesQuote": "May 27-30, 2027 | Washington, D.C.",
@@ -16313,8 +16671,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.sap.org.ar/congresos",
   "blurb": "In-person SAP congress on breastfeeding held at the Gianantonio training centre in Buenos Aires.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.sap.org.ar/congresos/detalle-congreso/294",
+  "datesQuote": "Fecha: 28 y 29 de mayo de 2027",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "confirmed",
@@ -16443,9 +16804,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.ests.org/annual_conference/",
   "blurb": "Annual meeting of the European Society of Thoracic Surgeons.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.ests.org/annual_conference/default.aspx",
+  "datesQuote": "Annual Conference 2027: 30 May - 1 June 2027, Zurich, Switzerland",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "confirmed",
@@ -16695,9 +17058,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.espghan.org/our-organisation/Annual-Meeting",
   "blurb": "The 59th annual meeting of ESPGHAN on paediatric gastroenterology, hepatology and nutrition.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.espghan.org/our-organisation/Annual-Meeting",
+  "datesQuote": "We would like to invite you to our 59th Annual Meeting which will take place on the 02-05June 2027, in Lisbon, Portugal.",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "confirmed",
@@ -16751,8 +17116,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.sfcardio.fr/congres-detail/printemps-de-la-cardiologie-2027/",
   "blurb": "Spring cardiology meeting of the Societe Francaise de Cardiologie at the World Trade Center Marseille.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.sfcardio.fr/congres-detail/",
+  "datesQuote": "La prochaine édition du Printemps de la Cardiologie vous accueillera du 02 au 04 juin 2027 au World Trade Center de Marseille.",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "estimated",
@@ -16961,7 +17329,7 @@ window.HOGGY_CONFERENCES = [
  },
  {
   "dateStatus": "confirmed",
-  "sourceUrl": "https://www.wsrm2027.com/",
+  "sourceUrl": "https://www.wsrm2027.com/wsrm/",
   "id": "wsrm-istanbul",
   "name": "WSRM 2027 - 14th Congress of the World Society for Reconstructive Microsurgery",
   "organiser": "World Society for Reconstructive Microsurgery",
@@ -16982,9 +17350,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.wsrm2027.com/",
   "blurb": "World reconstructive microsurgery congress hosted in Istanbul.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.wsrm2027.com/wsrm/",
+  "datesQuote": "3 — 5 June 2027",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "confirmed",
@@ -17095,9 +17465,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.asecho.org",
   "blurb": "The annual meeting for cardiovascular ultrasound and echocardiography.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.asecho.org/education-events/scientific-sessions/",
+  "datesQuote": "June 4-6, 2027",
+  "verifiedOn": "2026-11-25"
  },
  {
   "id": "csanz-hrs-pfa-summit-2027",
@@ -17273,7 +17645,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 0,
   "attendees": 0,
   "url": "https://www.myast.org/",
-  "blurb": "American Transplant Congress is the annual meeting of the American Society of Transplantation and ASTS; the host city rotates and Boston is an estimate. Dates expected; not yet announced.",
+  "blurb": "American Transplant Congress is the annual meeting of the American Society of Transplantation and ASTS.",
   "datesConfirmed": true,
   "datesSourceUrl": "https://www.atcmeeting.org/Attend/ATC-Dates",
   "datesQuote": "JUNE 5-9, 2027",
@@ -17463,7 +17835,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 0,
   "attendees": 0,
   "url": "https://www.bashh.org/",
-  "blurb": "BASHH Spring Conference is the annual meeting of the British Association for Sexual Health and HIV, usually held in June; Manchester is the likely host city (host city may rotate). Dates expected; not yet announced.",
+  "blurb": "BASHH Spring Conference is the annual meeting of the British Association for Sexual Health and HIV, in Blackpool.",
   "datesConfirmed": true,
   "datesSourceUrl": "https://www.bashh.org/professionals/events/246/bashh_annual_conference_2027",
   "datesQuote": "We are delighted to announce that the BASHH Annual Conference 2027 will take place in Blackpool from 7th–9th June 2027.",
@@ -17526,7 +17898,7 @@ window.HOGGY_CONFERENCES = [
  },
  {
   "dateStatus": "confirmed",
-  "sourceUrl": "https://www.ukio.org.uk/",
+  "sourceUrl": "https://www.ukio.org.uk/roc-partners/",
   "id": "ukio-2027",
   "name": "UK Imaging & Oncology Congress 2027",
   "organiser": "UK Imaging & Oncology Congress (ROC Events)",
@@ -17547,8 +17919,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.ukio.org.uk/",
   "blurb": "UKIO 2027 is an imaging and oncology congress at the Liverpool Experience Campus.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.ukio.org.uk/roc-partners/",
+  "datesQuote": "The UK’s largest imaging and oncology congress — 7-9 June 2027, Liverpool Experience Campus (LEX).",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "estimated",
@@ -17621,9 +17996,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.woncaeurope.org/m/events/wonca-europe-conferences",
   "blurb": "The 31st WONCA Europe conference for family doctors and primary care, in Ljubljana.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.woncaeurope.org/m/events/wonca-europe-conferences",
+  "datesQuote": "8-12 June 2027",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "estimated",
@@ -17780,8 +18157,8 @@ window.HOGGY_CONFERENCES = [
   "country": "Australia",
   "countryCode": "AU",
   "region": "Asia-Pacific",
-  "lat": -27.47,
-  "lng": 153.03,
+  "lat": -35.2931,
+  "lng": 149.1269,
   "start": "2027-06-09",
   "end": "2027-06-11",
   "format": "In-person",
@@ -17817,7 +18194,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 0,
   "attendees": 0,
   "url": "https://www.sfap.org/",
-  "blurb": "Congrès de la SFAP is the annual meeting of the Société Française d'Accompagnement et de Soins Palliatifs, usually held in June; Lyon is the likely host city (host city may rotate). Dates expected; not yet announced.",
+  "blurb": "Congrès de la SFAP is the annual meeting of the Société Française d'Accompagnement et de Soins Palliatifs.",
   "datesConfirmed": true,
   "datesSourceUrl": "https://www.sfap.org/33%e1%b5%89-congres-national-de-la-sfap-montpellier-09-11-juin-2027/",
   "datesQuote": "33ᵉ Congrès national de la SFAP Montpellier • 09-11 juin 2027",
@@ -18276,9 +18653,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://eshonline.org/meetingsevents/annual-meetin",
   "blurb": "36th annual ESH meeting on hypertension and cardiovascular protection.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.eshonline.org/meetingsevents/annual-meeting/",
+  "datesQuote": "2027 – June 10 – 13, 2027 Basel (Switzerland)",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "estimated",
@@ -18502,8 +18881,8 @@ window.HOGGY_CONFERENCES = [
   "country": "Japan",
   "countryCode": "JP",
   "region": "Asia-Pacific",
-  "lat": 33.59,
-  "lng": 130.4,
+  "lat": 31.5968,
+  "lng": 130.5571,
   "start": "2027-06-11",
   "end": "2027-06-13",
   "format": "In-person",
@@ -18526,8 +18905,8 @@ window.HOGGY_CONFERENCES = [
   "country": "Japan",
   "countryCode": "JP",
   "region": "Asia-Pacific",
-  "lat": 35.44,
-  "lng": 139.64,
+  "lat": 34.6902,
+  "lng": 135.1954,
   "start": "2027-06-11",
   "end": "2027-06-13",
   "format": "In-person",
@@ -18596,7 +18975,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 0,
   "attendees": 0,
   "url": "https://academyhealth.org/",
-  "blurb": "AcademyHealth Annual Research Meeting is the annual meeting of the AcademyHealth; the host city rotates and Seattle is an estimate. Dates expected; not yet announced.",
+  "blurb": "AcademyHealth Annual Research Meeting is the annual meeting of AcademyHealth.",
   "datesConfirmed": true,
   "datesSourceUrl": "https://academyhealth.org/events/ARM2027",
   "datesQuote": "Date & Time June 12-15, 2027",
@@ -18865,9 +19244,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.aanp.org",
   "blurb": "A major national gathering of nurse practitioners.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.aanp.org/events/2027-aanp-national-conference",
+  "datesQuote": "June 15, 2027 – June 19, 2027",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "estimated",
@@ -19184,8 +19565,8 @@ window.HOGGY_CONFERENCES = [
   "country": "Australia",
   "countryCode": "AU",
   "region": "Asia-Pacific",
-  "lat": -33.87,
-  "lng": 151.21,
+  "lat": -34.9275,
+  "lng": 138.6,
   "start": "2027-06-17",
   "end": "2027-06-19",
   "format": "In-person",
@@ -19338,8 +19719,8 @@ window.HOGGY_CONFERENCES = [
   "country": "Japan",
   "countryCode": "JP",
   "region": "Asia-Pacific",
-  "lat": 43.06,
-  "lng": 141.35,
+  "lat": 33.5901,
+  "lng": 130.4017,
   "start": "2027-06-18",
   "end": "2027-06-19",
   "format": "In-person",
@@ -19644,8 +20025,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.eurospine.org/events",
   "blurb": "In-person EUROSPINE education week at IRCAD covering the Diploma curriculum and endoscopy courses.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.eurospine.org/events",
+  "datesQuote": "21 June 2027 - 25 June 2027",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "confirmed",
@@ -19699,8 +20083,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://rcog.eventsair.com/ntc2027",
   "blurb": "In-person RCOG conference for trainees in obstetrics and gynaecology, held in Cambridge.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://rcog.eventsair.com/ntc2027",
+  "datesQuote": "21 – 22 June 2027",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "confirmed",
@@ -19866,9 +20253,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.cirse.org/onsite/event-calendar/",
   "blurb": "CIRSE-organised conference on embolotherapy techniques in interventional radiology.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.cirse.org/onsite/event-calendar/",
+  "datesQuote": "Jun 23 2027 - Jun 26 2027",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "estimated",
@@ -20070,8 +20459,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://escap2027.eu/",
   "blurb": "ESCAP international congress on child and adolescent mental health, themed Child and Adolescent Mental Health in a Polarised World, with a Research Academy on 22-23 June.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.escap.eu/events/escap-2027-congress-in-athens",
+  "datesQuote": "theme \"Child and Adolescent Mental Health in a Polarised World\" which will take place from 24-27 June 2027. We are delighted to share that the congress is held under the auspices of H.E. the",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "confirmed",
@@ -20094,7 +20486,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 0,
   "attendees": 0,
   "url": "https://www.escap.eu/",
-  "blurb": "ESCAP Congress is the biennial meeting of the European Society for Child and Adolescent Psychiatry, usually held in June; Strasbourg is the likely host city. Dates expected; not yet announced.",
+  "blurb": "ESCAP Congress is the biennial meeting of the European Society for Child and Adolescent Psychiatry.",
   "datesConfirmed": true,
   "datesSourceUrl": "https://www.escap.eu/events/escap-2027-congress-in-athens",
   "datesQuote": "theme \"Child and Adolescent Mental Health in a Polarised World\" which will take place from 24-27 June 2027. We are delighted to share that the congress is held under the auspices of H.E. the",
@@ -20140,8 +20532,8 @@ window.HOGGY_CONFERENCES = [
   "country": "Japan",
   "countryCode": "JP",
   "region": "Asia-Pacific",
-  "lat": 35.44,
-  "lng": 139.64,
+  "lat": 35.1814,
+  "lng": 136.9064,
   "start": "2027-06-24",
   "end": "2027-06-26",
   "format": "In-person",
@@ -20183,6 +20575,35 @@ window.HOGGY_CONFERENCES = [
   "datesQuote": "We invite you to join us at the 2027 Annual Meeting in Rotterdam, Netherlands from June 24 – 26, 2027",
   "verifiedOn": "2026-11-18",
   "lastVerified": "2026-11-18"
+ },
+ {
+  "id": "rdaq-conference-2027",
+  "name": "RDAQ Conference 2027",
+  "organiser": "Rural Doctors Association of Queensland",
+  "specialty": "General Practice",
+  "city": "Sunshine Coast",
+  "country": "Australia",
+  "countryCode": "AU",
+  "region": "Asia-Pacific",
+  "lat": -26.6542,
+  "lng": 153.0933,
+  "start": "2027-06-24",
+  "end": "2027-06-26",
+  "format": "In-person",
+  "cpdHours": 0,
+  "cpdBody": "",
+  "priceFrom": 0,
+  "attendees": 0,
+  "url": "https://conference.rdaq.com.au/",
+  "blurb": "Annual conference of the Rural Doctors Association of Queensland at the Novotel Sunshine Coast Resort, Twin Waters.",
+  "datesConfirmed": true,
+  "dateStatus": "confirmed",
+  "sourceUrl": "https://conference.rdaq.com.au/2027-program/",
+  "datesSourceUrl": "https://conference.rdaq.com.au/2027-program/",
+  "datesQuote": "Thursday 24 June 2027",
+  "verifiedOn": "2026-11-25",
+  "organiserUrl": "https://www.rdaq.com.au/",
+  "lastVerified": "2026-11-25"
  },
  {
   "dateStatus": "estimated",
@@ -20339,7 +20760,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 0,
   "attendees": 0,
   "url": "https://cpdd.org/",
-  "blurb": "CPDD Scientific Meeting is the annual meeting of the College on Problems of Drug Dependence; the host city rotates and Denver is an estimate. Dates expected; not yet announced.",
+  "blurb": "CPDD Scientific Meeting is the annual meeting of the College on Problems of Drug Dependence.",
   "datesConfirmed": true,
   "datesSourceUrl": "https://cpdd.org/cpdd-meeting-hub/",
   "datesQuote": "June 26 - 30, 2027 - Meeting",
@@ -20396,7 +20817,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 0,
   "attendees": 0,
   "url": "https://asmbs.org/",
-  "blurb": "ASMBS Annual Meeting is the annual meeting of the American Society for Metabolic and Bariatric Surgery; the host city rotates and Las Vegas is an estimate. Dates expected; not yet announced.",
+  "blurb": "ASMBS Annual Meeting is the annual meeting of the American Society for Metabolic and Bariatric Surgery.",
   "datesConfirmed": true,
   "datesSourceUrl": "https://asmbs.org/professional-development/meetings-of-interest/",
   "datesQuote": "June 27 – July 1, 2027",
@@ -20705,8 +21126,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://rcog.eventsair.com/rcog-fibroid-summit-2027-from-action-to-implementation",
   "blurb": "In-person RCOG summit on fibroid care held at the RCOG in London.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://rcog.eventsair.com/rcog-fibroid-summit-2027-from-action-to-implementation",
+  "datesQuote": "5 - 6 July 2027",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "estimated",
@@ -20734,7 +21158,7 @@ window.HOGGY_CONFERENCES = [
  },
  {
   "dateStatus": "confirmed",
-  "sourceUrl": "https://alatorax.org/es",
+  "sourceUrl": "https://alatorax.org/es/eventos/20o-congreso-alat-costa-rica-2027",
   "id": "alat-congress",
   "name": "ALAT Congress",
   "organiser": "Latin American Thoracic Association",
@@ -20755,9 +21179,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://alatorax.org",
   "blurb": "The Latin American congress on respiratory medicine.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://alatorax.org/es/eventos/20o-congreso-alat-costa-rica-2027",
+  "datesQuote": "7 al 10 de julio de 2027",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "estimated",
@@ -20987,7 +21413,7 @@ window.HOGGY_CONFERENCES = [
  },
  {
   "dateStatus": "confirmed",
-  "sourceUrl": "https://ptbun.org.pl/?p=5430",
+  "sourceUrl": "https://ptbun.org.pl/en/the-26th-biennial-meeting-of-the-european-society-for-neurochemistry-esn-and-the-18th-international-congress-of-the-polish-neuroscience-society-ptbun/",
   "id": "esn-ptbun-warsaw-2027",
   "name": "26th ESN Biennial Meeting and 18th PTBUN International Congress",
   "organiser": "Polish Neuroscience Society and European Society for Neurochemistry",
@@ -21008,8 +21434,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://ptbun.org.pl/?p=5430",
   "blurb": "Joint neuroscience meeting of the European Society for Neurochemistry and the Polish Neuroscience Society in Warsaw.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://ptbun.org.pl/en/the-26th-biennial-meeting-of-the-european-society-for-neurochemistry-esn-and-the-18th-international-congress-of-the-polish-neuroscience-society-ptbun/",
+  "datesQuote": "Deadline Extension: Call for submission of proposals for symposia -18th International Congress of the Polish Neuroscience Society; Warsaw, Poland (July 12-15, 2027)",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "confirmed",
@@ -21365,8 +21794,8 @@ window.HOGGY_CONFERENCES = [
   "country": "Australia",
   "countryCode": "AU",
   "region": "Asia-Pacific",
-  "lat": -27.47,
-  "lng": 153.03,
+  "lat": -42.8833,
+  "lng": 147.3167,
   "start": "2027-07-18",
   "end": "2027-07-20",
   "format": "In-person",
@@ -21385,7 +21814,7 @@ window.HOGGY_CONFERENCES = [
  },
  {
   "dateStatus": "confirmed",
-  "sourceUrl": "https://aaic.alz.org/",
+  "sourceUrl": "https://aaic.alz.org/about/program-committee.asp",
   "id": "aaic",
   "name": "Alzheimer's Association International Conference (AAIC)",
   "organiser": "Alzheimer's Association",
@@ -21406,9 +21835,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://aaic.alz.org/",
   "blurb": "A major dementia research conference.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://aaic.alz.org/about/program-committee.asp",
+  "datesQuote": "Alzheimer’s Association International Conference | July 18-21, 2027 | Chicago, United States, and Online",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "estimated",
@@ -21565,6 +21996,34 @@ window.HOGGY_CONFERENCES = [
   "datesConfirmed": false
  },
  {
+  "id": "bct-asm-2027",
+  "name": "Breast Cancer Trials Annual Scientific Meeting 2027",
+  "organiser": "Breast Cancer Trials (Australia and New Zealand)",
+  "specialty": "Oncology",
+  "city": "Perth",
+  "country": "Australia",
+  "countryCode": "AU",
+  "region": "Asia-Pacific",
+  "lat": -31.9558,
+  "lng": 115.8597,
+  "start": "2027-07-21",
+  "end": "2027-07-23",
+  "format": "In-person",
+  "cpdHours": 0,
+  "cpdBody": "",
+  "priceFrom": 0,
+  "attendees": 0,
+  "url": "https://www.breastcancertrials.org.au/research/annual-scientific-meeting/",
+  "blurb": "Annual scientific meeting of the Breast Cancer Trials research group at the Pan Pacific Hotel, Perth.",
+  "datesConfirmed": true,
+  "dateStatus": "confirmed",
+  "sourceUrl": "https://www.breastcancertrials.org.au/research/annual-scientific-meeting/",
+  "datesSourceUrl": "https://www.breastcancertrials.org.au/research/annual-scientific-meeting/",
+  "datesQuote": "The 2027 Breast Cancer Trials (BCT) Annual Scientific Meeting (ASM) will be held at the Pan Pacific Hotel in Perth, WA, from 21-23 July 2027.",
+  "verifiedOn": "2026-11-25",
+  "lastVerified": "2026-11-25"
+ },
+ {
   "dateStatus": "estimated",
   "sourceUrl": "https://sbn.com.br/",
   "id": "congresso-brasileiro-de-neurocirurgia-2027",
@@ -21590,7 +22049,7 @@ window.HOGGY_CONFERENCES = [
  },
  {
   "dateStatus": "confirmed",
-  "sourceUrl": "https://solacicongress.org/es/",
+  "sourceUrl": "https://solacicongress.org/es/autoridades-solaci-caci-2027/",
   "id": "solaci-congress-2027",
   "name": "SOLACI Congress 2027",
   "organiser": "Sociedad Latinoamericana de Cardiología Intervencionista (SOLACI)",
@@ -21611,9 +22070,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.solaci.org",
   "blurb": "Annual Latin American interventional cardiology congress, held jointly with a national society each year.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://solacicongress.org/es/autoridades-solaci-caci-2027/",
+  "datesQuote": "Fecha 21 al 23 de julio de 2027",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "estimated",
@@ -21874,9 +22335,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://myadlm.org",
   "blurb": "The annual meeting on laboratory medicine.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://myadlm.org/meetings-and-events/annual-meeting",
+  "datesQuote": "July 25-29, 2027",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "confirmed",
@@ -22197,8 +22660,8 @@ window.HOGGY_CONFERENCES = [
   "country": "Australia",
   "countryCode": "AU",
   "region": "Asia-Pacific",
-  "lat": -35.28,
-  "lng": 149.13,
+  "lat": -28.0167,
+  "lng": 153.4,
   "start": "2027-08-05",
   "end": "2027-08-06",
   "format": "In-person",
@@ -22308,8 +22771,8 @@ window.HOGGY_CONFERENCES = [
   "country": "Australia",
   "countryCode": "AU",
   "region": "Asia-Pacific",
-  "lat": -37.81,
-  "lng": 144.96,
+  "lat": -33.8678,
+  "lng": 151.21,
   "start": "2027-08-05",
   "end": "2027-08-07",
   "format": "In-person",
@@ -22820,7 +23283,7 @@ window.HOGGY_CONFERENCES = [
  },
  {
   "dateStatus": "confirmed",
-  "sourceUrl": "https://www.sgcr-wires.com/",
+  "sourceUrl": "https://www.sgcr-wires.com/acar2027",
   "id": "acar-sgcr-wires-singapore-2027",
   "name": "ACAR SGCR-WIRES 2027",
   "organiser": "Asian Musculoskeletal Society, Singapore Radiological Society and College of Radiologists Singapore",
@@ -22841,8 +23304,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.sgcr-wires.com/",
   "blurb": "Meeting organised by Asian Musculoskeletal Society, Singapore Radiological Society and College of Radiologists Singapore in Singapore, Singapore.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.sgcr-wires.com/acar2027",
+  "datesQuote": "19 - 22 August 2027, Singapore",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "id": "aqua-queenstown-2027",
@@ -23151,8 +23617,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://faobmb.com/event/18th-faobmb-congress-in-kuala-lumpur-malaysia/",
   "blurb": "The 18th FAOBMB Congress is held at the Nexus Connexion Conference & Events Centre in Kuala Lumpur.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://faobmb.com/event/18th-faobmb-congress-in-kuala-lumpur-malaysia/",
+  "datesQuote": "18th FAOBMB Congress to be held 24-27 August 2027, Second Announcement",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "confirmed",
@@ -23373,6 +23842,34 @@ window.HOGGY_CONFERENCES = [
   "datesConfirmed": false
  },
  {
+  "id": "nzdsi-annual-conference-2027",
+  "name": "NZDSI Annual Conference 2027",
+  "organiser": "New Zealand Dermatological Society Inc",
+  "specialty": "Dermatology",
+  "city": "Christchurch",
+  "country": "New Zealand",
+  "countryCode": "NZ",
+  "region": "Asia-Pacific",
+  "lat": -43.5311,
+  "lng": 172.6361,
+  "start": "2027-08-25",
+  "end": "2027-08-28",
+  "format": "In-person",
+  "cpdHours": 0,
+  "cpdBody": "",
+  "priceFrom": 0,
+  "attendees": 0,
+  "url": "https://nzdsi.org/News/Annual-Conference.aspx",
+  "blurb": "Annual conference of the New Zealand Dermatological Society at Te Pae Christchurch Convention Centre.",
+  "datesConfirmed": true,
+  "dateStatus": "confirmed",
+  "sourceUrl": "https://nzdsi.org/News/Annual-Conference.aspx",
+  "datesSourceUrl": "https://nzdsi.org/News/Annual-Conference.aspx",
+  "datesQuote": "25-28 August 2027, Te Pae Christchurch Convention Centre",
+  "verifiedOn": "2026-11-25",
+  "lastVerified": "2026-11-25"
+ },
+ {
   "dateStatus": "estimated",
   "sourceUrl": "https://sasog.co.za/",
   "id": "sasog-congress-2027",
@@ -23493,8 +23990,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.imcas.com/en/imcas-china-2027/introduction",
   "blurb": "IMCAS aesthetic and anti-aging medicine congress at the W Hotel The Bund, Shanghai.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.imcas.com/en/imcas-china-2027/introduction",
+  "datesQuote": "26 - 28 August 2027, SHANGHAI",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "id": "isam-annual-congress-2027",
@@ -24113,8 +24613,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.ebmt.org/events",
   "blurb": "12th EBMT international course on transplant and cellular therapy, Barcelona.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.ebmt.org/events",
+  "datesQuote": "Sep 03, 2027 - Sep 05, 2027",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "confirmed",
@@ -24762,8 +25265,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.ebmt.org/events",
   "blurb": "First EBMT master course on clinical research in HCT and cellular therapies, Naples.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.ebmt.org/events",
+  "datesQuote": "Sep 09, 2027 - Sep 11, 2027",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "id": "23rd-international-headache-congress-2027",
@@ -25020,9 +25526,39 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.eurothyroid.com/events/48th-annual-meeting-of-the-european-thyroid-association.html",
   "blurb": "48th ETA annual meeting on thyroid disease, at Philharmonie Essen.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.eurothyroid.com/events/48th-annual-meeting-of-the-european-thyroid-association.html",
+  "datesQuote": "11.09.2027–14.09.2027 - Essen, Germany",
+  "verifiedOn": "2026-11-25"
+ },
+ {
+  "id": "anzsn-congress-2027",
+  "name": "ANZSN Annual Scientific Meeting (Congress) 2027",
+  "organiser": "Australian and New Zealand Society of Nephrology",
+  "specialty": "Nephrology",
+  "city": "Hobart",
+  "country": "Australia",
+  "countryCode": "AU",
+  "region": "Asia-Pacific",
+  "lat": -42.8833,
+  "lng": 147.3167,
+  "start": "2027-09-11",
+  "end": "2027-09-15",
+  "format": "In-person",
+  "cpdHours": 0,
+  "cpdBody": "",
+  "priceFrom": 0,
+  "attendees": 0,
+  "url": "https://nephrology.edu.au/?code=&action=printsnippet&snippet=contentboxcontainer&sid=pg_222&menuItem=Future+Events",
+  "blurb": "Annual congress of the Australian and New Zealand Society of Nephrology at the Hotel Grand Chancellor, Hobart.",
+  "datesConfirmed": true,
+  "dateStatus": "confirmed",
+  "sourceUrl": "https://nephrology.edu.au/?code=&action=printsnippet&snippet=contentboxcontainer&sid=pg_222&menuItem=Future+Events",
+  "datesSourceUrl": "https://nephrology.edu.au/?code=&action=printsnippet&snippet=contentboxcontainer&sid=pg_222&menuItem=Future+Events",
+  "datesQuote": "2027 ANZSN Congress Hobart Grand Chancellor Hotel 11-15 September 2027",
+  "verifiedOn": "2026-11-25",
+  "lastVerified": "2026-11-25"
  },
  {
   "dateStatus": "confirmed",
@@ -25156,7 +25692,7 @@ window.HOGGY_CONFERENCES = [
  },
  {
   "dateStatus": "confirmed",
-  "sourceUrl": "https://ibroworldcongress.org/",
+  "sourceUrl": "https://ibroworldcongress.org/open-calls/call-for-scientific-symposia",
   "id": "ibro-world-congress-2027-cape-town",
   "name": "IBRO 2027 World Congress",
   "organiser": "International Brain Research Organization with the Southern African Neuroscience Society",
@@ -25177,9 +25713,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://ibroworldcongress.org/",
   "blurb": "First IBRO World Congress held in Africa, at the CTICC.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://ibroworldcongress.org/open-calls/call-for-scientific-symposia",
+  "datesQuote": "of the IBRO 2027 World Congress, which will take place in Cape Town, South Africa, from 13-16 September 2027. The Congress aims to showcase cutting-edge, diverse, and globally representative",
+  "verifiedOn": "2026-11-25"
  },
  {
   "id": "isuog-world-congress-2027",
@@ -25792,9 +26330,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.ena.org",
   "blurb": "The annual conference for emergency nurses.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.ena.org/events/emergency-nursing-2027",
+  "datesQuote": "Sep 15, 2027 - Sep 18, 2027",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "estimated",
@@ -26264,8 +26804,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.sfcardio.fr/congres-detail/journees-nationales-du-gers-p-2027/",
   "blurb": "31st national days of the GERS-P cardiology group at the Palais des Congres d Issy-les-Moulineaux.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.sfcardio.fr/congres-detail/",
+  "datesQuote": "Les 31es Journées Nationales du GERS-P vous accueilleront les 16 et 17 septembre 2027 au Palais des congrès d'Issy-les-Moulineaux.",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "confirmed",
@@ -26376,8 +26919,8 @@ window.HOGGY_CONFERENCES = [
   "country": "Spain",
   "countryCode": "ES",
   "region": "Europe",
-  "lat": 40.42,
-  "lng": -3.7,
+  "lat": 41.3825,
+  "lng": 2.1769,
   "start": "2027-09-17",
   "end": "2027-09-21",
   "format": "Hybrid",
@@ -26418,7 +26961,7 @@ window.HOGGY_CONFERENCES = [
  },
  {
   "dateStatus": "confirmed",
-  "sourceUrl": "https://www.nhg.org/wetenschapsdag",
+  "sourceUrl": "https://www.nhg.org/wetenschapsdag/",
   "id": "nhg-wetenschapsdag-2027",
   "name": "NHG-Wetenschapsdag 2027",
   "organiser": "Nederlands Huisartsen Genootschap with UMC Utrecht",
@@ -26439,8 +26982,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.nhg.org/wetenschapsdag",
   "blurb": "Annual scientific day of the Dutch College of General Practitioners.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.nhg.org/wetenschapsdag/",
+  "datesQuote": "NHG-Wetenschapsdag – 17 september 2027 – Zeist",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "confirmed",
@@ -26516,7 +27062,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 0,
   "attendees": 0,
   "url": "https://myana.org/",
-  "blurb": "ANA Annual Meeting is the annual meeting of the American Neurological Association; the host city rotates and Chicago is an estimate. Dates expected; not yet announced.",
+  "blurb": "ANA Annual Meeting is the annual meeting of the American Neurological Association.",
   "datesConfirmed": true,
   "datesSourceUrl": "https://myana.org/meetings/future-annual-meeting-dates/",
   "datesQuote": "September 18 – 21, 2027",
@@ -27013,9 +27559,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://anaesthetists.org/CPD-and-events/Conferences",
   "blurb": "The Association of Anaesthetists' annual festival of learning, held at ICC Birmingham.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://anaesthetists.org/CPD-and-events/Conferences",
+  "datesQuote": "22–24 September 2027, at ICC Birmingham. Find out more .",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "estimated",
@@ -27165,8 +27713,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.ebmt.org/events",
   "blurb": "EBMT meeting on cellular therapies for autoimmune diseases, Berlin.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.ebmt.org/events",
+  "datesQuote": "Sep 23, 2027 - Sep 25, 2027",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "confirmed",
@@ -27189,7 +27740,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 0,
   "attendees": 0,
   "url": "https://www.spine.org/",
-  "blurb": "NASS Annual Meeting is the annual meeting of the North American Spine Society; the host city rotates and Chicago is an estimate. Dates expected; not yet announced.",
+  "blurb": "NASS Annual Meeting is the annual meeting of the North American Spine Society.",
   "datesConfirmed": true,
   "datesSourceUrl": "https://www.spine.org/AM",
   "datesQuote": "September 23-25, 2027",
@@ -27220,6 +27771,34 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.annanurse.org/",
   "blurb": "ANNA National Symposium is the annual meeting of the American Nephrology Nurses Association; the host city rotates and Phoenix is an estimate. Dates expected; not yet announced.",
   "datesConfirmed": false
+ },
+ {
+  "id": "csanz-aae-echo-asia-2027",
+  "name": "CSANZ/AAE Echo Asia 2027",
+  "organiser": "Cardiac Society of Australia and New Zealand with the Asia Pacific Association of Echocardiography",
+  "specialty": "Cardiology",
+  "city": "Sydney",
+  "country": "Australia",
+  "countryCode": "AU",
+  "region": "Asia-Pacific",
+  "lat": -33.8678,
+  "lng": 151.21,
+  "start": "2027-09-24",
+  "end": "2027-09-25",
+  "format": "In-person",
+  "cpdHours": 0,
+  "cpdBody": "",
+  "priceFrom": 0,
+  "attendees": 0,
+  "url": "https://www.csanz.edu.au/EventDetail?EventKey=ECHOASIA27",
+  "blurb": "Two-day echocardiography meeting of CSANZ and the Asia Pacific Association of Echocardiography at the Sydney Masonic Centre.",
+  "datesConfirmed": true,
+  "dateStatus": "confirmed",
+  "sourceUrl": "https://www.csanz.edu.au/EventDetail?EventKey=ECHOASIA27",
+  "datesSourceUrl": "https://www.csanz.edu.au/EventDetail?EventKey=ECHOASIA27",
+  "datesQuote": "Friday, 24 September 2027 to Saturday, 25 September 2027",
+  "verifiedOn": "2026-11-25",
+  "lastVerified": "2026-11-25"
  },
  {
   "dateStatus": "estimated",
@@ -27294,9 +27873,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.cirse.org/onsite/event-calendar/",
   "blurb": "Annual congress of the Cardiovascular and Interventional Radiological Society of Europe.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.cirse.org/onsite/event-calendar/",
+  "datesQuote": "Sep 25 2027 - Sep 29 2027",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "confirmed",
@@ -27735,8 +28316,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://rcog.eventsair.com/annual-professional-development2027",
   "blurb": "In-person professional development conference at the RCOG building in London.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://rcog.eventsair.com/annual-professional-development2027",
+  "datesQuote": "29 September – 1 October 2027",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "estimated",
@@ -27940,8 +28524,8 @@ window.HOGGY_CONFERENCES = [
   "country": "Japan",
   "countryCode": "JP",
   "region": "Asia-Pacific",
-  "lat": 35.18,
-  "lng": 136.91,
+  "lat": 43.0619,
+  "lng": 141.3544,
   "start": "2027-10-05",
   "end": "2027-10-07",
   "format": "In-person",
@@ -27979,8 +28563,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.sap.org.ar/congresos",
   "blurb": "In-person SAP congress on disability in paediatrics at the Sheraton Buenos Aires Hotel & Convention Center.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.sap.org.ar/congresos/detalle-congreso/300",
+  "datesQuote": "Fecha: 6 y 7 de octubre de 2027",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "confirmed",
@@ -28405,9 +28992,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.eacsociety.org/",
   "blurb": "21st biennial European AIDS Conference on HIV and co-infections.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.eacsociety.org/european-aids-conference/eacs-2027-prague/",
+  "datesQuote": "6-9 October 2027",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "confirmed",
@@ -28610,8 +29199,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://apsavd.org/events",
   "blurb": "Meeting organised by Asia Pacific Society of Vascular Diseases in Pattaya, Thailand.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://apsavd.org/events",
+  "datesQuote": "APSAVD CONGRESS 2027 will be held on 7-8 October 2027 in Pattaya, Thailand.",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "estimated",
@@ -29022,8 +29614,8 @@ window.HOGGY_CONFERENCES = [
   "country": "Japan",
   "countryCode": "JP",
   "region": "Asia-Pacific",
-  "lat": 35.18,
-  "lng": 136.91,
+  "lat": 33.5901,
+  "lng": 130.4017,
   "start": "2027-10-08",
   "end": "2027-10-10",
   "format": "In-person",
@@ -29149,8 +29741,8 @@ window.HOGGY_CONFERENCES = [
   "country": "Australia",
   "countryCode": "AU",
   "region": "Asia-Pacific",
-  "lat": -31.95,
-  "lng": 115.86,
+  "lat": -33.8678,
+  "lng": 151.21,
   "start": "2027-10-10",
   "end": "2027-10-13",
   "format": "In-person",
@@ -29340,7 +29932,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 0,
   "attendees": 0,
   "url": "https://www.achsm.org.au",
-  "blurb": "The annual health service leadership congress, usually hosted in Sydney though the host city rotates. Dates expected; not yet announced.",
+  "blurb": "Annual congress of the Australasian College of Health Service Management, in Adelaide.",
   "datesConfirmed": true,
   "datesSourceUrl": "https://www.achsm.org.au/events/2027-achsm-congress-adelaide/",
   "datesQuote": "Wed 13 – Fri 15 October 2027",
@@ -29442,7 +30034,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 0,
   "attendees": 0,
   "url": "https://www.ases-assn.org/",
-  "blurb": "ASES Annual Meeting is the annual meeting of the American Shoulder and Elbow Surgeons; the host city rotates and Sun Valley is an estimate. Dates expected; not yet announced.",
+  "blurb": "ASES Annual Meeting is the annual meeting of the American Shoulder and Elbow Surgeons.",
   "datesConfirmed": true,
   "datesSourceUrl": "https://ases-assn.org/meetings/",
   "datesQuote": "ASES 2027 Annual Meeting October 13 – 16, 2027",
@@ -29786,7 +30378,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 0,
   "attendees": 0,
   "url": "https://www.asds.net/",
-  "blurb": "ASDS Annual Meeting is the annual meeting of the American Society for Dermatologic Surgery; the host city rotates and Chicago is an estimate. Dates expected; not yet announced.",
+  "blurb": "ASDS Annual Meeting is the annual meeting of the American Society for Dermatologic Surgery, in Chicago.",
   "datesConfirmed": true,
   "datesSourceUrl": "https://www.asds.net/annual-meeting",
   "datesQuote": "Save the date for the 2027 ASDS Annual Meeting in Chicago, Illinois, on Oct. 14–17, 2027.",
@@ -29884,8 +30476,8 @@ window.HOGGY_CONFERENCES = [
   "country": "Japan",
   "countryCode": "JP",
   "region": "Asia-Pacific",
-  "lat": 35.01,
-  "lng": 135.77,
+  "lat": 33.5901,
+  "lng": 130.4017,
   "start": "2027-10-14",
   "end": "2027-10-16",
   "format": "In-person",
@@ -30125,9 +30717,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.aap.org",
   "blurb": "The AAP's annual paediatric education conference.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://aapexperience.org/future-dates/",
+  "datesQuote": "October 15-19, 2027",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "confirmed",
@@ -30140,8 +30734,8 @@ window.HOGGY_CONFERENCES = [
   "country": "United States",
   "countryCode": "US",
   "region": "North America",
-  "lat": 37.77,
-  "lng": -122.42,
+  "lat": 42.3603,
+  "lng": -71.0578,
   "start": "2027-10-15",
   "end": "2027-10-19",
   "format": "Hybrid",
@@ -30524,8 +31118,8 @@ window.HOGGY_CONFERENCES = [
   "country": "New Zealand",
   "countryCode": "NZ",
   "region": "Asia-Pacific",
-  "lat": -45.03,
-  "lng": 168.66,
+  "lat": -36.8492,
+  "lng": 174.7653,
   "start": "2027-10-18",
   "end": "2027-10-19",
   "format": "In-person",
@@ -30590,12 +31184,15 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.augs.org/annual-meeting/",
   "blurb": "Joint meeting of the American Urogynecologic Society and the International Urogynecological Association in Boston.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.augs.org/annual-meeting/",
+  "datesQuote": "October 19-22, 2027",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "confirmed",
-  "sourceUrl": "https://www.aphrs.org/",
+  "sourceUrl": "https://www.aphrs.org/news/712-call-for-speakers-aphrs-2027-taipei",
   "id": "aphrs-scientific-session-taipei-2027",
   "name": "20th APHRS Scientific Session (APHRS 2027 Taipei)",
   "organiser": "Asia Pacific Heart Rhythm Society",
@@ -30616,8 +31213,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.aphrs.org/",
   "blurb": "Meeting organised by Asia Pacific Heart Rhythm Society in Taipei, Taiwan.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.aphrs.org/news/712-call-for-speakers-aphrs-2027-taipei",
+  "datesQuote": "We are excited to invite you to register your interest in speaking at the upcoming 20th APHRS Scientific Session (APHRS 2027), taking place in Taipei, Taiwan from 20-24 October 2027.",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "estimated",
@@ -31636,9 +32236,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.elsevier.com/events/conferences/all/global-emergency-nursing-conference",
   "blurb": "A three-day first-edition international emergency nursing conference by ENA and Elsevier with plenaries, podium and poster presentations.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.elsevier.com/events/conferences/all/global-emergency-nursing-conference",
+  "datesQuote": "21-23 October 2027 | Rotterdam, The Netherlands",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "confirmed",
@@ -31862,8 +32464,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.rssa.co.za/congress-and-workshops",
   "blurb": "Head and neck imaging congress at the Century City Conference Centre, run with ESOR and ARRS.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.rssa.co.za/congress-and-workshops",
+  "datesQuote": "PLEASE SAVE THE DATE : 22nd - 24th OCT 2027.",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "estimated",
@@ -32065,8 +32670,8 @@ window.HOGGY_CONFERENCES = [
   "country": "Australia",
   "countryCode": "AU",
   "region": "Asia-Pacific",
-  "lat": -37.81,
-  "lng": 144.96,
+  "lat": -34.9275,
+  "lng": 138.6,
   "start": "2027-10-24",
   "end": "2027-10-27",
   "format": "In-person",
@@ -32104,9 +32709,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.aacap.org",
   "blurb": "The AACAP's annual child and adolescent psychiatry meeting.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.aacap.org/AnnualMeeting-2027",
+  "datesQuote": "the world’s premier gathering of child and adolescent psychiatrists in New York, NY, October 25-30, 2027. AACAP’s 2027 Annual Meeting is the best place to connect with colleagues, old and new,",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "estimated",
@@ -32315,8 +32922,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.aanem.org/meetings/future-annual-meetings",
   "blurb": "Annual meeting of the American Association of Neuromuscular & Electrodiagnostic Medicine in San Antonio.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.aanem.org/meetings/future-annual-meetings",
+  "datesQuote": "October 27 to 30, 2027",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "estimated",
@@ -32667,7 +33277,7 @@ window.HOGGY_CONFERENCES = [
  },
  {
   "dateStatus": "confirmed",
-  "sourceUrl": "https://www.wmsm.org/",
+  "sourceUrl": "https://www.wmsm.org/meeting2024/",
   "id": "wmsm-cairo",
   "name": "28th World Meeting on Sexual Medicine (WMSM 2027) - Joint ISSM/MESSM Meeting",
   "organiser": "International Society for Sexual Medicine / Middle East Society for Sexual Medicine",
@@ -32688,9 +33298,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.wmsm.org/",
   "blurb": "World meeting on sexual medicine held jointly with the Middle East Society for Sexual Medicine.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.wmsm.org/meeting2024/",
+  "datesQuote": "Upcoming: Joint ISSM/MESSM Scientific Meeting 2027 – Cairo, Egypt – October 28-30, 2027",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "estimated",
@@ -32892,7 +33504,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 0,
   "attendees": 0,
   "url": "https://rheumatology.org/",
-  "blurb": "ACR Convergence is the annual meeting of the American College of Rheumatology; the host city rotates and Chicago is an estimate. Dates expected; not yet announced.",
+  "blurb": "ACR Convergence is the annual meeting of the American College of Rheumatology.",
   "datesConfirmed": true,
   "datesSourceUrl": "https://rheumatology.org/meetings/acr-convergence",
   "datesQuote": "Date: October 29–November 3, 2027",
@@ -33159,8 +33771,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.ebmt.org/events",
   "blurb": "EBMT meeting on lymphoma, multiple myeloma and CLL, Barcelona.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.ebmt.org/events",
+  "datesQuote": "Nov 03, 2027 - Nov 05, 2027",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "confirmed",
@@ -33183,7 +33798,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 0,
   "attendees": 0,
   "url": "https://www.geron.org/",
-  "blurb": "GSA Annual Scientific Meeting is the annual meeting of the Gerontological Society of America; the host city rotates and Boston is an estimate. Dates expected; not yet announced.",
+  "blurb": "GSA Annual Scientific Meeting is the annual meeting of the Gerontological Society of America.",
   "datesConfirmed": true,
   "datesSourceUrl": "https://www.geron.org/News-Events/Calendar-of-Events",
   "datesQuote": "Nov. 3 - 6, 2027",
@@ -33310,9 +33925,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.globalfamilydoctor.com",
   "blurb": "The global conference of family doctors and general practitioners.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://admin.globalfamilydoctor.com/Conferences/WONCAWorld2027.aspx",
+  "datesQuote": "3 - 7 November 2027.",
+  "verifiedOn": "2026-11-25"
  },
  {
   "id": "anzspm-medical-surgical-update-2027",
@@ -33365,9 +33982,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://apsr.org",
   "blurb": "The major Asia-Pacific respiratory medicine congress.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://apsr.org/events/upcoming_events/",
+  "datesQuote": "4-7 November 2027",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "estimated",
@@ -33695,9 +34314,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.astmh.org",
   "blurb": "The 76th annual meeting on tropical medicine and global health.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.astmh.org/annual-meeting/past-meetings",
+  "datesQuote": "November 7-11, 2027 (Sunday through Thursday)",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "estimated",
@@ -33970,8 +34591,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.thyroid.org/professionals/meetings/",
   "blurb": "Annual meeting of the American Thyroid Association at the Hyatt Regency Denver.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.thyroid.org/professionals/meetings/",
+  "datesQuote": "November 10-13, 2027",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "estimated",
@@ -34284,9 +34908,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.cosa.org.au",
   "blurb": "Australia's multidisciplinary cancer care annual meeting.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.cosa.org.au/events/annual-scientific-meeting/",
+  "datesQuote": "10-12 November 2027",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "estimated",
@@ -34749,8 +35375,8 @@ window.HOGGY_CONFERENCES = [
   "country": "United States",
   "countryCode": "US",
   "region": "North America",
-  "lat": 41.88,
-  "lng": -87.63,
+  "lat": 36.1672,
+  "lng": -115.1486,
   "start": "2027-11-12",
   "end": "2027-11-15",
   "format": "Hybrid",
@@ -35587,8 +36213,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.ebmt.org/events",
   "blurb": "EBMT joint working party meeting with the 29th Infectious Diseases course and 19th Nurses Group meeting, Krakow.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.ebmt.org/events",
+  "datesQuote": "Nov 18, 2027 - Nov 20, 2027",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "estimated",
@@ -35659,7 +36288,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 0,
   "attendees": 0,
   "url": "https://www.soc-neuro-onc.org/",
-  "blurb": "SNO Annual Meeting is the annual meeting of the Society for Neuro-Oncology; the host city rotates and Vancouver is an estimate. Dates expected; not yet announced.",
+  "blurb": "SNO Annual Meeting is the annual meeting of the Society for Neuro-Oncology.",
   "datesConfirmed": true,
   "datesSourceUrl": "https://www.soc-neuro-onc.org/meetings-education/sno-annual-meetings",
   "datesQuote": "November 18-21, 2027",
@@ -36321,8 +36950,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.saafrica.org/pages/2026/08/25/icasa-2027-official-speech-by-saa-president-icasa-2027-president/",
   "blurb": "Biennial pan-African conference on HIV and sexually transmitted infections, hosted in Benin for the first time.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.saafrica.org/pages/2026/08/25/icasa-2027-official-speech-by-saa-president-icasa-2027-president/",
+  "datesQuote": "ICASA+ 2027 will take place in Benin, in Cotonou, from December 5 to 9, 2027.",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "estimated",
@@ -36395,9 +37027,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.sabcs.org",
   "blurb": "A major annual symposium on breast cancer research.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://sabcs.org/media/future-symposia/",
+  "datesQuote": "December 7-10, 2027",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "estimated",
@@ -36593,9 +37227,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.sobup.online/evenements/9eme-congres",
   "blurb": "Respiratory medicine congress at Sopatel Silmande Hotel.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.sobup.online/evenements/9eme-congres",
+  "datesQuote": "📅 16 au 19 Décembre 2027",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "estimated",
@@ -38824,8 +39460,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.aanem.org/meetings/future-annual-meetings",
   "blurb": "Hands-on neuromuscular ultrasound and EMG course held in San Diego.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.aanem.org/meetings/future-annual-meetings",
+  "datesQuote": "March 22 to 25, 2028",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "estimated",
@@ -38946,8 +39585,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.napnap.org/future-conference-dates/",
   "blurb": "NAPNAP's annual national conference for pediatric nurse practitioners, listed for the Hilton Anatole with a pre-conference day on 22 March 2028.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.napnap.org/future-conference-dates/",
+  "datesQuote": "Thursday, March 23 – Sunday, March 26, 2028",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "estimated",
@@ -39183,8 +39825,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.sages.org/meetings/",
   "blurb": "Annual meeting of SAGES at the Charlotte Convention Center.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.sages.org/meetings/",
+  "datesQuote": "SAGES 2028 will be held March 29-April 1, 2028 at the Charlotte Convention Center in Charlotte, North Carolina.",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "estimated",
@@ -39233,9 +39878,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.acc.org",
   "blurb": "ACC's annual scientific session and expo in Chicago.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://accscientificsession.acc.org/Information-Pages/Future-Meetings",
+  "datesQuote": "April 1 – 3, 2028",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "confirmed",
@@ -39258,7 +39905,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 0,
   "attendees": 0,
   "url": "https://www.aaem.org/",
-  "blurb": "AAEM Scientific Assembly is the annual meeting of the American Academy of Emergency Medicine; the host city rotates and Las Vegas is an estimate. Dates expected; not yet announced.",
+  "blurb": "AAEM Scientific Assembly is the annual meeting of the American Academy of Emergency Medicine, in Denver.",
   "datesConfirmed": true,
   "datesSourceUrl": "https://www.aaem.org/aaem27/future-scientific-assemblies/",
   "datesQuote": "April 2-6, 2028 | Denver, CO | Sheraton Denver Downtown",
@@ -40476,8 +41123,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.jsog.or.jp/en/6508/",
   "blurb": "Annual congress of the Japan Society of Obstetrics and Gynecology, presided by Prof. Akihiko Sekizawa of Showa Medical University.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.jsog.or.jp/en/6508/",
+  "datesQuote": "Date：April 21-23, 2028",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "confirmed",
@@ -41168,7 +41818,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 0,
   "attendees": 0,
   "url": "https://stfm.org/",
-  "blurb": "STFM Annual Spring Conference is the annual meeting of the Society of Teachers of Family Medicine; the host city rotates and Nashville is an estimate. Dates expected; not yet announced.",
+  "blurb": "STFM Annual Spring Conference is the annual meeting of the Society of Teachers of Family Medicine, in Philadelphia.",
   "datesConfirmed": true,
   "datesSourceUrl": "https://www.stfm.org/conferences/stfm-conferences/",
   "datesQuote": "April 29–May 3, 2028 | Philadelphia Marriott Downtown | Philadelphia, PA",
@@ -42212,7 +42862,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 0,
   "attendees": 0,
   "url": "https://ewma.org/",
-  "blurb": "EWMA Conference is the annual meeting of the European Wound Management Association, usually held in May; Lisbon is the likely host city (host city may rotate). Dates expected; not yet announced.",
+  "blurb": "EWMA Conference is the annual meeting of the European Wound Management Association, in Amsterdam.",
   "datesConfirmed": true,
   "datesSourceUrl": "https://ewma.org/ewma-2028-conference/",
   "datesQuote": "We are pleased to announce that the 38th Conference of the European Wound Management Association will take place on 10-12 May 2028 in Amsterdam, the Netherlands.",
@@ -42509,8 +43159,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.sgcr-wires.com/apscvir2028",
   "blurb": "Meeting organised by Asia Pacific Society of Cardiovascular and Interventional Radiology, Singapore Radiological Society and College of Radiologists Singapore in Singapore, Singapore.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.sgcr-wires.com/apscvir2028",
+  "datesQuote": "12 - 14 MAY 2028",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "estimated",
@@ -43121,7 +43774,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 0,
   "attendees": 0,
   "url": "https://acoem.org/",
-  "blurb": "American Occupational Health Conference is the annual meeting of the American College of Occupational and Environmental Medicine; the host city rotates and Denver is an estimate. Dates expected; not yet announced.",
+  "blurb": "American Occupational Health Conference is the annual meeting of the American College of Occupational and Environmental Medicine.",
   "datesConfirmed": true,
   "datesSourceUrl": "https://acoem.org/American-Occupational-Health-Conference-(AOHC)/Future-Conferences",
   "datesQuote": "May 21 - 24, 2028",
@@ -43773,7 +44426,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 0,
   "attendees": 0,
   "url": "https://academyhealth.org/",
-  "blurb": "AcademyHealth Annual Research Meeting is the annual meeting of the AcademyHealth; the host city rotates and Seattle is an estimate. Dates expected; not yet announced.",
+  "blurb": "AcademyHealth Annual Research Meeting is the annual meeting of AcademyHealth, in St. Louis.",
   "datesConfirmed": true,
   "datesSourceUrl": "https://academyhealth.org/ARM2026",
   "datesQuote": "June 1-6, 2028 | St. Louis, MO | Americas Convention Center",
@@ -43922,7 +44575,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 0,
   "attendees": 0,
   "url": "https://www.myast.org/",
-  "blurb": "American Transplant Congress is the annual meeting of the American Society of Transplantation and ASTS; the host city rotates and Boston is an estimate. Dates expected; not yet announced.",
+  "blurb": "American Transplant Congress is the annual meeting of the American Society of Transplantation and ASTS.",
   "datesConfirmed": true,
   "datesSourceUrl": "https://www.atcmeeting.org/Attend/ATC-Dates",
   "datesQuote": "JUNE 3-7, 2028",
@@ -44023,7 +44676,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 0,
   "attendees": 0,
   "url": "https://asmbs.org/",
-  "blurb": "ASMBS Annual Meeting is the annual meeting of the American Society for Metabolic and Bariatric Surgery; the host city rotates and Las Vegas is an estimate. Dates expected; not yet announced.",
+  "blurb": "ASMBS Annual Meeting is the annual meeting of the American Society for Metabolic and Bariatric Surgery.",
   "datesConfirmed": true,
   "datesSourceUrl": "https://asmbs.org/professional-development/meetings-of-interest/",
   "datesQuote": "June 4 – 8, 2028",
@@ -44664,9 +45317,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://professional.diabetes.org/scientific-sessions",
   "blurb": "Major diabetes research meeting, George R. Brown Convention Center.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://professional.diabetes.org/scientific-sessions",
+  "datesQuote": "June 9–12, 2028",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "estimated",
@@ -45560,9 +46215,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.ean.org",
   "blurb": "European neurology congress at Rotterdam Ahoy.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.ean.org/meet/congresses/future-congresses",
+  "datesQuote": "17-20 June 2028, Rotterdam",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "estimated",
@@ -46798,9 +47455,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.aan.com/events",
   "blurb": "Specialty conference on autoimmune neurology, Orlando and online.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.aan.com/events/upcoming-events",
+  "datesQuote": "August 4-5, 2028",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "estimated",
@@ -47963,9 +48622,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://wclc.iaslc.org",
   "blurb": "Major global thoracic oncology conference.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://wclc.iaslc.org/future-conferences/",
+  "datesQuote": "September 9 – 12, 2028",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "estimated",
@@ -48568,7 +49229,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 0,
   "attendees": 0,
   "url": "https://myana.org/",
-  "blurb": "ANA Annual Meeting is the annual meeting of the American Neurological Association; the host city rotates and Chicago is an estimate. Dates expected; not yet announced.",
+  "blurb": "ANA Annual Meeting is the annual meeting of the American Neurological Association.",
   "datesConfirmed": true,
   "datesSourceUrl": "https://myana.org/meetings/future-annual-meeting-dates/",
   "datesQuote": "September 16–19, 2028",
@@ -48804,7 +49465,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 0,
   "attendees": 0,
   "url": "https://www.esvs.org/",
-  "blurb": "ESVS Annual Meeting is the annual meeting of the European Society for Vascular Surgery, usually held in September; Athens is the likely host city (host city may rotate). Dates expected; not yet announced.",
+  "blurb": "ESVS Annual Meeting is the annual meeting of the European Society for Vascular Surgery.",
   "datesConfirmed": true,
   "datesSourceUrl": "https://esvs.org/events/category/the-esvs-annual-meeting/",
   "datesQuote": "19 September 2028 - 22 September 2028",
@@ -49483,8 +50144,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.augs.org/annual-meeting/",
   "blurb": "49th annual meeting of the American Urogynecologic Society in Louisville.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.augs.org/annual-meeting/",
+  "datesQuote": "AUGS 49th Annual Meeting September 26-29, 2028 Louisville, Kentucky",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "estimated",
@@ -50411,9 +51075,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.aan.com/events",
   "blurb": "Neurology practice-focused fall conference, Las Vegas and online.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.aan.com/events/upcoming-events",
+  "datesQuote": "October 6-8, 2028",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "estimated",
@@ -50484,7 +51150,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 0,
   "attendees": 0,
   "url": "https://www.ecnp.eu/",
-  "blurb": "ECNP Congress is the annual meeting of the European College of Neuropsychopharmacology, usually held in October; Vienna is the likely host city (host city may rotate). Dates expected; not yet announced.",
+  "blurb": "ECNP Congress is the annual meeting of the European College of Neuropsychopharmacology, in Copenhagen.",
   "datesConfirmed": true,
   "datesSourceUrl": "https://www.ecnp.eu/meetings/ecnp-congresses",
   "datesQuote": "7-10 October 2028, Copenhagen, Denmark",
@@ -51708,9 +52374,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.astmh.org/annual-meeting",
   "blurb": "Tropical medicine and global health annual meeting.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://www.astmh.org/annual-meeting/past-meetings",
+  "datesQuote": "October 18-22, 2028 (Wednesday through Sunday)",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "estimated",
@@ -52703,7 +53371,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 0,
   "attendees": 0,
   "url": "https://acccn.com.au/events/conferences-2/",
-  "blurb": "Annual scientific meeting of the Australasian College of Critical Care Nurses, listed for Perth. Venue not yet announced.",
+  "blurb": "Annual scientific meeting of the Australasian College of Critical Care Nurses, in Perth.",
   "datesConfirmed": true,
   "lastVerified": "2026-11-18",
   "datesSourceUrl": "https://acccn.com.au/events/conferences-2/",
@@ -53123,7 +53791,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 0,
   "attendees": 0,
   "url": "https://www.asds.net/",
-  "blurb": "ASDS Annual Meeting is the annual meeting of the American Society for Dermatologic Surgery; the host city rotates and Chicago is an estimate. Dates expected; not yet announced.",
+  "blurb": "ASDS Annual Meeting is the annual meeting of the American Society for Dermatologic Surgery.",
   "datesConfirmed": true,
   "datesSourceUrl": "https://www.asds.net/annual-meeting",
   "datesQuote": "Oct. 26–29, 2028",
@@ -53381,8 +54049,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://www.aanem.org/meetings/future-annual-meetings",
   "blurb": "Annual meeting of the American Association of Neuromuscular & Electrodiagnostic Medicine in Louisville.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-07",
-  "legacyConfirmed": true
+  "lastVerified": "2026-11-25",
+  "datesSourceUrl": "https://www.aanem.org/meetings/future-annual-meetings",
+  "datesQuote": "November 1 to 4, 2028",
+  "verifiedOn": "2026-11-25",
+  "provenance": "organiser-page"
  },
  {
   "dateStatus": "estimated",
@@ -53453,7 +54124,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 0,
   "attendees": 0,
   "url": "https://www.geron.org/",
-  "blurb": "GSA Annual Scientific Meeting is the annual meeting of the Gerontological Society of America; the host city rotates and Boston is an estimate. Dates expected; not yet announced.",
+  "blurb": "GSA Annual Scientific Meeting is the annual meeting of the Gerontological Society of America.",
   "datesConfirmed": true,
   "datesSourceUrl": "https://www.geron.org/News-Events/Calendar-of-Events",
   "datesQuote": "Nov. 1 - 4, 2028",
@@ -53682,9 +54353,11 @@ window.HOGGY_CONFERENCES = [
   "url": "https://aapexperience.org",
   "blurb": "The AAP Experience national paediatrics conference.",
   "datesConfirmed": true,
-  "lastVerified": "2026-11-09",
+  "lastVerified": "2026-11-25",
   "provenance": "organiser-page",
-  "legacyConfirmed": true
+  "datesSourceUrl": "https://aapexperience.org/future-dates/",
+  "datesQuote": "November 3-7, 2028",
+  "verifiedOn": "2026-11-25"
  },
  {
   "dateStatus": "estimated",
@@ -55159,7 +55832,7 @@ window.HOGGY_CONFERENCES = [
   "priceFrom": 0,
   "attendees": 0,
   "url": "https://www.soc-neuro-onc.org/",
-  "blurb": "SNO Annual Meeting is the annual meeting of the Society for Neuro-Oncology; the host city rotates and Vancouver is an estimate. Dates expected; not yet announced.",
+  "blurb": "SNO Annual Meeting is the annual meeting of the Society for Neuro-Oncology.",
   "datesConfirmed": true,
   "datesSourceUrl": "https://www.soc-neuro-onc.org/meetings-education/sno-annual-meetings",
   "datesQuote": "November 16-19, 2028",

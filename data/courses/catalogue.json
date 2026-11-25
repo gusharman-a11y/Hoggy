@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-24",
+ "generated": "2026-11-25",
  "note": "Facts only from provider/course-owner pages read on lastVerified, each with sourceUrl + quote. null = not published or not readable this run. cpdHours 0 = check provider.",
  "courses": [
   {
@@ -5819,6 +5819,174 @@
    "note": "Dates from the RCSEd course page; session rows carry the page's CPD hours and \"From\" fee. Course facts not otherwise reviewed.",
    "verified": false,
    "fromSource": "intl"
+  },
+  {
+   "id": "crana-rec",
+   "name": "Remote Emergency Care (REC), CRANAplus",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "CRANAplus",
+     "url": "https://www.crana.org.au/",
+     "verified": true,
+     "calendar": "https://www.crana.org.au/course/remote-emergency-course-rec/"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "format": "Two-day face-to-face workshop with online pre-learning: guided discussions, skill stations and scenarios for initial emergency care in remote settings.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.crana.org.au/course/remote-emergency-course-rec/",
+    "quote": "Time : 2 day workshop + pre-learning",
+    "lastVerified": "2026-11-25"
+   },
+   "typicalLength": "2 days",
+   "cpdNote": "check provider",
+   "notes": "CRANAplus is the peak body for the remote and isolated health workforce. Sessions are listed with a start date only; the end date is worked out from the stated workshop length.",
+   "fromSource": "aunz-wave2"
+  },
+  {
+   "id": "crana-mec",
+   "name": "Maternity Emergency Care (MEC), CRANAplus",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "CRANAplus",
+     "url": "https://www.crana.org.au/",
+     "verified": true,
+     "calendar": "https://www.crana.org.au/course/maternity-emergency-course-mec/"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "format": "Two-day face-to-face workshop with online pre-learning on maternity emergencies in remote settings, for non-midwife practitioners.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.crana.org.au/course/maternity-emergency-course-mec/",
+    "quote": "Time : 2 day workshop + pre-learning",
+    "lastVerified": "2026-11-25"
+   },
+   "typicalLength": "2 days",
+   "cpdNote": "check provider",
+   "notes": "CRANAplus is the peak body for the remote and isolated health workforce. Sessions are listed with a start date only; the end date is worked out from the stated workshop length.",
+   "fromSource": "aunz-wave2"
+  },
+  {
+   "id": "crana-midus",
+   "name": "Midwifery Upskilling (MIDUS), CRANAplus",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "CRANAplus",
+     "url": "https://www.crana.org.au/",
+     "verified": true,
+     "calendar": "https://www.crana.org.au/course/midwifery-upskilling-course-midus/"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "format": "Two and a half day workshop plus 8 hours of pre-learning for midwives and medical officers giving maternity care in remote settings.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.crana.org.au/course/midwifery-upskilling-course-midus/",
+    "quote": "Time : 2 and a half day workshop + 8 hours pre-learning",
+    "lastVerified": "2026-11-25"
+   },
+   "typicalLength": "2.5 days",
+   "cpdNote": "check provider",
+   "notes": "CRANAplus is the peak body for the remote and isolated health workforce. Sessions are listed with a start date only; the end date is worked out from the stated workshop length.",
+   "fromSource": "aunz-wave2"
+  },
+  {
+   "id": "crana-pec-pals",
+   "name": "Paediatric Emergency Care and Paediatric Advanced Life Support (PEC+PALS), CRANAplus",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "CRANAplus",
+     "url": "https://www.crana.org.au/",
+     "verified": true,
+     "calendar": "https://www.crana.org.au/course/paediatric-emergency-course-and-paediatric-advanced-life-support-pec-pals/"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "format": "Two and a half day workshop plus pre-learning on paediatric emergencies and paediatric advanced life support in remote settings.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.crana.org.au/course/paediatric-emergency-course-and-paediatric-advanced-life-support-pec-pals/",
+    "quote": "Time : 2 and a half day workshop + pre-learning",
+    "lastVerified": "2026-11-25"
+   },
+   "typicalLength": "2.5 days",
+   "cpdNote": "check provider",
+   "notes": "CRANAplus is the peak body for the remote and isolated health workforce. Sessions are listed with a start date only; the end date is worked out from the stated workshop length.",
+   "fromSource": "aunz-wave2"
+  },
+  {
+   "id": "crana-arec-als",
+   "name": "Advanced Remote Emergency Care and Advanced Life Support (AREC+ALS), CRANAplus",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "CRANAplus",
+     "url": "https://www.crana.org.au/",
+     "verified": true,
+     "calendar": "https://www.crana.org.au/course/advanced-remote-emergency-course-and-advanced-life-support-arec-als/"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "format": "Two and a half day workshop plus pre-learning, for health professionals who have completed REC (or equivalent).",
+   "formatEvidence": {
+    "sourceUrl": "https://www.crana.org.au/course/advanced-remote-emergency-course-and-advanced-life-support-arec-als/",
+    "quote": "Time : 2 and a half day workshop + pre-learning",
+    "lastVerified": "2026-11-25"
+   },
+   "typicalLength": "2.5 days",
+   "cpdNote": "check provider",
+   "notes": "CRANAplus is the peak body for the remote and isolated health workforce. Sessions are listed with a start date only; the end date is worked out from the stated workshop length.",
+   "fromSource": "aunz-wave2"
+  },
+  {
+   "id": "crana-anls",
+   "name": "Advanced Newborn Life Support (ANLS), CRANAplus",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "CRANAplus",
+     "url": "https://www.crana.org.au/",
+     "verified": true,
+     "calendar": "https://www.crana.org.au/course/advanced-newborn-life-support-anls/"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "format": "Online pre-learning and quiz, then a one-day face-to-face workshop.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.crana.org.au/course/advanced-newborn-life-support-anls/",
+    "quote": "Time : Online pre-learning and quiz, followed by a one-day face-to-face workshop. Total learning time: 12 hours, equivalent to 12 CPD hours.",
+    "lastVerified": "2026-11-25"
+   },
+   "typicalLength": "1 day",
+   "cpdNote": "check provider",
+   "notes": "CRANAplus is the peak body for the remote and isolated health workforce. Sessions are listed with a start date only; the end date is worked out from the stated workshop length.",
+   "fromSource": "aunz-wave2"
   }
  ]
 }

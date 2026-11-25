@@ -118,7 +118,7 @@ for (const f of shardFiles.filter(x => x.startsWith('cpd-'))) {
    the merge's own base. Entry: { id, note, remove?: true, evidenceTo?: id, set?: { specialty|name|organiser|blurb }, strip?: [fields],
    estimateReason? }. remove drops the row (a shard re-adding it is dropped again); evidenceTo first moves its B30 evidence (dates,
    place, quote) onto the row that is kept; strip zeroes unsourced figures; set fields are checked (specialty must be canonical). */
-const SET_OK = new Set(['specialty', 'name', 'organiser', 'blurb']), STRIP_OK = new Set(['attendees', 'priceFrom', 'cpdBody', 'cpdHours']);
+const SET_OK = new Set(['specialty', 'name', 'organiser', 'blurb', 'lat', 'lng']) /* lat/lng (wave 2): map-pin fixes, numbers in range */, STRIP_OK = new Set(['attendees', 'priceFrom', 'cpdBody', 'cpdHours']);
 const fixStats = { removed: 0, evidenceMoved: 0, set: 0, stripped: 0, missing: [] };
 for (const f of shardFiles.filter(x => x.startsWith('fix-'))) {
   let arr; try { arr = JSON.parse(fs.readFileSync(path.join(shardDir, f), 'utf8')); } catch (e) { console.error(f, 'unparseable'); process.exit(1); }
@@ -128,6 +128,7 @@ for (const f of shardFiles.filter(x => x.startsWith('fix-'))) {
     if (e.set) for (const [k, v] of Object.entries(e.set)) {
       if (!SET_OK.has(k)) { console.error(`FAIL: ${f} ${e.id}: cannot set ${k}`); process.exit(1); }
       if (k === 'specialty' && !CANON.has(v)) { console.error(`FAIL: ${f} ${e.id}: specialty "${v}" is not canonical`); process.exit(1); }
+      if ((k === 'lat' || k === 'lng') && !(typeof v === 'number' && Math.abs(v) <= (k === 'lat' ? 90 : 180))) { console.error(`FAIL: ${f} ${e.id}: ${k} must be a number in range`); process.exit(1); }
       row[k] = v; fixStats.set++;
     }
     for (const k of e.strip || []) { if (!STRIP_OK.has(k)) { console.error(`FAIL: ${f} ${e.id}: cannot strip ${k}`); process.exit(1); } row[k] = k === 'cpdBody' ? '' : 0; if (k.startsWith('cpd')) delete row.cpdVerified; fixStats.stripped++; }
