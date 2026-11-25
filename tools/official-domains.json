@@ -3,6 +3,8 @@
  "official": [
   { "host": "congre.co.jp", "path": "/joa2027", "for": ["joa-annual-meeting"], "note": "wave3: 100th JOA meeting site on Congre; joa.or.jp links it (read 25 Nov 2026)" },
   { "host": "apasl2027.org", "for": ["apasl-2027"], "note": "wave3: APASL 2027 Sydney site; apasl.info gives it as the URL for APASL 2027 (read 25 Nov 2026)" },
+  {"host": "euroanaesthesia.org", "for": ["euroanaesthesia", "euroanaesthesia-2028"], "note": "Euroanaesthesia congress site of the ESAIC, linked from esaic.org (global-1, 25 Nov 2026)"},
+  {"host": "esceo.org", "for": ["wco-iof-esceo"], "note": "ESCEO, co-organiser of the WCO-IOF-ESCEO congress; its events page lists WCO 2027 (global-1, 25 Nov 2026)"},
   { "host": "usicon2027.com", "for": ["usicon-chennai-2027-expected"], "note": "USICON 2027 site of the Urological Society of India" },
   { "host": "web.cvent.com", "path": "/event/e57907a5-de4c-4c8f-a219-967fe9e30eff", "for": ["lorne-genome-2027"], "note": "Lorne Genome registration page on Cvent" },
   { "host": "phaa.net.au", "for": ["phaa-screening-conference-2027", "phaa-preventive-health-conference-2027"], "note": "Public Health Association of Australia, organiser of both conferences" },

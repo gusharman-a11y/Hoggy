@@ -1,0 +1,191 @@
+[
+ {
+  "id": "eadv-spring-2027",
+  "remove": true,
+  "note": "global-1 2026-11-25: duplicate of eadv-symposium-2027 (same meeting and year, same organiser site); kept eadv-symposium-2027"
+ },
+ {
+  "id": "eadv-spring-2028",
+  "remove": true,
+  "note": "global-1 2026-11-25: duplicate of eadv-symposium-2028 (same meeting and year, same organiser site); kept eadv-symposium-2028"
+ },
+ {
+  "id": "eano-meeting-2027",
+  "remove": true,
+  "note": "global-1 2026-11-25: duplicate of eano-2027 (same meeting and year, same organiser site); kept eano-2027"
+ },
+ {
+  "id": "eco-european-congress-on-obesity-2027",
+  "remove": true,
+  "note": "global-1 2026-11-25: duplicate of european-congress-on-obesity (same meeting and year, same organiser site); kept european-congress-on-obesity"
+ },
+ {
+  "id": "ecp-european-congress-of-pathology-2027",
+  "remove": true,
+  "note": "global-1 2026-11-25: duplicate of european-congress-of-pathology (same meeting and year, same organiser site); kept european-congress-of-pathology"
+ },
+ {
+  "id": "ectrims-congress-2027",
+  "remove": true,
+  "note": "global-1 2026-11-25: duplicate of ectrims-2027 (same meeting and year, same organiser site); kept ectrims-2027"
+ },
+ {
+  "id": "esc-acvc-2027",
+  "remove": true,
+  "note": "global-1 2026-11-25: duplicate of esc-acute-cardiovascular-care (same meeting and year, same organiser site); kept esc-acute-cardiovascular-care"
+ },
+ {
+  "id": "esc-europrevent-2027",
+  "remove": true,
+  "note": "global-1 2026-11-25: duplicate of esc-preventive-cardiology (same meeting and year, same organiser site); kept esc-preventive-cardiology"
+ },
+ {
+  "id": "ese-european-congress-of-endocrinology-2027",
+  "remove": true,
+  "note": "global-1 2026-11-25: duplicate of european-congress-of-endocrinology (same meeting and year, same organiser site); kept european-congress-of-endocrinology"
+ },
+ {
+  "id": "esmo-gi-2027",
+  "remove": true,
+  "note": "global-1 2026-11-25: duplicate of esmo-gastrointestinal-cancers-congress (same meeting and year, same organiser site); kept esmo-gastrointestinal-cancers-congress"
+ },
+ {
+  "id": "esmo-tat-2027",
+  "remove": true,
+  "note": "global-1 2026-11-25: duplicate of esmo-targeted-anticancer-therapies-congress (same meeting and year, same organiser site); kept esmo-targeted-anticancer-therapies-congress"
+ },
+ {
+  "id": "ddw-2027",
+  "remove": true,
+  "note": "global-1 2026-11-25: duplicate of ddw (same meeting and year, same organiser site); kept ddw"
+ },
+ {
+  "id": "esceo-congress-2027",
+  "remove": true,
+  "note": "global-1 2026-11-25: duplicate of wco-iof-esceo (WCO-IOF-ESCEO 2027, Vienna, 8-11 April); kept wco-iof-esceo"
+ },
+ {
+  "id": "apasl-taipei-2027-expected",
+  "remove": true,
+  "note": "global-1 2026-11-25: duplicate of apasl-2027 (apasl.info lists APASL Annual Meeting 2027 in Sydney, 1-4 April 2027); kept apasl-2027"
+ },
+ {
+  "id": "aadocr-iadr-general-session-2027",
+  "set": {
+   "blurb": "AADOCR Annual Meeting is a meeting of the American Association for Dental, Oral, and Craniofacial Research, in Minneapolis."
+  },
+  "note": "global-1 2026-11-25: row confirmed this run; the blurb said the dates or city were an estimate. Rewritten plainly (no date or city guesses)."
+ },
+ {
+  "id": "acpgb-annual-meeting-2027",
+  "set": {
+   "blurb": "ACPGBI Annual Meeting is a meeting of the Association of Coloproctology of Great Britain and Ireland, in Brighton."
+  },
+  "note": "global-1 2026-11-25: row confirmed this run; the blurb said the dates or city were an estimate. Rewritten plainly (no date or city guesses)."
+ },
+ {
+  "id": "aiom-congresso-2027",
+  "set": {
+   "blurb": "Congresso Nazionale AIOM is a meeting of the Associazione Italiana di Oncología Medica, in Rome."
+  },
+  "note": "global-1 2026-11-25: row confirmed this run; the blurb said the dates or city were an estimate. Rewritten plainly (no date or city guesses)."
+ },
+ {
+  "id": "apasl-taipei-2028-expected",
+  "set": {
+   "blurb": "Meeting of the Asian Pacific Association for the Study of the Liver, in Seoul."
+  },
+  "note": "global-1 2026-11-25: row confirmed this run; the blurb said the dates or city were an estimate. Rewritten plainly (no date or city guesses)."
+ },
+ {
+  "id": "bsc-annual-meeting-2027",
+  "set": {
+   "blurb": "Meeting of the Belgian Society of Cardiology, in Brussels."
+  },
+  "note": "global-1 2026-11-25: row confirmed this run; the blurb said the dates or city were an estimate. Rewritten plainly (no date or city guesses)."
+ },
+ {
+  "id": "can-neuroscience-meeting-2027",
+  "set": {
+   "blurb": "Meeting of the Canadian Association for Neuroscience, in Calgary."
+  },
+  "note": "global-1 2026-11-25: row confirmed this run; the blurb said the dates or city were an estimate. Rewritten plainly (no date or city guesses)."
+ },
+ {
+  "id": "dgfn-kongress-2027",
+  "set": {
+   "blurb": "DGfN Jahrestagung is a meeting of the Deutsche Gesellschaft für Nephrologie, in Berlin."
+  },
+  "note": "global-1 2026-11-25: row confirmed this run; the blurb said the dates or city were an estimate. Rewritten plainly (no date or city guesses)."
+ },
+ {
+  "id": "dgp-palliativkongress-2028",
+  "set": {
+   "blurb": "Deutscher Palliativkongress is a meeting of the Deutsche Gesellschaft für Palliativmedizin, in Münster."
+  },
+  "note": "global-1 2026-11-25: row confirmed this run; the blurb said the dates or city were an estimate. Rewritten plainly (no date or city guesses)."
+ },
+ {
+  "id": "esmo-gynaecological-2027",
+  "set": {
+   "blurb": "Meeting of the ESMO, in Vienna."
+  },
+  "note": "global-1 2026-11-25: row confirmed this run; the blurb said the dates or city were an estimate. Rewritten plainly (no date or city guesses)."
+ },
+ {
+  "id": "idf-congress-singapore-2027",
+  "set": {
+   "blurb": "IDF Congress is a meeting of the International Diabetes Federation, in Singapore."
+  },
+  "note": "global-1 2026-11-25: row confirmed this run; the blurb said the dates or city were an estimate. Rewritten plainly (no date or city guesses)."
+ },
+ {
+  "id": "samba-annual-meeting-2027",
+  "set": {
+   "blurb": "SAMBA Annual Meeting is a meeting of the Society for Ambulatory Anesthesia, in Savannah."
+  },
+  "note": "global-1 2026-11-25: row confirmed this run; the blurb said the dates or city were an estimate. Rewritten plainly (no date or city guesses)."
+ },
+ {
+  "id": "sggg-jahreskongress-2027",
+  "set": {
+   "blurb": "SGGG Jahreskongress is a meeting of the Swiss Society of Gynaecology and Obstetrics, in Bern."
+  },
+  "note": "global-1 2026-11-25: row confirmed this run; the blurb said the dates or city were an estimate. Rewritten plainly (no date or city guesses)."
+ },
+ {
+  "id": "sitc-annual-meeting-2027",
+  "set": {
+   "blurb": "SITC Annual Meeting is a meeting of the Society for Immunotherapy of Cancer, in National Harbor."
+  },
+  "note": "global-1 2026-11-25: row confirmed this run; the blurb said the dates or city were an estimate. Rewritten plainly (no date or city guesses)."
+ },
+ {
+  "id": "sitc-annual-meeting-2028",
+  "set": {
+   "blurb": "SITC Annual Meeting is a meeting of the Society for Immunotherapy of Cancer, in Houston."
+  },
+  "note": "global-1 2026-11-25: row confirmed this run; the blurb said the dates or city were an estimate. Rewritten plainly (no date or city guesses)."
+ },
+ {
+  "id": "sobp-annual-meeting-2027",
+  "set": {
+   "blurb": "SOBP Annual Meeting is a meeting of the Society of Biological Psychiatry, in Chicago."
+  },
+  "note": "global-1 2026-11-25: row confirmed this run; the blurb said the dates or city were an estimate. Rewritten plainly (no date or city guesses)."
+ },
+ {
+  "id": "sobp-annual-meeting-2028",
+  "set": {
+   "blurb": "SOBP Annual Meeting is a meeting of the Society of Biological Psychiatry, in San Francisco."
+  },
+  "note": "global-1 2026-11-25: row confirmed this run; the blurb said the dates or city were an estimate. Rewritten plainly (no date or city guesses)."
+ },
+ {
+  "id": "torg-robotic-minimally-invasive-surgery-2027-lagos",
+  "set": {
+   "blurb": "Global Congress on Robotic & Minimally Invasive Surgery is a meeting of the Operating Room Global (TORG) with the Nigerian Medical Association and NAPON, in Lagos."
+  },
+  "note": "global-1 2026-11-25: row confirmed this run; the blurb said the dates or city were an estimate. Rewritten plainly (no date or city guesses)."
+ }
+]
