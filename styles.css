@@ -262,10 +262,6 @@ button.tag{text-decoration:underline;text-underline-offset:3px;min-height:24px}
 .rc-slip span{display:flex;justify-content:space-between;font-size:.8125rem;font-weight:600;border-bottom:1px dotted var(--line-2);padding-bottom:4px}
 .rc-slip span::after{content:"✓";color:var(--ok)}
 .vis-claim span{font-family:var(--display);font-weight:800;font-size:1.408rem;line-height:1}
-.benefits{display:grid}
-.benefit{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:12px 48px;padding:26px 0;border-bottom:1px solid var(--line)}
-.benefit h3{font-size:clamp(1.232rem,2.112vw,1.76rem)}
-.benefit p{color:var(--muted);max-width:62ch}
 .live{margin:0}
 .live-head{margin:clamp(48px,7vw,88px) 0 20px;padding-top:14px;border-top:1.5px solid var(--rule);display:flex;justify-content:space-between;align-items:baseline;gap:8px 16px;flex-wrap:wrap}
 .live-head h2{font-size:clamp(1.408rem,2.992vw,2.2rem);display:flex;align-items:center;gap:12px}
@@ -294,12 +290,11 @@ button.tag{text-decoration:underline;text-underline-offset:3px;min-height:24px}
 .hero-close+.app-foot{margin-top:40px;border-top:0}
 @media (max-width:1100px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}.live-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:900px){
-  .hero-intro{grid-template-columns:1fr;min-height:0;gap:8px;padding-bottom:0}
+  .hero-intro{grid-template-columns:minmax(0,1fr);min-height:0;gap:8px;padding-bottom:0}
   .hero-intro h1{font-size:clamp(2.904rem,13.728vw,5.72rem)}
   .hero-fan{aspect-ratio:1/.74;max-width:none;justify-self:stretch;margin:14px 0 -6px}
   .fan-card{width:40%}
   .fan-card.f0{left:30%;top:6%}.fan-card.f1{left:4%;top:12%}.fan-card.f2{left:56%;top:16%}
-  .benefit{grid-template-columns:1fr}
 }
 @media (max-width:640px){
   .hero-search{flex-direction:column}.hero-search .search{flex:none}
@@ -625,7 +620,7 @@ details.how .note{margin-top:0;max-width:62ch}
 .family h3{margin:0 0 4px}
 .family>.note{margin:0 0 6px}
 .fam-row{min-height:64px}
-.fam-row.cur .t::after{content:" · this page";font-weight:500;color:var(--muted)}
+.fam-row.cur .t::after{content:" · current";font-weight:500;color:var(--muted)}
 .fam-row:hover .t{text-decoration:underline;text-underline-offset:3px}
 .fam-row.none .t{color:var(--muted)}
 .overseas{border-top:1px solid var(--line)}
@@ -800,7 +795,6 @@ body.site{min-height:100vh;display:flex;flex-direction:column}
 .mtrip{margin:30px 0 22px;border-top:1.5px solid var(--rule);padding-top:14px}
 .mt-head{display:flex;flex-direction:column;gap:4px;margin-bottom:12px}
 .mt-head h3{font-size:clamp(1.32rem,3vw,1.76rem)}
-.mt-head p{color:var(--muted);font-size:.9375rem;line-height:1.4}
 .mtrip .mt-chips{margin:2px 0 0;padding:0;flex-wrap:wrap;overflow:visible}
 .mt-chips .chip{padding:0 13px}
 .mt-win{font-size:.8125rem;color:var(--muted);margin:10px 0 2px;font-variant-numeric:tabular-nums}
@@ -828,8 +822,7 @@ body.site{min-height:100vh;display:flex;flex-direction:column}
 .do-l{flex:none;font-size:.8125rem;font-weight:600;color:var(--muted);padding-left:12px;border-left:2px solid var(--flare);line-height:1.2}
 .do-row .chips{margin:0;padding:2px 0;flex:1;min-width:0}
 .do-chips .chip[aria-pressed=true]{background:var(--ok);color:var(--bg)}
-.trip-shelf .shelf-lede{color:var(--muted);max-width:60ch;margin:-6px 0 12px;font-size:.9375rem}
-.trip-shelf .do-chips{margin-bottom:14px}
+.trip-shelf .do-chips{margin:4px 0 14px}
 .trip-shelf a.chip{display:inline-flex;align-items:center;text-decoration:none}
 @media (max-width:640px){.do-row{flex-direction:column;align-items:stretch;gap:6px}.do-l{align-self:flex-start}.do-row .chips{margin:0 calc(-1*var(--gut));padding:2px var(--gut)}}
 /* the trip builder on a ticket */
@@ -840,7 +833,6 @@ body.site{min-height:100vh;display:flex;flex-direction:column}
 .tplan[open]>summary::before{content:"–"}
 .tp-t{font-family:var(--display);font-weight:700;font-size:1.32rem;grid-column:2}
 .tp-s{grid-column:2;font-size:.875rem;color:var(--muted);font-weight:600;font-variant-numeric:tabular-nums}
-.tp-lede{margin-top:0}
 .steppers{display:flex;flex-wrap:wrap;gap:10px 28px;margin:14px 0 6px}
 .stepper{display:flex;align-items:center;gap:10px}
 .st-l{font-size:.875rem;font-weight:600;color:var(--muted);min-width:84px}

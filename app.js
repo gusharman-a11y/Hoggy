@@ -63,7 +63,7 @@ const OWNER = 'hoggy.owner';
 const getOwner = () => { try { return localStorage.getItem(OWNER) || ''; } catch (e) { return ''; } };
 const setOwner = v => { try { v ? localStorage.setItem(OWNER, String(v)) : localStorage.removeItem(OWNER); } catch (e) { } };
 let S = (() => { try { const v = JSON.parse(localStorage.getItem(KEY)); if (v && v.profile) { const d = defaults(); return { ...d, ...v, profile: { ...d.profile, ...v.profile, caps: { ...d.profile.caps, ...(v.profile.caps || {}) } } }; } } catch (e) {} return defaults(); })();
-const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { toast('Storage full — export your data'); } scheduleSync(); };
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { toast('Storage full. Export your data'); } scheduleSync(); };
 /* IndexedDB for receipt files */
 const DB = { db: null,
   open() { return this.db || (this.db = new Promise((res, rej) => { const r = indexedDB.open('hoggy-files', 1); r.onupgradeneeded = () => r.result.createObjectStore('f'); r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error); })); },
@@ -122,7 +122,7 @@ function ics(c) {
 }
 /* ---------- CPD ---------- */
 const NZ = window.HOGGY_CPD_NZ || null;
-const themeBoxes = () => NZ ? '<fieldset class="field" style="border:0;padding:0;margin:8px 0 0"><legend style="font-weight:600;margin-bottom:4px">Counts toward (tick what applies)</legend>' + NZ.themes.map(([k, l]) => '<label style="display:inline-flex;gap:6px;margin:4px 14px 4px 0;font-weight:400"><input type="checkbox" name="theme" value="' + k + '"> ' + esc(l) + '</label>').join('') + '</fieldset>' : '';
+const themeBoxes = () => NZ ? '<fieldset class="field" style="border:0;padding:0;margin:8px 0 0"><legend style="font-weight:600;margin-bottom:4px">Counts toward</legend>' + NZ.themes.map(([k, l]) => '<label style="display:inline-flex;gap:6px;margin:4px 14px 4px 0;font-weight:400"><input type="checkbox" name="theme" value="' + k + '"> ' + esc(l) + '</label>').join('') + '</fieldset>' : '';
 const themeKeys = f => NZ ? f.getAll('theme').filter(k => NZ.themes.some(t => t[0] === k)) : [];
 function nzPanel() {
   if (!NZ) return '';
@@ -130,14 +130,14 @@ function nzPanel() {
   const es = S.cpd.filter(e => String(e.date).startsWith(yr));
   const themed = NZ.themes.map(([k, l]) => { const m = es.filter(e => (e.themes || []).includes(k)); return { k, l, n: m.length, h: m.reduce((s, e) => s + Number(e.hours || 0), 0) }; });
   const courses = NZ.courses || [];
-  return '<div class="panel" style="margin-top:20px"><h3 style="margin:0 0 6px">New Zealand requirements</h3><p style="color:var(--muted);margin:0 0 12px">What your regulator and college ask for, from their own pages (checked ' + esc(NZ.asOf) + '). Pick your college, then tick the themes on each CPD entry so you can see what you have covered in ' + esc(yr) + '.</p>'
+  return '<div class="panel" style="margin-top:20px"><h3 style="margin:0 0 6px">New Zealand requirements</h3><p class="note" style="margin:0 0 12px">Checked ' + esc(NZ.asOf) + '</p>'
     + '<div class="field" style="max-width:420px"><label for="nzBody">Your college</label><select id="nzBody">' + NZ.bodies.map(x => '<option value="' + esc(x.id) + '"' + (x.id === b.id ? ' selected' : '') + '>' + esc(x.name) + '</option>').join('') + '</select></div>'
     + '<div class="cols" style="margin-top:12px"><div><h4 style="margin:0 0 6px">' + esc(b.name) + ' <span class="pill ' + (b.verified ? 'g' : '') + '">' + (b.verified ? esc(b.total) : 'Not verified') + '</span></h4><ul style="margin:0 0 8px 18px;padding:0">' + b.items.map(i => '<li style="margin:4px 0">' + esc(i) + '</li>').join('') + '</ul>'
-    + (b.note ? '<p class="note">' + esc(b.note) + '</p>' : '') + '<p class="note"><a href="' + esc(b.url) + '" target="_blank" rel="noopener noreferrer">Source: college or Council page</a></p>'
+    + (b.note ? '<p class="note">' + esc(b.note) + '</p>' : '') + '<p class="note"><a href="' + esc(b.url) + '" target="_blank" rel="noopener noreferrer">' + esc(hostOf(b.url)) + ' ↗</a></p>'
     + '<p class="note">' + esc(NZ.teReoNote) + '</p></div>'
     + '<div><h4 style="margin:0 0 6px">Logged this year, by theme</h4><table><tbody>' + themed.map(t => '<tr><td>' + esc(t.l) + '</td><td style="text-align:right">' + t.n + (t.n === 1 ? ' activity' : ' activities') + '</td><td style="text-align:right;font-weight:700">' + t.h + ' h</td></tr>').join('') + '</tbody></table>'
-    + '<p class="note">Counts only entries you ticked. Whether an activity counts is your college\'s decision; Hoggy does not assess that.</p></div></div>'
-    + (courses.length ? '<h4 style="margin:18px 0 6px">Learning activities for cultural safety, Māori health and te reo</h4><p class="note" style="margin:0 0 8px">Listed from public pages. Check with your college that an activity counts, and how many hours it earns.</p><div class="list">' + courses.map(c => '<a class="li" style="text-decoration:none;color:inherit" href="' + esc(c.url) + '" target="_blank" rel="noopener noreferrer"><div class="grow"><div class="t">' + esc(c.name) + '</div><div class="s">' + esc(c.provider || '') + (c.format ? ' · ' + esc(c.format) : '') + (c.note ? ' · ' + esc(c.note).slice(0, 140) : '') + '</div></div><span class="pill">' + esc(c.type || '') + '</span></a>').join('') + '</div>' : '')
+    + '<p class="note">Your college decides what counts.</p></div></div>'
+    + (courses.length ? '<h4 style="margin:18px 0 6px">Cultural safety and te reo</h4><p class="note" style="margin:0 0 8px">Check hours with your college.</p><div class="list">' + courses.map(c => '<a class="li" style="text-decoration:none;color:inherit" href="' + esc(c.url) + '" target="_blank" rel="noopener noreferrer"><div class="grow"><div class="t">' + esc(c.name) + '</div><div class="s">' + esc(c.provider || '') + (c.format ? ' · ' + esc(c.format) : '') + (c.note ? ' · ' + esc(c.note).slice(0, 140) : '') + '</div></div><span class="pill">' + esc(c.type || '') + '</span></a>').join('') + '</div>' : '')
     + '</div>';
 }
 const cpdTotal = () => S.cpd.filter(e => String(e.date).startsWith(String(S.profile.cpdYear))).reduce((a, e) => a + Number(e.hours || 0), 0);
@@ -178,7 +178,7 @@ async function syncFiles() { /* learn what is on this device, then reconcile wit
   FILES_LOADED = true; bgRender();
 }
 async function openFile(r) {
-  const b = r.fileKey && await getFile(r.fileKey); if (!b) return toast('This receipt file is not on this device. Sign in to restore it, or attach it again.');
+  const b = r.fileKey && await getFile(r.fileKey); if (!b) return toast('File not on this device. Sign in or attach it again.');
   const u = URL.createObjectURL(b), a = document.createElement('a'); a.href = u; a.download = r.fileName || ('receipt-' + r.id); document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(u), 30000);
 }
 /* ---------- receipts: parsing, checks ---------- */
@@ -190,15 +190,15 @@ const homeAmt = r => (!r.currency || r.currency === S.profile.currency) ? (r.amo
 function receiptIssues(r) {
   const issues = [], trip = S.trips.find(t => t.id === r.tripId), c = trip && ofTrip(trip);
   if (!r.fileKey) issues.push({ lvl: 'bad', t: 'No receipt image or PDF attached' });
-  else if (FILES_LOADED && !FILES.has(r.fileKey)) issues.push({ lvl: 'bad', t: NET.user ? 'File missing on this device and not found in your account. Attach it again' : 'File missing on this device. Sign in to restore it, or attach it again' });
-  else if (NET.user && UNSAVED.has(r.fileKey)) issues.push({ lvl: 'warn', t: 'Not backed up to your account yet. It will retry; keep a copy elsewhere until it does' });
+  else if (FILES_LOADED && !FILES.has(r.fileKey)) issues.push({ lvl: 'bad', t: NET.user ? 'File missing. Attach it again' : 'File missing on this device. Sign in or attach it again' });
+  else if (NET.user && UNSAVED.has(r.fileKey)) issues.push({ lvl: 'warn', t: 'Not backed up yet. Keep a copy' });
   if (!(r.amount > 0)) issues.push({ lvl: 'bad', t: 'Amount missing' });
   if (!r.date) issues.push({ lvl: 'bad', t: 'Date missing' });
   if (!r.tripId) issues.push({ lvl: 'bad', t: 'Not linked to a trip' });
-  if (c && r.date && r.category !== 'Flights' && r.category !== 'Registration') { const sp = trip.plan ? tripSpan(trip) : { from: c.start, to: c.end }, a = new Date(sp.from + 'T00:00:00') - 864e5 * 3, b = new Date(sp.to + 'T00:00:00').getTime() + 864e5 * 3, d = new Date(r.date + 'T00:00:00'); if (d < a || d > b) issues.push({ lvl: 'warn', t: trip.plan ? 'Dated outside the trip (±3 days)' : 'Dated outside the conference window (±3 days)' }); }
+  if (c && r.date && r.category !== 'Flights' && r.category !== 'Registration') { const sp = trip.plan ? tripSpan(trip) : { from: c.start, to: c.end }, a = new Date(sp.from + 'T00:00:00') - 864e5 * 3, b = new Date(sp.to + 'T00:00:00').getTime() + 864e5 * 3, d = new Date(r.date + 'T00:00:00'); if (d < a || d > b) issues.push({ lvl: 'warn', t: trip.plan ? 'Outside trip dates (±3 days)' : 'Outside conference dates (±3 days)' }); }
   const dup = S.receipts.find(o => o.id !== r.id && o.vendor === r.vendor && o.amount === r.amount && o.date === r.date);
-  if (dup) issues.push({ lvl: 'warn', t: 'Possible duplicate of another receipt' });
-  if (r.currency && r.currency !== S.profile.currency && !(+r.fxRate > 0)) issues.push({ lvl: 'bad', t: `Add the exchange rate from ${r.currency} to ${S.profile.currency}` });
+  if (dup) issues.push({ lvl: 'warn', t: 'Possible duplicate' });
+  if (r.currency && r.currency !== S.profile.currency && !(+r.fxRate > 0)) issues.push({ lvl: 'bad', t: `Add ${r.currency} to ${S.profile.currency} rate` });
   return issues;
 }
 const ready = r => !receiptIssues(r).some(i => i.lvl === 'bad');
@@ -214,13 +214,13 @@ function tripEstimate(t) {
 const tripChecklist = t => { const c = ofTrip(t); return HP().checklist({ estimate: tripEstimate(t), kind: c && c.kind === 'course' ? 'course' : 'conference' }, S.receipts.filter(r => r.tripId === t.id), (S.claims[t.id] || {}).waived); };
 function checklistHtml(t) {
   const list = tripChecklist(t);
-  return `<div class="checklist" data-testid="checklist" data-trip="${esc(t.id)}"><h3>Receipt checklist</h3><ul>${list.map(i => `<li class="ci ${i.status}" data-key="${esc(i.key)}" data-status="${esc(i.status)}"><span class="ci-mark" aria-hidden="true">${i.status === 'ok' ? '✓' : i.status === 'waived' ? '–' : '○'}</span><span class="ci-t"><b>${esc(i.label)}</b> ${i.status === 'ok' ? `<span class="note">${plural(i.receipts, 'receipt')}</span>` : i.status === 'waived' ? `<span class="note">No receipt. Reason: ${esc(i.reason)}</span>` : '<span class="note">No receipt yet</span>'}</span>${i.status === 'missing' ? `<button class="btn sm ghost" data-act="noreceipt" data-id="${esc(t.id)}" data-v="${esc(i.key)}">I don't have this receipt</button>` : i.status === 'waived' ? `<button class="btn sm ghost" data-act="undonoreceipt" data-id="${esc(t.id)}" data-v="${esc(i.key)}">Undo</button>` : ''}<span class="sr-only">${i.status === 'ok' ? 'done' : i.status === 'waived' ? 'no receipt, reason given' : 'missing'}</span></li>`).join('')}</ul></div>`;
+  return `<div class="checklist" data-testid="checklist" data-trip="${esc(t.id)}"><h3>Receipt checklist</h3><ul>${list.map(i => `<li class="ci ${i.status}" data-key="${esc(i.key)}" data-status="${esc(i.status)}"><span class="ci-mark" aria-hidden="true">${i.status === 'ok' ? '✓' : i.status === 'waived' ? '–' : '○'}</span><span class="ci-t"><b>${esc(i.label)}</b> ${i.status === 'ok' ? `<span class="note">${plural(i.receipts, 'receipt')}</span>` : i.status === 'waived' ? `<span class="note">No receipt: ${esc(i.reason)}</span>` : '<span class="note">Missing</span>'}</span>${i.status === 'missing' ? `<button class="btn sm ghost" data-act="noreceipt" data-id="${esc(t.id)}" data-v="${esc(i.key)}">Add reason</button>` : i.status === 'waived' ? `<button class="btn sm ghost" data-act="undonoreceipt" data-id="${esc(t.id)}" data-v="${esc(i.key)}">Undo</button>` : ''}<span class="sr-only">${i.status === 'ok' ? 'done' : i.status === 'waived' ? 'no receipt, reason given' : 'missing'}</span></li>`).join('')}</ul></div>`;
 }
 /* amounts by currency on a claim, so foreign receipts are never added to the home total unconverted */
 function currencyHtml(rs) {
   const home = S.profile.currency, by = HP().currencyTotals(rs, homeAmt, home);
   if (!by.some(x => x.currency !== home)) return '';
-  return `<div class="pills cur-split" data-testid="currency-split" aria-label="Amounts by currency">${by.map(x => x.currency === home ? `<span class="pill">${esc(money(x.amount, home))}</span>` : `<span class="pill ${x.noRate ? 'b' : ''}">${esc(money(x.amount, x.currency))} ${x.noRate ? '· no exchange rate, not in the total' : '→ ' + esc(money(x.converted, home))}</span>`).join('')}</div>`;
+  return `<div class="pills cur-split" data-testid="currency-split" aria-label="Amounts by currency">${by.map(x => x.currency === home ? `<span class="pill">${esc(money(x.amount, home))}</span>` : `<span class="pill ${x.noRate ? 'b' : ''}">${esc(money(x.amount, x.currency))} ${x.noRate ? '· no rate, not in total' : '→ ' + esc(money(x.converted, home))}</span>`).join('')}</div>`;
 }
 const currencyLine = rs => { const home = S.profile.currency, by = HP().currencyTotals(rs, homeAmt, home).filter(x => x.currency !== home); return by.length ? 'Foreign-currency receipts: ' + by.map(x => `${money(x.amount, x.currency)} = ${x.noRate ? 'no exchange rate entered, not in the total' : money(x.converted, home) + ' at the rates in the schedule'}`).join('; ') + '.' : ''; };
 
@@ -263,13 +263,13 @@ function filterSheet(on, focus) {
   if (focus) { const t = FS.open ? $('#fsheet select, #fsheet input') : b; if (t) t.focus({ preventScroll: true }); }
 }
 /* ---------- connection banner, footer ---------- */
-const TROUBLE = 'We\u2019re having trouble connecting \u2014 try again in a minute.';
+const TROUBLE = 'Can\u2019t connect. Try again shortly.';
 function netBanner() {
-  if (NET.offline) return `<div class="net-banner" role="status"><span>You\u2019re offline. Hoggy keeps working with what\u2019s on this device, and syncs when you\u2019re back online.</span></div>`;
-  if (NET.trouble) return `<div class="net-banner" role="status"><span>${TROUBLE} You can still browse conferences and courses.</span><button type="button" class="btn sm" data-act="retry">Try again</button></div>`;
+  if (NET.offline) return `<div class="net-banner" role="status"><span>Offline. Changes sync when you\u2019re back.</span></div>`;
+  if (NET.trouble) return `<div class="net-banner" role="status"><span>${TROUBLE}</span><button type="button" class="btn sm" data-act="retry">Try again</button></div>`;
   return '';
 }
-const appFooter = () => `<footer class="app-foot" aria-label="Site"><nav aria-label="Footer"><ul><li><a href="/about">About Hoggy</a></li><li><a href="/privacy">Privacy</a></li><li><a href="/terms">Terms</a></li><li><a href="#/list-event">Organisers: list your event</a></li></ul></nav><p>Hoggy lists medical conferences and courses for planning. Check dates, fees and CPD with the organiser before you book.</p></footer>`;
+const appFooter = () => `<footer class="app-foot" aria-label="Site"><nav aria-label="Footer"><ul><li><a href="/about">About Hoggy</a></li><li><a href="/privacy">Privacy</a></li><li><a href="/terms">Terms</a></li><li><a href="#/list-event">List your event</a></li></ul></nav><p>Check dates, fees and CPD with the organiser before booking.</p></footer>`;
 
 /* ---------- plates: the generated artwork (lib/art.js) ---------- */
 const ART = window.HoggyArt;
@@ -279,7 +279,7 @@ const dialLabel = s => { s = String(s || ''); if (s.length <= 9) return s; const
 const coursePlate = (c, size) => ART ? ART.dial(c.id, dialLabel(HC.shortName(c)), { size, sub: (c.countries || []).slice(0, 5).join(' · ') + ((c.countries || []).length > 5 ? ' +' + ((c.countries || []).length - 5) : '') }) : '';
 const hostOf = u => { try { return new URL(u).hostname.replace(/^www\./, ''); } catch (e) { return ''; } };
 /* the one status line a card carries: what Hoggy knows about the dates, and from where */
-const evLine = c => { const st = dateEv(c), h = st === 'confirmed' ? hostOf(c.datesSourceUrl) : ''; return st === 'confirmed' ? `<span class="pill g" title="Read on the organiser's own page, with the wording stored">Dates confirmed${h ? ' · ' + esc(h) : ''}</span>` : st === 'estimated' ? '<span class="pill w" title="The organiser has not published dates yet">Estimate · confirm with organiser</span>' : '<span class="pill" title="Confirmed before Hoggy stored the organiser\'s wording; being re-checked">Confirmed earlier · being re-checked</span>'; };
+const evLine = c => { const st = dateEv(c), h = st === 'confirmed' ? hostOf(c.datesSourceUrl) : ''; return st === 'confirmed' ? `<span class="pill g" title="From the organiser's page">Confirmed${h ? ' · ' + esc(h) : ''}</span>` : st === 'estimated' ? '<span class="pill w" title="Dates not yet published">Estimate</span>' : '<span class="pill" title="Confirmed earlier; source not yet re-checked">Re-checking</span>'; };
 const CHEV = '<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>';
 /* a ring that fills to pct (0 to 100); the number sits beside it in text */
 const dialSvg = (pct, cls = '') => `<svg class="dial ${cls}" viewBox="0 0 120 120" aria-hidden="true"><circle class="dial-k" cx="60" cy="60" r="56"/><circle class="dial-t" cx="60" cy="60" r="46"/><circle class="dial-v" cx="60" cy="60" r="46" pathLength="100" style="--p:${Math.max(0, Math.min(100, pct))}"/></svg>`;
@@ -288,14 +288,14 @@ const count = (n, text) => `<span data-count="${Number(n) || 0}">${text == null 
 const shelf = (title, items, more = '', id = '') => items ? `<section class="shelf-sec"${id ? ` aria-labelledby="${id}"` : ''}><div class="section"><h2${id ? ` id="${id}"` : ''}>${title}</h2>${more}</div><div class="grid ex shelf">${items}</div></section>` : '';
 
 /* ---------- cards ---------- */
-const holPill = c => { if (typeof holHits !== 'function') return ''; const h = holHits(c, 'ANZ'); return h.length ? `<span class="tag" title="${esc('School holidays overlap this conference in: ' + h.map(r => r.name).join(', '))}">School hols: ${esc(h.map(r => r.code).join(' '))}</span>` : ''; };
+const holPill = c => { if (typeof holHits !== 'function') return ''; const h = holHits(c, 'ANZ'); return h.length ? `<span class="tag" title="${esc(h.map(r => r.name).join(', '))}">School hols: ${esc(h.map(r => r.code).join(' '))}</span>` : ''; };
 function card(c, trip) {
   const on = S.saved.includes(c.id), sc = scoreShown(c), n = reviewCount(c);
   return `<article class="card" data-act="open" data-id="${esc(c.id)}">
     <div class="art">${plate(c, 'tall')}<button class="save ${on ? 'on' : ''}" data-act="save" data-id="${esc(c.id)}" aria-label="Save ${esc(c.name)}" aria-pressed="${on}">${icon('heart')}</button></div>
     <div class="card-body"><p class="card-when">${esc(range(c))}</p><h3><a class="card-link" href="/conferences/${esc(encodeURIComponent(c.id))}" data-act="open" data-id="${esc(c.id)}">${esc(c.name)}</a></h3>
     <p class="card-where">${esc(c.city)}, ${esc(c.country)} · ${esc(c.specialty)}</p>${c.schedule ? `<p class="card-sched">${icon('clock', 'ico xs')}<span>${esc(c.schedule.pattern)}</span></p>` : ''}${trip ? tripLine(trip) : ''}
-    <div class="card-meta">${evLine(c)}${c.organiserType === 'commercial' ? '<span class="tag" title="A commercial education company, not a college or society">Commercial provider</span>' : ''}${c.cpdVerified && c.cpdHours ? `<span class="tag" title="Credits stated by the organiser">${esc(cpdLabel(c))}</span>` : ''}${holPill(c)}${sc != null ? `<span class="tag"><span class="stars" aria-hidden="true">★</span> ${sc.toFixed(1)}<span class="sr-only"> out of 5</span></span>` : n ? `<span class="tag">${n} early review${n > 1 ? 's' : ''}</span>` : ''}</div></div></article>`;
+    <div class="card-meta">${evLine(c)}${c.organiserType === 'commercial' ? '<span class="tag" title="Not a college or society">Commercial</span>' : ''}${c.cpdVerified && c.cpdHours ? `<span class="tag" title="Stated by the organiser">${esc(cpdLabel(c))}</span>` : ''}${holPill(c)}${sc != null ? `<span class="tag"><span class="stars" aria-hidden="true">★</span> ${sc.toFixed(1)}<span class="sr-only"> out of 5</span></span>` : n ? `<span class="tag">${n} early review${n > 1 ? 's' : ''}</span>` : ''}</div></div></article>`;
 }
 
 /* ---------- make a trip of it: what is on around a conference, the day plan, the work and personal split ----------
@@ -322,33 +322,33 @@ function expWhen(e) {
   const mo = s => fmtD(s, { month: 'short' });
   return mo(d.start) === mo(d.end) ? 'In ' + fmtD(d.start, { month: 'long' }) : `${mo(d.start)} to ${mo(d.end)}`;
 }
-const fitText = m => m.during ? 'During the conference' : `+${plural(m.extraDaysNeeded, 'day')} ${m.extraDaysAfter ? 'after' : 'before'}`;
+const fitText = m => m.during ? 'During conference' : `+${plural(m.extraDaysNeeded, 'day')} ${m.extraDaysAfter ? 'after' : 'before'}`;
 /* destination fields (docs/research/destinations.md): organiser type, resort tags, the stated session pattern */
-const ORG_LABEL = { commercial: 'Commercial provider', college: 'College', society: 'Society', university: 'University', hospital: 'Hospital' };
-const orgPill = c => c.organiserType ? `<span class="pill ${c.organiserType === 'commercial' ? 'w' : ''}" title="${c.organiserType === 'commercial' ? 'A commercial education company, not a college or society' : 'Who runs it, as the organiser describes itself'}">${esc(ORG_LABEL[c.organiserType])}</span>` : '';
+const ORG_LABEL = { commercial: 'Commercial', college: 'College', society: 'Society', university: 'University', hospital: 'Hospital' };
+const orgPill = c => c.organiserType ? `<span class="pill ${c.organiserType === 'commercial' ? 'w' : ''}" title="${c.organiserType === 'commercial' ? 'Not a college or society' : 'Organiser'}">${esc(ORG_LABEL[c.organiserType])}</span>` : '';
 const TAG_LABEL = { ski: 'Ski resort', beach: 'Beach', 'family-friendly': 'Family-friendly', cruise: 'Cruise' };
 const destTags = c => (c.tags || []).filter(t => TAG_LABEL[t]).map(t => `<span class="tag">${icon(t === 'ski' ? 'snow' : t === 'beach' ? 'wave' : 'users', 'ico xs')} ${esc(TAG_LABEL[t])}</span>`).join('');
-const schedLine = (c, full) => c.schedule ? `<p class="sched">${icon('clock')}<span><b>${esc(c.schedule.pattern)}</b>${full ? `<span class="note">From the organiser's programme: “${esc(c.schedule.quote)}” · ${srcLink(c.schedule.sourceUrl, 'source')}</span>` : ''}</span></p>` : '';
-const tripLine = m => typeof m === 'string' ? `<p class="card-trip">${icon('snow', 'ico xs')}<span>${esc(m)}</span></p>` : m && m.length ? `<p class="card-trip">${icon(catIcon(m[0].category), 'ico xs')}<span>${esc(HT.headline(m))}${m.length > 1 ? ` <i>and ${m.length - 1} more</i>` : ''}</span></p>` : '';
+const schedLine = (c, full) => c.schedule ? `<p class="sched">${icon('clock')}<span><b>${esc(c.schedule.pattern)}</b>${full ? `<span class="note">“${esc(c.schedule.quote)}” · ${srcLink(c.schedule.sourceUrl)}</span>` : ''}</span></p>` : '';
+const tripLine = m => typeof m === 'string' ? `<p class="card-trip">${icon('snow', 'ico xs')}<span>${esc(m)}</span></p>` : m && m.length ? `<p class="card-trip">${icon(catIcon(m[0].category), 'ico xs')}<span>${esc(HT.headline(m))}${m.length > 1 ? ` <i>+${m.length - 1}</i>` : ''}</span></p>` : '';
 /* the "Make a trip of it" block on a conference (detail sheet, session sheet) */
 const TUI = { id: '', days: 2, all: false };
 function tripSection(c) {
   if (!HT || !c) return '';
   if (TUI.id !== c.id) Object.assign(TUI, { id: c.id, days: 2, all: false });
   const n = TUI.days, sched = c.kind === 'course' ? schedLine(c, true) : '';
-  const head = `<section class="mtrip" id="mtrip" data-id="${esc(c.id)}" aria-labelledby="mtripH"><div class="mt-head"><h3 id="mtripH">Make a trip of it</h3><p>What's on around ${esc(c.city)} near these dates, from official tourism and event pages.</p></div>${sched}`;
-  if (!EXP.list) { loadExp().then(() => { const s = $('#mtrip'); if (s && s.dataset.id === c.id) s.outerHTML = tripSection(c); }); return head + '<p class="note mt-wait" aria-busy="true">Looking up what’s on…</p></section>'; }
+  const head = `<section class="mtrip" id="mtrip" data-id="${esc(c.id)}" aria-labelledby="mtripH"><div class="mt-head"><h3 id="mtripH">Make a trip of it</h3></div>${sched}`;
+  if (!EXP.list) { loadExp().then(() => { const s = $('#mtrip'); if (s && s.dataset.id === c.id) s.outerHTML = tripSection(c); }); return head + '<p class="note mt-wait" aria-busy="true">Loading…</p></section>'; }
   const list = expFor(c, n), win = HT.span(c, { before: n, after: n }), trip = S.trips.find(t => t.confId === c.id), pinned = new Set(((trip && trip.plan && trip.plan.pins) || []).map(p => p.id));
-  const chips = `<div class="chips mt-chips" role="group" aria-label="Days to add around the conference">${[0, 1, 2, 3].map(d => `<button type="button" class="chip" aria-pressed="${d === n}" data-act="tripdays" data-id="${esc(c.id)}" data-v="${d}">${d ? '+' + plural(d, 'day') : 'Conference only'}</button>`).join('')}</div>
-    <p class="mt-win">${n ? `Trip window ${esc(sd(win.from))} – ${esc(sd(win.to))}: ${n} ${n === 1 ? 'day' : 'days'} either side` : `Conference days only: ${esc(sd(c.start))}${c.end !== c.start ? ' – ' + esc(sd(c.end)) : ''}`}</p>`;
+  const chips = `<div class="chips mt-chips" role="group" aria-label="Extra days">${[0, 1, 2, 3].map(d => `<button type="button" class="chip" aria-pressed="${d === n}" data-act="tripdays" data-id="${esc(c.id)}" data-v="${d}">${d ? '+' + plural(d, 'day') : 'Conference only'}</button>`).join('')}</div>
+    <p class="mt-win">${n ? `${esc(sd(win.from))} – ${esc(sd(win.to))}` : `${esc(sd(c.start))}${c.end !== c.start ? ' – ' + esc(sd(c.end)) : ''}`}</p>`;
   const shown = TUI.all ? list : list.slice(0, 4);
   const items = shown.map(e => { const m = e.match, on = pinned.has(e.id);
     return `<li class="xp"><span class="xp-ic" aria-hidden="true">${icon(catIcon(e.category))}</span><div class="xp-b"><p class="xp-when"><span>${esc(expWhen(e))}</span><span class="xp-fit ${m.during ? 'on' : ''}">${esc(fitText(m))}</span></p>
       <h4>${esc(e.title)}</h4><p class="xp-s">${esc(e.summary)}</p>${e.note ? `<p class="xp-note">${esc(e.note)}</p>` : ''}
-      <p class="xp-src"><span>${esc(HT.catLabel(e.category))}${m.distanceKm > 40 ? ` · about ${esc(Math.round(m.distanceKm / 10) * 10)} km away` : ''}</span> · <a class="u" target="_blank" rel="noopener noreferrer" href="${esc(safeUrl(e.sourceUrl))}">${esc(hostOf(e.sourceUrl))}${icon('ext', 'ico xs')}</a></p></div>
+      <p class="xp-src"><span>${esc(HT.catLabel(e.category))}${m.distanceKm > 40 ? ` · ${esc(Math.round(m.distanceKm / 10) * 10)} km` : ''}</span> · <a class="u" target="_blank" rel="noopener noreferrer" href="${esc(safeUrl(e.sourceUrl))}">${esc(hostOf(e.sourceUrl))}${icon('ext', 'ico xs')}</a></p></div>
       <button type="button" class="btn sm ${on ? '' : 'ghost'} xp-add" data-act="pinexp" data-id="${esc(c.id)}" data-v="${esc(e.id)}" aria-pressed="${on}" aria-label="${on ? 'Remove ' + esc(e.title) + ' from your trip' : 'Add ' + esc(e.title) + ' to your trip'}">${on ? icon('check') + ' In trip' : icon('plus') + ' Add'}</button></li>`; }).join('');
-  return head + chips + (list.length ? `<ul class="xps">${items}</ul>${list.length > 4 ? `<button type="button" class="btn sm ghost mt-all" data-act="tripall" data-id="${esc(c.id)}" aria-expanded="${TUI.all}">${TUI.all ? 'Show fewer' : 'See all ' + list.length}</button>` : ''}` : '<p class="mt-empty">Nothing listed for these dates yet.</p>')
-    + `<p class="note mt-foot">Dates and seasons are as each source states them; check before you book. Added items go into the trip's day plan as personal time.</p></section>`;
+  return head + chips + (list.length ? `<ul class="xps">${items}</ul>${list.length > 4 ? `<button type="button" class="btn sm ghost mt-all" data-act="tripall" data-id="${esc(c.id)}" aria-expanded="${TUI.all}">${TUI.all ? 'Show fewer' : 'See all ' + list.length}</button>` : ''}` : '<p class="mt-empty">Nothing on these dates.</p>')
+    + `<p class="note mt-foot">Check dates with each source before booking.</p></section>`;
 }
 function rerenderTrip(c) { const s = $('#mtrip'); if (s) s.outerHTML = tripSection(c); }
 /* a trip for this conference (or course session), made if needed, without leaving the sheet */
@@ -360,12 +360,12 @@ function ensureTrip(c) {
 /* pin an experience: widen the trip to reach it, put it on the first day it overlaps (a personal day where possible) */
 function pinExp(c, eid) {
   const e = expFor(c, TUI.days).find(x => x.id === eid) || expFor(c, HT.MAX_EXTRA).find(x => x.id === eid); if (!e) return;
-  const t = ensureTrip(c); if (!t) return toast('That session is no longer listed');
+  const t = ensureTrip(c); if (!t) return toast('Session no longer listed');
   const p = HT.normPlan(t.plan), i = p.pins.findIndex(x => x.id === eid);
-  if (i >= 0) { p.pins.splice(i, 1); t.plan = p; save(); toast('Removed from your trip'); return; }
+  if (i >= 0) { p.pins.splice(i, 1); t.plan = p; save(); toast('Removed from trip'); return; }
   const w = HT.widenFor(c, p, e), added = (w.before - p.before) + (w.after - p.after); Object.assign(p, w);
   p.pins.push({ id: e.id, day: HT.pinDay(c, p, e), title: e.title, url: e.sourceUrl, category: e.category, when: expWhen(e) }); t.plan = p; save();
-  toast(`Added to your trip${added ? `, with ${plural(added, 'day')} added` : ''}. See it under Trips`);
+  toast(`Added to trip${added ? ` (+${plural(added, 'day')})` : ''}`);
 }
 /* the claim: a receipt's personal share follows the trip plan unless the doctor typed one (lib/trip.js splitItem) */
 const tripOfR = r => r && r.tripId ? S.trips.find(t => t.id === r.tripId) : null;
@@ -373,7 +373,7 @@ const splitOf = r => { const t = tripOfR(r), c = t && t.plan && ofTrip(t); retur
 const personalOf = r => { const s = splitOf(r); return s ? s.personal : (+r.personal || 0); };
 const planned = t => !!(t && t.plan && HT && ofTrip(t) && HT.hasPersonal(ofTrip(t), t.plan));
 const tripSpan = t => { const c = ofTrip(t); return t.plan && HT ? HT.span(c, t.plan) : { from: c.start, to: c.end }; };
-const DISCLAIM = 'General information, not tax advice. Employer policies and tax rules vary: check with your employer or accountant before you claim.';
+const DISCLAIM = 'Not tax advice. Employer policies and tax rules vary.';
 /* cost lines for the panel: receipts when there are any, otherwise the logged bookings */
 function costItems(t) {
   const rs = S.receipts.filter(r => r.tripId === t.id);
@@ -385,32 +385,33 @@ const DAY_KIND = { work: 'Work', personal: 'Personal', travel: 'Travel' };
 function tripPlan(t) {
   const c = ofTrip(t); if (!HT || !c) return '';
   const p = HT.normPlan(t.plan), ds = HT.days(c, p), n = HT.counts(ds), any = p.before || p.after || p.pins.length, st = OPEN_PLAN.get(t.id), open = st == null ? !!any : st;
-  const step = (k, lbl) => `<div class="stepper" role="group" aria-label="${lbl}"><span class="st-l">${lbl}</span><button type="button" class="icon-btn" data-act="tplan" data-id="${esc(t.id)}" data-v="${k}:-1" aria-label="One day fewer ${lbl.toLowerCase()}" ${p[k] ? '' : 'disabled'}>−</button><b class="st-n" aria-live="polite">${p[k]}</b><button type="button" class="icon-btn" data-act="tplan" data-id="${esc(t.id)}" data-v="${k}:1" aria-label="One more day ${lbl.toLowerCase()}" ${p[k] >= HT.MAX_EXTRA ? 'disabled' : ''}>+</button></div>`;
+  const step = (k, lbl) => `<div class="stepper" role="group" aria-label="${lbl}"><span class="st-l">${lbl}</span><button type="button" class="icon-btn" data-act="tplan" data-id="${esc(t.id)}" data-v="${k}:-1" aria-label="One fewer day ${lbl.toLowerCase().replace('days ', '')}" ${p[k] ? '' : 'disabled'}>−</button><b class="st-n" aria-live="polite">${p[k]}</b><button type="button" class="icon-btn" data-act="tplan" data-id="${esc(t.id)}" data-v="${k}:1" aria-label="One more day ${lbl.toLowerCase().replace('days ', '')}" ${p[k] >= HT.MAX_EXTRA ? 'disabled' : ''}>+</button></div>`;
   const dayRow = d => `<li class="day k-${d.kind}"><div class="day-d"><b>${esc(fmtD(d.date, { weekday: 'short' }))}</b><span>${esc(fmtD(d.date, { day: 'numeric', month: 'short' }))}</span></div>
-    <div class="day-b"><p class="day-k"><span class="dk dk-${d.kind}">${DAY_KIND[d.kind]}</span>${d.confDay ? `<span>Conference day ${d.confDay}${c.schedule ? ' · ' + esc(c.schedule.pattern) : ''}</span>` : `<button type="button" class="linkbtn" data-act="ttravel" data-id="${esc(t.id)}" data-v="${esc(d.date)}" aria-pressed="${d.kind === 'travel'}">${d.kind === 'travel' ? 'Make it personal' : 'Mark as a travel day'}</button>`}</p>
-    ${d.pins.map(x => `<div class="pin">${icon(catIcon(x.category))}<div class="pin-b"><b>${esc(x.title)}</b><span>${esc(x.when || '')}${d.kind === 'work' ? ' · ' + (c.schedule ? 'in the free time' : 'in the evening') : ''}</span></div><div class="pin-acts"><a class="btn sm ghost" target="_blank" rel="noopener noreferrer" href="${esc(safeUrl(x.url))}">Official page ${icon('ext')}</a><label class="sr-only" for="mv-${esc(t.id)}-${esc(x.id)}">Move ${esc(x.title)} to another day</label><select id="mv-${esc(t.id)}-${esc(x.id)}" class="pin-mv" data-pinmove="${esc(t.id)}" data-v="${esc(x.id)}">${ds.map(o => `<option value="${o.date}" ${o.date === x.day ? 'selected' : ''}>${esc(fmtD(o.date, { weekday: 'short', day: 'numeric', month: 'short' }))}</option>`).join('')}</select></div><button type="button" class="icon-btn" data-act="unpin" data-id="${esc(t.id)}" data-v="${esc(x.id)}" aria-label="Remove ${esc(x.title)}">${icon('x')}</button></div>`).join('')}</div></li>`;
+    <div class="day-b"><p class="day-k"><span class="dk dk-${d.kind}">${DAY_KIND[d.kind]}</span>${d.confDay ? `<span>Conference day ${d.confDay}${c.schedule ? ' · ' + esc(c.schedule.pattern) : ''}</span>` : `<button type="button" class="linkbtn" data-act="ttravel" data-id="${esc(t.id)}" data-v="${esc(d.date)}" aria-pressed="${d.kind === 'travel'}">Travel day</button>`}</p>
+    ${d.pins.map(x => `<div class="pin">${icon(catIcon(x.category))}<div class="pin-b"><b>${esc(x.title)}</b><span>${esc(x.when || '')}${d.kind === 'work' ? ' · ' + (c.schedule ? 'free time' : 'evening') : ''}</span></div><div class="pin-acts"><a class="btn sm ghost" target="_blank" rel="noopener noreferrer" href="${esc(safeUrl(x.url))}">Website ${icon('ext')}</a><label class="sr-only" for="mv-${esc(t.id)}-${esc(x.id)}">Move ${esc(x.title)} to another day</label><select id="mv-${esc(t.id)}-${esc(x.id)}" class="pin-mv" data-pinmove="${esc(t.id)}" data-v="${esc(x.id)}">${ds.map(o => `<option value="${o.date}" ${o.date === x.day ? 'selected' : ''}>${esc(fmtD(o.date, { weekday: 'short', day: 'numeric', month: 'short' }))}</option>`).join('')}</select></div><button type="button" class="icon-btn" data-act="unpin" data-id="${esc(t.id)}" data-v="${esc(x.id)}" aria-label="Remove ${esc(x.title)}">${icon('x')}</button></div>`).join('')}</div></li>`;
   /* ideas: what is on in the current window (or up to 3 days out when nothing is added yet) that is not pinned */
   const pins = new Set(p.pins.map(x => x.id)), ideas = EXP.list ? expFor(c, Math.max(p.before, p.after, any ? 0 : 3)).filter(e => !pins.has(e.id)).slice(0, 3) : [];
   if (!EXP.list) loadExp().then(ok => { if (ok && route() === 'trips') bgRender(); });
   const idea = e => `<li class="idea">${icon(catIcon(e.category))}<div><b>${esc(e.title)}</b><span>${esc(expWhen(e))} · ${esc(fitText(e.match))}</span></div><button type="button" class="btn sm ghost" data-act="pinexp" data-id="${esc(c.id)}" data-v="${esc(e.id)}" data-trip="1">${icon('plus')} Add</button></li>`;
   const sum = `${plural(ds.length, 'day')}: ${n.work} work${n.personal ? ', ' + n.personal + ' personal' : ''}${n.travel ? ', ' + n.travel + ' travel' : ''}`;
   return `<details class="tplan" data-trip="${esc(t.id)}" ${open ? 'open' : ''}><summary><span class="tp-t">Make a trip of it</span><span class="tp-s">${esc(sum)}</span></summary>
-    <p class="note tp-lede">Conference days are work. Days you add are personal, unless you mark one as a travel day.</p>
     <div class="steppers">${step('before', 'Days before')}${step('after', 'Days after')}</div>
     <ol class="days">${ds.map(dayRow).join('')}</ol>
-    ${ideas.length ? `<div class="ideas"><h3>On around ${esc(c.city)}</h3><ul>${ideas.map(idea).join('')}</ul><button type="button" class="linkbtn" data-act="open" data-id="${esc(c.id)}">See everything on these dates</button></div>` : ''}
+    ${ideas.length ? `<div class="ideas"><h3>Around ${esc(c.city)}</h3><ul>${ideas.map(idea).join('')}</ul><button type="button" class="linkbtn" data-act="open" data-id="${esc(c.id)}">See all</button></div>` : ''}
     ${costPanel(t)}</details>`;
 }
+/* "work (most days are work days)": the fare rule as one short line */
+const fareShort = (f, n) => `${f.mode === 'apportion' ? 'split by days' : f.mode}${f.auto ? (f.mode === 'work' ? (n.personal ? ' (most days are work days)' : '') : ` (${n.work} of ${n.work + n.personal} work)`) : ''}`;
 const OPEN_PLAN = new Map(); /* trip id -> open or closed by the user this session; default: open once the plan has days */
 function costPanel(t) {
   const c = ofTrip(t), { from, items } = costItems(t), sp = HT.split(c, t.plan, items), p = HT.normPlan(t.plan), per = planned(t);
   const byCat = {}; sp.lines.forEach(l => { const k = HT.BOOKING_CAT[l.item.category] || l.item.category; const o = byCat[k] || (byCat[k] = { work: 0, personal: 0, rules: new Set() }); o.work += l.work; o.personal += l.personal; if (l.short || l.rule) o.rules.add(l.short || l.rule); });
   const rows = CATS.filter(k => byCat[k]).map(k => `<tr><th scope="row">${esc(k)}${byCat[k].rules.size ? `<span class="rule">${esc(byCat[k].rules.size > 1 ? 'By the day each was spent' : [...byCat[k].rules][0])}</span>` : ''}</th><td>${money(byCat[k].work)}</td><td>${money(byCat[k].personal)}</td></tr>`).join('');
-  const fare = sp.fare, fsel = `<label class="fare-sel"><span>Fares</span><select data-fares="${esc(t.id)}" aria-label="How to count fares">${[['auto', 'Hoggy\'s rule (majority of days)'], ['work', 'All work'], ['apportion', 'Apportion by days'], ['personal', 'All personal']].map(([v, l]) => `<option value="${v}" ${p.fares === v ? 'selected' : ''}>${l}</option>`).join('')}</select></label>`;
-  return `<div class="tcost" data-testid="trip-costs"><h3>Costs: work and personal</h3>
-    ${items.length ? `<table class="split"><thead><tr><th scope="col">${from === 'receipts' ? 'From your receipts' : 'From your bookings'}</th><th scope="col">Work</th><th scope="col">Personal</th></tr></thead><tbody>${rows}</tbody><tfoot><tr><th scope="row">Total</th><td>${money(sp.work)}</td><td>${money(sp.personal)}</td></tr></tfoot></table>` : '<p class="note">Log a booking or add a receipt and Hoggy splits it here.</p>'}
-    <ul class="rules"><li><b>${n0(sp.counts.work)} work, ${n0(sp.counts.personal)} personal${sp.counts.travel ? ', ' + n0(sp.counts.travel) + ' travel' : ''} days.</b> Registration is work.</li><li>${esc(fare.text)}. ${fsel}</li><li>${sp.nights.total ? `${sp.nights.work} of ${sp.nights.total} nights are conference nights (the night before each conference day${p.travel.length ? ', and after the last one when the next day is a travel day' : ''}).` : 'No nights in this plan.'}</li><li>Meals, transport and other costs follow the day they were spent. A personal portion you type on a receipt overrides all of this.</li></ul>
-    ${per ? '<p class="note">Only the work column goes into the claim pack; personal days are listed there as excluded.</p>' : ''}<p class="note disclaim">${esc(DISCLAIM)}</p></div>`;
+  const fare = sp.fare, fsel = `<label class="fare-sel"><span class="sr-only">Change</span><select data-fares="${esc(t.id)}" aria-label="Count fares as">${[['auto', 'Auto'], ['work', 'Work'], ['apportion', 'Split by days'], ['personal', 'Personal']].map(([v, l]) => `<option value="${v}" ${p.fares === v ? 'selected' : ''}>${l}</option>`).join('')}</select></label>`;
+  return `<div class="tcost" data-testid="trip-costs"><h3>Costs</h3>
+    ${items.length ? `<table class="split"><thead><tr><th scope="col">${from === 'receipts' ? 'Receipts' : 'Bookings'}</th><th scope="col">Work</th><th scope="col">Personal</th></tr></thead><tbody>${rows}</tbody><tfoot><tr><th scope="row">Total</th><td>${money(sp.work)}</td><td>${money(sp.personal)}</td></tr></tfoot></table>` : '<p class="note">No costs yet.</p>'}
+    <ul class="rules"><li>Days: ${n0(sp.counts.work)} work · ${n0(sp.counts.personal)} personal${sp.counts.travel ? ' · ' + n0(sp.counts.travel) + ' travel' : ''}</li><li>Fares: ${esc(fareShort(fare, sp.counts))} · ${fsel}</li>${sp.nights.total ? `<li>Nights: ${sp.nights.work} of ${sp.nights.total} work</li>` : ''}</ul>
+    ${per ? '<p class="note">Claims include the work column only.</p>' : ''}<p class="note disclaim">${esc(DISCLAIM)}</p></div>`;
 }
 /* what the claim pack says about the plan: only the work portion is claimed, personal days are listed as excluded */
 function tripClaimLines(t) {
@@ -426,7 +427,7 @@ function tripPackHtml(t) {
   return `<h2>Trip plan</h2><p>${esc(L[0])}</p><table><tr><th>Date</th><th>Day</th><th>In this claim</th></tr>${sp.days.map(d => `<tr><td>${esc(fmtD(d.date, { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' }))}</td><td>${d.confDay ? 'Conference day ' + d.confDay : DAY_KIND[d.kind]}</td><td>${d.kind === 'personal' ? 'Excluded (personal day)' : d.kind === 'travel' ? 'Included (travel day)' : 'Included'}</td></tr>`).join('')}</table><p>${esc(L[1])}</p><p style="color:#555">${esc(DISCLAIM)}</p>`;
 }
 /* Home and Discover: browse by what you want to do; results are still conferences */
-const doChips = (cur, asLinks) => HT ? `<div class="chips do-chips" role="group" aria-label="What would you like to do there?">${HT.INTERESTS.map(i => asLinks ? `<a class="chip" href="#/discover?do=${esc(i.key)}">${esc(i.label)}</a>` : `<button type="button" class="chip" aria-pressed="${cur === i.key}" data-do="${esc(i.key)}">${esc(i.label)}</button>`).join('')}</div>` : '';
+const doChips = (cur, asLinks) => HT ? `<div class="chips do-chips" role="group" aria-label="Things to do">${HT.INTERESTS.map(i => asLinks ? `<a class="chip" href="#/discover?do=${esc(i.key)}">${esc(i.label)}</a>` : `<button type="button" class="chip" aria-pressed="${cur === i.key}" data-do="${esc(i.key)}">${esc(i.label)}</button>`).join('')}</div>` : '';
 /* the "Make a trip of it" shelf: one card per experience, conferences in your field first */
 function tripShelf(spec) {
   if (!EXP.list) return '';
@@ -436,7 +437,7 @@ function tripShelf(spec) {
   for (const x of r) { const k = x.matches[0] && x.matches[0].id; if (!k || seen.has(k) || seenC.has(x.conference.id)) continue; seen.add(k); seenC.add(x.conference.id); picks.push(x); if (picks.length >= 10) break; }
   if (!picks.length) return '';
   return `<section class="shelf-sec trip-shelf" aria-labelledby="tripH"><div class="section"><h2 id="tripH">Make a trip of it</h2></div>
-    <p class="shelf-lede">Conferences with something on nearby at the same time. The conference comes first; the rest is up to you.</p>${doChips('', true)}
+    ${doChips('', true)}
     <div class="grid ex shelf">${picks.map(x => card(x.conference, x.matches)).join('')}</div></section>`;
 }
 function fillTripShelf() { const h = $('#tripShelf'); if (!h) return; const spec = h.dataset.spec || ''; const html = tripShelf(spec); if (html) { h.outerHTML = html; if (MOTION) MOTION.scan($('#main')); } }
@@ -460,75 +461,67 @@ const VIEWS = {
         ${days > 0 ? `<b class="fig">${count(days)}<small>${days === 1 ? 'day' : 'days'} to go</small></b>` : `<b class="fig"><small>${nc.end >= today() ? 'On now' : 'Finished ' + esc(whenText(nc.end))}</small></b>`}
         <span class="dash-name">${esc(nc.name)}</span><span class="dash-s">${esc(nc.city)} · ${esc(range(nc))}</span>
         <span class="dash-s">${plural((next.bookings || []).length, 'booking')} logged · ${plural(S.receipts.filter(r => r.tripId === next.id).length, 'receipt')}</span></div></a>`
-      : `<a class="dash-next none" href="#/discover"><div class="dash-next-b"><span class="lbl">Next trip</span><b class="fig"><small>None planned</small></b><span class="dash-s">Find a conference or course, then choose Plan trip. Hoggy opens flight and hotel searches for the exact dates.</span><span class="btn sm primary">Find one</span></div></a>`;
+      : `<a class="dash-next none" href="#/discover"><div class="dash-next-b"><span class="lbl">Next trip</span><b class="fig"><small>None planned</small></b><span class="btn sm primary">Find one</span></div></a>`;
     const spec = p.specialty && CONFS.some(c => c.specialty === p.specialty) ? upcoming().filter(c => c.specialty === p.specialty).sort((a, b) => (b.country === p.country) - (a.country === p.country) || (dateEv(a) === 'estimated') - (dateEv(b) === 'estimated') || a.start.localeCompare(b.start)).slice(0, 10) : [];
     const hp = homePlace(), near = COURSES.loaded ? COURSES.cat.courses.filter(c => HC.countFor(COURSES.summary[c.id], hp, 'en').n > 0).sort((a, b) => HC.relevanceOf(b) - HC.relevanceOf(a) || HC.countFor(COURSES.summary[a.id], hp, 'en').next.localeCompare(HC.countFor(COURSES.summary[b.id], hp, 'en').next)).slice(0, 8) : [];
     const savedL = S.saved.map(byId).filter(Boolean).slice(0, 12);
     const dash = `<section class="hero hero-dash"><p class="kicker">${esc(new Date().toLocaleDateString('en-AU', { weekday: 'long', day: 'numeric', month: 'long' }))}</p><h1>${fresh ? 'Welcome' : 'Welcome back'}${p.name ? ', ' + esc(firstName(p.name)) : ''}.</h1>
-      <p>Your conferences, trips, receipts and CPD in one place.</p>
-      <div class="row"><a class="btn primary" href="#/discover">Find conferences</a><a class="btn ghost" href="#/receipts">Add a receipt</a></div></section>
+      <div class="row"><a class="btn primary" href="#/discover">Find conferences</a><a class="btn ghost" href="#/receipts">Add receipt</a></div></section>
     ${getStarted()}${remindCard()}${hospHome()}<div class="dash">${nextBox}
       <a class="dash-tile dash-cpd" href="#/cpd">${dialSvg(pct)}<div><span class="lbl">CPD ${esc(p.cpdYear)}${p.cpdBody ? ' · ' + esc(p.cpdBody) : ''}</span><b class="fig">${count(tot, String(tot))}<small>of ${esc(p.cpdTarget)} h</small></b><span class="dash-s">${left ? esc(left) + ' hours to go' : 'Target reached'}</span></div></a>
-      <a class="dash-tile" href="#/certs"><span class="lbl">Certificates</span><b class="fig">${count(crs.length)}</b><span class="dash-s">${nextCert && nextCert.expires ? esc(nextCert.short) + (nextCert.st === 'expired' ? ' expired ' : ' due ') + esc(fmtD(nextCert.expires)) : 'Add your APLS or ALS certificate'}</span></a>
+      <a class="dash-tile" href="#/certs"><span class="lbl">Certificates</span><b class="fig">${count(crs.length)}</b><span class="dash-s">${nextCert && nextCert.expires ? esc(nextCert.short) + (nextCert.st === 'expired' ? ' expired ' : ' due ') + esc(fmtD(nextCert.expires)) : 'Add certificate'}</span></a>
       <a class="dash-tile" href="#/claims"><span class="lbl">Not yet claimed</span><b class="fig sm">${money(unclaimed)}</b><span class="dash-s">${plural(cap.length, 'receipt')} waiting</span></a>
-      <a class="dash-tile" href="#/claims"><span class="lbl">Awaiting reimbursement</span><b class="fig sm">${money(pending)}</b><span class="dash-s">Submitted, not yet paid</span></a></div>
+      <a class="dash-tile" href="#/claims"><span class="lbl">Awaiting reimbursement</span><b class="fig sm">${money(pending)}</b><span class="dash-s">Submitted</span></a></div>
     ${shelf('For ' + esc(p.specialty), spec.map(c => card(c)).join(''), '<a href="#/discover">Browse all</a>', 'forH')}
     ${EXP.list ? tripShelf(p.specialty) : `<div id="tripShelf" data-spec="${esc(p.specialty)}"></div>`}
     ${shelf('Courses in ' + esc(HC.placeLabel(hp)), near.map(c => courseCard(c, hp, 'en')).join(''), '<a href="#/courses">All courses</a>', 'nearH')}
     ${shelf('Saved', savedL.map(c => card(c)).join(''), '', 'savedH')}`;
     /* ----- first visit, signed out: one scroll that explains the product ----- */
     const fan = examples.slice(0, 3);
-    const hero = `<section class="hero hero-intro"><div class="hero-copy"><p class="kicker">For doctors who travel for CPD</p>
-      <h1>Find the conference. <em>Hoggy helps with the admin.</em></h1>
-      <p class="hero-lede">Find a meeting, plan the trip, keep every receipt and hand your hospital or employer a claim-ready pack.</p>
+    const hero = `<section class="hero hero-intro"><div class="hero-copy"><p class="kicker">For doctors</p>
+      <h1>Conference travel, <em>sorted.</em></h1>
+      <p class="hero-lede">Find it. Plan it. Claim it.</p>
       <form class="hero-search" id="heroSearch" role="search"><label class="search">${icon('search')}<span class="sr-only">Search conferences and courses</span><input id="hq" type="search" name="q" placeholder="Specialty, city or name" autocomplete="off"></label><button class="btn primary lg" type="submit">Search</button></form>
-      <p class="hero-sub">No account needed to search. <a class="u" href="#/discover">Browse all conferences</a> · <a class="u" href="#/courses">Browse courses</a></p>
-      <div class="row hero-acts">${NET.online ? '<button type="button" class="btn ghost" data-act="register">Create an account</button>' : ''}<button type="button" class="btn ghost" data-act="howto">See how it works</button></div>
-      ${HT ? `<div class="hero-trip"><p id="heroTripL">Make a trip of it</p>${doChips('', true).replace('aria-label="What would you like to do there?"', 'aria-labelledby="heroTripL"')}</div>` : ''}</div>
+      <p class="hero-sub">No sign-up needed · <a class="u" href="#/discover">All conferences</a> · <a class="u" href="#/courses">Courses</a></p>
+      <div class="row hero-acts">${NET.online ? '<button type="button" class="btn ghost" data-act="register">Create account</button>' : ''}<button type="button" class="btn ghost" data-act="howto">How it works</button></div>
+      ${HT ? `<div class="hero-trip"><p id="heroTripL">Make a trip of it</p>${doChips('', true).replace('aria-label="Things to do"', 'aria-labelledby="heroTripL"')}</div>` : ''}</div>
       <div class="hero-fan" aria-hidden="true">${fan.map((c, i) => `<div class="fan-card f${i}">${plate(c, 'tall')}<span class="fan-cap">${esc(c.city)}</span></div>`).join('')}</div></section>`;
     const tick = (c, dup) => `<button type="button" class="tick-item" data-act="open" data-id="${esc(c.id)}"${dup ? ' tabindex="-1"' : ''}><b>${esc(fmtD(c.start, { day: 'numeric', month: 'short' }))}</b><span>${esc(c.name)}</span><i>${esc(c.city)}</i></button>`;
-    const ticker = examples.length > 3 ? `<section class="ticker" aria-label="${examples.every(c => dateEv(c) === 'confirmed') ? 'Coming up, dates confirmed' : 'Coming up'}: moving list"><button type="button" class="tick-pause" data-act="tickpause" aria-pressed="false" aria-label="Pause the moving list">${icon('pause')}</button><div class="tick-view"><div class="tick-track"><div class="tick-set">${examples.map(c => tick(c)).join('')}</div><div class="tick-set" aria-hidden="true">${examples.map(c => tick(c, true)).join('')}</div></div></div></section>` : '';
+    const ticker = examples.length > 3 ? `<section class="ticker" aria-label="${examples.every(c => dateEv(c) === 'confirmed') ? 'Coming up, dates confirmed' : 'Coming up'}: moving list"><button type="button" class="tick-pause" data-act="tickpause" aria-pressed="false" aria-label="Pause">${icon('pause')}</button><div class="tick-view"><div class="tick-track"><div class="tick-set">${examples.map(c => tick(c)).join('')}</div><div class="tick-set" aria-hidden="true">${examples.map(c => tick(c, true)).join('')}</div></div></div></section>` : '';
     const ex0 = examples[0];
     const vis = [
-      ex0 ? `<div class="vis vis-find">${plate(ex0, 'square')}<span class="pill g">Dates confirmed</span></div>` : '',
+      ex0 ? `<div class="vis vis-find">${plate(ex0, 'square')}<span class="pill g">Confirmed</span></div>` : '',
       ex0 ? `<div class="vis vis-plan"><div class="stub"><b>${esc(ex0.city)}</b><span>${esc(range(ex0))}</span></div><div class="stub-b"><span>Flights</span><span>Hotels</span></div></div>` : '',
       `<div class="vis vis-rc"><div class="rc-slip"><span>Amount</span><span>Date</span><span>Trip</span><span>File</span></div></div>`,
       `<div class="vis vis-claim">${dialSvg(100, 'done')}<span>Claim-ready</span></div>`];
     const steps = [
-      ['search', 'Find a conference', 'Search by specialty, country, month and CPD. Each listing says whether its dates are confirmed by the organiser or still an estimate.'],
-      ['plane', 'Plan the trip', 'Save it as a trip. Hoggy opens flight and hotel searches prefilled with your dates, and you book with the provider.'],
-      ['receipt', 'Forward or snap receipts', 'Forward booking emails to your private Hoggy address, or add a PDF or photo. Hoggy reads the amount and date where it can and suggests the trip.'],
-      ['claim', 'Claim-ready pack, CPD logged', 'Missing details are flagged before you export. Print or email the pack, then mark the trip attended to log your CPD hours.']];
+      ['search', 'Find', 'Confirmed and estimated dates, labelled.'],
+      ['plane', 'Plan', 'Flights and hotels, prefilled.'],
+      ['receipt', 'Snap receipts', 'Photo, PDF or forwarded email.'],
+      ['claim', 'Claim', 'A claim-ready pack. CPD logged.']];
     const how = `<section class="how" id="how" tabindex="-1" aria-labelledby="howH"><div class="section"><h2 id="howH">How it works</h2></div>
       <ol class="steps">${steps.map(([ic, t, d], i) => `<li class="step"><span class="step-n" aria-hidden="true">0${i + 1}</span>${vis[i]}<h3>${t}</h3><p>${d}</p></li>`).join('')}</ol></section>`;
-    const benefits = [
-      ['One place for the whole trip', 'The conference, your bookings, receipts and CPD sit together, so nothing lives in a stray inbox folder.'],
-      ['A claim pack your employer can check', 'Every receipt needs a file, amount, date and trip before export. Print it, email it or download a CSV.'],
-      ['CPD and certificates tracked as you go', 'Log hours from conferences and courses against your yearly target and export the log as a CSV (college-specific formats are not built yet). Find APLS and ALS course dates, and add your certificate so Hoggy shows when it is due for renewal.'],
-      ['Dates you can check', 'Confirmed dates come from the organiser\'s own page, with the link, the wording Hoggy read and the date it checked. Dates confirmed before Hoggy stored the wording say so until they are re-checked, and estimates are labelled.']];
-    const ben = `<section class="ben" aria-labelledby="benH"><div class="section"><h2 id="benH">What you get</h2></div>
-      <div class="benefits">${benefits.map(([t, d]) => `<div class="benefit"><h3>${t}</h3><p>${d}</p></div>`).join('')}</div></section>`;
-    const live = st && st.conferences ? `<section class="live" aria-labelledby="liveH"><div class="live-head"><h2 id="liveH">Live data</h2><span>Counted from Hoggy's conference and course lists just now</span></div>
-      <dl class="live-grid"><div><dt>Upcoming conferences</dt><dd>${count(st.conferences)}</dd></div><div><dt>Countries</dt><dd>${count(st.countries)}</dd></div><div><dt>Specialties</dt><dd>${count(st.specialties)}</dd></div>${ct && ct.sessions ? `<div><dt>Course sessions</dt><dd>${count(ct.sessions)}<span class="live-sub">${n(ct.types)} course types in ${n(ct.countries)} countries, dates read on each provider's page.</span></dd></div>` : ''}
-      <div class="live-dates"><dt>Conference dates</dt><dd class="split-bar" aria-hidden="true"><i class="ok" style="flex:${st.confirmed}"></i><i class="mid" style="flex:${st.unchecked}"></i><i class="est" style="flex:${st.estimated}"></i></dd><dd class="split"><span class="ok"><b>${n(st.confirmed)}</b> confirmed with source stored</span><span class="mid"><b>${n(st.unchecked)}</b> confirmed earlier, being re-checked</span><span class="est"><b>${n(st.estimated)}</b> estimated (labelled)</span></dd></div></dl></section>` : '';
+    const live = st && st.conferences ? `<section class="live" aria-labelledby="liveH"><div class="live-head"><h2 id="liveH">By the numbers</h2></div>
+      <dl class="live-grid"><div><dt>Upcoming conferences</dt><dd>${count(st.conferences)}</dd></div><div><dt>Countries</dt><dd>${count(st.countries)}</dd></div><div><dt>Specialties</dt><dd>${count(st.specialties)}</dd></div>${ct && ct.sessions ? `<div><dt>Course sessions</dt><dd>${count(ct.sessions)}<span class="live-sub">${n(ct.types)} course types · ${n(ct.countries)} countries</span></dd></div>` : ''}
+      <div class="live-dates"><dt>Conference dates</dt><dd class="split-bar" aria-hidden="true"><i class="ok" style="flex:${st.confirmed}"></i><i class="mid" style="flex:${st.unchecked}"></i><i class="est" style="flex:${st.estimated}"></i></dd><dd class="split"><span class="ok"><b>${n(st.confirmed)}</b> confirmed</span><span class="mid"><b>${n(st.unchecked)}</b> re-checking</span><span class="est"><b>${n(st.estimated)}</b> estimates</span></dd></div></dl></section>` : '';
     const ex = shelf(examples.every(c => dateEv(c) === 'confirmed') ? 'Coming up, dates confirmed' : 'Coming up', examples.slice(0, 8).map(c => card(c)).join(''), '<a href="#/discover">Browse all</a>', 'exH');
-    const close = `<section class="hero hero-close"><h2>Ready for your next conference?</h2><p>Start with a search. No account needed to browse; create one when you want your trips, receipts and CPD saved across devices.</p>
-      <div class="row"><a class="btn primary lg" href="#/discover">Find conferences</a>${NET.online && !NET.user ? '<button type="button" class="btn ghost lg" data-act="register">Create an account</button><button type="button" class="btn ghost lg" data-act="signin">Sign in</button>' : ''}</div></section>`;
+    const close = `<section class="hero hero-close"><h2>Find your next conference</h2>
+      <div class="row"><a class="btn primary lg" href="#/discover">Find conferences</a>${NET.online && !NET.user ? '<button type="button" class="btn ghost lg" data-act="register">Create account</button><button type="button" class="btn ghost lg" data-act="signin">Sign in</button>' : ''}</div></section>`;
     const top = topSection(); /* nothing at all until a series has 3 reviews */
     const tripsH = EXP.list ? tripShelf('') : '<div id="tripShelf"></div>';
-    return active ? dash + top + live : hero + ticker + tripsH + how + top + ex + ben + live + close;
+    return active ? dash + top + live : hero + ticker + tripsH + how + top + ex + live + close;
   },
   discover() {
     { const d = hashParts().q.get('do'); if (d != null) UI.do = HT && HT.INTERESTS.some(i => i.key === d) ? d : ''; }
     const specs = [...new Set(CONFS.map(c => c.specialty))].sort(), regs = [...new Set(CONFS.map(c => c.region))].sort(), ctry = [...new Set(CONFS.map(c => c.country))].sort();
     const HS = window.HoggyStats, ds = HS && HS.discoverSummary ? HS.discoverSummary(CONFS, today()) : null, n = v => Number(v).toLocaleString('en-AU'), mon = iso => fmtD(iso, { month: 'short', year: 'numeric' });
     const ct = COURSES.loaded ? HC.courseTotals(COURSES.summary, COURSES.cat) : null;
-    const sub = ds && ds.conferences ? `${n(ds.conferences)} upcoming conferences in ${n(ds.countries)} countries, ${esc(mon(ds.from))} to ${esc(mon(ds.to))}: ${n(ds.confirmed)} confirmed with source stored · ${n(ds.unchecked)} confirmed earlier, being re-checked · ${n(ds.estimated)} estimated (labelled).${ct && ct.sessions ? ` Courses: ${n(ct.sessions)} sessions of ${n(ct.types)} course types.` : ''}` : `${n(upcoming().length)} upcoming conferences.`;
+    const sub = ds && ds.conferences ? `${n(ds.conferences)} conferences · ${n(ds.countries)} countries` : `${n(upcoming().length)} conferences`;
     const sel = (id, label, opts) => `<label class="sel"><span class="sel-l">${label}</span><select id="${id}" aria-label="${label}">${opts}</select></label>`;
-    return `<div class="page-head"><div><h1>Discover</h1><p>${sub} Filter by specialty, region, country, month and published CPD.</p></div><a class="btn sm ghost" href="#/list-event">Organisers: list your event</a></div>${segToggle('discover')}
-    <div class="filters"><div class="filter-top"><label class="search">${icon('search')}<input id="q" type="search" placeholder="Search conferences, courses, cities…" aria-label="Search conferences and courses" autocomplete="off"></label>
+    return `<div class="page-head"><div><h1>Discover</h1><p class="note">${sub}</p></div><a class="btn sm ghost" href="#/list-event">List your event</a></div>${segToggle('discover')}
+    <div class="filters"><div class="filter-top"><label class="search">${icon('search')}<input id="q" type="search" placeholder="Search" aria-label="Search conferences and courses" autocomplete="off"></label>
       <button type="button" class="btn filt-btn" data-act="filters" aria-expanded="${FS.open}" aria-controls="fsheet">${icon('sliders')} Filters<span class="badge" id="fN" hidden></span></button></div>
-      ${HT ? `<div class="do-row"><span class="do-l" id="doL">Make a trip of it</span>${doChips(UI.do).replace('class="chips do-chips" role="group" aria-label="What would you like to do there?"', 'class="chips do-chips" id="doChips" role="group" aria-labelledby="doL"')}</div>` : ''}
+      ${HT ? `<div class="do-row"><span class="do-l" id="doL">Make a trip of it</span>${doChips(UI.do).replace('class="chips do-chips" role="group" aria-label="Things to do"', 'class="chips do-chips" id="doChips" role="group" aria-labelledby="doL"')}</div>` : ''}
       <div class="chips" id="specChips" role="group" aria-label="Specialty"><button class="chip" aria-pressed="true" data-spec="All">All</button>${specs.map(s => `<button class="chip" aria-pressed="false" data-spec="${esc(s)}">${esc(s)}</button>`).join('')}</div>
       <div class="fsheet" id="fsheet" role="group" aria-label="Filters"><div class="fsheet-head"><span class="grab" aria-hidden="true"></span><h2>Filters</h2><button type="button" class="icon-btn" data-act="filtersclose" aria-label="Close filters">${icon('x')}</button></div>
       <div class="selects">${sel('fRegion', 'Region', `<option value="">All regions</option>${regs.map(r => `<option>${esc(r)}</option>`).join('')}`)}
@@ -537,7 +530,7 @@ const VIEWS = {
         ${HOL.length ? sel('fHol', 'School holidays', `<option value="">Any time of year</option><option value="ANZ">In any AU or NZ school holidays</option><option value="AU">In any Australian school holidays</option>${HOL.map(r => `<option value="${esc(r.code)}">In ${esc(r.name)} school holidays</option>`).join('')}`) : ''}
         ${sel('fCpd', 'CPD credits', '<option value="0">Any CPD</option><option value="1">CPD credits published</option>')}
         ${sel('fConf', 'Date status', '<option value="">Any dates</option><option value="1">Confirmed dates only</option><option value="2">Confirmed, source re-checked</option>')}
-        ${sel('fSort', 'Sort', `<option value="date">Soonest</option><option value="rating">Highest rated by attendees</option><option value="cpd">Most CPD (published)</option>${CONFS.some(figPrice) ? '<option value="price">Lowest price</option>' : ''}<option value="match">Closest match</option>`)}</div>
+        ${sel('fSort', 'Sort', `<option value="date">Soonest</option><option value="rating">Highest rated by attendees</option><option value="cpd">Most CPD</option>${CONFS.some(figPrice) ? '<option value="price">Lowest price</option>' : ''}<option value="match">Closest match</option>`)}</div>
       <div class="fsheet-foot"><button type="button" class="btn ghost" data-act="clearfilters">Clear all</button><button type="button" class="btn primary" data-act="filtersclose" id="fShow">Show results</button></div></div>
       <span class="count" id="count" role="status"></span></div>
     <div class="scrim" data-act="filtersclose"></div>
@@ -549,18 +542,18 @@ const VIEWS = {
     const need = cap.filter(r => !ready(r)).length, claimsN = S.trips.filter(t => S.receipts.some(r => r.tripId === t.id)).length;
     const tot = cpdTotal(), pct = Math.min(100, Math.round(tot / (p.cpdTarget || 1) * 100)), left = Math.max(0, p.cpdTarget - tot), crs = certRows(), nextCert = crs.find(x => x.expires && x.st !== 'expired') || crs[0], due = crs.filter(x => HC.needsAttention(x.st)).length;
     const row = (href, k, fig, s, extra = '') => `<a class="wrow" href="${href}"><span class="wrow-k">${k}</span><b class="fig">${fig}</b><span class="wrow-s">${s}</span>${extra}${CHEV}</a>`;
-    return `<div class="page-head"><div><h1>Wallet</h1><p>The paperwork for every trip: receipts, claims, CPD hours and certificates, kept claim-ready.</p></div><div class="row head-acts">${snapBtn('', true)}<button class="btn" data-act="addreceipt">${icon('plus')} Add receipt</button></div></div>${walletNav('wallet')}
+    return `<div class="page-head"><div><h1>Wallet</h1></div><div class="row head-acts">${snapBtn('', true)}<button class="btn" data-act="addreceipt">${icon('plus')} Add receipt</button></div></div>${walletNav('wallet')}
     <div class="wallet">
-      ${row('#/receipts', 'Receipts', count(S.receipts.length), cap.length ? `${plural(cap.length, 'receipt')} not yet claimed · ${money(unclaimed)}${need ? ` · <span class="pill w">${need} need${need === 1 ? 's' : ''} info</span>` : ''}` : S.receipts.length ? 'All claimed' : 'Snap a photo, add a file or forward a booking email')}
-      ${row('#/claims', 'Claims', count(claimsN), claimsN ? `One claim per trip · ${money(pending)} awaiting reimbursement` : 'Add receipts to a trip and its claim appears here')}
+      ${row('#/receipts', 'Receipts', count(S.receipts.length), cap.length ? `${plural(cap.length, 'receipt')} not yet claimed · ${money(unclaimed)}${need ? ` · <span class="pill w">${need} need${need === 1 ? 's' : ''} info</span>` : ''}` : S.receipts.length ? 'All claimed' : 'None yet')}
+      ${row('#/claims', 'Claims', count(claimsN), claimsN ? `${money(pending)} awaiting payment` : 'None yet')}
       ${row('#/cpd', 'CPD ' + esc(p.cpdYear), `${count(tot, String(tot))}<small>of ${esc(p.cpdTarget)} h</small>`, left ? `${esc(left)} hours to go${p.cpdBody ? ' · ' + esc(p.cpdBody) : ''}` : 'Target reached', dialSvg(pct, 'sm'))}
-      ${row('#/certs', 'Certificates', count(crs.length), nextCert && nextCert.expires ? `${esc(nextCert.short)} ${nextCert.st === 'expired' ? 'expired' : 'due'} ${esc(fmtD(nextCert.expires))}${due ? ` · <span class="pill w">${due} to renew</span>` : ''}` : 'Add your APLS, ALS or other course certificate')}
+      ${row('#/certs', 'Certificates', count(crs.length), nextCert && nextCert.expires ? `${esc(nextCert.short)} ${nextCert.st === 'expired' ? 'expired' : 'due'} ${esc(fmtD(nextCert.expires))}${due ? ` · <span class="pill w">${due} to renew</span>` : ''}` : 'Add certificate')}
     </div>
-    <p class="note">Receipts and certificates stay on this device, and sync with your account when you sign in.</p>`;
+    <p class="note">Saved on this device. Syncs when you sign in.</p>`;
   },
   trips() {
     const ts = S.trips.slice().sort((a, b) => ofTrip(a).start.localeCompare(ofTrip(b).start));
-    return `<div class="page-head"><div><h1>Trips</h1><p>Plan travel, log bookings and mark conferences attended to log your CPD hours.</p></div><a class="btn primary" href="#/discover">${icon('plus')} Add a conference</a></div>` +
+    return `<div class="page-head"><div><h1>Trips</h1></div><a class="btn primary" href="#/discover">${icon('plus')} Add conference</a></div>` +
       (ts.length ? ts.map(t => { const c = ofTrip(t), sp = tripSpan(t), L = links(sp.from !== c.start || sp.to !== c.end ? { ...c, start: sp.from, end: sp.to } : c, t.from || undefined), spent = S.receipts.filter(r => r.tripId === t.id).reduce((a, r) => a + homeAmt(r), 0), booked = (t.bookings || []).reduce((a, b) => a + Number(b.amount || 0), 0);
         const d = HC.daysBetween(today(), c.start), when = t.status === 'attended' ? '' : d > 0 ? `in ${plural(d, 'day')}` : c.end >= today() ? 'on now' : '';
         return `<article class="panel ticket"><div class="ticket-top"><div class="ticket-plate">${plate(c, 'tall')}</div><div class="ticket-main"><p class="card-when">${esc(range(c))}${when ? ' · ' + when : ''}</p><h2>${esc(c.name)}</h2><p class="card-where">${esc(c.city)}, ${esc(c.country)}</p>
@@ -568,48 +561,47 @@ const VIEWS = {
           <dl class="ledger"><div><dt>Booked</dt><dd>${money(booked)}</dd></div><div><dt>Receipts</dt><dd>${money(spent)}</dd></div></dl>
           <div class="row ticket-acts"><button class="btn sm" data-act="open" data-id="${esc(c.id)}">Details</button>${t.status === 'planned' ? `<button class="btn sm primary" data-act="attend" data-id="${esc(t.id)}">Mark attended</button>` : ''}<button class="btn sm danger" data-act="rmtrip" data-id="${esc(t.id)}">Remove</button></div></div></div>
           ${tripHospBox(t)}
-          ${NET.online && c.kind !== 'course' && c.end < today() && !reviewedYear(skey(c), +c.start.slice(0, 4)) ? `<div class="rv-prompt"><span><b>How was it?</b> Review it in a minute. It helps colleagues choose.</span><button class="btn sm primary" data-act="review" data-id="${esc(c.id)}" data-year="${esc(c.start.slice(0, 4))}">Review ${esc(c.start.slice(0, 4))}</button></div>` : ''}
-          <div class="row travel"><label class="from-field">Flying from <input type="text" data-from="${esc(t.id)}" value="${esc(t.from || S.profile.homeAirport || S.profile.city || '')}" maxlength="40" placeholder="City or airport" aria-label="Flying from (city or airport code) for ${esc(c.name)}"></label><a class="btn sm" target="_blank" rel="noopener noreferrer" data-flights="${esc(t.id)}" href="${esc(L.flights)}">${icon('plane')} Search flights ${icon('ext')}</a><a class="btn sm" target="_blank" rel="noopener noreferrer" href="${esc(L.hotels)}">${icon('bed')} Search hotels ${icon('ext')}</a><button class="btn sm ghost" data-act="addbook" data-id="${esc(t.id)}">${icon('plus')} Log a booking</button>${snapBtn(t.id)}<button class="btn sm ghost" data-act="addreceipt" data-id="${esc(t.id)}">${icon('receipt')} Add receipt</button></div>
+          ${NET.online && c.kind !== 'course' && c.end < today() && !reviewedYear(skey(c), +c.start.slice(0, 4)) ? `<div class="rv-prompt"><span><b>Leave a review</b></span><button class="btn sm primary" data-act="review" data-id="${esc(c.id)}" data-year="${esc(c.start.slice(0, 4))}">Review ${esc(c.start.slice(0, 4))}</button></div>` : ''}
+          <div class="row travel"><label class="from-field">Flying from <input type="text" data-from="${esc(t.id)}" value="${esc(t.from || S.profile.homeAirport || S.profile.city || '')}" maxlength="40" placeholder="City or airport" aria-label="Flying from (city or airport code) for ${esc(c.name)}"></label><a class="btn sm" target="_blank" rel="noopener noreferrer" data-flights="${esc(t.id)}" href="${esc(L.flights)}">${icon('plane')} Search flights ${icon('ext')}</a><a class="btn sm" target="_blank" rel="noopener noreferrer" href="${esc(L.hotels)}">${icon('bed')} Search hotels ${icon('ext')}</a><button class="btn sm ghost" data-act="addbook" data-id="${esc(t.id)}">${icon('plus')} Log booking</button>${snapBtn(t.id)}<button class="btn sm ghost" data-act="addreceipt" data-id="${esc(t.id)}">${icon('receipt')} Add receipt</button></div>
           ${(t.bookings || []).length ? `<div class="list" style="margin-top:12px">${t.bookings.map(b => `<div class="li"><div class="grow"><div class="t">${esc(b.type)} · ${esc(b.vendor)}</div><div class="s">Ref ${esc(b.ref || '—')} · ${esc(b.date ? fmtD(b.date) : '')}</div></div><div class="amt">${money(b.amount)}</div><button class="icon-btn" data-act="rmbook" data-id="${esc(t.id)}" data-b="${esc(b.id)}" aria-label="Remove booking">${icon('x')}</button></div>`).join('')}</div>` : ''}${t.status === 'planned' || t.plan ? tripPlan(t) : ''}${checklistHtml(t)}</article>`; }).join('')
-        : `<div class="empty"><h2>No trips yet</h2><p>Save a conference and choose “Plan trip” to start. Hoggy prefills flight and hotel searches for the exact dates.</p><p style="margin-top:16px"><a class="btn primary" href="#/discover">Browse conferences</a></p></div>`) +
-      `<p class="note">Hoggy opens prefilled search pages with Google Flights and Booking.com. You complete the purchase with the provider, then log the booking and forward the receipt here.</p>`;
+        : `<div class="empty"><h2>No trips yet</h2><p style="margin-top:16px"><a class="btn primary" href="#/discover">Find conferences</a></p></div>`) +
+      `<p class="note">You book with Google Flights and Booking.com.</p>`;
   },
   receipts() {
     const rs = S.receipts.slice().sort((a, b) => (b.created || 0) - (a.created || 0)), addr = NET.user ? NET.user.inbox : '';
-    return `<div class="page-head"><div><h1>Receipts</h1><p>Your receipts in one place, checked for a file, amount, date and trip, and against the caps you enter in Settings.</p></div><div class="row head-acts">${snapBtn('', true)}<button class="btn" data-act="addreceipt">${icon('plus')} Add receipt</button></div></div>${walletNav('receipts')}
+    return `<div class="page-head"><div><h1>Receipts</h1></div><div class="row head-acts">${snapBtn('', true)}<button class="btn" data-act="addreceipt">${icon('plus')} Add receipt</button></div></div>${walletNav('receipts')}
     <div class="cols"><div>
-      <div class="drop" id="drop"><p style="color:var(--text);font-weight:700;font-size:17px">Drop receipts here</p><p style="margin-top:4px">PDF, JPG or PNG — or paste a forwarded email in the add dialog.</p><p style="margin-top:14px"><button class="btn" data-act="addreceipt">Choose files</button></p></div>
+      <div class="drop" id="drop"><p style="color:var(--text);font-weight:700;font-size:17px">Drop receipts here</p><p style="margin-top:4px">PDF, JPG or PNG</p><p style="margin-top:14px"><button class="btn" data-act="addreceipt">Choose files</button></p></div>
       <div class="panel"><h2>${rs.length} receipt${rs.length === 1 ? '' : 's'}</h2>${rs.length ? `<div class="list">${rs.map(r => { const iss = receiptIssues(r), bad = iss.filter(i => i.lvl === 'bad').length, trip = S.trips.find(t => t.id === r.tripId);
         const tf = taxHtml(r, 2);
-        return `<div class="li rc"><div class="thumb" data-file="${esc(r.fileKey || '')}">${icon('file')}</div><div class="grow"><div class="t">${esc(r.vendor || 'Unnamed')}</div><div class="s">${esc(r.category)} · ${esc(r.date ? fmtD(r.date) : 'no date')}${trip ? ' · ' + esc(ofTrip(trip).name) : ''}</div>${iss.slice(0, 2).map(i => `<div class="check ${i.lvl}">${i.lvl === 'bad' ? '✕' : '!'} ${esc(i.t)}</div>`).join('')}</div><div class="rc-amt" style="text-align:right"><div class="amt">${money(r.amount, r.currency)}</div><span class="status ${esc(r.status)}">${esc(r.status === 'captured' ? (bad ? 'Needs info' : 'Ready') : r.status)}</span></div>${r.fileKey ? `<button class="icon-btn" data-act="openfile" data-id="${esc(r.id)}" aria-label="Download receipt file" title="Download receipt file">${icon('file')}</button>` : ''}<button class="icon-btn" data-act="editreceipt" data-id="${esc(r.id)}" aria-label="Edit receipt">${icon('gear')}</button>${tf ? `<div class="li-flags">${tf}</div>` : ''}</div>`; }).join('')}</div>` : `<div class="empty"><h2>No receipts yet</h2><p>Snap a photo, choose a file or forward a booking email to get started.</p><p style="margin-top:16px"><button class="btn primary" data-act="addreceipt">Add a receipt</button></p></div>`}</div></div>
-    <div><div class="panel"><h2>Your forwarding address</h2>${addr ? `<div class="copybox"><span style="flex:1">${esc(addr)}</span><button class="icon-btn" data-act="copy" data-v="${esc(addr)}" aria-label="Copy address">${icon('copy')}</button></div><p class="note">Auto-forward travel and booking emails here. While Hoggy is open it checks for new ones every minute (or tap Check inbox now). It reads the vendor, amount and date where it can and suggests a trip when only one fits; you check each one.</p><p style="margin-top:10px"><button class="btn sm" data-act="checkinbox">Check inbox now</button></p>` : `<p style="color:var(--muted)">${NET.online ? 'Sign in to get your personal forwarding address.' : (NET.trouble ? 'Hoggy can\u2019t connect right now, so your forwarding address isn\u2019t available. Try again in a minute; you can still add receipts as files.' : 'Your forwarding address needs an account. You can still add receipts as files.')}</p>${NET.online ? '<p style="margin-top:10px"><button class="btn sm primary" data-act="signin">Sign in</button></p>' : ''}`}</div>
-      <div class="panel"><h2>What Hoggy checks before you claim</h2>${['Every receipt must have a file, amount, date and trip','Amounts are checked against the caps you enter in Settings, and dates against the conference window','Duplicates and foreign currency are flagged','Export and email unlock once every receipt has its file, amount, date and trip, and nothing is over a limit without a justification'].map(t => `<div class="check">• ${esc(t)}</div>`).join('')}</div></div></div>`;
+        return `<div class="li rc"><div class="thumb" data-file="${esc(r.fileKey || '')}">${icon('file')}</div><div class="grow"><div class="t">${esc(r.vendor || 'Unnamed')}</div><div class="s">${esc(r.category)} · ${esc(r.date ? fmtD(r.date) : 'no date')}${trip ? ' · ' + esc(ofTrip(trip).name) : ''}</div>${iss.slice(0, 2).map(i => `<div class="check ${i.lvl}">${i.lvl === 'bad' ? '✕' : '!'} ${esc(i.t)}</div>`).join('')}</div><div class="rc-amt" style="text-align:right"><div class="amt">${money(r.amount, r.currency)}</div><span class="status ${esc(r.status)}">${esc(r.status === 'captured' ? (bad ? 'Needs info' : 'Ready') : r.status)}</span></div>${r.fileKey ? `<button class="icon-btn" data-act="openfile" data-id="${esc(r.id)}" aria-label="Download receipt file" title="Download receipt file">${icon('file')}</button>` : ''}<button class="icon-btn" data-act="editreceipt" data-id="${esc(r.id)}" aria-label="Edit receipt">${icon('gear')}</button>${tf ? `<div class="li-flags">${tf}</div>` : ''}</div>`; }).join('')}</div>` : `<div class="empty"><h2>No receipts yet</h2><p style="margin-top:16px"><button class="btn primary" data-act="addreceipt">Add receipt</button></p></div>`}</div></div>
+    <div><div class="panel"><h2>Forwarding address</h2>${addr ? `<div class="copybox"><span style="flex:1">${esc(addr)}</span><button class="icon-btn" data-act="copy" data-v="${esc(addr)}" aria-label="Copy address">${icon('copy')}</button></div><p class="note">Forward booking emails here.</p><p style="margin-top:10px"><button class="btn sm" data-act="checkinbox">Check inbox</button></p>` : `<p style="color:var(--muted)">${NET.online ? 'Sign in to get one.' : (NET.trouble ? 'Can\u2019t connect. Add receipts as files.' : 'Needs an account.')}</p>${NET.online ? '<p style="margin-top:10px"><button class="btn sm primary" data-act="signin">Sign in</button></p>' : ''}`}</div></div></div>`;
   },
   claims() {
     const ts = S.trips.filter(t => S.receipts.some(r => r.tripId === t.id));
     const orphan = S.receipts.filter(r => !r.tripId);
-    return `<div class="page-head"><div><h1>Claims</h1><p>One claim per trip. Fix what's flagged, export the pack, then track it to reimbursement.</p></div></div>${walletNav('claims')}` +
-      (orphan.length ? `<div class="panel"><div class="check warn">! ${orphan.length} receipt${orphan.length > 1 ? 's are' : ' is'} not linked to a trip and can't be claimed. <a href="#/receipts" style="text-decoration:underline">Fix in Receipts</a></div></div>` : '') +
+    return `<div class="page-head"><div><h1>Claims</h1></div></div>${walletNav('claims')}` +
+      (orphan.length ? `<div class="panel"><div class="check warn">! ${plural(orphan.length, 'receipt')} not on a trip. <a href="#/receipts" style="text-decoration:underline">Fix</a></div></div>` : '') +
       (ts.length ? ts.map(t => { const c = ofTrip(t), rs = S.receipts.filter(r => r.tripId === t.id), tot = rs.reduce((a, r) => a + claimAmt(r), 0), rd = rs.filter(ready).length, pct = Math.round(rd / rs.length * 100), allReady0 = rd === rs.length, pol = policyFor(t, rs), allReady = allReady0 && !pol.some(i => i.lvl === 'bad'), claim = S.claims[t.id] || {}, hc = inHosp() ? hClaimOf(t) : null, st = hc ? (hc.status === 'paid' ? 'paid' : 'claimed') : rs.every(r => r.status === 'paid') ? 'paid' : rs.some(r => r.status === 'claimed' || r.status === 'paid') ? 'claimed' : 'draft';
         const cats = CATS.map(k => [k, rs.filter(r => r.category === k).reduce((a, r) => a + claimAmt(r), 0)]).filter(x => x[1]);
         return `<article class="panel claim"><div class="claim-top"><div class="thumb plate-thumb">${plate(c, 'mini')}</div><div class="grow"><h2>${esc(c.name)}</h2><p class="card-where">${esc(c.city)} · ${esc(range(c))}</p></div><div class="claim-tot"><b class="fig sm">${money(tot)}</b><span class="status ${st === 'draft' ? 'captured' : st}">${st === 'draft' ? 'Draft' : st === 'claimed' ? 'Submitted' : 'Reimbursed'}</span></div></div>
-          <div class="row ready-row"><span>Claim readiness</span><span class="pill ${allReady ? 'g' : 'w'}">${rd}/${rs.length} receipts ready</span></div><div class="bar"><i class="${allReady ? '' : 'warn'}" style="width:${pct}%"></i></div>
+          <div class="row ready-row"><span>Ready</span><span class="pill ${allReady ? 'g' : 'w'}">${rd}/${rs.length} receipts ready</span></div><div class="bar"><i class="${allReady ? '' : 'warn'}" style="width:${pct}%"></i></div>
           ${rs.filter(r => !ready(r)).map(r => `<div class="check bad">✕ ${esc(r.vendor || 'Receipt')}: ${esc(receiptIssues(r).filter(i => i.lvl === 'bad').map(i => i.t).join(', '))} <a href="#/receipts" data-act="editreceipt" data-id="${esc(r.id)}" style="text-decoration:underline;margin-left:6px">Fix</a></div>`).join('')}
           ${pol.map(i => `<div class="check ${i.lvl}">${i.lvl === 'bad' ? '✕' : '!'} ${esc(i.t)}</div>`).join('')}
           <dl class="ledger cats">${cats.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${money(v)}</dd></div>`).join('')}</dl>${currencyHtml(rs)}
           ${planned(t) ? `<p class="note claim-split" data-testid="claim-split">${esc(tripClaimLines(t)[0])} ${esc(tripClaimLines(t)[1])} <a class="u" href="#/trips">Trip plan</a></p>` : ''}${checklistHtml(t)}${claimWarn(t, rs)}
-          <div class="row claim-acts"><button class="btn sm" data-act="exportcsv" data-id="${esc(t.id)}" ${allReady ? '' : 'disabled'}>Export CSV</button><button class="btn sm" data-act="printpack" data-id="${esc(t.id)}" ${allReady ? '' : 'disabled'}>Print claim pack</button><button class="btn sm primary" data-act="emailpack" data-id="${esc(t.id)}" ${allReady ? '' : 'disabled'}${claimsTo() ? ` title="Draft to ${esc(claimsTo())}"` : ''}>${inHosp() && !EMP().adminEmail && HOSP.org.claimsEmail ? 'Email to ' + esc(HOSP.org.name) + ' claims' : 'Email to claims admin'}</button><button class="btn sm" data-act="mailtopack" data-id="${esc(t.id)}" ${allReady ? '' : 'disabled'} title="For webmail: downloads the schedule and opens a prefilled email; you attach the files">Webmail instead</button>
+          <div class="row claim-acts"><button class="btn sm" data-act="exportcsv" data-id="${esc(t.id)}" ${allReady ? '' : 'disabled'}>Export CSV</button><button class="btn sm" data-act="printpack" data-id="${esc(t.id)}" ${allReady ? '' : 'disabled'}>Print pack</button><button class="btn sm primary" data-act="emailpack" data-id="${esc(t.id)}" ${allReady ? '' : 'disabled'}${claimsTo() ? ` title="Draft to ${esc(claimsTo())}"` : ''}>${inHosp() && !EMP().adminEmail && HOSP.org.claimsEmail ? 'Email to ' + esc(HOSP.org.name) + ' claims' : 'Email to claims admin'}</button><button class="btn sm" data-act="mailtopack" data-id="${esc(t.id)}" ${allReady ? '' : 'disabled'} title="Downloads the schedule and opens a prefilled email">Use webmail</button>
             ${hc && hc.status === 'paid' ? '' : st === 'draft' || rs.some(r => r.status === 'captured') ? `<button class="btn sm primary" data-act="submitclaim" data-id="${esc(t.id)}" ${allReady ? '' : 'disabled'}>${hc ? 'Update submitted claim' : 'Mark submitted'}</button>` : ''}${st === 'claimed' && !hc ? `<button class="btn sm primary" data-act="paidclaim" data-id="${esc(t.id)}">Mark reimbursed</button>` : ''}</div>
-          ${hc ? `<p class="note" data-testid="claim-hosp">${hc.status === 'paid' ? `<b>Paid</b> by ${esc(HOSP.org.name)} on ${esc(fmtD(dayOf(hc.paid)))} (${hmoney(hc.totalCents)}).` : `With ${esc(HOSP.org.name)} finance since ${esc(fmtD(dayOf(hc.submitted)))} (${hmoney(hc.totalCents)}). Finance marks it paid; you see it here.`}</p>` : claim.submitted ? `<p class="note">Submitted ${esc(fmtD(claim.submitted))}${claim.paid ? ' · reimbursed ' + esc(fmtD(claim.paid)) : ''}</p>` : ''}</article>`; }).join('')
-        : `<div class="empty"><h2>No claims yet</h2><p>Add receipts to a trip and they'll appear here with a readiness check.</p><p style="margin-top:16px"><a class="btn primary" href="#/receipts">Add a receipt</a> <a class="btn ghost" href="#/trips">See your trips</a></p></div>`);
+          ${hc ? `<p class="note" data-testid="claim-hosp">${hc.status === 'paid' ? `<b>Paid</b> by ${esc(HOSP.org.name)} on ${esc(fmtD(dayOf(hc.paid)))} (${hmoney(hc.totalCents)}).` : `With ${esc(HOSP.org.name)} finance since ${esc(fmtD(dayOf(hc.submitted)))} (${hmoney(hc.totalCents)}).`}</p>` : claim.submitted ? `<p class="note">Submitted ${esc(fmtD(claim.submitted))}${claim.paid ? ' · reimbursed ' + esc(fmtD(claim.paid)) : ''}</p>` : ''}</article>`; }).join('')
+        : `<div class="empty"><h2>No claims yet</h2><p style="margin-top:16px"><a class="btn primary" href="#/receipts">Add receipt</a></p></div>`);
   },
   cpd() {
     const p = S.profile, tot = cpdTotal(), pct = Math.min(100, Math.round(tot / (p.cpdTarget || 1) * 100)), es = S.cpd.slice().sort((a, b) => b.date.localeCompare(a.date)), left = Math.max(0, p.cpdTarget - tot);
     const fut = upcoming().filter(c => c.specialty === p.specialty || true).sort((a, b) => b.cpdHours - a.cpdHours).slice(0, 4);
-    return `<div class="page-head"><div><h1>CPD tracker</h1><p>When you mark a trip attended, enter the hours on your certificate and they are logged here. Add anything else by hand.</p></div><div class="row"><button class="btn" data-act="exportcpd">Export log</button><button class="btn primary" data-act="addcpd">${icon('plus')} Add entry</button></div></div>${walletNav('cpd')}
-    <div class="cols"><div class="panel"><div class="cpd-top">${dialSvg(pct, 'lg')}<div><b class="fig xl">${count(tot, String(tot))}<small>of ${esc(p.cpdTarget)} hrs</small></b><h2>${esc(p.cpdYear)} target · ${esc(p.cpdBody || 'your college')}</h2><p class="muted">${left ? `${left} hours to go.` : 'Target reached.'}</p><p class="note">Change the target and body in Settings. Check your college's rules for how conference hours are weighted.</p></div></div>
-      <h2 class="sub-h">Log</h2>${es.length ? `<table class="log"><thead><tr><th>Date</th><th>Activity</th><th>Source</th><th style="text-align:right">Hours</th><th></th></tr></thead><tbody>${es.map(e => `<tr><td>${esc(fmtD(e.date))}</td><td>${esc(e.title)}</td><td><span class="tag">${esc(e.source)}</span></td><td style="text-align:right;font-weight:700">${esc(e.hours)}</td><td><button class="icon-btn" data-act="rmcpd" data-id="${esc(e.id)}" aria-label="Delete entry">${icon('x')}</button></td></tr>`).join('')}</tbody></table>` : '<div class="empty"><h2>No hours logged</h2><p>Mark a trip attended or add an entry.</p><p style="margin-top:16px"><button class="btn primary" data-act="addcpd">Add an entry</button></p></div>'}</div>
-    <div><div class="panel"><h2>Close the gap</h2><p style="color:var(--muted);margin-bottom:10px">Upcoming conferences with published credits (otherwise soonest in your field):</p><div class="list">${fut.map(c => `<div class="li" style="cursor:pointer" tabindex="0" role="button" data-act="open" data-id="${esc(c.id)}"><div class="thumb plate-thumb">${plate(c, 'mini')}</div><div class="grow"><div class="t">${esc(c.name)}</div><div class="s">${esc(c.city)} · ${esc(range(c))}</div></div><span class="tag">${c.cpdVerified && c.cpdHours ? esc(c.cpdHours) + 'h' : 'CPD?'}</span></div>`).join('')}</div></div></div></div>${nzPanel()}`;
+    return `<div class="page-head"><div><h1>CPD</h1></div><div class="row"><button class="btn" data-act="exportcpd">Export log</button><button class="btn primary" data-act="addcpd">${icon('plus')} Add entry</button></div></div>${walletNav('cpd')}
+    <div class="cols"><div class="panel"><div class="cpd-top">${dialSvg(pct, 'lg')}<div><b class="fig xl">${count(tot, String(tot))}<small>of ${esc(p.cpdTarget)} hrs</small></b><h2>${esc(p.cpdYear)} target · ${esc(p.cpdBody || 'your college')}</h2><p class="muted">${left ? `${left} hours to go.` : 'Target reached.'}</p><p class="note">Weighting: check your college · <a class="u" href="#/settings">Edit target</a></p></div></div>
+      <h2 class="sub-h">Log</h2>${es.length ? `<table class="log"><thead><tr><th>Date</th><th>Activity</th><th>Source</th><th style="text-align:right">Hours</th><th></th></tr></thead><tbody>${es.map(e => `<tr><td>${esc(fmtD(e.date))}</td><td>${esc(e.title)}</td><td><span class="tag">${esc(e.source)}</span></td><td style="text-align:right;font-weight:700">${esc(e.hours)}</td><td><button class="icon-btn" data-act="rmcpd" data-id="${esc(e.id)}" aria-label="Delete entry">${icon('x')}</button></td></tr>`).join('')}</tbody></table>` : '<div class="empty"><h2>No hours logged</h2><p style="margin-top:16px"><button class="btn primary" data-act="addcpd">Add entry</button></p></div>'}</div>
+    <div><div class="panel"><h2>Upcoming CPD</h2><div class="list">${fut.map(c => `<div class="li" style="cursor:pointer" tabindex="0" role="button" data-act="open" data-id="${esc(c.id)}"><div class="thumb plate-thumb">${plate(c, 'mini')}</div><div class="grow"><div class="t">${esc(c.name)}</div><div class="s">${esc(c.city)} · ${esc(range(c))}</div></div><span class="tag">${c.cpdVerified && c.cpdHours ? esc(c.cpdHours) + 'h' : 'CPD?'}</span></div>`).join('')}</div></div></div></div>${nzPanel()}`;
   },
   courses() {
     const { parts, q } = hashParts();
@@ -626,28 +618,28 @@ const VIEWS = {
     }
     if (q.get('country') != null) CUI.place = q.get('country');
     if (q.get('lang')) CUI.listLang = q.get('lang');
-    const head = `<div class="page-head"><div><h1>Courses</h1><p>Life support, emergency, procedural and GP skills courses, with dates read from each provider's own page. Plan the trip like a conference, and add your certificate to see when it is due.</p></div><a class="btn" href="#/certs">${icon('cert')} My certificates${S.certs.length ? ' (' + S.certs.length + ')' : ''}</a></div>${segToggle('courses')}`;
+    const head = `<div class="page-head"><div><h1>Courses</h1></div><a class="btn" href="#/certs">${icon('cert')} My certificates${S.certs.length ? ' (' + S.certs.length + ')' : ''}</a></div>${segToggle('courses')}`;
     if (!COURSES.cat) return head + '<div class="loading" aria-busy="true">Loading courses…</div>';
     return head + remindCard() + courseListView();
   },
   certs() {
     const rows = certRows();
-    return `<div class="page-head"><div><h1>My certificates</h1><p>Add your APLS, ALS or other course certificates. Hoggy works out the expiry from the validity the course owner publishes (APLS five years, ALS four years) and shows a reminder on your Home page from six months before.</p></div><div class="row head-acts"><a class="btn" href="#/courses">${icon('course')} Find a course</a><button class="btn primary" data-act="addcert">${icon('plus')} Add certificate</button></div></div>${walletNav('certs')}`
-      + (rows.length ? rows.map(certItem).join('') : `<div class="empty"><h2>No certificates yet</h2><p>Add one and Hoggy shows when it is due for renewal, with the next sessions near you.</p><p style="margin-top:16px"><button class="btn primary" data-act="addcert">Add certificate</button></p></div>`)
-      + `<p class="note">Reminders show inside Hoggy only, on Home and here. Email reminders are not available yet. "Near you" uses your state or region in Settings (or your home city).</p>`;
+    return `<div class="page-head"><div><h1>My certificates</h1></div><div class="row head-acts"><a class="btn" href="#/courses">${icon('course')} Find a course</a><button class="btn primary" data-act="addcert">${icon('plus')} Add certificate</button></div></div>${walletNav('certs')}`
+      + (rows.length ? rows.map(certItem).join('') : `<div class="empty"><h2>No certificates yet</h2><p style="margin-top:16px"><button class="btn primary" data-act="addcert">Add certificate</button></p></div>`)
+      + `<p class="note">In-app reminders only. No email yet.</p>`;
   },
   settings() {
     const p = S.profile, specs = [...new Set(CONFS.map(c => c.specialty))].sort();
-    return `<div class="page-head"><div><h1>You</h1><p>Your profile drives recommendations, CPD targets and claim checks. Employer details such as your employee ID and approver stay on this device only. Trips, receipts and CPD sync with your account when you sign in.</p></div></div>
+    return `<div class="page-head"><div><h1>You</h1></div></div>
     <div class="cols"><div class="panel"><h2>Profile</h2><form id="pf"><div class="two"><div class="field"><label for="pn">Name</label><input id="pn" type="text" name="name" value="${esc(p.name)}"></div><div class="field"><label for="ps">Specialty</label><select id="ps" name="specialty">${specs.map(s => `<option ${s === p.specialty ? 'selected' : ''}>${esc(s)}</option>`).join('')}</select></div></div>
       <div class="two"><div class="field"><label for="pc">Home country</label><input id="pc" type="text" name="country" value="${esc(p.country)}"></div><div class="field"><label for="pci">Home city / airport code</label><input id="pci" type="text" name="homeAirport" value="${esc(p.homeAirport)}"></div></div>
-      <div class="two"><div class="field"><label for="pcu">Currency</label><select id="pcu" name="currency">${['AUD', 'NZD', 'USD', 'GBP', 'EUR', 'CAD', 'SGD'].map(s => `<option ${s === p.currency ? 'selected' : ''}>${s}</option>`).join('')}</select></div><div class="field"><label for="pth">Theme</label><select id="pth" name="theme">${['auto', 'dark', 'light'].map(s => `<option ${s === p.theme ? 'selected' : ''}>${s}</option>`).join('')}</select></div></div>
+      <div class="two"><div class="field"><label for="pcu">Currency</label><select id="pcu" name="currency">${['AUD', 'NZD', 'USD', 'GBP', 'EUR', 'CAD', 'SGD'].map(s => `<option ${s === p.currency ? 'selected' : ''}>${s}</option>`).join('')}</select></div><div class="field"><label for="pth">Theme</label><select id="pth" name="theme">${['auto', 'dark', 'light'].map(s => `<option value="${s}" ${s === p.theme ? 'selected' : ''}>${s[0].toUpperCase() + s.slice(1)}</option>`).join('')}</select></div></div>
       <div class="two"><div class="field"><label for="pct">Annual CPD target (hours)</label><input id="pct" type="number" min="1" max="500" name="cpdTarget" value="${esc(p.cpdTarget)}"></div><div class="field"><label for="pcb">CPD body</label><input id="pcb" type="text" name="cpdBody" value="${esc(p.cpdBody)}"></div></div>
-      <div class="two"><div class="field"><label for="prg">State or region (for courses near you)</label><select id="prg" name="region"><option value="">Work it out from my home city${HC.regionOf({ ...p, region: '' }) ? ' (' + esc(HC.regionOf({ ...p, region: '' })) + ')' : ''}</option>${[...HC.STATES_AU, 'Auckland', 'Wellington', 'Nelson', 'Canterbury', 'Otago', 'Waikato'].map(r => `<option ${r === p.region ? 'selected' : ''}>${esc(r)}</option>`).join('')}</select></div>
+      <div class="two"><div class="field"><label for="prg">State or region</label><select id="prg" name="region"><option value="">From home city${HC.regionOf({ ...p, region: '' }) ? ' (' + esc(HC.regionOf({ ...p, region: '' })) + ')' : ''}</option>${[...HC.STATES_AU, 'Auckland', 'Wellington', 'Nelson', 'Canterbury', 'Otago', 'Waikato'].map(r => `<option ${r === p.region ? 'selected' : ''}>${esc(r)}</option>`).join('')}</select></div>
       <div class="field"><label for="pcy">CPD year</label><input id="pcy" type="number" name="cpdYear" value="${esc(p.cpdYear)}"></div></div>
-      <h2 class="sub-h">Your employer</h2><p class="note sub-note">${inHosp() && HOSP.org.claimsEmail ? `Leave the claims admin's email blank to use ${esc(HOSP.org.name)}'s (${esc(HOSP.org.claimsEmail)}). ` : ''}Used to address claim emails and check receipts. Type figures from your own policy; Hoggy assumes none. Stored on this device only; not sent to Hoggy's server.</p><div class="two">${[['name','Employer / health service','text'],['adminEmail',"Claims admin's email",'email'],['approverName',"Approver's name (head of department)",'text'],['approverEmail',"Approver's email",'email'],['employeeId','Employee ID','text'],['costCentre','Cost centre','text'],['claimDays','Claim within (days after the trip)','number'],['hotelPerNight','Hotel limit per night (' + S.profile.currency + ')','number'],['mealsPerDay','Meals limit per day (' + S.profile.currency + ')','number'],['clause','Policy name and clause (printed beside any limit)','text']].map(([k, l, ty]) => `<div class="field"><label for="emp-${k}">${l}</label><input id="emp-${k}" type="${ty}" data-emp="${k}" ${ty === 'number' ? 'min="0" step="any"' : 'maxlength="120"'} value="${esc((p.employer || {})[k] || '')}"${k === 'adminEmail' && inHosp() && HOSP.org.claimsEmail ? ` placeholder="${esc(HOSP.org.claimsEmail)} (your hospital)"` : ''}></div>`).join('')}</div><h2 class="sub-h">Expense caps per receipt (optional)</h2><p class="note sub-note">Leave blank unless your employer sets a limit. Enter your own policy figures; Hoggy does not assume any.</p><div class="two">${CATS.map(k => `<div class="field"><label for="cap-${esc(k)}">${esc(k)}</label><input id="cap-${esc(k)}" type="number" min="0" data-cap="${esc(k)}" value="${esc(p.caps[k] || '')}"></div>`).join('')}</div>
+      <h2 class="sub-h">Your employer</h2><p class="note sub-note">Stays on this device.</p><div class="two">${[['name','Employer / health service','text'],['adminEmail',"Claims admin's email",'email'],['approverName',"Approver's name",'text'],['approverEmail',"Approver's email",'email'],['employeeId','Employee ID','text'],['costCentre','Cost centre','text'],['claimDays','Claim within (days)','number'],['hotelPerNight','Hotel limit per night (' + S.profile.currency + ')','number'],['mealsPerDay','Meals limit per day (' + S.profile.currency + ')','number'],['clause','Policy clause','text']].map(([k, l, ty]) => `<div class="field"><label for="emp-${k}">${l}</label><input id="emp-${k}" type="${ty}" data-emp="${k}" ${ty === 'number' ? 'min="0" step="any"' : 'maxlength="120"'} value="${esc((p.employer || {})[k] || '')}"${k === 'adminEmail' && inHosp() && HOSP.org.claimsEmail ? ` placeholder="${esc(HOSP.org.claimsEmail)} (your hospital)"` : ''}></div>`).join('')}</div><h2 class="sub-h">Caps per receipt (optional)</h2><div class="two">${CATS.map(k => `<div class="field"><label for="cap-${esc(k)}">${esc(k)}</label><input id="cap-${esc(k)}" type="number" min="0" data-cap="${esc(k)}" value="${esc(p.caps[k] || '')}"></div>`).join('')}</div>
       <button class="btn primary" type="submit">Save</button></form></div>
-    <div>${hospPanel()}${NET.trouble ? `<div class="panel acct-panel"><h2>Account</h2><p style="color:var(--muted)">${TROUBLE} Your trips and receipts on this device are safe.</p><p style="margin-top:12px"><button class="btn" data-act="retry">Try again</button></p></div>` : ''}${NET.online ? `<div class="panel acct-panel"><h2>Account</h2>${NET.user ? `<p style="color:var(--muted);margin-bottom:12px">Signed in as ${esc(NET.user.email || NET.user.name)}. Trips, receipts and CPD sync to your account.</p><button class="btn" data-act="signout">Sign out</button>` : '<p style="color:var(--muted);margin-bottom:12px">Sign in to sync your trips, receipts and CPD across devices and get your receipt forwarding address.</p><button class="btn primary" data-act="signin">Sign in or create an account</button>'}</div>` : ''}<div class="panel"><h2>Your data</h2><p style="color:var(--muted);margin-bottom:12px">Stored on this device, and synced with your account if you sign in. Export a backup of your trips, receipts metadata and CPD log.</p><div class="row"><button class="btn" data-act="backup">Download backup</button><button class="btn danger" data-act="wipe">Erase this device</button>${NET.user ? '<button class="btn danger" data-act="delaccount">Delete account</button>' : ''}</div></div></div></div>`;
+    <div>${hospPanel()}${NET.trouble ? `<div class="panel acct-panel"><h2>Account</h2><p style="color:var(--muted)">${TROUBLE}</p><p style="margin-top:12px"><button class="btn" data-act="retry">Try again</button></p></div>` : ''}${NET.online ? `<div class="panel acct-panel"><h2>Account</h2>${NET.user ? `<p style="color:var(--muted);margin-bottom:12px">Signed in as ${esc(NET.user.email || NET.user.name)}</p><button class="btn" data-act="signout">Sign out</button>` : '<p style="color:var(--muted);margin-bottom:12px">Sync across devices.</p><button class="btn primary" data-act="signin">Sign in</button>'}</div>` : ''}<div class="panel"><h2>Your data</h2><div class="row"><button class="btn" data-act="backup">Download backup</button><button class="btn danger" data-act="wipe">Erase this device</button>${NET.user ? '<button class="btn danger" data-act="delaccount">Delete account</button>' : ''}</div></div></div></div>`;
   }
 };
 
@@ -663,7 +655,7 @@ const homePlace = () => HC.countryCodeOf(S.profile.country);
 const listPlace = () => CUI.place == null ? homePlace() : CUI.place;
 const monthLabel = ym => new Date(ym + '-01T00:00:00').toLocaleDateString('en-AU', { month: 'long', year: 'numeric' });
 const extA = (url, label, cls = 'btn sm') => `<a class="${cls}" data-act="ext" target="_blank" rel="noopener noreferrer" href="${esc(safeUrl(url))}">${label} ${icon('ext')}</a>`;
-const srcLink = (url, label = 'source') => url && safeUrl(url) !== '#' ? `<a class="u" target="_blank" rel="noopener noreferrer" href="${esc(safeUrl(url))}">${esc(label)}</a>` : '';
+const srcLink = (url, label) => url && safeUrl(url) !== '#' ? `<a class="u" target="_blank" rel="noopener noreferrer" href="${esc(safeUrl(url))}">${esc(label || hostOf(url) + ' ↗')}</a>` : '';
 /* certificates with their computed expiry and status (expiry is stored when the certificate is saved) */
 const certRows = () => (S.certs || []).map(c => ({ ...c, st: HC.certStatus(c.expires, today()) })).sort((a, b) => String(a.expires || '9').localeCompare(String(b.expires || '9')));
 const STATUS_PILL = { valid: 'g', due6: 'w', due3: 'w', expired: 'b', unknown: '' };
@@ -673,14 +665,14 @@ const myRegion = () => HC.regionOf(S.profile);
 const findHref = id => '#/courses/' + encodeURIComponent(id) + (myRegion() ? '?state=' + encodeURIComponent(myRegion()) : '');
 const segToggle = cur => `<nav class="seg" aria-label="Show"><a href="#/discover" ${cur === 'discover' ? 'aria-current="page"' : ''}>Conferences</a><a href="#/courses" ${cur === 'courses' ? 'aria-current="page"' : ''}>Courses</a></nav>`;
 const walletNav = cur => `<nav class="seg subnav" aria-label="Wallet">${[['wallet', 'Overview'], ['receipts', 'Receipts'], ['claims', 'Claims'], ['cpd', 'CPD'], ['certs', 'Certificates']].map(([k, l]) => `<a href="#/${k}" ${k === cur ? 'aria-current="page"' : ''}>${l}</a>`).join('')}</nav>`;
-const commercialPill = x => x && x.providerType === 'commercial' ? '<span class="tag" title="A commercial education company, not a college or society">Commercial provider</span>' : '';
+const commercialPill = x => x && x.providerType === 'commercial' ? '<span class="tag" title="Not a college or society">Commercial</span>' : '';
 /* "Box Hill, VIC" in Australia and New Zealand; "Leiden, Netherlands" elsewhere */
 const placeOf = s => ['AU', 'NZ'].includes(s.country) ? `${s.city}, ${s.region}` : `${s.city}, ${HC.countryName(s.country)}`;
 /* place = where the list is looking; '' and 'any' mean everywhere / any language */
 function courseCard(c, place = listPlace(), lang = CUI.listLang) {
   const sum = COURSES.summary[c.id], k = HC.countFor(sum, place, lang), all = HC.countFor(sum, '', 'any'), v = HC.validityOf(c), eq = HC.equivalentLabel(COURSES.cat, c), body = HC.bodyLabel(c.id);
   const where = place ? HC.placeLabel(place) : '';
-  const line = k.n ? `${plural(k.n, 'upcoming session')}${where ? ' in ' + esc(where) : ''}` : all.n ? `${plural(all.n, 'upcoming session')} elsewhere` : 'Dates not available yet — check provider';
+  const line = k.n ? `${plural(k.n, 'upcoming session')}${where ? ' in ' + esc(where) : ''}` : all.n ? `${plural(all.n, 'upcoming session')} elsewhere` : 'Dates: check provider';
   return `<article class="card course-card" data-act="opencourse" data-id="${esc(c.id)}">
     <div class="art">${coursePlate(c, 'tall')}</div>
     <div class="card-body"><p class="card-when">${k.n ? 'Next ' + esc(fmtD(k.next)) + (k.city ? ' · ' + esc(k.city) : '') : all.n ? 'Next ' + esc(fmtD(all.next)) + (all.city ? ' · ' + esc(all.city) : '') : 'Check provider'}</p><h3><a class="card-link" href="#/courses/${esc(c.id)}">${esc(c.name)}</a></h3>
@@ -692,7 +684,7 @@ function courseCard(c, place = listPlace(), lang = CUI.listLang) {
    (decision D3 in docs/pm/backlog.md, item B47). Nothing is sent today; the reminder is in-app only and the copy says so. */
 function remindCard() {
   const due = certRows().filter(x => HC.needsAttention(x.st)); if (!due.length) return '';
-  return `<section class="panel remind" aria-labelledby="remH"><div class="row panel-head"><h2 id="remH">${icon('cert')} Certificate ${due.length > 1 ? 'renewals' : 'renewal'} coming up</h2><a class="btn sm ghost" href="#/certs">My certificates</a></div>
+  return `<section class="panel remind" aria-labelledby="remH"><div class="row panel-head"><h2 id="remH">${icon('cert')} ${due.length > 1 ? 'Renewals' : 'Renewal'} due</h2><a class="btn sm ghost" href="#/certs">My certificates</a></div>
     <div class="list">${due.map(x => `<div class="li"><div class="grow"><div class="t">${esc(x.short || x.courseId)} certificate</div><div class="s">${x.st === 'expired' ? 'Expired' : 'Expires'} ${esc(fmtD(x.expires))} · ${esc(whenText(x.expires))}</div></div>${statusPill(x.st)}<a class="btn sm primary" href="${esc(findHref(x.courseId))}">Find a session</a></div>`).join('')}</div></section>`;
 }
 /* prices stay in the currency the provider lists (no conversion) */
@@ -708,14 +700,14 @@ function sessionRow(s) {
   return `<div class="li sess" data-act="session" data-id="${esc(s.id)}">
     <div class="sdate" aria-hidden="true"><b>${d.getDate()}</b><span>${esc(d.toLocaleDateString('en-AU', { month: 'short' }))} ${String(d.getFullYear()).slice(2)}</span></div>
     <div class="grow"><div class="t"><button type="button" class="linkbtn sess-open" data-act="session" data-id="${esc(s.id)}" aria-label="${esc(HC.shortName(c))} ${esc(range(s))}, ${esc(s.city)}: details">${esc(range(s))}</button> · ${esc(HC.lengthLabel(s))}</div><div class="s">${esc(placeOf(s))}${s.venue ? ' · ' + esc(s.venue) : ''}</div><div class="s">${esc(s.provider)} · ${esc(m.price)}${m.seats ? ' · ' + esc(m.seats) : ''}</div>${pills ? `<div class="card-meta">${pills}</div>` : ''}</div>
-    <div class="sess-acts">${extA(s.bookingUrl, esc(bookLabel(s)))}<button class="btn sm primary" data-act="plancourse" data-id="${esc(s.id)}" ${planned ? 'disabled' : ''}>${planned ? 'In your trips' : 'Plan trip'}</button></div></div>`;
+    <div class="sess-acts">${extA(s.bookingUrl, esc(bookLabel(s)))}<button class="btn sm primary" data-act="plancourse" data-id="${esc(s.id)}" ${planned ? 'disabled' : ''}>${planned ? 'In trips' : 'Plan trip'}</button></div></div>`;
 }
 const sessFilter = () => ({ courseId: CUI.course, country: CUI.country, lang: CUI.lang, state: CUI.state, city: CUI.city, month: CUI.month });
 function sessionList() {
   const L = HC.filterSessions(COURSES.sessions, sessFilter(), today());
   const cnt = $('#sessCount'), box = $('#sessList'); if (!box) return;
   cnt.textContent = plural(L.length, 'session');
-  box.innerHTML = L.length ? L.slice(0, CUI.limit).map(sessionRow).join('') + (L.length > CUI.limit ? `<div class="more-row"><button class="btn" data-act="moresess">Show more (${L.length - CUI.limit} left)</button></div>` : '') : `<div class="empty"><h2>No sessions match</h2><p>${CUI.country || CUI.lang !== 'any' ? 'Try all countries or any language, or ' : 'Try '}another state, city or month.</p></div>`;
+  box.innerHTML = L.length ? L.slice(0, CUI.limit).map(sessionRow).join('') + (L.length > CUI.limit ? `<div class="more-row"><button class="btn" data-act="moresess">Show ${L.length - CUI.limit} more</button></div>` : '') : `<div class="empty"><h2>No sessions match</h2><p>Try fewer filters.</p></div>`;
 }
 function courseFilters() {
   const o = HC.filterOptions(COURSES.sessions, sessFilter(), today());
@@ -735,13 +727,13 @@ const CHECK = 'Check provider';
 function cpdFact(c) {
   if (c.cpdHours > 0 && c.cpdSource) return fact('CPD', esc(c.cpdHours) + ' hours', srcLink(c.cpdSource));
   const rows = (c.cpdByCollege || []).filter(x => x.sourceUrl && x.quote && (!x.appliesTo || String(x.appliesTo).includes(c.id)));
-  if (rows.length) return fact('CPD (published by the course owner)', rows.map(x => `${esc(x.college)}${x.hours ? ' ' + esc(x.hours) + ' h' : x.college === 'RACGP' ? ': pre-approved' : ': recognised'}`).join(' · '), `Recognition differs by college; check yours. ${srcLink(rows[0].sourceUrl)}`);
+  if (rows.length) return fact('CPD', rows.map(x => `${esc(x.college)}${x.hours ? ' ' + esc(x.hours) + ' h' : x.college === 'RACGP' ? ': pre-approved' : ': recognised'}`).join(' · '), `Check your college · ${srcLink(rows[0].sourceUrl)}`);
   return fact('CPD', CHECK);
 }
 function feeFact(c) {
   if (c.feeRange && c.feeSource) return fact('Fees', esc(c.feeRange.text), `${c.feeNote ? esc(c.feeNote) + ' ' : ''}${srcLink(c.feeSource)}`);
   const ex = (c.feeExamples || []).filter(x => x.sourceUrl);
-  return fact('Fees', CHECK, [c.feeNote ? esc(c.feeNote) : '', ...ex.map(x => `Example: ${esc(x.provider)} (${srcLink(x.sourceUrl)})`)].filter(Boolean).join(' '));
+  return fact('Fees', CHECK, [c.feeNote ? esc(c.feeNote) : '', ex.map(x => srcLink(x.sourceUrl, x.provider + ' ↗')).join(' · ')].filter(Boolean).join(' '));
 }
 /* the same kind of certificate from other bodies, and only the recognition statements the catalogue quotes */
 function familyPanel(fam, place, lang, cur) {
@@ -752,51 +744,51 @@ function familyPanel(fam, place, lang, cur) {
     return `<a class="li fam-row${c.id === cur ? ' cur' : ''}${k.n ? '' : ' none'}" href="#/courses/${esc(c.id)}${place ? '?country=' + encodeURIComponent(place) : ''}" ${c.id === cur ? 'aria-current="page"' : ''}>${d ? `<div class="sdate" aria-hidden="true"><b>${d.getDate()}</b><span>${esc(d.toLocaleDateString('en-AU', { month: 'short' }))} ${String(d.getFullYear()).slice(2)}</span></div>` : '<div class="sdate none" aria-hidden="true"><b>–</b></div>'}<div class="grow"><div class="t">${esc(fam.short)} — ${esc(label)}</div><div class="s">${k.n ? `${plural(k.n, 'session')}${place ? ' in ' + esc(where) : ''} · next ${esc(fmtD(k.next))}${k.city ? ', ' + esc(k.city) : ''}` : a.n ? `None${place ? ' in ' + esc(where) : ''} · ${plural(a.n, 'session')} elsewhere` : 'Dates not available yet'}</div></div>${CHEV}</a>`; };
   const here = rows.filter(x => HC.countFor(COURSES.summary[x.c.id], place, lang).n > 0 || x.c.id === cur), away = rows.filter(x => !here.includes(x));
   const main = place && here.length ? here : rows, more = place && here.length ? away : [];
-  return `<section class="panel family" aria-label="${esc(fam.label)}"><h3>${esc(fam.label)}</h3><p class="note">Different bodies certify this course. Check which certificate your employer, college or registration body accepts.</p>
+  return `<section class="panel family" aria-label="${esc(fam.label)}"><h3>${esc(fam.label)}</h3><p class="note">Check which your employer accepts.</p>
     <div class="list">${main.map(row).join('')}</div>
     ${more.length ? `<details class="overseas"><summary>Also overseas <span class="tag">${more.length}</span></summary><div class="list">${more.map(row).join('')}</div></details>` : ''}
-    ${rec.map(r => `<p class="note quote">${esc(HC.bodyLabel(r.courseId).replace(/^[^—]*— /, ''))} says: “${esc(r.text)}” ${srcLink(r.sourceUrl, 'source')}</p>`).join('')}</section>`;
+    ${rec.map(r => `<p class="note quote">${esc(HC.bodyLabel(r.courseId).replace(/^[^—]*— /, ''))}: “${esc(r.text)}” ${srcLink(r.sourceUrl)}</p>`).join('')}</section>`;
 }
 function courseView(id) {
   const c = courseOf(id);
-  if (!COURSES.cat) return `<a class="back" href="#/courses">← All courses</a><div class="loading" aria-busy="true">Loading course dates…</div>`;
+  if (!COURSES.cat) return `<a class="back" href="#/courses">← All courses</a><div class="loading" aria-busy="true">Loading…</div>`;
   if (!c) return `<a class="back" href="#/courses">← All courses</a><div class="empty"><h2>Course not found</h2><p><a class="u" href="#/courses">See all courses</a></p></div>`;
   const v = HC.validityOf(c), eq = HC.equivalentLabel(COURSES.cat, c), nz = (COURSES.cat.courses || []).find(x => x.nzEquivalentOf === c.id), ev = (c.audienceEvidence || {}), fv = (c.formatEvidence || {});
   const owner = (c.providers || [])[0] || {}, fam = HC.familyOf(c.id), body = HC.bodyLabel(c.id);
-  const head = `<a class="back" href="#/courses">← All courses</a><div class="page-head course-head"><div class="course-plate">${coursePlate(c, 'square')}</div><div>${body ? `<span class="eyebrow">${esc(body)}</span>` : eq ? `<span class="eyebrow">${esc(eq)}</span>` : ''}<h1 class="ch1">${esc(c.name)}</h1><p>${esc(owner.name || '')}${nz ? ` · In New Zealand: <a class="u" href="#/courses/${esc(nz.id)}">${esc(nz.name)}</a>` : ''}</p>${c.providerType === 'commercial' ? '<div class="card-meta"><span class="tag">Commercial provider</span></div>' : ''}<p class="row"><a class="btn sm" href="#/certs">${icon('cert')} My certificates</a></p></div></div>`
+  const head = `<a class="back" href="#/courses">← All courses</a><div class="page-head course-head"><div class="course-plate">${coursePlate(c, 'square')}</div><div>${body ? `<span class="eyebrow">${esc(body)}</span>` : eq ? `<span class="eyebrow">${esc(eq)}</span>` : ''}<h1 class="ch1">${esc(c.name)}</h1><p>${esc(owner.name || '')}${nz ? ` · In New Zealand: <a class="u" href="#/courses/${esc(nz.id)}">${esc(nz.name)}</a>` : ''}</p>${c.providerType === 'commercial' ? '<div class="card-meta"><span class="tag">Commercial</span></div>' : ''}<p class="row"><a class="btn sm" href="#/certs">${icon('cert')} My certificates</a></p></div></div>`
     + (c.userNote ? `<p class="check warn">${esc(c.userNote)}</p>` : '');
   /* key facts first (they decide whether to book), then the sessions, then the longer description */
-  const facts = `<div class="facts kfacts">${fact('Length', c.typicalLength ? esc(c.typicalLength) : CHECK)}${fact('Certificate validity', v ? esc(v.years) + ' years' : CHECK, v ? `As published by the course owner. ${srcLink(v.source)}` : 'Not confirmed in Hoggy yet.')}${feeFact(c)}${cpdFact(c)}</div>`;
-  const about = `<section aria-labelledby="aboutH"><div class="section"><h2 id="aboutH">About this course</h2></div><div class="facts cfacts">${fact("Who it's for", c.audience ? esc(c.audience) : CHECK, srcLink(ev.sourceUrl))}${fact('Format', c.format ? esc(c.format) : CHECK, srcLink(fv.sourceUrl))}${fact('Renewal', c.recertification ? esc(c.recertification) : CHECK, srcLink((c.recertificationEvidence || {}).sourceUrl))}</div>
-    <p class="note">${c.verified === true ? '' : 'Hoggy has not reviewed this course\'s facts yet (dates are read per session). '}Course pages: ${(c.providers || []).filter(p => p.url).map(p => srcLink(p.url, p.name)).join(' · ')}</p></section>` + (fam ? familyPanel(fam, CUI.country, CUI.lang, c.id) : '');
-  const rep = `<p class="note report-line"><button type="button" class="linkbtn" data-act="report" data-kind="course" data-id="${esc(c.id)}">Report a problem with this listing</button> · <a class="u" href="/courses/${esc(c.id)}">Page link</a></p>`;
+  const facts = `<div class="facts kfacts">${fact('Length', c.typicalLength ? esc(c.typicalLength) : CHECK)}${fact('Certificate validity', v ? esc(v.years) + ' years' : CHECK, v ? srcLink(v.source) : 'Not confirmed')}${feeFact(c)}${cpdFact(c)}</div>`;
+  const about = `<section aria-labelledby="aboutH"><div class="section"><h2 id="aboutH">About</h2></div><div class="facts cfacts">${fact("Who it's for", c.audience ? esc(c.audience) : CHECK, srcLink(ev.sourceUrl))}${fact('Format', c.format ? esc(c.format) : CHECK, srcLink(fv.sourceUrl))}${fact('Renewal', c.recertification ? esc(c.recertification) : CHECK, srcLink((c.recertificationEvidence || {}).sourceUrl))}</div>
+    <p class="note">${c.verified === true ? '' : 'Facts not yet reviewed · '}${(c.providers || []).filter(p => p.url).map(p => srcLink(p.url, p.name)).join(' · ')}</p></section>` + (fam ? familyPanel(fam, CUI.country, CUI.lang, c.id) : '');
+  const rep = `<p class="note report-line"><button type="button" class="linkbtn" data-act="report" data-kind="course" data-id="${esc(c.id)}">Report a problem</button> · <a class="u" href="/courses/${esc(c.id)}">Link</a></p>`;
   if (!haveSessions(c.id)) return head + facts + '<div class="loading" aria-busy="true">Loading sessions…</div>' + about + rep;
   const ss = HC.filterSessions(COURSES.sessions, { courseId: c.id }, today());
   /* sessions carry their own evidence (provider page, quote, date read), so they show even before the course facts are reviewed */
   if (!ss.length) {
-    return head + facts + `<div class="panel nodates"><h2>Dates not available yet — check provider</h2><p class="muted">Hoggy shows only dates it has read on the provider's own page, and it has none for this course yet.${c.renameNote ? ' The course owner may have changed its name; this is not confirmed.' : ''}</p><div class="row">${(c.providers || []).filter(p => p.url).map(p => extA(p.schedulePage || p.url, 'Check ' + esc(p.name.split(/[(:;]/)[0].trim()))).join('')}</div></div>` + about + rep;
+    return head + facts + `<div class="panel nodates"><h2>No dates yet</h2>${c.renameNote ? '<p class="muted">May have been renamed (unconfirmed).</p>' : ''}<div class="row">${(c.providers || []).filter(p => p.url).map(p => extA(p.schedulePage || p.url, 'Check ' + esc(p.name.split(/[(:;]/)[0].trim()))).join('')}</div></div>` + about + rep;
   }
   const kinds = [...new Set(ss.map(s => s.sourceKind).filter(Boolean))].slice(0, 3);
   return head + facts + `<div class="section"><h2>Upcoming sessions</h2></div>${courseFilters()}<div class="list sess-list" id="sessList"></div>
-    <p class="note">Dates come from ${c.id.startsWith('als') ? 'the Australian Resuscitation Council course list, ACRRM and course centres' : 'the provider\'s own page'}${kinds.length ? ' (' + esc(kinds.join('; ')) + ')' : ''}, last checked ${esc(fmtD(ss[0].lastVerified))}. “(inferred)” means the page gave only a start date and Hoggy took the length from the course page; check with the provider. Prices are in the currency the provider lists; Hoggy does not convert them. Sessions and seats change, so confirm when you book.</p>` + about + rep;
+    <p class="note">Checked ${esc(fmtD(ss[0].lastVerified))} · prices not converted · “(inferred)”: end date estimated</p>` + about + rep;
 }
 function sessionSheet(sid, fallback) {
   const s = sessionById(sid), c = courseOf(s ? s.courseId : fallback && fallback.courseId), e = s ? HC.sessionEvent(s, c) : fallback; if (!e) return;
   if (!CEV.has(e.id) || s) CEV.set(e.id, e);
   const trip = S.trips.find(t => t.confId === e.id), L = links(e), m = s ? sessionMeta(s) : null, name = c ? c.name : e.name, lang = s ? HC.languageLabel(s) : '';
-  const opts = s && Array.isArray(s.durationOptions) ? `<div class="section"><h3>Lengths on offer</h3></div><div class="list">${s.durationOptions.map(o => `<div class="li"><div class="grow"><div class="t">${esc(o.days)} day${o.days === 1 ? '' : 's'} · ends ${esc(fmtD(o.end))}</div><div class="s">${o.priceFrom ? esc(money(o.priceFrom, o.currency)) : 'Price: check provider'}${o.seatsStatus === 'closed' ? ' · Booking closed' : ''}</div></div>${extA(o.bookingUrl || o.sourceUrl, 'Book')}</div>`).join('')}</div>` : '';
-  const pe = s && s.providerEvidence ? `<p class="note">Price and places read on the provider's own booking page${s.providerEvidence.lastVerified ? ', checked ' + esc(fmtD(s.providerEvidence.lastVerified)) : ''} · ${srcLink(s.providerEvidence.sourceUrl, 'booking page')}</p>` : '';
+  const opts = s && Array.isArray(s.durationOptions) ? `<div class="section"><h3>Lengths</h3></div><div class="list">${s.durationOptions.map(o => `<div class="li"><div class="grow"><div class="t">${esc(o.days)} day${o.days === 1 ? '' : 's'} · ends ${esc(fmtD(o.end))}</div><div class="s">${o.priceFrom ? esc(money(o.priceFrom, o.currency)) : 'Price: check provider'}${o.seatsStatus === 'closed' ? ' · Booking closed' : ''}</div></div>${extA(o.bookingUrl || o.sourceUrl, 'Book')}</div>`).join('')}</div>` : '';
+  const pe = s && s.providerEvidence ? `<p class="note">Price${s.providerEvidence.lastVerified ? ' checked ' + esc(fmtD(s.providerEvidence.lastVerified)) : ''} · ${srcLink(s.providerEvidence.sourceUrl)}</p>` : '';
   const where = s ? placeOf(s) : e.city + ', ' + (e.region || e.country);
   openOverlay(`<div class="sheet detail" role="dialog" aria-modal="true" aria-label="${esc(name)} session"><div class="sheet-wrap"><span class="grab" aria-hidden="true"></span><button class="icon-btn close" data-act="close" aria-label="Close">${icon('x')}</button><div class="art">${ART ? ART.dial(c ? c.id : e.id, dialLabel(e.short || name), { size: 'wide', sub: range(e) + ' · ' + where }) : ''}</div></div>
   <div class="body"><span class="eyebrow">Course session${c && HC.bodyLabel(c.id) ? ' · ' + esc(HC.bodyLabel(c.id)) : ''}</span><h2>${esc(name)}</h2><p class="lede">${esc(e.organiser)} · ${esc(where)}</p>
-  ${s ? '' : '<p class="check warn">! This session is no longer on the provider list (it may have finished). The details below are what you planned.</p>'}${lang ? `<p class="check warn">${esc(lang)}, as listed by the provider.</p>` : ''}
-  <div class="facts">${fact('When', esc(range(e)), esc(s ? HC.lengthLabel(s) : HC.lengthLabel(e)) + (e.endInferred ? ' · end date inferred from the course length' : ''))}${fact('Where', esc(where), e.venue ? esc(e.venue) : 'Venue: check provider')}
-    ${fact('Price', m ? esc(m.price) : CHECK, s && s.priceFrom && s.currency && s.currency !== S.profile.currency ? `In ${esc(s.currency)}, as the provider lists it (not converted).${s.priceNote ? ' ' + esc(s.priceNote) : ''}` : s && s.priceNote ? esc(s.priceNote) : '')}${fact('Places', m && m.seats ? esc(m.seats) : 'Check provider')}${fact('Provider', esc(e.organiser) + (s && s.providerType === 'commercial' ? ' <span class="tag">Commercial provider</span>' : ''))}${fact('Type', esc(HC.VARIANT_LABEL[e.variant] || 'Full course'), e.cpdVerified ? esc(e.cpdHours) + ' CPD hours listed by the provider' : '')}</div>
+  ${s ? '' : '<p class="check warn">! No longer listed by the provider</p>'}${lang ? `<p class="check warn">${esc(lang)}</p>` : ''}
+  <div class="facts">${fact('When', esc(range(e)), esc(s ? HC.lengthLabel(s) : HC.lengthLabel(e)) + (e.endInferred ? ' · end date inferred' : ''))}${fact('Where', esc(where), e.venue ? esc(e.venue) : 'Venue: check provider')}
+    ${fact('Price', m ? esc(m.price) : CHECK, s && s.priceFrom && s.currency && s.currency !== S.profile.currency ? `In ${esc(s.currency)}${s.priceNote ? ' · ' + esc(s.priceNote) : ''}` : s && s.priceNote ? esc(s.priceNote) : '')}${fact('Places', m && m.seats ? esc(m.seats) : 'Check provider')}${fact('Provider', esc(e.organiser) + (s && s.providerType === 'commercial' ? ' <span class="tag">Commercial</span>' : ''))}${fact('Type', esc(HC.VARIANT_LABEL[e.variant] || 'Full course'), e.cpdVerified ? esc(e.cpdHours) + ' CPD hours' : '')}</div>
   ${opts}${s && (s.accessNote || s.bookingNote || s.sessionNote) ? `<p class="note">${esc([s.accessNote, s.bookingNote, s.sessionNote].filter(Boolean).join(' · '))}</p>` : ''}
-  <p class="note source"><span class="pill g">Dates confirmed</span> on ${s && HC.isArcList(s) ? 'the ARC course list' : 'the provider page'}${e.lastVerified ? ', checked ' + esc(fmtD(e.lastVerified)) : ''}${srcLink(e.sourceUrl) ? ' · ' + srcLink(e.sourceUrl, 'source page') : ''}</p>${pe}
+  <p class="note source"><span class="pill g">Confirmed</span>${e.lastVerified ? ' Checked ' + esc(fmtD(e.lastVerified)) : ''}${srcLink(e.sourceUrl) ? ' · ' + srcLink(e.sourceUrl) : ''}</p>${pe}
   ${tripSection(e)}
-  <div class="row travel"><a class="btn sm" target="_blank" rel="noopener noreferrer" href="${esc(L.flights)}">${icon('plane')} Flights ${icon('ext')}</a><a class="btn sm" target="_blank" rel="noopener noreferrer" href="${esc(L.hotels)}">${icon('bed')} Hotels ${icon('ext')}</a><button class="btn sm" data-act="ics" data-id="${esc(e.id)}">${icon('cal')} Calendar</button>${c ? `<a class="btn sm ghost" href="#/courses/${esc(c.id)}">About this course</a>` : ''}</div></div>
-  ${s ? `<div class="actbar"><button class="btn primary lg" data-act="plancourse" data-id="${esc(s.id)}" ${trip ? 'disabled' : ''}>${trip ? 'In your trips' : 'Plan trip'}</button>${extA(s.bookingUrl, esc(bookLabel(s)), 'btn lg')}</div>` : ''}</div>`);
+  <div class="row travel"><a class="btn sm" target="_blank" rel="noopener noreferrer" href="${esc(L.flights)}">${icon('plane')} Flights ${icon('ext')}</a><a class="btn sm" target="_blank" rel="noopener noreferrer" href="${esc(L.hotels)}">${icon('bed')} Hotels ${icon('ext')}</a><button class="btn sm" data-act="ics" data-id="${esc(e.id)}">${icon('cal')} Calendar</button>${c ? `<a class="btn sm ghost" href="#/courses/${esc(c.id)}">About course</a>` : ''}</div></div>
+  ${s ? `<div class="actbar"><button class="btn primary lg" data-act="plancourse" data-id="${esc(s.id)}" ${trip ? 'disabled' : ''}>${trip ? 'In trips' : 'Plan trip'}</button>${extA(s.bookingUrl, esc(bookLabel(s)), 'btn lg')}</div>` : ''}</div>`);
 }
 /* the Courses list: country or region (default: the profile's country), language (default English or not stated), search;
    certificate families grouped with the certifying body named; the rest as cards, most relevant first, paged */
@@ -822,59 +814,58 @@ function courseListView() {
   const show = c => match(c) && (here(c) > 0 ? (HC.relevanceOf(c) > 0 || place || lang !== 'en') : !HC.countFor(COURSES.summary[c.id], '', 'any').n && (!place || (c.countries || []).some(cc => HC.inPlace(cc, place))));
   const rest = COURSES.cat.courses.filter(c => !inFam.has(c.id) && show(c))
     .sort((a, b) => HC.relevanceOf(b) - HC.relevanceOf(a) || (here(b) > 0) - (here(a) > 0) || (a.verified === true ? 0 : 1) - (b.verified === true ? 0 : 1) || a.name.localeCompare(b.name));
-  const cards = rest.slice(0, CUI.lim).map(c => courseCard(c, place, lang)).join('') + (rest.length > CUI.lim ? `<div class="more-row"><button class="btn" data-act="morecourses">Show more (${rest.length - CUI.lim} left)</button></div>` : '');
-  return filters + (fams ? `<div class="section"><h2>Life support and trauma certificates</h2></div><div class="fam-grid">${fams}</div>` : '')
+  const cards = rest.slice(0, CUI.lim).map(c => courseCard(c, place, lang)).join('') + (rest.length > CUI.lim ? `<div class="more-row"><button class="btn" data-act="morecourses">Show ${rest.length - CUI.lim} more</button></div>` : '');
+  return filters + (fams ? `<div class="section"><h2>Life support and trauma</h2></div><div class="fam-grid">${fams}</div>` : '')
     + `<div class="section"><h2>${q ? 'Courses matching “' + esc(CUI.q) + '”' : 'Other courses'}${place ? ' · ' + esc(HC.placeLabel(place)) : ''}</h2><span class="count">${plural(rest.length, 'course')}</span></div>`
-    + (cards ? `<div class="grid">${cards}</div>` : '<div class="empty"><h2>No other courses here yet</h2><p>Try all countries, or any language.</p><p style="margin-top:16px"><a class="btn ghost" href="#/list-event">List a course session</a></p></div>')
-    + `<p class="note">Hoggy lists ${n0(tot.types)} course types with ${n0(tot.sessions)} upcoming sessions in ${n0(tot.countries)} countries, each read from the provider's or course owner's own page. Prices stay in the currency the provider lists. EMST, CCrISP and ASSET dates from RACS are not available yet. Course dates were last checked on ${esc(fmtD(COURSES.cat.generated))}.</p>`;
+    + (cards ? `<div class="grid">${cards}</div>` : '<div class="empty"><h2>No other courses here</h2><p style="margin-top:16px"><a class="btn ghost" href="#/list-event">List a session</a></p></div>')
+    + `<p class="note">${n0(tot.sessions)} sessions · ${n0(tot.types)} course types · ${n0(tot.countries)} countries · checked ${esc(fmtD(COURSES.cat.generated))}. RACS courses (EMST, CCrISP, ASSET) not yet listed.</p>`;
 }
 const n0 = v => Number(v || 0).toLocaleString('en-AU');
 function planCourse(sid) {
-  const s = sessionById(sid); if (!s) return toast('That session is no longer listed');
+  const s = sessionById(sid); if (!s) return toast('Session no longer listed');
   const r = HC.planTrip(S.trips, s, courseOf(s.courseId), uid());
   if (r.created) { CEV.set(r.trip.confId, r.trip.event); S.trips.push(r.trip); save(); }
   closeOverlay(); toast(r.created ? 'Trip planned' : 'Already in your trips'); location.hash = '#/trips'; render();
 }
 const CERT_TYPES = ['application/pdf', 'image/png', 'image/jpeg', 'image/webp'];
 function certDialog(opts = {}) {
-  if (!COURSES.cat) return toast('The course list is still loading. Try again in a moment');
+  if (!COURSES.cat) return toast('Still loading. Try again');
   const ed = opts.edit ? S.certs.find(x => x.id === opts.edit) : null, v = ed || opts.prefill || {}, cs = COURSES.cat.courses;
   simpleDialog(ed ? 'Edit certificate' : 'Add certificate', `${field('ce1', 'Course', `<select id="ce1" name="courseId" required>${cs.map(c => `<option value="${esc(c.id)}" ${c.id === v.courseId ? 'selected' : ''}>${esc(HC.shortName(c))} · ${esc(c.name)}</option>`).join('')}</select>`)}
     <div class="two">${field('ce2', 'Completed on', `<input id="ce2" type="date" name="completed" required max="${today()}" value="${esc(v.completed || '')}">`)}${field('ce3', 'Certificate number (optional)', `<input id="ce3" type="text" name="number" maxlength="40" value="${esc(v.number || '')}">`)}</div>
-    <div class="field" id="ceExpWrap"><label for="ce4">Expiry date (from your certificate)</label><input id="ce4" type="date" name="expiresEntered" value="${esc(v.expiresEntered || '')}"></div>
+    <div class="field" id="ceExpWrap"><label for="ce4">Expiry date</label><input id="ce4" type="date" name="expiresEntered" value="${esc(v.expiresEntered || '')}"></div>
     <p class="note" id="ceNote" style="margin:-4px 0 12px"></p>
-    ${field('ce5', ed && ed.fileKey ? 'Replace the file (optional)' : 'Certificate file (optional: PDF, JPG, PNG)', '<input id="ce5" type="file" name="file" accept="application/pdf,image/jpeg,image/png,image/webp">')}
-    <p class="note" style="margin-top:0">Kept on this device and, when you are signed in, in your account, like your receipts.</p>`, async f => {
+    ${field('ce5', ed && ed.fileKey ? 'Replace file (optional)' : 'File (optional)', '<input id="ce5" type="file" name="file" accept="application/pdf,image/jpeg,image/png,image/webp">')}`, async f => {
     const c = courseOf(String(f.get('courseId'))), completed = String(f.get('completed') || ''), entered = String(f.get('expiresEntered') || ''), file = f.get('file');
     if (!c) return toast('Pick a course');
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(completed) || completed > today()) return toast('Enter the completion date (not in the future)');
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(completed) || completed > today()) return toast('Enter a completion date, not in the future');
     const x = HC.expiryFor({ completed, expiresEntered: entered }, c);
-    if (!x.expires) return toast('Enter the expiry date printed on your certificate');
-    if (x.expires < completed) return toast('The expiry date is before the completion date');
+    if (!x.expires) return toast('Enter the expiry date');
+    if (x.expires < completed) return toast('Expiry is before completion');
     const cert = ed || { id: uid(), created: Date.now() };
     Object.assign(cert, { courseId: c.id, short: HC.shortName(c), courseName: c.name, completed, number: String(f.get('number') || '').trim().slice(0, 40), expiresEntered: x.from === 'user' ? entered : '', expires: x.expires, expiryFrom: x.from, validityYears: x.years || null, validitySource: x.source || '' });
     if (file && file.size) {
       if (!CERT_TYPES.includes(file.type)) return toast('PDF, JPG, PNG or WebP only');
-      if (file.size > 15e6) return toast('That file is over 15 MB');
-      const k = 'c-' + cert.id; try { await putFile(k, file, file.name); cert.fileKey = k; cert.fileName = file.name.slice(0, 100); } catch (er) { toast('Could not store the file'); }
+      if (file.size > 15e6) return toast('File over 15 MB');
+      const k = 'c-' + cert.id; try { await putFile(k, file, file.name); cert.fileKey = k; cert.fileName = file.name.slice(0, 100); } catch (er) { toast('Couldn\u2019t save the file'); }
     }
     if (!ed) S.certs.push(cert);
     save(); closeOverlay(); toast(ed ? 'Certificate updated' : 'Certificate added'); if (route() !== 'certs') location.hash = '#/certs'; render();
   }, 'Save certificate');
   const sel = $('#ce1'), wrap = $('#ceExpWrap'), inp = $('#ce4'), upd = () => {
     const val = HC.validityOf(courseOf(sel.value)); wrap.hidden = !!val; inp.required = !val;
-    $('#ceNote').innerHTML = val ? `Hoggy works out the expiry: ${esc(val.years)} years from the completion date, as published by the course owner (${srcLink(val.source)}). Your employer or college may ask for renewal sooner.` : 'Hoggy has not confirmed how long this certificate lasts, so enter the expiry date printed on it.';
+    $('#ceNote').innerHTML = val ? `Valid ${esc(val.years)} years · ${srcLink(val.source)}` : 'Enter the expiry on your certificate.';
   };
   sel.addEventListener('change', upd); upd();
 }
 function certItem(x) {
   const ok = COURSES.loaded && haveSessions(x.courseId), near = ok ? HC.nearSessions(COURSES.sessions, x.courseId, myRegion(), today(), 3, homePlace()) : null, reg = myRegion();
-  const nearHtml = !ok ? '<p class="note">Loading sessions…</p>' : near.list.length ? `<div class="note">${near.local ? 'Next sessions near you (' + esc(reg) + ')' : (reg ? 'None listed in ' + esc(reg) + ' yet. Soonest elsewhere' : 'Next sessions') }</div>${near.list.map(s => `<button class="near" data-act="session" data-id="${esc(s.id)}"><b>${esc(fmtD(s.start, { day: 'numeric', month: 'short' }))}</b> ${esc(placeOf(s))} · ${esc(s.provider)}</button>`).join('')}<a class="u note" href="${esc(near.local ? findHref(x.courseId) : '#/courses/' + encodeURIComponent(x.courseId))}">All ${esc(x.short || '')} sessions</a>` : '<p class="note">Dates not available yet — check provider.</p>';
+  const nearHtml = !ok ? '<p class="note">Loading sessions…</p>' : near.list.length ? `<div class="note">${near.local ? 'Near you (' + esc(reg) + ')' : (reg ? 'None in ' + esc(reg) + ' · soonest elsewhere' : 'Next sessions') }</div>${near.list.map(s => `<button class="near" data-act="session" data-id="${esc(s.id)}"><b>${esc(fmtD(s.start, { day: 'numeric', month: 'short' }))}</b> ${esc(placeOf(s))} · ${esc(s.provider)}</button>`).join('')}<a class="u note" href="${esc(near.local ? findHref(x.courseId) : '#/courses/' + encodeURIComponent(x.courseId))}">All ${esc(x.short || '')} sessions</a>` : '<p class="note">Dates: check provider</p>';
   const days = x.expires ? HC.daysBetween(today(), x.expires) : null;
   return `<article class="panel cert"><div class="cert-top"><div class="thumb plate-thumb">${ART ? ART.dial(x.courseId, dialLabel(x.short || x.courseId), { size: 'mini' }) : icon('cert')}</div><div class="grow"><h3>${esc(x.short || x.courseId)} <span class="cert-name">${esc(x.courseName || '')}</span></h3>
     <div class="s">Completed ${esc(fmtD(x.completed))}${x.number ? ' · No. ' + esc(x.number) : ''}</div>
     <div class="card-meta">${x.expires ? `<span class="exp">${x.st === 'expired' ? 'Expired' : 'Expires'} ${esc(fmtD(x.expires))} (${esc(whenText(x.expires))})</span>` : ''}${statusPill(x.st)}</div>
-    <div class="note">${x.expiryFrom === 'catalogue' ? `${esc(x.validityYears)} years from completion, as published by the course owner ${x.validitySource ? '(' + srcLink(x.validitySource) + ')' : ''}` : 'Expiry date entered by you from the certificate'}</div></div>
+    <div class="note">${x.expiryFrom === 'catalogue' ? `${esc(x.validityYears)} years from completion${x.validitySource ? ' · ' + srcLink(x.validitySource) : ''}` : 'Expiry entered by you'}</div></div>
     ${days != null && days > 0 ? `<b class="fig sm cert-days">${days < 60 ? days : Math.round(days / 30.44)}<small>${days < 60 ? 'days' : 'months'} left</small></b>` : ''}</div>
     <div class="row cert-acts">${x.fileKey ? `<button class="icon-btn" data-act="opencert" data-id="${esc(x.id)}" aria-label="Download certificate file" title="Download certificate file">${icon('file')}</button>` : ''}<button class="btn sm" data-act="editcert" data-id="${esc(x.id)}">Edit</button><button class="btn sm danger" data-act="rmcert" data-id="${esc(x.id)}">Delete</button></div>
     <div class="cert-near">${nearHtml}</div></article>`;
@@ -903,8 +894,8 @@ function topCard(x) {
 function topSection() {
   const L = (NET.online && NET.top[''] || []).filter(x => byId(x.confId)).slice(0, TOP_N.home);
   if (!L.length) return '';
-  return `<section class="toprated" aria-labelledby="topHomeH"><div class="section"><h2 id="topHomeH">Highest rated by attendees</h2><a href="#/discover" data-act="toplist">See the list</a></div>
-    <p class="note sec-note">Conferences with at least 3 reviews, scored across every year. Verified reviews count in full, unverified ones half.</p>
+  return `<section class="toprated" aria-labelledby="topHomeH"><div class="section"><h2 id="topHomeH">Highest rated by attendees</h2><a href="#/discover" data-act="toplist">See all</a></div>
+    <p class="note sec-note">3+ reviews. Verified count in full, others half.</p>
     <div class="grid ex shelf">${L.map(topCard).join('')}</div></section>`;
 }
 function drawTopList() {
@@ -912,12 +903,12 @@ function drawTopList() {
   if (UI.sort !== 'rating') { el.hidden = true; el.innerHTML = ''; return; }
   el.hidden = false;
   const spec = UI.spec === 'All' ? '' : UI.spec, head = `<div class="section"><h2 id="topH">Highest rated by attendees${spec ? ' · ' + esc(spec) : ''}</h2></div>`;
-  if (!NET.online) { el.innerHTML = head + '<p class="note">Attendee scores aren\u2019t available right now. Try again in a minute.</p>'; return; }
+  if (!NET.online) { el.innerHTML = head + '<p class="note">Scores unavailable. Try again shortly.</p>'; return; }
   const L = NET.top[spec];
   if (!L) { el.innerHTML = head + '<p class="note">Loading scores…</p>'; loadTop(spec).then(ok => { if (ok && route() === 'discover' && UI.sort === 'rating') drawTopList(); }); return; }
   const shown = L.filter(x => byId(x.confId)).slice(0, TOP_N.discover);
   el.innerHTML = head + (shown.length ? `<ol class="toprank">${shown.map((x, i) => `<li><span class="rank" aria-hidden="true">${i + 1}</span>${topCard(x)}</li>`).join('')}</ol>`
-    : `<p class="note top-empty">No conference has 3 reviews yet — <button type="button" class="linkbtn" data-act="topfind">review one you've attended</button></p>`);
+    : `<p class="note top-empty">None with 3 reviews yet · <button type="button" class="linkbtn" data-act="topfind">Review one</button></p>`);
 }
 const UI = { hol: '', confirmed: '', limit: 48, q: '', spec: 'All', region: '', country: '', month: '', cpd: 0, sort: 'date', do: '' };
 function results() {
@@ -934,18 +925,18 @@ function results() {
   /* "what do you want to do": still a list of conferences, narrowed to those with something on within 3 days */
   let TM = null;
   if (UI.do && HT) {
-    if (!EXP.list) { $('#count').textContent = 'Looking up what\u2019s on…'; $('#results').setAttribute('aria-busy', 'true'); loadExp().then(ok => { $('#results') && $('#results').removeAttribute('aria-busy'); if (ok && route() === 'discover') results(); }); return; }
+    if (!EXP.list) { $('#count').textContent = 'Loading…'; $('#results').setAttribute('aria-busy', 'true'); loadExp().then(ok => { $('#results') && $('#results').removeAttribute('aria-busy'); if (ok && route() === 'discover') results(); }); return; }
     TM = new Map(tripSuggest({ interests: [UI.do] }).map(x => [x.conference.id, x])); L = L.filter(c => TM.has(c.id));
   }
-  const cardOf = c => { const x = TM && TM.get(c.id); return card(c, x ? (x.matches.length ? x.matches : UI.do === 'ski' ? 'Held at a ski resort' : UI.do === 'beach' ? 'Held at a beach resort' : 'Family-friendly venue') : null); };
+  const cardOf = c => { const x = TM && TM.get(c.id); return card(c, x ? (x.matches.length ? x.matches : UI.do === 'ski' ? 'Ski resort' : UI.do === 'beach' ? 'Beach resort' : 'Family-friendly venue') : null); };
   const srt = { date: (a, b) => a.start.localeCompare(b.start), rating: (a, b) => (rating(b) || 0) - (rating(a) || 0), cpd: (a, b) => (b.cpdVerified ? b.cpdHours : 0) - (a.cpdVerified ? a.cpdHours : 0), price: (a, b) => (figPrice(a) || Infinity) - (figPrice(b) || Infinity) || a.start.localeCompare(b.start), match: (a, b) => matchScore(b) - matchScore(a) };
   L.sort(srt[UI.sort]);
   drawTopList();
   const cm = q && COURSES.cat ? HC.searchCourses(COURSES.cat, q) : [];
-  $('#count').textContent = `${L.length.toLocaleString('en-AU')} result${L.length === 1 ? '' : 's'}${cm.length ? ' · ' + plural(cm.length, 'course') : ''}${TM ? ` with ${HT.interestOf(UI.do).label.toLowerCase()} nearby, within 3 days of the conference` : ''}`;
+  $('#count').textContent = `${L.length.toLocaleString('en-AU')} result${L.length === 1 ? '' : 's'}${cm.length ? ' · ' + plural(cm.length, 'course') : ''}${TM ? ` · ${HT.interestOf(UI.do).label.toLowerCase()} within 3 days` : ''}`;
   const nf = [UI.region, UI.country, UI.month, UI.hol, UI.cpd, UI.confirmed, UI.sort !== 'date'].filter(Boolean).length, fn = $('#fN'), fs = $('#fShow'); if (fn) { fn.hidden = !nf; fn.textContent = nf; } if (fs) fs.textContent = `Show ${L.length.toLocaleString('en-AU')} result${L.length === 1 ? '' : 's'}`;
   if (MOTION) MOTION.scan($('#results'));
-  $('#results').innerHTML = cm.map(courseCard).join('') + L.slice(0, UI.limit).map(cardOf).join('') + (L.length > UI.limit ? `<div class="more-row"><button class="btn" data-act="more">Show more (${L.length - UI.limit} left)</button></div>` : '') || (cm.length ? '' : `<div class="empty wide"><h2>No conferences match</h2><p>Try a shorter search or fewer filters.</p><p style="margin-top:16px"><button class="btn primary" data-act="clearfilters">Clear search and filters</button> <a class="btn ghost" href="#/list-event">Know one we're missing?</a></p></div>`);
+  $('#results').innerHTML = cm.map(courseCard).join('') + L.slice(0, UI.limit).map(cardOf).join('') + (L.length > UI.limit ? `<div class="more-row"><button class="btn" data-act="more">Show ${L.length - UI.limit} more</button></div>` : '') || (cm.length ? '' : `<div class="empty wide"><h2>No conferences match</h2><p style="margin-top:16px"><button class="btn primary" data-act="clearfilters">Clear filters</button></p></div>`);
 }
 const AFTER = {
   home() { if ($('#tripShelf')) loadExp().then(ok => { if (ok && route() === 'home') fillTripShelf(); }); },
@@ -990,7 +981,7 @@ const AFTER = {
     $('#pf').addEventListener('submit', e => { e.preventDefault(); const f = new FormData(e.target); const p = S.profile;
       ['name', 'specialty', 'country', 'homeAirport', 'currency', 'theme', 'cpdBody', 'region'].forEach(k => p[k] = String(f.get(k) || '').slice(0, 80)); p.cpdTarget = Math.max(1, +f.get('cpdTarget') || 50); p.cpdYear = +f.get('cpdYear') || p.cpdYear;
       document.querySelectorAll('[data-cap]').forEach(i => p.caps[i.dataset.cap] = Math.max(0, +i.value || 0));
-      p.employer = p.employer || {}; document.querySelectorAll('[data-emp]').forEach(i => { const v = i.type === 'number' ? Math.max(0, +i.value || 0) : String(i.value || '').trim().slice(0, 120); p.employer[i.dataset.emp] = v; }); save(); applyTheme(); toast('Settings saved'); renderNav(); });
+      p.employer = p.employer || {}; document.querySelectorAll('[data-emp]').forEach(i => { const v = i.type === 'number' ? Math.max(0, +i.value || 0) : String(i.value || '').trim().slice(0, 120); p.employer[i.dataset.emp] = v; }); save(); applyTheme(); toast('Saved'); renderNav(); });
     wireHospSettings();
   }
 };
@@ -1043,28 +1034,28 @@ const loadBudget = year => loadOnce('b' + year, async () => { const r = await ap
 const loadApprovals = () => loadOnce('ap', async () => { const [p, d] = await Promise.all([api('/api/approvals'), api('/api/approvals?status=decided')]); HOSP.pend = Array.isArray(p) ? p : []; HOSP.decided = Array.isArray(d) ? d : []; if (route() === 'approvals') bgRender(); });
 const loadTeam = y => loadOnce('t' + y, async () => { const r = await api('/api/org/team?year=' + y); HOSP.team = r.error ? { year: y, members: [], error: r.error } : r; if (route() === 'team') bgRender(); });
 const loadFinance = () => loadOnce('fin', async () => { const r = await api('/api/claims'); HOSP.finance = Array.isArray(r) ? r : []; if (route() === 'finance') bgRender(); });
-const hErr = r => r.error === 'offline' ? 'Can’t reach Hoggy. Check your connection and try again.' : r.error;
+const hErr = r => r.error === 'offline' ? 'Can’t connect. Try again.' : r.error;
 
 function budgetCard(year, opts = {}) {
   if (!inHosp()) return '';
   const b = HOSP.budget[year]; if (b === undefined) loadBudget(year);
   const cls = opts.compact ? 'budget compact' : 'panel budget';
-  if (!b) return `<section class="${cls}" aria-label="Study budget ${year}"><h3>Study budget ${year}</h3><p class="note">${b === false ? 'Could not load the budget.' : 'Loading…'}</p></section>`;
+  if (!b) return `<section class="${cls}" aria-label="Study budget ${year}"><h3>Study budget ${year}</h3><p class="note">${b === false ? 'Couldn’t load budget.' : 'Loading…'}</p></section>`;
   const used = b.committed + b.spent, pct = b.allowance ? Math.min(100, Math.round(used / b.allowance * 100)) : used ? 100 : 0, over = b.remaining < 0;
   return `<section class="${cls}" aria-label="Study budget ${year}" data-testid="budget-${year}"><div class="budget-head"><h3>Study budget ${year}</h3><span class="note">${esc(HOSP.org.name)}${b.ownAllowance ? ' · your own allowance' : ''}</span></div>
     <dl class="budget-grid">${[['Allowance', b.allowance], ['Committed', b.committed], ['Spent', b.spent], ['Remaining', b.remaining]].map(([k, v]) => `<div class="${k === 'Remaining' ? 'rem' + (over ? ' over' : '') : ''}"><dt>${k}</dt><dd data-k="${k.toLowerCase()}">${hmoney(v)}</dd></div>`).join('')}</dl>
     <div class="bar" aria-hidden="true"><i class="${over ? 'warn' : ''}" style="width:${pct}%"></i></div>
-    <p class="note">${b.pending ? `<b>${hmoney(b.pending)}</b> waiting for approval (not taken off yet). ` : ''}${opts.compact ? '' : 'Committed: approved trips not yet claimed, at their estimates. Spent: claims submitted or paid, at the claim-pack totals. Counted by the year each event starts.'}</p></section>`;
+    ${b.pending ? `<p class="note"><b>${hmoney(b.pending)}</b> awaiting approval</p>` : ''}</section>`;
 }
 function tripHospBox(t) {
   if (!inHosp()) return '';
   const a = approvalOf(t), cl = hClaimOf(t);
-  const st = !a ? '<span class="pill">Approval not requested</span>' : a.status === 'pending' ? '<span class="pill w">Awaiting approval</span>' : a.status === 'approved' ? '<span class="pill g">Approved</span>' : '<span class="pill b">Not approved</span>';
+  const st = !a ? '<span class="pill">Not requested</span>' : a.status === 'pending' ? '<span class="pill w">Awaiting approval</span>' : a.status === 'approved' ? '<span class="pill g">Approved</span>' : '<span class="pill b">Not approved</span>';
   const cst = cl ? `<span class="pill ${cl.status === 'paid' ? 'g' : 'w'}">${cl.status === 'paid' ? 'Claim paid ' + esc(fmtD(dayOf(cl.paid))) : 'Claim with finance'}</span>` : '';
   const who = a && a.decidedBy ? ' by ' + esc(a.decidedBy) : '';
-  const msg = !a ? `Ask ${esc(HOSP.org.name)} to approve this trip before you book.` : a.status === 'pending' ? `Sent ${esc(fmtD(dayOf(a.updated)))}. A manager or admin decides; the answer shows here.` : a.status === 'approved' ? `Approved${who}${a.comment ? ': “' + esc(a.comment) + '”' : '.'}` : `Not approved${who}: “${esc(a.comment)}” Change the plan and send it again.`;
+  const msg = !a ? '' : a.status === 'pending' ? `Sent ${esc(fmtD(dayOf(a.updated)))}` : a.status === 'approved' ? `Approved${who}${a.comment ? ': “' + esc(a.comment) + '”' : ''}` : `Not approved${who}: “${esc(a.comment)}”`;
   const btn = !a ? `<button class="btn sm primary" data-act="reqapproval" data-id="${esc(t.id)}">Request approval</button>` : a.status === 'rejected' ? `<button class="btn sm primary" data-act="reqapproval" data-id="${esc(t.id)}">Edit and resubmit</button>` : '';
-  return `<div class="hosp-box" data-testid="trip-approval"><div class="row" style="justify-content:space-between"><div class="pills">${st}${a ? `<span class="pill">Estimate ${hmoney(a.estimateCents)}</span>` : ''}${cst}</div>${btn}</div><p class="note" style="margin:8px 0 0" data-testid="approval-msg">${msg}</p>${budgetCard(tripYear(t), { compact: true })}</div>`;
+  return `<div class="hosp-box" data-testid="trip-approval"><div class="row" style="justify-content:space-between"><div class="pills">${st}${a ? `<span class="pill">Estimate ${hmoney(a.estimateCents)}</span>` : ''}${cst}</div>${btn}</div>${msg ? `<p class="note" style="margin:8px 0 0" data-testid="approval-msg">${msg}</p>` : ''}${budgetCard(tripYear(t), { compact: true })}</div>`;
 }
 function approvalDialog(tripId) {
   const t = S.trips.find(x => x.id === tripId), c = t && ofTrip(t); if (!c || !inHosp()) return;
@@ -1072,19 +1063,19 @@ function approvalDialog(tripId) {
   /* reuse what Hoggy already has: the last request, the trip's own estimate, the study-leave draft, then logged bookings */
   const pre = a ? Object.fromEntries(COSTS.map(([k]) => [k, (a.costs[k] || 0) / 100])) : t.estimate || lv.est || { registration: sum('Registration'), flights: sum('Flight'), accommodation: sum('Hotel'), other: sum('Transport') };
   const b = HOSP.budget[tripYear(t)];
-  simpleDialog(a ? 'Edit and resubmit' : 'Request approval', `<p class="note" style="margin:0 0 12px">${esc(c.name)}, ${esc(c.city)}, ${esc(range(c))}. Goes to the managers and admins at ${esc(HOSP.org.name)}.${cur !== S.profile.currency ? ` Amounts in ${esc(cur)}, your hospital's currency.` : ''}</p>
+  simpleDialog(a ? 'Edit and resubmit' : 'Request approval', `<p class="note" style="margin:0 0 12px">${esc(c.name)} · ${esc(range(c))}</p>
     ${a && a.status === 'rejected' ? `<p class="check bad" style="margin:0 0 12px">✕ ${esc(a.comment)}</p>` : ''}
     <div class="two">${COSTS.map(([k, l]) => field('ap-' + k, `${l} (${esc(cur)})`, `<input id="ap-${k}" type="number" min="0" step="0.01" inputmode="decimal" name="${k}" value="${+pre[k] ? esc(pre[k]) : ''}">`)).join('')}</div>
-    ${field('ap-note', 'Note for your manager (optional)', `<textarea id="ap-note" name="note" rows="3" maxlength="500">${esc(a ? a.note : '')}</textarea>`)}
-    <p class="note">${b ? `Your ${esc(tripYear(t))} budget has ${hmoney(b.remaining)} left before this request.` : ''} Estimates only: the claim uses your receipts.</p>`, async f => {
+    ${field('ap-note', 'Note (optional)', `<textarea id="ap-note" name="note" rows="3" maxlength="500">${esc(a ? a.note : '')}</textarea>`)}
+    <p class="note">${b ? `${esc(tripYear(t))} budget left: ${hmoney(b.remaining)} · ` : ''}Estimates only</p>`, async f => {
     const costs = Object.fromEntries(COSTS.map(([k]) => [k, toCents(f.get(k))])), btn = $('#sf button[type=submit]');
-    if (!Object.values(costs).some(v => v > 0)) return toast('Add at least one estimated cost');
+    if (!Object.values(costs).some(v => v > 0)) return toast('Add a cost');
     if (btn) btn.disabled = true;
     const r = await api('/api/approvals', { method: 'POST', body: { tripRef: t.id, confId: c.id, event: eventOf(c), costs, note: String(f.get('note') || '') } });
     if (r.error) { if (btn) btn.disabled = false; return toast(hErr(r)); }
     t.estimate = Object.fromEntries(COSTS.map(([k]) => [k, costs[k] / 100])); save();
     await loadHosp(); closeOverlay(); render();
-    toast(r.approvers ? (a ? 'Resubmitted for approval' : 'Sent for approval') : 'Saved. Nobody at your hospital can approve yet: ask your admin to make someone a manager');
+    toast(r.approvers ? (a ? 'Resubmitted for approval' : 'Sent for approval') : 'Saved. No approver yet: ask your admin');
   }, a ? 'Resubmit' : 'Send request');
 }
 function notesList(max = 5) {
@@ -1099,30 +1090,30 @@ function hospLinks() {
 function hospHome() {
   if (!inHosp()) return '';
   const nextT = S.trips.filter(t => ofTrip(t) && ofTrip(t).end >= today()).sort((a, b) => ofTrip(a).start.localeCompare(ofTrip(b).start))[0], y = nextT ? tripYear(nextT) : new Date().getFullYear(), links = hospLinks();
-  return `<div class="hosp-home">${budgetCard(y)}<section class="panel" aria-labelledby="hhH"><h3 id="hhH">${esc(HOSP.org.name)} <span class="pill">${esc(ROLE_NAMES[HOSP.org.role])}</span></h3>${links ? `<div class="row" style="margin-bottom:10px">${links}</div>` : ''}${notesList(3) || '<p class="note" style="margin:0">Nothing new. Request approval from a trip; decisions and payments show here.</p>'}</section></div>`;
+  return `<div class="hosp-home">${budgetCard(y)}<section class="panel" aria-labelledby="hhH"><h3 id="hhH">${esc(HOSP.org.name)} <span class="pill">${esc(ROLE_NAMES[HOSP.org.role])}</span></h3>${links ? `<div class="row" style="margin-bottom:10px">${links}</div>` : ''}${notesList(3) || '<p class="note" style="margin:0">Nothing new</p>'}</section></div>`;
 }
 /* Settings, "Your hospital": join with a code, create one, or (members) see it, open the role pages, and (admins) manage it */
 function hospPanel() {
   if (!NET.online) return '';
   const head = '<h3>Your hospital</h3>';
-  if (!NET.user) return `<div class="panel" id="hosp">${head}<p style="color:var(--muted);margin-bottom:12px">Optional. Sign in to join your hospital with its code, or set one up, for trip approval, a study budget and claims to finance.</p><button class="btn" data-act="signin">Sign in</button></div>`;
+  if (!NET.user) return `<div class="panel" id="hosp">${head}<p style="color:var(--muted);margin-bottom:12px">Optional. Approvals, budgets, claims.</p><button class="btn" data-act="signin">Sign in</button></div>`;
   if (!HOSP.loaded) return `<div class="panel" id="hosp">${head}<p class="note">Loading…</p></div>`;
-  if (!HOSP.org) return `<div class="panel" id="hosp">${head}<p style="color:var(--muted);margin-bottom:12px">Optional. In a hospital you can ask for trip approval, see your study budget and send claims to finance. Without one, Hoggy works as it does now.</p>
+  if (!HOSP.org) return `<div class="panel" id="hosp">${head}<p style="color:var(--muted);margin-bottom:12px">Optional. Approvals, budgets, claims.</p>
     <form id="hjoin" class="hform"><div class="field"><label for="hj">Join with a code</label><input id="hj" name="code" type="text" maxlength="12" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="ABCD-EFGH" required></div><button class="btn primary" type="submit">Join hospital</button></form>
-    <details class="hnew"><summary>Set up a hospital instead</summary><form id="hnew" style="margin-top:10px"><p class="note" style="margin:0 0 10px">You become its admin and get a code to share with colleagues.</p>
+    <details class="hnew"><summary>Set up a hospital</summary><form id="hnew" style="margin-top:10px"><p class="note" style="margin:0 0 10px">You’ll be its admin.</p>
       ${field('hn1', 'Hospital or health service', '<input id="hn1" name="name" type="text" maxlength="120" required>')}
       ${field('hn2', 'Claims email (finance)', '<input id="hn2" name="claimsEmail" type="email" maxlength="254" placeholder="claims@hospital.example">')}
       <div class="two">${field('hn3', 'Yearly study allowance per doctor', '<input id="hn3" name="allowance" type="number" min="0" step="1" inputmode="numeric" placeholder="0">')}${field('hn4', 'Currency', `<select id="hn4" name="currency">${['AUD', 'NZD', 'USD', 'GBP', 'EUR', 'CAD', 'SGD'].map(s => `<option ${s === S.profile.currency ? 'selected' : ''}>${s}</option>`).join('')}</select>`)}</div>
       <button class="btn primary" type="submit">Create hospital</button></form></details></div>`;
   const o = HOSP.org, links = hospLinks();
-  return `<div class="panel" id="hosp">${head}<div class="li" style="padding:0 0 12px"><div class="grow"><div class="t" data-testid="hosp-name">${esc(o.name)}</div><div class="s">You are: ${esc(ROLE_NAMES[o.role])} · claims to ${o.claimsEmail ? esc(o.claimsEmail) : 'no email set'} · ${hmoney(o.defaultAllowanceCents)} a year each</div></div></div>
-    ${links ? `<div class="row" style="margin-bottom:12px">${links}</div><p class="note" style="margin:-4px 0 12px">On a phone these pages open from here.</p>` : ''}
+  return `<div class="panel" id="hosp">${head}<div class="li" style="padding:0 0 12px"><div class="grow"><div class="t" data-testid="hosp-name">${esc(o.name)}</div><div class="s">${esc(ROLE_NAMES[o.role])} · claims to ${o.claimsEmail ? esc(o.claimsEmail) : 'no email set'} · ${hmoney(o.defaultAllowanceCents)} a year each</div></div></div>
+    ${links ? `<div class="row" style="margin-bottom:12px">${links}</div>` : ''}
     ${notesList(5)}
-    ${hcan('admin') ? `<h3 style="margin:16px 0 6px;font-size:15px">Join code</h3><div class="copybox"><span style="flex:1" data-testid="join-code">${esc(o.joinCode)}</span><button class="icon-btn" data-act="copy" data-v="${esc(o.joinCode)}" aria-label="Copy join code">${icon('copy')}</button></div><p class="note">Colleagues enter it under Settings, Your hospital. They join as doctors; change roles on the Team page. <button class="btn sm ghost" data-act="hcode">New code</button></p>
+    ${hcan('admin') ? `<h3 style="margin:16px 0 6px;font-size:15px">Join code</h3><div class="copybox"><span style="flex:1" data-testid="join-code">${esc(o.joinCode)}</span><button class="icon-btn" data-act="copy" data-v="${esc(o.joinCode)}" aria-label="Copy join code">${icon('copy')}</button></div><p class="note">Colleagues join as doctors. <button class="btn sm ghost" data-act="hcode">New code</button></p>
       <details class="hnew"><summary>Hospital settings</summary><form id="hset" style="margin-top:10px">${field('hs1', 'Name', `<input id="hs1" name="name" type="text" maxlength="120" required value="${esc(o.name)}">`)}${field('hs2', 'Claims email (finance)', `<input id="hs2" name="claimsEmail" type="email" maxlength="254" value="${esc(o.claimsEmail)}">`)}${field('hs3', `Yearly study allowance per doctor (${esc(o.currency)})`, `<input id="hs3" name="allowance" type="number" min="0" step="1" value="${esc(o.defaultAllowanceCents / 100)}">`)}<button class="btn primary" type="submit">Save hospital</button></form></details>` : ''}
     <p style="margin-top:14px"><button class="btn sm danger" data-act="hleave">Leave hospital</button></p></div>`;
 }
-const gate = (title, who) => `<div class="page-head"><div><h1>${esc(title)}</h1></div></div><div class="empty"><h2>${!NET.user ? 'Sign in first' : !HOSP.loaded ? 'Loading…' : HOSP.org ? `Only ${who} can open this page` : 'Join a hospital first'}</h2><p>${HOSP.org ? `You are ${esc(ROLE_NAMES[HOSP.org.role])} at ${esc(HOSP.org.name)}.` : 'Hospitals are optional. Join or set one up under Settings, Your hospital.'}</p><p style="margin-top:16px"><a class="btn" href="#/settings">Settings</a></p></div>`;
+const gate = (title, who) => `<div class="page-head"><div><h1>${esc(title)}</h1></div></div><div class="empty"><h2>${!NET.user ? 'Sign in first' : !HOSP.loaded ? 'Loading…' : HOSP.org ? `For ${who} only` : 'Join a hospital first'}</h2><p>${HOSP.org ? `You are ${esc(ROLE_NAMES[HOSP.org.role])} at ${esc(HOSP.org.name)}.` : 'Set one up in Settings.'}</p><p style="margin-top:16px"><a class="btn" href="#/settings">Settings</a></p></div>`;
 function miniBudget(b, extra) { return b ? `<dl class="budget-grid sm">${[['Allowance', b.allowance], ['Committed', b.committed], ['Spent', b.spent], ['Remaining', b.remaining]].map(([k, v]) => `<div class="${k === 'Remaining' && v < 0 ? 'over' : ''}"><dt>${k} ${esc(b.year)}</dt><dd>${hmoney(v)}</dd></div>`).join('')}${extra || ''}</dl>` : ''; }
 function approvalCard(a) {
   const ev = a.event || {}, after = a.budget ? a.budget.remaining - a.estimateCents : null;
@@ -1130,21 +1121,21 @@ function approvalCard(a) {
     <div class="pills" style="margin-top:10px">${COSTS.filter(([k]) => (a.costs || {})[k]).map(([k, l]) => `<span class="pill">${l} ${hmoney(a.costs[k])}</span>`).join('')}<span class="pill">Asked ${esc(fmtD(dayOf(a.updated)))}</span></div>
     ${a.note ? `<p class="note">“${esc(a.note)}”</p>` : ''}
     ${miniBudget(a.budget, after === null ? '' : `<div class="${after < 0 ? 'over' : ''}"><dt>Left if approved</dt><dd>${hmoney(after)}</dd></div>`)}
-    ${a.mine ? '<p class="note">Your own request. Another manager or admin decides it.</p>' : `<div class="field" style="margin-top:12px"><label for="apc-${a.id}">Comment (needed to reject)</label><textarea id="apc-${a.id}" rows="2" maxlength="1000"></textarea></div><div class="row"><button class="btn primary" data-act="apdecide" data-id="${a.id}" data-v="approve">Approve</button><button class="btn danger" data-act="apdecide" data-id="${a.id}" data-v="reject">Reject</button></div>`}</article>`;
+    ${a.mine ? '<p class="note">Your request. Another manager decides.</p>' : `<div class="field" style="margin-top:12px"><label for="apc-${a.id}">Comment (needed to reject)</label><textarea id="apc-${a.id}" rows="2" maxlength="1000"></textarea></div><div class="row"><button class="btn primary" data-act="apdecide" data-id="${a.id}" data-v="approve">Approve</button><button class="btn danger" data-act="apdecide" data-id="${a.id}" data-v="reject">Reject</button></div>`}</article>`;
 }
 Object.assign(VIEWS, {
   approvals() {
     if (!hcan('approve')) return gate('Approvals', 'managers and admins');
     if (HOSP.pend === null) loadApprovals();
-    const head = `<div class="page-head"><div><h1>Approvals</h1><p>Trip requests from ${esc(HOSP.org.name)}, with each doctor's study budget for the year of the event. Pending requests are not taken off a budget until approved.</p></div></div>`;
+    const head = `<div class="page-head"><div><h1>Approvals</h1></div></div>`;
     if (HOSP.pend === null) return head + '<div class="loading" aria-busy="true">Loading…</div>';
-    return head + (HOSP.pend.length ? HOSP.pend.map(approvalCard).join('') : '<div class="empty"><h2>Nothing waiting</h2><p>New requests show here, and on your Home page.</p></div>')
+    return head + (HOSP.pend.length ? HOSP.pend.map(approvalCard).join('') : '<div class="empty"><h2>Nothing waiting</h2></div>')
       + (HOSP.decided.length ? `<div class="section"><h2>Decided recently</h2></div><div class="panel"><div class="list">${HOSP.decided.map(a => `<div class="li"><div class="grow"><div class="t">${esc(a.doctor)} · ${esc((a.event || {}).name)}</div><div class="s">${a.status === 'approved' ? 'Approved' : 'Not approved'}${a.decidedBy ? ' by ' + esc(a.decidedBy) : ''} · ${esc(fmtD(dayOf(a.decided)))}${a.comment ? ' · “' + esc(a.comment) + '”' : ''}</div></div><div class="amt">${hmoney(a.estimateCents)}</div></div>`).join('')}</div></div>` : '');
   },
   team() {
     if (!hcan('team')) return gate('Team', 'managers and admins');
     const y = HOSP.teamYear, T = HOSP.team && HOSP.team.year === y ? HOSP.team : null; if (!T) loadTeam(y);
-    const head = `<div class="page-head"><div><h1>Team</h1><p>Study budgets at ${esc(HOSP.org.name)} for events starting in ${esc(y)}. The hospital default is ${hmoney(HOSP.org.defaultAllowanceCents)} a year; set a different figure for one person below.</p></div><nav class="seg" aria-label="Budget year"><button class="linkbtn" data-act="teamyear" data-v="-1" aria-label="Previous year">← ${y - 1}</button><a aria-current="page">${esc(y)}</a><button class="linkbtn" data-act="teamyear" data-v="1" aria-label="Next year">${y + 1} →</button></nav></div>`;
+    const head = `<div class="page-head"><div><h1>Team</h1><p class="note">Default ${hmoney(HOSP.org.defaultAllowanceCents)} a year</p></div><nav class="seg" aria-label="Budget year"><button class="linkbtn" data-act="teamyear" data-v="-1" aria-label="Previous year">← ${y - 1}</button><a aria-current="page">${esc(y)}</a><button class="linkbtn" data-act="teamyear" data-v="1" aria-label="Next year">${y + 1} →</button></nav></div>`;
     if (!T) return head + '<div class="loading" aria-busy="true">Loading…</div>';
     if (T.error) return head + `<div class="empty"><p>${esc(T.error)}</p></div>`;
     return head + T.members.map(m => { const b = m.budget;
@@ -1156,9 +1147,9 @@ Object.assign(VIEWS, {
   finance() {
     if (!hcan('finance')) return gate('Finance claims', 'finance and admins');
     if (HOSP.finance === null) loadFinance();
-    const head = `<div class="page-head"><div><h1>Finance claims</h1><p>Claims doctors at ${esc(HOSP.org.name)} marked as submitted. Check the pack they emailed to ${HOSP.org.claimsEmail ? esc(HOSP.org.claimsEmail) : 'your claims address'}, pay it, then mark it paid here. Hoggy does not move money.</p></div></div>`;
+    const head = `<div class="page-head"><div><h1>Finance claims</h1><p class="note">Hoggy doesn’t move money.</p></div></div>`;
     if (HOSP.finance === null) return head + '<div class="loading" aria-busy="true">Loading…</div>';
-    const row = c => `<div class="li fin-row" data-testid="fin-claim" data-doctor="${esc(c.doctor)}"><div class="grow"><div class="t">${esc(c.doctor)} · ${esc((c.event || {}).name)}</div><div class="s">${esc(range(c.event || {}))} · submitted ${esc(fmtD(dayOf(c.submitted)))} · ${plural(c.receipts, 'receipt')}${c.approval === 'approved' ? ' · approved trip' : ' · no approval on file'}</div></div><div style="text-align:right"><div class="amt">${hmoney(c.totalCents)}</div>${c.status === 'paid' ? `<span class="status paid">Paid ${esc(fmtD(dayOf(c.paid)))}</span>` : c.mine ? '<span class="note">Your own claim: someone else marks it paid</span>' : `<button class="btn sm primary" data-act="markpaid" data-id="${c.id}" data-v="${esc(c.doctor)}">Mark paid</button>`}</div></div>`;
+    const row = c => `<div class="li fin-row" data-testid="fin-claim" data-doctor="${esc(c.doctor)}"><div class="grow"><div class="t">${esc(c.doctor)} · ${esc((c.event || {}).name)}</div><div class="s">${esc(range(c.event || {}))} · submitted ${esc(fmtD(dayOf(c.submitted)))} · ${plural(c.receipts, 'receipt')}${c.approval === 'approved' ? ' · approved trip' : ' · no approval on file'}</div></div><div style="text-align:right"><div class="amt">${hmoney(c.totalCents)}</div>${c.status === 'paid' ? `<span class="status paid">Paid ${esc(fmtD(dayOf(c.paid)))}</span>` : c.mine ? '<span class="note">Your claim: someone else marks it paid</span>' : `<button class="btn sm primary" data-act="markpaid" data-id="${c.id}" data-v="${esc(c.doctor)}">Mark paid</button>`}</div></div>`;
     const todo = HOSP.finance.filter(c => c.status === 'submitted'), done = HOSP.finance.filter(c => c.status === 'paid');
     return head + `<div class="panel"><h3>To pay (${todo.length})</h3>${todo.length ? `<div class="list">${todo.map(row).join('')}</div>` : '<p class="note" style="margin:0">Nothing waiting.</p>'}</div>` + (done.length ? `<div class="panel"><h3>Paid</h3><div class="list">${done.map(row).join('')}</div></div>` : '');
   }
@@ -1167,11 +1158,11 @@ Object.assign(ROUTES, { approvals: ['Approvals', 'check', true], team: ['Team', 
 async function hospAct(a, el, id) {
   if (a === 'reqapproval') return approvalDialog(id);
   if (a === 'hnotesread') { await api('/api/notifications/read', { method: 'POST' }); await loadHosp(); render(); return; }
-  if (a === 'hcode') { if (!confirm('Make a new join code? The current one stops working straight away.')) return; const r = await api('/api/org/code', { method: 'POST' }); if (r.error) return toast(hErr(r)); HOSP.org = r.org; render(); toast('New join code ready'); return; }
-  if (a === 'hleave') { if (!confirm(`Leave ${HOSP.org.name}? Your requests and claims stay with the hospital; you can join again with a code.`)) return; const r = await api('/api/org/leave', { method: 'POST' }); if (r.error) return toast(hErr(r)); resetHosp(); await loadHosp(); render(); toast(r.deleted ? 'You were the last member, so the hospital was removed' : 'You left the hospital'); return; }
+  if (a === 'hcode') { if (!confirm('New join code? The old one stops working.')) return; const r = await api('/api/org/code', { method: 'POST' }); if (r.error) return toast(hErr(r)); HOSP.org = r.org; render(); toast('New join code ready'); return; }
+  if (a === 'hleave') { if (!confirm(`Leave ${HOSP.org.name}? Requests and claims stay with the hospital.`)) return; const r = await api('/api/org/leave', { method: 'POST' }); if (r.error) return toast(hErr(r)); resetHosp(); await loadHosp(); render(); toast(r.deleted ? 'Hospital removed (last member)' : 'Left hospital'); return; }
   if (a === 'apdecide') {
     const v = el.dataset.v, ta = $('#apc-' + id), comment = ta ? ta.value.trim() : '';
-    if (v === 'reject' && !comment) { toast('Add a comment so the doctor knows what to change'); if (ta) ta.focus(); return; }
+    if (v === 'reject' && !comment) { toast('Add a comment to reject'); if (ta) ta.focus(); return; }
     el.disabled = true; const r = await api('/api/approvals/' + id, { method: 'POST', body: { action: v, comment } });
     if (r.error) { el.disabled = false; return toast(hErr(r)); }
     const x = (HOSP.pend || []).find(p => String(p.id) === String(id)); HOSP.pend = null; await loadHosp(); render();
@@ -1180,18 +1171,18 @@ async function hospAct(a, el, id) {
   if (a === 'teamyear') { HOSP.teamYear += +el.dataset.v; HOSP.team = null; render(); return; }
   if (a === 'setallow' || a === 'resetallow') {
     const inp = $('#al-' + id), v = a === 'resetallow' || !inp || inp.value === '' ? null : Math.round(+inp.value * 100);
-    if (v !== null && !(v >= 0)) return toast('Enter an amount of 0 or more');
+    if (v !== null && !(v >= 0)) return toast('Enter 0 or more');
     const r = await api('/api/org/allowance', { method: 'POST', body: { userId: +id, year: HOSP.teamYear, allowanceCents: v } }); if (r.error) return toast(hErr(r));
-    HOSP.team = null; HOSP.budget = {}; render(); toast(v === null ? 'Back to the hospital default' : 'Allowance saved'); return;
+    HOSP.team = null; HOSP.budget = {}; render(); toast(v === null ? 'Using default' : 'Allowance saved'); return;
   }
   if (a === 'rmmember') { if (!confirm(`Remove ${el.dataset.v} from ${HOSP.org.name}?`)) return; const r = await api('/api/org/members/' + id, { method: 'POST', body: { action: 'remove' } }); if (r.error) return toast(hErr(r)); HOSP.team = null; render(); toast('Removed'); return; }
-  if (a === 'markpaid') { if (!confirm(`Mark ${el.dataset.v}'s claim as paid? They see "Paid" in Hoggy.`)) return; el.disabled = true; const r = await api('/api/claims/' + id + '/paid', { method: 'POST' }); if (r.error) { el.disabled = false; return toast(hErr(r)); } HOSP.finance = null; await loadHosp(); render(); toast('Marked paid'); return; }
+  if (a === 'markpaid') { if (!confirm(`Mark ${el.dataset.v}'s claim paid?`)) return; el.disabled = true; const r = await api('/api/claims/' + id + '/paid', { method: 'POST' }); if (r.error) { el.disabled = false; return toast(hErr(r)); } HOSP.finance = null; await loadHosp(); render(); toast('Marked paid'); return; }
 }
 function wireHospSettings() {
   const on = (sel, fn) => { const f = $(sel); if (f) f.addEventListener('submit', async e => { e.preventDefault(); const b = f.querySelector('button[type=submit]'); b.disabled = true; try { await fn(new FormData(f)); } finally { if (b.isConnected) b.disabled = false; } }); };
   const done = async (r, msg) => { if (r.error) return toast(hErr(r)); await loadHosp(); render(); toast(msg); const p = $('#hosp'); if (p) p.scrollIntoView({ block: 'start' }); };
   on('#hjoin', async f => { const r = await api('/api/org/join', { method: 'POST', body: { code: String(f.get('code') || '') } }); await done(r, r.org ? 'You joined ' + r.org.name : ''); });
-  on('#hnew', async f => { const r = await api('/api/org', { method: 'POST', body: { name: String(f.get('name') || ''), claimsEmail: String(f.get('claimsEmail') || ''), defaultAllowanceCents: toCents(f.get('allowance')), currency: String(f.get('currency') || S.profile.currency) } }); await done(r, 'Hospital created. Share the join code with colleagues'); });
+  on('#hnew', async f => { const r = await api('/api/org', { method: 'POST', body: { name: String(f.get('name') || ''), claimsEmail: String(f.get('claimsEmail') || ''), defaultAllowanceCents: toCents(f.get('allowance')), currency: String(f.get('currency') || S.profile.currency) } }); await done(r, 'Hospital created'); });
   on('#hset', async f => { const r = await api('/api/org/settings', { method: 'POST', body: { name: String(f.get('name') || ''), claimsEmail: String(f.get('claimsEmail') || ''), defaultAllowanceCents: toCents(f.get('allowance')) } }); await done(r, 'Hospital saved'); });
 }
 document.addEventListener('change', async e => {
@@ -1216,9 +1207,9 @@ function closeOverlay(keepHash) { if (!keepHash && reviewHash()) history.replace
 function dateNote(c) {
   const link = (u, t) => u && safeUrl(u) !== '#' ? ` · <a class="u" target="_blank" rel="noopener noreferrer" href="${esc(safeUrl(u))}">${t}</a>` : '';
   const st = dateEv(c);
-  if (st === 'estimated') return 'Estimated — confirm with organiser';
-  if (st === 'confirmed') return `Dates confirmed on the organiser's page · checked ${esc(fmtD(c.verifiedOn))}${link(c.datesSourceUrl, 'source page')}<span class="quote">The page said: “${esc(c.datesQuote)}”</span>`;
-  return `Confirmed by organiser (source not yet re-checked)${c.lastVerified ? ' · last seen ' + esc(fmtD(c.lastVerified)) : ''}${link(c.sourceUrl, 'organiser site')}`;
+  if (st === 'estimated') return 'Estimate · check organiser';
+  if (st === 'confirmed') return `Checked ${esc(fmtD(c.verifiedOn))}${link(c.datesSourceUrl, esc(hostOf(c.datesSourceUrl)) + ' ↗')}<span class="quote">“${esc(c.datesQuote)}”</span>`;
+  return `Confirmed earlier · source not yet re-checked${link(c.sourceUrl, esc(hostOf(c.sourceUrl)) + ' ↗')}`;
 }
 function detail(id, fetchReviews = true) {
   const c = byId(id); if (!c) return;
@@ -1226,43 +1217,42 @@ function detail(id, fetchReviews = true) {
   const on = S.saved.includes(id), trip = S.trips.find(t => t.confId === id), L = links(c), R = reviewsFor(c), sc = scoreOf(c);
   openOverlay(`<div class="sheet detail" role="dialog" aria-modal="true" aria-label="${esc(c.name)}"><div class="sheet-wrap"><span class="grab" aria-hidden="true"></span><button class="icon-btn close" data-act="close" aria-label="Close">${icon('x')}</button><div class="art">${plate(c, 'wide')}</div></div>
   <div class="body"><p class="card-when">${esc(range(c))} · ${esc(c.city)}, ${esc(c.country)}</p><h2>${esc(c.name)}</h2><p class="lede">${esc(c.blurb)}</p>
-  <div class="card-meta quality" aria-label="Quality signals">${{ confirmed: '<span class="pill g">Dates confirmed</span>', unchecked: '<span class="pill" title="Confirmed before Hoggy stored the organiser\'s wording; being re-checked">Dates confirmed (not re-checked)</span>', estimated: '<span class="pill w">Dates estimated</span>' }[dateEv(c)]}${c.cpdBody && c.cpdVerified ? `<span class="pill g">Accreditation: ${esc(c.cpdBody)}</span>` : '<span class="pill w">Accreditation: confirm with organiser</span>'}${orgPill(c)}${destTags(c)}${sc && sc.avg != null ? `<button type="button" class="tag" data-act="toreviews"><span class="stars" aria-hidden="true">★</span> ${sc.avg.toFixed(1)} · ${plural(sc.n, 'review')}</button>` : ''}</div>
-  ${schedLine(c, true)}${c.flagged ? '<p class="check warn">! Hoggy\'s updater noticed a change or problem on the organiser site (dead link or cancellation wording). Check the official site before booking.</p>' : ''}
-  <div class="facts"><div class="fact wide"><div class="k">When</div><div class="v">${esc(range(c))}</div><div class="note">${dateNote(c)}</div></div><div class="fact"><div class="k">Where</div><div class="v">${esc(c.city)}, ${esc(c.country)}</div>${c.datesConfirmed === false ? '<div class="note">City is an estimate until the organiser confirms</div>' : ''}</div><div class="fact${c.accreditation ? ' wide' : ''}"><div class="k">CPD</div><div class="v">${c.cpdVerified && c.cpdHours ? esc(c.cpdHours) + ' hrs' + (c.cpdBody ? ' · ' + esc(c.cpdBody) : '') : 'Not confirmed'}</div>${c.accreditation ? `<div class="note">The organiser says: “${esc(c.accreditation.text)}” · ${srcLink(c.accreditation.sourceUrl, 'source')}. Check with your college before you claim.</div>` : c.cpdVerified && c.cpdHours ? '' : '<div class="note">Hoggy has not confirmed credits for this event. Ask the organiser before relying on it.</div>'}</div><div class="fact"><div class="k">Registration (indicative)</div><div class="v">${figPrice(c) ? 'about US$' + esc(Number(figPrice(c)).toLocaleString()) : 'Check organiser'}</div></div><div class="fact"><div class="k">Specialty</div><div class="v">${esc(c.specialty)}</div></div><div class="fact"><div class="k">${figAtt(c) ? 'Size · format' : 'Format'}</div><div class="v">${figAtt(c) ? '~' + esc(Number(figAtt(c)).toLocaleString()) + ' · ' : ''}${esc(c.format)}</div>${figAtt(c) >= 3000 ? '<div class="note">Large (3,000+)</div>' : ''}</div><div class="fact wide"><div class="k">Run by</div><div class="v">${esc(c.organiser)}</div>${c.organiserType === 'commercial' ? '<div class="note">A commercial provider, not a college or society.</div>' : ''}</div>${c.audience ? `<div class="fact wide"><div class="k">For</div><div class="v sm">${esc(c.audience)}</div></div>` : ''}</div>
+  <div class="card-meta quality" aria-label="Quality signals">${{ confirmed: '<span class="pill g">Confirmed</span>', unchecked: '<span class="pill">Re-checking</span>', estimated: '<span class="pill w">Estimate</span>' }[dateEv(c)]}${c.cpdBody && c.cpdVerified ? `<span class="pill g">Accreditation: ${esc(c.cpdBody)}</span>` : '<span class="pill w">Accreditation: check organiser</span>'}${orgPill(c)}${destTags(c)}${sc && sc.avg != null ? `<button type="button" class="tag" data-act="toreviews"><span class="stars" aria-hidden="true">★</span> ${sc.avg.toFixed(1)} · ${plural(sc.n, 'review')}</button>` : ''}</div>
+  ${schedLine(c, true)}${c.flagged ? '<p class="check warn">! Organiser site changed. Check before booking.</p>' : ''}
+  <div class="facts"><div class="fact wide"><div class="k">When</div><div class="v">${esc(range(c))}</div><div class="note">${dateNote(c)}</div></div><div class="fact"><div class="k">Where</div><div class="v">${esc(c.city)}, ${esc(c.country)}</div>${c.datesConfirmed === false ? '<div class="note">City estimated</div>' : ''}</div><div class="fact${c.accreditation ? ' wide' : ''}"><div class="k">CPD</div><div class="v">${c.cpdVerified && c.cpdHours ? esc(c.cpdHours) + ' hrs' + (c.cpdBody ? ' · ' + esc(c.cpdBody) : '') : 'Not confirmed'}</div>${c.accreditation ? `<div class="note">“${esc(c.accreditation.text)}” · ${srcLink(c.accreditation.sourceUrl)} · check your college</div>` : c.cpdVerified && c.cpdHours ? '' : '<div class="note">Check organiser</div>'}</div><div class="fact"><div class="k">Registration (indicative)</div><div class="v">${figPrice(c) ? 'about US$' + esc(Number(figPrice(c)).toLocaleString()) : 'Check organiser'}</div></div><div class="fact"><div class="k">Specialty</div><div class="v">${esc(c.specialty)}</div></div><div class="fact"><div class="k">${figAtt(c) ? 'Size · format' : 'Format'}</div><div class="v">${figAtt(c) ? '~' + esc(Number(figAtt(c)).toLocaleString()) + ' · ' : ''}${esc(c.format)}</div>${figAtt(c) >= 3000 ? '<div class="note">Large (3,000+)</div>' : ''}</div><div class="fact wide"><div class="k">Run by</div><div class="v">${esc(c.organiser)}</div>${c.organiserType === 'commercial' ? '<div class="note">Commercial, not a college or society</div>' : ''}</div>${c.audience ? `<div class="fact wide"><div class="k">For</div><div class="v sm">${esc(c.audience)}</div></div>` : ''}</div>
   ${tripSection(c)}
   <div class="row travel"><a class="btn sm ghost" target="_blank" rel="noopener noreferrer" href="${esc(safeUrl(c.url))}">Official site ${icon('ext')}</a><a class="btn sm" target="_blank" rel="noopener noreferrer" href="${esc(L.flights)}">${icon('plane')} Flights ${icon('ext')}</a><a class="btn sm" target="_blank" rel="noopener noreferrer" href="${esc(L.hotels)}">${icon('bed')} Hotels ${icon('ext')}</a><button class="btn sm" data-act="ics" data-id="${esc(id)}">${icon('cal')} Calendar</button><button class="btn sm" data-act="leave" data-id="${esc(id)}">Request leave</button></div>
-  <p class="note">Elsewhere on the web: <a class="u" target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=${encodeURIComponent(c.name + ' ' + c.start.slice(0, 4) + ' review')}">search reviews</a> (external, not part of Hoggy's score)</p>
-  ${c.listingType === 'course' ? '<p class="note">Course session listed by its organiser.</p>' : ''}<p class="note report-line"><button type="button" class="linkbtn" data-act="report" data-kind="conference" data-id="${esc(id)}">Report a problem with this listing</button> · <a class="u" href="/conferences/${esc(encodeURIComponent(id))}">Page link</a></p>
+  <p class="note"><a class="u" target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=${encodeURIComponent(c.name + ' ' + c.start.slice(0, 4) + ' review')}">Web reviews ↗</a> · not in Hoggy’s score</p>
+  ${c.listingType === 'course' ? '<p class="note">Listed by organiser</p>' : ''}<p class="note report-line"><button type="button" class="linkbtn" data-act="report" data-kind="conference" data-id="${esc(id)}">Report a problem</button> · <a class="u" href="/conferences/${esc(encodeURIComponent(id))}">Link</a></p>
   ${reviewsSection(c, R)}${coverageSection(c)}</div>
-  <div class="actbar"><button class="btn primary lg" data-act="plan" data-id="${esc(id)}" ${trip ? 'disabled' : ''}>${trip ? 'In your trips' : 'Plan trip'}</button><button class="btn lg save-btn ${on ? 'on' : ''}" data-act="save" data-id="${esc(id)}" aria-pressed="${on}">${icon('heart')} ${on ? 'Saved' : 'Save'}</button></div></div>`);
+  <div class="actbar"><button class="btn primary lg" data-act="plan" data-id="${esc(id)}" ${trip ? 'disabled' : ''}>${trip ? 'In trips' : 'Plan trip'}</button><button class="btn lg save-btn ${on ? 'on' : ''}" data-act="save" data-id="${esc(id)}" aria-pressed="${on}">${icon('heart')} ${on ? 'Saved' : 'Save'}</button></div></div>`);
   if (NET.online && fetchReviews) loadCoverage(skey(c)).then(ok => { if (ok && !$('#overlay').hidden && $('#covsec') && $('#covsec').dataset.id === id) $('#covsec').outerHTML = coverageSection(c); });
   if (NET.online && fetchReviews) loadReviews(id).then(ok => { if (ok && !$('#overlay').hidden && $('#rvsec') && $('#rvsec').dataset.id === id) detail(id, false); }); /* fetch once per open; re-rendering with fetch again looped forever */
 }
 /* ---------- reviews section, review form, proof upload ---------- */
-const HOW_SCORES = 'Scores cover every year of this conference. A verified review counts in full and an unverified one counts half. A score shows once there are at least 3 reviews. "Verified attendee" means a Hoggy admin has checked a registration receipt you emailed to your Hoggy address, or a certificate or receipt you uploaded.';
+const HOW_SCORES = 'All years. Scores show at 3 reviews. Verified count in full, others half. Verified: an admin checked a receipt or certificate.';
 const edLabel = r => 'Attended ' + r.editionYear + (r.city ? ' · ' + r.city : '');
 const shareLink = key => location.origin + location.pathname + '#/review/' + key;
 function scoreLine(sc) {
   if (!sc || !sc.n) return 'No reviews yet';
-  if (sc.avg == null) return `Not enough reviews yet · ${plural(sc.n, 'review')} so far`;
+  if (sc.avg == null) return `${plural(sc.n, 'review')} · score at 3`;
   return `<span class="stars" aria-hidden="true">${stars(sc.avg)}</span> <b>${sc.avg.toFixed(1)}</b> from ${plural(sc.n, 'review')} (${sc.verified} verified)`;
 }
 function reviewItem(v, c) {
   const dims = DIM_LABELS.filter(([k]) => v.ratings && v.ratings[k]).map(([k, l]) => `${l} ${v.ratings[k]}`).join(' · ');
   const state = v.verified ? '<span class="pill g">✓ Verified attendee</span>' : '<span class="pill">Attended (not verified)</span>';
-  const own = v.mine ? (v.verify === 'pending_proof' ? '<span class="pill w">Proof sent · being checked</span>' : v.verify === 'pending_receipt' ? '<span class="pill w">Emailed receipt · being checked</span>' : v.proof === 'rejected' && !v.verified ? '<span class="pill b">Proof not accepted</span>' : '') : '';
+  const own = v.mine ? (v.verify === 'pending_proof' ? '<span class="pill w">Proof being checked</span>' : v.verify === 'pending_receipt' ? '<span class="pill w">Receipt being checked</span>' : v.proof === 'rejected' && !v.verified ? '<span class="pill b">Proof not accepted</span>' : '') : '';
   const acts = !NET.user ? '' : v.mine ? `<div class="row rv-acts"><button class="btn sm ghost" data-act="rvedit" data-id="${esc(v.id)}" data-conf="${esc(c.id)}">Edit</button>${v.verified || v.verify === 'pending_proof' || v.verify === 'pending_receipt' ? '' : `<button class="btn sm ghost" data-act="rvproof" data-id="${esc(v.id)}" data-conf="${esc(c.id)}">Add proof</button>`}<button class="btn sm ghost danger" data-act="rvdel" data-id="${esc(v.id)}" data-conf="${esc(c.id)}">Delete</button></div>` : `<div class="row rv-acts"><button class="btn sm ghost" data-act="rvreport" data-id="${esc(v.id)}" data-conf="${esc(c.id)}">Report</button></div>`;
   return `<div class="review"><div class="who rv-who"><span>${esc(v.author)}</span> ${state}${own}<span class="stars rv-stars" aria-label="${esc(Number(v.rating).toFixed(1))} out of 5">${stars(v.rating)}</span></div><div class="note rv-ed">${esc(edLabel(v))}</div>${dims ? `<div class="note rv-dims">${esc(dims)}</div>` : ''}<p>${esc(v.text)}</p>${acts}</div>`;
 }
 function reviewsSection(c, R) {
   const key = skey(c), sc = scoreOf(c);
-  if (!NET.online) return `<div class="section"><h3>Reviews</h3></div><p class="note">Reviews aren\u2019t available right now. Try again in a minute.</p>${R.map(v => `<div class="review"><div class="who">${esc(v.author)} <span class="pill">On this device only</span></div><p>${esc(v.text)}</p></div>`).join('')}`;
+  if (!NET.online) return `<div class="section"><h3>Reviews</h3></div><p class="note">Reviews unavailable. Try again shortly.</p>${R.map(v => `<div class="review"><div class="who">${esc(v.author)} <span class="pill">On this device only</span></div><p>${esc(v.text)}</p></div>`).join('')}`;
   const dimsHtml = sc && sc.avg != null ? `<div class="dimgrid wide">${DIM_LABELS.filter(([k]) => sc.dims && sc.dims[k]).map(([k, l]) => `<div class="dim"><span>${l}</span><b>${sc.dims[k].avg.toFixed(1)} <small>(${sc.dims[k].n})</small></b></div>`).join('')}</div>` : '';
   return `<section id="rvsec" data-id="${esc(c.id)}" aria-labelledby="rvh"><div class="section"><h3 id="rvh" tabindex="-1">Reviews</h3><span class="rv-score">${scoreLine(sc)}</span></div>
   ${dimsHtml}<details class="how"><summary>How scores work</summary><p class="note">${esc(HOW_SCORES)}</p></details>
-  <div class="row"><button class="btn sm" data-act="review" data-id="${esc(c.id)}">Review this conference</button><button class="btn sm ghost" data-act="copy" data-v="${esc(shareLink(key))}">${icon('copy')} Copy review link</button></div>
-  <p class="note">Went in an earlier year? That counts. Share the link with colleagues who attended.</p>
-  ${R.length ? R.map(v => reviewItem(v, c)).join('') : '<p class="note">No reviews yet. If you have been to this conference in any year, yours can be the first.</p>'}</section>`;
+  <div class="row"><button class="btn sm" data-act="review" data-id="${esc(c.id)}">Write review</button><button class="btn sm ghost" data-act="copy" data-v="${esc(shareLink(key))}">${icon('copy')} Copy link</button></div>
+  ${R.length ? R.map(v => reviewItem(v, c)).join('') : '<p class="note">No reviews yet</p>'}</section>`;
 }
 /* ---------- "Covered in": approved journal and press links for the series (links only, never article text) ---------- */
 async function loadCoverage(key) { const r = await api('/api/coverage?series=' + encodeURIComponent(key)); if (r.error || !Array.isArray(r)) return false; NET.cov[key] = r; return true; }
@@ -1272,12 +1262,12 @@ function coverageSection(c) {
   const items = window.HoggyCoverage ? L.map(l => window.HoggyCoverage.itemHtml(l, esc)).join('') : '';
   const suggest = `<button class="btn sm ghost" data-act="covsuggest" data-id="${esc(c.id)}">Suggest a link</button>`;
   return `<section id="covsec" class="cov" data-id="${esc(c.id)}" aria-labelledby="covh"><div class="section" style="margin-top:28px"><h2 id="covh" style="font-size:20px">Covered in</h2></div>
-  ${items ? `<ul class="cov-list">${items}</ul>` : '<p class="note">No journal or press coverage listed yet.</p>'}
-  <div class="row" style="margin:8px 0 0">${suggest}<span class="note" style="margin:0">Links open the publisher's site. An admin checks every suggestion first.</span></div></section>`;
+  ${items ? `<ul class="cov-list">${items}</ul>` : '<p class="note">None yet</p>'}
+  <div class="row" style="margin:8px 0 0">${suggest}</div></section>`;
 }
 function coverageDialog(c) {
   const T = window.HoggyCoverage.TYPES, Y = new Date().getFullYear();
-  simpleDialog('Suggest a link', `<p class="note" style="margin-top:-6px">A meeting report, abstract supplement, society journal issue or news story about ${esc(seriesTitleOf(c))}. Link to the publisher's page; please don't paste article text.</p>
+  simpleDialog('Suggest a link', `<p class="note" style="margin-top:-6px">${esc(seriesTitleOf(c))}. Publisher’s page only, no article text.</p>
     ${field('cv1', 'Type', `<select id="cv1" name="type">${Object.entries(T).map(([k, l]) => `<option value="${k}">${esc(l)}</option>`).join('')}</select>`)}
     ${field('cv2', 'Link (https)', '<input id="cv2" type="url" name="url" required maxlength="500" placeholder="https://" inputmode="url">')}
     <div class="two">${field('cv3', 'Publication', '<input id="cv3" type="text" name="publication" required maxlength="120" placeholder="Journal, society or news outlet">')}${field('cv4', 'Year', `<input id="cv4" type="number" name="year" min="1950" max="${Y + 1}" step="1" placeholder="${Y}">`)}</div>
@@ -1285,17 +1275,17 @@ function coverageDialog(c) {
     const body = { series: skey(c), type: fd.get('type'), url: String(fd.get('url') || '').trim(), publication: String(fd.get('publication') || '').trim(), year: fd.get('year') ? +fd.get('year') : null, title: String(fd.get('title') || '').trim() };
     const v = window.HoggyCoverage.validate(body); if (!v.ok) return $('#cverr').textContent = v.error;
     const r = await api('/api/coverage', { method: 'POST', body });
-    if (r.error) return $('#cverr').textContent = r.error === 'offline' ? 'Can\u2019t reach Hoggy right now. Try again in a minute.' : r.error;
-    toast('Thanks · an admin will check the link before it shows'); detail(c.id, false);
+    if (r.error) return $('#cverr').textContent = r.error === 'offline' ? 'Can\u2019t connect. Try again shortly.' : r.error;
+    toast('Sent for checking'); detail(c.id, false);
   }, 'Send for checking');
 }
 const seriesTitleOf = c => window.HoggySeries ? window.HoggySeries.seriesTitle(c) : c.name;
-const GUIDE = 'Keep it honest and about the event: the programme, speakers, venue, value and CPD. Do not name or criticise individuals, and never include patient information. Reviews that break these rules are removed.';
+const GUIDE = 'About the event only. No names, no patient information.';
 /* open the review form for a series; signed-out visitors sign in first and come straight back */
 function startReview(key, opts = {}) {
-  if (!editionsOf(key).length) { toast('We could not find that conference'); return false; }
-  if (!NET.online) { toast('Reviews aren\u2019t available right now. Try again in a minute.'); return false; }
-  if (!NET.user) { authDialog('Sign in to review this conference', () => startReview(key, opts)); return true; }
+  if (!editionsOf(key).length) { toast('Conference not found'); return false; }
+  if (!NET.online) { toast('Reviews unavailable. Try again shortly.'); return false; }
+  if (!NET.user) { authDialog('Sign in to review', () => startReview(key, opts)); return true; }
   reviewForm(key, opts); return true;
 }
 function reviewForm(key, opts = {}) {
@@ -1303,10 +1293,10 @@ function reviewForm(key, opts = {}) {
   const ed = opts.edit || null;
   const years = []; for (let y = Y; y >= Y - 10; y--) { const known = eds.find(c => +c.start.slice(0, 4) === y); years.push({ y, city: known ? known.city : '', future: !!known && known.start > td, done: reviewedYear(key, y) }); }
   const rate = (k, l) => `<div class="rate" role="radiogroup" aria-labelledby="rl-${k}"><span class="rate-l" id="rl-${k}">${l}</span><div class="rate-opts">${[1, 2, 3, 4, 5].map(n => `<label><input type="radio" name="${k}" value="${n}" ${ed && ed.ratings && ed.ratings[k] === n ? 'checked' : ''} aria-label="${l}: ${n} out of 5"><span aria-hidden="true">${n}</span></label>`).join('')}</div></div>`;
-  openOverlay(`<div class="sheet center rv-sheet" role="dialog" aria-modal="true" aria-label="Review ${esc(title)}"><form id="rvf" novalidate style="padding:22px"><div class="row" style="justify-content:space-between;align-items:flex-start;flex-wrap:nowrap;margin-bottom:6px"><h2 style="font-size:24px;margin:0">${ed ? 'Edit your review' : 'Review this conference'}</h2><button type="button" class="icon-btn" style="flex:none" data-act="close" aria-label="Close">${icon('x')}</button></div>
+  openOverlay(`<div class="sheet center rv-sheet" role="dialog" aria-modal="true" aria-label="Review ${esc(title)}"><form id="rvf" novalidate style="padding:22px"><div class="row" style="justify-content:space-between;align-items:flex-start;flex-wrap:nowrap;margin-bottom:6px"><h2 style="font-size:24px;margin:0">${ed ? 'Edit review' : 'Write review'}</h2><button type="button" class="icon-btn" style="flex:none" data-act="close" aria-label="Close">${icon('x')}</button></div>
   <p class="note" style="margin:0 0 14px">${esc(title)} · ${esc(latest.organiser)}</p>
-  ${ed ? `<p class="rv-edline"><b>${esc(edLabel(ed))}</b></p>` : `<fieldset class="years"><legend>Which years did you attend?</legend><div class="ychips">${years.map(o => `<label class="ychip"><input type="checkbox" name="year" value="${o.y}" ${o.future || o.done ? 'disabled' : ''} ${opts.year === o.y && !o.done && !o.future ? 'checked' : ''}><span>${o.y}${o.city ? ' · ' + esc(o.city) : ''}${o.done ? ' · reviewed' : o.future ? ' · upcoming' : ''}</span></label>`).join('')}</div><p class="note">Tick more than one to add past years in one go. Each year gets its own review with these scores; you can edit any of them later.</p></fieldset>
-  ${field('rvCity', 'City (optional, for years without a city shown)', '<input id="rvCity" type="text" name="city" maxlength="60" autocomplete="off">')}`}
+  ${ed ? `<p class="rv-edline"><b>${esc(edLabel(ed))}</b></p>` : `<fieldset class="years"><legend>Years attended</legend><div class="ychips">${years.map(o => `<label class="ychip"><input type="checkbox" name="year" value="${o.y}" ${o.future || o.done ? 'disabled' : ''} ${opts.year === o.y && !o.done && !o.future ? 'checked' : ''}><span>${o.y}${o.city ? ' · ' + esc(o.city) : ''}${o.done ? ' · reviewed' : o.future ? ' · upcoming' : ''}</span></label>`).join('')}</div></fieldset>
+  ${field('rvCity', 'City (optional)', '<input id="rvCity" type="text" name="city" maxlength="60" autocomplete="off">')}`}
   <div class="rates">${DIM_LABELS.map(([k, l]) => rate(k, l)).join('')}</div>
   <div class="field"><label for="rvText">Comment</label><textarea id="rvText" name="text" minlength="10" maxlength="600" required placeholder="What was worth it, what wasn't, tips for next year">${esc(ed ? ed.text : '')}</textarea><div class="note rv-count" id="rvCount" aria-live="polite">${ed ? ed.text.length : 0} / 600</div></div>
   <p class="note rv-guide">${esc(GUIDE)}</p>
@@ -1318,37 +1308,37 @@ function reviewForm(key, opts = {}) {
     e.preventDefault(); const fd = new FormData(f), errEl = $('#rverr');
     const ratings = Object.fromEntries(DIM_LABELS.map(([k]) => [k, +fd.get(k) || 0])), text = String(fd.get('text') || '').trim();
     const yrs = ed ? [] : fd.getAll('year').map(Number);
-    if (!ed && !yrs.length) return errEl.textContent = 'Tick the year (or years) you attended.';
+    if (!ed && !yrs.length) return errEl.textContent = 'Tick a year.';
     const miss = DIM_LABELS.filter(([k]) => !ratings[k]).map(([, l]) => l); if (miss.length) return errEl.textContent = 'Rate every area: ' + miss.join(', ') + '.';
     if (text.length < 10) return errEl.textContent = 'Write at least 10 characters.';
     errEl.textContent = ''; const btn = f.querySelector('[type=submit]'); btn.disabled = true;
     const r = ed ? await api('/api/reviews/' + encodeURIComponent(ed.id), { method: 'PUT', body: { ratings, text } })
       : await api('/api/reviews', { method: 'POST', body: { series: key, editions: yrs.map(y => ({ year: y, city: String(fd.get('city') || '').trim() })), ratings, text } });
     btn.disabled = false;
-    if (r.error) return errEl.textContent = r.error === 'offline' ? 'Can\u2019t reach Hoggy right now. Try again in a minute.' : r.error.charAt(0).toUpperCase() + r.error.slice(1) + '.';
+    if (r.error) return errEl.textContent = r.error === 'offline' ? 'Can\u2019t connect. Try again shortly.' : r.error.charAt(0).toUpperCase() + r.error.slice(1) + '.';
     await refreshReviews(latest.id);
     if (ed) { toast('Review updated'); return backToConf(opts.conf || latest.id); }
     const made = (r.reviews || []).map(x => ({ ...x, seriesKey: key }));
     const need = made.filter(x => x.verify === 'none');
-    if (!need.length) { toast(made.some(x => x.verify === 'pending_receipt') ? 'Review posted · an admin is checking your emailed registration receipt' : 'Review posted · verified from your emailed registration receipt'); return backToConf(latest.id); }
+    if (!need.length) { toast(made.some(x => x.verify === 'pending_receipt') ? 'Review posted · receipt being checked' : 'Review posted · verified'); return backToConf(latest.id); }
     proofDialog(need, { conf: latest.id, title, posted: true });
   });
 }
 function proofDialog(list, opts = {}) {
-  openOverlay(`<div class="sheet center rv-sheet" role="dialog" aria-modal="true" aria-label="Add proof of attendance"><div style="padding:22px"><div class="row" style="justify-content:space-between;align-items:flex-start;flex-wrap:nowrap;margin-bottom:10px"><h2 style="font-size:24px;margin:0">${opts.posted ? 'Thanks, your review is up' : 'Add proof of attendance'}</h2><button type="button" class="icon-btn" style="flex:none" data-act="close" aria-label="Close">${icon('x')}</button></div>
-  <p style="color:var(--muted);font-size:14px">${opts.posted ? 'It shows as “Attended (not verified)” for now. ' : ''}Upload a certificate of attendance, CPD certificate or registration receipt and a Hoggy admin will check it. Once approved, your review shows “✓ Verified attendee”.</p>
-  <p class="note">PDF, JPG or PNG, up to 5 MB. Only Hoggy admins can open it, and it is deleted once checked. Cover anything you do not want seen, such as your registration number. You can also email your registration receipt to your Hoggy address and an admin will check that instead.</p>
+  openOverlay(`<div class="sheet center rv-sheet" role="dialog" aria-modal="true" aria-label="Add proof of attendance"><div style="padding:22px"><div class="row" style="justify-content:space-between;align-items:flex-start;flex-wrap:nowrap;margin-bottom:10px"><h2 style="font-size:24px;margin:0">${opts.posted ? 'Review posted' : 'Add proof'}</h2><button type="button" class="icon-btn" style="flex:none" data-act="close" aria-label="Close">${icon('x')}</button></div>
+  <p style="color:var(--muted);font-size:14px">Add a certificate or receipt to get verified.</p>
+  <p class="note">PDF, JPG or PNG, 5 MB max. Admins only; deleted once checked.</p>
   <div class="list" style="margin-top:12px">${list.map(r => `<form class="li pf-row" data-rv="${esc(r.id)}"><div class="grow"><div class="t">${esc(edLabel(r))}</div><div class="two pf-in"><select name="kind" aria-label="Type of proof for ${esc(r.editionYear)}"><option value="certificate">Certificate of attendance</option><option value="cpd">CPD certificate</option><option value="receipt">Registration receipt</option></select><input type="file" name="file" accept="application/pdf,image/jpeg,image/png" aria-label="Proof file for ${esc(r.editionYear)}"></div><div class="note pf-msg" aria-live="polite"></div></div><button class="btn sm primary" type="submit">Upload</button></form>`).join('')}</div>
-  <div class="row" style="justify-content:flex-end;margin:16px 0 0"><button class="btn" data-act="rvdone" data-id="${esc(opts.conf || '')}">${opts.posted ? 'Skip for now' : 'Done'}</button></div></div></div>`, true);
+  <div class="row" style="justify-content:flex-end;margin:16px 0 0"><button class="btn" data-act="rvdone" data-id="${esc(opts.conf || '')}">${opts.posted ? 'Skip' : 'Done'}</button></div></div></div>`, true);
   document.querySelectorAll('.pf-row').forEach(f => f.addEventListener('submit', async e => {
     e.preventDefault(); const file = f.elements.file.files[0], msg = f.querySelector('.pf-msg');
     if (!file) return msg.textContent = 'Choose a file first.';
     if (!['application/pdf', 'image/jpeg', 'image/png'].includes(file.type)) return msg.textContent = 'PDF, JPG or PNG only.';
-    if (file.size > 5e6) return msg.textContent = 'That file is over 5 MB.';
+    if (file.size > 5e6) return msg.textContent = 'Over 5 MB.';
     msg.textContent = 'Uploading…'; f.querySelector('[type=submit]').disabled = true;
     let r; try { const x = await fetch(`/api/reviews/${encodeURIComponent(f.dataset.rv)}/proof?kind=${encodeURIComponent(f.elements.kind.value)}&name=${encodeURIComponent(file.name.slice(0, 100))}`, { method: 'POST', headers: { 'X-Requested-With': 'hoggy', 'Content-Type': file.type }, body: file, credentials: 'same-origin' }); r = await x.json().catch(() => ({ error: 'upload failed' })); } catch (er) { r = { error: 'Server not reachable' }; }
     if (r.error) { f.querySelector('[type=submit]').disabled = false; return msg.textContent = r.error.charAt(0).toUpperCase() + r.error.slice(1) + '.'; }
-    msg.textContent = 'Sent. An admin will check it.'; f.querySelector('[type=submit]').textContent = 'Sent';
+    msg.textContent = 'Sent for checking'; f.querySelector('[type=submit]').textContent = 'Sent';
     const b = document.querySelector('[data-act=rvdone]'); if (b) b.textContent = 'Done';
     refreshReviews(opts.conf);
   }));
@@ -1358,30 +1348,30 @@ function backToConf(confId) { if (confId && byId(confId)) detail(confId, false);
 function field(id, label, html) { return `<div class="field"><label for="${id}">${label}</label>${html}</div>`; }
 function receiptDialog(opts = {}) {
   const ed = opts.edit ? S.receipts.find(r => r.id === opts.edit) : null, v = ed || {}, files = opts.files || [];
-  const tripOpts = `<option value="">— choose trip —</option>` + S.trips.map(t => `<option value="${esc(t.id)}" ${(v.tripId || opts.tripId) === t.id ? 'selected' : ''}>${esc(ofTrip(t).name)}</option>`).join('');
+  const tripOpts = `<option value="">Choose trip</option>` + S.trips.map(t => `<option value="${esc(t.id)}" ${(v.tripId || opts.tripId) === t.id ? 'selected' : ''}>${esc(ofTrip(t).name)}</option>`).join('');
   openOverlay(`<div class="sheet center" role="dialog" aria-modal="true" aria-label="Receipt"><form id="rf" style="padding:22px"><div class="row" style="justify-content:space-between;margin-bottom:14px"><h2 style="font-size:24px;margin:0">${ed ? 'Edit receipt' : 'Add receipt'}</h2><button type="button" class="icon-btn close" style="position:static;background:var(--card-2);color:inherit" data-act="close" aria-label="Close">${icon('x')}</button></div>
-  ${ed ? '' : `<div class="field"><label for="rfile">Receipt file (PDF, JPG, PNG)</label><input id="rfile" type="file" accept="image/*,application/pdf" multiple></div><div class="field"><label for="rtext">…or paste a forwarded email</label><textarea id="rtext" placeholder="Paste the receipt email here and Hoggy will read vendor, amount and date"></textarea><p style="margin-top:8px"><button type="button" class="btn sm" id="parse">Read email</button> <span class="note" id="pmsg"></span></p></div>`}
+  ${ed ? '' : `<div class="field"><label for="rfile">File</label><input id="rfile" type="file" accept="image/*,application/pdf" multiple></div><div class="field"><label for="rtext">Or paste an email</label><textarea id="rtext"></textarea><p style="margin-top:8px"><button type="button" class="btn sm" id="parse">Read email</button> <span class="note" id="pmsg"></span></p></div>`}
   <div class="two">${field('rv1', 'Vendor', `<input id="rv1" type="text" name="vendor" required maxlength="80" value="${esc(v.vendor || '')}">`)}${field('rv2', 'Category', `<select id="rv2" name="category">${CATS.map(k => `<option ${k === (v.category || 'Other') ? 'selected' : ''}>${k}</option>`).join('')}</select>`)}</div>
   <div class="two">${field('rv3', 'Amount', `<input id="rv3" type="number" step="0.01" min="0" name="amount" required value="${esc(v.amount ?? '')}">`)}${field('rv4', 'Currency', `<input id="rv4" type="text" name="currency" maxlength="3" value="${esc(v.currency || S.profile.currency)}">`)}</div>
   <div class="two">${field('rv5', 'Date', `<input id="rv5" type="date" name="date" required value="${esc(v.date || '')}">`)}${field('rv6', 'Trip', `<select id="rv6" name="tripId">${tripOpts}</select>`)}</div>
-  <div class="two">${field('rv12', 'Supplier ABN (Australian receipts)', `<input id="rv12" type="text" name="abn" inputmode="numeric" maxlength="20" autocomplete="off" value="${esc(v.abn ? HP().fmtAbn(v.abn) : '')}">`)}${field('rv13', 'GST included', `<input id="rv13" type="number" step="0.01" min="0" name="gst" value="${esc(v.gst ?? '')}">`)}</div>
-  <label class="tick"><input type="checkbox" name="taxInvoice" ${v.taxInvoice ? 'checked' : ''}> The document says “Tax invoice”</label>
-  ${field('rv8', 'Exchange rate to ' + S.profile.currency + ' (only for foreign currency)', `<input id="rv8" type="number" step="0.0001" min="0" name="fxRate" value="${esc(v.fxRate || '')}">`)}
-  <div class="two">${field('rv9', 'Nights (accommodation)', `<input id="rv9" type="number" min="0" step="1" name="nights" value="${esc(v.nights || '')}">`)}${field('rv10', 'Personal portion to exclude', `<input id="rv10" type="number" min="0" step="0.01" name="personal" value="${esc(v.personal || '')}">`)}</div>
-  ${field('rv11', 'Justification for exceeding policy (only if over a limit)', `<input id="rv11" type="text" name="excuse" maxlength="200" value="${esc(v.excuse || '')}">`)}
+  <div class="two">${field('rv12', 'Supplier ABN', `<input id="rv12" type="text" name="abn" inputmode="numeric" maxlength="20" autocomplete="off" value="${esc(v.abn ? HP().fmtAbn(v.abn) : '')}">`)}${field('rv13', 'GST included', `<input id="rv13" type="number" step="0.01" min="0" name="gst" value="${esc(v.gst ?? '')}">`)}</div>
+  <label class="tick"><input type="checkbox" name="taxInvoice" ${v.taxInvoice ? 'checked' : ''}> Says “Tax invoice”</label>
+  ${field('rv8', 'Rate to ' + S.profile.currency + ' (foreign only)', `<input id="rv8" type="number" step="0.0001" min="0" name="fxRate" value="${esc(v.fxRate || '')}">`)}
+  <div class="two">${field('rv9', 'Nights (accommodation)', `<input id="rv9" type="number" min="0" step="1" name="nights" value="${esc(v.nights || '')}">`)}${field('rv10', 'Personal portion', `<input id="rv10" type="number" min="0" step="0.01" name="personal" value="${esc(v.personal || '')}">`)}</div>
+  ${field('rv11', 'Reason if over limit', `<input id="rv11" type="text" name="excuse" maxlength="200" value="${esc(v.excuse || '')}">`)}
   ${field('rv7', 'Note (optional)', `<input id="rv7" type="text" name="note" maxlength="200" value="${esc(v.note || '')}">`)}
   ${files.length ? `<p class="note">${files.length} file${files.length > 1 ? 's' : ''} ready: ${esc(files.map(f => f.name).join(', '))}</p>` : ''}
   <div class="row" style="justify-content:space-between;margin:6px 0 20px"><span>${ed ? `<button type="button" class="btn danger" data-act="rmreceipt" data-id="${esc(ed.id)}">Delete</button>` : ''}</span><button class="btn primary" type="submit" autofocus>Save receipt</button></div></form></div>`, true);
   const form = $('#rf'); let pending = files.slice();
   if (!ed) {
     const fi = $('#rfile'); fi.addEventListener('change', () => { pending = [...fi.files]; });
-    $('#parse').addEventListener('click', () => { const p = parseReceipt($('#rtext').value); if (!p.amount && !p.vendor) return $('#pmsg').textContent = 'Nothing recognised — fill in manually.'; if (p.vendor) form.vendor.value = p.vendor; if (p.amount) form.amount.value = p.amount; if (p.currency) form.currency.value = p.currency; if (p.date) form.date.value = p.date; form.category.value = p.category; if (p.abn) form.abn.value = HP().fmtAbn(p.abn); if (p.gst != null) form.gst.value = p.gst; form.taxInvoice.checked = !!p.taxInvoice; $('#pmsg').textContent = 'Filled in — check it looks right.'; });
+    $('#parse').addEventListener('click', () => { const p = parseReceipt($('#rtext').value); if (!p.amount && !p.vendor) return $('#pmsg').textContent = 'Nothing found. Fill in by hand.'; if (p.vendor) form.vendor.value = p.vendor; if (p.amount) form.amount.value = p.amount; if (p.currency) form.currency.value = p.currency; if (p.date) form.date.value = p.date; form.category.value = p.category; if (p.abn) form.abn.value = HP().fmtAbn(p.abn); if (p.gst != null) form.gst.value = p.gst; form.taxInvoice.checked = !!p.taxInvoice; $('#pmsg').textContent = 'Filled in. Check it.'; });
     if (files.length) { const n = files[0].name.replace(/\.[^.]+$/, '').replace(/[_-]+/g, ' '); form.vendor.value = n.slice(0, 60); form.date.value = today(); }
   }
   form.addEventListener('submit', async e => { e.preventDefault(); const f = new FormData(form), base = { vendor: String(f.get('vendor')).trim().slice(0, 80), category: f.get('category'), amount: Math.round((+f.get('amount') || 0) * 100) / 100, currency: String(f.get('currency') || S.profile.currency).toUpperCase().slice(0, 3), fxRate: +f.get('fxRate') || 0, excuse: String(f.get('excuse') || '').trim().slice(0, 200), nights: Math.max(0, Math.round(+f.get('nights') || 0)), personal: Math.max(0, +f.get('personal') || 0), date: f.get('date'), tripId: f.get('tripId'), note: String(f.get('note') || '').slice(0, 200), ...taxFields(f) };
     if (ed) { Object.assign(ed, base); }
-    else { const list = pending.length ? pending : [null]; for (const file of list) { const r = { id: uid(), ...base, status: 'captured', created: Date.now() }; if (file && !['application/pdf', 'image/png', 'image/jpeg', 'image/webp'].includes(file.type)) { toast(file.name + ': only PDF, JPG, PNG or WebP are supported. For iPhone HEIC photos, share as JPG or take a screenshot'); continue; }
-      if (file) { if (file.size > 15e6) { toast(file.name + ' is over 15 MB, skipped'); continue; } r.fileKey = 'f-' + r.id; r.fileName = file.name; try { await putFile(r.fileKey, file, file.name); } catch (er) { delete r.fileKey; toast('Could not store file'); } } else if (!$('#rtext').value.trim()) { /* manual entry, no file */ } else { r.fileKey = 't-' + r.id; r.fileName = 'forwarded-email.txt'; try { await putFile(r.fileKey, new Blob([$('#rtext').value.slice(0, 20000)], { type: 'text/plain' }), r.fileName); } catch (er) { delete r.fileKey; } } S.receipts.push(r); } }
+    else { const list = pending.length ? pending : [null]; for (const file of list) { const r = { id: uid(), ...base, status: 'captured', created: Date.now() }; if (file && !['application/pdf', 'image/png', 'image/jpeg', 'image/webp'].includes(file.type)) { toast(file.name + ': PDF, JPG, PNG or WebP only (HEIC: share as JPG)'); continue; }
+      if (file) { if (file.size > 15e6) { toast(file.name + ' is over 15 MB, skipped'); continue; } r.fileKey = 'f-' + r.id; r.fileName = file.name; try { await putFile(r.fileKey, file, file.name); } catch (er) { delete r.fileKey; toast('Couldn\u2019t save the file'); } } else if (!$('#rtext').value.trim()) { /* manual entry, no file */ } else { r.fileKey = 't-' + r.id; r.fileName = 'forwarded-email.txt'; try { await putFile(r.fileKey, new Blob([$('#rtext').value.slice(0, 20000)], { type: 'text/plain' }), r.fileName); } catch (er) { delete r.fileKey; } } S.receipts.push(r); } }
     save(); closeOverlay(); toast('Receipt saved'); render(); });
 }
 /* ABN, GST and "tax invoice" from a receipt form (blank ABN or GST = not on the receipt) */
@@ -1389,7 +1379,7 @@ const taxFields = f => { const abn = String(f.get('abn') || '').replace(/[^\d]/g
 function claimWarn(t, rs) {
   const miss = HP().missingOf(tripChecklist(t)), fl = rs.filter(r => HP().taxFlags(r).some(x => x.code !== 'no-abn-small'));
   if (!miss.length && !fl.length) return '';
-  return `<div class="claim-warn" role="note" data-testid="claim-warn">${miss.length ? `<p><b>Missing receipts:</b> ${esc(miss.map(i => i.label).join(', '))}. You can still send the claim. Add the receipt, or tap “I don't have this receipt” and say why: the reason goes on the schedule.</p>` : ''}${fl.length ? `<p><b>May not count as a tax invoice:</b> ${esc(fl.map(r => r.vendor || r.category).join(', '))}. This is listed on the schedule; see the note on each receipt.</p>` : ''}</div>`;
+  return `<div class="claim-warn" role="note" data-testid="claim-warn">${miss.length ? `<p><b>Missing receipts:</b> ${esc(miss.map(i => i.label).join(', '))}.</p>` : ''}${fl.length ? `<p><b>May not count as a tax invoice:</b> ${esc(fl.map(r => r.vendor || r.category).join(', '))}</p>` : ''}</div>`;
 }
 
 /* ---------- Snap receipt: photo or PDF -> "Check this receipt" card -> "Looks right" saves it ----------
@@ -1409,18 +1399,18 @@ const suggestTrip = d => { if (!d) return ''; const fit = S.trips.filter(t => { 
 const addDays = (iso, n) => { const t = new Date(iso + 'T00:00:00Z'); t.setUTCDate(t.getUTCDate() + n); return t.toISOString().slice(0, 10); };
 async function snapDialog(file, tripId) {
   let store = file, name = file.name || 'receipt';
-  if (isHeic(file)) { try { store = await toJpeg(file, 3000); name = name.replace(/\.[^.]+$/, '') + '.jpg'; } catch (e) { return toast('This HEIC photo cannot be opened here. Share it as JPG, or take a screenshot of it.'); } }
-  else if (!SNAP_STORE.includes(file.type)) return toast((file.name || 'That file') + ': use a JPG, PNG or WebP photo, or a PDF.');
+  if (isHeic(file)) { try { store = await toJpeg(file, 3000); name = name.replace(/\.[^.]+$/, '') + '.jpg'; } catch (e) { return toast('Can\u2019t open HEIC here. Share as JPG.'); } }
+  else if (!SNAP_STORE.includes(file.type)) return toast((file.name || 'That file') + ': JPG, PNG, WebP or PDF only');
   if (store.size > 15e6) return toast((file.name || 'That file') + ' is over 15 MB.');
-  const preview = /^image\//.test(store.type) ? URL.createObjectURL(store) : '', tripOpts = `<option value="">— choose trip —</option>` + S.trips.map(t => `<option value="${esc(t.id)}" ${tripId === t.id ? 'selected' : ''}>${esc(ofTrip(t).name)}</option>`).join('');
+  const preview = /^image\//.test(store.type) ? URL.createObjectURL(store) : '', tripOpts = `<option value="">Choose trip</option>` + S.trips.map(t => `<option value="${esc(t.id)}" ${tripId === t.id ? 'selected' : ''}>${esc(ofTrip(t).name)}</option>`).join('');
   openOverlay(`<div class="sheet center" role="dialog" aria-modal="true" aria-labelledby="scH"><form id="scf" class="snap-card" style="padding:22px" data-testid="snap-card"><div class="row" style="justify-content:space-between;margin-bottom:10px"><h2 id="scH" style="font-size:24px;margin:0">Check this receipt</h2><button type="button" class="icon-btn" data-act="close" aria-label="Close">${icon('x')}</button></div>
-    <div class="snap-top">${preview ? `<img class="snap-prev" alt="Your receipt photo" src="${preview}">` : `<div class="snap-prev pdf">${icon('file')}<span>${esc(name)}</span></div>`}<div class="grow"><p class="snap-msg" id="scmsg" role="status" aria-live="polite">${!NET.online ? 'You are offline, so Hoggy cannot read it now. Fill in the details; the file is saved with the receipt.' : !NET.user ? 'Sign in to have Hoggy read receipts for you. For now, fill in the details; the file is saved with the receipt.' : 'Reading the receipt…'}</p><p class="note" id="scsrc"></p></div></div>
+    <div class="snap-top">${preview ? `<img class="snap-prev" alt="Your receipt photo" src="${preview}">` : `<div class="snap-prev pdf">${icon('file')}<span>${esc(name)}</span></div>`}<div class="grow"><p class="snap-msg" id="scmsg" role="status" aria-live="polite">${!NET.online ? 'Offline. Fill in the details.' : !NET.user ? 'Sign in to auto-read. Fill in the details.' : 'Reading…'}</p><p class="note" id="scsrc"></p></div></div>
     <div class="two">${field('sc1', 'Supplier', '<input id="sc1" type="text" name="vendor" required maxlength="80" autocomplete="off">')}${field('sc2', 'Category', `<select id="sc2" name="category">${CATS.map(k => `<option>${k}</option>`).join('')}</select>`)}</div>
     <div class="two">${field('sc3', 'Total', '<input id="sc3" type="number" step="0.01" min="0" name="amount" required inputmode="decimal">')}${field('sc4', 'Currency', `<input id="sc4" type="text" name="currency" maxlength="3" value="${esc(S.profile.currency)}" autocapitalize="characters">`)}</div>
     <div class="two">${field('sc5', 'Date', '<input id="sc5" type="date" name="date" required>')}${field('sc6', 'Trip', `<select id="sc6" name="tripId">${tripOpts}</select>`)}</div>
     <div class="two">${field('sc7', 'Supplier ABN', '<input id="sc7" type="text" name="abn" inputmode="numeric" maxlength="20" autocomplete="off">')}${field('sc8', 'GST included', '<input id="sc8" type="number" step="0.01" min="0" name="gst" inputmode="decimal">')}</div>
-    <label class="tick"><input type="checkbox" name="taxInvoice" id="sc9"> The document says “Tax invoice”</label>
-    <div class="field" id="scfx" hidden><label for="sc10">Exchange rate to ${esc(S.profile.currency)}</label><input id="sc10" type="number" step="0.0001" min="0" name="fxRate"></div>
+    <label class="tick"><input type="checkbox" name="taxInvoice" id="sc9"> Says “Tax invoice”</label>
+    <div class="field" id="scfx" hidden><label for="sc10">Rate to ${esc(S.profile.currency)}</label><input id="sc10" type="number" step="0.0001" min="0" name="fxRate"></div>
     <div id="scflags" aria-live="polite"></div>
     <div class="row" style="justify-content:flex-end;margin:10px 0 6px"><button class="btn primary" type="submit" id="scok">Looks right</button></div></form></div>`, true);
   const form = $('#scf'), touched = new Set();
@@ -1433,7 +1423,7 @@ async function snapDialog(file, tripId) {
     let r = { error: 'skip' };
     if (body.size <= (body.type === 'application/pdf' ? 10e6 : 5e6)) { try { const res = await fetch('/api/receipts/read?cur=' + encodeURIComponent(S.profile.currency), { method: 'POST', headers: { ...RH, 'Content-Type': body.type }, credentials: 'same-origin', body }); r = await res.json().catch(() => ({ error: 'bad' })); if (!res.ok) r.error = r.error || 'failed'; } catch (e) { r = { error: 'offline' }; } }
     if (!form.isConnected) return;
-    if (r.error) { $('#scmsg').textContent = r.error === 'offline' ? 'Could not reach Hoggy, so the receipt was not read. Fill in the details.' : r.error === 'skip' ? 'This file is too large to read. Fill in the details.' : r.error; return; }
+    if (r.error) { $('#scmsg').textContent = r.error === 'offline' ? 'Offline. Fill in the details.' : r.error === 'skip' ? 'Too large to read. Fill in the details.' : r.error; return; }
     put('vendor', r.supplierName); if (r.category && r.category !== 'Other') put('category', r.category); put('amount', r.totalCents != null ? (r.totalCents / 100).toFixed(2) : ''); put('currency', r.currency);
     put('date', r.date); put('abn', r.supplierAbn ? HP().fmtAbn(r.supplierAbn) : ''); put('gst', r.gstCents != null ? (r.gstCents / 100).toFixed(2) : ''); put('taxInvoice', r.isTaxInvoice === true);
     if (!tripId && !touched.has('tripId')) put('tripId', suggestTrip(r.date));
@@ -1447,14 +1437,14 @@ async function snapDialog(file, tripId) {
     const r = { id: uid(), vendor: String(f.get('vendor')).trim().slice(0, 80), category: f.get('category'), amount: Math.round((+f.get('amount') || 0) * 100) / 100, currency: cur, fxRate: cur === S.profile.currency ? 0 : +f.get('fxRate') || 0, date: f.get('date'), tripId: f.get('tripId'), note: '', excuse: '', nights: 0, personal: 0, ...taxFields(f), status: 'captured', created: Date.now(), read: { source: form.dataset.source || 'none', confidence: form.dataset.confidence || 'low' } };
     $('#scok').disabled = true;
     r.fileKey = 'f-' + r.id; r.fileName = name;
-    try { await putFile(r.fileKey, store, name); } catch (er) { delete r.fileKey; delete r.fileName; toast('Could not store the file on this device'); }
+    try { await putFile(r.fileKey, store, name); } catch (er) { delete r.fileKey; delete r.fileName; toast('Couldn\u2019t save the file'); }
     S.receipts.push(r); save(); if (preview) URL.revokeObjectURL(preview); closeOverlay(); toast('Receipt saved'); render();
   });
 }
 document.addEventListener('change', e => { const i = e.target; if (!i || !i.matches || !i.matches('input[data-snap]')) return; const f = i.files && i.files[0], tid = i.dataset.snap; i.value = ''; if (f) snapDialog(f, tid && S.trips.some(t => t.id === tid) ? tid : ''); });
 function noReceiptDialog(tripId, key) {
   const t = S.trips.find(x => x.id === tripId), it = t && tripChecklist(t).find(i => i.key === key); if (!it) return;
-  simpleDialog(`No ${it.label.toLowerCase()} receipt`, `<p class="note" style="margin:0 0 12px">Say why you don't have it. The reason is printed on the claim pack schedule so your claims admin sees it.</p>${field('nr1', 'Reason', '<textarea id="nr1" name="reason" rows="3" required minlength="3" maxlength="300" placeholder="For example: registration was paid by the department"></textarea>')}`, f => {
+  simpleDialog(`No ${it.label.toLowerCase()} receipt`, `<p class="note" style="margin:0 0 12px">Printed on the claim schedule.</p>${field('nr1', 'Reason', '<textarea id="nr1" name="reason" rows="3" required minlength="3" maxlength="300" placeholder="e.g. paid by the department"></textarea>')}`, f => {
     const reason = String(f.get('reason') || '').trim().slice(0, 300); if (reason.length < 3) return toast('Add a reason');
     const c = S.claims[tripId] = { ...(S.claims[tripId] || {}) }; c.waived = { ...(c.waived || {}), [key]: { reason, date: today() } }; save(); closeOverlay(); render();
   }, 'Save reason');
@@ -1484,7 +1474,7 @@ function claimBody(t, rs) {
 }
 const claimSubject = (t) => { const c = ofTrip(t), e = EMP(); return `Expense claim - ${S.profile.name || 'Clinician'}${e.employeeId ? ' - ' + e.employeeId : ''} - ${c.name} - ${range(c)}`; };
 async function emailPack(t) {
-  const e = EMP(), to = claimsTo(); if (!to) { toast('Add your claims admin email under Settings > Your employer first'); location.hash = '#/settings'; return; }
+  const e = EMP(), to = claimsTo(); if (!to) { toast('Add a claims email in Settings'); location.hash = '#/settings'; return; }
   const c = ofTrip(t), rs = S.receipts.filter(r => r.tripId === t.id).sort((a, b) => (a.date || '').localeCompare(b.date || '')), atts = [], missing = []; let size = 0;
   for (let i = 0; i < rs.length; i++) {
     const r = rs[i], b = r.fileKey && await getFile(r.fileKey); if (!b) { missing.push(r.vendor || 'receipt'); continue; }
@@ -1492,28 +1482,28 @@ async function emailPack(t) {
     const ext = ((r.fileName || '').match(/\.[a-z0-9]{2,5}$/i) || [''])[0] || ({ 'application/pdf': '.pdf', 'image/jpeg': '.jpg', 'image/png': '.png', 'image/webp': '.webp' }[b.type] || '.txt');
     atts.push({ name: `R${i + 1}-${r.vendor || 'receipt'}-${r.date || ''}${ext}`, type: b.type || 'application/octet-stream', data: u8 });
   }
-  if (missing.length) return toast('Cannot build the pack: file missing for ' + missing.join(', '));
+  if (missing.length) return toast('File missing: ' + missing.join(', '));
   atts.unshift({ name: 'claim-schedule.csv', type: 'text/csv', data: new TextEncoder().encode(scheduleCsv(t, true)) });
   const eml = window.HoggyPack.buildEml({ to, subject: claimSubject(t), body: claimBody(t, rs), attachments: atts });
   download(`claim-${c.id}.eml`, eml, 'message/rfc822');
-  toast(size > 20e6 ? `Pack is ${(size / 1e6).toFixed(0)} MB. Many mail systems reject over 20 MB, so check before sending.` : 'Open the downloaded .eml in Outlook or Apple Mail. It opens as a draft to ' + to + '. Send it, then press Mark submitted.');
+  toast(size > 20e6 ? `Pack is ${(size / 1e6).toFixed(0)} MB. Over 20 MB may bounce.` : 'Open the .eml to send, then Mark submitted');
 }
 function mailtoPack(t) {
   const e = EMP(), rs = S.receipts.filter(r => r.tripId === t.id).sort((a, b) => (a.date || '').localeCompare(b.date || ''));
   download(`claim-${ofTrip(t).id}.csv`, scheduleCsv(t, true));
   location.href = 'mailto:' + encodeURIComponent(claimsTo()) + '?subject=' + encodeURIComponent(claimSubject(t)) + '&body=' + encodeURIComponent(claimBody(t, rs).slice(0, 1500) + '\n\n[Attach the downloaded schedule and your receipt files before sending.]');
-  toast('Attach the downloaded schedule and your receipt files, then send.');
+  toast('Attach the schedule and receipts, then send');
 }
 /* study-leave / pre-approval request: a draft email with dates, leave days and a cost estimate. Hoggy never invents CPD hours. */
 function leaveDialog(confId) {
   const c = byId(confId); if (!c) return; const e = EMP(), est = c.datesConfirmed === false;
   const cpd = c.cpdVerified && c.cpdHours ? `${c.cpdHours} CPD hours (${c.cpdBody || 'accredited'})` : 'CPD credits to be confirmed with the organiser';
-  simpleDialog('Request study leave', `<p class="note" style="margin:0 0 12px">${esc(c.name)}, ${esc(c.city)}, ${esc(range(c))}${est ? '. <b>Dates are estimated; confirm with the organiser before you submit.</b>' : ''}</p>
+  simpleDialog('Request study leave', `<p class="note" style="margin:0 0 12px">${esc(c.name)}, ${esc(c.city)}, ${esc(range(c))}${est ? ' · <b>Estimate: check organiser</b>' : ''}</p>
     <div class="two">${field('l1', 'Travel days before', '<input id="l1" type="number" min="0" max="7" name="before" value="1">')}${field('l2', 'Travel days after', '<input id="l2" type="number" min="0" max="7" name="after" value="1">')}</div>
     <div class="two">${field('l3', 'Flights (estimate)', '<input id="l3" type="number" min="0" name="fl" value="">')}${field('l4', 'Accommodation (estimate)', '<input id="l4" type="number" min="0" name="ac" value="">')}</div>
     <div class="two">${field('l5', 'Registration (estimate)', '<input id="l5" type="number" min="0" name="rg" value="">')}${field('l6', 'Other (estimate)', '<input id="l6" type="number" min="0" name="ot" value="">')}</div>
-    ${field('l7', 'Why this conference (edit freely)', `<textarea id="l7" name="why" rows="4" maxlength="800">I would like to attend ${esc(c.name)} to keep my knowledge current in ${esc(c.specialty)} and bring it back to the team. ${esc(cpd)}.</textarea>`)}
-    <p class="note">${e.approverEmail ? 'Draft addressed to ' + esc(e.approverEmail) + '.' : 'Add your approver under Settings > Your employer to address it automatically.'} Hoggy only prepares the email; you send it.</p>`,
+    ${field('l7', 'Reason', `<textarea id="l7" name="why" rows="4" maxlength="800">I would like to attend ${esc(c.name)} to keep my knowledge current in ${esc(c.specialty)} and bring it back to the team. ${esc(cpd)}.</textarea>`)}
+    <p class="note">${e.approverEmail ? 'To ' + esc(e.approverEmail) + '. ' : ''}You send it.</p>`,
     f => {
       const n = k => Math.max(0, +f.get(k) || 0), total = n('fl') + n('ac') + n('rg') + n('ot'), days = window.HoggyPack.leaveDays(c.start, c.end, n('before'), n('after'));
       const body = ['Hello' + (e.approverName ? ' ' + e.approverName : '') + ',', '', 'I would like to request study leave and approval for the following conference.', '',
@@ -1523,7 +1513,7 @@ function leaveDialog(confId) {
         n('fl') ? `- Flights: ${n('fl')}` : '', n('ac') ? `- Accommodation: ${n('ac')}` : '', n('rg') ? `- Registration: ${n('rg')}` : '', n('ot') ? `- Other: ${n('ot')}` : '', `Total estimate: ${total}`, '',
         'Reason:', String(f.get('why') || ''), '', `CPD: ${cpd}`, '', 'Please let me know if you need anything further, and the approval reference to quote on my claim.', '', 'Regards,', S.profile.name || ''].filter((l, i, a) => l !== '' || a[i - 1] !== '').join('\n');
       download(`study-leave-${c.id}.eml`, window.HoggyPack.buildEml({ to: e.approverEmail || '', subject: `Study leave request - ${S.profile.name || 'Clinician'} - ${c.name} - ${range(c)}`, body, attachments: [] }), 'message/rfc822');
-      S.leave = S.leave || {}; S.leave[c.id] = { drafted: today(), total, est: { flights: n('fl'), accommodation: n('ac'), registration: n('rg'), other: n('ot') } }; save(); closeOverlay(); toast('Draft downloaded. Open it in your mail app, check it and send.');
+      S.leave = S.leave || {}; S.leave[c.id] = { drafted: today(), total, est: { flights: n('fl'), accommodation: n('ac'), registration: n('rg'), other: n('ot') } }; save(); closeOverlay(); toast('Draft downloaded. Open it to send.');
     }, 'Create email draft');
 }
 
@@ -1544,7 +1534,7 @@ function printPack(t) {
   const rows = rs.map((r, i) => `<tr><td>R${i + 1}</td><td>${esc(r.date)}</td><td>${esc(r.vendor)}</td><td>${esc(r.category)}</td><td>${esc([r.note, personalOf(r) ? 'Personal portion ' + money(personalOf(r)) + ' excluded' + (splitOf(r) && splitOf(r).personal ? ' (' + splitOf(r).rule + ')' : '') : '', r.excuse ? 'Over limit, justified: ' + r.excuse : ''].filter(Boolean).join('. '))}</td><td style="text-align:right">${esc(money(claimAmt(r)))}${r.currency !== S.profile.currency ? ' (' + esc(money(r.amount, r.currency)) + ' @ ' + esc(r.fxRate) + ')' : ''}</td></tr>`).join('');
   w.document.write(`<!doctype html><meta charset="utf-8"><title>Expense claim — ${esc(c.name)}</title><style>body{font:14px/1.5 -apple-system,Segoe UI,sans-serif;max-width:800px;margin:40px auto;padding:0 20px;color:#111}table{width:100%;border-collapse:collapse;margin-top:20px}td,th{border-bottom:1px solid #ddd;padding:8px;text-align:left}h1{margin:0}.t{font-size:22px;font-weight:700;text-align:right;margin-top:16px}</style><h1>Expense claim</h1><p>${esc(S.profile.name || 'Clinician')} · ${esc(c.name)}, ${esc(c.city)} · ${esc(range(c))}<br>Prepared with Hoggy on ${esc(fmtD(today()))}. ${rs.length} receipt${rs.length > 1 ? 's' : ''}. The receipt files are sent separately, numbered R1 to R${rs.length} in date order.</p><table><tr><th>Ref</th><th>Date</th><th>Vendor</th><th>Category</th><th>Note</th><th style="text-align:right">Amount</th></tr>${rows}</table><div class="t">Total ${esc(money(tot))}${planned(t) ? ' (work portion)' : ''}</div>${currencyLine(rs) ? `<p>${esc(currencyLine(rs))}</p>` : ''}${planned(t) ? tripPackHtml(t) : ''}${(() => { const n = HP().packNotes(tripChecklist(t), rs); return (n.missing.length ? `<h2>Receipts not attached</h2><table><tr><th>Receipt</th><th>Reason</th></tr>${n.missing.map(i => `<tr><td>${esc(i.label)}</td><td>${esc(i.status === 'waived' ? i.reason : 'Not added yet (no reason given)')}</td></tr>`).join('')}</table>` : '') + (n.flagged.length ? `<h2>Tax invoice check</h2><table><tr><th>Ref</th><th>Vendor</th><th>Note</th></tr>${n.flagged.map(x => `<tr><td>${esc(x.ref)}</td><td>${esc(x.vendor)}</td><td>${esc(x.flags.map(f => f.t).join('; '))}</td></tr>`).join('')}</table>` : ''); })()}`);
   const f = document.createElement('iframe'); f.setAttribute('sandbox', 'allow-same-origin allow-modals'); f.style.cssText = 'position:fixed;width:0;height:0;border:0'; f.srcdoc = html;
-  f.onload = () => { try { f.contentWindow.focus(); f.contentWindow.print(); } catch (e) { toast('Print failed — use Export CSV'); } setTimeout(() => f.remove(), 3000); };
+  f.onload = () => { try { f.contentWindow.focus(); f.contentWindow.print(); } catch (e) { toast('Print failed. Use Export CSV'); } setTimeout(() => f.remove(), 3000); };
   document.body.appendChild(f);
 }
 
@@ -1589,7 +1579,7 @@ async function pullState(force) {
     setOwner(me); NET.rev = r.rev; render(); return;
   }
   if (!owner && hasLocal && r.state && !force) { /* guest data made before signing in: ask, do not assume */
-    if (confirm('This device has trips or receipts you added before signing in.\n\nOK = add them to your account.\nCancel = remove them from this device and use your account data.')) { S = mergeState(r.state, S); S.trips = S.trips.filter(keepTrip); try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { } NET.rev = r.rev; setOwner(me); await pushState(); render(); return; }
+    if (confirm('This device has trips or receipts from before you signed in.\n\nOK: add them to your account.\nCancel: remove them from this device.')) { S = mergeState(r.state, S); S.trips = S.trips.filter(keepTrip); try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { } NET.rev = r.rev; setOwner(me); await pushState(); render(); return; }
     await DB.wipe(); FILES.clear(); adopt(r.state); setOwner(me); NET.rev = r.rev; render(); return;
   }
   if (r.state && (force || !hasLocal)) { adopt(r.state); setOwner(me); NET.rev = r.rev; render(); return; }
@@ -1657,7 +1647,7 @@ async function boot0() {
   if (!NET.timer) NET.timer = setInterval(() => { if (NET.user) { pullInbox(); refreshHosp(); } }, 60000);
   syncFiles();
   NET.booted = true; openReviewLink();
-  if (window.__capsCleared) { window.__capsCleared = false; toast('Old default spending caps were removed. Enter your own policy limits in Settings if your employer sets them.'); }
+  if (window.__capsCleared) { window.__capsCleared = false; toast('Old default caps removed. Set your own in Settings.'); }
   bgRender();
 }
 /* Sign in / create account. Password rule shown next to the field; errors say what to do next. */
@@ -1667,12 +1657,11 @@ const COUNTRY_LIST = () => { const m = window.HoggyListings ? HoggyListings.coun
 const NZ_REGIONS = ['Auckland', 'Wellington', 'Nelson', 'Canterbury', 'Otago', 'Waikato'];
 const regionField = (country, cur, id) => { const L = country === 'Australia' ? HC.STATES_AU : country === 'New Zealand' ? NZ_REGIONS : null; return L ? field(id, country === 'Australia' ? 'State or territory' : 'Region', `<select id="${id}" name="region"><option value="">Choose…</option>${L.map(r => `<option ${r === cur ? 'selected' : ''}>${esc(r)}</option>`).join('')}</select>`) : ''; };
 function authDialog(title, then, opts = {}) {
-  if (NET.trouble && !NET.online) return openOverlay(`<div class="sheet center" role="dialog" aria-modal="true" aria-labelledby="atH"><div style="padding:22px"><div class="row" style="justify-content:space-between;margin-bottom:12px"><h2 id="atH" style="font-size:22px;margin:0">Sign-in is unavailable right now</h2><button type="button" class="icon-btn" data-act="close" aria-label="Close" autofocus>${icon('x')}</button></div><p style="color:var(--muted)">${TROUBLE} Your trips and receipts on this device are safe, and you can still browse conferences and courses.</p><div class="row" style="margin:18px 0 4px;justify-content:flex-end"><button class="btn" data-act="close">Close</button><button class="btn primary" data-act="retry">Try again</button></div></div></div>`, true);
+  if (NET.trouble && !NET.online) return openOverlay(`<div class="sheet center" role="dialog" aria-modal="true" aria-labelledby="atH"><div style="padding:22px"><div class="row" style="justify-content:space-between;margin-bottom:12px"><h2 id="atH" style="font-size:22px;margin:0">Sign-in unavailable</h2><button type="button" class="icon-btn" data-act="close" aria-label="Close" autofocus>${icon('x')}</button></div><p style="color:var(--muted)">${TROUBLE}</p><div class="row" style="margin:18px 0 4px;justify-content:flex-end"><button class="btn" data-act="close">Close</button><button class="btn primary" data-act="retry">Try again</button></div></div></div>`, true);
   let mode = opts.mode || 'login', email = '', msg = '', offerSignin = false;
   const prof = { name: S.profile.name || '', specialty: S.profile.specialty, country: S.profile.country, region: S.profile.region || '' };
   const specs = window.HoggySpecialties ? HoggySpecialties.DATA.canonical : [...new Set(CONFS.map(c => c.specialty))].sort();
-  const draw = () => { const reg = mode === 'register'; openOverlay(`<div class="sheet center" role="dialog" aria-modal="true" aria-labelledby="afH"><form id="af" novalidate style="padding:22px"><div class="row" style="justify-content:space-between;margin-bottom:14px"><h2 id="afH" style="font-size:24px;margin:0">${esc(title || (reg ? 'Create your account' : 'Welcome back'))}</h2><button type="button" class="icon-btn" data-act="close" aria-label="Close">${icon('x')}</button></div>
-    ${reg ? `<p class="note" style="margin:-6px 0 14px">Your specialty and location set what Hoggy shows first: conferences in your field and courses near you.</p>` : ''}
+  const draw = () => { const reg = mode === 'register'; openOverlay(`<div class="sheet center" role="dialog" aria-modal="true" aria-labelledby="afH"><form id="af" novalidate style="padding:22px"><div class="row" style="justify-content:space-between;margin-bottom:14px"><h2 id="afH" style="font-size:24px;margin:0">${esc(title || (reg ? 'Create account' : 'Welcome back'))}</h2><button type="button" class="icon-btn" data-act="close" aria-label="Close">${icon('x')}</button></div>
     ${reg ? field('au1', 'Name', `<input id="au1" type="text" name="name" maxlength="80" autocomplete="name" value="${esc(prof.name)}">`) : ''}${field('au2', 'Email', `<input id="au2" type="email" name="email" required maxlength="254" autocomplete="email" inputmode="email" value="${esc(email)}"${reg ? '' : ' autofocus'}>`)}
     <div class="field"><label for="au3">Password</label><input id="au3" type="password" name="password" required maxlength="200" autocomplete="${reg ? 'new-password' : 'current-password'}"${reg ? ` minlength="${PW_MIN}" aria-describedby="au3h"` : ''}>${reg ? `<p class="note field-hint" id="au3h">At least ${PW_MIN} characters</p>` : ''}</div>
     ${reg ? `${field('au4', 'Specialty', `<select id="au4" name="specialty">${specs.map(x => `<option ${x === prof.specialty ? 'selected' : ''}>${esc(x)}</option>`).join('')}</select>`)}<div class="two">${field('au5', 'Country', `<select id="au5" name="country">${COUNTRY_LIST().map(x => `<option ${x.name === prof.country ? 'selected' : ''}>${esc(x.name)}</option>`).join('')}</select>`)}<div id="au6w">${regionField(prof.country, prof.region, 'au6')}</div></div>` : ''}
@@ -1689,20 +1678,20 @@ function authDialog(title, then, opts = {}) {
     $('#af').addEventListener('submit', async e => {
       e.preventDefault(); const f = new FormData(e.target), em = String(f.get('email') || '').trim(), pw = String(f.get('password') || '');
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)) { say('Enter a valid email address.'); return $('#au2').focus(); }
-      if (reg && pw.length < PW_MIN) { if (hint) hint.classList.add('bad'); say(`Use at least ${PW_MIN} characters for your password.`); return pwIn.focus(); }
+      if (reg && pw.length < PW_MIN) { if (hint) hint.classList.add('bad'); say(`Password: at least ${PW_MIN} characters.`); return pwIn.focus(); }
       if (!pw) { say('Enter your password.'); return pwIn.focus(); }
       const btn = $('#asub'); btn.disabled = true; btn.textContent = reg ? 'Creating account…' : 'Signing in…'; say('');
       const r = await api('/api/' + mode, { method: 'POST', body: { email: em, password: pw, name: f.get('name') || '' } });
       if (r.error) {
         btn.disabled = false; btn.textContent = reg ? 'Create account' : 'Sign in';
-        if (r.error === 'offline') return say(r.status === 0 ? 'Can\u2019t reach Hoggy. Check your connection and try again.' : 'Hoggy is not responding right now. Try again in a minute.');
-        if (r.status >= 500) return say('Something went wrong on our side. Try again in a minute.');
+        if (r.error === 'offline') return say(r.status === 0 ? 'Can\u2019t connect. Try again.' : 'Hoggy isn\u2019t responding. Try again shortly.');
+        if (r.status >= 500) return say('Server error. Try again shortly.');
         if (reg && r.status === 409) { email = em; return say(r.error, true); }
         if (r.status === 401) { pwIn.value = ''; pwIn.focus(); }
         return say(r.error);
       }
       if (reg) keepProf();
-      NET.user = r.user; if (!S.profile.name && r.user.name) S.profile.name = r.user.name; closeOverlay(true); toast(reg ? 'Account created. You are signed in' : 'Signed in'); await pullState(); await pullInbox(); await loadMine(); await loadHosp(); syncFiles();
+      NET.user = r.user; if (!S.profile.name && r.user.name) S.profile.name = r.user.name; closeOverlay(true); toast(reg ? 'Account created' : 'Signed in'); await pullState(); await pullInbox(); await loadMine(); await loadHosp(); syncFiles();
       if (reg) { /* after pullState, which may have reset this device for the new account */
         Object.assign(S.profile, { name: prof.name.trim().slice(0, 80) || S.profile.name, specialty: prof.specialty, country: prof.country, region: prof.region }); S.onboard = { at: Date.now() }; save();
         if (!then) { if (route() !== 'home') location.hash = '#/home'; }
@@ -1710,7 +1699,7 @@ function authDialog(title, then, opts = {}) {
       render(); if (then) then(); }); };
   draw();
 }
-function renderAcct() { const a = $('#acct'); if (!a) return; a.innerHTML = !NET.online ? `<span class="acct-note">${NET.trouble ? 'Sign-in is unavailable right now. Your data stays on this device.' : 'Not connected. Your data stays on this device.'}</span>` : NET.user ? `<a class="acct-chip" href="#/settings" title="Signed in as ${esc(NET.user.email || NET.user.name)}. Synced."><span class="avatar" aria-hidden="true">${esc((firstName(NET.user.name || NET.user.email || '?') || '?').slice(0, 1).toUpperCase())}</span><span class="acct-name">${esc(firstName(NET.user.name || '') || NET.user.email)}</span></a><button class="btn sm ghost" data-act="signout">Sign out</button>` : '<button class="btn sm" data-act="signin">Sign in</button>'; }
+function renderAcct() { const a = $('#acct'); if (!a) return; a.innerHTML = !NET.online ? `<span class="acct-note">${NET.trouble ? 'Sign-in unavailable' : 'Saved on this device'}</span>` : NET.user ? `<a class="acct-chip" href="#/settings" title="Signed in as ${esc(NET.user.email || NET.user.name)}"><span class="avatar" aria-hidden="true">${esc((firstName(NET.user.name || NET.user.email || '?') || '?').slice(0, 1).toUpperCase())}</span><span class="acct-name">${esc(firstName(NET.user.name || '') || NET.user.email)}</span></a><button class="btn sm ghost" data-act="signout">Sign out</button>` : '<button class="btn sm" data-act="signin">Sign in</button>'; }
 
 /* ---------- client-ready: connection state, deep links, get started, report a problem, list your event ---------- */
 function noteTrouble(on) { if (!!NET.trouble === !!on) return; NET.trouble = !!on; if (NET.started) bgRender(); }
@@ -1721,7 +1710,7 @@ function deepLink() {
   const id = m[2];
   if (m[1] === 'report/course') { history.replaceState(null, '', '#/courses/' + id); render(); reportDialog('course', id); return true; }
   history.replaceState(null, '', '#/discover'); render();
-  const open = () => { if (!byId(id)) return toast('That listing is not on Hoggy any more'); detail(id); if (m[1] === 'report/conference') reportDialog('conference', id); };
+  const open = () => { if (!byId(id)) return toast('Listing removed'); detail(id); if (m[1] === 'report/conference') reportDialog('conference', id); };
   if (byId(id)) open(); else DEEP.wait = open;
   return true;
 }
@@ -1729,13 +1718,13 @@ function deepLink() {
 function getStarted() {
   if (!NET.user || !S.onboard || S.onboard.dismissed) return '';
   const items = [
-    [!!S.profile.specialty, 'Pick your specialty', S.profile.specialty ? esc(S.profile.specialty) + ' · change it in Settings' : 'In Settings', '#/settings'],
-    [S.saved.length > 0, 'Save a conference', 'Tap the heart on any conference', '#/discover'],
-    [S.trips.length > 0, 'Plan a trip', 'Open a conference and choose Plan trip', '#/discover'],
-    [(S.certs || []).length > 0, 'Add a certificate', 'APLS, ALS or another course, to see when it is due', '#/certs']];
+    [!!S.profile.specialty, 'Pick specialty', S.profile.specialty ? esc(S.profile.specialty) : '', '#/settings'],
+    [S.saved.length > 0, 'Save a conference', '', '#/discover'],
+    [S.trips.length > 0, 'Plan a trip', '', '#/discover'],
+    [(S.certs || []).length > 0, 'Add a certificate', '', '#/certs']];
   const done = items.filter(x => x[0]).length;
-  return `<section class="panel getstarted" aria-labelledby="gsH"><div class="row panel-head"><h2 id="gsH">Get started <span class="tag">${done} of ${items.length} done</span></h2><button type="button" class="btn sm ghost" data-act="dismissonboard">Hide this checklist</button></div>
-    <ul class="gs-list">${items.map(([ok, t, d, href], i) => `<li class="${ok ? 'ok' : ''}"><span class="gs-mark" aria-hidden="true">${ok ? '✓' : i + 1}</span><a href="${href}"><b>${t}</b><span class="sr-only">${ok ? ' (done)' : ' (to do)'}</span><span class="s">${d}</span></a></li>`).join('')}</ul></section>`;
+  return `<section class="panel getstarted" aria-labelledby="gsH"><div class="row panel-head"><h2 id="gsH">Get started <span class="tag">${done} of ${items.length} done</span></h2><button type="button" class="btn sm ghost" data-act="dismissonboard">Hide</button></div>
+    <ul class="gs-list">${items.map(([ok, t, d, href], i) => `<li class="${ok ? 'ok' : ''}"><span class="gs-mark" aria-hidden="true">${ok ? '✓' : i + 1}</span><a href="${href}"><b>${t}</b><span class="sr-only">${ok ? ' (done)' : ' (to do)'}</span>${d ? `<span class="s">${d}</span>` : ''}</a></li>`).join('')}</ul></section>`;
 }
 /* "Report a problem with this listing" */
 function reportDialog(kind, id) {
@@ -1743,8 +1732,8 @@ function reportDialog(kind, id) {
   const R = window.HoggyListings ? HoggyListings.REASONS : { other: 'Something else' };
   openOverlay(`<div class="sheet center" role="dialog" aria-modal="true" aria-labelledby="rpH"><form id="rpf" novalidate style="padding:22px"><div class="row" style="justify-content:space-between;margin-bottom:6px"><h2 id="rpH" style="font-size:22px;margin:0">Report a problem</h2><button type="button" class="icon-btn" data-act="${kind === 'conference' ? 'rpback' : 'close'}" data-id="${esc(id)}" aria-label="Close">${icon('x')}</button></div>
     <p class="note" style="margin:0 0 14px">${esc(name)}</p>
-    <fieldset class="rp-reasons"><legend>What is wrong?</legend>${Object.entries(R).map(([k, l], i) => `<label class="tick"><input type="radio" name="reason" value="${k}"${i === 0 ? ' autofocus' : ''}> ${esc(l)}</label>`).join('')}</fieldset>
-    ${field('rpn', 'Note (optional)', '<textarea id="rpn" name="note" maxlength="500" aria-describedby="rph" placeholder="For example, the right dates and where you saw them"></textarea>')}<p class="note field-hint" id="rph" style="margin-top:-6px">Please don’t include patient information.</p>
+    <fieldset class="rp-reasons"><legend>Problem</legend>${Object.entries(R).map(([k, l], i) => `<label class="tick"><input type="radio" name="reason" value="${k}"${i === 0 ? ' autofocus' : ''}> ${esc(l)}</label>`).join('')}</fieldset>
+    ${field('rpn', 'Note (optional)', '<textarea id="rpn" name="note" maxlength="500" aria-describedby="rph" placeholder="e.g. the right dates and where you saw them"></textarea>')}<p class="note field-hint" id="rph" style="margin-top:-6px">No patient information.</p>
     <div class="hp" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
     <p class="note" id="rperr" role="alert" style="color:var(--bad);min-height:18px"></p>
     <div class="row" style="justify-content:flex-end;margin:4px 0 20px"><button type="button" class="btn" data-act="${kind === 'conference' ? 'rpback' : 'close'}" data-id="${esc(id)}">Cancel</button><button class="btn primary" type="submit">Send report</button></div></form></div>`, true);
@@ -1754,37 +1743,37 @@ function reportDialog(kind, id) {
     if (!v.ok) { $('#rperr').textContent = v.error; return (body.reason ? $('#rpn') : e.target.querySelector('input[name=reason]')).focus(); }
     const btn = e.target.querySelector('[type=submit]'); btn.disabled = true; btn.textContent = 'Sending…';
     const r = await api('/api/reports', { method: 'POST', body });
-    if (r.error) { btn.disabled = false; btn.textContent = 'Send report'; $('#rperr').textContent = r.status === 0 ? 'You’re offline. Try again when you’re back online.' : r.status >= 500 || r.error === 'offline' ? TROUBLE : r.error; return; }
-    toast('Thanks. The Hoggy team will check this listing.'); if (kind === 'conference' && byId(id)) detail(id, false); else closeOverlay();
+    if (r.error) { btn.disabled = false; btn.textContent = 'Send report'; $('#rperr').textContent = r.status === 0 ? 'Offline. Try again when connected.' : r.status >= 500 || r.error === 'offline' ? TROUBLE : r.error; return; }
+    toast('Report sent'); if (kind === 'conference' && byId(id)) detail(id, false); else closeOverlay();
   });
 }
 /* "List your event": organisers, no account needed */
 const LE = { sent: false, err: '', field: '', vals: {} };
 VIEWS['list-event'] = function () {
-  const head = `<div class="page-head"><div><span class="eyebrow">For organisers</span><h1>List your event</h1><p>Run a medical conference or course session? Send it here. No account needed. A Hoggy admin checks every listing against your official event page before it appears, and your contact email is never shown.</p></div></div>`;
-  if (LE.sent) return head + `<section class="panel le-done" aria-labelledby="leDoneH" tabindex="-1" id="leDone"><h2 id="leDoneH">Thanks — your listing is with the Hoggy team</h2><p style="color:var(--muted);margin-top:8px">We’ll check it against your official event page. If something doesn’t match, we’ll email the contact address you gave. Approved listings show “Dates confirmed” with your page as the source.</p><div class="row" style="margin-top:16px"><button class="btn primary" data-act="leagain">List another event</button><a class="btn" href="#/discover">Browse conferences</a></div></section>`;
+  const head = `<div class="page-head"><div><span class="eyebrow">For organisers</span><h1>List your event</h1><p class="note">Checked before publishing. Email never shown.</p></div></div>`;
+  if (LE.sent) return head + `<section class="panel le-done" aria-labelledby="leDoneH" tabindex="-1" id="leDone"><h2 id="leDoneH">Listing sent</h2><p style="color:var(--muted);margin-top:8px">We’ll check it against your event page.</p><div class="row" style="margin-top:16px"><button class="btn primary" data-act="leagain">List another</button></div></section>`;
   const v = LE.vals, specs = window.HoggySpecialties ? HoggySpecialties.DATA.canonical : [], ctry = COUNTRY_LIST();
   const inv = k => LE.field === k ? ` aria-invalid="true" aria-describedby="le-err"` : '';
   const val = k => esc(v[k] == null ? '' : v[k]);
   const sel = (k, opts, ph) => `<select id="le-${k}" name="${k}"${inv(k)} required><option value="">${ph}</option>${opts.map(([o, l]) => `<option value="${esc(o)}" ${String(v[k] || '') === String(o) ? 'selected' : ''}>${esc(l)}</option>`).join('')}</select>`;
   return head + `<div class="cols le-cols"><form id="lef" class="panel le-form" novalidate aria-describedby="le-intro">
-    <p class="note" id="le-intro" style="margin:0 0 14px">All fields are required unless marked optional.</p>
+    <p class="note" id="le-intro" style="margin:0 0 14px">All fields required unless optional.</p>
     <div id="le-err" class="form-err" role="alert">${LE.err ? esc(LE.err) : ''}</div>
     ${field('le-kind', 'Type of event', sel('kind', [['conference', 'Conference or scientific meeting'], ['course', 'Course session']], 'Choose…'))}
     ${field('le-name', 'Event name', `<input id="le-name" name="name" type="text" maxlength="160" required value="${val('name')}"${inv('name')} placeholder="e.g. Annual Scientific Meeting 2027">`)}
     ${field('le-organiser', 'Organiser or society', `<input id="le-organiser" name="organiser" type="text" maxlength="120" required value="${val('organiser')}"${inv('organiser')}>`)}
-    <div class="field"><label for="le-url">Official event page</label><input id="le-url" name="url" type="url" inputmode="url" maxlength="500" required value="${val('url')}" placeholder="https://"${LE.field === 'url' ? ' aria-invalid="true"' : ''} aria-describedby="le-urlh${LE.field === 'url' ? ' le-err' : ''}"><p class="note field-hint" id="le-urlh">The page on your own website that gives the dates (https). Not a home page or a listing site.</p></div>
+    <div class="field"><label for="le-url">Official event page</label><input id="le-url" name="url" type="url" inputmode="url" maxlength="500" required value="${val('url')}" placeholder="https://"${LE.field === 'url' ? ' aria-invalid="true"' : ''} aria-describedby="le-urlh${LE.field === 'url' ? ' le-err' : ''}"><p class="note field-hint" id="le-urlh">Your page with the dates. Not a home page.</p></div>
     <div class="two">${field('le-start', 'Start date', `<input id="le-start" name="start" type="date" required value="${val('start')}"${inv('start')}>`)}${field('le-end', 'End date', `<input id="le-end" name="end" type="date" required value="${val('end')}"${inv('end')}>`)}</div>
     <div class="two">${field('le-city', 'City', `<input id="le-city" name="city" type="text" maxlength="80" required value="${val('city')}"${inv('city')}>`)}${field('le-countryCode', 'Country', sel('countryCode', ctry.map(x => [x.code, x.name]), 'Choose…'))}</div>
     <div class="two">${field('le-specialty', 'Specialty', sel('specialty', specs.map(x => [x, x]), 'Choose…'))}${field('le-format', 'Format', sel('format', [['In-person', 'In person'], ['Hybrid', 'Hybrid (in person and online)']], 'Choose…'))}</div>
-    <fieldset class="le-cpd"><legend>CPD (optional, only if stated on your event page)</legend><div class="two">${field('le-cpdHours', 'CPD hours (optional)', `<input id="le-cpdHours" name="cpdHours" type="number" min="0" max="100" step="0.25" value="${val('cpdHours')}"${inv('cpdHours')}>`)}${field('le-cpdBody', 'Accredited by (optional)', `<input id="le-cpdBody" name="cpdBody" type="text" maxlength="60" value="${val('cpdBody')}" placeholder="e.g. RACP, ACEM">`)}</div></fieldset>
+    <fieldset class="le-cpd"><legend>CPD (optional, as stated on your page)</legend><div class="two">${field('le-cpdHours', 'CPD hours (optional)', `<input id="le-cpdHours" name="cpdHours" type="number" min="0" max="100" step="0.25" value="${val('cpdHours')}"${inv('cpdHours')}>`)}${field('le-cpdBody', 'Accredited by (optional)', `<input id="le-cpdBody" name="cpdBody" type="text" maxlength="60" value="${val('cpdBody')}" placeholder="e.g. RACP, ACEM">`)}</div></fieldset>
     ${field('le-blurb', 'One-line description (optional)', `<input id="le-blurb" name="blurb" type="text" maxlength="240" value="${val('blurb')}"${inv('blurb')}>`)}
-    <div class="field"><label for="le-contactEmail">Contact email</label><input id="le-contactEmail" name="contactEmail" type="email" inputmode="email" autocomplete="email" maxlength="254" required value="${esc(v.contactEmail != null ? v.contactEmail : NET.user ? NET.user.email : '')}"${LE.field === 'contactEmail' ? ' aria-invalid="true"' : ''} aria-describedby="le-emh${LE.field === 'contactEmail' ? ' le-err' : ''}"><p class="note field-hint" id="le-emh">Kept private. Used only to check this listing with you; never shown on Hoggy.</p></div>
+    <div class="field"><label for="le-contactEmail">Contact email</label><input id="le-contactEmail" name="contactEmail" type="email" inputmode="email" autocomplete="email" maxlength="254" required value="${esc(v.contactEmail != null ? v.contactEmail : NET.user ? NET.user.email : '')}"${LE.field === 'contactEmail' ? ' aria-invalid="true"' : ''} aria-describedby="le-emh${LE.field === 'contactEmail' ? ' le-err' : ''}"><p class="note field-hint" id="le-emh">Private. Never shown.</p></div>
     <label class="tick le-auth"><input type="checkbox" name="authorised" id="le-authorised" ${v.authorised ? 'checked' : ''}${inv('authorised')}> I’m authorised to list this event</label>
     <div class="hp" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
-    <div class="row" style="justify-content:space-between;margin-top:8px"><span class="note" style="margin:0">${NET.user ? `Signed in as ${esc(NET.user.email)}: the listing is linked to your account.` : NET.online ? 'Have a Hoggy account? <button type="button" class="linkbtn" data-act="signin">Sign in</button> (optional).' : ''}</span><button class="btn primary" type="submit" id="le-send">Send for checking</button></div>
+    <div class="row" style="justify-content:space-between;margin-top:8px"><span class="note" style="margin:0">${NET.user ? `Signed in as ${esc(NET.user.email)}` : NET.online ? '<button type="button" class="linkbtn" data-act="signin">Sign in</button> (optional)' : ''}</span><button class="btn primary" type="submit" id="le-send">Send for checking</button></div>
   </form>
-  <aside class="panel le-how" aria-labelledby="leHowH"><h2 id="leHowH">What happens next</h2><ol class="le-steps"><li>A Hoggy admin opens your official event page and checks the name, dates and city.</li><li>If they match, the listing goes live with “Dates confirmed” and your page as the source.</li><li>If something is unclear, we email you before listing it.</li></ol><p class="note">Listings never carry rankings or superlatives. CPD hours are shown only when your page states them. See the <a class="u" href="/terms">terms</a> and <a class="u" href="/privacy">privacy</a> pages.</p></aside></div>`;
+  <aside class="panel le-how" aria-labelledby="leHowH"><h2 id="leHowH">Next</h2><ol class="le-steps"><li>We check name, dates and city on your page.</li><li>It goes live as Confirmed.</li><li>Questions? We email you first.</li></ol><p class="note"><a class="u" href="/terms">Terms</a> · <a class="u" href="/privacy">Privacy</a></p></aside></div>`;
 };
 AFTER['list-event'] = () => {
   if (LE.sent) { const d = $('#leDone'); if (d) d.focus(); return; }
@@ -1798,7 +1787,7 @@ AFTER['list-event'] = () => {
     if (!v.ok || !c.ok) { const x = !v.ok ? v : c; LE.err = x.error; LE.field = x.field; return render(); }
     const btn = $('#le-send'); btn.disabled = true; btn.textContent = 'Sending…';
     const r = await api('/api/submissions', { method: 'POST', body: { ...b, cpdHours: b.cpdHours === '' ? null : +b.cpdHours } });
-    if (r.error) { LE.err = r.status === 0 ? 'You’re offline. Your details are still here; send again when you’re back online.' : r.status >= 500 || r.error === 'offline' ? TROUBLE + ' Your details are still here.' : r.error; LE.field = r.field || ''; return render(); }
+    if (r.error) { LE.err = r.status === 0 ? 'Offline. Send again when connected.' : r.status >= 500 || r.error === 'offline' ? TROUBLE : r.error; LE.field = r.field || ''; return render(); }
     Object.assign(LE, { sent: true, err: '', field: '', vals: {} }); render(); window.scrollTo(0, 0);
   });
 };
@@ -1839,7 +1828,7 @@ document.addEventListener('click', async e => {
   if (a === 'open' && el.matches('a')) e.preventDefault();
   if (a === 'skip') { e.preventDefault(); $('#main').focus(); return; }
   if (a === 'register') return authDialog('', null, { mode: 'register' });
-  if (a === 'retry') { noteTrouble(false); toast('Trying again…'); closeOverlay(); NET.online = false; await boot(); if (NET.trouble) toast('Still having trouble. Try again in a minute.'); return; }
+  if (a === 'retry') { noteTrouble(false); toast('Trying again…'); closeOverlay(); NET.online = false; await boot(); if (NET.trouble) toast('Still can\u2019t connect'); return; }
   if (a === 'report') return reportDialog(el.dataset.kind, id);
   if (a === 'rpback') { if (byId(id)) return detail(id, false); return closeOverlay(); }
   if (a === 'dismissonboard') { S.onboard = { ...(S.onboard || {}), dismissed: true }; save(); render(); toast('Checklist hidden'); return; }
@@ -1850,7 +1839,7 @@ document.addEventListener('click', async e => {
   if (a === 'filters') return filterSheet(!FS.open, true);
   if (a === 'filtersclose') return filterSheet(false, el.matches('button'));
   if (a === 'toreviews') { const h = $('#rvh'); if (h) { h.scrollIntoView({ block: 'start' }); h.focus({ preventScroll: true }); } return; }
-  if (a === 'tickpause') { const t = el.closest('.ticker'), on = !t.classList.contains('paused'); t.classList.toggle('paused', on); el.setAttribute('aria-pressed', String(on)); el.setAttribute('aria-label', on ? 'Resume the moving list' : 'Pause the moving list'); el.innerHTML = icon(on ? 'play' : 'pause'); return; }
+  if (a === 'tickpause') { const t = el.closest('.ticker'), on = !t.classList.contains('paused'); t.classList.toggle('paused', on); el.setAttribute('aria-pressed', String(on)); el.setAttribute('aria-label', on ? 'Play' : 'Pause'); el.innerHTML = icon(on ? 'play' : 'pause'); return; }
   if (a === 'review') { const c = byId(id); if (c) startReview(skey(c), { year: el.dataset.year ? +el.dataset.year : undefined }); return; }
   if (a === 'rvdone') return backToConf(id);
   if (a === 'rvedit' || a === 'rvproof' || a === 'rvdel') {
@@ -1860,10 +1849,10 @@ document.addEventListener('click', async e => {
     if (confirm(`Delete your review for ${v.editionYear}?`)) { const r = await api('/api/reviews/' + encodeURIComponent(id), { method: 'DELETE' }); if (r.error) return toast(r.error); await refreshReviews(c.id); toast('Review deleted'); detail(c.id, false); }
     return;
   }
-  if (a === 'rvreport') { if (!confirm('Report this review to the Hoggy moderators? Use this for abuse, named individuals, patient information or reviews that are not about the event.')) return; const r = await api('/api/reviews/' + encodeURIComponent(id) + '/report', { method: 'POST' }); toast(r.error ? r.error : 'Thanks, reported for moderation'); return; }
+  if (a === 'rvreport') { if (!confirm('Report this review for moderation?')) return; const r = await api('/api/reviews/' + encodeURIComponent(id) + '/report', { method: 'POST' }); toast(r.error ? r.error : 'Reported'); return; }
   if (a === 'more') { UI.limit += 48; return results(); }
   if (a === 'toplist') { e.preventDefault(); UI.sort = 'rating'; UI.limit = 48; location.hash = '#/discover'; if (route() === 'discover') render(); return; }
-  if (a === 'topfind') { UI.sort = 'date'; render(); const q = $('#q'); if (q) q.focus(); toast('Search for a conference you have attended, open it and choose Review'); return; }
+  if (a === 'topfind') { UI.sort = 'date'; render(); const q = $('#q'); if (q) q.focus(); toast('Find a conference you attended, then Write review'); return; }
   if (a === 'covsuggest') { const c = byId(id); if (!c) return; if (!NET.user) return authDialog('Sign in to suggest a link', () => coverageDialog(c)); return coverageDialog(c); }
   if (a === 'ext') return; /* external link inside a clickable row: let it open, do nothing else */
   if (a === 'opencourse') { location.hash = '#/courses/' + id; return; }
@@ -1877,9 +1866,9 @@ document.addEventListener('click', async e => {
   if (a === 'rmcert') { const c = S.certs.find(x => x.id === id); if (c && confirm(`Delete your ${c.short || ''} certificate?`)) { if (c.fileKey) delFile(c.fileKey); S.certs = S.certs.filter(x => x.id !== id); save(); render(); toast('Certificate deleted'); } return; }
   if (a === 'ics') { const c = byId(id); if (c) download(c.id + '.ics', ics(c), 'text/calendar'); return; }
   if (a === 'signin') return authDialog();
-  if (a === 'signout') { await pushState(); await api('/api/logout', { method: 'POST' }); NET.user = null; NET.rev = 0; resetHosp(); if (confirm('Signed out. Remove your trips, receipts and files from this device too?\n\nOK = remove them (recommended on a shared computer). Your account copy is kept.\nCancel = keep them on this device.')) { await DB.wipe(); FILES.clear(); UNSAVED.clear(); const th = S.profile.theme; S = defaults(); if (th) S.profile.theme = th; try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { } setOwner(''); } toast('Signed out'); render(); return; }
+  if (a === 'signout') { await pushState(); await api('/api/logout', { method: 'POST' }); NET.user = null; NET.rev = 0; resetHosp(); if (confirm('Signed out. Remove your data from this device too?\n\nOK: remove (shared computers). Your account copy stays.\nCancel: keep it.')) { await DB.wipe(); FILES.clear(); UNSAVED.clear(); const th = S.profile.theme; S = defaults(); if (th) S.profile.theme = th; try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { } setOwner(''); } toast('Signed out'); render(); return; }
   if (a === 'checkinbox') return pullInbox(true);
-  if (a === 'delaccount') { if (confirm('Delete your account, synced data and reviews from Hoggy? Data on this device stays until you erase it.')) { const pw = prompt('Enter your password to confirm'); if (!pw) return; const r = await api('/api/account', { method: 'DELETE', body: { password: pw } }); if (r.error) return toast(r.error === 'offline' ? 'Can\u2019t reach Hoggy. Try again in a minute.' : r.error); NET.user = null; resetHosp(); toast('Account deleted'); render(); } return; }
+  if (a === 'delaccount') { if (confirm('Delete your account, synced data and reviews? This device keeps its copy until erased.')) { const pw = prompt('Password'); if (!pw) return; const r = await api('/api/account', { method: 'DELETE', body: { password: pw } }); if (r.error) return toast(r.error === 'offline' ? 'Can\u2019t connect. Try again shortly.' : r.error); NET.user = null; resetHosp(); toast('Account deleted'); render(); } return; }
   if (a === 'tripdays' || a === 'tripall' || (a === 'pinexp' && !el.dataset.trip)) {
     const c = byId(id); if (!c || !HT) return;
     if (a === 'pinexp') { pinExp(c, el.dataset.v); if (c.kind === 'course') sessionSheet(c.sessionId, c); else detail(c.id, false); }
@@ -1900,16 +1889,16 @@ document.addEventListener('click', async e => {
   }
   if (a === 'open') { if (e.target.closest('[data-act=save]')) return; return detail(id); }
   if (a === 'save') { e.stopPropagation(); const i = S.saved.indexOf(id); i < 0 ? S.saved.push(id) : S.saved.splice(i, 1); save(); toast(i < 0 ? 'Saved' : 'Removed from saved'); renderNav(); if (!$('#overlay').hidden) detail(id); else { if (route() === 'discover') results(); else render(); } return; }
-  if (a === 'plan') { if (!S.trips.some(t => t.confId === id)) { const t = { id: uid(), confId: id, status: 'planned', bookings: [] }; S.trips.push(t); OPEN_PLAN.set(t.id, true); if (!S.saved.includes(id)) S.saved.push(id); save(); } closeOverlay(); toast('Trip planned. Add days before or after to make a trip of it'); location.hash = '#/trips'; render(); return; }
-  if (a === 'rmtrip') { if (confirm('Remove this trip? Its receipts stay but become unlinked.')) { S.trips = S.trips.filter(t => t.id !== id); S.receipts.forEach(r => { if (r.tripId === id) r.tripId = ''; }); save(); render(); } return; }
-  if (a === 'attend') { const t = S.trips.find(x => x.id === id), c = ofTrip(t); simpleDialog('Mark attended', `${field('h', 'CPD hours earned', `<input id="h" type="number" name="hours" min="0" step="0.5" value="${c.cpdVerified && c.cpdHours ? esc(c.cpdHours) : ''}" placeholder="Hours on your certificate" autofocus>`)}<p class="note">Enter the hours on your certificate or the organiser's confirmation.</p>${themeBoxes()}`, f => { t.status = 'attended'; S.cpd.push({ id: uid(), title: c.name, date: c.end, hours: Math.max(0, +f.get('hours') || 0), source: 'conference', tripId: t.id, themes: themeKeys(f) }); save(); closeOverlay(); toast('CPD hours logged'); render(); if (c.kind === 'course' && COURSES.cat && !S.certs.some(x => x.courseId === c.courseId && x.completed === c.end)) certDialog({ prefill: { courseId: c.courseId, completed: c.end <= today() ? c.end : '' } }); }, 'Log hours'); return; }
+  if (a === 'plan') { if (!S.trips.some(t => t.confId === id)) { const t = { id: uid(), confId: id, status: 'planned', bookings: [] }; S.trips.push(t); OPEN_PLAN.set(t.id, true); if (!S.saved.includes(id)) S.saved.push(id); save(); } closeOverlay(); toast('Trip planned'); location.hash = '#/trips'; render(); return; }
+  if (a === 'rmtrip') { if (confirm('Remove this trip? Receipts stay, unlinked.')) { S.trips = S.trips.filter(t => t.id !== id); S.receipts.forEach(r => { if (r.tripId === id) r.tripId = ''; }); save(); render(); } return; }
+  if (a === 'attend') { const t = S.trips.find(x => x.id === id), c = ofTrip(t); simpleDialog('Mark attended', `${field('h', 'CPD hours earned', `<input id="h" type="number" name="hours" min="0" step="0.5" value="${c.cpdVerified && c.cpdHours ? esc(c.cpdHours) : ''}" placeholder="From your certificate" autofocus>`)}${themeBoxes()}`, f => { t.status = 'attended'; S.cpd.push({ id: uid(), title: c.name, date: c.end, hours: Math.max(0, +f.get('hours') || 0), source: 'conference', tripId: t.id, themes: themeKeys(f) }); save(); closeOverlay(); toast('CPD hours logged'); render(); if (c.kind === 'course' && COURSES.cat && !S.certs.some(x => x.courseId === c.courseId && x.completed === c.end)) certDialog({ prefill: { courseId: c.courseId, completed: c.end <= today() ? c.end : '' } }); }, 'Log hours'); return; }
   if (a === 'addbook') { simpleDialog('Log a booking', `<div class="two">${field('b1', 'Type', '<select id="b1" name="type"><option>Flight</option><option>Hotel</option><option>Registration</option><option>Transport</option></select>')}${field('b2', 'Provider', '<input id="b2" type="text" name="vendor" required maxlength="60">')}</div><div class="two">${field('b3', 'Confirmation ref', '<input id="b3" type="text" name="ref" maxlength="30">')}${field('b4', 'Cost', '<input id="b4" type="number" step="0.01" min="0" name="amount" required>')}</div>`, f => { const t = S.trips.find(x => x.id === id); t.bookings.push({ id: uid(), type: f.get('type'), vendor: String(f.get('vendor')).slice(0, 60), ref: String(f.get('ref')).slice(0, 30), amount: +f.get('amount') || 0, date: today() }); save(); closeOverlay(); render(); }); return; }
   if (a === 'rmbook') { const t = S.trips.find(x => x.id === id); t.bookings = t.bookings.filter(b => b.id !== el.dataset.b); save(); render(); return; }
   if (a === 'addreceipt') { if (location.hash.includes('receipts') || true) { const inp = document.createElement('input'); } return receiptDialog({ tripId: id && S.trips.some(t => t.id === id) ? id : '' }); }
   if (a === 'openfile') { const r = S.receipts.find(x => x.id === id); return r && openFile(r); }
   if (a === 'editreceipt') { e.preventDefault(); return receiptDialog({ edit: id }); }
   if (a === 'rmreceipt') { if (confirm('Delete this receipt?')) { const r = S.receipts.find(x => x.id === id); if (r?.fileKey) delFile(r.fileKey); S.receipts = S.receipts.filter(x => x.id !== id); save(); closeOverlay(); render(); } return; }
-  if (a === 'copy') { try { await navigator.clipboard.writeText(el.dataset.v); toast('Copied'); } catch (er) { toast('Copy failed — select and copy manually'); } return; }
+  if (a === 'copy') { try { await navigator.clipboard.writeText(el.dataset.v); toast('Copied'); } catch (er) { toast('Copy failed'); } return; }
   if (a === 'exportcsv') { const t = S.trips.find(x => x.id === id); download(`claim-${ofTrip(t).id}.csv`, scheduleCsv(t, false)); return; }
   if (a === 'printpack') return printPack(S.trips.find(x => x.id === id));
   if (a === 'emailpack') return emailPack(S.trips.find(x => x.id === id));
@@ -1925,13 +1914,13 @@ document.addEventListener('click', async e => {
       if (r.error) { el.disabled = false; return toast(hErr(r)); }
       await loadHosp();
     }
-    S.receipts.forEach(r => { if (r.tripId === id && r.status === 'captured') r.status = 'claimed'; }); S.claims[id] = { ...(S.claims[id] || {}), submitted: today() }; save(); toast(inHosp() ? 'Marked submitted. ' + HOSP.org.name + ' finance can see it now' : 'Marked submitted'); render(); return; }
+    S.receipts.forEach(r => { if (r.tripId === id && r.status === 'captured') r.status = 'claimed'; }); S.claims[id] = { ...(S.claims[id] || {}), submitted: today() }; save(); toast(inHosp() ? 'Sent to ' + HOSP.org.name + ' finance' : 'Marked submitted'); render(); return; }
   if (a === 'paidclaim') { S.receipts.forEach(r => { if (r.tripId === id && r.status === 'claimed') r.status = 'paid'; }); S.claims[id] = { ...(S.claims[id] || {}), paid: today() }; save(); toast('Reimbursement recorded'); render(); return; }
   if (a === 'addcpd') { simpleDialog('Add CPD entry', `${field('c1', 'Activity', '<input id="c1" type="text" name="title" required maxlength="100" autofocus>')}<div class="two">${field('c2', 'Date', `<input id="c2" type="date" name="date" required value="${today()}">`)}${field('c3', 'Hours', '<input id="c3" type="number" name="hours" min="0.25" step="0.25" required>')}</div>${themeBoxes()}`, f => { S.cpd.push({ id: uid(), title: String(f.get('title')).slice(0, 100), date: f.get('date'), hours: +f.get('hours') || 0, source: 'manual', themes: themeKeys(f) }); save(); closeOverlay(); render(); }); return; }
   if (a === 'rmcpd') { S.cpd = S.cpd.filter(x => x.id !== id); save(); render(); return; }
   if (a === 'exportcpd') return download('cpd-log.csv', csv([['Date', 'Activity', 'Source', 'Hours'], ...S.cpd.map(e => [e.date, e.title, e.source, e.hours])]));
   if (a === 'backup') return download('hoggy-backup.json', JSON.stringify(S, null, 2), 'application/json');
-  if (a === 'wipe') { if (confirm('Erase Hoggy data on this device?' + (NET.user ? '\n\nYour account copy is NOT deleted and will reload from your account.' : '\n\nThis cannot be undone.'))) { await DB.wipe(); FILES.clear(); UNSAVED.clear(); S = defaults(); try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { } setOwner(''); if (NET.user) { await pullState(true); await syncFiles(); } render(); toast('Erased on this device'); } return; }
+  if (a === 'wipe') { if (confirm('Erase Hoggy data on this device?' + (NET.user ? '\n\nYour account copy stays and reloads.' : '\n\nThis can\u2019t be undone.'))) { await DB.wipe(); FILES.clear(); UNSAVED.clear(); S = defaults(); try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { } setOwner(''); if (NET.user) { await pullState(true); await syncFiles(); } render(); toast('Erased on this device'); } return; }
 });
 document.addEventListener('submit', e => { if (e.target && e.target.id === 'heroSearch') { e.preventDefault(); UI.q = String(new FormData(e.target).get('q') || '').trim(); UI.limit = 48; location.hash = '#/discover'; } });
 document.addEventListener('keydown', e => {

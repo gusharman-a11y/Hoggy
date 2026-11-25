@@ -58,6 +58,7 @@ test('Discover subtitle is computed from the data, not a fixed year or "worldwid
     { start: '2028-02-01', end: '2028-02-02', countryCode: 'AU', specialty: 'A', sourceUrl: 'https://y', ...ev }];
   assert.deepEqual(discoverSummary(L, '2026-06-01'), { conferences: 3, countries: 2, specialties: 2, confirmed: 1, confirmedPct: 33, unchecked: 1, uncheckedPct: 33, estimated: 1, from: '2027-05-01', to: '2028-02-01' });
   assert.deepEqual(discoverSummary([], '2026-06-01'), { conferences: 0, countries: 0, specialties: 0, confirmed: 0, confirmedPct: 0, unchecked: 0, uncheckedPct: 0, estimated: 0, from: '', to: '' });
-  assert.match(body, /ds\.unchecked/, 'the subtitle names the not-yet-re-checked rows separately');
-  assert.match(body, /ds\.estimated\)\} estimated \(labelled\)/, 'estimates are counted and labelled, not "the rest"');
+  assert.match(body, /\$\{n\(ds\.conferences\)\} conferences · \$\{n\(ds\.countries\)\} countries/, 'one short count line, from the data');
+  /* estimates and not-yet-re-checked rows are labelled on every card instead (voice.md: no paragraph of counts) */
+  assert.match(src, /title="Dates not yet published">Estimate<\/span>/); assert.match(src, />Re-checking<\/span>/);
 });

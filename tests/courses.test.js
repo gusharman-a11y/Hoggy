@@ -124,11 +124,11 @@ test('no made-up dates for EMST and PALS', () => {
     const c = course(id); assert.notEqual(c.verified, true); assert.equal(c.certificateValidityYears, null); assert.equal(c.feeRange, null);
   }
   const src = read('app.js');
-  assert.match(src, /Dates not available yet — check provider/);
+  assert.match(src, /<h2>No dates yet<\/h2>/);
   /* x10: sessions carry their own evidence (provider page, quote, date read), so they list even before the course facts are
      reviewed; a course with no read session shows the "check provider" panel */
   assert.match(src, /if \(!ss\.length\) \{/, 'no session list without read sessions');
-  assert.match(src, /Hoggy has not reviewed this course\\'s facts yet/);
+  assert.match(src, /'Facts not yet reviewed · '/);
   assert.equal(HC.equivalentLabel(CAT, course('nzrc-core-immediate')), 'NZ equivalent of ALS1');
   assert.equal(HC.equivalentLabel(CAT, course('nzrc-core-advanced')), 'NZ equivalent of ALS2');
   assert.deepEqual(HC.searchCourses(CAT, 'als2').map(c => c.id).sort(), ['als2', 'nzrc-core-advanced']);
@@ -155,7 +155,7 @@ test('every published course file ships and the copy stays honest', () => {
   const src = read('app.js'), i = src.indexOf('/* ---------- courses: catalogue'), block = src.slice(i, src.indexOf('/* ---------- post-render wiring', i));
   assert.doesNotMatch(block + read('courses.js'), /\b(largest|leading|best|guarantee\w*|world's|number one)\b/i);
   assert.match(read('docs/pm/backlog.md'), /D3/);
-  assert.match(src, /Email reminders are not available yet/);
+  assert.match(src, /In-app reminders only\. No email yet\./);
 });
 
 /* ---------- server: /api/courses and certificates in synced state ---------- */

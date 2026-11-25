@@ -63,7 +63,7 @@ async function run(browser, B, vp, tag) {
   /* 1. signed out, Home: a clear path without an account */
   await p.goto(B + '/'); await p.waitForSelector('.hero-intro');
   assert.equal(await p.title(), 'Hoggy · Medical conferences and courses');
-  assert.match(await p.textContent('.hero-intro'), /No account needed to search/);
+  assert.match(await p.textContent('.hero-intro'), /No sign-up needed/);
   await p.waitForSelector('.hero-intro [data-act="register"]'); /* once the app has reached the server */
   assert.equal(await p.locator('.app-foot a[href="/privacy"]').count(), 1, 'footer links');
   await S.check('home'); if (phone) await S.shot('cr-home-phone.png');
@@ -95,7 +95,7 @@ async function run(browser, B, vp, tag) {
   assert.ok(await S.focusInOverlay()); await S.check('report dialog');
   await p.click('#rpf button[type=submit]'); assert.match(await p.textContent('#rperr'), /Choose what is wrong/);
   await p.check('#rpf input[value="wrong-date"]'); await p.fill('#rpn', 'The organiser page now gives different dates');
-  await p.click('#rpf button[type=submit]'); await p.waitForSelector('.toast:text("Thanks. The Hoggy team will check this listing.")');
+  await p.click('#rpf button[type=submit]'); await p.waitForSelector('.toast:text("Report sent")');
   await p.waitForSelector('#overlay .sheet h2'); await p.keyboard.press('Escape');
 
   /* 4. List your event: errors at the field, then sent */
@@ -135,7 +135,7 @@ async function run(browser, B, vp, tag) {
   await S.go('#/home'); await p.click('[data-act="dismissonboard"]'); await p.waitForSelector('.getstarted', { state: 'detached' });
 
   /* 6. server-rendered public pages, the 404 page */
-  for (const [u, h] of [['/privacy', 'Privacy'], ['/terms', 'Terms of use'], ['/about', 'About Hoggy'], ['/conferences/' + confId, null], ['/courses/als2', null], ['/no-such-page', 'We can’t find that page']]) {
+  for (const [u, h] of [['/privacy', 'Privacy'], ['/terms', 'Terms of use'], ['/about', 'About Hoggy'], ['/conferences/' + confId, null], ['/courses/als2', null], ['/no-such-page', 'Page not found']]) {
     const before = S.errors.length, r = await p.goto(B + u); assert.equal(r.status(), u === '/no-such-page' ? 404 : 200, u);
     if (u === '/no-such-page') { await p.waitForTimeout(200); const extra = S.errors.splice(before); assert.ok(extra.every(x => /status of 404/.test(x)), 'only the 404 itself: ' + extra); } /* the browser logs the page's own 404 status */
     if (h) assert.equal((await p.textContent('h1')).trim(), h);
@@ -164,7 +164,7 @@ async function adminDesk(browser, B) {
   const list = await p.evaluate(async () => (await (await fetch('/api/conferences')).json()).conferences.filter(c => c.source === 'organiser-submitted'));
   assert.equal(list.length, 1); assert.equal(list[0].dateStatus, 'confirmed'); assert.ok(list[0].datesQuote.includes(mon)); assert.equal(list[0].cpdHours, 10);
   await p.goto(B + '/#/discover'); await p.fill('#q', 'Harbour Emergency'); await p.waitForSelector('#results .card-link');
-  await p.click('#results .card-link'); await p.waitForSelector('#overlay .pill:text("Dates confirmed")');
+  await p.click('#results .card-link'); await p.waitForSelector('#overlay .pill:text-is("Confirmed")');
   assert.deepEqual(S.errors, [], 'admin: console errors'); await S.ctx.close();
 }
 
@@ -180,7 +180,7 @@ async function dark(browser, B) {
 async function dbDown(browser, B, vp, tag) {
   const S = await session(browser, B, vp, tag + '-db-down', { allow: /Failed to load resource: the server responded with a status of 503/ }), { p } = S;
   await p.goto(B + '/'); await p.waitForSelector('.net-banner');
-  assert.match(await p.textContent('.net-banner'), /We’re having trouble connecting — try again in a minute/);
+  assert.match(await p.textContent('.net-banner'), /Can’t connect\. Try again shortly\./);
   assert.doesNotMatch(await p.textContent('body'), /database unavailable|\{"error"/, 'no raw JSON');
   await S.check('home, database down'); if (tag === 'phone') await S.shot('cr-db-down-phone.png');
   await S.go('#/discover'); await p.waitForSelector('#results .card'); assert.ok(await p.locator('#results .card').count() > 10, 'conferences from the bundled list');
@@ -188,7 +188,7 @@ async function dbDown(browser, B, vp, tag) {
   await S.go('#/settings'); await p.click('.acct-panel [data-act="retry"]'); await p.waitForSelector('.toast');
   await S.go('#/list-event'); await p.waitForSelector('#lef'); await S.check('list your event, database down');
   await p.goto(B + '/privacy'); await p.waitForSelector('h1'); await S.check('privacy, database down');
-  const r = await p.goto(B + '/conferences/org-not-in-the-bundle-2027'); assert.equal(r.status(), 503); assert.match(await p.textContent('h1'), /We’re having trouble connecting/); await S.check('trouble page');
+  const r = await p.goto(B + '/conferences/org-not-in-the-bundle-2027'); assert.equal(r.status(), 503); assert.match(await p.textContent('h1'), /Can’t connect/); await S.check('trouble page');
   assert.deepEqual(S.errors, [], `${tag} database down: console errors`); await S.ctx.close();
 }
 

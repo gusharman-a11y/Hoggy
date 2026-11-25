@@ -34,8 +34,8 @@ async function run(browser, B, vp, tag) {
   await p.goto(B + '/#/'); await p.waitForSelector('.live-dates');
   await p.waitForFunction(() => /Course sessions/.test(document.querySelector('.live-grid').textContent));
   const live = await p.textContent('.live-grid');
-  assert.match(live, /confirmed with source stored/); assert.match(live, /confirmed earlier, being re-checked/); assert.match(live, /estimated \(labelled\)/);
-  assert.match(live, /course types in \d+ countries/);
+  assert.match(live, /\d confirmed/); assert.match(live, /\d re-checking/); assert.match(live, /\d estimates/);
+  assert.match(live, /course types · \d+ countries/);
   await noScroll('home'); if (tag === 'phone') { await p.locator('.live').scrollIntoViewIfNeeded(); await shot('x10-home-phone'); }
 
   /* Courses list: fast (catalogue and counts, no sessions), defaults to the profile's country (Australia) and English */
@@ -88,7 +88,7 @@ async function run(browser, B, vp, tag) {
   /* Discover: estimates counted and labelled, "Usually <Month YYYY>" on estimated cards */
   await go('#/discover'); await p.waitForSelector('.page-head p');
   const sub = await p.textContent('.page-head p');
-  assert.match(sub, /\d[\d,]* confirmed with source stored · \d[\d,]* confirmed earlier, being re-checked · \d[\d,]* estimated \(labelled\)/);
+  assert.match(sub, /^\d[\d,]* conferences · \d+ countries$/);
   await p.waitForTimeout(300);
   /* the soonest 48 can all be confirmed (the January ski meetings), so page on until an estimate shows */
   for (let i = 0; i < 12 && !/Usually [A-Z][a-z]+ 20\d\d/.test(await p.textContent('#results')); i++) { const m = await p.$('[data-act=more]'); if (!m) break; await m.click(); await p.waitForTimeout(150); }
