@@ -1836,7 +1836,7 @@
    "feeRange": null,
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "fsep-full-day",
    "name": "FSEP Full Day Program (fetal surveillance / CTG education)",
    "providers": [
@@ -1856,13 +1856,13 @@
    "audienceEvidence": {
     "sourceUrl": "https://fsep.ranzcog.edu.au/what-we-offer/available-programs/full-day-program/",
     "quote": "for all clinicians involved in antenatal and intrapartum care",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "format": "One-day (7-hour) face-to-face workshop, usually hosted by a hospital for its maternity staff; registration is through the host hospital educator.",
    "formatEvidence": {
     "sourceUrl": "https://fsep.ranzcog.edu.au/what-we-offer/available-programs/full-day-program/",
     "quote": "The FSEP Full Day program runs for 7 hours total and provides a foundation of uteroplacental function, and the physiology underpinning fetal heart rate control, for all clinicians involved in antenata",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "7 hours (one day)",
    "cpdNote": "check provider (FSEP has CPD pages per program; not read this run)",
@@ -1870,12 +1870,12 @@
     {
      "sourceUrl": "https://fsep.ranzcog.edu.au/about-fsep/target-audience/",
      "quote": "We encourage multidisciplinary participation in all FSEP education sessions to improve the skill level of the professional cohort while simultaneously encouraging staff communication.",
-     "lastVerified": "2026-11-18"
+     "lastVerified": "2026-11-25"
     },
     {
      "sourceUrl": "https://fsep.ranzcog.edu.au/what-we-offer/online-program/",
      "quote": "The 2026 OFSEP is a free online program that offers individual login, with capability to track individual progress, online quizzes and a certificate on completion.",
-     "lastVerified": "2026-11-18"
+     "lastVerified": "2026-11-25"
     }
    ],
    "notes": "Many sessions are closed to outside staff; sessions marked \"internal staff only\" or \"employees only\" on the FSEP page are not listed. The free online OFSEP is self-paced (no sessions).",
@@ -1893,7 +1893,7 @@
    },
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "scca-certificate-skin-cancer-medicine",
    "name": "Certificate of Skin Cancer Medicine (SCCA)",
    "providers": [
@@ -1912,13 +1912,13 @@
    "audienceEvidence": {
     "sourceUrl": "https://www.skincancercollege.org/EventDetail?EventKey=CSCM_FEB27",
     "quote": "This course is the recommended starting point for GPs wanting to expand their knowledge and skills in primary care skin cancer medicine.",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "format": "About four weeks of online learning, then a one-day face-to-face practical workshop (8.30am-5pm).",
    "formatEvidence": {
     "sourceUrl": "https://www.skincancercollege.org/EventDetail?EventKey=CSCM_FEB27",
     "quote": "Online Learning 19 February - 19 March 2027 Practical Workshop 20 March 2027",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "online learning + 1-day practical workshop",
    "feeSource": "https://www.skincancercollege.org/EventDetail?EventKey=CSCM_FEB27",
@@ -1928,7 +1928,7 @@
     {
      "sourceUrl": "https://www.skincancercollege.org/EventDetail?EventKey=CSCM_FEB27",
      "quote": "Students must be registered medical practitioners. Nurses interested in this course should contact SCCA prior to enrolling.",
-     "lastVerified": "2026-11-18"
+     "lastVerified": "2026-11-25"
     }
    ],
    "fromSource": "womens-gp"
@@ -1945,7 +1945,7 @@
    },
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "scca-advanced-skin-surgery-workshop",
    "name": "Advanced Skin Surgery Workshop (SCCA): flaps and grafts",
    "providers": [
@@ -1964,13 +1964,13 @@
    "audienceEvidence": {
     "sourceUrl": "https://www.skincancercollege.org/EventDetail?EventKey=ASSW_APR27",
     "quote": "This course is specifically designed for doctors already undertaking simple skin excisions and routine closures in primary practice.",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "format": "Two weeks of online learning, then a 3-day practical workshop (two full days and a half day).",
    "formatEvidence": {
     "sourceUrl": "https://www.skincancercollege.org/EventDetail?EventKey=ASSW_APR27",
     "quote": "Online Learning 2 April - 15 April 2027 Practical Workshop 16 April - 18 April 2027",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "online learning + 2.5-day practical workshop",
    "feeSource": "https://www.skincancercollege.org/EventDetail?EventKey=ASSW_APR27",
@@ -1990,7 +1990,7 @@
    },
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "scca-certificate-dermoscopy",
    "name": "Certificate of Dermoscopy (SCCA)",
    "providers": [
@@ -2009,13 +2009,13 @@
    "audienceEvidence": {
     "sourceUrl": "https://www.skincancercollege.org/EventDetail?EventKey=DERM_FEB27",
     "quote": "This course is designed for general practitioners, primary care nurses, and qualified dermal clinicians with minimal experience in dermoscopy.",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "format": "online, dated intakes (about six weeks online with one live webinar and an assessment); no face-to-face session",
    "formatEvidence": {
     "sourceUrl": "https://www.skincancercollege.org/EventDetail?EventKey=DERM_FEB27",
     "quote": "Course Start 5 February 2027 Webinar 20 February 2027 Assessment Due Date 19 March 2027",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "about 6 weeks online",
    "feeSource": "https://www.skincancercollege.org/EventDetail?EventKey=DERM_FEB27",
@@ -2072,7 +2072,7 @@
    "feeRange": null,
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "healthcert-skin-cancer-medicine-workshop",
    "name": "HealthCert Skin Cancer Medicine Practical Workshop (core / advanced)",
    "providers": [
@@ -2091,7 +2091,7 @@
    "formatEvidence": {
     "sourceUrl": "https://www.healthcert.com/workshops/calendar",
     "quote": "Skin Cancer Medicine Practical Workshop",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "1 day",
    "cpdNote": "check provider",
@@ -2106,7 +2106,7 @@
    "feeRange": null,
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "healthcert-skin-cancer-surgery-workshop",
    "name": "HealthCert Skin Cancer Surgery Practical Workshop (core / advanced / complex)",
    "providers": [
@@ -2125,7 +2125,7 @@
    "formatEvidence": {
     "sourceUrl": "https://www.healthcert.com/workshops/calendar",
     "quote": "Complex Skin Cancer Surgery Practical Workshop",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "1 day",
    "cpdNote": "check provider",
@@ -2140,7 +2140,7 @@
    "feeRange": null,
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "healthcert-clinical-procedures-workshop",
    "name": "HealthCert Professional Certificate of Clinical Procedures (practical workshop day)",
    "providers": [
@@ -2159,7 +2159,7 @@
    "formatEvidence": {
     "sourceUrl": "https://www.healthcert.com/workshops/calendar",
     "quote": "Professional Certificate of Clinical Procedures",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "1 day",
    "cpdNote": "check provider",
@@ -2174,7 +2174,7 @@
    "feeRange": null,
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "healthcert-msk-sports-medicine-workshop",
    "name": "HealthCert Musculoskeletal and Sports Medicine Practical Workshop",
    "providers": [
@@ -2193,7 +2193,7 @@
    "formatEvidence": {
     "sourceUrl": "https://www.healthcert.com/workshops/calendar",
     "quote": "Musculoskeletal and Sports Medicine Practical Workshop",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "1 day",
    "cpdNote": "check provider",
@@ -2213,7 +2213,7 @@
    },
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "no-scalpel-vasectomy-workshop",
    "name": "No-scalpel vasectomy workshop",
    "providers": [
@@ -2231,13 +2231,13 @@
    "audienceEvidence": {
     "sourceUrl": "https://www.healthcert.com/courses/certificates/advanced-workshop-non-scalpel-vasectomy",
     "quote": "This practical workshop is ideal for experienced doctors who regularly perform advanced clinical procedures or already provide traditional vasectomies to their patients but would like to learn the non",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "format": "One-day practical workshop.",
    "formatEvidence": {
     "sourceUrl": "https://www.healthcert.com/courses/certificates/advanced-workshop-non-scalpel-vasectomy",
     "quote": "One-day",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "1 day",
    "feeSource": "https://www.healthcert.com/courses/certificates/advanced-workshop-non-scalpel-vasectomy",
@@ -2252,7 +2252,7 @@
    "feeRange": null,
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "iud-insertion-training",
    "name": "IUD insertion training (copper and hormonal IUDs)",
    "providers": [
@@ -2278,28 +2278,18 @@
     "AU"
    ],
    "audience": "Doctors (and, at some providers, nurses) who want to insert IUDs in primary care.",
-   "audienceEvidence": {
-    "sourceUrl": "https://www.healthcert.com/courses/certificates/advanced-workshop-intrauterine-systems",
-    "quote": "This course is ideal for experienced physicians who already perform advanced clinical procedures and would like to offer IUDs for their female patients in primary care.",
-    "lastVerified": "2026-11-18"
-   },
    "format": "Theory workshop with practice insertions on pelvic models, then supervised insertions in clinic (SHQ: 3-4 supervised clinics booked separately); HealthCert runs a one-day advanced workshop.",
    "formatEvidence": {
     "sourceUrl": "https://shq.org.au/course/iud-theory/",
     "quote": "IUD workshops cover current information about copper and hormonal IUD's insertion techniques and how to manage problems. They also include practice insertions (in pelvic models).",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "evening or one-day workshop + supervised clinics",
    "otherEvidence": [
     {
      "sourceUrl": "https://shq.org.au/course/iud-theory/",
      "quote": "After approval for training, those new to IUD insertions book and pay for 3-4 supervised 3.5 hour IUD training clinics ($242 inc GST per session)",
-     "lastVerified": "2026-11-18"
-    },
-    {
-     "sourceUrl": "https://www.healthcert.com/courses/certificates/advanced-workshop-intrauterine-systems",
-     "quote": "From $1995",
-     "lastVerified": "2026-11-18"
+     "lastVerified": "2026-11-25"
     }
    ],
    "cpdNote": "SHQ: \"RACGP approved CPD activity\" (hours not stated); HealthCert: 9.5 hours (college not named). Check provider.",
@@ -2317,7 +2307,7 @@
    },
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "iud-insertion-train-the-trainer",
    "name": "IUD insertion train-the-trainer program",
    "providers": [
@@ -2334,13 +2324,13 @@
    "audienceEvidence": {
     "sourceUrl": "https://shinesa.org.au/activity/iud-train-trainer-program/",
     "quote": "designed for experienced medical practitioners who want to expand their skills in clinical education, supervision and mentoring",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "format": "Evening session (2 hours) plus supervised teaching.",
    "formatEvidence": {
     "sourceUrl": "https://shinesa.org.au/activity/iud-train-trainer-program/",
     "quote": "Time: 6:00 pm - 8:00 pm",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "2-hour session",
    "feeSource": "https://shinesa.org.au/activity/iud-train-trainer-program/",
@@ -2360,7 +2350,7 @@
    },
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "contraceptive-implant-training",
    "name": "Contraceptive implant (Implanon NXT) insertion and removal training",
    "providers": [
@@ -2388,13 +2378,13 @@
    "audienceEvidence": {
     "sourceUrl": "https://shinesa.org.au/activity/implanon-nxt-training-doctors/",
     "quote": "This practical training program is designed for doctors, nurse practitioners and endorsed midwives who want to develop or strengthen their skills in contraceptive implant insertion and removal",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "format": "Theory (online module or evening workshop) plus hands-on simulation; SHINE SA hybrid sessions are a 1-hour onsite simulation after an online module.",
    "formatEvidence": {
     "sourceUrl": "https://shinesa.org.au/activity/implanon-nxt-training-doctors/",
     "quote": "(Complete online theory module prior to attending a 1-hour morning onsite practical simulation session)",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "1-2.5 hours face-to-face",
    "feeSource": "https://shinesa.org.au/activity/implanon-nxt-training-doctors/",
@@ -2404,7 +2394,7 @@
     {
      "sourceUrl": "https://shq.org.au/course/implant-training/",
      "quote": "Each workshop can last up to 2.5 hours depending on attendance numbers.",
-     "lastVerified": "2026-11-18"
+     "lastVerified": "2026-11-25"
     }
    ],
    "fromSource": "womens-gp"
@@ -2421,7 +2411,7 @@
    },
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "sexual-reproductive-health-certificate-nurses",
    "name": "Certificate in sexual and reproductive health for nurses and midwives",
    "providers": [
@@ -2443,13 +2433,13 @@
    "audienceEvidence": {
     "sourceUrl": "https://shinesa.org.au/activity/certificate-in-sexual-health/",
     "quote": "Our interactive 5-day course for registered nurses and midwives supports a comprehensive understanding of sexual and reproductive health.",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "format": "Face-to-face theory days plus online modules and a supervised clinical attachment (SHQ: seven modules; SHINE SA: 5-day course).",
    "formatEvidence": {
     "sourceUrl": "https://shq.org.au/course/certificate-nursing/",
     "quote": "Seven theoretical modules ($2042.70 inc. GST)",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "4-5 face-to-face days + online + clinical placement",
    "feeSource": "https://shinesa.org.au/activity/certificate-in-sexual-health/",
@@ -2459,7 +2449,7 @@
     {
      "sourceUrl": "https://shq.org.au/course/certificate-nursing/",
      "quote": "Supervised clinical attachment ($1,320 inc. GST to be paid at the time of booking the clinical attachment)",
-     "lastVerified": "2026-11-18"
+     "lastVerified": "2026-11-25"
     }
    ],
    "fromSource": "womens-gp",
@@ -2472,7 +2462,7 @@
    "feeRange": null,
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "cervical-screening-training-nurses",
    "name": "Cervical screening training for nurses and midwives (face-to-face module)",
    "providers": [
@@ -2489,13 +2479,13 @@
    "audienceEvidence": {
     "sourceUrl": "https://shq.org.au/education/courses/",
     "quote": "This module is for nurses and midwives wishing to develop detailed knowledge and specialist clinical skills in performing cervical screening.",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "format": "Two face-to-face days at SHQ plus about 14 hours online (Module 2 of the SHQ nursing certificate; can be taken alone).",
    "formatEvidence": {
     "sourceUrl": "https://shq.org.au/course/certificate-nursing/",
     "quote": "Module 2: Cervical Screening (two days face to face workshop at SHQ plus online learning of approximately 14 hours)",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "2 days + ~14 h online",
    "cpdNote": "check provider",
@@ -2514,7 +2504,7 @@
    },
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "pregnancy-options-counselling-training",
    "name": "Unintended pregnancy / pregnancy choices counselling training",
    "providers": [
@@ -2536,13 +2526,13 @@
    "audienceEvidence": {
     "sourceUrl": "https://shq.org.au/education/courses/",
     "quote": "This two-day course provides participants with knowledge and skills around non-directive pregnancy counselling.",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "format": "SHQ: two days (face-to-face or live online); SHINE SA: one day face-to-face.",
    "formatEvidence": {
     "sourceUrl": "https://shq.org.au/course/unintended-pregnancy-counselling-training/",
     "quote": "Courses are offered face to face at our Roe St centre and online throughout the year.",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "1-2 days",
    "feeSource": "https://shinesa.org.au/activity/pregnancy-choices-training/",
@@ -2552,7 +2542,7 @@
     {
      "sourceUrl": "https://shq.org.au/course/unintended-pregnancy-counselling-training/",
      "quote": "The course is an RACGP CPD approved activity, accredited for 13 Hours.",
-     "lastVerified": "2026-11-18"
+     "lastVerified": "2026-11-25"
     }
    ],
    "fromSource": "womens-gp"
@@ -2569,7 +2559,7 @@
    },
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "srha-national-certificate-doctors",
    "name": "Sexual and Reproductive Health Australia (SRHA) National Certificate for Doctors",
    "providers": [
@@ -2597,13 +2587,13 @@
    "audienceEvidence": {
     "sourceUrl": "https://www.shvic.org.au/courses/194-sexual-and-reproductive-health-australia-national-certificate-for-doctors-course-face-to-face/",
     "quote": "This course is open to doctors with a current AHPRA registration.",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "format": "Theory (4-5 face-to-face days plus online modules), exam, and 6 half-day clinical placements within 12 months.",
    "formatEvidence": {
     "sourceUrl": "https://www.shvic.org.au/courses/194-sexual-and-reproductive-health-australia-national-certificate-for-doctors-course-face-to-face/",
     "quote": "Clinical placements: Trainees must book a total of 6 half day placements over a maximum of 12 months.",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "4-5 days theory + placements",
    "feeSource": "https://www.shvic.org.au/courses/194-sexual-and-reproductive-health-australia-national-certificate-for-doctors-course-face-to-face/",
@@ -2622,7 +2612,7 @@
     {
      "sourceUrl": "https://shinesa.org.au/activity/srha/",
      "quote": "Sexual and Reproductive Health National Certificate Theoretical Module (5-day Face-to-Face Training): $2,370",
-     "lastVerified": "2026-11-18"
+     "lastVerified": "2026-11-25"
     }
    ],
    "fromSource": "womens-gp"
@@ -2634,7 +2624,7 @@
    "feeRange": null,
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "healthed-womens-childrens-health-update",
    "name": "Healthed Women's & Children's Health Update (one-day GP seminar)",
    "providers": [
@@ -2652,13 +2642,13 @@
    "audienceEvidence": {
     "sourceUrl": "https://www.healthed.com.au/seminars/",
     "quote": "Healthed seminars are primarily designed for general practitioners (GPs), however we receive extremely positive feedback from nurses, pharmacists and other health professionals that attend.",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "format": "One-day face-to-face seminar (lectures and panels), catered.",
    "formatEvidence": {
     "sourceUrl": "https://www.healthed.com.au/seminars/",
     "quote": "Healthed face-to-face events are one-day seminars designed with the busy healthcare professional in mind.",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "1 day",
    "cpdNote": "Healthed: eight hours CPD in Educational Activities by attending; further RP and MO hours optional (RACGP and ACRRM accredited). Fees vary by registration date: check provider.",
@@ -2666,12 +2656,12 @@
     {
      "sourceUrl": "https://www.healthed.com.au/seminars/",
      "quote": "Healthed seminars offer attendees eight hours of CPD in the Educational Activities (EA) category.",
-     "lastVerified": "2026-11-18"
+     "lastVerified": "2026-11-25"
     },
     {
      "sourceUrl": "https://www.healthed.com.au/events/swch27/",
      "quote": "Please note there will be an additional fee of $150 for delegates. This additional cost covers RACGP CPD hours processing and certification.",
-     "lastVerified": "2026-11-18"
+     "lastVerified": "2026-11-25"
     }
    ],
    "fromSource": "womens-gp",
@@ -2684,7 +2674,7 @@
    "feeRange": null,
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "healthed-medical-update",
    "name": "Healthed Medical Update (one-day GP seminar)",
    "providers": [
@@ -2702,13 +2692,13 @@
    "audienceEvidence": {
     "sourceUrl": "https://www.healthed.com.au/seminars/",
     "quote": "Healthed seminars are primarily designed for general practitioners (GPs), however we receive extremely positive feedback from nurses, pharmacists and other health professionals that attend.",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "format": "One-day face-to-face seminar (lectures and panels), catered.",
    "formatEvidence": {
     "sourceUrl": "https://www.healthed.com.au/seminars/",
     "quote": "Our one-day seminar offering for GPs and health professionals.",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "1 day",
    "cpdNote": "Healthed: eight hours CPD in Educational Activities by attending; further RP and MO hours optional. Fees vary by registration date: check provider.",
@@ -2716,7 +2706,7 @@
     {
      "sourceUrl": "https://www.healthed.com.au/events/bhmu27/",
      "quote": "Join over 1,200 of your colleagues at the Brisbane Convention & Exhibition Centre. Register today and earn up to 24 hours of CPD!",
-     "lastVerified": "2026-11-18"
+     "lastVerified": "2026-11-25"
     }
    ],
    "fromSource": "womens-gp",
@@ -2729,7 +2719,7 @@
    "feeRange": null,
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "rhw-mental-health-skills-training",
    "name": "Rural Health West Mental Health Skills Training (MHST) for GPs",
    "providers": [
@@ -2747,26 +2737,21 @@
    "audienceEvidence": {
     "sourceUrl": "https://ruralhealthwest.com.au/events/mental-health-skills-training-mhst-perth/",
     "quote": "The RHW MHST is a purpose designed, interactive training workshop for General (GPs) to enhance their skills, knowledge and approach to people presenting with high prevalence mental health and alcohol",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "format": "Face-to-face workshop (Rural Health West CPD program, WA).",
    "formatEvidence": {
     "sourceUrl": "https://ruralhealthwest.com.au/events/mental-health-skills-training-mhst-perth/",
     "quote": "Length: One day – 8.00am-4.00pm.",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": null,
    "cpdNote": "RACGP 4 EA + 4 RP hours; GPMHSC-accredited Mental Health Skills Training (page).",
    "otherEvidence": [
     {
      "sourceUrl": "https://ruralhealthwest.com.au/events/mental-health-skills-training-mhst-perth/",
-     "quote": "4 Educational Activity and 4 Reviewing Performance hours with the Royal Australian College of General Practitioners.",
-     "lastVerified": "2026-11-18"
-    },
-    {
-     "sourceUrl": "https://ruralhealthwest.com.au/events/mental-health-skills-training-mhst-perth/",
      "quote": "This course is accredited by the General Practice Mental Health Standards Collaboration (GPMHSC)",
-     "lastVerified": "2026-11-18"
+     "lastVerified": "2026-11-25"
     }
    ],
    "fromSource": "womens-gp"
@@ -2778,7 +2763,7 @@
    "feeRange": null,
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "rhw-peachs",
    "name": "Rural Health West Paediatric Emergencies and Clinical Healthcare Scenarios (PEaCHS)",
    "providers": [
@@ -2794,11 +2779,6 @@
    ],
    "audience": null,
    "format": "Face-to-face workshop (Rural Health West CPD program, WA).",
-   "formatEvidence": {
-    "sourceUrl": "https://ruralhealthwest.com.au/events/paediatric-emergencies-and-clinical-healthcare-scenarios-peachs-geraldton/",
-    "quote": "Length: One Day – 8.00am-5.00pm",
-    "lastVerified": "2026-11-18"
-   },
    "typicalLength": null,
    "cpdNote": "check provider",
    "fromSource": "womens-gp"
@@ -2810,7 +2790,7 @@
    "feeRange": null,
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "rhw-tide",
    "name": "Rural Health West Trauma Informed De-Escalation (TIDE)",
    "providers": [
@@ -2829,7 +2809,7 @@
    "formatEvidence": {
     "sourceUrl": "https://ruralhealthwest.com.au/events/trauma-informed-de-escalation-tide-busselton-2/",
     "quote": "TIDE focuses on training health care professionals in using trauma-informed knowledge and practice to increase de-escalation skills with the purpose of reducing violence in healthcare and social servi",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": null,
    "cpdNote": "check provider",
@@ -2842,7 +2822,7 @@
    "feeRange": null,
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "rhw-neostars",
    "name": "Rural Health West Neonatal Stabilisation and Transport Readiness (NeoSTARs I)",
    "providers": [
@@ -2861,7 +2841,7 @@
    "formatEvidence": {
     "sourceUrl": "https://ruralhealthwest.com.au/events/neostars-i-northam-2/",
     "quote": "Neonatal Stabilisation and Transport Readiness (NeoSTARs) I Northam - Rural Health West Skip to main content About Us Media Centre Board and Management Aboriginal Advisory Committee Work with Us Publi",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": null,
    "cpdNote": "check provider",
@@ -2874,7 +2854,7 @@
    "feeRange": null,
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "rhw-react-plus",
    "name": "Rural Health West Rural Emergency Advanced Clinical Training (REACT+)",
    "providers": [
@@ -2893,7 +2873,7 @@
    "formatEvidence": {
     "sourceUrl": "https://ruralhealthwest.com.au/events/rural-emergency-advanced-clinical-training-react-perth-27/",
     "quote": "The Rural Health West CPD REACT+ workshop is designed to assist Western Australian Visiting Medical Practitioners to maintain their emergency knowledge and skills, and gain formal assessment towards t",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": null,
    "cpdNote": "check provider",
@@ -2906,7 +2886,7 @@
    "feeRange": null,
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "rhw-eam",
    "name": "Rural Health West Emergency Airway Skills Management (EAM)",
    "providers": [
@@ -2925,7 +2905,7 @@
    "formatEvidence": {
     "sourceUrl": "https://ruralhealthwest.com.au/events/emergency-airway-skills-management-eam-busselton/",
     "quote": "This Rural Health West CPD workshop is designed to assist health professionals to develop and practise skills essential in unexpected crises, particularly with problem airways",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": null,
    "cpdNote": "check provider",
@@ -2938,40 +2918,7 @@
    "feeRange": null,
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
-   "id": "sapmea-copd-spirometry-workshop",
-   "name": "SAPMEA COPD Management and Spirometry workshop",
-   "providers": [
-    {
-     "name": "SAPMEA",
-     "url": "https://sapmea.asn.au/education/events/copd-management-and-spirometry-mount-gambier",
-     "verified": true,
-     "calendar": "https://sapmea.asn.au/education/calendar",
-     "bookingPlatform": "Humanitix (tickets linked from the SAPMEA page)"
-    }
-   ],
-   "countries": [
-    "AU"
-   ],
-   "audience": "GPs, nurses and allied health professionals.",
-   "format": "Face-to-face workshop (SAPMEA education calendar, SA).",
-   "formatEvidence": {
-    "sourceUrl": "https://sapmea.asn.au/education/events/copd-management-and-spirometry-mount-gambier",
-    "quote": "Enhance your skills in identifying, assessing and managing COPD with this practical workshop designed for GPs, Nurses and Allied Health Professionals.",
-    "lastVerified": "2026-11-18"
-   },
-   "typicalLength": null,
-   "cpdNote": "check provider",
-   "fromSource": "womens-gp"
-  },
-  {
-   "certificateValidityYears": null,
-   "validitySource": null,
-   "recertification": null,
-   "feeRange": null,
-   "cpdHours": 0,
-   "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "sapmea-msk-return-to-work-workshop",
    "name": "SAPMEA MSK injuries and return-to-work workshop (ReturnToWorkSA-funded)",
    "providers": [
@@ -2991,7 +2938,7 @@
    "formatEvidence": {
     "sourceUrl": "https://sapmea.asn.au/education/events/shoulder-and-back-injuries-from-diagnosis-to-return-to-work-28112026",
     "quote": "This interactive hands-on workshop aims to enhance the skills and confidence of GPs, Nurses and allied health professionals in assessing, managing, and supporting patients with shoulder and back injur",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": null,
    "cpdNote": "check provider",
@@ -3004,40 +2951,7 @@
    "feeRange": null,
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
-   "id": "sapmea-mental-health-strategies-workshop",
-   "name": "SAPMEA Mental Health: Strategies for Effective Care and Support (evening workshop)",
-   "providers": [
-    {
-     "name": "SAPMEA",
-     "url": "https://sapmea.asn.au/education/events/mental-health-strategies-for-effective-care-and-support-clare",
-     "verified": true,
-     "calendar": "https://sapmea.asn.au/education/calendar",
-     "bookingPlatform": "Humanitix (tickets linked from the SAPMEA page)"
-    }
-   ],
-   "countries": [
-    "AU"
-   ],
-   "audience": "GPs, nurses and allied health professionals.",
-   "format": "Face-to-face workshop (SAPMEA education calendar, SA).",
-   "formatEvidence": {
-    "sourceUrl": "https://sapmea.asn.au/education/events/mental-health-strategies-for-effective-care-and-support-clare",
-    "quote": "Mental Health: Strategies for Effective Care – Clare",
-    "lastVerified": "2026-11-18"
-   },
-   "typicalLength": null,
-   "cpdNote": "check provider",
-   "fromSource": "womens-gp"
-  },
-  {
-   "certificateValidityYears": null,
-   "validitySource": null,
-   "recertification": null,
-   "feeRange": null,
-   "cpdHours": 0,
-   "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "emet-major-trauma-workshop",
    "name": "EMET Major Trauma workshop (ACEM Emergency Medicine Education and Training, delivered by SAPMEA)",
    "providers": [
@@ -3056,13 +2970,13 @@
    "audienceEvidence": {
     "sourceUrl": "https://sapmea.asn.au/education/events/emet-major-trauma-waikerie-271126",
     "quote": "General Practitioners, Medical Officers, Nurses and Paramedics working in Emergency Care settings are invited to attend this interactive full day workshop delivered through large group sessions, skill",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "format": "Face-to-face workshop (SAPMEA education calendar, SA).",
    "formatEvidence": {
     "sourceUrl": "https://sapmea.asn.au/education/events/emet-major-trauma-waikerie-271126",
     "quote": "This workshop will focus on major trauma patient scenarios and examine acute management in regional and rural settings.",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": null,
    "cpdNote": "check provider",
@@ -3080,7 +2994,7 @@
    },
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "aiu-ultrasound-in-vascular-access",
    "name": "AIU Ultrasound in Vascular Access Course",
    "providers": [
@@ -3100,7 +3014,7 @@
    "formatEvidence": {
     "sourceUrl": "https://www.aiu.edu.au/ultrasound-courses/vascular/vascular-access/",
     "quote": "1 day Ultrasound in Vascular Access Course",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "1 day",
    "feeSource": "https://www.aiu.edu.au/ultrasound-courses/vascular/vascular-access/",
@@ -3122,7 +3036,7 @@
    },
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "aiu-intermediate-echo",
    "name": "AIU Intermediate Echo Course",
    "providers": [
@@ -3142,7 +3056,7 @@
    "formatEvidence": {
     "sourceUrl": "https://www.aiu.edu.au/ultrasound-courses/cardiac/intermediate-echo-course/",
     "quote": "5 days Intermediate Echo Course",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "5 days",
    "feeSource": "https://www.aiu.edu.au/ultrasound-courses/cardiac/intermediate-echo-course/",
@@ -3164,7 +3078,7 @@
    },
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "aiu-fels-and-lung-ultrasound-emergency",
    "name": "AIU FELS & Lung Ultrasound Course (Emergency)",
    "providers": [
@@ -3184,7 +3098,7 @@
    "formatEvidence": {
     "sourceUrl": "https://www.aiu.edu.au/ultrasound-courses/emergency/fels-ultrasound/",
     "quote": "2 days FELS & Lung Ultrasound Course (Emergency)",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "2 days",
    "feeSource": "https://www.aiu.edu.au/ultrasound-courses/emergency/fels-ultrasound/",
@@ -3206,7 +3120,7 @@
    },
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "aiu-critical-care-echocardiography",
    "name": "AIU Critical Care Echocardiography Course",
    "providers": [
@@ -3226,7 +3140,7 @@
    "formatEvidence": {
     "sourceUrl": "https://www.aiu.edu.au/ultrasound-courses/critical-care/critical-care-echocardiography/",
     "quote": "3 days Critical Care Echocardiography Course",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "3 days",
    "feeSource": "https://www.aiu.edu.au/ultrasound-courses/critical-care/critical-care-echocardiography/",
@@ -3248,7 +3162,7 @@
    },
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "aiu-diagnostic-critical-care-ultrasound",
    "name": "AIU Diagnostic Critical Care Ultrasound Course",
    "providers": [
@@ -3268,7 +3182,7 @@
    "formatEvidence": {
     "sourceUrl": "https://www.aiu.edu.au/ultrasound-courses/critical-care/diagnostic-critical-care-extended/",
     "quote": "4 days Diagnostic Critical Care Ultrasound Course",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "4 days",
    "feeSource": "https://www.aiu.edu.au/ultrasound-courses/critical-care/diagnostic-critical-care-extended/",
@@ -3290,7 +3204,7 @@
    },
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "aiu-shoulder-ultrasound",
    "name": "AIU Shoulder Ultrasound Course",
    "providers": [
@@ -3310,7 +3224,7 @@
    "formatEvidence": {
     "sourceUrl": "https://www.aiu.edu.au/ultrasound-courses/msk/shoulder-1day/",
     "quote": "1 day Shoulder Ultrasound Course",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "1 day",
    "feeSource": "https://www.aiu.edu.au/ultrasound-courses/msk/shoulder-1day/",
@@ -3332,7 +3246,7 @@
    },
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "aiu-msk-ultrasound-lower-limb",
    "name": "AIU MSK Ultrasound Course (Lower Limb)",
    "providers": [
@@ -3352,7 +3266,7 @@
    "formatEvidence": {
     "sourceUrl": "https://www.aiu.edu.au/ultrasound-courses/msk/lower-limb-2day/",
     "quote": "2 days MSK Ultrasound Course (Lower Limb)",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "2 days",
    "feeSource": "https://www.aiu.edu.au/ultrasound-courses/msk/lower-limb-2day/",
@@ -3374,7 +3288,7 @@
    },
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "aiu-msk-ultrasound-upper-limb",
    "name": "AIU MSK Ultrasound Course (Upper Limb)",
    "providers": [
@@ -3394,7 +3308,7 @@
    "formatEvidence": {
     "sourceUrl": "https://www.aiu.edu.au/ultrasound-courses/msk/upper-limb-3day/",
     "quote": "3 days MSK Ultrasound Course (Upper Limb)",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "3 days",
    "feeSource": "https://www.aiu.edu.au/ultrasound-courses/msk/upper-limb-3day/",
@@ -3416,7 +3330,7 @@
    },
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "aiu-advanced-emergency-medicine-ultrasound-pocus",
    "name": "AIU Advanced Emergency Medicine Ultrasound Course (PoCUS)",
    "providers": [
@@ -3436,7 +3350,7 @@
    "formatEvidence": {
     "sourceUrl": "https://www.aiu.edu.au/ultrasound-courses/emergency-medicine/advanced-3b/",
     "quote": "3 days Advanced Emergency Medicine Ultrasound Course (PoCUS)",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "3 days / 4 days / 5 days / 6 days",
    "feeSource": "https://www.aiu.edu.au/ultrasound-courses/emergency-medicine/advanced-3b/",
@@ -3446,27 +3360,27 @@
     {
      "sourceUrl": "https://www.aiu.edu.au/ultrasound-courses/emergency-medicine/advanced-4b/",
      "quote": "Advanced Emergency Medicine Ultrasound Course (PoCUS)",
-     "lastVerified": "2026-11-18"
+     "lastVerified": "2026-11-25"
     },
     {
      "sourceUrl": "https://www.aiu.edu.au/ultrasound-courses/emergency-medicine/advanced-5b/",
      "quote": "Advanced Emergency Medicine Ultrasound Course (PoCUS)",
-     "lastVerified": "2026-11-18"
+     "lastVerified": "2026-11-25"
     },
     {
      "sourceUrl": "https://www.aiu.edu.au/ultrasound-courses/emergency-medicine/aem-3day/",
      "quote": "Advanced Emergency Medicine Ultrasound Course (PoCUS)",
-     "lastVerified": "2026-11-18"
+     "lastVerified": "2026-11-25"
     },
     {
      "sourceUrl": "https://www.aiu.edu.au/ultrasound-courses/emergency-medicine/aem-4day/",
      "quote": "Advanced Emergency Medicine Ultrasound Course (PoCUS)",
-     "lastVerified": "2026-11-18"
+     "lastVerified": "2026-11-25"
     },
     {
      "sourceUrl": "https://www.aiu.edu.au/ultrasound-courses/emergency-medicine/aem-5day/",
      "quote": "Advanced Emergency Medicine Ultrasound Course (PoCUS)",
-     "lastVerified": "2026-11-18"
+     "lastVerified": "2026-11-25"
     }
    ],
    "fromSource": "womens-gp",
@@ -3484,7 +3398,7 @@
    },
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "aiu-msk-ultrasound-guided-injection",
    "name": "AIU MSK Ultrasound Guided Injection Course",
    "providers": [
@@ -3504,7 +3418,7 @@
    "formatEvidence": {
     "sourceUrl": "https://www.aiu.edu.au/ultrasound-courses/msk/guided-injections-3day/",
     "quote": "3 days MSK Ultrasound Guided Injection Course",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "3 days / 3.5 days",
    "feeSource": "https://www.aiu.edu.au/ultrasound-courses/msk/guided-injections-3day/",
@@ -3514,7 +3428,7 @@
     {
      "sourceUrl": "https://www.aiu.edu.au/ultrasound-courses/msk/guided-injections-4day/",
      "quote": "MSK Ultrasound Guided Injection Course",
-     "lastVerified": "2026-11-18"
+     "lastVerified": "2026-11-25"
     }
    ],
    "fromSource": "womens-gp",
@@ -3532,7 +3446,7 @@
    },
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "aiu-peripheral-nerve-block-ultrasound",
    "name": "AIU Peripheral Nerve Block Ultrasound Course",
    "providers": [
@@ -3552,7 +3466,7 @@
    "formatEvidence": {
     "sourceUrl": "https://www.aiu.edu.au/ultrasound-courses/emergency-medicine/peripheral-nerve-block-1day/",
     "quote": "1 day Peripheral Nerve Block Ultrasound Course",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "1 day",
    "feeSource": "https://www.aiu.edu.au/ultrasound-courses/emergency-medicine/peripheral-nerve-block-1day/",
@@ -3574,7 +3488,7 @@
    },
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "aiu-nerve-block-ultrasound-emergency",
    "name": "AIU Nerve Block Ultrasound Course (Emergency)",
    "providers": [
@@ -3594,11 +3508,11 @@
    "formatEvidence": {
     "sourceUrl": "https://www.aiu.edu.au/ultrasound-courses/emergency-medicine/nerve-block-2day/",
     "quote": "2 days Nerve Block Ultrasound Course (Emergency)",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "2 days",
    "feeSource": "https://www.aiu.edu.au/ultrasound-courses/emergency-medicine/nerve-block-2day/",
-   "feeQuote": "27 Nov 2026 $ 2,990.00 Book Now",
+   "feeQuote": "27 Nov 2026 $ 2,990.00 Closed",
    "cpdNote": "page: \"ACEM Approved for Educational Activities 15.25 hours.\" (other colleges/points listed on the page): check provider",
    "otherEvidence": [],
    "fromSource": "womens-gp",
@@ -3616,7 +3530,7 @@
    },
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "aiu-aaa-and-dvt-ultrasound",
    "name": "AIU AAA & DVT Ultrasound Course",
    "providers": [
@@ -3636,7 +3550,7 @@
    "formatEvidence": {
     "sourceUrl": "https://www.aiu.edu.au/ultrasound-courses/emergency/aaa-dvt-ultrasound/",
     "quote": "1 day AAA & DVT Ultrasound Course",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "1 day",
    "feeSource": "https://www.aiu.edu.au/ultrasound-courses/emergency/aaa-dvt-ultrasound/",
@@ -3658,7 +3572,7 @@
    },
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "aiu-return-to-clinical-practice",
    "name": "AIU Return to Clinical Practice Course",
    "providers": [
@@ -3678,7 +3592,7 @@
    "formatEvidence": {
     "sourceUrl": "https://www.aiu.edu.au/ultrasound-courses/sonography/sonographer-training-3day/",
     "quote": "3 days Return to Clinical Practice Course",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "3 days",
    "feeSource": "https://www.aiu.edu.au/ultrasound-courses/sonography/sonographer-training-3day/",
@@ -3701,7 +3615,7 @@
    },
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "aiu-introduction-to-obstetric-ultrasound",
    "name": "AIU Introduction to Obstetric Ultrasound Course",
    "providers": [
@@ -3721,17 +3635,17 @@
    "formatEvidence": {
     "sourceUrl": "https://www.aiu.edu.au/ultrasound-courses/obstetric/ob-basic-3day/",
     "quote": "3 days Introduction to Obstetric Ultrasound Course",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "3 days / 2 days",
    "feeSource": "https://www.aiu.edu.au/ultrasound-courses/obstetric/ob-basic-3day/",
-   "feeQuote": "25 Nov 2026 $ 4,100.00 Closed",
+   "feeQuote": "27 Jan 2027 $ 4,100.00 Book Now",
    "cpdNote": "page: \"ACEM Approved for Educational Activities 23 hours.\" (other colleges/points listed on the page): check provider",
    "otherEvidence": [
     {
      "sourceUrl": "https://www.aiu.edu.au/ultrasound-courses/obstetric/ob-basic-2day/",
      "quote": "Introduction to Obstetric Ultrasound Course",
-     "lastVerified": "2026-11-18"
+     "lastVerified": "2026-11-25"
     }
    ],
    "fromSource": "womens-gp",
@@ -3749,7 +3663,7 @@
    },
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "aiu-basic-emergency-medicine-ultrasound-pocus",
    "name": "AIU Basic Emergency Medicine Ultrasound Course (PoCUS)",
    "providers": [
@@ -3769,7 +3683,7 @@
    "formatEvidence": {
     "sourceUrl": "https://www.aiu.edu.au/ultrasound-courses/emergency/pocus-4day/",
     "quote": "4 days Basic Emergency Medicine Ultrasound Course (PoCUS)",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "4 days / 3 days / 5 days / 5.5 days",
    "feeSource": "https://www.aiu.edu.au/ultrasound-courses/emergency/pocus-4day/",
@@ -3779,17 +3693,17 @@
     {
      "sourceUrl": "https://www.aiu.edu.au/ultrasound-courses/emergency/pocus-3b/",
      "quote": "Basic Emergency Medicine Ultrasound Course (PoCUS)",
-     "lastVerified": "2026-11-18"
+     "lastVerified": "2026-11-25"
     },
     {
      "sourceUrl": "https://www.aiu.edu.au/ultrasound-courses/emergency/pocus-5day/",
      "quote": "Basic Emergency Medicine Ultrasound Course (PoCUS)",
-     "lastVerified": "2026-11-18"
+     "lastVerified": "2026-11-25"
     },
     {
      "sourceUrl": "https://www.aiu.edu.au/ultrasound-courses/emergency/pocus-6day/",
      "quote": "Basic Emergency Medicine Ultrasound Course (PoCUS)",
-     "lastVerified": "2026-11-18"
+     "lastVerified": "2026-11-25"
     }
    ],
    "fromSource": "womens-gp",
@@ -3807,7 +3721,7 @@
    },
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "aiu-lung-ultrasound",
    "name": "AIU Lung Ultrasound Course",
    "providers": [
@@ -3827,7 +3741,7 @@
    "formatEvidence": {
     "sourceUrl": "https://www.aiu.edu.au/ultrasound-courses/emergency/lung-ultrasound/",
     "quote": "0.5 day Lung Ultrasound Course",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "0.5 day",
    "feeSource": "https://www.aiu.edu.au/ultrasound-courses/emergency/lung-ultrasound/",
@@ -3849,7 +3763,7 @@
    },
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "aiu-ultrasound-in-rural-medicine",
    "name": "AIU Ultrasound in Rural Medicine Course",
    "providers": [
@@ -3869,22 +3783,22 @@
    "formatEvidence": {
     "sourceUrl": "https://www.aiu.edu.au/ultrasound-courses/doctors/rural-pocus-2day/",
     "quote": "2 days Ultrasound in Rural Medicine Course",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "2 days / 5 days / 3 days",
    "feeSource": "https://www.aiu.edu.au/ultrasound-courses/doctors/rural-pocus-2day/",
-   "feeQuote": "03 Dec 2026 $ 2,450.00 Book Now",
+   "feeQuote": "03 Dec 2026 $ 2,450.00 Closed",
    "cpdNote": "page: \"ACEM Approved for Educational Activities 15.5 hours.\" (other colleges/points listed on the page): check provider",
    "otherEvidence": [
     {
      "sourceUrl": "https://www.aiu.edu.au/ultrasound-courses/doctors/rural-pocus-5day/",
      "quote": "Ultrasound in Rural Medicine Course",
-     "lastVerified": "2026-11-18"
+     "lastVerified": "2026-11-25"
     },
     {
      "sourceUrl": "https://www.aiu.edu.au/ultrasound-courses/doctors/rural-pocus-3day/",
      "quote": "Ultrasound in Rural Medicine Course",
-     "lastVerified": "2026-11-18"
+     "lastVerified": "2026-11-25"
     }
    ],
    "fromSource": "womens-gp",
@@ -3902,7 +3816,7 @@
    },
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "aiu-rush-protocol",
    "name": "AIU RUSH Protocol Course",
    "providers": [
@@ -3922,11 +3836,11 @@
    "formatEvidence": {
     "sourceUrl": "https://www.aiu.edu.au/ultrasound-courses/emergency-medicine/rush-protocol-2day/",
     "quote": "2 days RUSH Protocol Course",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "2 days",
    "feeSource": "https://www.aiu.edu.au/ultrasound-courses/emergency-medicine/rush-protocol-2day/",
-   "feeQuote": "24 Nov 2026 $ 2,690.00 Closed",
+   "feeQuote": "09 Feb 2027 $ 2,690.00 Book Now",
    "cpdNote": "page: \"ACEM Approved for Educational Activities 15.25 hours.\" (other colleges/points listed on the page): check provider",
    "otherEvidence": [],
    "fromSource": "womens-gp",
@@ -3944,7 +3858,7 @@
    },
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "aiu-third-trimester-ultrasound-for-midwives",
    "name": "AIU Third Trimester Ultrasound Course for Midwives",
    "providers": [
@@ -3964,7 +3878,7 @@
    "formatEvidence": {
     "sourceUrl": "https://www.aiu.edu.au/ultrasound-courses/midwives/third-trimester-ultrasound/",
     "quote": "1 day Third Trimester Ultrasound Course for Midwives",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "1 day",
    "feeSource": "https://www.aiu.edu.au/ultrasound-courses/midwives/third-trimester-ultrasound/",
@@ -3987,7 +3901,7 @@
    },
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "aiu-intrapartum-ultrasound",
    "name": "AIU Intrapartum Ultrasound Course",
    "providers": [
@@ -4007,7 +3921,7 @@
    "formatEvidence": {
     "sourceUrl": "https://www.aiu.edu.au/ultrasound-courses/obstetric/intrapartum-ultrasound-2day/",
     "quote": "2 days Intrapartum Ultrasound Course",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "2 days",
    "feeSource": "https://www.aiu.edu.au/ultrasound-courses/obstetric/intrapartum-ultrasound-2day/",
@@ -4029,7 +3943,7 @@
    },
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "aiu-obstetric-ultrasound",
    "name": "AIU Obstetric Ultrasound Course",
    "providers": [
@@ -4049,7 +3963,7 @@
    "formatEvidence": {
     "sourceUrl": "https://www.aiu.edu.au/ultrasound-courses/obstetric/ob-gyn-5day/",
     "quote": "5 days Obstetric Ultrasound Course",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "5 days / 4 days",
    "feeSource": "https://www.aiu.edu.au/ultrasound-courses/obstetric/ob-gyn-5day/",
@@ -4059,7 +3973,7 @@
     {
      "sourceUrl": "https://www.aiu.edu.au/ultrasound-courses/obstetric/ob-gyn-4day/",
      "quote": "Obstetric Ultrasound Course",
-     "lastVerified": "2026-11-18"
+     "lastVerified": "2026-11-25"
     }
    ],
    "fromSource": "womens-gp",
@@ -4077,7 +3991,7 @@
    },
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "aiu-msk-ultrasound-upper-and-lower-limb",
    "name": "AIU MSK Ultrasound Course (Upper & Lower Limb)",
    "providers": [
@@ -4097,7 +4011,7 @@
    "formatEvidence": {
     "sourceUrl": "https://www.aiu.edu.au/ultrasound-courses/msk/upper-lower-limb-5day/",
     "quote": "5 days MSK Ultrasound Course (Upper & Lower Limb)",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "5 days",
    "feeSource": "https://www.aiu.edu.au/ultrasound-courses/msk/upper-lower-limb-5day/",
@@ -4119,7 +4033,7 @@
    },
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "aiu-paediatric-ultrasound",
    "name": "AIU Paediatric Ultrasound Course",
    "providers": [
@@ -4139,7 +4053,7 @@
    "formatEvidence": {
     "sourceUrl": "https://www.aiu.edu.au/ultrasound-courses/paediatric/paediatrician-5day/",
     "quote": "5 days Paediatric Ultrasound Course",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "5 days",
    "feeSource": "https://www.aiu.edu.au/ultrasound-courses/paediatric/paediatrician-5day/",
@@ -4161,7 +4075,7 @@
    },
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "aiu-point-of-care-ultrasound-pocus-refresher",
    "name": "AIU Point of Care Ultrasound (PoCUS) Refresher Course",
    "providers": [
@@ -4181,7 +4095,7 @@
    "formatEvidence": {
     "sourceUrl": "https://www.aiu.edu.au/ultrasound-courses/emergency/point-of-care-ref-3day/",
     "quote": "3 days Point of Care Ultrasound (PoCUS) Refresher Course",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "3 days",
    "feeSource": "https://www.aiu.edu.au/ultrasound-courses/emergency/point-of-care-ref-3day/",
@@ -4203,7 +4117,7 @@
    },
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "aiu-early-pregnancy-ultrasound",
    "name": "AIU Early Pregnancy Ultrasound Course",
    "providers": [
@@ -4223,7 +4137,7 @@
    "formatEvidence": {
     "sourceUrl": "https://www.aiu.edu.au/ultrasound-courses/emergency/basic-early-pregnancy-1day/",
     "quote": "0.5 day Early Pregnancy Ultrasound Course",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "0.5 day",
    "feeSource": "https://www.aiu.edu.au/ultrasound-courses/emergency/basic-early-pregnancy-1day/",
@@ -4245,7 +4159,7 @@
    },
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "aiu-ultrasound-in-soft-tissue",
    "name": "AIU Ultrasound in Soft Tissue Course",
    "providers": [
@@ -4265,11 +4179,11 @@
    "formatEvidence": {
     "sourceUrl": "https://www.aiu.edu.au/ultrasound-courses/emergency-medicine/soft-tissue-1day/",
     "quote": "1 day Ultrasound in Soft Tissue Course",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "1 day",
    "feeSource": "https://www.aiu.edu.au/ultrasound-courses/emergency-medicine/soft-tissue-1day/",
-   "feeQuote": "26 Nov 2026 $ 1,390.00 Book Now",
+   "feeQuote": "11 Feb 2027 $ 1,390.00 Closed",
    "cpdNote": "page: \"ACEM Approved for Educational Activities 7.75 hours.\" (other colleges/points listed on the page): check provider",
    "otherEvidence": [],
    "fromSource": "womens-gp",
@@ -4287,7 +4201,7 @@
    },
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "aiu-ultrasound-in-trauma-efast",
    "name": "AIU Ultrasound in Trauma (eFAST) Course",
    "providers": [
@@ -4307,7 +4221,7 @@
    "formatEvidence": {
     "sourceUrl": "https://www.aiu.edu.au/ultrasound-courses/emergency/efast-1day/",
     "quote": "1 day Ultrasound in Trauma (eFAST) Course",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "1 day",
    "feeSource": "https://www.aiu.edu.au/ultrasound-courses/emergency/efast-1day/",
@@ -4329,7 +4243,7 @@
    },
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "aiu-emergency-nurse-practitioner-ultrasound",
    "name": "AIU Emergency Nurse Practitioner Ultrasound Course",
    "providers": [
@@ -4349,7 +4263,7 @@
    "formatEvidence": {
     "sourceUrl": "https://www.aiu.edu.au/ultrasound-courses/nurses/nurse-practitioner-3day/",
     "quote": "3 days Emergency Nurse Practitioner Ultrasound Course",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "3 days",
    "feeSource": "https://www.aiu.edu.au/ultrasound-courses/nurses/nurse-practitioner-3day/",
@@ -4372,7 +4286,7 @@
    },
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "aiu-right-upper-quadrant-ultrasound-ruq",
    "name": "AIU Right Upper Quadrant Ultrasound Course (RUQ)",
    "providers": [
@@ -4392,11 +4306,11 @@
    "formatEvidence": {
     "sourceUrl": "https://www.aiu.edu.au/ultrasound-courses/emergency-medicine/right-upper-quadrant-ruq-ultrasound-1day/",
     "quote": "1 day Right Upper Quadrant Ultrasound Course (RUQ)",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "1 day",
    "feeSource": "https://www.aiu.edu.au/ultrasound-courses/emergency-medicine/right-upper-quadrant-ruq-ultrasound-1day/",
-   "feeQuote": "23 Nov 2026 $ 1,390.00 Closed",
+   "feeQuote": "08 Feb 2027 $ 1,390.00 Book Now",
    "cpdNote": "page: \"ACEM Approved for Educational Activities 7.75 hours.\" (other colleges/points listed on the page): check provider",
    "otherEvidence": [],
    "fromSource": "womens-gp",
@@ -4414,7 +4328,7 @@
    },
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "aiu-point-of-care-lung-ultrasound-gold-coast",
    "name": "AIU Point of Care Lung Ultrasound Course (Gold Coast)",
    "providers": [
@@ -4434,7 +4348,7 @@
    "formatEvidence": {
     "sourceUrl": "https://www.aiu.edu.au/ultrasound-courses/lung/pocus-lung-gc/",
     "quote": "2 days Point of Care Lung Ultrasound Course (Gold Coast)",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "2 days",
    "feeSource": "https://www.aiu.edu.au/ultrasound-courses/lung/pocus-lung-gc/",
@@ -4456,7 +4370,7 @@
    },
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "aiu-advanced-vascular-ultrasound",
    "name": "AIU Advanced Vascular Ultrasound Course",
    "providers": [
@@ -4476,7 +4390,7 @@
    "formatEvidence": {
     "sourceUrl": "https://www.aiu.edu.au/ultrasound-courses/vascular/av-4day/",
     "quote": "4 days Advanced Vascular Ultrasound Course",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "4 days",
    "feeSource": "https://www.aiu.edu.au/ultrasound-courses/vascular/av-4day/",
@@ -4498,7 +4412,7 @@
    },
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "aiu-fels-and-lung-ultrasound-anaesthetics",
    "name": "AIU FELS & Lung Ultrasound Course (Anaesthetics)",
    "providers": [
@@ -4518,7 +4432,7 @@
    "formatEvidence": {
     "sourceUrl": "https://www.aiu.edu.au/ultrasound-courses/anaesthetics/fels-2day/",
     "quote": "2 days FELS & Lung Ultrasound Course (Anaesthetics)",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "2 days",
    "feeSource": "https://www.aiu.edu.au/ultrasound-courses/anaesthetics/fels-2day/",
@@ -4540,7 +4454,7 @@
    },
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "aiu-ultrasound-in-anaesthetics",
    "name": "AIU Ultrasound in Anaesthetics Course",
    "providers": [
@@ -4560,7 +4474,7 @@
    "formatEvidence": {
     "sourceUrl": "https://www.aiu.edu.au/ultrasound-courses/anaesthetics/anaesthesia-4day/",
     "quote": "4 days Ultrasound in Anaesthetics Course",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "4 days",
    "feeSource": "https://www.aiu.edu.au/ultrasound-courses/anaesthetics/anaesthesia-4day/",
@@ -4582,7 +4496,7 @@
    },
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "aiu-nerve-block-ultrasound-anaesthetics",
    "name": "AIU Nerve Block Ultrasound Course (Anaesthetics)",
    "providers": [
@@ -4602,7 +4516,7 @@
    "formatEvidence": {
     "sourceUrl": "https://www.aiu.edu.au/ultrasound-courses/anaesthetics/guided-nerve-blocks-2day/",
     "quote": "2 days Nerve Block Ultrasound Course (Anaesthetics)",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "2 days",
    "feeSource": "https://www.aiu.edu.au/ultrasound-courses/anaesthetics/guided-nerve-blocks-2day/",
@@ -4624,7 +4538,7 @@
    },
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "aiu-basic-echo",
    "name": "AIU Basic Echo Course",
    "providers": [
@@ -4644,7 +4558,7 @@
    "formatEvidence": {
     "sourceUrl": "https://www.aiu.edu.au/ultrasound-courses/cardiac/basic-echo-5day/",
     "quote": "5 days Basic Echo Course",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "5 days",
    "feeSource": "https://www.aiu.edu.au/ultrasound-courses/cardiac/basic-echo-5day/",
@@ -4666,7 +4580,7 @@
    },
    "cpdHours": 0,
    "verified": true,
-   "lastVerified": "2026-11-18",
+   "lastVerified": "2026-11-25",
    "id": "aiu-procedural-guidance-ultrasound",
    "name": "AIU Procedural Guidance Ultrasound Course",
    "providers": [
@@ -4686,7 +4600,7 @@
    "formatEvidence": {
     "sourceUrl": "https://www.aiu.edu.au/ultrasound-courses/emergency/guided-procedures-1day/",
     "quote": "1 day Procedural Guidance Ultrasound Course",
-    "lastVerified": "2026-11-18"
+    "lastVerified": "2026-11-25"
    },
    "typicalLength": "1 day",
    "feeSource": "https://www.aiu.edu.au/ultrasound-courses/emergency/guided-procedures-1day/",
@@ -5987,6 +5901,75 @@
    "cpdNote": "check provider",
    "notes": "CRANAplus is the peak body for the remote and isolated health workforce. Sessions are listed with a start date only; the end date is worked out from the stated workshop length.",
    "fromSource": "aunz-wave2"
+  },
+  {
+   "id": "basic-icu",
+   "name": "Basic Assessment and Support in Intensive Care (BASIC)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "BASIC course collaboration (The Chinese University of Hong Kong)",
+     "url": "https://www.aic.cuhk.edu.hk/basic/",
+     "verified": true,
+     "calendar": "https://www.aic.cuhk.edu.hk/basic/registration.php"
+    },
+    {
+     "name": "Sir Charles Gairdner Hospital ICU (SCGH Simulation Centre)",
+     "url": "https://scgh.health.wa.gov.au/",
+     "verified": true,
+     "calendar": "https://scgh.health.wa.gov.au/For-Health-Professionals/Sim/Courses/Basic"
+    },
+    {
+     "name": "Health NZ Hawke's Bay (Hawke's Bay Fallen Soldiers' Memorial Hospital)",
+     "url": "https://www.healthnz.govt.nz/",
+     "verified": true,
+     "calendar": "https://www.healthnz.govt.nz/health-professionals/workforce-development/training-and-career-development/district-region/hawkes-bay"
+    }
+   ],
+   "countries": [
+    "AU",
+    "NZ"
+   ],
+   "format": "Two-day course on the essentials of intensive care for junior doctors: lectures, skill stations (airway, mechanical ventilation, shock, trauma) and tutorials.",
+   "formatEvidence": {
+    "sourceUrl": "https://scgh.health.wa.gov.au/For-Health-Professionals/Sim/Courses/Basic",
+    "quote": "This two-day course covers the essential elements of Intensive Care medicine, pitched at junior doctors entering into critical care environments.",
+    "lastVerified": "2026-11-25"
+   },
+   "typicalLength": "2 days",
+   "cpdNote": "check provider",
+   "notes": "Run by hospital ICU departments under the BASIC course collaboration based at CUHK. Course runners list sessions on the collaboration's registration page or on their own hospital page; some register by email only.",
+   "fromSource": "aunz-wave4"
+  },
+  {
+   "id": "ten360-critically-ill-child",
+   "name": "TEN-360: Critically Ill Child (two-day paediatric emergency workshop)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "TEN-360 Training Education Network",
+     "url": "https://events.humanitix.com/ten-360-critically-ill-child-2027",
+     "verified": true,
+     "calendar": "https://events.humanitix.com/ten-360-critically-ill-child-2027"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "format": "Two-day workshop on recognising and managing the seriously ill child: paediatric resuscitation (day 1), neurological emergencies, pain and sedation (day 2), with skills stations and simulations.",
+   "formatEvidence": {
+    "sourceUrl": "https://events.humanitix.com/ten-360-critically-ill-child-2027",
+    "quote": "By the end of the two days you should be confident to recognise and initiate emergency management for the majority of paediatric emergencies you will encounter in your clinical practice.",
+    "lastVerified": "2026-11-25"
+   },
+   "typicalLength": "2 days",
+   "cpdNote": "check provider",
+   "notes": "Booked through the provider's Humanitix event page.",
+   "fromSource": "aunz-wave4"
   }
  ]
 }
