@@ -33,7 +33,7 @@ const valid = c => {
   for (const k of REQ) if (c[k] == null || c[k] === '') return 'missing ' + k;
   if (!/^[a-z0-9-]{3,80}$/.test(c.id)) return 'bad id';
   if (!/^\d{4}-\d{2}-\d{2}$/.test(c.start) || !/^\d{4}-\d{2}-\d{2}$/.test(c.end) || isNaN(Date.parse(c.start)) || isNaN(Date.parse(c.end)) || c.end < c.start) return 'bad dates';
-  if (c.start < '2026-11-01' || c.start > '2028-12-31') return 'out of range';
+  if (c.start < '2026-11-01' || c.start > '2029-12-31') return 'out of range';
   if (!/^https:\/\//.test(c.url)) return 'url must be https';
   if (!/^[A-Z]{2}$/.test(c.countryCode)) return 'bad countryCode';
   if (!REGIONS.has(c.region)) return 'bad region';

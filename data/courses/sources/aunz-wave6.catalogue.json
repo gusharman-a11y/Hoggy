@@ -1,0 +1,55 @@
+{
+ "generated": "2026-11-25",
+ "note": "Single-page AU course runs read 25 Nov 2026: the South Australian Critical Care Ultrasound Course (saica.com.au) and the SunSmart / ACD dermoscopy workshop day.",
+ "courses": [
+  {
+   "id": "sa-critical-care-ultrasound",
+   "name": "The South Australian Critical Care Ultrasound Course (two days)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "SAICA (South Australian intensive care education site)",
+     "url": "https://saica.com.au/course_echo.php",
+     "verified": true
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "typicalLength": "2 days",
+   "formatEvidence": {
+    "sourceUrl": "https://saica.com.au/course_echo.php",
+    "quote": "This two-day course is an introduction to the use of ultrasound in the critical care environment.",
+    "lastVerified": "2026-11-25"
+   },
+   "notes": "Two-day introduction to critical care ultrasound for doctors in acute or critical care (PGY2 and above), taught by intensive care and emergency specialists; the page says CICM accredits it for training."
+  },
+  {
+   "id": "sunsmart-acd-practical-dermoscopy",
+   "name": "Dermoscopy for Victorian General Practice: ACD Practical Dermoscopy course (face-to-face day)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "SunSmart (Cancer Council Victoria)",
+     "url": "https://www.sunsmart.com.au/skin-cancer/health-professionals/dermoscopy-victorian-general-practice-program",
+     "verified": true
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "formatEvidence": {
+    "sourceUrl": "https://www.sunsmart.com.au/skin-cancer/health-professionals/dermoscopy-victorian-general-practice-program",
+    "quote": "They will then be enrolled into the Australasian College of Dermatologists Practical Dermoscopy course (outlined below) which runs from 8 February to 31 May 2027.",
+    "lastVerified": "2026-11-25"
+   },
+   "notes": "Funded program for Victorian general practice: online modules plus one face-to-face workshop day; participants apply to SunSmart."
+  }
+ ]
+}

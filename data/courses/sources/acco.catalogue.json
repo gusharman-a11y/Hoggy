@@ -1,0 +1,86 @@
+{
+ "generated": "2026-11-25",
+ "note": "ACCO (Australasian College of Cutaneous Oncology): 2027 workshop dates from acco.edu.au/calendar, read 25 Nov 2026. The 'Combined Essentials and Dermoscopy' booking option is the same two workshops and is not counted again.",
+ "courses": [
+  {
+   "id": "acco-essentials",
+   "name": "ACCO Essentials workshop (skin cancer, two days)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Australasian College of Cutaneous Oncology (ACCO)",
+     "url": "https://acco.edu.au/calendar",
+     "verified": true,
+     "calendar": "https://acco.edu.au/calendar"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "notes": "Skin cancer workshop for doctors run by the Australasian College of Cutaneous Oncology in Melbourne (Docklands). Workshop prices include 12 months ACCO membership."
+  },
+  {
+   "id": "acco-dermoscopy",
+   "name": "ACCO Dermoscopy workshop (two days)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Australasian College of Cutaneous Oncology (ACCO)",
+     "url": "https://acco.edu.au/calendar",
+     "verified": true,
+     "calendar": "https://acco.edu.au/calendar"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "notes": "Skin cancer workshop for doctors run by the Australasian College of Cutaneous Oncology in Melbourne (Docklands). Workshop prices include 12 months ACCO membership."
+  },
+  {
+   "id": "acco-flap-and-graft",
+   "name": "ACCO Flap and Graft workshop (four face-to-face days plus three online modules)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Australasian College of Cutaneous Oncology (ACCO)",
+     "url": "https://acco.edu.au/calendar",
+     "verified": true,
+     "calendar": "https://acco.edu.au/calendar"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "notes": "Skin cancer workshop for doctors run by the Australasian College of Cutaneous Oncology in Melbourne (Docklands). Workshop prices include 12 months ACCO membership."
+  },
+  {
+   "id": "acco-face-and-ear",
+   "name": "ACCO Face and Ear workshop (three days)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Australasian College of Cutaneous Oncology (ACCO)",
+     "url": "https://acco.edu.au/calendar",
+     "verified": true,
+     "calendar": "https://acco.edu.au/calendar"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "notes": "Skin cancer workshop for doctors run by the Australasian College of Cutaneous Oncology in Melbourne (Docklands). Workshop prices include 12 months ACCO membership."
+  }
+ ]
+}

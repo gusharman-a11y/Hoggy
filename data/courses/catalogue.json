@@ -5735,6 +5735,237 @@
    "fromSource": "intl"
   },
   {
+   "id": "acco-essentials",
+   "name": "ACCO Essentials workshop (skin cancer, two days)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Australasian College of Cutaneous Oncology (ACCO)",
+     "url": "https://acco.edu.au/calendar",
+     "verified": true,
+     "calendar": "https://acco.edu.au/calendar"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "notes": "Skin cancer workshop for doctors run by the Australasian College of Cutaneous Oncology in Melbourne (Docklands). Workshop prices include 12 months ACCO membership.",
+   "fromSource": "acco"
+  },
+  {
+   "id": "acco-dermoscopy",
+   "name": "ACCO Dermoscopy workshop (two days)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Australasian College of Cutaneous Oncology (ACCO)",
+     "url": "https://acco.edu.au/calendar",
+     "verified": true,
+     "calendar": "https://acco.edu.au/calendar"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "notes": "Skin cancer workshop for doctors run by the Australasian College of Cutaneous Oncology in Melbourne (Docklands). Workshop prices include 12 months ACCO membership.",
+   "fromSource": "acco"
+  },
+  {
+   "id": "acco-flap-and-graft",
+   "name": "ACCO Flap and Graft workshop (four face-to-face days plus three online modules)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Australasian College of Cutaneous Oncology (ACCO)",
+     "url": "https://acco.edu.au/calendar",
+     "verified": true,
+     "calendar": "https://acco.edu.au/calendar"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "notes": "Skin cancer workshop for doctors run by the Australasian College of Cutaneous Oncology in Melbourne (Docklands). Workshop prices include 12 months ACCO membership.",
+   "fromSource": "acco"
+  },
+  {
+   "id": "acco-face-and-ear",
+   "name": "ACCO Face and Ear workshop (three days)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Australasian College of Cutaneous Oncology (ACCO)",
+     "url": "https://acco.edu.au/calendar",
+     "verified": true,
+     "calendar": "https://acco.edu.au/calendar"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "notes": "Skin cancer workshop for doctors run by the Australasian College of Cutaneous Oncology in Melbourne (Docklands). Workshop prices include 12 months ACCO membership.",
+   "fromSource": "acco"
+  },
+  {
+   "id": "alfred-icu-prime",
+   "name": "PRIME: Practical Introduction to Modern Intensive Care (Alfred ICU, two days)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "The Alfred ICU (Intensive Care Academic Centre, Alfred Health)",
+     "url": "https://www.alfredicu.org.au/courses",
+     "verified": true,
+     "calendar": "https://www.alfredicu.org.au/courses"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "notes": "Two-day course for trainees early in intensive care training; the page says it is accredited by CICM.",
+   "fromSource": "alfred-icu"
+  },
+  {
+   "id": "alfred-icu-abc-cicm-second-part",
+   "name": "ABC: Alfred Bootcamp for the CICM Second Part Clinical Exam (two days)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "The Alfred ICU (Intensive Care Academic Centre, Alfred Health)",
+     "url": "https://www.alfredicu.org.au/courses",
+     "verified": true,
+     "calendar": "https://www.alfredicu.org.au/courses"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "notes": "Two-day preparation course for CICM Second Part clinical exam candidates.",
+   "fromSource": "alfred-icu"
+  },
+  {
+   "id": "alfred-icu-adult-foundation-ecmo",
+   "name": "Adult Foundation ECMO Course (Alfred ICU with VECMOS, four days)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "The Alfred ICU (Intensive Care Academic Centre, Alfred Health)",
+     "url": "https://www.alfredicu.org.au/courses",
+     "verified": true,
+     "calendar": "https://www.alfredicu.org.au/courses"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "notes": "Four-day foundation ECMO course for doctors, nurses, perfusionists and allied health, run by the Alfred ICU with VECMOS.",
+   "fromSource": "alfred-icu"
+  },
+  {
+   "id": "alfred-icu-fbi",
+   "name": "FBI: Flexible Bronchoscopy and Intubation in Critical Care (Alfred ICU, one day)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "The Alfred ICU (Intensive Care Academic Centre, Alfred Health)",
+     "url": "https://www.alfredicu.org.au/courses",
+     "verified": true,
+     "calendar": "https://www.alfredicu.org.au/courses"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "notes": "One-day bronchoscopy and airway course for critical care clinicians.",
+   "fromSource": "alfred-icu"
+  },
+  {
+   "id": "alfred-icu-critically-ill-airway",
+   "name": "CIA: Critically Ill Airway (Alfred ICU, two days)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "The Alfred ICU (Intensive Care Academic Centre, Alfred Health)",
+     "url": "https://www.alfredicu.org.au/courses",
+     "verified": true,
+     "calendar": "https://www.alfredicu.org.au/courses"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "notes": "Two-day simulation-based course on airway crises in the critically ill, at the Alfred Simulation Centre.",
+   "fromSource": "alfred-icu"
+  },
+  {
+   "id": "alfred-icu-basic-echo",
+   "name": "Alfred ICU Critical Care Echocardiography Course (Basic, two days)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "The Alfred ICU (Intensive Care Academic Centre, Alfred Health)",
+     "url": "https://www.alfredicu.org.au/courses",
+     "verified": true,
+     "calendar": "https://www.alfredicu.org.au/courses"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "notes": "Two-day practical TTE course for critical care practitioners, limited to 20 participants.",
+   "fromSource": "alfred-icu"
+  },
+  {
+   "id": "alfred-icu-advanced-echo",
+   "name": "Alfred Comprehensive Critical Care Echocardiography (ACCCE) Course (Advanced, two days)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "The Alfred ICU (Intensive Care Academic Centre, Alfred Health)",
+     "url": "https://www.alfredicu.org.au/courses",
+     "verified": true,
+     "calendar": "https://www.alfredicu.org.au/courses"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "notes": "Two-day advanced TTE course for critical care doctors beyond a basic level.",
+   "fromSource": "alfred-icu"
+  },
+  {
    "id": "crana-rec",
    "name": "Remote Emergency Care (REC), CRANAplus",
    "cpdHours": 0,
@@ -5971,6 +6202,57 @@
    "fromSource": "aunz-wave4"
   },
   {
+   "id": "sa-critical-care-ultrasound",
+   "name": "The South Australian Critical Care Ultrasound Course (two days)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "SAICA (South Australian intensive care education site)",
+     "url": "https://saica.com.au/course_echo.php",
+     "verified": true
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "typicalLength": "2 days",
+   "formatEvidence": {
+    "sourceUrl": "https://saica.com.au/course_echo.php",
+    "quote": "This two-day course is an introduction to the use of ultrasound in the critical care environment.",
+    "lastVerified": "2026-11-25"
+   },
+   "notes": "Two-day introduction to critical care ultrasound for doctors in acute or critical care (PGY2 and above), taught by intensive care and emergency specialists; the page says CICM accredits it for training.",
+   "fromSource": "aunz-wave6"
+  },
+  {
+   "id": "sunsmart-acd-practical-dermoscopy",
+   "name": "Dermoscopy for Victorian General Practice: ACD Practical Dermoscopy course (face-to-face day)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "SunSmart (Cancer Council Victoria)",
+     "url": "https://www.sunsmart.com.au/skin-cancer/health-professionals/dermoscopy-victorian-general-practice-program",
+     "verified": true
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "formatEvidence": {
+    "sourceUrl": "https://www.sunsmart.com.au/skin-cancer/health-professionals/dermoscopy-victorian-general-practice-program",
+    "quote": "They will then be enrolled into the Australasian College of Dermatologists Practical Dermoscopy course (outlined below) which runs from 8 February to 31 May 2027.",
+    "lastVerified": "2026-11-25"
+   },
+   "notes": "Funded program for Victorian general practice: online modules plus one face-to-face workshop day; participants apply to SunSmart.",
+   "fromSource": "aunz-wave6"
+  },
+  {
    "id": "emugs-pocus-fundamentals-egls",
    "name": "EMUGS POCUS Fundamentals Course / EGLS Course (two days)",
    "cpdHours": 0,
@@ -5991,6 +6273,75 @@
    "cpdNote": "check provider",
    "notes": "Two-day point-of-care ultrasound fundamentals course (with the Echo-Guided Life Support module) run by EMUGS. Booked on Humanitix.",
    "fromSource": "emugs-nz"
+  },
+  {
+   "id": "healthcert-aesthetic-medicine-workshop",
+   "name": "HealthCert Aesthetic Medicine Practical Workshop (one day)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "HealthCert Education",
+     "url": "https://www.healthcert.com/workshops/calendar",
+     "verified": true,
+     "calendar": "https://www.healthcert.com/workshops/calendar"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "providerType": "commercial",
+   "typicalLength": "1 day",
+   "notes": "Hands-on aesthetic medicine workshop day for doctors, booked as part of HealthCert's aesthetic medicine certificate.",
+   "fromSource": "healthcert-aesthetic"
+  },
+  {
+   "id": "healthcert-complex-aesthetic-medicine-workshop",
+   "name": "HealthCert Complex Aesthetic Medicine Practical Workshop (one day)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "HealthCert Education",
+     "url": "https://www.healthcert.com/workshops/calendar",
+     "verified": true,
+     "calendar": "https://www.healthcert.com/workshops/calendar"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "providerType": "commercial",
+   "typicalLength": "1 day",
+   "notes": "Hands-on complex aesthetic medicine workshop day for doctors, booked as part of HealthCert's aesthetic medicine certificate.",
+   "fromSource": "healthcert-aesthetic"
+  },
+  {
+   "id": "healthcert-advanced-aesthetic-medicine-workshop",
+   "name": "HealthCert Advanced Aesthetic Medicine Practical Workshop (one day)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "HealthCert Education",
+     "url": "https://www.healthcert.com/workshops/calendar",
+     "verified": true,
+     "calendar": "https://www.healthcert.com/workshops/calendar"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "providerType": "commercial",
+   "typicalLength": "1 day",
+   "notes": "Hands-on advanced aesthetic medicine workshop day for doctors, booked as part of HealthCert's aesthetic medicine certificate.",
+   "fromSource": "healthcert-aesthetic"
   },
   {
    "id": "healthcert-dermoscopy-masterclass",
@@ -6049,6 +6400,303 @@
    "cpdNote": "check provider",
    "notes": "Advanced skin cancer masterclass for doctors already practising skin cancer medicine.",
    "fromSource": "healthcert-masterclass"
+  },
+  {
+   "id": "lightbox-ct-acute-interpretation",
+   "name": "Lightbox CT: Acute Medical and Surgical Interpretation Essentials",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Lightbox Radiology Education",
+     "url": "https://lightboxradiology.com/radiology-courses.aspx",
+     "verified": true,
+     "calendar": "https://lightboxradiology.com/radiology-courses.aspx",
+     "bookingPlatform": "Lightbox Radiology Education (lightboxradiology.com)"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "NZ",
+    "AU"
+   ],
+   "providerType": "commercial",
+   "notes": "Commercial radiology and ultrasound education provider (Noosaville QLD). Introduction to CT interpretation in the acute clinical setting. Fees on the course page.",
+   "fromSource": "lightbox-radiology"
+  },
+  {
+   "id": "lightbox-msk-spine-hip-shoulder",
+   "name": "Lightbox Musculoskeletal Imaging: Spine, Hip and Shoulder Interpretation Essentials (one day)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Lightbox Radiology Education",
+     "url": "https://lightboxradiology.com/radiology-courses.aspx",
+     "verified": true,
+     "calendar": "https://lightboxradiology.com/radiology-courses.aspx",
+     "bookingPlatform": "Lightbox Radiology Education (lightboxradiology.com)"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "providerType": "commercial",
+   "notes": "Commercial radiology and ultrasound education provider (Noosaville QLD). Structured approach to imaging of the axial skeleton and proximal joints. Fees on the course page.",
+   "fromSource": "lightbox-radiology"
+  },
+  {
+   "id": "lightbox-us-guided-piv-cannulation",
+   "name": "Lightbox Ultrasound-Guided Peripheral IV Cannulation (two-hour workshop)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Lightbox Radiology Education",
+     "url": "https://lightboxradiology.com/radiology-courses.aspx",
+     "verified": true,
+     "calendar": "https://lightboxradiology.com/radiology-courses.aspx",
+     "bookingPlatform": "Lightbox Radiology Education (lightboxradiology.com)"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "providerType": "commercial",
+   "notes": "Commercial radiology and ultrasound education provider (Noosaville QLD). Hands-on ultrasound-guided vascular access workshop. Fees on the course page.",
+   "fromSource": "lightbox-radiology"
+  },
+  {
+   "id": "lightbox-pocus",
+   "name": "Lightbox Ultrasound: Point of Care (PoCUS, one day)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Lightbox Radiology Education",
+     "url": "https://lightboxradiology.com/radiology-courses.aspx",
+     "verified": true,
+     "calendar": "https://lightboxradiology.com/radiology-courses.aspx",
+     "bookingPlatform": "Lightbox Radiology Education (lightboxradiology.com)"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "providerType": "commercial",
+   "notes": "Commercial radiology and ultrasound education provider (Noosaville QLD). Foundational point-of-care ultrasound skills. Fees on the course page.",
+   "fromSource": "lightbox-radiology"
+  },
+  {
+   "id": "lightbox-critical-care-ultrasound",
+   "name": "Lightbox Ultrasound: Critical Care (two days)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Lightbox Radiology Education",
+     "url": "https://lightboxradiology.com/radiology-courses.aspx",
+     "verified": true,
+     "calendar": "https://lightboxradiology.com/radiology-courses.aspx",
+     "bookingPlatform": "Lightbox Radiology Education (lightboxradiology.com)"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "providerType": "commercial",
+   "notes": "Commercial radiology and ultrasound education provider (Noosaville QLD). Bedside ultrasound for critical care clinicians, with a focus on RUSH and ultrasound-guided intervention. Fees on the course page.",
+   "fromSource": "lightbox-radiology"
+  },
+  {
+   "id": "rmh-crash",
+   "name": "CRASH: Critical Care, Resuscitation and Airway Skills in High Fidelity Simulation (RMH, one day)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "The Royal Melbourne Hospital",
+     "url": "https://www.thermh.org.au/health-professionals/training-courses/anaesthesia-pain-management-courses",
+     "verified": true,
+     "calendar": "https://www.thermh.org.au/news/events"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "typicalLength": "1 day",
+   "formatEvidence": {
+    "sourceUrl": "https://www.thermh.org.au/news/events",
+    "quote": "The Critical Care, Resuscitation and Airway Skills in High Fidelity Simulation (CRASH) course is designed to support anaesthetists returning to work.",
+    "lastVerified": "2026-11-25"
+   },
+   "notes": "One-day high-fidelity simulation course for anaesthetists returning to work, run by the RMH Department of Anaesthesia and Pain Management.",
+   "fromSource": "rmh-courses"
+  },
+  {
+   "id": "rmh-react",
+   "name": "REACT: Resuscitation and Acute Catheter Lab Emergencies (RMH, one day)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "The Royal Melbourne Hospital Intensive Care Unit",
+     "url": "https://events.humanitix.com/host/the-rmh-intensive-care-unit",
+     "verified": true,
+     "calendar": "https://events.humanitix.com/host/the-rmh-intensive-care-unit"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "typicalLength": "1 day",
+   "notes": "One-day simulation course on resuscitation and emergencies in the cardiac catheter laboratory, run at the RMH Cardiology Department.",
+   "fromSource": "rmh-courses"
+  },
+  {
+   "id": "rmh-advanced-critical-care-echo",
+   "name": "RMH Advanced Critical Care Echocardiography Course (TTE, two days)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "The Royal Melbourne Hospital Intensive Care Unit",
+     "url": "https://events.humanitix.com/host/the-rmh-intensive-care-unit",
+     "verified": true,
+     "calendar": "https://events.humanitix.com/host/the-rmh-intensive-care-unit"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "typicalLength": "2 days",
+   "notes": "Two-day advanced transthoracic echocardiography course for critical care doctors, run by the RMH Intensive Care Unit.",
+   "fromSource": "rmh-courses"
+  },
+  {
+   "id": "rmh-foundation-critical-care-echo",
+   "name": "RMH Critical Care Foundation Echocardiography Course (TTE)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "The Royal Melbourne Hospital Intensive Care Unit",
+     "url": "https://events.humanitix.com/host/the-rmh-intensive-care-unit",
+     "verified": true,
+     "calendar": "https://events.humanitix.com/host/the-rmh-intensive-care-unit"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "typicalLength": "2 days",
+   "notes": "Foundation transthoracic echocardiography course for critical care doctors, run by the RMH Intensive Care Unit; the listing gives the two face-to-face days.",
+   "fromSource": "rmh-courses"
+  },
+  {
+   "id": "scssc-emac",
+   "name": "EMAC: Effective Management of Anaesthetic Crises (SCSSC, two and a half days)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Sydney Clinical Skills and Simulation Centre (SCSSC), Royal North Shore Hospital",
+     "url": "https://www.sim.scssc.edu.au/Courses/emac",
+     "verified": true,
+     "calendar": "https://www.sim.scssc.edu.au/bookings"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "typicalLength": "2 1/2 days",
+   "notes": "ANZCA EMAC course for anaesthetists and anaesthetic registrars at the SCSSC simulation centre, Royal North Shore Hospital.",
+   "fromSource": "scssc"
+  },
+  {
+   "id": "scssc-attaac",
+   "name": "ATTAAC: Advanced Technical and Teamwork Training for Anaesthetic Airway Crises (SCSSC, two days)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Sydney Clinical Skills and Simulation Centre (SCSSC), Royal North Shore Hospital",
+     "url": "https://www.sim.scssc.edu.au/Courses/attaac",
+     "verified": true,
+     "calendar": "https://www.sim.scssc.edu.au/bookings"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "typicalLength": "2 days",
+   "notes": "Two-day course on anticipated difficult and unanticipated emergency airways for anaesthetists and anaesthetic trainees.",
+   "fromSource": "scssc"
+  },
+  {
+   "id": "scssc-paediatric-emergencies-anaesthetist",
+   "name": "Paediatric Emergencies: Essential Skills for the Occasional Paediatric Anaesthetist (SCSSC, one day)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Sydney Clinical Skills and Simulation Centre (SCSSC), Royal North Shore Hospital",
+     "url": "https://www.sim.scssc.edu.au/Courses/paediatric-emergencies%3A-essential-skills-for-the--occasional-paediatric-anaesthetist",
+     "verified": true,
+     "calendar": "https://www.sim.scssc.edu.au/bookings"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "typicalLength": "1 day",
+   "notes": "One-day simulation course on paediatric anaesthetic emergencies for anaesthetists who see children occasionally.",
+   "fromSource": "scssc"
+  },
+  {
+   "id": "scssc-safe-procedural-sedation",
+   "name": "Safe Procedural Sedation Course (SCSSC, one day)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Sydney Clinical Skills and Simulation Centre (SCSSC), Royal North Shore Hospital",
+     "url": "https://www.sim.scssc.edu.au/Courses/safe-procedural-sedation",
+     "verified": true,
+     "calendar": "https://www.sim.scssc.edu.au/bookings"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "typicalLength": "1 day",
+   "notes": "One-day e-learning, workshop and simulation course on conscious sedation outside the operating theatre.",
+   "fromSource": "scssc"
   },
   {
    "id": "dstc-datc",

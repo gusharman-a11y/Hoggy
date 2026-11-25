@@ -1,0 +1,117 @@
+{
+ "generated": "2026-11-25",
+ "note": "Lightbox Radiology Education: AU/NZ course dates from lightboxradiology.com's own course finder, read 25 Nov 2026 (courses abroad and the nurse practitioner course left out).",
+ "courses": [
+  {
+   "id": "lightbox-ct-acute-interpretation",
+   "name": "Lightbox CT: Acute Medical and Surgical Interpretation Essentials",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Lightbox Radiology Education",
+     "url": "https://lightboxradiology.com/radiology-courses.aspx",
+     "verified": true,
+     "calendar": "https://lightboxradiology.com/radiology-courses.aspx",
+     "bookingPlatform": "Lightbox Radiology Education (lightboxradiology.com)"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "NZ",
+    "AU"
+   ],
+   "providerType": "commercial",
+   "notes": "Commercial radiology and ultrasound education provider (Noosaville QLD). Introduction to CT interpretation in the acute clinical setting. Fees on the course page."
+  },
+  {
+   "id": "lightbox-msk-spine-hip-shoulder",
+   "name": "Lightbox Musculoskeletal Imaging: Spine, Hip and Shoulder Interpretation Essentials (one day)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Lightbox Radiology Education",
+     "url": "https://lightboxradiology.com/radiology-courses.aspx",
+     "verified": true,
+     "calendar": "https://lightboxradiology.com/radiology-courses.aspx",
+     "bookingPlatform": "Lightbox Radiology Education (lightboxradiology.com)"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "providerType": "commercial",
+   "notes": "Commercial radiology and ultrasound education provider (Noosaville QLD). Structured approach to imaging of the axial skeleton and proximal joints. Fees on the course page."
+  },
+  {
+   "id": "lightbox-us-guided-piv-cannulation",
+   "name": "Lightbox Ultrasound-Guided Peripheral IV Cannulation (two-hour workshop)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Lightbox Radiology Education",
+     "url": "https://lightboxradiology.com/radiology-courses.aspx",
+     "verified": true,
+     "calendar": "https://lightboxradiology.com/radiology-courses.aspx",
+     "bookingPlatform": "Lightbox Radiology Education (lightboxradiology.com)"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "providerType": "commercial",
+   "notes": "Commercial radiology and ultrasound education provider (Noosaville QLD). Hands-on ultrasound-guided vascular access workshop. Fees on the course page."
+  },
+  {
+   "id": "lightbox-pocus",
+   "name": "Lightbox Ultrasound: Point of Care (PoCUS, one day)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Lightbox Radiology Education",
+     "url": "https://lightboxradiology.com/radiology-courses.aspx",
+     "verified": true,
+     "calendar": "https://lightboxradiology.com/radiology-courses.aspx",
+     "bookingPlatform": "Lightbox Radiology Education (lightboxradiology.com)"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "providerType": "commercial",
+   "notes": "Commercial radiology and ultrasound education provider (Noosaville QLD). Foundational point-of-care ultrasound skills. Fees on the course page."
+  },
+  {
+   "id": "lightbox-critical-care-ultrasound",
+   "name": "Lightbox Ultrasound: Critical Care (two days)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Lightbox Radiology Education",
+     "url": "https://lightboxradiology.com/radiology-courses.aspx",
+     "verified": true,
+     "calendar": "https://lightboxradiology.com/radiology-courses.aspx",
+     "bookingPlatform": "Lightbox Radiology Education (lightboxradiology.com)"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "providerType": "commercial",
+   "notes": "Commercial radiology and ultrasound education provider (Noosaville QLD). Bedside ultrasound for critical care clinicians, with a focus on RUSH and ultrasound-guided intervention. Fees on the course page."
+  }
+ ]
+}

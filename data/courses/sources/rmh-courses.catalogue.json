@@ -1,0 +1,95 @@
+{
+ "generated": "2026-11-25",
+ "note": "The Royal Melbourne Hospital: ALS2 and CRASH dates from thermh.org.au/news/events; ICU courses from the RMH ICU's own Humanitix host page; read 25 Nov 2026.",
+ "courses": [
+  {
+   "id": "rmh-crash",
+   "name": "CRASH: Critical Care, Resuscitation and Airway Skills in High Fidelity Simulation (RMH, one day)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "The Royal Melbourne Hospital",
+     "url": "https://www.thermh.org.au/health-professionals/training-courses/anaesthesia-pain-management-courses",
+     "verified": true,
+     "calendar": "https://www.thermh.org.au/news/events"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "typicalLength": "1 day",
+   "formatEvidence": {
+    "sourceUrl": "https://www.thermh.org.au/news/events",
+    "quote": "The Critical Care, Resuscitation and Airway Skills in High Fidelity Simulation (CRASH) course is designed to support anaesthetists returning to work.",
+    "lastVerified": "2026-11-25"
+   },
+   "notes": "One-day high-fidelity simulation course for anaesthetists returning to work, run by the RMH Department of Anaesthesia and Pain Management."
+  },
+  {
+   "id": "rmh-react",
+   "name": "REACT: Resuscitation and Acute Catheter Lab Emergencies (RMH, one day)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "The Royal Melbourne Hospital Intensive Care Unit",
+     "url": "https://events.humanitix.com/host/the-rmh-intensive-care-unit",
+     "verified": true,
+     "calendar": "https://events.humanitix.com/host/the-rmh-intensive-care-unit"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "typicalLength": "1 day",
+   "notes": "One-day simulation course on resuscitation and emergencies in the cardiac catheter laboratory, run at the RMH Cardiology Department."
+  },
+  {
+   "id": "rmh-advanced-critical-care-echo",
+   "name": "RMH Advanced Critical Care Echocardiography Course (TTE, two days)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "The Royal Melbourne Hospital Intensive Care Unit",
+     "url": "https://events.humanitix.com/host/the-rmh-intensive-care-unit",
+     "verified": true,
+     "calendar": "https://events.humanitix.com/host/the-rmh-intensive-care-unit"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "typicalLength": "2 days",
+   "notes": "Two-day advanced transthoracic echocardiography course for critical care doctors, run by the RMH Intensive Care Unit."
+  },
+  {
+   "id": "rmh-foundation-critical-care-echo",
+   "name": "RMH Critical Care Foundation Echocardiography Course (TTE)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "The Royal Melbourne Hospital Intensive Care Unit",
+     "url": "https://events.humanitix.com/host/the-rmh-intensive-care-unit",
+     "verified": true,
+     "calendar": "https://events.humanitix.com/host/the-rmh-intensive-care-unit"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "typicalLength": "2 days",
+   "notes": "Foundation transthoracic echocardiography course for critical care doctors, run by the RMH Intensive Care Unit; the listing gives the two face-to-face days."
+  }
+ ]
+}

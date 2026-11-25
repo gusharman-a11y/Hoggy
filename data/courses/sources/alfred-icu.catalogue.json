@@ -1,0 +1,146 @@
+{
+ "generated": "2026-11-25",
+ "note": "The Alfred ICU: 2027 course dates from alfredicu.org.au/courses, read 25 Nov 2026 (the Burns Symposium is a meeting, not a course, and is left out).",
+ "courses": [
+  {
+   "id": "alfred-icu-prime",
+   "name": "PRIME: Practical Introduction to Modern Intensive Care (Alfred ICU, two days)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "The Alfred ICU (Intensive Care Academic Centre, Alfred Health)",
+     "url": "https://www.alfredicu.org.au/courses",
+     "verified": true,
+     "calendar": "https://www.alfredicu.org.au/courses"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "notes": "Two-day course for trainees early in intensive care training; the page says it is accredited by CICM."
+  },
+  {
+   "id": "alfred-icu-abc-cicm-second-part",
+   "name": "ABC: Alfred Bootcamp for the CICM Second Part Clinical Exam (two days)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "The Alfred ICU (Intensive Care Academic Centre, Alfred Health)",
+     "url": "https://www.alfredicu.org.au/courses",
+     "verified": true,
+     "calendar": "https://www.alfredicu.org.au/courses"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "notes": "Two-day preparation course for CICM Second Part clinical exam candidates."
+  },
+  {
+   "id": "alfred-icu-adult-foundation-ecmo",
+   "name": "Adult Foundation ECMO Course (Alfred ICU with VECMOS, four days)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "The Alfred ICU (Intensive Care Academic Centre, Alfred Health)",
+     "url": "https://www.alfredicu.org.au/courses",
+     "verified": true,
+     "calendar": "https://www.alfredicu.org.au/courses"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "notes": "Four-day foundation ECMO course for doctors, nurses, perfusionists and allied health, run by the Alfred ICU with VECMOS."
+  },
+  {
+   "id": "alfred-icu-fbi",
+   "name": "FBI: Flexible Bronchoscopy and Intubation in Critical Care (Alfred ICU, one day)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "The Alfred ICU (Intensive Care Academic Centre, Alfred Health)",
+     "url": "https://www.alfredicu.org.au/courses",
+     "verified": true,
+     "calendar": "https://www.alfredicu.org.au/courses"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "notes": "One-day bronchoscopy and airway course for critical care clinicians."
+  },
+  {
+   "id": "alfred-icu-critically-ill-airway",
+   "name": "CIA: Critically Ill Airway (Alfred ICU, two days)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "The Alfred ICU (Intensive Care Academic Centre, Alfred Health)",
+     "url": "https://www.alfredicu.org.au/courses",
+     "verified": true,
+     "calendar": "https://www.alfredicu.org.au/courses"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "notes": "Two-day simulation-based course on airway crises in the critically ill, at the Alfred Simulation Centre."
+  },
+  {
+   "id": "alfred-icu-basic-echo",
+   "name": "Alfred ICU Critical Care Echocardiography Course (Basic, two days)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "The Alfred ICU (Intensive Care Academic Centre, Alfred Health)",
+     "url": "https://www.alfredicu.org.au/courses",
+     "verified": true,
+     "calendar": "https://www.alfredicu.org.au/courses"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "notes": "Two-day practical TTE course for critical care practitioners, limited to 20 participants."
+  },
+  {
+   "id": "alfred-icu-advanced-echo",
+   "name": "Alfred Comprehensive Critical Care Echocardiography (ACCCE) Course (Advanced, two days)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "The Alfred ICU (Intensive Care Academic Centre, Alfred Health)",
+     "url": "https://www.alfredicu.org.au/courses",
+     "verified": true,
+     "calendar": "https://www.alfredicu.org.au/courses"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "notes": "Two-day advanced TTE course for critical care doctors beyond a basic level."
+  }
+ ]
+}
