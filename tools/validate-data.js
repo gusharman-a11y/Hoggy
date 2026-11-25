@@ -14,6 +14,11 @@ const { lint } = require('./copy-lint');
 const { seriesKey } = require('../lib/series.js');
 const E = require('./evidence');
 const D = require('./destination-fields');
+/* wave 2: known city points (tools/city-coords.json, from Wikipedia/Wikidata) for the map-pin distance check */
+const CITY = (() => { try { return require('./city-coords.json').cities || {}; } catch (e) { return {}; } })();
+const kmBetween = (a, b, c, d) => { const t = x => x * Math.PI / 180, h = Math.sin(t(c - a) / 2) ** 2 + Math.cos(t(a)) * Math.cos(t(c)) * Math.sin(t(d - b) / 2) ** 2; return 2 * 6371 * Math.asin(Math.sqrt(h)); };
+/* a confirmed row's blurb must not say the dates are still to come */
+const DATES_PENDING = /dates?\s+(?:are\s+|is\s+)?(?:expected|to be (?:confirmed|announced)|not yet (?:announced|confirmed|published))|not yet announced|\b(?:TBC|TBA)\b/i;
 
 const REQ = ['id', 'name', 'organiser', 'specialty', 'city', 'country', 'countryCode', 'region', 'start', 'end', 'format', 'cpdHours', 'url', 'blurb'];
 const REGIONS = new Set(['Europe', 'North America', 'Asia-Pacific', 'Middle East', 'Africa', 'Latin America']);
@@ -48,6 +53,9 @@ function rowProblems(c, today) {
   if (c.lat != null && (typeof c.lat !== 'number' || c.lat < -90 || c.lat > 90)) err('bad lat');
   if (c.lng != null && (typeof c.lng !== 'number' || c.lng < -180 || c.lng > 180)) err('bad lng');
   if (!c.lat && !c.lng) warn('no map pin (lat/lng 0)');
+  const known = CITY[c.city + '|' + c.countryCode];
+  if (known && (c.lat || c.lng) && kmBetween(c.lat, c.lng, known.lat, known.lng) > 100) warn(`map pin is ${Math.round(kmBetween(c.lat, c.lng, known.lat, known.lng))} km from ${c.city} (tools/city-coords.json)`);
+  if (c.datesConfirmed === true && typeof c.blurb === 'string' && DATES_PENDING.test(c.blurb)) warn('confirmed row whose blurb says the dates are not announced');
   /* x10 expert review: figures shown to users need a source (the app hides them otherwise) */
   if (c.attendees > 0 && !c.attendeesSourceUrl) warn('unsourced figure: attendees (hidden in the app)');
   if (c.priceFrom > 0 && !c.priceSourceUrl) warn('unsourced figure: priceFrom (hidden in the app)');

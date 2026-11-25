@@ -1,0 +1,155 @@
+{
+ "note": "Known city points for tools/validate-data.js (map pin more than 100 km from its city = warning) and for wave-2 coordinate fixes. Coordinates are Wikidata P625 (coordinate location) of the item named, read 25 Nov 2026 via query.wikidata.org. Key: city|countryCode exactly as in data/conferences.js. Add a city only with its Wikidata item.",
+ "cities": {
+  "Adelaide|AU": {
+   "lat": -34.9275,
+   "lng": 138.6,
+   "wikidata": "Q5112"
+  },
+  "Auckland|NZ": {
+   "lat": -36.8492,
+   "lng": 174.7653,
+   "wikidata": "Q37100"
+  },
+  "Barcelona|ES": {
+   "lat": 41.3825,
+   "lng": 2.1769,
+   "wikidata": "Q1492"
+  },
+  "Blenheim|NZ": {
+   "lat": -41.5167,
+   "lng": 173.95,
+   "wikidata": "Q883831"
+  },
+  "Boston|US": {
+   "lat": 42.3603,
+   "lng": -71.0578,
+   "wikidata": "Q100"
+  },
+  "Brisbane|AU": {
+   "lat": -27.4678,
+   "lng": 153.0278,
+   "wikidata": "Q34932"
+  },
+  "Cairns|AU": {
+   "lat": -16.9256,
+   "lng": 145.7753,
+   "wikidata": "Q189133"
+  },
+  "Canberra|AU": {
+   "lat": -35.2931,
+   "lng": 149.1269,
+   "wikidata": "Q3114"
+  },
+  "Christchurch|NZ": {
+   "lat": -43.5311,
+   "lng": 172.6361,
+   "wikidata": "Q79990"
+  },
+  "Darwin|AU": {
+   "lat": -12.4381,
+   "lng": 130.8411,
+   "wikidata": "Q11568"
+  },
+  "Fukuoka|JP": {
+   "lat": 33.5901,
+   "lng": 130.4017,
+   "wikidata": "Q26600"
+  },
+  "Gold Coast|AU": {
+   "lat": -28.0167,
+   "lng": 153.4,
+   "wikidata": "Q140075"
+  },
+  "Hamilton|NZ": {
+   "lat": -37.7833,
+   "lng": 175.2833,
+   "wikidata": "Q200028"
+  },
+  "Hobart|AU": {
+   "lat": -42.8833,
+   "lng": 147.3167,
+   "wikidata": "Q40191"
+  },
+  "Kagoshima|JP": {
+   "lat": 31.5968,
+   "lng": 130.5571,
+   "wikidata": "Q15674"
+  },
+  "Kobe|JP": {
+   "lat": 34.6902,
+   "lng": 135.1954,
+   "wikidata": "Q48320"
+  },
+  "Kyoto|JP": {
+   "lat": 35.0116,
+   "lng": 135.7681,
+   "wikidata": "Q34600"
+  },
+  "Las Vegas|US": {
+   "lat": 36.1672,
+   "lng": -115.1486,
+   "wikidata": "Q23768"
+  },
+  "Launceston|AU": {
+   "lat": -41.4444,
+   "lng": 147.1378,
+   "wikidata": "Q339527"
+  },
+  "Lorne|AU": {
+   "lat": -38.5333,
+   "lng": 143.967,
+   "wikidata": "Q838210"
+  },
+  "Los Angeles|US": {
+   "lat": 34.0522,
+   "lng": -118.2437,
+   "wikidata": "Q65"
+  },
+  "Melbourne|AU": {
+   "lat": -37.8142,
+   "lng": 144.9631,
+   "wikidata": "Q3141"
+  },
+  "Nagoya|JP": {
+   "lat": 35.1814,
+   "lng": 136.9064,
+   "wikidata": "Q11751"
+  },
+  "Niigata|JP": {
+   "lat": 37.9162,
+   "lng": 139.0364,
+   "wikidata": "Q179691"
+  },
+  "Perth|AU": {
+   "lat": -31.9558,
+   "lng": 115.8597,
+   "wikidata": "Q3183"
+  },
+  "Sapporo|JP": {
+   "lat": 43.0619,
+   "lng": 141.3544,
+   "wikidata": "Q37951"
+  },
+  "Sunshine Coast|AU": {
+   "lat": -26.6542,
+   "lng": 153.0933,
+   "wikidata": "Q828357"
+  },
+  "Sydney|AU": {
+   "lat": -33.8678,
+   "lng": 151.21,
+   "wikidata": "Q3130"
+  },
+  "Tokyo|JP": {
+   "lat": 35.6894,
+   "lng": 139.6917,
+   "wikidata": "Q1490"
+  },
+  "Yokohama|JP": {
+   "lat": 35.4503,
+   "lng": 139.6342,
+   "wikidata": "Q38283"
+  }
+ }
+}
