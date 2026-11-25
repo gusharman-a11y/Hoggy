@@ -97,7 +97,7 @@ test('List your event: public form, honeypot, rate limit, admin approve needs th
   assert.equal(row.datesSourceUrl, LISTING.url); assert.equal(row.datesQuote, QUOTE); assert.equal(row.verifiedOn, TODAY); assert.equal(row.cpdHours, 12);
   assert.ok(!JSON.stringify(list).includes(LISTING.contactEmail), 'the contact email is never public');
   const page = await fetch(S1.B + '/conferences/' + id); assert.equal(page.status, 200); const html = await page.text();
-  assert.match(html, /Listed by the organiser, checked by Hoggy/); assert.match(html, /Dates confirmed/); assert.ok(html.includes(LISTING.url)); assert.ok(!html.includes(LISTING.contactEmail));
+  assert.match(html, /Organiser-listed/); assert.match(html, /class="pill g">Confirmed</); assert.ok(html.includes(LISTING.url)); assert.ok(!html.includes(LISTING.contactEmail));
   assert.ok((await (await fetch(S1.B + '/sitemap.xml')).text()).includes('/conferences/' + id), 'in the sitemap');
   /* the daily data merge changes data/conferences.js; the server reseeds on the next start. Force that reseed: the row stays. */
   if (!TDB.PG) {
@@ -136,17 +136,17 @@ test('public pages: privacy, terms, about, conference and course pages with meta
     for (const f of ['/about', '/privacy', '/terms', '/#/list-event']) assert.ok(html.includes(`href="${f}"`), p + ' footer links ' + f);
     assert.doesNotMatch(html, /gusharman|@gmail\.com/, 'no personal email');
   }
-  const [, priv] = await get('/privacy'); assert.match(priv, /Draft<\/b> — review by a lawyer before launch/); assert.match(priv, /Sydney/); assert.match(priv, /Anthropic/); assert.match(priv, /does not sell your data/); assert.match(priv, /hello@\[your domain\]/);
+  const [, priv] = await get('/privacy'); assert.match(priv, /Draft<\/b> · review by a lawyer before launch/); assert.match(priv, /Sydney/); assert.match(priv, /Anthropic/); assert.match(priv, /does not sell your data/); assert.match(priv, /hello@\[your domain\]/);
   const [, terms] = await get('/terms'); assert.match(terms, /review by a lawyer before launch/); assert.match(terms, /not medical, financial or tax advice/i);
   const conf = CONFS.find(c => c.end >= TODAY && c.datesSourceUrl && c.datesQuote && !c.legacyConfirmed);
   const [cs, chtml] = await get('/conferences/' + conf.id); assert.equal(cs, 200);
-  assert.ok(chtml.includes('<h1>' + conf.name.replace(/&/g, '&amp;') + '</h1>')); assert.match(chtml, /application\/ld\+json/); assert.match(chtml, /Report a problem with this listing/);
+  assert.ok(chtml.includes('<h1>' + conf.name.replace(/&/g, '&amp;') + '</h1>')); assert.match(chtml, /application\/ld\+json/); assert.match(chtml, />Report a problem</);
   assert.match(chtml, /<link rel="canonical" href="http:\/\/127\.0\.0\.1:\d+\/conferences\//);
   const est = CONFS.find(c => c.end >= TODAY && c.datesConfirmed === false); const [, ehtml] = await get('/conferences/' + est.id);
   assert.match(ehtml, /Usually /); assert.doesNotMatch(ehtml, /ld\+json/, 'no Event markup for an estimate');
   const [ks, khtml] = await get('/courses/als2'); assert.equal(ks, 200); assert.match(khtml, /Advanced Life Support Level 2/); assert.match(khtml, /Upcoming sessions/);
   for (const p of ['/no-such-page', '/conferences/no-such-conference', '/courses/no-such-course', '/data-store/hoggy.db']) {
-    const [s, html] = await get(p); assert.equal(s, 404, p); assert.match(html, /<h1>(We can’t find that page|That listing is not on Hoggy|That course is not on Hoggy)<\/h1>/); assert.match(html, /noindex/);
+    const [s, html] = await get(p); assert.equal(s, 404, p); assert.match(html, /<h1>(Page not found|Listing not found|Course not found)<\/h1>/); assert.match(html, /noindex/);
   }
   const [as, aj, ar] = await client(S.B).call('/api/no-such-thing'); assert.match(ar.headers.get('content-type'), /json/, 'the API keeps JSON'); assert.ok(as >= 400 && aj.error);
   const [, robots] = await get('/robots.txt'); assert.match(robots, /Disallow: \/api\//); assert.match(robots, /Disallow: \/admin/); assert.match(robots, /Sitemap: http:\/\/127\.0\.0\.1:\d+\/sitemap\.xml/);
@@ -163,6 +163,6 @@ test('database down: public pages render from the bundled data, the API says so 
   const j = await r.json(); assert.equal(j.conferences.length, CONFS.length); assert.equal(j.fallback, 'bundled');
   assert.equal((await fetch(S.B + '/api/courses')).status, 200, 'the course catalogue never needs the database');
   const me = await fetch(S.B + '/api/me'); assert.equal(me.status, 503); assert.match(me.headers.get('content-type'), /json/); assert.match((await me.json()).error, /database unavailable/);
-  const org = await fetch(S.B + '/conferences/org-not-bundled-2027'); assert.equal(org.status, 503); assert.match(await org.text(), /We’re having trouble connecting/);
+  const org = await fetch(S.B + '/conferences/org-not-bundled-2027'); assert.equal(org.status, 503); assert.match(await org.text(), /<h1>Can’t connect<\/h1>/);
   assert.equal((await fetch(S.B + '/no-such-page')).status, 404);
 });

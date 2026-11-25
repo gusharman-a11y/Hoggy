@@ -819,7 +819,7 @@ async function backup() {
 const MIME = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.ico': 'image/x-icon', '.woff2': 'font/woff2' };
 const ICONS = new Set(['icons/icon.svg', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/icon-maskable-512.png', 'icons/apple-touch-icon.png', 'icons/og.png']);
 const PUBLIC = new Set(['index.html', 'app.js', 'parse.js', 'pack.js', 'stats.js', 'courses.js', 'data/courses/catalogue.json', 'data/courses/sessions.json', 'styles.css', 'lib/series.js', 'lib/coverage.js', 'lib/specialties.js', 'lib/listings.js', 'lib/art.js', 'lib/experiences.js', 'lib/trip.js', 'data/experiences/experiences.json', 'motion.js', 'fonts/plex-sans-400.woff2', 'fonts/plex-sans-600.woff2', 'fonts/plex-sans-condensed-700.woff2', 'data/conferences.js', 'data/holidays.js', 'data/cpd-nz.js', 'admin.html', 'admin.js']);
-const DEMO_NOTE = '<div class="demo-note" role="note">Preview — accounts and receipts reset from time to time.</div>';
+const DEMO_NOTE = '<div class="demo-note" role="note">Preview · accounts and receipts reset sometimes.</div>';
 function serveStatic(req, res, url) {
   let rel; try { rel = decodeURIComponent(url.pathname).replace(/^\/+/, '') || 'index.html'; } catch (e) { return html(req, res, 400, PAGES.notFound(req)); }
   if (rel === 'favicon.ico') rel = 'icons/icon-192.png';
@@ -853,9 +853,9 @@ async function pages(req, res, url) {
       try { await readyWithin(8000); const r = await db.get("SELECT json, status FROM conferences WHERE id=? AND status IN ('published','flagged')", m[1]); c = r ? JSON.parse(r.json) : null; }
       catch (e) { console.error('listing lookup failed', e.message); return html(req, res, 503, PAGES.trouble(req), { 'Retry-After': '60' }), true; }
     }
-    return c ? html(req, res, 200, PAGES.conferencePage(req, c)) : html(req, res, 404, PAGES.notFound(req, 'That listing is not on Hoggy')), true;
+    return c ? html(req, res, 200, PAGES.conferencePage(req, c)) : html(req, res, 404, PAGES.notFound(req, 'Listing not found')), true;
   }
-  if ((m = p.match(/^\/courses\/([a-z0-9-]{1,60})$/))) { const body = PAGES.coursePage(req, m[1]); return body ? html(req, res, 200, body) : html(req, res, 404, PAGES.notFound(req, 'That course is not on Hoggy')), true; }
+  if ((m = p.match(/^\/courses\/([a-z0-9-]{1,60})$/))) { const body = PAGES.coursePage(req, m[1]); return body ? html(req, res, 200, body) : html(req, res, 404, PAGES.notFound(req, 'Course not found')), true; }
   return false;
 }
 async function handler(req, res) {
