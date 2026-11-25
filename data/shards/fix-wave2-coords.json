@@ -1,0 +1,258 @@
+[
+ {
+  "id": "usanz-asm",
+  "set": {
+   "lat": -27.4678,
+   "lng": 153.0278
+  },
+  "note": "wave2 2026-11-25: map pin was -37.81,144.96 (1375 km from Brisbane); set to Brisbane from Wikidata Q34932 (tools/city-coords.json)"
+ },
+ {
+  "id": "tsanz-asm",
+  "set": {
+   "lat": -28.0167,
+   "lng": 153.4
+  },
+  "note": "wave2 2026-11-25: map pin was -37.81,144.96 (1343 km from Gold Coast); set to Gold Coast from Wikidata Q140075 (tools/city-coords.json)"
+ },
+ {
+  "id": "jss-annual-congress",
+  "set": {
+   "lat": 35.6894,
+   "lng": 139.6917
+  },
+  "note": "wave2 2026-11-25: map pin was 34.69,135.5 (397 km from Tokyo); set to Tokyo from Wikidata Q1490 (tools/city-coords.json)"
+ },
+ {
+  "id": "jcr-annual-meeting",
+  "set": {
+   "lat": 35.4503,
+   "lng": 139.6342
+  },
+  "note": "wave2 2026-11-25: map pin was 34.69,135.2 (412 km from Yokohama); set to Yokohama from Wikidata Q38283 (tools/city-coords.json)"
+ },
+ {
+  "id": "racs-asc",
+  "set": {
+   "lat": -37.8142,
+   "lng": 144.9631
+  },
+  "note": "wave2 2026-11-25: map pin was -27.47,153.03 (1375 km from Melbourne); set to Melbourne from Wikidata Q3141 (tools/city-coords.json)"
+ },
+ {
+  "id": "anzsnm-asm",
+  "set": {
+   "lat": -28.0167,
+   "lng": 153.4
+  },
+  "note": "wave2 2026-11-25: map pin was -37.81,144.96 (1343 km from Gold Coast); set to Gold Coast from Wikidata Q140075 (tools/city-coords.json)"
+ },
+ {
+  "id": "ranzcog-regional-symposium",
+  "set": {
+   "lat": -38.5333,
+   "lng": 143.967
+  },
+  "note": "wave2 2026-11-25: map pin was -33.87,151.21 (831 km from Lorne); set to Lorne from Wikidata Q838210 (tools/city-coords.json)"
+ },
+ {
+  "id": "asid-asm",
+  "set": {
+   "lat": -16.9256,
+   "lng": 145.7753
+  },
+  "note": "wave2 2026-11-25: map pin was -33.87,151.21 (1961 km from Cairns); set to Cairns from Wikidata Q189133 (tools/city-coords.json)"
+ },
+ {
+  "id": "anzsgm-asm",
+  "set": {
+   "lat": -37.8142,
+   "lng": 144.9631
+  },
+  "note": "wave2 2026-11-25: map pin was -33.87,151.21 (713 km from Melbourne); set to Melbourne from Wikidata Q3141 (tools/city-coords.json)"
+ },
+ {
+  "id": "jsicm-annual-meeting",
+  "set": {
+   "lat": 35.0116,
+   "lng": 135.7681
+  },
+  "note": "wave2 2026-11-25: map pin was 35.68,139.69 (363 km from Kyoto); set to Kyoto from Wikidata Q34600 (tools/city-coords.json)"
+ },
+ {
+  "id": "joa-annual-meeting",
+  "set": {
+   "lat": 35.4503,
+   "lng": 139.6342
+  },
+  "note": "wave2 2026-11-25: map pin was 33.59,130.4 (871 km from Yokohama); set to Yokohama from Wikidata Q38283 (tools/city-coords.json)"
+ },
+ {
+  "id": "jsn-neurology-annual-meeting",
+  "set": {
+   "lat": 37.9162,
+   "lng": 139.0364
+  },
+  "note": "wave2 2026-11-25: map pin was 35.01,135.77 (436 km from Niigata); set to Niigata from Wikidata Q179691 (tools/city-coords.json)"
+ },
+ {
+  "id": "acog-annual-meeting",
+  "set": {
+   "lat": 34.0522,
+   "lng": -118.2437
+  },
+  "note": "wave2 2026-11-25: map pin was 38.91,-77.04 (3692 km from Los Angeles); set to Los Angeles from Wikidata Q65 (tools/city-coords.json)"
+ },
+ {
+  "id": "ara-asm",
+  "set": {
+   "lat": -12.4381,
+   "lng": 130.8411
+  },
+  "note": "wave2 2026-11-25: map pin was -27.47,153.03 (2850 km from Darwin); set to Darwin from Wikidata Q11568 (tools/city-coords.json)"
+ },
+ {
+  "id": "cnsa-congress",
+  "set": {
+   "lat": -35.2931,
+   "lng": 149.1269
+  },
+  "note": "wave2 2026-11-25: map pin was -27.47,153.03 (945 km from Canberra); set to Canberra from Wikidata Q3114 (tools/city-coords.json)"
+ },
+ {
+  "id": "jgs-annual-meeting",
+  "set": {
+   "lat": 31.5968,
+   "lng": 130.5571
+  },
+  "note": "wave2 2026-11-25: map pin was 33.59,130.4 (222 km from Kagoshima); set to Kagoshima from Wikidata Q15674 (tools/city-coords.json)"
+ },
+ {
+  "id": "jsn-nephrology-annual-meeting",
+  "set": {
+   "lat": 34.6902,
+   "lng": 135.1954
+  },
+  "note": "wave2 2026-11-25: map pin was 35.44,139.64 (413 km from Kobe); set to Kobe from Wikidata Q48320 (tools/city-coords.json)"
+ },
+ {
+  "id": "asps-plastic-surgery-meeting",
+  "set": {
+   "lat": -34.9275,
+   "lng": 138.6
+  },
+  "note": "wave2 2026-11-25: map pin was -33.87,151.21 (1162 km from Adelaide); set to Adelaide from Wikidata Q5112 (tools/city-coords.json)"
+ },
+ {
+  "id": "jspm-annual-meeting",
+  "set": {
+   "lat": 33.5901,
+   "lng": 130.4017
+  },
+  "note": "wave2 2026-11-25: map pin was 43.06,141.35 (1419 km from Fukuoka); set to Fukuoka from Wikidata Q26600 (tools/city-coords.json)"
+ },
+ {
+  "id": "jspn-annual-meeting",
+  "set": {
+   "lat": 35.1814,
+   "lng": 136.9064
+  },
+  "note": "wave2 2026-11-25: map pin was 35.44,139.64 (250 km from Nagoya); set to Nagoya from Wikidata Q11751 (tools/city-coords.json)"
+ },
+ {
+  "id": "acem-rural-remote-em-conference",
+  "set": {
+   "lat": -42.8833,
+   "lng": 147.3167
+  },
+  "note": "wave2 2026-11-25: map pin was -27.47,153.03 (1790 km from Hobart); set to Hobart from Wikidata Q40191 (tools/city-coords.json)"
+ },
+ {
+  "id": "acn-national-nursing-forum",
+  "set": {
+   "lat": -28.0167,
+   "lng": 153.4
+  },
+  "note": "wave2 2026-11-25: map pin was -35.28,149.13 (903 km from Gold Coast); set to Gold Coast from Wikidata Q140075 (tools/city-coords.json)"
+ },
+ {
+  "id": "psa-conference",
+  "set": {
+   "lat": -33.8678,
+   "lng": 151.21
+  },
+  "note": "wave2 2026-11-25: map pin was -37.81,144.96 (714 km from Sydney); set to Sydney from Wikidata Q3130 (tools/city-coords.json)"
+ },
+ {
+  "id": "esmo-congress",
+  "set": {
+   "lat": 41.3825,
+   "lng": 2.1769
+  },
+  "note": "wave2 2026-11-25: map pin was 40.42,-3.7 (505 km from Barcelona); set to Barcelona from Wikidata Q1492 (tools/city-coords.json)"
+ },
+ {
+  "id": "jaam-annual-meeting",
+  "set": {
+   "lat": 43.0619,
+   "lng": 141.3544
+  },
+  "note": "wave2 2026-11-25: map pin was 35.18,136.91 (956 km from Sapporo); set to Sapporo from Wikidata Q37951 (tools/city-coords.json)"
+ },
+ {
+  "id": "jsh-annual-meeting",
+  "set": {
+   "lat": 33.5901,
+   "lng": 130.4017
+  },
+  "note": "wave2 2026-11-25: map pin was 35.18,136.91 (623 km from Fukuoka); set to Fukuoka from Wikidata Q26600 (tools/city-coords.json)"
+ },
+ {
+  "id": "aoa-asm",
+  "set": {
+   "lat": -33.8678,
+   "lng": 151.21
+  },
+  "note": "wave2 2026-11-25: map pin was -31.95,115.86 (3291 km from Sydney); set to Sydney from Wikidata Q3130 (tools/city-coords.json)"
+ },
+ {
+  "id": "jsco-annual-meeting",
+  "set": {
+   "lat": 33.5901,
+   "lng": 130.4017
+  },
+  "note": "wave2 2026-11-25: map pin was 35.01,135.77 (518 km from Fukuoka); set to Fukuoka from Wikidata Q26600 (tools/city-coords.json)"
+ },
+ {
+  "id": "asa-anesthesiology",
+  "set": {
+   "lat": 42.3603,
+   "lng": -71.0578
+  },
+  "note": "wave2 2026-11-25: map pin was 37.77,-122.42 (4334 km from Boston); set to Boston from Wikidata Q100 (tools/city-coords.json)"
+ },
+ {
+  "id": "nzoa-asm",
+  "set": {
+   "lat": -36.8492,
+   "lng": 174.7653
+  },
+  "note": "wave2 2026-11-25: map pin was -45.03,168.66 (1044 km from Auckland); set to Auckland from Wikidata Q37100 (tools/city-coords.json)"
+ },
+ {
+  "id": "haa-hsanz-asm",
+  "set": {
+   "lat": -34.9275,
+   "lng": 138.6
+  },
+  "note": "wave2 2026-11-25: map pin was -37.81,144.96 (653 km from Adelaide); set to Adelaide from Wikidata Q5112 (tools/city-coords.json)"
+ },
+ {
+  "id": "aao-annual-meeting",
+  "set": {
+   "lat": 36.1672,
+   "lng": -115.1486
+  },
+  "note": "wave2 2026-11-25: map pin was 41.88,-87.63 (2449 km from Las Vegas); set to Las Vegas from Wikidata Q23768 (tools/city-coords.json)"
+ }
+]
