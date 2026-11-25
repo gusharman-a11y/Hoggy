@@ -147,3 +147,14 @@ test('merge and validator CLI: destination fields are carried from shards and pr
   const r1 = node('tools/validate-data.js', '--root', dir, '--today', DAY); assert.equal(r1.status, 1); assert.match(r1.stdout, /provenance-destinations-2026-12\.json abc-congress-2027: tag "yacht"/);
   const r2 = node('tools/validate-data.js', '--root', tmpRoot([{ ...GOOD, accreditation: { text: 'RACGP CPD approved 12 hours' } }]), '--today', DAY); assert.equal(r2.status, 1); assert.match(r2.stdout, /accreditation\.sourceUrl is missing or not https/);
 });
+
+/* wave 6 (25 Nov 2026): the merge window runs to 2029-12-31 (WCLC 2029 Melbourne); a row starting in 2030 is still refused */
+test('merge: rows may start up to 2029-12-31; later starts are rejected as out of range', () => {
+  const r2029 = { ...GOOD, id: 'abc-congress-2029', name: 'ABC Congress 2029', start: '2029-12-31', end: '2030-01-02', datesQuote: '31 December 2029 – 2 January 2030', datesSourceUrl: 'https://www.abc.example/2029' };
+  const r2030 = { ...GOOD, id: 'abc-congress-2030', name: 'ABC Congress 2030', start: '2030-01-05', end: '2030-01-07', datesQuote: '5-7 January 2030', datesSourceUrl: 'https://www.abc.example/2030' };
+  const dir = tmpRoot([JSON.parse(JSON.stringify(GOOD))], { 'wave6-test.json': [r2029, r2030] });
+  const m = node('tools/merge-shards.js', '--root', dir, '--today', DAY); assert.equal(m.status, 0, m.stdout + m.stderr);
+  const ids = load(dir).map(c => c.id);
+  assert.ok(ids.includes('abc-congress-2029'), 'a 2029 start merges'); assert.ok(!ids.includes('abc-congress-2030'), 'a 2030 start does not');
+  assert.match(m.stdout, /wave6-test\.json: abc-congress-2030: out of range/);
+});

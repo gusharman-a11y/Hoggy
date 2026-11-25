@@ -1,0 +1,72 @@
+{
+ "generated": "2026-11-25",
+ "note": "HealthCert Education: aesthetic medicine practical workshop days from HealthCert's own workshop calendar, read 25 Nov 2026.",
+ "courses": [
+  {
+   "id": "healthcert-aesthetic-medicine-workshop",
+   "name": "HealthCert Aesthetic Medicine Practical Workshop (one day)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "HealthCert Education",
+     "url": "https://www.healthcert.com/workshops/calendar",
+     "verified": true,
+     "calendar": "https://www.healthcert.com/workshops/calendar"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "providerType": "commercial",
+   "typicalLength": "1 day",
+   "notes": "Hands-on aesthetic medicine workshop day for doctors, booked as part of HealthCert's aesthetic medicine certificate."
+  },
+  {
+   "id": "healthcert-complex-aesthetic-medicine-workshop",
+   "name": "HealthCert Complex Aesthetic Medicine Practical Workshop (one day)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "HealthCert Education",
+     "url": "https://www.healthcert.com/workshops/calendar",
+     "verified": true,
+     "calendar": "https://www.healthcert.com/workshops/calendar"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "providerType": "commercial",
+   "typicalLength": "1 day",
+   "notes": "Hands-on complex aesthetic medicine workshop day for doctors, booked as part of HealthCert's aesthetic medicine certificate."
+  },
+  {
+   "id": "healthcert-advanced-aesthetic-medicine-workshop",
+   "name": "HealthCert Advanced Aesthetic Medicine Practical Workshop (one day)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "HealthCert Education",
+     "url": "https://www.healthcert.com/workshops/calendar",
+     "verified": true,
+     "calendar": "https://www.healthcert.com/workshops/calendar"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "providerType": "commercial",
+   "typicalLength": "1 day",
+   "notes": "Hands-on advanced aesthetic medicine workshop day for doctors, booked as part of HealthCert's aesthetic medicine certificate."
+  }
+ ]
+}

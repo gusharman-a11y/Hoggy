@@ -1,0 +1,90 @@
+{
+ "generated": "2026-11-25",
+ "note": "Sydney Clinical Skills and Simulation Centre (Royal North Shore Hospital): dates from SCSSC's own course pages (EMAC, ATTAAC) and course calendar (bookings), read 25 Nov 2026. Instructor and supervisor courses are left out.",
+ "courses": [
+  {
+   "id": "scssc-emac",
+   "name": "EMAC: Effective Management of Anaesthetic Crises (SCSSC, two and a half days)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Sydney Clinical Skills and Simulation Centre (SCSSC), Royal North Shore Hospital",
+     "url": "https://www.sim.scssc.edu.au/Courses/emac",
+     "verified": true,
+     "calendar": "https://www.sim.scssc.edu.au/bookings"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "typicalLength": "2 1/2 days",
+   "notes": "ANZCA EMAC course for anaesthetists and anaesthetic registrars at the SCSSC simulation centre, Royal North Shore Hospital."
+  },
+  {
+   "id": "scssc-attaac",
+   "name": "ATTAAC: Advanced Technical and Teamwork Training for Anaesthetic Airway Crises (SCSSC, two days)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Sydney Clinical Skills and Simulation Centre (SCSSC), Royal North Shore Hospital",
+     "url": "https://www.sim.scssc.edu.au/Courses/attaac",
+     "verified": true,
+     "calendar": "https://www.sim.scssc.edu.au/bookings"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "typicalLength": "2 days",
+   "notes": "Two-day course on anticipated difficult and unanticipated emergency airways for anaesthetists and anaesthetic trainees."
+  },
+  {
+   "id": "scssc-paediatric-emergencies-anaesthetist",
+   "name": "Paediatric Emergencies: Essential Skills for the Occasional Paediatric Anaesthetist (SCSSC, one day)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Sydney Clinical Skills and Simulation Centre (SCSSC), Royal North Shore Hospital",
+     "url": "https://www.sim.scssc.edu.au/Courses/paediatric-emergencies%3A-essential-skills-for-the--occasional-paediatric-anaesthetist",
+     "verified": true,
+     "calendar": "https://www.sim.scssc.edu.au/bookings"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "typicalLength": "1 day",
+   "notes": "One-day simulation course on paediatric anaesthetic emergencies for anaesthetists who see children occasionally."
+  },
+  {
+   "id": "scssc-safe-procedural-sedation",
+   "name": "Safe Procedural Sedation Course (SCSSC, one day)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Sydney Clinical Skills and Simulation Centre (SCSSC), Royal North Shore Hospital",
+     "url": "https://www.sim.scssc.edu.au/Courses/safe-procedural-sedation",
+     "verified": true,
+     "calendar": "https://www.sim.scssc.edu.au/bookings"
+    }
+   ],
+   "cpdNote": "check provider",
+   "countries": [
+    "AU"
+   ],
+   "typicalLength": "1 day",
+   "notes": "One-day e-learning, workshop and simulation course on conscious sedation outside the operating theatre."
+  }
+ ]
+}

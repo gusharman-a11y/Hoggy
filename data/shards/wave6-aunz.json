@@ -1,0 +1,29 @@
+[
+ {
+  "id": "wclc-2029-melbourne",
+  "name": "IASLC World Conference on Lung Cancer 2029",
+  "organiser": "International Association for the Study of Lung Cancer",
+  "specialty": "Oncology",
+  "city": "Melbourne",
+  "country": "Australia",
+  "countryCode": "AU",
+  "region": "Asia-Pacific",
+  "lat": -37.8136,
+  "lng": 144.9631,
+  "start": "2029-09-08",
+  "end": "2029-09-11",
+  "format": "In-person",
+  "cpdHours": 0,
+  "cpdBody": "",
+  "priceFrom": 0,
+  "attendees": 0,
+  "url": "https://wclc.iaslc.org",
+  "blurb": "The IASLC world conference on lung cancer and thoracic oncology, returning to Australia in Melbourne.",
+  "datesConfirmed": true,
+  "sourceUrl": "https://wclc.iaslc.org/future-conferences/",
+  "datesSourceUrl": "https://wclc.iaslc.org/future-conferences/",
+  "datesQuote": "WCLC 2029 Melbourne, Australia September 8 – 11, 2029",
+  "verifiedOn": "2026-11-25",
+  "lastVerified": "2026-11-25"
+ }
+]
