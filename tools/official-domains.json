@@ -1,6 +1,8 @@
 {
  "note": "Evidence rule (B30, tools/evidence.js). A confirmed row's datesSourceUrl must be on the organiser's or society's own domain: the same registrable domain as the row's url (subdomains count, e.g. events.aats.org for aats.org), or one of the 'official' entries below. Add an entry only after opening the page and seeing that the organiser or society runs it (a congress's own domain, or the organiser's page on a congress-company platform). 'path' limits a shared platform host to one event. 'aggregators' are listing sites: never a date source, even when the row's url points there.",
  "official": [
+  { "host": "congre.co.jp", "path": "/joa2027", "for": ["joa-annual-meeting"], "note": "wave3: 100th JOA meeting site on Congre; joa.or.jp links it (read 25 Nov 2026)" },
+  { "host": "apasl2027.org", "for": ["apasl-2027"], "note": "wave3: APASL 2027 Sydney site; apasl.info gives it as the URL for APASL 2027 (read 25 Nov 2026)" },
   { "host": "usicon2027.com", "for": ["usicon-chennai-2027-expected"], "note": "USICON 2027 site of the Urological Society of India" },
   { "host": "web.cvent.com", "path": "/event/e57907a5-de4c-4c8f-a219-967fe9e30eff", "for": ["lorne-genome-2027"], "note": "Lorne Genome registration page on Cvent" },
   { "host": "phaa.net.au", "for": ["phaa-screening-conference-2027", "phaa-preventive-health-conference-2027"], "note": "Public Health Association of Australia, organiser of both conferences" },

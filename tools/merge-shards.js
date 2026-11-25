@@ -22,6 +22,13 @@ const REQ = ['id', 'name', 'organiser', 'specialty', 'city', 'country', 'country
 const REGIONS = new Set(['Europe', 'North America', 'Asia-Pacific', 'Middle East', 'Africa', 'Latin America']);
 const norm = s => String(s).toLowerCase().replace(/\b(20\d\d|annual|congress|meeting|conference|scientific|sessions|the|of|and|&)\b/g, '').replace(/[^a-z0-9]+/g, '');
 const host = u => { try { return new URL(u).hostname.replace(/^www\./, ''); } catch (e) { return ''; } };
+/* wave 3: two rows on one host and one start day are the same meeting unless both urls are distinct event pages (aoa.org.au lists
+   two branch meetings on one day, each with its own detail page). A site-root url still collides with anything on its host. */
+const { isSiteRoot } = require('./evidence');
+const urlPath = u => { try { return isSiteRoot(u) ? '' : new URL(u).pathname.replace(/\/+$/, ''); } catch (e) { return ''; } };
+const urlDate = new Map();
+const seenUrlDate = { has(c) { const l = urlDate.get(host(c.url) + c.start); if (!l) return false; const p = urlPath(c.url); return !p || l.some(q => !q || q === p); },
+  add(c) { const k = host(c.url) + c.start; (urlDate.get(k) || urlDate.set(k, []).get(k)).push(urlPath(c.url)); } };
 const valid = c => {
   for (const k of REQ) if (c[k] == null || c[k] === '') return 'missing ' + k;
   if (!/^[a-z0-9-]{3,80}$/.test(c.id)) return 'bad id';
@@ -43,7 +50,8 @@ const TODAY = opt('--today') || new Date().toISOString().slice(0, 10);
 if (MIGRATE && base.some(c => c.legacyConfirmed)) { console.error('--migrate-legacy already ran (rows carry legacyConfirmed); refusing'); process.exit(1); }
 if (MIGRATE) for (const c of base) if (c.datesConfirmed !== false && !hasAnyEvidence(c)) c.legacyConfirmed = true;
 const wasLegacy = new Set(base.filter(c => c.legacyConfirmed).map(c => c.id));
-const out = base.map(c => { const r = { ...c, dateStatus: c.dateStatus || (c.datesConfirmed === false ? 'estimated' : 'confirmed'), sourceUrl: c.sourceUrl || c.url }; if (r.lastVerified === '2026-11-06' && !r.provenance) delete r.lastVerified; return r; }), seenId = new Set(out.map(c => c.id)), seenKey = new Set(out.map(c => norm(c.name) + c.start.slice(0, 4))), seenUrlDate = new Set(out.map(c => host(c.url) + c.start));
+const out = base.map(c => { const r = { ...c, dateStatus: c.dateStatus || (c.datesConfirmed === false ? 'estimated' : 'confirmed'), sourceUrl: c.sourceUrl || c.url }; if (r.lastVerified === '2026-11-06' && !r.provenance) delete r.lastVerified; return r; }), seenId = new Set(out.map(c => c.id)), seenKey = new Set(out.map(c => norm(c.name) + c.start.slice(0, 4)));
+for (const c of out) seenUrlDate.add(c);
 const stats = { added: 0, dupId: 0, dupName: 0, invalid: 0 }, rejects = [];
 const dest = { rows: 0, provenance: 0, dropped: [] }; /* destination fields: carried when valid, left out (and listed) when not; never a reason to reject a row */
 const shardFiles = fs.existsSync(shardDir) ? fs.readdirSync(shardDir).filter(x => x.endsWith('.json') && x !== 'holidays.json') : [];
@@ -57,8 +65,8 @@ for (const f of shardFiles.filter(x => !x.startsWith('provenance-') && !x.starts
     const why = valid(c); if (why) { stats.invalid++; rejects.push(`${f}: ${c.id || c.name}: ${why}`); continue; }
     const key = norm(c.name) + c.start.slice(0, 4);
     if (seenId.has(c.id)) { stats.dupId++; continue; }
-    if (seenKey.has(key) || seenUrlDate.has(host(c.url) + c.start)) { stats.dupName++; continue; }
-    seenId.add(c.id); seenKey.add(key); seenUrlDate.add(host(c.url) + c.start);
+    if (seenKey.has(key) || seenUrlDate.has(c)) { stats.dupName++; continue; }
+    seenId.add(c.id); seenKey.add(key); seenUrlDate.add(c);
     out.push({ id: c.id, name: c.name, organiser: c.organiser, specialty: c.specialty, city: c.city, country: c.country, countryCode: c.countryCode, region: c.region, lat: +c.lat || 0, lng: +c.lng || 0, start: c.start, end: c.end, format: c.format, cpdHours: c.cpdHours, cpdBody: c.cpdBody || '', priceFrom: +c.priceFrom || 0, attendees: +c.attendees || 0, url: c.url, blurb: String(c.blurb).slice(0, 240), datesConfirmed: c.datesConfirmed === true, dateStatus: c.datesConfirmed === true ? 'confirmed' : 'estimated', sourceUrl: c.sourceUrl || c.url, ...pick(c, EVIDENCE_KEYS), ...pickDestination(c, dest.dropped), ...(c.lastVerified || (c.datesConfirmed === true && c.sourceUrl && c.sourceUrl !== c.url) ? { lastVerified: c.lastVerified || TODAY } : {}) });
     if (hasDestinationFields(c)) dest.rows++;
     stats.added++;
