@@ -1,6 +1,11 @@
 {
  "note": "Evidence rule (B30, tools/evidence.js). A confirmed row's datesSourceUrl must be on the organiser's or society's own domain: the same registrable domain as the row's url (subdomains count, e.g. events.aats.org for aats.org), or one of the 'official' entries below. Add an entry only after opening the page and seeing that the organiser or society runs it (a congress's own domain, or the organiser's page on a congress-company platform). 'path' limits a shared platform host to one event. 'aggregators' are listing sites: never a date source, even when the row's url points there.",
  "official": [
+  { "host": "site2.convention.co.jp", "path": "/ascvts2027", "for": ["ascvts-singapore-2027-expected"], "note": "global-2: official site of the 35th ASCVTS Annual Meeting (ASCVTS2027), welcome message from the ASCVTS 2027 president (read 25 Nov 2026)" },
+  { "host": "acc.org", "path": "/Education-and-Meetings/Meetings/Meeting-Items/2026/07/03/2027-Asia", "for": ["hkcc-hong-kong-2027-expected"], "note": "global-2: ACC page for ACC Asia 2027 held together with the HKCC 35th Annual Scientific Congress (ACC co-organises the joint meeting; read 25 Nov 2026)" },
+  { "host": "sites.grenadine.co", "path": "/sites/cos-sco/", "for": ["cos-annual-meeting-2027"], "note": "global-2: Canadian Ophthalmological Society meeting site on Grenadine, titled 2027 COS Annual Meeting and links the COS home page (read 25 Nov 2026)" },
+  { "host": "csohns.org", "for": ["cso-hns-annual-meeting-2027", "cso-hns-annual-meeting-2028"], "note": "global-2: the Canadian Society of Otolaryngology - Head and Neck Surgery's own site (About CSO, membership, annual meetings); entcanada.org is its older domain (read 25 Nov 2026)" },
+  { "host": "dgu.de", "for": ["dgu-kongress-2027", "dgu-kongress-2028"], "note": "global-2: Deutsche Gesellschaft fuer Urologie, organiser of the DGU-Kongress; dgu.de/kongress-2027 is its congress page (read 25 Nov 2026)" },
   { "host": "congre.co.jp", "path": "/joa2027", "for": ["joa-annual-meeting"], "note": "wave3: 100th JOA meeting site on Congre; joa.or.jp links it (read 25 Nov 2026)" },
   { "host": "apasl2027.org", "for": ["apasl-2027"], "note": "wave3: APASL 2027 Sydney site; apasl.info gives it as the URL for APASL 2027 (read 25 Nov 2026)" },
   {"host": "euroanaesthesia.org", "for": ["euroanaesthesia", "euroanaesthesia-2028"], "note": "Euroanaesthesia congress site of the ESAIC, linked from esaic.org (global-1, 25 Nov 2026)"},
@@ -38,5 +43,5 @@
   { "host": "heartrhythm.com", "for": ["heart-rhythm-2028"], "note": "Heart Rhythm Society meeting site" },
   { "host": "web.cvent.com", "path": "/event/8d6f7229-4938-49e0-a0c0-4203fa5954be", "for": ["crash-vail-2027"], "note": "CRASH 2027 registration site on Cvent (University of Colorado anaesthesia meeting, Vail); read 24 Nov 2026 (destinations)" }
  ],
- "aggregators": ["10times.com", "allconferencealert.com", "conferenceindex.org", "conferencealerts.co.in", "conferenceseries.com", "docthub.com", "eventbrite.com", "eventbrite.com.au", "eventbrite.co.uk", "facebook.com", "instagram.com", "linkedin.com", "mdlinx.com", "medical.theconferencewebsite.com", "omicsonline.org", "twitter.com", "waset.org", "wikipedia.org", "x.com"]
+ "aggregators": ["santetropicale.com", "10times.com", "allconferencealert.com", "conferenceindex.org", "conferencealerts.co.in", "conferenceseries.com", "docthub.com", "eventbrite.com", "eventbrite.com.au", "eventbrite.co.uk", "facebook.com", "instagram.com", "linkedin.com", "mdlinx.com", "medical.theconferencewebsite.com", "omicsonline.org", "twitter.com", "waset.org", "wikipedia.org", "x.com"]
 }

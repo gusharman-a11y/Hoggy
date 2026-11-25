@@ -1,0 +1,236 @@
+[
+ {
+  "id": "nkf-spring-clinical-meetings",
+  "remove": true,
+  "note": "global-2 2026-11-25: duplicate of nkf-spring-clinical-meetings-2027 (same meeting, NKF SCM27 Orlando, already confirmed with evidence 12-15 May 2027; 11 May is the pre-conference course day); kept nkf-spring-clinical-meetings-2027"
+ },
+ {
+  "id": "sigo-congresso-2027",
+  "remove": true,
+  "note": "global-2 2026-11-25: duplicate of ebcog-congress: sigo.it says the 102nd SIGO national congress is held jointly with the 30th EBCOG Congress, Rome 12-15 May 2027; kept ebcog-congress"
+ },
+ {
+  "id": "ebcog-congress",
+  "set": {
+   "name": "30th EBCOG Congress and 102nd SIGO National Congress"
+  },
+  "note": "global-2 2026-11-25: sigo.it: the 102nd SIGO congress is held jointly with EBCOG 2027 in Rome (sigo-congresso-2027 removed as a duplicate)"
+ },
+ {
+  "id": "hkcc-hong-kong-2027-expected",
+  "set": {
+   "name": "ACC Asia 2027 with the HKCC 35th Annual Scientific Congress",
+   "blurb": "The Hong Kong College of Cardiology annual congress, held in 2027 together with ACC Asia, in Hong Kong."
+  },
+  "note": "global-2 2026-11-25: acc.org lists the 2027 HKCC congress as a joint meeting with ACC Asia"
+ },
+ {
+  "id": "smsna-fall-scientific-meeting-2028",
+  "remove": true,
+  "note": "global-2 2026-11-25: duplicate of joint-issm-smsna-scientific-meeting-2028: smsna.org lists the 2028 fall meeting as the 29th World Meeting on Sexual Medicine, Miami, 26-29 Oct 2028; kept joint-issm-smsna-scientific-meeting-2028"
+ },
+ {
+  "id": "escap-congress-2027",
+  "remove": true,
+  "note": "global-2 2026-11-25: duplicate of escap-congress-athens-2027 (same ESCAP 2027 congress, Athens 24-27 June 2027, same evidence page); kept escap-congress-athens-2027"
+ },
+ {
+  "id": "jgs-annual-meeting",
+  "remove": true,
+  "note": "global-2 2026-11-25: duplicate of jgs-69th-annual-meeting-2027 (69th Japan Geriatrics Society meeting, Kagoshima 11-13 June 2027, confirmed on congre.co.jp/69jgs); kept jgs-69th-annual-meeting-2027"
+ },
+ {
+  "id": "espen-congress-2027",
+  "remove": true,
+  "note": "global-2 2026-11-25: duplicate of espen-istanbul: espencongress.com says the 49th ESPEN 2027 Congress is held in Istanbul (this estimate said Prague); kept espen-istanbul"
+ },
+ {
+  "id": "iapcon-chennai-2027-expected",
+  "set": {
+   "blurb": "The annual conference of the Indian Association of Palliative Care (IAPCON), in Bhubaneswar."
+  },
+  "note": "global-2 2026-11-25: blurb rewritten after the dates and city were confirmed on the organiser page (it said dates expected and named the estimated city)"
+ },
+ {
+  "id": "sufu-winter-meeting-2027",
+  "set": {
+   "blurb": "The annual meeting of the Society of Urodynamics, Female Pelvic Medicine and Urogenital Reconstruction, in San Diego."
+  },
+  "note": "global-2 2026-11-25: blurb rewritten after the dates and city were confirmed on the organiser page (it said dates expected and named the estimated city)"
+ },
+ {
+  "id": "sbi-symposium-2027",
+  "set": {
+   "blurb": "The annual meeting of the Society of Breast Imaging, in Pittsburgh."
+  },
+  "note": "global-2 2026-11-25: blurb rewritten after the dates and city were confirmed on the organiser page (it said dates expected and named the estimated city)"
+ },
+ {
+  "id": "ppag-annual-meeting-2027",
+  "set": {
+   "blurb": "The annual meeting of the Pediatric Pharmacy Association, in Indianapolis."
+  },
+  "note": "global-2 2026-11-25: blurb rewritten after the dates and city were confirmed on the organiser page (it said dates expected and named the estimated city)"
+ },
+ {
+  "id": "cos-annual-meeting-2027",
+  "set": {
+   "blurb": "The annual meeting of the Canadian Ophthalmological Society, in Ottawa."
+  },
+  "note": "global-2 2026-11-25: blurb rewritten after the dates and city were confirmed on the organiser page (it said dates expected and named the estimated city)"
+ },
+ {
+  "id": "cso-hns-annual-meeting-2027",
+  "set": {
+   "blurb": "The annual meeting of the Canadian Society of Otolaryngology - Head and Neck Surgery, in St. John's."
+  },
+  "note": "global-2 2026-11-25: blurb rewritten after the dates and city were confirmed on the organiser page (it said dates expected and named the estimated city)"
+ },
+ {
+  "id": "dgu-kongress-2027",
+  "set": {
+   "blurb": "The annual meeting of the Deutsche Gesellschaft für Urologie, in Frankfurt."
+  },
+  "note": "global-2 2026-11-25: blurb rewritten after the dates and city were confirmed on the organiser page (it said dates expected and named the estimated city)"
+ },
+ {
+  "id": "dge-jahrestagung-2027",
+  "set": {
+   "blurb": "The annual meeting of the Deutsche Gesellschaft für Endokrinologie, in Bielefeld."
+  },
+  "note": "global-2 2026-11-25: blurb rewritten after the dates and city were confirmed on the organiser page (it said dates expected and named the estimated city)"
+ },
+ {
+  "id": "asn-nutrition-2028",
+  "set": {
+   "blurb": "The annual meeting of the American Society for Nutrition, in Boston."
+  },
+  "note": "global-2 2026-11-25: blurb rewritten after the dates and city were confirmed on the organiser page (it said dates expected and named the estimated city)"
+ },
+ {
+  "id": "aaes-annual-meeting-2027",
+  "set": {
+   "blurb": "The annual meeting of the American Association of Endocrine Surgeons, in Sacramento."
+  },
+  "note": "global-2 2026-11-25: blurb rewritten after the dates and city were confirmed on the organiser page (it said dates expected and named the estimated city)"
+ },
+ {
+  "id": "baoms-annual-scientific-meeting-2027",
+  "set": {
+   "blurb": "The annual meeting of the British Association of Oral and Maxillofacial Surgeons, in Edinburgh."
+  },
+  "note": "global-2 2026-11-25: blurb rewritten after the dates and city were confirmed on the organiser page (it said dates expected and named the estimated city)"
+ },
+ {
+  "id": "dgho-jahrestagung-2027",
+  "set": {
+   "blurb": "The annual meeting of the Deutsche Gesellschaft für Hämatologie und Medizinische Onkologie, in Leipzig."
+  },
+  "note": "global-2 2026-11-25: blurb rewritten after the dates and city were confirmed on the organiser page (it said dates expected and named the estimated city)"
+ },
+ {
+  "id": "sbns-spring-meeting-2027",
+  "set": {
+   "blurb": "The annual meeting of the Society of British Neurological Surgeons, in Glasgow."
+  },
+  "note": "global-2 2026-11-25: blurb rewritten after the dates and city were confirmed on the organiser page (it said dates expected and named the estimated city)"
+ },
+ {
+  "id": "sgna-annual-course-2027",
+  "set": {
+   "blurb": "The annual meeting of the Society of Gastroenterology Nurses and Associates, in New Orleans."
+  },
+  "note": "global-2 2026-11-25: blurb rewritten after the dates and city were confirmed on the organiser page (it said dates expected and named the estimated city)"
+ },
+ {
+  "id": "aace-annual-meeting-2027",
+  "set": {
+   "blurb": "The annual meeting of the American Association of Clinical Endocrinology, in San Diego."
+  },
+  "note": "global-2 2026-11-25: blurb rewritten after the dates and city were confirmed on the organiser page (it said dates expected and named the estimated city)"
+ },
+ {
+  "id": "sidemast-congresso-2027",
+  "set": {
+   "blurb": "The annual meeting of the Società Italiana di Dermatología Medica Chirurgica Estetica e delle Malattie Sessualmente Trasmissibili, in Venice."
+  },
+  "note": "global-2 2026-11-25: blurb rewritten after the dates and city were confirmed on the organiser page (it said dates expected and named the estimated city)"
+ },
+ {
+  "id": "cspc-annual-meeting-2027",
+  "set": {
+   "blurb": "The annual meeting of the Canadian Society of Plastic Surgeons, in Montreal."
+  },
+  "note": "global-2 2026-11-25: blurb rewritten after the dates and city were confirmed on the organiser page (it said dates expected and named the estimated city)"
+ },
+ {
+  "id": "cspc-annual-meeting-2028",
+  "set": {
+   "blurb": "The Canadian Society of Plastic Surgeons annual scientific meeting, at Banff Springs."
+  },
+  "note": "global-2 2026-11-25: blurb rewritten after the dates and city were confirmed on the organiser page (it said dates expected and named the estimated city)"
+ },
+ {
+  "id": "ama-annual-meeting-2027",
+  "set": {
+   "blurb": "The annual meeting of the AMA House of Delegates, in Chicago."
+  },
+  "note": "global-2 2026-11-25: blurb rewritten after the dates and city were confirmed on the organiser page (it said dates expected and named the estimated city)"
+ },
+ {
+  "id": "bgcs-annual-scientific-meeting-2027",
+  "set": {
+   "blurb": "The annual meeting of the British Gynaecological Cancer Society, in Newcastle."
+  },
+  "note": "global-2 2026-11-25: blurb rewritten after the dates and city were confirmed on the organiser page (it said dates expected and named the estimated city)"
+ },
+ {
+  "id": "ahns-annual-meeting-2027",
+  "set": {
+   "blurb": "The American Head and Neck Society annual meeting, held at COSM, in Seattle."
+  },
+  "note": "global-2 2026-11-25: blurb rewritten after the dates and city were confirmed on the organiser page (it said dates expected and named the estimated city)"
+ },
+ {
+  "id": "dgvs-kongress-2027",
+  "set": {
+   "blurb": "The DGVS Viszeralmedizin congress: online first, then in Hamburg."
+  },
+  "note": "global-2 2026-11-25: blurb rewritten after the dates and city were confirmed on the organiser page (it said dates expected and named the estimated city)"
+ },
+ {
+  "id": "csvs-annual-meeting-2027",
+  "set": {
+   "blurb": "The annual meeting of the Canadian Society for Vascular Surgery, in Halifax."
+  },
+  "note": "global-2 2026-11-25: blurb rewritten after the dates and city were confirmed on the organiser page (it said dates expected and named the estimated city)"
+ },
+ {
+  "id": "smsna-fall-scientific-meeting-2027",
+  "set": {
+   "blurb": "The Sexual Medicine Society of North America fall scientific meeting, in San Diego."
+  },
+  "note": "global-2 2026-11-25: blurb rewritten after the dates and city were confirmed on the organiser page (it said dates expected and named the estimated city)"
+ },
+ {
+  "id": "eos-congress-2027",
+  "set": {
+   "blurb": "The annual meeting of the European Orthodontic Society, in Innsbruck."
+  },
+  "note": "global-2 2026-11-25: blurb rewritten after the dates and city were confirmed on the organiser page (it said dates expected and named the estimated city)"
+ },
+ {
+  "id": "ascvts-singapore-2027-expected",
+  "set": {
+   "blurb": "The 35th annual meeting of the Asian Society for Cardiovascular and Thoracic Surgery, in Yokohama."
+  },
+  "note": "global-2 2026-11-25: blurb rewritten after the dates and city were confirmed on the organiser page (it said dates expected and named the estimated city)"
+ },
+ {
+  "id": "asbrs-annual-meeting-2027",
+  "set": {
+   "blurb": "The annual meeting of the American Society of Breast Surgeons, in Orlando."
+  },
+  "note": "global-2 2026-11-25: blurb rewritten after the dates and city were confirmed on the organiser page (it said dates expected and named the estimated city)"
+ }
+]
