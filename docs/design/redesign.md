@@ -22,60 +22,69 @@ and an outlined month mean "estimate". You can read the data quality before you 
 
 ## Type
 
-IBM Plex (OFL), November 2026: the owner found the earlier text face too generic, and Plex was chosen from five tuned
-options (`fonts-explore`, option C). Three self-hosted woff2 files, Latin subset, no hinting, kern and liga only:
-**37 KB in all** (the pair it replaced was 69 KB). The two used on every screen (Plex Sans 400 and Plex Sans Condensed
-700) are preloaded; SemiBold loads on first use. `font-display: swap`. Plex figures are tabular by default, so no mono
-face is needed for numbers.
+25 November 2026, after a reference study against Airbnb, Spotify and Apple: UI text uses the **system stack**
+(`-apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif`), so phones
+get San Francisco or Roboto with no download. **IBM Plex Sans Condensed Bold** (OFL, one woff2, preloaded) is kept only for
+poster numerals, coordinates and the wordmark. The Plex Sans text files stay in `fonts/` for the share-image tool but are
+no longer served or preloaded.
 
-| Role | Face | Size | Notes |
+Whole pixels only (no rem or clamp maths; `tests/home.test.js` checks), as tokens in `styles.css`:
+
+| Token | Size / line | Weight | Use |
 |---|---|---|---|
-| Display / hero | Plex Sans Condensed 700 | `clamp(2.9rem, 7.3vw, 7.7rem)` | line-height .9, tracking -.03em |
-| Page title (h1) | Plex Condensed 700 | `clamp(2.42rem, 7vw, 4.84rem)` | line-height .9, tracking -.03em |
-| Section title (h2) | Plex Condensed 700 | `clamp(1.4rem, 3vw, 2.2rem)` | tracking -.012em |
-| Numerals | Plex Condensed 700 | up to 7.9rem | tabular by default |
-| Card / row title | Plex Condensed 700 | 1.1–1.25rem | |
-| Body | Plex Sans 400, 600 | 1rem / 1.5 (16 px on phones) | 500 in the CSS renders as 400 |
-| Meta / notes | Plex Sans 400 | .8125–.875rem | never below 13 px |
+| `--t-caption` | 12/16 | 500 | badges, small labels |
+| `--t-meta` | 13/18 | 400 (600 bold) | meta lines, status labels, "Show all" |
+| `--t-body` | 15/22 | 400 (600 bold) | body |
+| `--t-card` | 15/20 | 600 | card titles (two lines at most) |
+| `--t-body-lg` | 17/24 | 400 / 600 | inputs (no iOS zoom), sub-titles, the phone bar title |
+| `--t-title` | 22/26 | 600, -0.3 | section titles |
+| `--t-large` | 34/41 | 700, -0.4 | phone large titles, figures |
+| `--t-display` | 48/52 | 700, -0.8 | desktop page titles |
 
-Display sizes are set for Plex Condensed directly (about 12% below the sizes drawn for the face it replaced), not with
-`size-adjust`, so Safari before 17 gets the same layout. On the plates (`lib/art.js`) the date numerals are drawn at 76%
-and the month at 88% of the grid's nominal sizes, so a two-digit day still clears the month.
-
-Fallback stack is `"Arial Narrow", "Helvetica Neue", Arial, sans-serif` for display and `system-ui` for text.
+The detail title is 26/30 600 on phones. Weights: 400 and 600 for text, 700 for large titles and figures only.
 
 ## Colour tokens
 
 | Token | Light ("paper") | Dark ("night") | Use |
 |---|---|---|---|
 | `--bg` | `#F4EFE6` | `#12110E` | canvas |
-| `--bg-2` | `#FBF8F2` | `#1A1814` | sheets, bars |
-| `--inv` / `--inv-text` | `#15130F` / `#F4EFE6` | `#F3EEE4` / `#15130F` | inverted blocks: tab bar, toasts, closing band |
-| `--line-2` | `#8A8172` | `#7D7566` | field borders, dashes (3:1 on the canvas) |
-| `--card` | `#FFFDF9` | `#1F1D18` | the few raised surfaces |
-| `--card-2` | `#EAE3D5` | `#2A2721` | fields, tracks |
-| `--text` | `#15130F` | `#F3EEE4` | ink |
-| `--muted` | `#5A5347` | `#B4AC9E` | secondary |
-| `--faint` | `#6A6255` | `#9C9486` | tertiary |
-| `--line` | `rgba(21,19,15,.14)` | `rgba(243,238,228,.14)` | hairlines |
-| `--rule` | `#15130F` | `#F3EEE4` | ledger rules (1.5 px) |
-| `--flare` | `#FF4D1F` | `#FF5B2E` | the one loud colour: primary buttons, marks |
-| `--accent` | `#B8300A` | `#FF8A66` | accent as text, focus ring |
-| `--accent-ink` | `#15130F` | `#15130F` | text on flare |
-| `--ok` | `#0E5A4E` | `#6FD3B8` | confirmed, ready, paid |
-| `--warn` | `#8A4B00` | `#F2B45C` | estimate, due, missing |
-| `--bad` | `#A81E1E` | `#FF8A80` | errors, expired |
+| `--bg-2` | `#FBF8F2` | `#1A1814` | sheets |
+| `--card` | `#FFFDF9` | `#1F1D18` | the search pill, cards that hold controls |
+| `--card-2` | `#EAE3D5` | `#2A2721` | secondary buttons, segmented tracks |
+| `--text` | `#15130F` | `#F3EEE4` | ink, dates |
+| `--muted` | `#6B645A` | `#ABA396` | meta, status labels |
+| `--line` | `#E6DFD2` | `#2E2B25` | the only divider (1 px) |
+| `--line-2` | `#8A8172` | `#7D7566` | field borders (3:1) |
+| `--flare` | `#FF4D1F` | `#FF5B2E` | **the one accent**: primary action, active tab icon, selected chip |
+| `--accent` | `#B8300A` | `#FF8A66` | focus ring |
+| `--ok` | `#0E5A4E` | `#6FD3B8` | the confirmed dot, switches on |
+| `--warn` | `#8A4B00` | `#F2B45C` | the estimate ring (dashed) |
+| `--inv` | `#15130F` | `#F3EEE4` | "Show N results", toasts |
 
-Plates use ten fixed two-colour palettes (flare, lagoon, night, bone, cobalt, plum, ochre, sky, moss, rose) picked by
-specialty, so a specialty keeps its colour across the app.
+Status is a dot and a grey 13 px label: confirmed is a solid 8 px `--ok` dot, estimate a dashed amber ring, re-checking a
+hollow ring. No red kicker rules, no red half-headlines, no 1.5 px ink rules: sections are separated by 32 to 40 px of space
+or one 1 px `--line`.
 
 ## Space and shape
 
-- 4 px base; steps 4, 8, 12, 16, 24, 32, 48, 72, 112. Phone gutter 20, desktop gutter `clamp(32px, 5vw, 80px)`.
-- Radius: 4 on plates (they are prints), 12 on fields and buttons, 999 only on the primary action and the tab bar.
-- No shadows on content. One soft shadow under the floating tab bar and sheets.
-- Structure comes from rules: a 1.5 px ink rule opens a section, hairlines separate rows. Boxes only where something is
-  a physical object (a ticket, a receipt, a dialog).
+- 4 px base. Phone gutter 20, desktop 40 (80 from 1280). 48 px above a desktop page title; 40 px between shelves.
+- Radius: 16 on posters and cards, 12 on shelf posters, buttons and fields, 24 on sheets, 999 on the search pill and chips.
+- Shadows: the search pill (`0 1px 2px / 0 4px 12px`, 6%), the desktop booking card (`0 6px 16px`, 12%), sheets.
+
+## Patterns from the references
+
+- **Airbnb**: the 56 px search pill ("Where to?" over "Any month · Any specialty", a 40 px filter circle) opens a Where /
+  When / Specialty sheet; an interest row of in-house line glyphs (All, Ski & snow, Food & wine, Festivals, Sport, Nature &
+  wildlife, Beach, Family); the filter sheet (region segmented control, 12 month chips, CPD and school-holiday switches,
+  a searchable specialty list, Country / School holidays / Dates / Sort, sticky "Clear all" and dark "Show N results");
+  full-width 4:3 posters with a white heart on phones, four columns on desktop; the conference page (poster header with round
+  back / share / save buttons, an overlapping sheet, When / Where / CPD / Make a trip of it, a sticky bar with the dates and
+  trip window and Plan trip; on desktop a 1+4 poster mosaic, two columns and a sticky booking card).
+- **Spotify**: Home is shelves (Coming up, Make a trip of it: Food & wine, Near school holidays, Courses due or nearby,
+  Saved), 160 px cards on 4:5 posters; "Browse by specialty" tiles on Discover, one colour per specialty with a small
+  poster tilted off the corner.
+- **Apple**: large titles (34/41 phone, 48/52 desktop) that hand over to a 44 px translucent bar with the title centred
+  once scrolled; a flat 49 px tab bar with a hairline, 24 px icons and 10 px labels.
 
 ## The plate (generated artwork)
 
@@ -83,7 +92,8 @@ specialty, so a specialty keeps its colour across the app.
 
 - **Terrain = the place.** Two relief hills seeded from the city (its coordinates when the listing has them), drawn as
   nested closed curves with stacked translucent fills. The same city always gets the same terrain.
-- **Colour = the specialty.**
+- **Colour = the specialty**: twelve hues (flare, lagoon, cobalt, plum, ochre, sky, moss, rose, violet, teal, berry, night).
+- **Texture = the city**: contours, coastline, graticule or ripples, seeded from the city, so lists vary and one city's posters match.
 - **Numerals = the date.** Day and month in display type; the city's coordinates and country code as small print.
 - **Line style = the evidence.** Solid and stamped: confirmed with source stored. Solid, no stamp: confirmed earlier,
   being re-checked. Dashed with an outlined month and "est.": estimated.
@@ -109,10 +119,10 @@ Every plate is decorative (`aria-hidden`); the same facts are always in text nex
 
 ## Navigation
 
-Five destinations: **Home, Discover, Trips, Wallet, You**. Wallet holds receipts, claims, CPD and certificates behind
+Five destinations: **Home, Discover, Trips, Wallet, You**. The Preview line (data resets on the demo host) sits under You. Wallet holds receipts, claims, CPD and certificates behind
 one tab with a ruled sub-navigation. Courses live under Discover (Conferences / Courses). Hospital pages open from You
-(and from the desktop bar for the roles that use them). Phones get a floating tab bar; desktops get a top bar and a wide
-editorial grid, not a stretched phone.
+(and from the desktop bar for the roles that use them). Phones get a flat tab bar; desktops get a top bar and a four-column
+grid, not a stretched phone.
 
 ## Component inventory
 
@@ -123,8 +133,10 @@ editorial grid, not a stretched phone.
 | Plate | `.plate` (`.plate.mini`) | cards, rows, sheet hero, hero fan, server pages |
 | Conference card | `.card` | Discover, shelves |
 | Shelf (swipeable) | `.shelf` | Home |
-| Ticker | `.ticker` | public Home |
-| Status line (replaces most pills) | `.pill` / `.pill.g` / `.pill.w` / `.pill.b` | everywhere |
+| Search pill, interest row, tiles | `.spill`, `.irow`, `.tile` | Discover, Home |
+| Search sheet, filter sheet | `.ssheet`, `.fsheet.modal`, `.segc`, `.mchips`, `.switch`, `.slist`, `.sfoot` | Discover |
+| Conference page frame | `.dt`, `.dt-bar`, `.dt-hero`, `.dt-body`, `.dt-book`, `.honest`, `.dt-sec` | conference and session sheets, `/conferences/<id>` |
+| Status dot + grey label | `.pill` / `.pill.g` / `.pill.w` / `.pill.b` | everywhere |
 | Fact strip (ruled `dl`) | `.facts`, `.fact` | detail sheet, course page, server pages |
 | Ledger list | `.list`, `.li` | paperwork |
 | Group | `.panel` | paperwork: ruled group with a title, not a box |
@@ -176,5 +188,5 @@ and certifying bodies are still labelled; counts on Home are computed from the l
 - axe-core: `tests/e2e/a11y.js` runs every route and the main dialogs at 390x844 and 1280x900 in light and dark and
   fails on any serious or critical violation. Every text pair above is AA by that run.
 - Tap targets are 44 px or more (small buttons grow to 44 px on coarse pointers); focus is a 2.5 px accent ring.
-- Layout shift: the fonts are preloaded with `font-display: swap`, plates are inline SVG with a fixed aspect ratio and
+- Layout shift: UI text is the system face; the poster face is preloaded with `font-display: swap`, plates are inline SVG with a fixed aspect ratio and
   motion is transform-only, so measured CLS is 0 on Home, Discover, Courses and the server pages.

@@ -96,3 +96,14 @@ test('every file the server publishes ships to Vercel', () => {
   for (const f of pub) { const top = f.split('/')[0]; assert.ok(inc.includes(f) || inc.includes(top + '/**'), f + ' missing from vercel.json includeFiles'); }
   for (const m of read('index.html').match(/<script src="([^"]+)"/g)) { const f = m.slice(13, -1); assert.ok(pub.includes(f), f + ' is not in PUBLIC'); }
 });
+
+test('type: whole-pixel tokens, the system stack for text, Plex Condensed only for posters and the wordmark', () => {
+  const css = read('styles.css');
+  assert.doesNotMatch(css, /\d(\.\d+)?rem\b|clamp\(/, 'no rem or clamp maths in the stylesheet');
+  for (const m of css.match(/font(-size)?:[^;}]*/g)) assert.doesNotMatch(m, /\d\.\d+px/, 'fractional size: ' + m);
+  assert.match(css, /--font:-apple-system,BlinkMacSystemFont,"SF Pro Text"/);
+  assert.doesNotMatch(css, /plex-sans-(400|600)/);
+  assert.doesNotMatch(read('server.js').match(/const PUBLIC = new Set\(\[([^\]]+)\]\)/)[1], /plex-sans-(400|600)/, 'Plex Sans text files are not served');
+  assert.doesNotMatch(read('index.html') + read('lib/pages.js'), /plex-sans-(400|600)/, 'nor preloaded');
+  assert.doesNotMatch(read('server.js'), /demo-note/, 'the Preview line lives under You, not over the page');
+});
