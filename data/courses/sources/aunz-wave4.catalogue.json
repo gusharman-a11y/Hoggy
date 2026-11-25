@@ -1,0 +1,73 @@
+{
+ "generated": "2026-11-25",
+ "note": "Data wave 4 (25 Nov 2026): AU/NZ course types read on the provider's or course owner's own pages.",
+ "courses": [
+  {
+   "id": "basic-icu",
+   "name": "Basic Assessment and Support in Intensive Care (BASIC)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "BASIC course collaboration (The Chinese University of Hong Kong)",
+     "url": "https://www.aic.cuhk.edu.hk/basic/",
+     "verified": true,
+     "calendar": "https://www.aic.cuhk.edu.hk/basic/registration.php"
+    },
+    {
+     "name": "Sir Charles Gairdner Hospital ICU (SCGH Simulation Centre)",
+     "url": "https://scgh.health.wa.gov.au/",
+     "verified": true,
+     "calendar": "https://scgh.health.wa.gov.au/For-Health-Professionals/Sim/Courses/Basic"
+    },
+    {
+     "name": "Health NZ Hawke's Bay (Hawke's Bay Fallen Soldiers' Memorial Hospital)",
+     "url": "https://www.healthnz.govt.nz/",
+     "verified": true,
+     "calendar": "https://www.healthnz.govt.nz/health-professionals/workforce-development/training-and-career-development/district-region/hawkes-bay"
+    }
+   ],
+   "countries": [
+    "AU",
+    "NZ"
+   ],
+   "format": "Two-day course on the essentials of intensive care for junior doctors: lectures, skill stations (airway, mechanical ventilation, shock, trauma) and tutorials.",
+   "formatEvidence": {
+    "sourceUrl": "https://scgh.health.wa.gov.au/For-Health-Professionals/Sim/Courses/Basic",
+    "quote": "This two-day course covers the essential elements of Intensive Care medicine, pitched at junior doctors entering into critical care environments.",
+    "lastVerified": "2026-11-25"
+   },
+   "typicalLength": "2 days",
+   "cpdNote": "check provider",
+   "notes": "Run by hospital ICU departments under the BASIC course collaboration based at CUHK. Course runners list sessions on the collaboration's registration page or on their own hospital page; some register by email only."
+  },
+  {
+   "id": "ten360-critically-ill-child",
+   "name": "TEN-360: Critically Ill Child (two-day paediatric emergency workshop)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "TEN-360 Training Education Network",
+     "url": "https://events.humanitix.com/ten-360-critically-ill-child-2027",
+     "verified": true,
+     "calendar": "https://events.humanitix.com/ten-360-critically-ill-child-2027"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "format": "Two-day workshop on recognising and managing the seriously ill child: paediatric resuscitation (day 1), neurological emergencies, pain and sedation (day 2), with skills stations and simulations.",
+   "formatEvidence": {
+    "sourceUrl": "https://events.humanitix.com/ten-360-critically-ill-child-2027",
+    "quote": "By the end of the two days you should be confident to recognise and initiate emergency management for the majority of paediatric emergencies you will encounter in your clinical practice.",
+    "lastVerified": "2026-11-25"
+   },
+   "typicalLength": "2 days",
+   "cpdNote": "check provider",
+   "notes": "Booked through the provider's Humanitix event page."
+  }
+ ]
+}
