@@ -13,6 +13,7 @@ package it, and claim only the work portion.
   source link. Too much explaining reads as AI-written. See docs/design/voice.md.
 - Must not look "AI vibe-coded": avoid Inter/Bricolage/Instrument-type default fonts,
   initials-on-gradient tiles, pill overload, card-everything layouts.
+- Design benchmarks: **Airbnb, Spotify, Apple.** Measure against them.
 - Replies to the owner: short, plain, phone-friendly. Tables over paragraphs.
 
 ## Data rules
