@@ -56,3 +56,11 @@ test('ACRRM RACM table -> one-day sessions with endInferred and CPD', () => {
   assert.ok(sessions.length >= 1);
   for (const s of sessions) { assert.strictEqual(s.courseId, 'acrrm-racm'); assert.strictEqual(s.endInferred, true); assert.strictEqual(s.cpdHours, 16); assert.strictEqual(s.priceFrom, 1635); }
 });
+
+test('RescueMED: "Dates:&nbsp;" and a value on the label line are read (wave 5 fix)', () => {
+  const R = require('./resus-rescuemed');
+  const a = R.parse('<p>Dates:&nbsp;7-10 December 2026</p><p>Location: Mount Buller</p>', R.PAGES[2], { today: '2026-11-25' });
+  assert.strictEqual(a.sessions.length, 1); assert.strictEqual(a.sessions[0].start, '2026-12-07'); assert.strictEqual(a.sessions[0].venue, 'Mount Buller');
+  const b = R.parse('<p>Dates:</p><p>8 - 12 March 2027 | 25 - 29 October 2027</p>', R.PAGES[0], { today: '2026-11-25' });
+  assert.deepStrictEqual(b.sessions.map(s => s.end), ['2027-03-12', '2027-10-29']);
+});

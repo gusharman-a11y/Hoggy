@@ -1,0 +1,27 @@
+{
+ "generated": "2026-11-25",
+ "note": "EMUGS: NZ course dates from each event's own Humanitix page (the event's date list), read 25 Nov 2026.",
+ "courses": [
+  {
+   "id": "emugs-pocus-fundamentals-egls",
+   "name": "EMUGS POCUS Fundamentals Course / EGLS Course (two days)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Emergency Medicine Ultrasound Group (EMUGS)",
+     "url": "https://events.humanitix.com/2027-auckland-pocus-fundamentals-course-egls-course",
+     "verified": true,
+     "calendar": "https://events.humanitix.com/host/emugs"
+    }
+   ],
+   "countries": [
+    "NZ"
+   ],
+   "typicalLength": "2 days",
+   "cpdNote": "check provider",
+   "notes": "Two-day point-of-care ultrasound fundamentals course (with the Echo-Guided Life Support module) run by EMUGS. Booked on Humanitix."
+  }
+ ]
+}

@@ -23,7 +23,11 @@ async function get(u) {
 const links = (h, re) => [...new Set([...String(h || '').matchAll(/href="([^"#]+)"/g)].map(m => m[1]).filter(x => re.test(x)))];
 const y2 = String(+today.slice(0, 4) + 2);
 (async () => {
-  await get(`https://fsep.ranzcog.edu.au/wp-json/tribe/events/v1/events?per_page=50&start_date=${today}&end_date=${y2}-12-31`);
+  /* FSEP feed: 50 events a page, about 3 pages; every page is read (the build parses each one) */
+  for (let p = 1, pages = 1; p <= pages && p <= 10; p++) {
+    const b = await get(`https://fsep.ranzcog.edu.au/wp-json/tribe/events/v1/events?per_page=50&start_date=${today}&end_date=${y2}-12-31${p > 1 ? '&page=' + p : ''}`);
+    try { pages = b ? +JSON.parse(b).total_pages || 1 : 0; } catch (e) { pages = 0; }
+  }
   for (const p of ['what-we-offer/available-programs/full-day-program/', 'about-fsep/target-audience/', 'what-we-offer/online-program/']) await get('https://fsep.ranzcog.edu.au/' + p);
   const ev = await get('https://www.skincancercollege.org/events');
   for (const k of links(ev, /EventDetail\?EventKey=(CSCM|ASSW|DERM)_/)) await get('https://www.skincancercollege.org' + k);

@@ -1,0 +1,52 @@
+{
+ "generated": "2026-11-25",
+ "note": "EMUGS: NZ course dates from each event's own Humanitix page (the event's date list), read 25 Nov 2026.",
+ "sessions": [
+  {
+   "id": "emugs-pocus-fundamentals-egls-nz-auckland-2027-09-23",
+   "courseId": "emugs-pocus-fundamentals-egls",
+   "variant": "full",
+   "provider": "Emergency Medicine Ultrasound Group (EMUGS)",
+   "city": "Auckland",
+   "region": "Auckland",
+   "country": "NZ",
+   "venue": "Sudima Auckland City, 10th floor/63-67 Nelson Street, Auckland CBD, Auckland 1010",
+   "start": "2027-09-23",
+   "end": "2027-09-24",
+   "endInferred": false,
+   "priceFrom": null,
+   "currency": null,
+   "seatsStatus": null,
+   "bookingUrl": "https://events.humanitix.com/2027-auckland-pocus-fundamentals-course-egls-course",
+   "sourceUrl": "https://events.humanitix.com/2027-auckland-pocus-fundamentals-course-egls-course",
+   "datesQuote": "2027 Auckland POCUS Fundamentals Course / EGLS Course | Thu, 23 Sep, 8:30am - Fri, 24 Sep, 5:30pm 2027 NZST",
+   "lastVerified": "2026-11-25",
+   "datesConfirmed": true,
+   "sourceKind": "Emergency Medicine Ultrasound Group (EMUGS)'s own event page on its booking platform (Humanitix host page https://events.humanitix.com/host/emugs)",
+   "sourceRef": "humanitix:2027-auckland-pocus-fundamentals-course-egls-course:2027-09-23"
+  },
+  {
+   "id": "emugs-pocus-fundamentals-egls-nz-wellington-2027-03-12",
+   "courseId": "emugs-pocus-fundamentals-egls",
+   "variant": "full",
+   "provider": "Emergency Medicine Ultrasound Group (EMUGS)",
+   "city": "Wellington",
+   "region": "Wellington",
+   "country": "NZ",
+   "venue": "WQ Wellington Quarter Hotel, 24 Hawkestone Street, Thorndon, Wellington 6011",
+   "start": "2027-03-12",
+   "end": "2027-03-13",
+   "endInferred": false,
+   "priceFrom": null,
+   "currency": null,
+   "seatsStatus": null,
+   "bookingUrl": "https://events.humanitix.com/2027-wellington-pocus-fundamentals-course-egls-course",
+   "sourceUrl": "https://events.humanitix.com/2027-wellington-pocus-fundamentals-course-egls-course",
+   "datesQuote": "2027 Wellington POCUS Fundamentals Course / EGLS Course | Fri, 12 Mar, 8:30am - Sat, 13 Mar, 5:30pm 2027 NZDT",
+   "lastVerified": "2026-11-25",
+   "datesConfirmed": true,
+   "sourceKind": "Emergency Medicine Ultrasound Group (EMUGS)'s own event page on its booking platform (Humanitix host page https://events.humanitix.com/host/emugs)",
+   "sourceRef": "humanitix:2027-wellington-pocus-fundamentals-course-egls-course:2027-03-12"
+  }
+ ]
+}

@@ -34,7 +34,10 @@ const sessions = [], courses = [], onlineIntakes = [];
 const add = (src, arr) => { counts[src] = (counts[src] || 0) + arr.length; sessions.push(...arr); };
 
 /* ================= FSEP (RANZCOG) — The Events Calendar REST feed ================= */
-const FSEP_FEED = 'https://fsep.ranzcog.edu.au/wp-json/tribe/events/v1/events?per_page=50&start_date=2026-11-18&end_date=2028-12-31';
+/* the fetcher asks for start_date=<today> and reads every page; the build takes every cached feed page (wave 5 fix: the URL
+   was pinned to start_date=2026-11-18, so a later run found nothing cached and read 0 rows) */
+const FSEP_PREFIX = 'https://fsep.ranzcog.edu.au/wp-json/tribe/events/v1/events?';
+const FSEP_FEED = FSEP_PREFIX + 'per_page=50&start_date=' + today + '&end_date=' + (+today.slice(0, 4) + 2) + '-12-31';
 const FSEP_PLACE = { /* title -> [city, region for NZ] (titles name the hospital only) */
   'St George Private Hospital': ['Kogarah'], 'Bendigo Health Care Group': ['Bendigo'], 'Barwon Health Geelong': ['Geelong'],
   'Tauranga Hospital': ['Tauranga', 'Bay of Plenty'], 'Waitakere Hospital': ['Auckland (Waitakere)', 'Auckland'], 'North Shore Private Hospital [NSW]': ['St Leonards'],
@@ -42,13 +45,22 @@ const FSEP_PLACE = { /* title -> [city, region for NZ] (titles name the hospital
   'Waikato Hospital': ['Hamilton', 'Waikato'], 'Rockhampton Hospital': ['Rockhampton'], 'Southland Hospital – Invercargill': ['Invercargill', 'Southland'],
   'Flinders Medical Centre': ['Bedford Park'], 'Logan Hospital': ['Meadowbrook'], 'The Northern Hospital': ['Epping'], 'Sunshine Hospital [Western Health]': ['St Albans'],
   'Frankston Hospital [Peninsula Health]': ['Frankston'], 'King Edward Memorial Hospital': ['Subiaco'], 'Epworth Freemasons (Richmond)': ['Richmond'],
-  'Royal Women’s Hospital': ['Parkville'], 'Joondalup Private Hospital': ['Joondalup'], 'Royal Brisbane & Women’s Hospital': ['Herston']
+  'Royal Women’s Hospital': ['Parkville'], 'Joondalup Private Hospital': ['Joondalup'], 'Royal Brisbane & Women’s Hospital': ['Herston'],
+  /* wave 5: hospitals new in the feed */
+  'Adelaide Women’s and Children’s Hospital': ['North Adelaide'], 'Albury Wodonga Health [Wodonga Campus]': ['Wodonga'], 'Bundaberg Hospital': ['Bundaberg'],
+  'Caboolture Hospital': ['Caboolture'], 'Cornerstone Medical Recruitment [Brisbane]': ['Brisbane'], 'Echuca Regional Health': ['Echuca'],
+  'Frances Perry House': ['Parkville'], 'Goulburn Valley Health [Shepparton]': ['Shepparton'], 'Hervey Bay Hospital': ['Hervey Bay'], 'Ipswich Hospital': ['Ipswich'],
+  'Kingaroy Hospital': ['Kingaroy'], 'Longreach Hospital': ['Longreach'], 'Mackay Base Hospital': ['Mackay'], 'Redcliffe Hospital': ['Redcliffe'],
+  'Royal Darwin Hospital': ['Darwin'], 'Royal Darwin Hospital [Palmerston Campus]': ['Palmerston'], 'St Vincent’s Private Hospital Fitzroy': ['Fitzroy'],
+  'St Vincent’s Private Hospital [Toowoomba]': ['Toowoomba'], 'The Bays Healthcare (Mornington)': ['Mornington'], 'Wellington Hospital': ['Wellington', 'Wellington'],
+  'Westmead Private Hospital': ['Westmead'], 'Wimmera Base Hospital [Horsham]': ['Horsham']
 };
-{
-  const body = page(FSEP_FEED);
+const fsepPages = [...idx.keys()].filter(u => u.startsWith(FSEP_PREFIX));
+for (const fsepUrl of fsepPages.length ? fsepPages : [FSEP_FEED]) {
+  const body = page(fsepUrl);
   if (body) {
     const r = P.parseTribe(JSON.parse(body), {
-      url: FSEP_FEED, today, sourceKind: 'FSEP (RANZCOG) own events feed (The Events Calendar REST API behind fsep.ranzcog.edu.au/events-workshops)',
+      url: fsepUrl, today, sourceKind: 'FSEP (RANZCOG) own events feed (The Events Calendar REST API behind fsep.ranzcog.edu.au/events-workshops)',
       classify: (e, { title, desc, cf }) => {
         if (cf['Event Type'] && !/Full Day/i.test(cf['Event Type'])) return { skip: 'event type ' + cf['Event Type'] };
         const restricted = desc.match(/^(For [^.]*?only\.)/);

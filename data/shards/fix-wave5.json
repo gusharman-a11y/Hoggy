@@ -1,0 +1,3 @@
+[
+ {"id":"ishlt-annual-meeting-2027","remove":true,"note":"wave5 2026-11-25: ishlt.org/annual-meeting/other-annual-meetings/future-dates gives the 47th Annual Meeting at International Convention Centre Sydney, 14-17 April 2027 (preconference day 13 April), not Toronto. Replaced by ishlt-annual-meeting-2027-sydney (shard wave5-aunz.json), since a fix entry cannot change the row's region. The same page gives 2028 as Seattle, 26-29 April 2028 (row ishlt-annual-meeting-2028 still says Toronto; left for the global desk)."}
+]

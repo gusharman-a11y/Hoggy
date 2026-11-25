@@ -28,3 +28,14 @@ test('client: generic UA, robots honoured, Cloudflare challenge reported not ret
   assert.equal(calls.filter(c => c[0].endsWith('robots.txt')).length, 1, 'robots.txt fetched once per host');
   assert.ok(calls.every(c => c[1] === UA) && !/@/.test(UA));
 });
+
+test('a redirect to another host is refused when that host\'s robots.txt disallows it (wave 5)', async () => {
+  const { makeClient } = require('./http');
+  const fetchImpl = async u => {
+    const x = new URL(u);
+    if (x.pathname === '/robots.txt') return { ok: true, status: 200, headers: { get: () => null }, text: async () => (x.host === 'b.example' ? 'User-agent: *\nDisallow: /' : ''), url: u };
+    return { ok: true, status: 200, headers: { get: () => null }, text: async () => 'page', url: 'https://b.example/page' };
+  };
+  const c = makeClient({ gapMs: 0, fetchImpl });
+  await require('node:assert').rejects(() => c.get('https://a.example/x'), e => e.code === 'robots');
+});

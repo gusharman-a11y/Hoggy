@@ -1,0 +1,62 @@
+{
+ "generated": "2026-11-25",
+ "note": "HealthCert 2027 Masterclasses in Dermoscopy & Surgery (Brisbane), read on HealthCert's own page 25 Nov 2026.",
+ "courses": [
+  {
+   "id": "healthcert-dermoscopy-masterclass",
+   "name": "HealthCert Dermoscopy Masterclass (skin cancer, two days)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "HealthCert Education",
+     "url": "https://www.healthcert.com/conference-masterclasses-2027",
+     "verified": true,
+     "calendar": "https://www.healthcert.com/workshops/calendar"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "providerType": "commercial",
+   "format": "Dermoscopy masterclass in skin cancer medicine, 2 days in person.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.healthcert.com/conference-masterclasses-2027",
+    "quote": "✔ Dermoscopy Masterclass (2 days, in person)",
+    "lastVerified": "2026-11-25"
+   },
+   "typicalLength": "2 days",
+   "cpdNote": "check provider",
+   "notes": "Advanced skin cancer masterclass for doctors already practising skin cancer medicine."
+  },
+  {
+   "id": "healthcert-surgery-masterclass",
+   "name": "HealthCert Surgery Masterclass (skin cancer, two days)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "HealthCert Education",
+     "url": "https://www.healthcert.com/conference-masterclasses-2027",
+     "verified": true,
+     "calendar": "https://www.healthcert.com/workshops/calendar"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "providerType": "commercial",
+   "format": "Surgery masterclass in skin cancer medicine, 2 days in person.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.healthcert.com/conference-masterclasses-2027",
+    "quote": "✔ Surgery Masterclass (2 days, in person)",
+    "lastVerified": "2026-11-25"
+   },
+   "typicalLength": "2 days",
+   "cpdNote": "check provider",
+   "notes": "Advanced skin cancer masterclass for doctors already practising skin cancer medicine."
+  }
+ ]
+}

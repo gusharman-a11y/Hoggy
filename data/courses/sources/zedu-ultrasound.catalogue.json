@@ -1,0 +1,942 @@
+{
+ "generated": "2026-11-25",
+ "note": "Zedu Ultrasound Training Solutions (ultrasoundtraining.com.au): course start dates from each course page booking list, read 25 Nov 2026.",
+ "courses": [
+  {
+   "id": "zedu-gastric-ultrasound",
+   "name": "Zedu Gastric Ultrasound Course",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Zedu Ultrasound Training Solutions",
+     "url": "https://www.ultrasoundtraining.com.au/anaesthetics/gastric-ultrasound-course/",
+     "verified": true,
+     "calendar": "https://www.ultrasoundtraining.com.au/course-calendar/",
+     "bookingPlatform": "Zedu WooCommerce store (www.ultrasoundtraining.com.au)"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "providerType": "commercial",
+   "format": "Face-to-face hands-on ultrasound course at Zedu, Bundoora (Melbourne); 1 day.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.ultrasoundtraining.com.au/anaesthetics/gastric-ultrasound-course/",
+    "quote": "Duration (days) 1",
+    "lastVerified": "2026-11-25"
+   },
+   "typicalLength": "1 day",
+   "feeRange": {
+    "currency": "AUD",
+    "min": 1380,
+    "max": 1380,
+    "text": "$1380 (course page)"
+   },
+   "feeSource": "https://www.ultrasoundtraining.com.au/anaesthetics/gastric-ultrasound-course/",
+   "cpdNote": "check provider (the course page lists college CPD recognition)",
+   "notes": "Commercial provider. Dates are the start dates in the course page booking list; the end is worked out from the stated course length."
+  },
+  {
+   "id": "zedu-ultrasound-guided-procedures-for-pain-medicine",
+   "name": "Zedu Ultrasound Guided Procedures for Pain Medicine Course",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Zedu Ultrasound Training Solutions",
+     "url": "https://www.ultrasoundtraining.com.au/anaesthetics/ultrasound-guided-procedures-pain-management/",
+     "verified": true,
+     "calendar": "https://www.ultrasoundtraining.com.au/course-calendar/",
+     "bookingPlatform": "Zedu WooCommerce store (www.ultrasoundtraining.com.au)"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "providerType": "commercial",
+   "format": "Face-to-face hands-on ultrasound course at Zedu, Bundoora (Melbourne); 2 days.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.ultrasoundtraining.com.au/anaesthetics/ultrasound-guided-procedures-pain-management/",
+    "quote": "Duration (days) 2",
+    "lastVerified": "2026-11-25"
+   },
+   "typicalLength": "2 days",
+   "feeRange": {
+    "currency": "AUD",
+    "min": 2650,
+    "max": 2650,
+    "text": "$2650 (course page)"
+   },
+   "feeSource": "https://www.ultrasoundtraining.com.au/anaesthetics/ultrasound-guided-procedures-pain-management/",
+   "cpdNote": "check provider (the course page lists college CPD recognition)",
+   "notes": "Commercial provider. Dates are the start dates in the course page booking list; the end is worked out from the stated course length."
+  },
+  {
+   "id": "zedu-ultrasound-guided-regional-anaesthesia",
+   "name": "Zedu Ultrasound Guided Regional Anaesthesia Course",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Zedu Ultrasound Training Solutions",
+     "url": "https://www.ultrasoundtraining.com.au/anaesthetics/ultrasound-guided-regional-anaesthesia/",
+     "verified": true,
+     "calendar": "https://www.ultrasoundtraining.com.au/course-calendar/",
+     "bookingPlatform": "Zedu WooCommerce store (www.ultrasoundtraining.com.au)"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "providerType": "commercial",
+   "format": "Face-to-face hands-on ultrasound course at Zedu, Bundoora (Melbourne); 2 days.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.ultrasoundtraining.com.au/anaesthetics/ultrasound-guided-regional-anaesthesia/",
+    "quote": "Duration (days) 2",
+    "lastVerified": "2026-11-25"
+   },
+   "typicalLength": "2 days",
+   "feeRange": {
+    "currency": "AUD",
+    "min": 2650,
+    "max": 2650,
+    "text": "$2650 (course page)"
+   },
+   "feeSource": "https://www.ultrasoundtraining.com.au/anaesthetics/ultrasound-guided-regional-anaesthesia/",
+   "cpdNote": "check provider (the course page lists college CPD recognition)",
+   "notes": "Commercial provider. Dates are the start dates in the course page booking list; the end is worked out from the stated course length."
+  },
+  {
+   "id": "zedu-ultrasound-guided-vascular-access",
+   "name": "Zedu Ultrasound Guided Vascular Access Course",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Zedu Ultrasound Training Solutions",
+     "url": "https://www.ultrasoundtraining.com.au/anaesthetics/ultrasound-guided-vascular-access/",
+     "verified": true,
+     "calendar": "https://www.ultrasoundtraining.com.au/course-calendar/",
+     "bookingPlatform": "Zedu WooCommerce store (www.ultrasoundtraining.com.au)"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "providerType": "commercial",
+   "format": "Face-to-face hands-on ultrasound course at Zedu, Bundoora (Melbourne); 1 day.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.ultrasoundtraining.com.au/anaesthetics/ultrasound-guided-vascular-access/",
+    "quote": "Duration (days) 1",
+    "lastVerified": "2026-11-25"
+   },
+   "typicalLength": "1 day",
+   "feeRange": {
+    "currency": "AUD",
+    "min": 1380,
+    "max": 1380,
+    "text": "$1380 (course page)"
+   },
+   "feeSource": "https://www.ultrasoundtraining.com.au/anaesthetics/ultrasound-guided-vascular-access/",
+   "cpdNote": "check provider (the course page lists college CPD recognition)",
+   "notes": "Commercial provider. Dates are the start dates in the course page booking list; the end is worked out from the stated course length."
+  },
+  {
+   "id": "zedu-ultrasound-for-gynaecological-brachytherapy",
+   "name": "Zedu Ultrasound for Gynaecological Brachytherapy Course",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Zedu Ultrasound Training Solutions",
+     "url": "https://www.ultrasoundtraining.com.au/brachytherapy/pocus-for-gynaecological-brachytherapy/",
+     "verified": true,
+     "calendar": "https://www.ultrasoundtraining.com.au/course-calendar/",
+     "bookingPlatform": "Zedu WooCommerce store (www.ultrasoundtraining.com.au)"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "providerType": "commercial",
+   "format": "Face-to-face hands-on ultrasound course at Zedu, Bundoora (Melbourne); 2 days.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.ultrasoundtraining.com.au/brachytherapy/pocus-for-gynaecological-brachytherapy/",
+    "quote": "Two day course commencing on the:",
+    "lastVerified": "2026-11-25"
+   },
+   "typicalLength": "2 days",
+   "feeRange": {
+    "currency": "AUD",
+    "min": 2850,
+    "max": 2850,
+    "text": "$2850 (course page)"
+   },
+   "feeSource": "https://www.ultrasoundtraining.com.au/brachytherapy/pocus-for-gynaecological-brachytherapy/",
+   "cpdNote": "check provider (the course page lists college CPD recognition)",
+   "notes": "Commercial provider. Dates are the start dates in the course page booking list; the end is worked out from the stated course length."
+  },
+  {
+   "id": "zedu-echo-in-life-support",
+   "name": "Zedu Echo in Life Support Course",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Zedu Ultrasound Training Solutions",
+     "url": "https://www.ultrasoundtraining.com.au/echo/basic-echo-in-life-support/",
+     "verified": true,
+     "calendar": "https://www.ultrasoundtraining.com.au/course-calendar/",
+     "bookingPlatform": "Zedu WooCommerce store (www.ultrasoundtraining.com.au)"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "providerType": "commercial",
+   "format": "Face-to-face hands-on ultrasound course at Zedu, Bundoora (Melbourne); 1 day.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.ultrasoundtraining.com.au/echo/basic-echo-in-life-support/",
+    "quote": "Duration (days) 1",
+    "lastVerified": "2026-11-25"
+   },
+   "typicalLength": "1 day",
+   "feeRange": {
+    "currency": "AUD",
+    "min": 1380,
+    "max": 1380,
+    "text": "$1380 (course page)"
+   },
+   "feeSource": "https://www.ultrasoundtraining.com.au/echo/basic-echo-in-life-support/",
+   "cpdNote": "check provider (the course page lists college CPD recognition)",
+   "notes": "Commercial provider. Dates are the start dates in the course page booking list; the end is worked out from the stated course length."
+  },
+  {
+   "id": "zedu-focused-cardiac-ultrasound",
+   "name": "Zedu Focused Cardiac Ultrasound Course",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Zedu Ultrasound Training Solutions",
+     "url": "https://www.ultrasoundtraining.com.au/echo/focused-cardiac-ultrasound/",
+     "verified": true,
+     "calendar": "https://www.ultrasoundtraining.com.au/course-calendar/",
+     "bookingPlatform": "Zedu WooCommerce store (www.ultrasoundtraining.com.au)"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "providerType": "commercial",
+   "format": "Face-to-face hands-on ultrasound course at Zedu, Bundoora (Melbourne); 3 days.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.ultrasoundtraining.com.au/echo/focused-cardiac-ultrasound/",
+    "quote": "Duration (days) 3",
+    "lastVerified": "2026-11-25"
+   },
+   "typicalLength": "3 days",
+   "feeRange": {
+    "currency": "AUD",
+    "min": 3820,
+    "max": 3820,
+    "text": "$3820 (course page)"
+   },
+   "feeSource": "https://www.ultrasoundtraining.com.au/echo/focused-cardiac-ultrasound/",
+   "cpdNote": "check provider (the course page lists college CPD recognition)",
+   "notes": "Commercial provider. Dates are the start dates in the course page booking list; the end is worked out from the stated course length."
+  },
+  {
+   "id": "zedu-advanced-ultrasound-for-emergency-medicine",
+   "name": "Zedu Advanced Ultrasound for Emergency Medicine Course",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Zedu Ultrasound Training Solutions",
+     "url": "https://www.ultrasoundtraining.com.au/emergency-critical-care/advanced-ultrasound-for-emergency-medicine/",
+     "verified": true,
+     "calendar": "https://www.ultrasoundtraining.com.au/course-calendar/",
+     "bookingPlatform": "Zedu WooCommerce store (www.ultrasoundtraining.com.au)"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "providerType": "commercial",
+   "format": "Face-to-face hands-on ultrasound course at Zedu, Bundoora (Melbourne); 4 days.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.ultrasoundtraining.com.au/emergency-critical-care/advanced-ultrasound-for-emergency-medicine/",
+    "quote": "Duration (days) 4",
+    "lastVerified": "2026-11-25"
+   },
+   "typicalLength": "4 days",
+   "feeRange": {
+    "currency": "AUD",
+    "min": 4990,
+    "max": 4990,
+    "text": "$4990 (course page)"
+   },
+   "feeSource": "https://www.ultrasoundtraining.com.au/emergency-critical-care/advanced-ultrasound-for-emergency-medicine/",
+   "cpdNote": "check provider (the course page lists college CPD recognition)",
+   "notes": "Commercial provider. Dates are the start dates in the course page booking list; the end is worked out from the stated course length."
+  },
+  {
+   "id": "zedu-ultrasound-for-general-practitioners-gp",
+   "name": "Zedu Ultrasound for General Practitioners (GP) Course",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Zedu Ultrasound Training Solutions",
+     "url": "https://www.ultrasoundtraining.com.au/general-practitioners/ultrasound-for-general-practitioners/",
+     "verified": true,
+     "calendar": "https://www.ultrasoundtraining.com.au/course-calendar/",
+     "bookingPlatform": "Zedu WooCommerce store (www.ultrasoundtraining.com.au)"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "providerType": "commercial",
+   "format": "Face-to-face hands-on ultrasound course at Zedu, Bundoora (Melbourne); 2 days.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.ultrasoundtraining.com.au/general-practitioners/ultrasound-for-general-practitioners/",
+    "quote": "Duration (days) 2",
+    "lastVerified": "2026-11-25"
+   },
+   "typicalLength": "2 days",
+   "feeRange": {
+    "currency": "AUD",
+    "min": 2650,
+    "max": 2650,
+    "text": "$2650 (course page)"
+   },
+   "feeSource": "https://www.ultrasoundtraining.com.au/general-practitioners/ultrasound-for-general-practitioners/",
+   "cpdNote": "check provider (the course page lists college CPD recognition)",
+   "notes": "Commercial provider. Dates are the start dates in the course page booking list; the end is worked out from the stated course length."
+  },
+  {
+   "id": "zedu-train-the-ultrasound-trainer-trust",
+   "name": "Zedu Train the UltraSound Trainer (TRUST)™ Course",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Zedu Ultrasound Training Solutions",
+     "url": "https://www.ultrasoundtraining.com.au/instructor-courses/train-the-ultrasound-trainer/",
+     "verified": true,
+     "calendar": "https://www.ultrasoundtraining.com.au/course-calendar/",
+     "bookingPlatform": "Zedu WooCommerce store (www.ultrasoundtraining.com.au)"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "providerType": "commercial",
+   "format": "Face-to-face hands-on ultrasound course at Zedu, Bundoora (Melbourne); 2 days.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.ultrasoundtraining.com.au/instructor-courses/train-the-ultrasound-trainer/",
+    "quote": "Duration (days) 2",
+    "lastVerified": "2026-11-25"
+   },
+   "typicalLength": "2 days",
+   "feeRange": {
+    "currency": "AUD",
+    "min": 1360,
+    "max": 1360,
+    "text": "$1360 (course page)"
+   },
+   "feeSource": "https://www.ultrasoundtraining.com.au/instructor-courses/train-the-ultrasound-trainer/",
+   "cpdNote": "check provider (the course page lists college CPD recognition)",
+   "notes": "Commercial provider. Dates are the start dates in the course page booking list; the end is worked out from the stated course length."
+  },
+  {
+   "id": "zedu-efast-ultrasound",
+   "name": "Zedu eFAST Ultrasound Course",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Zedu Ultrasound Training Solutions",
+     "url": "https://www.ultrasoundtraining.com.au/live-courses/efast/",
+     "verified": true,
+     "calendar": "https://www.ultrasoundtraining.com.au/course-calendar/",
+     "bookingPlatform": "Zedu WooCommerce store (www.ultrasoundtraining.com.au)"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "providerType": "commercial",
+   "format": "Face-to-face hands-on ultrasound course at Zedu, Bundoora (Melbourne); 1 day.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.ultrasoundtraining.com.au/live-courses/efast/",
+    "quote": "Duration (days) 1",
+    "lastVerified": "2026-11-25"
+   },
+   "typicalLength": "1 day",
+   "feeRange": {
+    "currency": "AUD",
+    "min": 1380,
+    "max": 1380,
+    "text": "$1380 (course page)"
+   },
+   "feeSource": "https://www.ultrasoundtraining.com.au/live-courses/efast/",
+   "cpdNote": "check provider (the course page lists college CPD recognition)",
+   "notes": "Commercial provider. Dates are the start dates in the course page booking list; the end is worked out from the stated course length."
+  },
+  {
+   "id": "zedu-essentials-of-musculoskeletal-msk-ultrasound",
+   "name": "Zedu Essentials of Musculoskeletal (MSK) Ultrasound Course",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Zedu Ultrasound Training Solutions",
+     "url": "https://www.ultrasoundtraining.com.au/musculoskeletal/essentials-of-musculoskeletal-ultrasound-course/",
+     "verified": true,
+     "calendar": "https://www.ultrasoundtraining.com.au/course-calendar/",
+     "bookingPlatform": "Zedu WooCommerce store (www.ultrasoundtraining.com.au)"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "providerType": "commercial",
+   "format": "Face-to-face hands-on ultrasound course at Zedu, Bundoora (Melbourne); 2 days.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.ultrasoundtraining.com.au/musculoskeletal/essentials-of-musculoskeletal-ultrasound-course/",
+    "quote": "Duration (days) 2",
+    "lastVerified": "2026-11-25"
+   },
+   "typicalLength": "2 days",
+   "feeRange": {
+    "currency": "AUD",
+    "min": 2650,
+    "max": 2650,
+    "text": "$2650 (course page)"
+   },
+   "feeSource": "https://www.ultrasoundtraining.com.au/musculoskeletal/essentials-of-musculoskeletal-ultrasound-course/",
+   "cpdNote": "check provider (the course page lists college CPD recognition)",
+   "notes": "Commercial provider. Dates are the start dates in the course page booking list; the end is worked out from the stated course length."
+  },
+  {
+   "id": "zedu-early-pregnancy-ultrasound-for-nurses-midwives",
+   "name": "Zedu Early Pregnancy Ultrasound Course for Nurses & Midwives",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Zedu Ultrasound Training Solutions",
+     "url": "https://www.ultrasoundtraining.com.au/nurses-midwives/early-pregnancy-ultrasound-for-nurses-and-midwives/",
+     "verified": true,
+     "calendar": "https://www.ultrasoundtraining.com.au/course-calendar/",
+     "bookingPlatform": "Zedu WooCommerce store (www.ultrasoundtraining.com.au)"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "providerType": "commercial",
+   "format": "Face-to-face hands-on ultrasound course at Zedu, Bundoora (Melbourne); 2 days.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.ultrasoundtraining.com.au/nurses-midwives/early-pregnancy-ultrasound-for-nurses-and-midwives/",
+    "quote": "Duration (days) 2",
+    "lastVerified": "2026-11-25"
+   },
+   "typicalLength": "2 days",
+   "feeRange": {
+    "currency": "AUD",
+    "min": 2650,
+    "max": 2650,
+    "text": "$2650 (course page)"
+   },
+   "feeSource": "https://www.ultrasoundtraining.com.au/nurses-midwives/early-pregnancy-ultrasound-for-nurses-and-midwives/",
+   "cpdNote": "check provider (the course page lists college CPD recognition)",
+   "notes": "Commercial provider. Dates are the start dates in the course page booking list; the end is worked out from the stated course length."
+  },
+  {
+   "id": "zedu-follicle-tracking-ultrasound-for-nurses",
+   "name": "Zedu Follicle Tracking Ultrasound Course for Nurses",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Zedu Ultrasound Training Solutions",
+     "url": "https://www.ultrasoundtraining.com.au/nurses-midwives/follicle-ultrasound-for-nurses/",
+     "verified": true,
+     "calendar": "https://www.ultrasoundtraining.com.au/course-calendar/",
+     "bookingPlatform": "Zedu WooCommerce store (www.ultrasoundtraining.com.au)"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "providerType": "commercial",
+   "format": "Face-to-face hands-on ultrasound course at Zedu, Bundoora (Melbourne); 2 days.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.ultrasoundtraining.com.au/nurses-midwives/follicle-ultrasound-for-nurses/",
+    "quote": "Duration (days) 2",
+    "lastVerified": "2026-11-25"
+   },
+   "typicalLength": "2 days",
+   "feeRange": {
+    "currency": "AUD",
+    "min": 2650,
+    "max": 2650,
+    "text": "$2650 (course page)"
+   },
+   "feeSource": "https://www.ultrasoundtraining.com.au/nurses-midwives/follicle-ultrasound-for-nurses/",
+   "cpdNote": "check provider (the course page lists college CPD recognition)",
+   "notes": "Commercial provider. Dates are the start dates in the course page booking list; the end is worked out from the stated course length."
+  },
+  {
+   "id": "zedu-third-trimester-ultrasound-for-nurses-midwives",
+   "name": "Zedu Third Trimester Ultrasound Course for Nurses & Midwives",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Zedu Ultrasound Training Solutions",
+     "url": "https://www.ultrasoundtraining.com.au/nurses-midwives/third-trimester-ultrasound-for-nurses-and-midwives/",
+     "verified": true,
+     "calendar": "https://www.ultrasoundtraining.com.au/course-calendar/",
+     "bookingPlatform": "Zedu WooCommerce store (www.ultrasoundtraining.com.au)"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "providerType": "commercial",
+   "format": "Face-to-face hands-on ultrasound course at Zedu, Bundoora (Melbourne); 2 days.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.ultrasoundtraining.com.au/nurses-midwives/third-trimester-ultrasound-for-nurses-and-midwives/",
+    "quote": "Duration (days) 2",
+    "lastVerified": "2026-11-25"
+   },
+   "typicalLength": "2 days",
+   "feeRange": {
+    "currency": "AUD",
+    "min": 2650,
+    "max": 2650,
+    "text": "$2650 (course page)"
+   },
+   "feeSource": "https://www.ultrasoundtraining.com.au/nurses-midwives/third-trimester-ultrasound-for-nurses-and-midwives/",
+   "cpdNote": "check provider (the course page lists college CPD recognition)",
+   "notes": "Commercial provider. Dates are the start dates in the course page booking list; the end is worked out from the stated course length."
+  },
+  {
+   "id": "zedu-first-1st-trimester-ultrasound",
+   "name": "Zedu First (1st) Trimester Ultrasound Course",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Zedu Ultrasound Training Solutions",
+     "url": "https://www.ultrasoundtraining.com.au/obstetrics-gynaecology/1st-trimester-ultrasound/",
+     "verified": true,
+     "calendar": "https://www.ultrasoundtraining.com.au/course-calendar/",
+     "bookingPlatform": "Zedu WooCommerce store (www.ultrasoundtraining.com.au)"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "providerType": "commercial",
+   "format": "Face-to-face hands-on ultrasound course at Zedu, Bundoora (Melbourne); 1 day.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.ultrasoundtraining.com.au/obstetrics-gynaecology/1st-trimester-ultrasound/",
+    "quote": "Duration (days) 1",
+    "lastVerified": "2026-11-25"
+   },
+   "typicalLength": "1 day",
+   "feeRange": {
+    "currency": "AUD",
+    "min": 1380,
+    "max": 1380,
+    "text": "$1380 (course page)"
+   },
+   "feeSource": "https://www.ultrasoundtraining.com.au/obstetrics-gynaecology/1st-trimester-ultrasound/",
+   "cpdNote": "check provider (the course page lists college CPD recognition)",
+   "notes": "Commercial provider. Dates are the start dates in the course page booking list; the end is worked out from the stated course length."
+  },
+  {
+   "id": "zedu-comprehensive-obstetric-ultrasound",
+   "name": "Zedu Comprehensive Obstetric Ultrasound Course",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Zedu Ultrasound Training Solutions",
+     "url": "https://www.ultrasoundtraining.com.au/obstetrics-gynaecology/comprehensive-obstetric-ultrasound/",
+     "verified": true,
+     "calendar": "https://www.ultrasoundtraining.com.au/course-calendar/",
+     "bookingPlatform": "Zedu WooCommerce store (www.ultrasoundtraining.com.au)"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "providerType": "commercial",
+   "format": "Face-to-face hands-on ultrasound course at Zedu, Bundoora (Melbourne); 4 days.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.ultrasoundtraining.com.au/obstetrics-gynaecology/comprehensive-obstetric-ultrasound/",
+    "quote": "Duration (days) 4",
+    "lastVerified": "2026-11-25"
+   },
+   "typicalLength": "4 days",
+   "feeRange": {
+    "currency": "AUD",
+    "min": 4990,
+    "max": 4990,
+    "text": "$4990 (course page)"
+   },
+   "feeSource": "https://www.ultrasoundtraining.com.au/obstetrics-gynaecology/comprehensive-obstetric-ultrasound/",
+   "cpdNote": "check provider (the course page lists college CPD recognition)",
+   "notes": "Commercial provider. Dates are the start dates in the course page booking list; the end is worked out from the stated course length."
+  },
+  {
+   "id": "zedu-core-obstetric-ultrasound",
+   "name": "Zedu Core Obstetric Ultrasound Course",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Zedu Ultrasound Training Solutions",
+     "url": "https://www.ultrasoundtraining.com.au/obstetrics-gynaecology/core-obstetric-ultrasound/",
+     "verified": true,
+     "calendar": "https://www.ultrasoundtraining.com.au/course-calendar/",
+     "bookingPlatform": "Zedu WooCommerce store (www.ultrasoundtraining.com.au)"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "providerType": "commercial",
+   "format": "Face-to-face hands-on ultrasound course at Zedu, Bundoora (Melbourne); 2 days.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.ultrasoundtraining.com.au/obstetrics-gynaecology/core-obstetric-ultrasound/",
+    "quote": "Duration (days) 2",
+    "lastVerified": "2026-11-25"
+   },
+   "typicalLength": "2 days",
+   "feeRange": {
+    "currency": "AUD",
+    "min": 2650,
+    "max": 2650,
+    "text": "$2650 (course page)"
+   },
+   "feeSource": "https://www.ultrasoundtraining.com.au/obstetrics-gynaecology/core-obstetric-ultrasound/",
+   "cpdNote": "check provider (the course page lists college CPD recognition)",
+   "notes": "Commercial provider. Dates are the start dates in the course page booking list; the end is worked out from the stated course length."
+  },
+  {
+   "id": "zedu-fetal-well-being-ultrasound",
+   "name": "Zedu Fetal Well-Being Ultrasound Course",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Zedu Ultrasound Training Solutions",
+     "url": "https://www.ultrasoundtraining.com.au/obstetrics-gynaecology/fetal-well-being-ultrasound/",
+     "verified": true,
+     "calendar": "https://www.ultrasoundtraining.com.au/course-calendar/",
+     "bookingPlatform": "Zedu WooCommerce store (www.ultrasoundtraining.com.au)"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "providerType": "commercial",
+   "format": "Face-to-face hands-on ultrasound course at Zedu, Bundoora (Melbourne); 1 day.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.ultrasoundtraining.com.au/obstetrics-gynaecology/fetal-well-being-ultrasound/",
+    "quote": "Duration (days) 1",
+    "lastVerified": "2026-11-25"
+   },
+   "typicalLength": "1 day",
+   "feeRange": {
+    "currency": "AUD",
+    "min": 1380,
+    "max": 1380,
+    "text": "$1380 (course page)"
+   },
+   "feeSource": "https://www.ultrasoundtraining.com.au/obstetrics-gynaecology/fetal-well-being-ultrasound/",
+   "cpdNote": "check provider (the course page lists college CPD recognition)",
+   "notes": "Commercial provider. Dates are the start dates in the course page booking list; the end is worked out from the stated course length."
+  },
+  {
+   "id": "zedu-mtop-ultrasound",
+   "name": "Zedu MTOP Ultrasound Course",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Zedu Ultrasound Training Solutions",
+     "url": "https://www.ultrasoundtraining.com.au/obstetrics-gynaecology/mtop-ultrasound/",
+     "verified": true,
+     "calendar": "https://www.ultrasoundtraining.com.au/course-calendar/",
+     "bookingPlatform": "Zedu WooCommerce store (www.ultrasoundtraining.com.au)"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "providerType": "commercial",
+   "format": "Face-to-face hands-on ultrasound course at Zedu, Bundoora (Melbourne); 2 days.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.ultrasoundtraining.com.au/obstetrics-gynaecology/mtop-ultrasound/",
+    "quote": "Duration (days) 2",
+    "lastVerified": "2026-11-25"
+   },
+   "typicalLength": "2 days",
+   "feeRange": {
+    "currency": "AUD",
+    "min": 2850,
+    "max": 2850,
+    "text": "$2850 (course page)"
+   },
+   "feeSource": "https://www.ultrasoundtraining.com.au/obstetrics-gynaecology/mtop-ultrasound/",
+   "cpdNote": "check provider (the course page lists college CPD recognition)",
+   "notes": "Commercial provider. Dates are the start dates in the course page booking list; the end is worked out from the stated course length."
+  },
+  {
+   "id": "zedu-transvaginal-ultrasound",
+   "name": "Zedu Transvaginal Ultrasound Course",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Zedu Ultrasound Training Solutions",
+     "url": "https://www.ultrasoundtraining.com.au/obstetrics-gynaecology/transvaginal-ultrasound/",
+     "verified": true,
+     "calendar": "https://www.ultrasoundtraining.com.au/course-calendar/",
+     "bookingPlatform": "Zedu WooCommerce store (www.ultrasoundtraining.com.au)"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "providerType": "commercial",
+   "format": "Face-to-face hands-on ultrasound course at Zedu, Bundoora (Melbourne); 1 day.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.ultrasoundtraining.com.au/obstetrics-gynaecology/transvaginal-ultrasound/",
+    "quote": "Duration (days) 1",
+    "lastVerified": "2026-11-25"
+   },
+   "typicalLength": "1 day",
+   "feeRange": {
+    "currency": "AUD",
+    "min": 1530,
+    "max": 1530,
+    "text": "$1530 (course page)"
+   },
+   "feeSource": "https://www.ultrasoundtraining.com.au/obstetrics-gynaecology/transvaginal-ultrasound/",
+   "cpdNote": "check provider (the course page lists college CPD recognition)",
+   "notes": "Commercial provider. Dates are the start dates in the course page booking list; the end is worked out from the stated course length."
+  },
+  {
+   "id": "zedu-essentials-of-paediatric-ultrasound",
+   "name": "Zedu Essentials of Paediatric Ultrasound Course",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Zedu Ultrasound Training Solutions",
+     "url": "https://www.ultrasoundtraining.com.au/paediatrics/paediatric-ultrasound-course-zedu/",
+     "verified": true,
+     "calendar": "https://www.ultrasoundtraining.com.au/course-calendar/",
+     "bookingPlatform": "Zedu WooCommerce store (www.ultrasoundtraining.com.au)"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "providerType": "commercial",
+   "format": "Face-to-face hands-on ultrasound course at Zedu, Bundoora (Melbourne); 3 days.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.ultrasoundtraining.com.au/paediatrics/paediatric-ultrasound-course-zedu/",
+    "quote": "Duration (days) 3",
+    "lastVerified": "2026-11-25"
+   },
+   "typicalLength": "3 days",
+   "feeRange": {
+    "currency": "AUD",
+    "min": 3820,
+    "max": 3820,
+    "text": "$3820 (course page)"
+   },
+   "feeSource": "https://www.ultrasoundtraining.com.au/paediatrics/paediatric-ultrasound-course-zedu/",
+   "cpdNote": "check provider (the course page lists college CPD recognition)",
+   "notes": "Commercial provider. Dates are the start dates in the course page booking list; the end is worked out from the stated course length."
+  },
+  {
+   "id": "zedu-ultrasound-for-general-medicine",
+   "name": "Zedu Ultrasound for General Medicine Course",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Zedu Ultrasound Training Solutions",
+     "url": "https://www.ultrasoundtraining.com.au/physicians/ultrasound-for-general-medicine/",
+     "verified": true,
+     "calendar": "https://www.ultrasoundtraining.com.au/course-calendar/",
+     "bookingPlatform": "Zedu WooCommerce store (www.ultrasoundtraining.com.au)"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "providerType": "commercial",
+   "format": "Face-to-face hands-on ultrasound course at Zedu, Bundoora (Melbourne); 3 days.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.ultrasoundtraining.com.au/physicians/ultrasound-for-general-medicine/",
+    "quote": "Duration (days) 3",
+    "lastVerified": "2026-11-25"
+   },
+   "typicalLength": "3 days",
+   "feeRange": {
+    "currency": "AUD",
+    "min": 3820,
+    "max": 3820,
+    "text": "$3820 (course page)"
+   },
+   "feeSource": "https://www.ultrasoundtraining.com.au/physicians/ultrasound-for-general-medicine/",
+   "cpdNote": "check provider (the course page lists college CPD recognition)",
+   "notes": "Commercial provider. Dates are the start dates in the course page booking list; the end is worked out from the stated course length."
+  },
+  {
+   "id": "zedu-ultrasound-guided-botox-injections-for-rehabilitation",
+   "name": "Zedu Ultrasound Guided Botox Injections for Rehabilitation Course",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Zedu Ultrasound Training Solutions",
+     "url": "https://www.ultrasoundtraining.com.au/physicians/ultrasound-guided-botox-injections-for-rehabilitation-course/",
+     "verified": true,
+     "calendar": "https://www.ultrasoundtraining.com.au/course-calendar/",
+     "bookingPlatform": "Zedu WooCommerce store (www.ultrasoundtraining.com.au)"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "providerType": "commercial",
+   "format": "Face-to-face hands-on ultrasound course at Zedu, Bundoora (Melbourne); 2 days.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.ultrasoundtraining.com.au/physicians/ultrasound-guided-botox-injections-for-rehabilitation-course/",
+    "quote": "Duration (days) 2",
+    "lastVerified": "2026-11-25"
+   },
+   "typicalLength": "2 days",
+   "feeRange": {
+    "currency": "AUD",
+    "min": 2650,
+    "max": 2650,
+    "text": "$2650 (course page)"
+   },
+   "feeSource": "https://www.ultrasoundtraining.com.au/physicians/ultrasound-guided-botox-injections-for-rehabilitation-course/",
+   "cpdNote": "check provider (the course page lists college CPD recognition)",
+   "notes": "Commercial provider. Dates are the start dates in the course page booking list; the end is worked out from the stated course length."
+  },
+  {
+   "id": "zedu-lung-ultrasound",
+   "name": "Zedu Lung Ultrasound Course",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Zedu Ultrasound Training Solutions",
+     "url": "https://www.ultrasoundtraining.com.au/respiratory-physicians/lung/",
+     "verified": true,
+     "calendar": "https://www.ultrasoundtraining.com.au/course-calendar/",
+     "bookingPlatform": "Zedu WooCommerce store (www.ultrasoundtraining.com.au)"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "providerType": "commercial",
+   "format": "Face-to-face hands-on ultrasound course at Zedu, Bundoora (Melbourne); 1 day.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.ultrasoundtraining.com.au/respiratory-physicians/lung/",
+    "quote": "Duration (days) 1",
+    "lastVerified": "2026-11-25"
+   },
+   "typicalLength": "1 day",
+   "feeRange": {
+    "currency": "AUD",
+    "min": 1380,
+    "max": 1380,
+    "text": "$1380 (course page)"
+   },
+   "feeSource": "https://www.ultrasoundtraining.com.au/respiratory-physicians/lung/",
+   "cpdNote": "check provider (the course page lists college CPD recognition)",
+   "notes": "Commercial provider. Dates are the start dates in the course page booking list; the end is worked out from the stated course length."
+  },
+  {
+   "id": "zedu-emergency-ultrasound-for-rural-and-remote-medicine",
+   "name": "Zedu Emergency Ultrasound for Rural and Remote Medicine Course",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "Zedu Ultrasound Training Solutions",
+     "url": "https://www.ultrasoundtraining.com.au/rural-generalists/emergency-ultrasound-training/",
+     "verified": true,
+     "calendar": "https://www.ultrasoundtraining.com.au/course-calendar/",
+     "bookingPlatform": "Zedu WooCommerce store (www.ultrasoundtraining.com.au)"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "providerType": "commercial",
+   "format": "Face-to-face hands-on ultrasound course at Zedu, Bundoora (Melbourne); 3 days.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.ultrasoundtraining.com.au/rural-generalists/emergency-ultrasound-training/",
+    "quote": "Duration (days) 3",
+    "lastVerified": "2026-11-25"
+   },
+   "typicalLength": "3 days",
+   "feeRange": {
+    "currency": "AUD",
+    "min": 3820,
+    "max": 3820,
+    "text": "$3820 (course page)"
+   },
+   "feeSource": "https://www.ultrasoundtraining.com.au/rural-generalists/emergency-ultrasound-training/",
+   "cpdNote": "check provider (the course page lists college CPD recognition)",
+   "notes": "Commercial provider. Dates are the start dates in the course page booking list; the end is worked out from the stated course length."
+  }
+ ]
+}

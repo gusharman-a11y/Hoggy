@@ -13,10 +13,20 @@ const PAGES = [
   { slug: 'wilderness-life-support-medical-professional', courseId: 'awls', variant: 'full', city: 'Mount Buller', region: 'VIC', country: 'AU' },
   { slug: 'wilderness-rescue-medicine-awls-fundamentals', courseId: 'awls', variant: 'full', city: 'Kinloch', region: 'Waikato', country: 'NZ' }
 ];
-const after = (lines, label) => { const i = lines.findIndex(l => l.toLowerCase() === label); return i >= 0 ? lines[i + 1] : null; };
+/* wave 5: tolerant of "Dates:&nbsp;", "Dates :", and the value on the label's own line ("Dates: 7-10 December 2026") */
+const clean = l => String(l || '').replace(/\u00a0|&nbsp;/g, ' ').replace(/\s+/g, ' ').trim();
+const after = (lines, label) => {
+  const lab = label.replace(/:$/, ''), re = new RegExp('^' + lab + '\\s*:\\s*(.*)$', 'i');
+  for (let i = 0; i < lines.length; i++) {
+    const m = clean(lines[i]).match(re); if (!m) continue;
+    if (m[1]) return m[1];
+    for (let j = i + 1; j < Math.min(lines.length, i + 4); j++) if (clean(lines[j])) return clean(lines[j]);
+  }
+  return null;
+};
 /* "7-10 December 2026" has no space around the dash; ranges() handles both */
 function parse(html, def, { today, verifiedOn = today } = {}) {
-  const lines = text(html).split('\n'), sessions = [], skipped = [], src = BASE + def.slug + '/';
+  const lines = text(html).split('\n').map(clean), sessions = [], skipped = [], src = BASE + def.slug + '/';
   const d = after(lines, 'dates:'), loc = after(lines, 'location:'), inv = after(lines, 'investment:');
   if (!d) return { sessions, skipped: [{ reason: 'no Dates line', page: def.slug }] };
   for (const r of ranges(d.split('|').join(','))) {

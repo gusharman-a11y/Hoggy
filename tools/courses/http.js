@@ -66,6 +66,9 @@ function makeClient({ gapMs = 3000, retries = 2, timeoutMs = 30000, log = () => 
         log(`GET ${url} -> ${r.status} (${body.length} bytes)`);
         const finalUrl = r.url || url;
         if (finalUrl !== url && !/^https:\/\//.test(finalUrl)) throw new BlockedError('redirected off https: ' + finalUrl, 'not-https');
+        /* wave 5: a redirect to another host must also be allowed by that host's robots.txt (hawkesbay.health.nz redirects to
+           www.healthnz.govt.nz, whose robots.txt disallows all agents); the body is discarded if not */
+        if (finalUrl !== url && new URL(finalUrl).host !== new URL(url).host && !(await allowed(finalUrl))) throw new BlockedError('robots.txt disallows the redirect target ' + finalUrl, 'robots');
         return { body, url: finalUrl };
       } catch (e) {
         if (e instanceof BlockedError) throw e;

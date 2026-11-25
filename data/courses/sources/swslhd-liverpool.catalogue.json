@@ -1,0 +1,65 @@
+{
+ "generated": "2026-11-25",
+ "note": "Liverpool Hospital (SWSLHD) course dates from the hospital's own events and registration pages, read 25 Nov 2026.",
+ "courses": [
+  {
+   "id": "dstc-datc",
+   "name": "Definitive Surgical Trauma Care (DSTC) and Definitive Anaesthetic Trauma Care (DATC) course",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "DSTC Australia and New Zealand (course sites)",
+     "url": "https://dstc.com.au/",
+     "verified": true
+    },
+    {
+     "name": "South Western Sydney Local Health District (Liverpool Hospital)",
+     "url": "https://www.swslhd.health.nsw.gov.au/liverpool/events.html",
+     "verified": true,
+     "calendar": "https://www.swslhd.health.nsw.gov.au/liverpool/events.html"
+    }
+   ],
+   "countries": [
+    "AU",
+    "NZ"
+   ],
+   "format": "Three-day course for surgeons, anaesthetists and peri-operative nurses on surgical decision-making and operative technique in critically injured trauma patients.",
+   "formatEvidence": {
+    "sourceUrl": "https://www.swslhd.health.nsw.gov.au/liverpool/events.html",
+    "quote": "Operative technique in critically ill trauma patients",
+    "lastVerified": "2026-11-25"
+   },
+   "typicalLength": "3 days",
+   "cpdNote": "check provider",
+   "notes": "DSTC (surgeons) runs alongside DATC (anaesthetists) and the peri-operative nursing course. dstc.com.au gives the 2027 Brisbane course (14-16 June) on its home page only, so only the Sydney run, which Liverpool Hospital lists on its own event page, is dated here."
+  },
+  {
+   "id": "swslhd-sexi",
+   "name": "SEXI Day: Sydney Emergency X-ray Interpretation (one-day course)",
+   "cpdHours": 0,
+   "verified": true,
+   "lastVerified": "2026-11-25",
+   "providers": [
+    {
+     "name": "South Western Sydney Local Health District (Liverpool Hospital)",
+     "url": "https://www.swslhd.health.nsw.gov.au/liverpool/events/sexi/default.html",
+     "verified": true,
+     "calendar": "https://www.swslhd.health.nsw.gov.au/liverpool/events.html"
+    }
+   ],
+   "countries": [
+    "AU"
+   ],
+   "typicalLength": "1 day",
+   "cpdNote": "check provider",
+   "formatEvidence": {
+    "sourceUrl": "https://www.swslhd.health.nsw.gov.au/liverpool/events.html",
+    "quote": "Time : | 7:45am Finish 16:00pm.",
+    "lastVerified": "2026-11-25"
+   },
+   "notes": "One-day emergency X-ray interpretation course at Liverpool Hospital; the registration form asks for an ACEM number if applicable."
+  }
+ ]
+}

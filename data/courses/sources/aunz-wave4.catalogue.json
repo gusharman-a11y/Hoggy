@@ -22,15 +22,14 @@
      "calendar": "https://scgh.health.wa.gov.au/For-Health-Professionals/Sim/Courses/Basic"
     },
     {
-     "name": "Health NZ Hawke's Bay (Hawke's Bay Fallen Soldiers' Memorial Hospital)",
-     "url": "https://www.healthnz.govt.nz/",
+     "name": "Campbelltown Hospital ICU (South Western Sydney LHD)",
+     "url": "https://www.swslhd.health.nsw.gov.au/ccq/events.html",
      "verified": true,
-     "calendar": "https://www.healthnz.govt.nz/health-professionals/workforce-development/training-and-career-development/district-region/hawkes-bay"
+     "calendar": "https://www.swslhd.health.nsw.gov.au/ccq/events.html"
     }
    ],
    "countries": [
-    "AU",
-    "NZ"
+    "AU"
    ],
    "format": "Two-day course on the essentials of intensive care for junior doctors: lectures, skill stations (airway, mechanical ventilation, shock, trauma) and tutorials.",
    "formatEvidence": {
