@@ -141,6 +141,30 @@ editorial grid, not a stretched phone.
 | Toast, banner | `.toast`, `.net-banner` | feedback |
 | Document | `.doc`, `.site-head`, `.site-foot` | about, privacy, terms, 404, listing pages |
 
+## Make a trip of it (November 2026)
+
+The conference comes first; Hoggy then shows what is on around it and packages the trip. Logic in `lib/trip.js`
+(shared by the app, `/conferences/<id>` and `tests/trip.test.js`); matching in `lib/experiences.js`; data in
+`data/experiences/experiences.json` (fetched after first paint, about 290 KB).
+
+| Piece | Class | Where |
+|---|---|---|
+| "Make a trip of it" section: day chips (Conference only, +1, +2, +3), up to 4 items then "See all", category icon, dates, one line, source host, Add | `.mtrip`, `.xp` | conference sheet, course session sheet, `/conferences/<id>` (chips are `?days=` links) |
+| Stated session pattern with the organiser's quote | `.sched`, `.card-sched` | sheet (under the pills), cards |
+| Organiser type ("Commercial provider" in warn), resort tags, accreditation quote with "Check with your college" | `orgPill`, `destTags` | sheet, cards, server page |
+| Interest chips (Ski & snow, Food & wine, Festivals, Sport, Nature & wildlife, Beach, Family) | `.do-chips` | Home hero, Home shelf, Discover (`#/discover?do=food`) |
+| Card line "+ Barossa Vintage Festival" | `.card-trip` | trip shelf, Discover by interest |
+| Trip builder: days before/after, day plan (Work, Personal, Travel), pinned items with official page and a day picker, ideas | `.tplan`, `.days`, `.pin`, `.ideas` | Trips |
+| Costs split, the rule used, fare override, disclaimer | `.tcost`, `table.split` | Trips |
+
+Split rules (general information; the UI says employer and tax rules vary): registration is work; a night is a conference
+night when the next day is a conference day (or it follows the last one and the next day is travel); fares count as work
+when work days outnumber personal days (travel days left out), otherwise they are apportioned work/(work + personal);
+meals, transport and other follow the day spent; a personal portion typed on a receipt wins. The user can set fares to all
+work, apportion or all personal. The claim pack, CSV, email and Mark submitted carry only the work portion and list the
+personal days as excluded. `suggestTrips({ specialty, months, interests, cpdNeeds })` is the entry point for a future chat:
+conferences are filtered first, and an experience never lifts one that fails the CPD need.
+
 ## Data honesty rules kept
 
 Confirmed / confirmed earlier / estimated wording is unchanged; estimates still read "Usually June 2027"; CPD, price and

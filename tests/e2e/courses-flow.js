@@ -90,6 +90,8 @@ async function run(browser, B, vp, tag) {
   const sub = await p.textContent('.page-head p');
   assert.match(sub, /\d[\d,]* confirmed with source stored · \d[\d,]* confirmed earlier, being re-checked · \d[\d,]* estimated \(labelled\)/);
   await p.waitForTimeout(300);
+  /* the soonest 48 can all be confirmed (the January ski meetings), so page on until an estimate shows */
+  for (let i = 0; i < 12 && !/Usually [A-Z][a-z]+ 20\d\d/.test(await p.textContent('#results')); i++) { const m = await p.$('[data-act=more]'); if (!m) break; await m.click(); await p.waitForTimeout(150); }
   const body = await p.textContent('#results, .results, main');
   assert.match(body, /Usually (January|February|March|April|May|June|July|August|September|October|November|December) 20\d\d/);
   await noScroll('discover'); if (tag === 'phone') await shot('x10-discover-phone');

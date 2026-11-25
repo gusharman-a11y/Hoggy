@@ -40,6 +40,14 @@ async function axe(p) {
       await p.evaluate(() => { location.hash = '#/discover'; }); await p.waitForSelector('#results .card');
       await p.click('#results .card'); await p.waitForSelector('#overlay .sheet'); await check('conference dialog');
       await p.keyboard.press('Escape');
+      /* make a trip of it: Home's shelf, Discover by interest, the conference section with an item added, the trip builder */
+      await p.evaluate(() => { location.hash = '#/home'; }); await p.waitForSelector('.trip-shelf .card', { timeout: 15000 }); await check('home trip shelf');
+      await p.evaluate(() => { location.hash = '#/discover?do=food'; }); await p.waitForSelector('#results .card-trip'); await check('discover by interest');
+      await p.evaluate(() => { location.hash = '#/discover?do='; }); await p.waitForSelector('#results .card'); await p.fill('#q', 'ANZGOG'); await p.waitForTimeout(300);
+      await p.click('#results [data-act=open][data-id="anzgog-asm-2027"] >> nth=0'); await p.waitForSelector('#mtrip .xp');
+      await p.click('#mtrip [data-act=pinexp] >> nth=0'); await p.waitForSelector('#mtrip [aria-pressed=true]'); await check('conference: make a trip of it');
+      await p.keyboard.press('Escape'); await p.evaluate(() => { location.hash = '#/trips'; }); await p.waitForSelector('.tplan[open] .days'); await check('trip builder');
+      await p.evaluate(() => { location.hash = '#/discover'; }); await p.fill('#q', ''); await p.waitForTimeout(200);
       if (vp.width < 900) { await p.click('[data-act="filters"]'); await p.waitForSelector('#fRegion'); await check('filter sheet'); await p.keyboard.press('Escape'); }
       const signin = p.locator('[data-act=signin]:visible').first();
       if (!(await signin.count())) await p.evaluate(() => { location.hash = '#/settings'; }); if (await signin.count()) { await signin.click(); await p.waitForSelector('#af'); await check('sign-in dialog'); await p.keyboard.press('Escape'); }
