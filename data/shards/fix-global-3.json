@@ -1,0 +1,205 @@
+[
+ {
+  "id": "apaoc-hong-kong-2028-expected",
+  "set": {
+   "name": "APAO 2028 Congress",
+   "blurb": "The Asia-Pacific Academy of Ophthalmology congress, in Manila in 2028."
+  },
+  "note": "global-3 2026-11-25: apaophth.org: APAO 2028 is in Manila; blurb named the estimated city"
+ },
+ {
+  "id": "paltmed-annual-meeting-2028",
+  "set": {
+   "name": "PALTmed Annual Meeting 2028",
+   "organiser": "PALTmed (Post-Acute and Long-Term Care Medical Association)",
+   "blurb": "The PALTmed annual meeting on post-acute and long-term care medicine, in Cincinnati in 2028."
+  },
+  "note": "global-3 2026-11-25: paltmed.org: the society is now PALTmed and the 2028 meeting is in Cincinnati"
+ },
+ {
+  "id": "aba-annual-meeting-2028",
+  "set": {
+   "blurb": "The American Burn Association annual meeting, in Seattle in 2028."
+  },
+  "note": "global-3 2026-11-25: ameriburn.org: Seattle 2028"
+ },
+ {
+  "id": "ests-annual-meeting-2028",
+  "set": {
+   "blurb": "The European Society of Thoracic Surgeons annual meeting, in Helsinki in 2028."
+  },
+  "note": "global-3 2026-11-25: ests.org: Helsinki 2028"
+ },
+ {
+  "id": "esh-european-meeting-on-hypertension-2028",
+  "set": {
+   "name": "Joint ISH-ESH Meeting 2028",
+   "blurb": "The joint meeting of the International and European Societies of Hypertension, in Glasgow in 2028."
+  },
+  "note": "global-3 2026-11-25: eshonline.org: joint ISH-ESH meeting, Glasgow 2028"
+ },
+ {
+  "id": "esgar-annual-meeting-2028",
+  "set": {
+   "blurb": "The European Society of Gastrointestinal and Abdominal Radiology annual meeting, in Athens in 2028."
+  },
+  "note": "global-3 2026-11-25: esgar.org: Athens 2028"
+ },
+ {
+  "id": "essr-annual-scientific-meeting-2028",
+  "set": {
+   "blurb": "The European Society of Musculoskeletal Radiology annual meeting, on shoulder and elbow, in Athens in 2028."
+  },
+  "note": "global-3 2026-11-25: essr.org: Athens 2028"
+ },
+ {
+  "id": "apsr-seoul-2028-expected",
+  "set": {
+   "name": "APSR 2028 Congress",
+   "blurb": "The Asian Pacific Society of Respirology congress, in Nara in 2028."
+  },
+  "note": "global-3 2026-11-25: apsr.org: APSR 2028 is in Nara"
+ },
+ {
+  "id": "amp-annual-meeting-2028",
+  "set": {
+   "blurb": "The Association for Molecular Pathology annual meeting and expo, in Honolulu in 2028."
+  },
+  "note": "global-3 2026-11-25: amp.org: Honolulu 2028"
+ },
+ {
+  "id": "sso-international-conference-2027",
+  "set": {
+   "name": "SSO 2027 Annual Meeting",
+   "blurb": "The Society of Surgical Oncology annual meeting on cancer surgery, in Washington, DC."
+  },
+  "note": "global-3 2026-11-25: surgonc.org: this is the SSO 2027 Annual Meeting, Washington DC"
+ },
+ {
+  "id": "espr-congress-2028",
+  "set": {
+   "organiser": "European Society of Paediatric Radiology (ESPR)",
+   "specialty": "Radiology",
+   "blurb": "The European Society of Paediatric Radiology annual congress, in Zurich in 2028."
+  },
+  "note": "global-3 2026-11-25: espr.org (the row url) is the European Society of Paediatric Radiology; its 2028 congress is in Zurich. The row named the paediatric research society by mistake"
+ },
+ {
+  "id": "eos-congress-2028",
+  "set": {
+   "blurb": "The European Orthodontic Society annual congress, in Genoa in 2028."
+  },
+  "note": "global-3 2026-11-25: eoseurope.org: Genoa 2028"
+ },
+ {
+  "id": "aabb-annual-meeting-2028",
+  "set": {
+   "blurb": "The AABB annual meeting on transfusion medicine and biotherapies, in Toronto in 2028."
+  },
+  "note": "global-3 2026-11-25: aabb.org: Toronto 2028"
+ },
+ {
+  "id": "ama-annual-meeting-2028",
+  "set": {
+   "blurb": "The American Medical Association House of Delegates annual meeting, in Chicago."
+  },
+  "note": "global-3 2026-11-25: ama-assn.org: Hyatt Regency Chicago, June 2028"
+ },
+ {
+  "id": "apta-csm-2028",
+  "set": {
+   "blurb": "The American Physical Therapy Association Combined Sections Meeting, in Chicago in 2028."
+  },
+  "note": "global-3 2026-11-25: csm.apta.org: Chicago 2028"
+ },
+ {
+  "id": "asbrs-annual-meeting-2028",
+  "set": {
+   "blurb": "The American Society of Breast Surgeons annual meeting, at the Gaylord Texan in Grapevine, Texas."
+  },
+  "note": "global-3 2026-11-25: breastsurgeons.org: Gaylord Texan, Grapevine 2028"
+ },
+ {
+  "id": "eadv-congress-2028",
+  "set": {
+   "blurb": "The European Academy of Dermatology and Venereology congress, in Paris in 2028."
+  },
+  "note": "global-3 2026-11-25: eadv.org: Paris 2028"
+ },
+ {
+  "id": "eao-congress-2028",
+  "set": {
+   "blurb": "The European Association for Osseointegration annual meeting on dental implants, in Amsterdam in 2028."
+  },
+  "note": "global-3 2026-11-25: eao.org: Amsterdam 2028"
+ },
+ {
+  "id": "cra-annual-scientific-meeting-2028",
+  "set": {
+   "blurb": "The Canadian Rheumatology Association annual scientific meeting, in Montreal in 2028."
+  },
+  "note": "global-3 2026-11-25: rheum.ca: Montreal 2028"
+ },
+ {
+  "id": "jds-tokyo-2027-expected",
+  "set": {
+   "name": "70th Annual Meeting of the Japan Diabetes Society",
+   "blurb": "The Japan Diabetes Society annual scientific meeting, at Tokyo International Forum."
+  },
+  "note": "global-3 2026-11-25: jds.or.jp: 70th annual meeting, Tokyo"
+ },
+ {
+  "id": "jns-yokohama-2027-expected",
+  "set": {
+   "name": "86th Annual Meeting of the Japan Neurosurgical Society",
+   "blurb": "The Japan Neurosurgical Society annual meeting, at Osaka International Convention Center."
+  },
+  "note": "global-3 2026-11-25: jns-official.jp: 86th meeting, Osaka"
+ },
+ {
+  "id": "jns-yokohama-2028-expected",
+  "set": {
+   "name": "87th Annual Meeting of the Japan Neurosurgical Society",
+   "blurb": "The Japan Neurosurgical Society annual meeting, at the Kyoto International Conference Center."
+  },
+  "note": "global-3 2026-11-25: jns-official.jp: 87th meeting, Kyoto"
+ },
+ {
+  "id": "jaid-tokyo-2027-expected",
+  "set": {
+   "name": "101st Annual Meeting of the Japanese Association for Infectious Diseases (joint with the 75th JSC meeting)",
+   "blurb": "The Japanese Association for Infectious Diseases annual meeting, held with the Japanese Society of Chemotherapy, in Sapporo."
+  },
+  "note": "global-3 2026-11-25: chemotherapy.or.jp: joint 101st JAID / 75th JSC meeting, Sapporo"
+ },
+ {
+  "id": "asoprs-annual-meeting-2027",
+  "set": {
+   "name": "ASOPRS 2027 Fall Scientific Symposium",
+   "blurb": "The ASOPRS annual fall scientific symposium on oculoplastic surgery, at Caesars Palace in Las Vegas."
+  },
+  "note": "global-3 2026-11-25: asoprs.org: Fall Scientific Symposium, Caesars Las Vegas"
+ },
+ {
+  "id": "asoprs-annual-meeting-2028",
+  "set": {
+   "name": "ASOPRS 2028 Fall Scientific Symposium",
+   "blurb": "The ASOPRS annual fall scientific symposium on oculoplastic surgery, at the Palmer House in Chicago."
+  },
+  "note": "global-3 2026-11-25: asoprs.org: Fall Scientific Symposium, Palmer House Chicago"
+ },
+ {
+  "id": "naspghan-annual-meeting-2027",
+  "set": {
+   "blurb": "The NASPGHAN postgraduate course and annual meeting, at Gaylord Opryland in Nashville."
+  },
+  "note": "global-3 2026-11-25: naspghan.org: Gaylord Opryland, Nashville"
+ },
+ {
+  "id": "naspghan-annual-meeting-2028",
+  "set": {
+   "blurb": "The NASPGHAN postgraduate course and annual meeting, at Rosen Shingle Creek in Orlando."
+  },
+  "note": "global-3 2026-11-25: naspghan.org: Rosen Shingle Creek, Orlando"
+ }
+]
