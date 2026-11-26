@@ -286,5 +286,21 @@
   "lat": 33.75,
   "lng": -84.39,
   "note": "global-8 2026-11-26: ASRA pain medicine meeting page: 26th annual meeting, 18-20 Nov 2027, Atlanta (dates were estimated)"
+ },
+ {
+  "id": "spr-annual-meeting-2027",
+  "verified": true,
+  "start": "2027-05-18",
+  "end": "2027-05-22",
+  "sourceUrl": "https://www.spr.org/events/spr2027",
+  "datesSourceUrl": "https://www.spr.org/events/spr2027",
+  "datesQuote": "SPR 2027 Annual Meeting & Postgraduate Course Tuesday, May 18, 2027 to Saturday, May 22, 2027 Hyatt Regency Dallas",
+  "verifiedOn": "2026-11-26",
+  "city": "Dallas",
+  "country": "United States",
+  "countryCode": "US",
+  "lat": 32.7767,
+  "lng": -96.797,
+  "note": "global-8 2026-11-26: SPR event page: 2027 annual meeting and postgraduate course, 18-22 May 2027, Hyatt Regency Dallas (was Nashville, 27 Apr, estimated)"
  }
 ]
