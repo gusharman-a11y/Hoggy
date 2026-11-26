@@ -51,5 +51,26 @@
    "blurb": "The joint paediatric anaesthesiology meeting of the Society for Pediatric Anesthesia and the AAP, at the Gaylord National in Oxon Hill, Maryland."
   },
   "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "napcrg-annual-meeting-2027",
+  "set": {
+   "blurb": "The annual meeting of the North American Primary Care Research Group, in Vancouver."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "napcrg-annual-meeting-2028",
+  "set": {
+   "blurb": "The annual meeting of the North American Primary Care Research Group, in Portland, Oregon."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "sbi-symposium-2028",
+  "set": {
+   "blurb": "The annual breast imaging symposium of the Society of Breast Imaging, in Minneapolis."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
  }
 ]
