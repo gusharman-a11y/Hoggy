@@ -1,0 +1,42 @@
+[
+ {
+  "id": "jsh-annual-meeting",
+  "set": {
+   "name": "89th Annual Meeting of the Japanese Society of Hematology",
+   "blurb": "The 89th annual meeting of the Japanese Society of Hematology, at the Fukuoka International Congress Center and Marine Messe Fukuoka."
+  },
+  "note": "global-6 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "jas-tokyo-2027-expected",
+  "set": {
+   "name": "59th Annual Meeting of the Japan Atherosclerosis Society",
+   "blurb": "The 59th annual meeting of the Japan Atherosclerosis Society, at the Keio Plaza Hotel Shinjuku."
+  },
+  "note": "global-6 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "jsgs-yokohama-2027-expected",
+  "set": {
+   "name": "82nd Annual Meeting of the Japanese Society of Gastroenterological Surgery",
+   "blurb": "The 82nd annual meeting of the Japanese Society of Gastroenterological Surgery, at Dejima Messe Nagasaki and Hilton Nagasaki."
+  },
+  "note": "global-6 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "bts-winter-meeting-2027",
+  "set": {
+   "name": "BTS Winter Meeting 2027",
+   "blurb": "The British Thoracic Society winter meeting, the society's main scientific meeting, in London."
+  },
+  "note": "global-6 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "bts-winter-meeting-2028",
+  "set": {
+   "name": "BTS Winter Meeting 2028",
+   "blurb": "The British Thoracic Society winter meeting, the society's main scientific meeting, in London."
+  },
+  "note": "global-6 2026-11-26: name and blurb after the dates were confirmed"
+ }
+]
