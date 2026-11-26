@@ -173,5 +173,42 @@
    "blurb": "The Pediatric Academic Societies Meeting, in Vancouver."
   },
   "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "asnr-annual-meeting-2028",
+  "set": {
+   "blurb": "The annual meeting of the American Society of Neuroradiology, at the Sheraton Centre Toronto."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "ors-annual-meeting-2027",
+  "set": {
+   "blurb": "The annual meeting of the Orthopaedic Research Society, at Moscone West in San Francisco."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "ors-annual-meeting-2028",
+  "set": {
+   "blurb": "The annual meeting of the Orthopaedic Research Society, in New Orleans."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "asaps-aesthetic-meeting-2027",
+  "set": {
+   "name": "The Aesthetic MEET 2027",
+   "blurb": "The annual meeting of The Aesthetic Society, at the Miami Beach Convention Center."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "asaps-aesthetic-meeting-2028",
+  "set": {
+   "name": "The Aesthetic MEET 2028",
+   "blurb": "The annual meeting of The Aesthetic Society, at the Javits Center in New York."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
  }
 ]
