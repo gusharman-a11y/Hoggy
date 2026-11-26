@@ -25,7 +25,19 @@ const host = u => { try { return new URL(u).hostname.replace(/^www\./, ''); } ca
 /* wave 3: two rows on one host and one start day are the same meeting unless both urls are distinct event pages (aoa.org.au lists
    two branch meetings on one day, each with its own detail page). A site-root url still collides with anything on its host. */
 const { isSiteRoot } = require('./evidence');
-const urlPath = u => { try { return isSiteRoot(u) ? '' : new URL(u).pathname.replace(/\/+$/, ''); } catch (e) { return ''; } };
+/* global-5: event platforms that put the event id in the query string (CloudCME: /default.aspx?P=0&EID=61498; EthosCE sites:
+   /node/123 or ?nid=123). On these hosts the event-id parameters are part of the path compared, so two events on one host and
+   one start day stay two rows. Any other query string is still ignored (tracking parameters, page numbers). */
+const QUERY_ID_PLATFORMS = [
+  { host: /(^|\.)cloud-cme\.com$/i, params: ['eid'] },
+  { host: /^(cme\.uchicago\.edu|cme\.utsouthwestern\.edu|cme\.baptisthealth\.net|cme\.wisc\.edu|cme\.bu\.edu|ccehs\.upmc\.com|cme\.healthpartners\.com)$/i, params: ['nid', 'node', 'eventid', 'event_id', 'course_id'] }
+];
+const eventIdQuery = x => {
+  const pl = QUERY_ID_PLATFORMS.find(p => p.host.test(x.hostname.replace(/^www\./, ''))); if (!pl) return '';
+  const q = [...x.searchParams].filter(([k]) => pl.params.includes(k.toLowerCase())).map(([k, v]) => k.toLowerCase() + '=' + v.toLowerCase()).sort();
+  return q.length ? '?' + q.join('&') : '';
+};
+const urlPath = u => { try { if (isSiteRoot(u)) return ''; const x = new URL(u); return x.pathname.replace(/\/+$/, '') + eventIdQuery(x); } catch (e) { return ''; } };
 const urlDate = new Map();
 const seenUrlDate = { has(c) { const l = urlDate.get(host(c.url) + c.start); if (!l) return false; const p = urlPath(c.url); return !p || l.some(q => !q || q === p); },
   add(c) { const k = host(c.url) + c.start; (urlDate.get(k) || urlDate.set(k, []).get(k)).push(urlPath(c.url)); } };

@@ -158,3 +158,16 @@ test('merge: rows may start up to 2029-12-31; later starts are rejected as out o
   assert.ok(ids.includes('abc-congress-2029'), 'a 2029 start merges'); assert.ok(!ids.includes('abc-congress-2030'), 'a 2030 start does not');
   assert.match(m.stdout, /wave6-test\.json: abc-congress-2030: out of range/);
 });
+
+test('merge: on event platforms (CloudCME, EthosCE) an event-id query string keeps two same-day events on one host apart', () => {
+  const cc = (eid, extra = {}) => ({ ...GOOD, id: 'ccme-event-' + eid, name: 'CCME Event ' + eid, organiser: 'UCSF', start: '2027-02-14', end: '2027-02-16', url: 'https://ucsf.cloud-cme.com/default.aspx?P=0&EID=' + eid, sourceUrl: 'https://ucsf.cloud-cme.com/default.aspx?P=0&EID=' + eid, datesSourceUrl: 'https://ucsf.cloud-cme.com/default.aspx?P=0&EID=' + eid, datesQuote: 'Sunday, February 14, 2027', ...extra });
+  const other = (n, u) => ({ ...GOOD, id: 'other-event-' + n, name: 'Other Event ' + n, organiser: 'Other', start: '2027-04-04', end: '2027-04-05', url: u, sourceUrl: u, datesSourceUrl: u, datesQuote: '4-5 April 2027' });
+  const shard = [cc(101), cc(102), cc(101, { id: 'ccme-event-101-again', name: 'CCME Event 101 Again', url: 'https://ucsf.cloud-cme.com/default.aspx?EID=101&P=5' }),
+    other('a', 'https://www.abc.example/events/default.aspx?id=1'), other('b', 'https://www.abc.example/events/default.aspx?id=2')];
+  const dir = tmpRoot([JSON.parse(JSON.stringify(GOOD))], { 'global5-test.json': shard });
+  const m = node('tools/merge-shards.js', '--root', dir, '--today', DAY); assert.equal(m.status, 0, m.stdout + m.stderr);
+  const ids = load(dir).map(c => c.id);
+  assert.ok(ids.includes('ccme-event-101') && ids.includes('ccme-event-102'), 'two CloudCME events, same host and day, different EID: both kept');
+  assert.ok(!ids.includes('ccme-event-101-again'), 'the same EID (other parameters differ) is still a duplicate');
+  assert.ok(ids.includes('other-event-a') && !ids.includes('other-event-b'), 'on other hosts the query string is still ignored');
+});
