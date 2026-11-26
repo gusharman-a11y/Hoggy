@@ -88,10 +88,38 @@
   "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
  },
  {
+  "id": "aaoms-annual-meeting-2028",
+  "set": {
+   "blurb": "The 110th annual meeting of the American Association of Oral and Maxillofacial Surgeons, at the Tampa Convention Center."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
   "id": "sca-annual-meeting-2028",
   "set": {
    "name": "SCA 50th Annual Meeting and Workshops 2028",
    "blurb": "The 50th annual meeting and workshops of the Society of Cardiovascular Anesthesiologists, at the Fontainebleau Miami Beach."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "coa-annual-meeting-2028",
+  "set": {
+   "blurb": "The annual meeting of the Canadian Orthopaedic Association, in Ottawa."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "nla-scientific-sessions-2027",
+  "set": {
+   "blurb": "The annual scientific sessions of the National Lipid Association, at the Omni Nashville."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "svs-vascular-annual-meeting-2027",
+  "set": {
+   "blurb": "The Vascular Annual Meeting of the Society for Vascular Surgery, at the San Diego Convention Center."
   },
   "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
  }
