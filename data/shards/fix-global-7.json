@@ -6,5 +6,29 @@
    "blurb": "Biennial congress of the German Society of Gynaecology and Obstetrics in Leipzig."
   },
   "note": "global-7 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "jfhod-2027",
+  "set": {
+   "name": "JFHOD 2027",
+   "blurb": "French-language hepato-gastroenterology and digestive oncology meeting at the Palais des congrès de Paris."
+  },
+  "note": "global-7 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "dgg-gefaesschirurgie-kongress-2027",
+  "set": {
+   "name": "43. DGG-Jahrestagung 2027",
+   "blurb": "Annual meeting of the German Society for Vascular Surgery in Dresden."
+  },
+  "note": "global-7 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "dgg-gefaesschirurgie-kongress-2028",
+  "set": {
+   "name": "44. DGG-Jahrestagung 2028",
+   "blurb": "Annual meeting of the German Society for Vascular Surgery in Münster."
+  },
+  "note": "global-7 2026-11-26: name and blurb after the dates were confirmed"
  }
 ]

@@ -14,5 +14,53 @@
   "lat": 51.34,
   "lng": 12.37,
   "note": "global-7 2026-11-26: DGGG congress page: 67th DGGG congress, Leipzig, 11-14 Oct 2028 (was Munich, 4 Oct, estimated)"
+ },
+ {
+  "id": "jfhod-2027",
+  "verified": true,
+  "start": "2027-03-11",
+  "end": "2027-03-14",
+  "sourceUrl": "https://www.snfge.org/agenda",
+  "datesSourceUrl": "https://www.snfge.org/agenda",
+  "datesQuote": "JFHOD 2027, Journées Francophones d'Hépato-gastroentérologie et d'Oncologie Digestive Du 11 au 14 mars 2027 Palais des c",
+  "verifiedOn": "2026-11-26",
+  "city": "Paris",
+  "country": "France",
+  "countryCode": "FR",
+  "lat": 48.86,
+  "lng": 2.35,
+  "note": "global-7 2026-11-26: SNFGE agenda: JFHOD 2027, Palais des congrès de Paris, 11-14 Mar 2027 (was 25 Mar, estimated)"
+ },
+ {
+  "id": "dgg-gefaesschirurgie-kongress-2027",
+  "verified": true,
+  "start": "2027-09-22",
+  "end": "2027-09-25",
+  "sourceUrl": "https://www.gefaesschirurgie.de/veranstaltungen/veranstaltungen-der-dgg",
+  "datesSourceUrl": "https://www.gefaesschirurgie.de/veranstaltungen/veranstaltungen-der-dgg",
+  "datesQuote": "Die 43. Jahrestagung der Deutschen Gesellschaft für Gefäßchirurgie findet vom 22. bis 25. September 2027 in Dresden statt.",
+  "verifiedOn": "2026-11-26",
+  "city": "Dresden",
+  "country": "Germany",
+  "countryCode": "DE",
+  "lat": 51.05,
+  "lng": 13.74,
+  "note": "global-7 2026-11-26: DGG events page: 43rd annual meeting, Dresden, 22-25 Sep 2027 (was Berlin, 8 Sep, estimated)"
+ },
+ {
+  "id": "dgg-gefaesschirurgie-kongress-2028",
+  "verified": true,
+  "start": "2028-09-27",
+  "end": "2028-09-30",
+  "sourceUrl": "https://www.gefaesschirurgie.de/veranstaltungen/veranstaltungskalender",
+  "datesSourceUrl": "https://www.gefaesschirurgie.de/veranstaltungen/veranstaltungskalender",
+  "datesQuote": "27.–30.09.2028, 44. DGG-Jahrestagung, Münster",
+  "verifiedOn": "2026-11-26",
+  "city": "Münster",
+  "country": "Germany",
+  "countryCode": "DE",
+  "lat": 51.96,
+  "lng": 7.63,
+  "note": "global-7 2026-11-26: DGG calendar: 44th annual meeting, Münster, 27-30 Sep 2028 (was Hamburg, 13 Sep, estimated)"
  }
 ]
