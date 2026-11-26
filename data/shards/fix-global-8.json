@@ -129,5 +129,49 @@
    "blurb": "The annual meeting and postgraduate course of the Society for Pediatric Radiology, at the Hyatt Regency Dallas."
   },
   "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "cts-canadian-respiratory-conference-2027",
+  "set": {
+   "blurb": "The 19th Canadian Respiratory Conference of the Canadian Thoracic Society, in Montreal."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "cts-canadian-respiratory-conference-2028",
+  "set": {
+   "blurb": "The Canadian Respiratory Conference of the Canadian Thoracic Society, at the Westin Harbour Castle in Toronto."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "aur-annual-meeting-2027",
+  "set": {
+   "name": "AAR 75th Annual Meeting 2027",
+   "blurb": "The 75th annual meeting of the Association of Academic Radiology (formerly AUR), in Salt Lake City."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "aur-annual-meeting-2028",
+  "set": {
+   "name": "AAR 76th Annual Meeting 2028",
+   "blurb": "The 76th annual meeting of the Association of Academic Radiology (formerly AUR), in New Orleans."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "aacap-annual-meeting-2028",
+  "set": {
+   "blurb": "The annual meeting of the American Academy of Child and Adolescent Psychiatry, at the Pennsylvania Convention Center in Philadelphia."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "pas-meeting-2028",
+  "set": {
+   "blurb": "The Pediatric Academic Societies Meeting, in Vancouver."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
  }
 ]
