@@ -78,5 +78,21 @@
   "lat": 47.56,
   "lng": 7.59,
   "note": "global-7 2026-11-26: DGHO future meetings page: joint German, Austrian and Swiss annual meeting, Basel, 6-9 Oct 2028 (was Leipzig, 5 Oct, estimated)"
+ },
+ {
+  "id": "degam-kongress-2027",
+  "verified": true,
+  "start": "2027-09-16",
+  "end": "2027-09-18",
+  "sourceUrl": "https://www.degam.de/jahreskongresse",
+  "datesSourceUrl": "https://www.degam.de/jahreskongresse",
+  "datesQuote": "Der 61. Kongress für Allgemeinmedizin und Familienmedizin wird vom 16. bis 18. September 2027 in Augsburg stattfinden.",
+  "verifiedOn": "2026-11-26",
+  "city": "Augsburg",
+  "country": "Germany",
+  "countryCode": "DE",
+  "lat": 48.3689,
+  "lng": 10.8978,
+  "note": "global-7 2026-11-26: DEGAM congress page: 61st congress, Augsburg, 16-18 Sep 2027 (was Hamburg, 15 Sep, estimated)"
  }
 ]
