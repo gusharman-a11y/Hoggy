@@ -1,0 +1,214 @@
+[
+ {
+  "id": "aapos-annual-meeting-2027",
+  "set": {
+   "name": "AAPOS 52nd Annual Meeting 2027",
+   "blurb": "The annual meeting of the American Association for Pediatric Ophthalmology and Strabismus, in Washington, DC."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "aapos-annual-meeting-2028",
+  "set": {
+   "name": "AAPOS 53rd Annual Meeting 2028",
+   "blurb": "The annual meeting of the American Association for Pediatric Ophthalmology and Strabismus, in San Diego."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "asbmr-annual-meeting-2027",
+  "set": {
+   "blurb": "The annual meeting of the American Society for Bone and Mineral Research, at the Metro Toronto Convention Centre."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "ncs-annual-meeting-2027",
+  "set": {
+   "name": "Neurocritical Care Society 25th Annual Meeting 2027",
+   "blurb": "The 25th annual meeting of the Neurocritical Care Society, in New Orleans."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "sca-annual-meeting-2027",
+  "set": {
+   "blurb": "The annual meeting and workshops of the Society of Cardiovascular Anesthesiologists, at the Bellagio in Las Vegas."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "aafp-fmx-2028",
+  "set": {
+   "blurb": "The AAFP Family Medicine Experience (FMX), the annual family medicine meeting of the American Academy of Family Physicians, in Indianapolis."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "spa-annual-meeting-2028",
+  "set": {
+   "name": "SPA-AAP Pediatric Anesthesiology 2028",
+   "blurb": "The joint paediatric anaesthesiology meeting of the Society for Pediatric Anesthesia and the AAP, at the Gaylord National in Oxon Hill, Maryland."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "napcrg-annual-meeting-2027",
+  "set": {
+   "blurb": "The annual meeting of the North American Primary Care Research Group, in Vancouver."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "napcrg-annual-meeting-2028",
+  "set": {
+   "blurb": "The annual meeting of the North American Primary Care Research Group, in Portland, Oregon."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "sbi-symposium-2028",
+  "set": {
+   "blurb": "The annual breast imaging symposium of the Society of Breast Imaging, in Minneapolis."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "aagl-global-congress-2027",
+  "set": {
+   "blurb": "The 56th AAGL Global Congress on Minimally Invasive Gynecologic Surgery, at the San Diego Convention Center."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "aaoms-annual-meeting-2027",
+  "set": {
+   "blurb": "The 109th annual meeting of the American Association of Oral and Maxillofacial Surgeons, in San Antonio."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "aaoms-annual-meeting-2028",
+  "set": {
+   "blurb": "The 110th annual meeting of the American Association of Oral and Maxillofacial Surgeons, at the Tampa Convention Center."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "sca-annual-meeting-2028",
+  "set": {
+   "name": "SCA 50th Annual Meeting and Workshops 2028",
+   "blurb": "The 50th annual meeting and workshops of the Society of Cardiovascular Anesthesiologists, at the Fontainebleau Miami Beach."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "coa-annual-meeting-2028",
+  "set": {
+   "blurb": "The annual meeting of the Canadian Orthopaedic Association, in Ottawa."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "nla-scientific-sessions-2027",
+  "set": {
+   "blurb": "The annual scientific sessions of the National Lipid Association, at the Omni Nashville."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "svs-vascular-annual-meeting-2027",
+  "set": {
+   "blurb": "The Vascular Annual Meeting of the Society for Vascular Surgery, at the San Diego Convention Center."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "spr-annual-meeting-2027",
+  "set": {
+   "blurb": "The annual meeting and postgraduate course of the Society for Pediatric Radiology, at the Hyatt Regency Dallas."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "cts-canadian-respiratory-conference-2027",
+  "set": {
+   "blurb": "The 19th Canadian Respiratory Conference of the Canadian Thoracic Society, in Montreal."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "cts-canadian-respiratory-conference-2028",
+  "set": {
+   "blurb": "The Canadian Respiratory Conference of the Canadian Thoracic Society, at the Westin Harbour Castle in Toronto."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "aur-annual-meeting-2027",
+  "set": {
+   "name": "AAR 75th Annual Meeting 2027",
+   "blurb": "The 75th annual meeting of the Association of Academic Radiology (formerly AUR), in Salt Lake City."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "aur-annual-meeting-2028",
+  "set": {
+   "name": "AAR 76th Annual Meeting 2028",
+   "blurb": "The 76th annual meeting of the Association of Academic Radiology (formerly AUR), in New Orleans."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "aacap-annual-meeting-2028",
+  "set": {
+   "blurb": "The annual meeting of the American Academy of Child and Adolescent Psychiatry, at the Pennsylvania Convention Center in Philadelphia."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "pas-meeting-2028",
+  "set": {
+   "blurb": "The Pediatric Academic Societies Meeting, in Vancouver."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "asnr-annual-meeting-2028",
+  "set": {
+   "blurb": "The annual meeting of the American Society of Neuroradiology, at the Sheraton Centre Toronto."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "ors-annual-meeting-2027",
+  "set": {
+   "blurb": "The annual meeting of the Orthopaedic Research Society, at Moscone West in San Francisco."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "ors-annual-meeting-2028",
+  "set": {
+   "blurb": "The annual meeting of the Orthopaedic Research Society, in New Orleans."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "asaps-aesthetic-meeting-2027",
+  "set": {
+   "name": "The Aesthetic MEET 2027",
+   "blurb": "The annual meeting of The Aesthetic Society, at the Miami Beach Convention Center."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "asaps-aesthetic-meeting-2028",
+  "set": {
+   "name": "The Aesthetic MEET 2028",
+   "blurb": "The annual meeting of The Aesthetic Society, at the Javits Center in New York."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ }
+]
