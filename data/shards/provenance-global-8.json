@@ -94,5 +94,21 @@
   "lat": 39.7684,
   "lng": -86.1581,
   "note": "global-8 2026-11-26: AAFP event calendar: FMX 2028, 10-14 Oct 2028, Indianapolis (was Seattle, 18 Sep, estimated)"
+ },
+ {
+  "id": "spa-annual-meeting-2028",
+  "verified": true,
+  "start": "2028-03-16",
+  "end": "2028-03-20",
+  "sourceUrl": "https://pedsanesthesia.org/education-and-meetings/upcoming-meetings/",
+  "datesSourceUrl": "https://pedsanesthesia.org/education-and-meetings/upcoming-meetings/",
+  "datesQuote": "SPA-AAP Pediatric Anesthesiology 2028 March 16-20, 2028 Gaylord National Resort & Convention Center Oxon Hill, MD",
+  "verifiedOn": "2026-11-26",
+  "city": "Oxon Hill",
+  "country": "United States",
+  "countryCode": "US",
+  "lat": 36.16,
+  "lng": -86.78,
+  "note": "global-8 2026-11-26: SPA upcoming meetings page: SPA-AAP Pediatric Anesthesiology 2028, 16-20 Mar 2028, Oxon Hill MD (was Nashville, estimated)"
  }
 ]

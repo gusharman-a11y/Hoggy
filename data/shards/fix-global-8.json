@@ -43,5 +43,13 @@
    "blurb": "The AAFP Family Medicine Experience (FMX), the annual family medicine meeting of the American Academy of Family Physicians, in Indianapolis."
   },
   "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "spa-annual-meeting-2028",
+  "set": {
+   "name": "SPA-AAP Pediatric Anesthesiology 2028",
+   "blurb": "The joint paediatric anaesthesiology meeting of the Society for Pediatric Anesthesia and the AAP, at the Gaylord National in Oxon Hill, Maryland."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
  }
 ]
