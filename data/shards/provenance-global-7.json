@@ -62,5 +62,21 @@
   "lat": 51.96,
   "lng": 7.63,
   "note": "global-7 2026-11-26: DGG calendar: 44th annual meeting, Münster, 27-30 Sep 2028 (was Hamburg, 13 Sep, estimated)"
+ },
+ {
+  "id": "dgho-jahrestagung-2028",
+  "verified": true,
+  "start": "2028-10-06",
+  "end": "2028-10-09",
+  "sourceUrl": "https://www.dgho.de/veranstaltungen/jahrestagung/zukuenftige-jahrestagungen",
+  "datesSourceUrl": "https://www.dgho.de/veranstaltungen/jahrestagung/zukuenftige-jahrestagungen",
+  "datesQuote": "2028 Jahrestagung der Deutschen, Österreichischen und Schweizerischen Gesellschaften für Hämatologie und Medizinische Onkologie 6. bis 9. Oktober 2028 Basel",
+  "verifiedOn": "2026-11-26",
+  "city": "Basel",
+  "country": "Switzerland",
+  "countryCode": "CH",
+  "lat": 47.56,
+  "lng": 7.59,
+  "note": "global-7 2026-11-26: DGHO future meetings page: joint German, Austrian and Swiss annual meeting, Basel, 6-9 Oct 2028 (was Leipzig, 5 Oct, estimated)"
  }
 ]

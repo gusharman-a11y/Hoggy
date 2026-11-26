@@ -30,5 +30,13 @@
    "blurb": "Annual meeting of the German Society for Vascular Surgery in Münster."
   },
   "note": "global-7 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "dgho-jahrestagung-2028",
+  "set": {
+   "name": "DGHO/OeGHO/SGMO/SGH Jahrestagung 2028",
+   "blurb": "Joint annual meeting of the German, Austrian and Swiss haematology and medical oncology societies in Basel."
+  },
+  "note": "global-7 2026-11-26: name and blurb after the dates were confirmed"
  }
 ]
