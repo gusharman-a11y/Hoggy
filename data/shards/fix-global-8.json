@@ -1,0 +1,47 @@
+[
+ {
+  "id": "aapos-annual-meeting-2027",
+  "set": {
+   "name": "AAPOS 52nd Annual Meeting 2027",
+   "blurb": "The annual meeting of the American Association for Pediatric Ophthalmology and Strabismus, in Washington, DC."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "aapos-annual-meeting-2028",
+  "set": {
+   "name": "AAPOS 53rd Annual Meeting 2028",
+   "blurb": "The annual meeting of the American Association for Pediatric Ophthalmology and Strabismus, in San Diego."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "asbmr-annual-meeting-2027",
+  "set": {
+   "blurb": "The annual meeting of the American Society for Bone and Mineral Research, at the Metro Toronto Convention Centre."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "ncs-annual-meeting-2027",
+  "set": {
+   "name": "Neurocritical Care Society 25th Annual Meeting 2027",
+   "blurb": "The 25th annual meeting of the Neurocritical Care Society, in New Orleans."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "sca-annual-meeting-2027",
+  "set": {
+   "blurb": "The annual meeting and workshops of the Society of Cardiovascular Anesthesiologists, at the Bellagio in Las Vegas."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "aafp-fmx-2028",
+  "set": {
+   "blurb": "The AAFP Family Medicine Experience (FMX), the annual family medicine meeting of the American Academy of Family Physicians, in Indianapolis."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ }
+]
