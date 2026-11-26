@@ -72,5 +72,27 @@
    "blurb": "The annual breast imaging symposium of the Society of Breast Imaging, in Minneapolis."
   },
   "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "aagl-global-congress-2027",
+  "set": {
+   "blurb": "The 56th AAGL Global Congress on Minimally Invasive Gynecologic Surgery, at the San Diego Convention Center."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "aaoms-annual-meeting-2027",
+  "set": {
+   "blurb": "The 109th annual meeting of the American Association of Oral and Maxillofacial Surgeons, in San Antonio."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "sca-annual-meeting-2028",
+  "set": {
+   "name": "SCA 50th Annual Meeting and Workshops 2028",
+   "blurb": "The 50th annual meeting and workshops of the Society of Cardiovascular Anesthesiologists, at the Fontainebleau Miami Beach."
+  },
+  "note": "global-8 2026-11-26: name and blurb after the dates were confirmed"
  }
 ]

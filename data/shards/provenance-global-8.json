@@ -158,5 +158,53 @@
   "lat": 44.98,
   "lng": -93.27,
   "note": "global-8 2026-11-26: SBI upcoming symposiums page: 2028 symposium, 20-23 Apr 2028, Minneapolis (was Chicago, 12 Apr, estimated)"
+ },
+ {
+  "id": "aagl-global-congress-2027",
+  "verified": true,
+  "start": "2027-11-03",
+  "end": "2027-11-06",
+  "sourceUrl": "https://aagl.org/event/56th-global-congress-on-migs/",
+  "datesSourceUrl": "https://aagl.org/event/56th-global-congress-on-migs/",
+  "datesQuote": "56th Annual Global Congress on MIGS November 3-6, 2027 San Diego Convention Center San Diego, California",
+  "verifiedOn": "2026-11-26",
+  "city": "San Diego",
+  "country": "United States",
+  "countryCode": "US",
+  "lat": 32.72,
+  "lng": -117.16,
+  "note": "global-8 2026-11-26: AAGL event page: 56th Global Congress on MIGS, 3-6 Nov 2027, San Diego (was Las Vegas, 13 Nov, estimated)"
+ },
+ {
+  "id": "aaoms-annual-meeting-2027",
+  "verified": true,
+  "start": "2027-09-20",
+  "end": "2027-09-25",
+  "sourceUrl": "https://aaoms.org/events/2027-annual-meeting/",
+  "datesSourceUrl": "https://aaoms.org/events/2027-annual-meeting/",
+  "datesQuote": "109th Annual Meeting, Scientific Sessions and Exhibition September 20, 2027 - September 25, 2027",
+  "verifiedOn": "2026-11-26",
+  "city": "San Antonio",
+  "country": "United States",
+  "countryCode": "US",
+  "lat": 29.42,
+  "lng": -98.49,
+  "note": "global-8 2026-11-26: AAOMS event page: 109th annual meeting, 20-25 Sep 2027, Henry B. González Convention Center, San Antonio (was Chicago, 15 Sep, estimated)"
+ },
+ {
+  "id": "sca-annual-meeting-2028",
+  "verified": true,
+  "start": "2028-05-18",
+  "end": "2028-05-21",
+  "sourceUrl": "https://scahq.org/upcoming-event/sca-50th-annual-meeting-and-workshops/",
+  "datesSourceUrl": "https://scahq.org/upcoming-event/sca-50th-annual-meeting-and-workshops/",
+  "datesQuote": "SCA 50th Annual Meeting and Workshops Date: May 18, 2028 - May 21, 2028 Venue: Fontainebleau Miami Beach",
+  "verifiedOn": "2026-11-26",
+  "city": "Miami Beach",
+  "country": "United States",
+  "countryCode": "US",
+  "lat": 25.8139,
+  "lng": -80.1325,
+  "note": "global-8 2026-11-26: SCA event page: 50th annual meeting and workshops, 18-21 May 2028, Fontainebleau Miami Beach (was Nashville, 28 Apr, estimated)"
  }
 ]
