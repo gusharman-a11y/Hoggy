@@ -1,5 +1,13 @@
 [
  {
+  "id": "apicon-jaipur-2027-expected",
+  "set": {
+   "name": "APICON 2027: 82nd Annual Conference of the Association of Physicians of India",
+   "blurb": "The 82nd annual conference of the Association of Physicians of India, held in Gurugram."
+  },
+  "note": "global-6 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
   "id": "jsh-annual-meeting",
   "set": {
    "name": "89th Annual Meeting of the Japanese Society of Hematology",

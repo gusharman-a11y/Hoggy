@@ -101,7 +101,8 @@
   { "host": "jddw.jp", "for": ["jddw"], "note": "Japan Digestive Disease Week site" },
   { "host": "ephconference.eu", "for": ["european-public-health-conference"], "note": "European Public Health Conference site (EUPHA)" },
   { "host": "heartrhythm.com", "for": ["heart-rhythm-2028"], "note": "Heart Rhythm Society meeting site" },
-  { "host": "web.cvent.com", "path": "/event/8d6f7229-4938-49e0-a0c0-4203fa5954be", "for": ["crash-vail-2027"], "note": "CRASH 2027 registration site on Cvent (University of Colorado anaesthesia meeting, Vail); read 24 Nov 2026 (destinations)" }
+  { "host": "web.cvent.com", "path": "/event/8d6f7229-4938-49e0-a0c0-4203fa5954be", "for": ["crash-vail-2027"], "note": "CRASH 2027 registration site on Cvent (University of Colorado anaesthesia meeting, Vail); read 24 Nov 2026 (destinations)" },
+  { "host": "apicon2027.com", "for": ["apicon-jaipur-2027-expected"], "note": "APICON 2027 conference site (82nd Annual Conference of the Association of Physicians of India, Gurugram); read 26 Nov 2026 (global-6)" }
  ],
  "aggregators": ["santetropicale.com", "10times.com", "allconferencealert.com", "conferenceindex.org", "conferencealerts.co.in", "conferenceseries.com", "docthub.com", "eventbrite.com", "eventbrite.com.au", "eventbrite.co.uk", "facebook.com", "instagram.com", "linkedin.com", "mdlinx.com", "medical.theconferencewebsite.com", "omicsonline.org", "twitter.com", "waset.org", "wikipedia.org", "x.com"]
 }

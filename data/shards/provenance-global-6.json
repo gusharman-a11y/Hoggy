@@ -1,5 +1,19 @@
 [
  {
+  "id": "apicon-jaipur-2027-expected",
+  "verified": true,
+  "start": "2027-02-18",
+  "end": "2027-02-21",
+  "sourceUrl": "https://apicon2027.com/accommodation.php",
+  "datesSourceUrl": "https://apicon2027.com/accommodation.php",
+  "datesQuote": "Day &#8544 : 18 th Feb 2027 (CME) Day &#8545 : 19 th Feb 2027 (Scientific) Day &#8546 : 20 th Feb 2027 (Scientific) Day &#8547 : 21 st Feb 2027 (Scientific)",
+  "verifiedOn": "2026-11-26",
+  "city": "Gurugram",
+  "country": "India",
+  "countryCode": "IN",
+  "note": "global-6 2026-11-26: APICON 2027 site: 82nd conference in Gurugram, 18-21 Feb 2027 (was Jaipur, 4 Feb, estimated)"
+ },
+ {
   "id": "jsh-annual-meeting",
   "verified": true,
   "start": "2027-10-08",
