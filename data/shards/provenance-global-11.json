@@ -246,5 +246,21 @@
   "datesQuote": "Dates: 8–10 September 2027 Venue: Manchester Central",
   "verifiedOn": "2026-11-27",
   "note": "global-11 2026-11-27: BSSH event page: BSSH Scientific Meeting 2027, 8-10 Sep 2027, Manchester Central (was 10 Nov, estimated)"
+ },
+ {
+  "id": "semicyuc-congreso-2027",
+  "verified": true,
+  "start": "2027-06-06",
+  "end": "2027-06-09",
+  "sourceUrl": "https://semicyuc.org/event/sevilla2027/",
+  "datesSourceUrl": "https://semicyuc.org/event/sevilla2027/",
+  "datesQuote": "LXII Congreso Nacional de la SEMICYUC · Sevilla 2027 6 junio 2027 a las 19:00 - 9 junio 2027",
+  "verifiedOn": "2026-11-27",
+  "city": "Seville",
+  "country": "Spain",
+  "countryCode": "ES",
+  "lat": 37.39,
+  "lng": -5.98,
+  "note": "global-11 2026-11-27: SEMICYUC event page: LXII Congreso Nacional, Sevilla, 6-9 Jun 2027 (was Valencia, 9 Jun, estimated)"
  }
 ]
