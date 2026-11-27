@@ -227,5 +227,40 @@
    "blurb": "The joint scientific meeting of the Canadian Association of Radiation Oncology and the Canadian Organization of Medical Physicists, in Montréal."
   },
   "note": "global-10 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "iars-annual-meeting-2028",
+  "set": {
+   "blurb": "The annual meeting of the International Anesthesia Research Society, at the Anaheim Marriott."
+  },
+  "note": "global-10 2026-11-27: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "aapmr-annual-assembly-2028",
+  "set": {
+   "blurb": "The annual assembly of the American Academy of Physical Medicine and Rehabilitation, at the Colorado Convention Center in Denver."
+  },
+  "note": "global-10 2026-11-27: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "cfpc-family-medicine-forum-2027",
+  "set": {
+   "blurb": "Family Medicine Forum, the annual conference of the College of Family Physicians of Canada, in Vancouver."
+  },
+  "note": "global-10 2026-11-27: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "cfpc-family-medicine-forum-2028",
+  "set": {
+   "blurb": "Family Medicine Forum, the annual conference of the College of Family Physicians of Canada, in Calgary."
+  },
+  "note": "global-10 2026-11-27: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "cda-annual-conference-2028",
+  "set": {
+   "blurb": "The annual conference of the Canadian Dermatology Association, at the Victoria Convention Centre."
+  },
+  "note": "global-10 2026-11-27: name and blurb after the dates were confirmed"
  }
 ]
