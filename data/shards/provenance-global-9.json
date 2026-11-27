@@ -14,5 +14,21 @@
   "lat": 54.5967,
   "lng": -5.93,
   "note": "global-9 2026-11-27: BSEcho events list: BSEcho 2027, Belfast, 15-16 Oct 2027 (was Manchester, 10 Nov, estimated)"
+ },
+ {
+  "id": "dac-anaesthesiologie-2027",
+  "verified": true,
+  "start": "2027-09-22",
+  "end": "2027-09-24",
+  "sourceUrl": "https://www.dgai.de/fort-u-weiterbildung-veranstaltungen/veranstaltungen.html",
+  "datesSourceUrl": "https://www.dgai.de/fort-u-weiterbildung-veranstaltungen/veranstaltungen.html",
+  "datesQuote": "DGAI-Jahreskongress 2027 Save the date: 22. - 24. 09. 2027 Kongress Palais Kassel",
+  "verifiedOn": "2026-11-27",
+  "city": "Kassel",
+  "country": "Germany",
+  "countryCode": "DE",
+  "lat": 51.3158,
+  "lng": 9.4979,
+  "note": "global-9 2026-11-27: DGAI events page: DGAI-Jahreskongress 2027, Kongress Palais Kassel, 22-24 Sep 2027 (was Deutscher Anästhesiecongress, Leipzig, 12 May, estimated)"
  }
 ]
