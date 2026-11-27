@@ -30,5 +30,117 @@
    "blurb": "Annual meeting of the Japanese Society for Radiation Oncology at the Kyoto International Conference Center."
   },
   "note": "global-11 2026-11-27: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "drg-roentgenkongress-2027",
+  "set": {
+   "name": "108. Deutscher Röntgenkongress (RÖKO 2027)",
+   "blurb": "Annual German radiology congress of the DRG at the Congress Center Leipzig, with a separate online programme."
+  },
+  "note": "global-11 2026-11-27: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "drg-roentgenkongress-2028",
+  "set": {
+   "name": "109. Deutscher Röntgenkongress (RÖKO 2028)",
+   "blurb": "Annual German radiology congress of the DRG at the Congress Center Leipzig."
+  },
+  "note": "global-11 2026-11-27: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "dgthg-tagung-2027",
+  "set": {
+   "name": "56. Jahrestagung der DGTHG (joint with 59. DGPK-Jahrestagung) 2027",
+   "blurb": "Joint annual meeting of the German societies for thoracic, cardiac and vascular surgery (DGTHG) and paediatric cardiology (DGPK) at Confex Köln."
+  },
+  "note": "global-11 2026-11-27: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "dgp-kongress-2027",
+  "set": {
+   "name": "67. Kongress der Deutschen Gesellschaft für Pneumologie (DGP 2027)",
+   "blurb": "Annual congress of the German Respiratory Society at Confex Köln."
+  },
+  "note": "global-11 2026-11-27: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "dgk-jahrestagung-2027",
+  "set": {
+   "name": "93. Jahrestagung der Deutschen Gesellschaft für Kardiologie (DGK 2027)",
+   "blurb": "Annual meeting of the German Cardiac Society at the Congress Center Rosengarten, Mannheim."
+  },
+  "note": "global-11 2026-11-27: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "ddg-tagung-dermatologie-2027",
+  "set": {
+   "name": "DDG-Tagung 2027",
+   "blurb": "Annual meeting of the German Dermatological Society at the CityCube Berlin."
+  },
+  "note": "global-11 2026-11-27: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "degro-kongress-2027",
+  "set": {
+   "name": "33. DEGRO-Kongress 2027",
+   "blurb": "Annual congress of the German Society for Radiation Oncology at the Congress Center Leipzig."
+  },
+  "note": "global-11 2026-11-27: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "dgnc-jahrestagung-2027",
+  "set": {
+   "name": "DGNC-Jahrestagung 2027",
+   "blurb": "Annual meeting of the German Society of Neurosurgery at Messe Erfurt."
+  },
+  "note": "global-11 2026-11-27: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "dgsmp-annual-meeting-2027",
+  "set": {
+   "name": "62. Jahrestagung der DGSMP 2027",
+   "blurb": "Annual meeting of the German Society for Social Medicine and Prevention in Hamburg."
+  },
+  "note": "global-11 2026-11-27: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "boa-congress-2027",
+  "set": {
+   "name": "BOA Annual Congress 2027",
+   "blurb": "Annual congress of the British Orthopaedic Association at the ACC Liverpool."
+  },
+  "note": "global-11 2026-11-27: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "boa-congress-2028",
+  "set": {
+   "name": "BOA Annual Congress 2028",
+   "blurb": "Annual congress of the British Orthopaedic Association at P&J Live, Aberdeen."
+  },
+  "note": "global-11 2026-11-27: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "dgsm-kongress-2027",
+  "set": {
+   "name": "35. Jahrestagung der DGSM 2027",
+   "blurb": "Annual meeting of the German Sleep Society at the Congress Center Rosengarten, Mannheim."
+  },
+  "note": "global-11 2026-11-27: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "dgou-kongress-2027",
+  "set": {
+   "name": "Deutscher Kongress für Orthopädie und Unfallchirurgie (DKOU) 2027",
+   "blurb": "Joint German congress of orthopaedics and trauma surgery (DGOU, DGOOC, DGU, BVOU) in Berlin."
+  },
+  "note": "global-11 2026-11-27: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "bssh-autumn-scientific-meeting-2027",
+  "set": {
+   "name": "BSSH Scientific Meeting 2027",
+   "blurb": "Scientific meeting of the British Society for Surgery of the Hand at Manchester Central, with the Australian Hand Surgery Society as guest society."
+  },
+  "note": "global-11 2026-11-27: name and blurb after the dates were confirmed"
  }
 ]

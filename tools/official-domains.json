@@ -116,7 +116,13 @@
   {"host": "jpn-ga.or.jp", "for": ["23rd-annual-meeting-of-the-japanese-gastroenterological-associatio-2027-02-12"], "note": "Japanese Gastroenterological Association site (jpn-ga.or.jp), linked from the society's homepage jpn-ga.jp; read 26 Nov 2026 (global-7)"},
   {"host": "in-tex.com", "path": "/jaci2027", "for": ["31st-annual-meeting-of-the-japanese-association-of-cancer-immunolo-2027-07-29"], "note": "Japanese Association of Cancer Immunology 2027 meeting site on the congress company's host, linked from jaci.jp; read 26 Nov 2026 (global-7)"},
   {"host": "nhamconferences.com", "path": "/conferences", "for": ["nham-kuala-lumpur-2027-expected"], "note": "global-11: NHAM conference site, linked from malaysianheart.org (NHAM Congress 2027 page); its conferences list gives NHAM 2027 dates (read 27 Nov 2026)"},
-  {"host": "congre.co.jp", "path": "/jastro2027", "for": ["jastro-yokohama-2027-expected"], "note": "global-11: JASTRO 40th annual meeting site on Congre, linked from jastro.or.jp (read 27 Nov 2026)"}
+  {"host": "congre.co.jp", "path": "/jastro2027", "for": ["jastro-yokohama-2027-expected"], "note": "global-11: JASTRO 40th annual meeting site on Congre, linked from jastro.or.jp (read 27 Nov 2026)"},
+  {"host": "roentgenkongress.de", "for": ["drg-roentgenkongress-2027", "drg-roentgenkongress-2028"], "note": "global-11: Deutscher Röntgenkongress site of the DRG, linked from drg.de (read 27 Nov 2026)"},
+  {"host": "dgthg-dgpk-jahrestagung.de", "for": ["dgthg-tagung-2027"], "note": "global-11: joint DGTHG/DGPK annual meeting site, linked from dgthg.de (read 27 Nov 2026)"},
+  {"host": "herzmedizin.de", "path": "/fuer-aerzte-und-fachpersonal/dgk/kongresse", "for": ["dgk-jahrestagung-2027"], "note": "global-11: dgk.org/dgk-kongresse redirects here; herzmedizin.de is the DGK portal (read 27 Nov 2026)"},
+  {"host": "degro-kongress.org", "for": ["degro-kongress-2027"], "note": "global-11: DEGRO congress site, linked from degro.org (read 27 Nov 2026)"},
+  {"host": "dgnc-kongress.de", "for": ["dgnc-jahrestagung-2027"], "note": "global-11: DGNC annual meeting site, linked from dgnc.de (read 27 Nov 2026)"},
+  {"host": "dgsm-kongress.de", "for": ["dgsm-kongress-2027"], "note": "global-11: DGSM annual meeting site, linked from dgsm.de (read 27 Nov 2026)"}
  ],
  "aggregators": ["santetropicale.com", "10times.com", "allconferencealert.com", "conferenceindex.org", "conferencealerts.co.in", "conferenceseries.com", "docthub.com", "eventbrite.com", "eventbrite.com.au", "eventbrite.co.uk", "facebook.com", "instagram.com", "linkedin.com", "mdlinx.com", "medical.theconferencewebsite.com", "omicsonline.org", "twitter.com", "waset.org", "wikipedia.org", "x.com"]
 }
