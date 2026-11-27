@@ -1,0 +1,122 @@
+[
+ {
+  "id": "hfsa-annual-scientific-meeting-2027",
+  "set": {
+   "blurb": "The annual scientific meeting of the Heart Failure Society of America, in Charlotte, North Carolina."
+  },
+  "note": "global-12 2026-11-27: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "american-glaucoma-society-annual-meeting-2027",
+  "set": {
+   "blurb": "The annual meeting of the American Glaucoma Society, at the JW Marriott Starr Pass in Tucson, Arizona."
+  },
+  "note": "global-12 2026-11-27: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "acr-annual-meeting-2027",
+  "set": {
+   "blurb": "The annual meeting of the American College of Radiology, in Washington, DC."
+  },
+  "note": "global-12 2026-11-27: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "acr-annual-meeting-2028",
+  "set": {
+   "blurb": "The annual meeting of the American College of Radiology, at the Washington Hilton in Washington, DC."
+  },
+  "note": "global-12 2026-11-27: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "carso-caro-annual-scientific-meeting-2027",
+  "set": {
+   "blurb": "The annual scientific meeting of the Canadian Association of Radiation Oncology, marking its 40th anniversary, in Ottawa."
+  },
+  "note": "global-12 2026-11-27: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "menopause-society-annual-meeting-2027",
+  "set": {
+   "blurb": "The annual meeting of The Menopause Society, at the Gaylord Rockies near Denver."
+  },
+  "note": "global-12 2026-11-27: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "naemsp-annual-meeting-2028",
+  "set": {
+   "blurb": "The annual meeting of the National Association of EMS Physicians, at the Manchester Grand Hyatt in San Diego."
+  },
+  "note": "global-12 2026-11-27: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "arrs-annual-meeting-2028",
+  "set": {
+   "blurb": "The annual meeting of the American Roentgen Ray Society, at the Hilton Austin."
+  },
+  "note": "global-12 2026-11-27: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "nata-clinical-symposia-2028",
+  "set": {
+   "blurb": "The clinical symposia and AT Expo of the National Athletic Trainers' Association, in Las Vegas."
+  },
+  "note": "global-12 2026-11-27: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "aacp-annual-meeting-2028",
+  "set": {
+   "blurb": "Pharmacy Education 2028, the annual meeting of the American Association of Colleges of Pharmacy, in Baltimore."
+  },
+  "note": "global-12 2026-11-27: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "cua-annual-meeting-2028",
+  "set": {
+   "blurb": "The annual meeting of the Canadian Urological Association, at the Westin Harbour Castle in Toronto."
+  },
+  "note": "global-12 2026-11-27: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "naspag-annual-meeting-2027",
+  "set": {
+   "blurb": "The annual clinical and research meeting of the North American Society for Pediatric and Adolescent Gynecology, in Atlanta."
+  },
+  "note": "global-12 2026-11-27: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "anna-national-symposium-2027",
+  "set": {
+   "blurb": "The national symposium of the American Nephrology Nurses Association, at the Rosen Shingle Creek in Orlando, also online."
+  },
+  "note": "global-12 2026-11-27: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "wocn-annual-conference-2027",
+  "set": {
+   "name": "WOCNext 2027",
+   "blurb": "WOCNext, the annual conference of the Wound, Ostomy and Continence Nurses Society, in Savannah, Georgia."
+  },
+  "note": "global-12 2026-11-27: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "wocn-annual-conference-2028",
+  "set": {
+   "name": "WOCNext 2028",
+   "blurb": "WOCNext, the annual conference of the Wound, Ostomy and Continence Nurses Society, in Phoenix."
+  },
+  "note": "global-12 2026-11-27: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "aapm-pain-medicine-annual-meeting-2027",
+  "set": {
+   "name": "PainConnect 2027 (AAPM Annual Meeting)",
+   "blurb": "PainConnect, the annual meeting of the American Academy of Pain Medicine, at the Hyatt Regency Grand Cypress in Orlando."
+  },
+  "note": "global-12 2026-11-27: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "scmr-scientific-sessions-2027",
+  "remove": true,
+  "note": "global-12 2026-11-27: removed. This estimate placed SCMR 2027 in Washington in January; the SCMR event calendar (scmr.org/event-calendar/) gives the 30th Annual Scientific Sessions in Rome, Italy, 17-20 Feb 2027, now row scmr-30th-annual-scientific-sessions-2027."
+ }
+]
