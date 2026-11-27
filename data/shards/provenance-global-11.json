@@ -31,5 +31,21 @@
   "datesQuote": "NHAM 2027 15th - 18th Apr 2027",
   "verifiedOn": "2026-11-27",
   "note": "global-11 2026-11-27: NHAM conference site list: NHAM 2027, 15-18 Apr 2027; the event page and malaysianheart.org name the Kuala Lumpur Convention Centre (was 23 Apr, estimated)"
+ },
+ {
+  "id": "jastro-yokohama-2027-expected",
+  "verified": true,
+  "start": "2027-10-28",
+  "end": "2027-10-30",
+  "sourceUrl": "https://www.congre.co.jp/jastro2027/outline/index.html",
+  "datesSourceUrl": "https://www.congre.co.jp/jastro2027/outline/index.html",
+  "datesQuote": "会期 2027年10月28日（木）～10月30日（土） 会場 国立京都国際会館（京都府京都市）",
+  "verifiedOn": "2026-11-27",
+  "city": "Kyoto",
+  "country": "Japan",
+  "countryCode": "JP",
+  "lat": 35.0116,
+  "lng": 135.7681,
+  "note": "global-11 2026-11-27: JASTRO 40th annual meeting site (outline page, linked from jastro.or.jp): 28-30 Oct 2027, Kyoto International Conference Center (was Yokohama, 18 Nov, estimated)"
  }
 ]
