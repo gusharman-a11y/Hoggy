@@ -262,5 +262,41 @@
    "blurb": "The annual conference of the Canadian Dermatology Association, at the Victoria Convention Centre."
   },
   "note": "global-10 2026-11-27: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "actrims-forum-2027",
+  "set": {
+   "blurb": "The ACTRIMS Forum of the Americas Committee for Treatment and Research in Multiple Sclerosis, in Phoenix."
+  },
+  "note": "global-10 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "aao-orthodontists-annual-session-2028",
+  "set": {
+   "blurb": "The annual session of the American Association of Orthodontists, in Washington, DC."
+  },
+  "note": "global-10 2026-11-27: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "aap-periodontology-annual-meeting-2027",
+  "set": {
+   "name": "AAP 113th Annual Meeting (Periodontology) 2027",
+   "blurb": "The annual meeting of the American Academy of Periodontology, in Boston."
+  },
+  "note": "global-10 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "aann-annual-meeting-2027",
+  "set": {
+   "blurb": "The Neuroscience Nursing Annual Conference of the American Association of Neuroscience Nurses, at The Westin Seattle."
+  },
+  "note": "global-10 2026-11-27: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "aann-annual-meeting-2028",
+  "set": {
+   "blurb": "The Neuroscience Nursing Annual Conference of the American Association of Neuroscience Nurses, at the Anaheim Marriott."
+  },
+  "note": "global-10 2026-11-27: name and blurb after the dates were confirmed"
  }
 ]
