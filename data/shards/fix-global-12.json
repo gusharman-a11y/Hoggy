@@ -118,5 +118,12 @@
   "id": "scmr-scientific-sessions-2027",
   "remove": true,
   "note": "global-12 2026-11-27: removed. This estimate placed SCMR 2027 in Washington in January; the SCMR event calendar (scmr.org/event-calendar/) gives the 30th Annual Scientific Sessions in Rome, Italy, 17-20 Feb 2027, now row scmr-30th-annual-scientific-sessions-2027."
+ },
+ {
+  "id": "aaacn-annual-conference-2028",
+  "set": {
+   "blurb": "The annual conference of the American Academy of Ambulatory Care Nursing, at the Hilton Hawaiian Village in Honolulu."
+  },
+  "note": "global-12 2026-11-27: name and blurb after the dates were confirmed"
  }
 ]

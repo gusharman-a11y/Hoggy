@@ -254,5 +254,21 @@
   "lat": 28.54,
   "lng": -81.38,
   "note": "global-12 2026-11-27: AAPM PainConnect 2027 page: 18-21 Mar 2027, Hyatt Regency Grand Cypress, Orlando (was Phoenix, 3 Mar, estimated)"
+ },
+ {
+  "id": "aaacn-annual-conference-2028",
+  "verified": true,
+  "start": "2028-04-10",
+  "end": "2028-04-14",
+  "sourceUrl": "https://www.aaacn.org/events/annual-conference",
+  "datesSourceUrl": "https://www.aaacn.org/events/annual-conference",
+  "datesQuote": "Save the Date! April 10-14, 2028 Hilton Hawaiian Village - Waikiki Beach Resort Honolulu, HI",
+  "verifiedOn": "2026-11-27",
+  "city": "Honolulu",
+  "country": "United States",
+  "countryCode": "US",
+  "lat": 21.31,
+  "lng": -157.86,
+  "note": "global-12 2026-11-27: AAACN annual conference page: 10-14 Apr 2028, Hilton Hawaiian Village, Honolulu (was Orlando, 18 Apr, estimated)"
  }
 ]
