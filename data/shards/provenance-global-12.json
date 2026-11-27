@@ -270,5 +270,37 @@
   "lat": 21.31,
   "lng": -157.86,
   "note": "global-12 2026-11-27: AAACN annual conference page: 10-14 Apr 2028, Hilton Hawaiian Village, Honolulu (was Orlando, 18 Apr, estimated)"
+ },
+ {
+  "id": "aes-annual-meeting",
+  "verified": true,
+  "start": "2027-12-03",
+  "end": "2027-12-07",
+  "sourceUrl": "https://aesnet.org/AES-annual-meeting/general-information/future-meetings",
+  "datesSourceUrl": "https://aesnet.org/AES-annual-meeting/general-information/future-meetings",
+  "datesQuote": "2027 Dec. 3-7 Baltimore, MD",
+  "verifiedOn": "2026-11-27",
+  "city": "Baltimore",
+  "country": "United States",
+  "countryCode": "US",
+  "lat": 39.29,
+  "lng": -76.61,
+  "note": "global-12 2026-11-27: AES future meetings page: 3-7 Dec 2027, Baltimore (dates were estimated)"
+ },
+ {
+  "id": "aes-annual-meeting-2028",
+  "verified": true,
+  "start": "2028-12-01",
+  "end": "2028-12-05",
+  "sourceUrl": "https://aesnet.org/AES-annual-meeting/general-information/future-meetings",
+  "datesSourceUrl": "https://aesnet.org/AES-annual-meeting/general-information/future-meetings",
+  "datesQuote": "2028 Dec. 1-5 Seattle, WA",
+  "verifiedOn": "2026-11-27",
+  "city": "Seattle",
+  "country": "United States",
+  "countryCode": "US",
+  "lat": 47.61,
+  "lng": -122.33,
+  "note": "global-12 2026-11-27: AES future meetings page: 1-5 Dec 2028, Seattle (was Orlando, estimated)"
  }
 ]
