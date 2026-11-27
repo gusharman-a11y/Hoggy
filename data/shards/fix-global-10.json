@@ -1,0 +1,231 @@
+[
+ {
+  "id": "aana-annual-congress-2027",
+  "remove": true,
+  "note": "global-10 2026-11-26: removed. This undated estimate was filed as the nurse anaesthetists' \"AANA Annual Congress\" on aana.com, whose pages give no dates; global-8 flagged it as the wrong society. The Arthroscopy Association's own future-meetings page (aana.org) gives the AANA meetings, now rows aana-annual-meeting-2027/-2028."
+ },
+ {
+  "id": "aana-annual-congress-2028",
+  "remove": true,
+  "note": "global-10 2026-11-26: removed. This undated estimate was filed as the nurse anaesthetists' \"AANA Annual Congress\" on aana.com, whose pages give no dates; global-8 flagged it as the wrong society. The Arthroscopy Association's own future-meetings page (aana.org) gives the AANA meetings, now rows aana-annual-meeting-2027/-2028."
+ },
+ {
+  "id": "cda-annual-conference-2027",
+  "set": {
+   "blurb": "The annual conference of the Canadian Dermatology Association, at Le Westin Montréal."
+  },
+  "note": "global-10 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "sfp-annual-meeting-2027",
+  "set": {
+   "blurb": "The annual meeting of the Society of Family Planning, in Philadelphia."
+  },
+  "note": "global-10 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "apic-annual-conference-2027",
+  "set": {
+   "blurb": "The annual conference and expo of the Association for Professionals in Infection Control and Epidemiology, in Los Angeles."
+  },
+  "note": "global-10 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "diabetes-canada-professional-conference-2027",
+  "set": {
+   "blurb": "The professional conference of Diabetes Canada and the Canadian Society of Endocrinology and Metabolism, at the Rogers Centre in Ottawa."
+  },
+  "note": "global-10 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "cas-annual-meeting-2028",
+  "set": {
+   "name": "WCA 2028 (World Congress of Anaesthesiologists)",
+   "blurb": "The World Congress of Anaesthesiologists, which takes the place of the CAS annual meeting in 2028, in Vancouver."
+  },
+  "note": "global-10 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "acaai-annual-scientific-meeting-2027",
+  "set": {
+   "blurb": "The annual scientific meeting of the American College of Allergy, Asthma and Immunology, in Nashville."
+  },
+  "note": "global-10 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "nann-annual-conference-2028",
+  "set": {
+   "blurb": "The annual educational conference of the National Association of Neonatal Nurses, in Dallas."
+  },
+  "note": "global-10 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "agd-annual-meeting-2027",
+  "set": {
+   "name": "AGD2027 Annual Dental Conference",
+   "blurb": "The annual dental conference of the Academy of General Dentistry, its 75th anniversary meeting, in Chicago."
+  },
+  "note": "global-10 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "can-neuroscience-meeting-2028",
+  "set": {
+   "blurb": "The Canadian Neuroscience Meeting of the Canadian Association for Neuroscience, at the Westin Harbour Castle in Toronto."
+  },
+  "note": "global-10 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "cpdd-annual-meeting-2028",
+  "set": {
+   "blurb": "The scientific meeting of the College on Problems of Drug Dependence, at the Baird Center in Milwaukee."
+  },
+  "note": "global-10 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "ases-annual-meeting-2028",
+  "set": {
+   "blurb": "The annual meeting of the American Shoulder and Elbow Surgeons, at the Omni Nashville."
+  },
+  "note": "global-10 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "acnm-annual-meeting-2027",
+  "set": {
+   "blurb": "The annual meeting of the American College of Nurse-Midwives, in Palm Springs."
+  },
+  "note": "global-10 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "aacp-annual-meeting-2027",
+  "set": {
+   "name": "AACP Pharmacy Education 2027",
+   "blurb": "Pharmacy Education 2027, the annual meeting of the American Association of Colleges of Pharmacy, in Toronto."
+  },
+  "note": "global-10 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "nsgc-annual-conference-2027",
+  "set": {
+   "name": "NSGC 46th Annual Conference 2027",
+   "blurb": "The annual conference of the National Society of Genetic Counselors, at the Tampa Convention Center."
+  },
+  "note": "global-10 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "nsgc-annual-conference-2028",
+  "set": {
+   "name": "NSGC 47th Annual Conference 2028",
+   "blurb": "The annual conference of the National Society of Genetic Counselors, at Huntington Place in Detroit."
+  },
+  "note": "global-10 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "acnp-annual-meeting-2028",
+  "set": {
+   "blurb": "The annual meeting of the American College of Neuropsychopharmacology, in Las Vegas."
+  },
+  "note": "global-10 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "svs-vascular-annual-meeting-2028",
+  "set": {
+   "blurb": "The Vascular Annual Meeting of the Society for Vascular Surgery, at National Harbor in Oxon Hill, Maryland."
+  },
+  "note": "global-10 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "aaes-annual-meeting-2028",
+  "set": {
+   "blurb": "The annual meeting of the American Association of Endocrine Surgeons, in Salt Lake City."
+  },
+  "note": "global-10 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "aafs-annual-scientific-meeting-2028",
+  "set": {
+   "name": "AAFS 80th Annual Scientific Conference 2028",
+   "blurb": "The annual scientific conference of the American Academy of Forensic Sciences, at Caesars Palace in Las Vegas."
+  },
+  "note": "global-10 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "ahns-annual-meeting-2028",
+  "set": {
+   "name": "AHNS Annual Meeting at COSM 2028",
+   "blurb": "The annual meeting of the American Head and Neck Society, held with COSM at the Hyatt Regency Chicago."
+  },
+  "note": "global-10 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "ncpa-annual-convention-2027",
+  "set": {
+   "blurb": "The annual convention of the National Community Pharmacists Association, in San Antonio."
+  },
+  "note": "global-10 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "ncpa-annual-convention-2028",
+  "set": {
+   "blurb": "The annual convention of the National Community Pharmacists Association, in Louisville."
+  },
+  "note": "global-10 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "aaacn-annual-conference-2027",
+  "set": {
+   "blurb": "The annual conference of the American Academy of Ambulatory Care Nursing, at the New Orleans Marriott."
+  },
+  "note": "global-10 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "napnap-national-conference-2027",
+  "set": {
+   "blurb": "The national conference on pediatric health care of the National Association of Pediatric Nurse Practitioners, in Sacramento."
+  },
+  "note": "global-10 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "snis-annual-meeting-2027",
+  "set": {
+   "name": "SNIS 24th Annual Meeting and Fellows Course 2027",
+   "blurb": "The annual meeting of the Society of NeuroInterventional Surgery, at The Broadmoor in Colorado Springs."
+  },
+  "note": "global-10 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "aspho-conference-2027",
+  "set": {
+   "blurb": "The annual conference of the American Society of Pediatric Hematology/Oncology, in Montréal."
+  },
+  "note": "global-10 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "cosm-triological-2027",
+  "set": {
+   "blurb": "The Combined Otolaryngology Spring Meetings, where the Triological Society and other otolaryngology societies meet, in Seattle."
+  },
+  "note": "global-10 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "cosm-triological-2028",
+  "set": {
+   "blurb": "The Combined Otolaryngology Spring Meetings, where the Triological Society and other otolaryngology societies meet, at the Hyatt Regency Chicago."
+  },
+  "note": "global-10 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "cps-annual-conference-2028",
+  "set": {
+   "blurb": "The annual conference of the Canadian Paediatric Society, in Calgary."
+  },
+  "note": "global-10 2026-11-26: name and blurb after the dates were confirmed"
+ },
+ {
+  "id": "carso-caro-annual-scientific-meeting-2028",
+  "set": {
+   "name": "CARO-COMP Joint Scientific Meeting 2028",
+   "blurb": "The joint scientific meeting of the Canadian Association of Radiation Oncology and the Canadian Organization of Medical Physicists, in Montréal."
+  },
+  "note": "global-10 2026-11-26: name and blurb after the dates were confirmed"
+ }
+]
